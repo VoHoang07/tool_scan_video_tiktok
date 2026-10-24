@@ -1,0 +1,16 @@
+# Môi trường ảo riêng của từng chip (Apple Silicon vs Intel)
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Phiên trình duyệt riêng trên từng máy
+browser_profiles/
+
+# Thư mục tạm và log
+workspace_temp/
+logs/
+.DS_Store
+
+# File video nặng (tùy chọn không đẩy lên Git)
+output/**/*.mp4

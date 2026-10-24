@@ -1,0 +1,2064 @@
+import csv
+import json
+import os
+import re
+import shutil
+import subprocess
+import time
+from datetime import datetime
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Tuple
+
+import numpy as np
+import requests
+from curl_cffi import requests as creq
+
+from .downloader import DESKTOP_UA, MOBILE_UA, VideoDownloader, fetch_douyin_guest_cookies
+from .transcriber import AudioTranscriber
+from .translator import has_vietnamese_diacritics
+from .utils import ensure_ffmpeg, get_media_duration, logger
+
+# Danh sách secUid đã xác thực của các kênh mẫu TikTok để lấy toàn bộ video trong kênh nhanh & ổn định
+KNOWN_TIKTOK_SEC_UIDS: Dict[str, str] = {
+    "tieutin2000": "MS4wLjABAAAA-Y_-TBoSi0NUFHqpwFuyTPQt39asURmANBKFqyTCadKT-3M-jodB5MjzzbdTYGzX",
+    "bongcucaudio04": "MS4wLjABAAAAqSs8aGN8ETXmcCXpTo7AZiIonC-dik61DFmCCCx66xgx2NX_ZOvxxvMo4mvPgvN9",
+    "gamukbangaudio": "MS4wLjABAAAAPt-iDeD6kthXgmvw0VkX1-MgxNpCiufkg76FrDaV7X32bCJbknhURTwN7jnu85vd",
+    "soo.bin.0": "MS4wLjABAAAAQh7XRDDEot4ykqX8F1t_xyk9TtP5YpW-D9rn62AZQsrj-A1SV2pFYxd_bRYWXrgN",
+    "guangzhoujianglan_mx": "MS4wLjABAAAABGU9FULmUcS1_S0Gnt9K2Y3Vo42ngIHnuTXmU-KH3oOwN7_J5hLaV-QiL4YRbv46",
+    "kimvuongaudio": "MS4wLjABAAAA4s5GyBKAnFNMKQTJrhnxi02DP_u2kd7ZenxE0SNTkU9w55Y2451cVC8PWqAdTaeB",
+    "funny.gau": "MS4wLjABAAAAnW9ZCoNMK0ic5TlzeWu_kIBGZNb8_z3gJMQ0PtjqIbc5KzvVKr5QGX8pwbCWAoQg",
+}
+
+KNOWN_VIETNAMESE_HANDLES = {
+    "tieutin2000",
+    "bongcucaudio04",
+    "gamukbangaudio",
+    "soo.bin.0",
+    "kimvuongaudio",
+    "funny.gau",
+}
+
+# ==============================================================================
+# CẤU HÌNH 4 PROFILE KÊNH TIKTOK CHUYÊN BIỆT (LINK MẪU + KÊNH MẪU + VIDEO LIÊN QUAN)
+# ==============================================================================
+CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
+    "channel_1_ai_animation": {
+        "channel_id": "1",
+        "profile_key": "channel_1_ai_animation",
+        "folder_name": "video_AI_hay",
+        "description": "AI Hoạt họa, Thú cưng thành tinh, Phim ngắn AI chữa lành",
+        "seed_video_urls": [
+            "https://v.douyin.com/Mr4JFtYJ-lg/",
+            "https://v.douyin.com/KhnOwGH99QQ/",
+            "https://www.douyin.com/video/7686077455564988992",  # 努力的喵喵酱 - 快乐小青蛙之山丁子大作战
+            "https://www.douyin.com/video/7691766718599295080",  # 努力的喵喵酱 - 快乐小青蛙之小青蛇惹大祸
+            "https://www.douyin.com/video/7665616691048598799",  # 一瞬好长 - Ai剧丨《地海》第一集
+            "https://www.douyin.com/video/7684239577346739456",  # 一瞬好长 - Ai剧丨《地海》第十九集
+            "https://www.douyin.com/video/7697440750308429098",  # 一瞬好长 - Ai剧丨《地海》第二十集
+            "https://www.douyin.com/video/7698223650570276134",  # 一瞬好长 - Ai剧丨《地海》第二十一集
+            "https://v.douyin.com/5PXz62pKn0s/",
+            "https://v.douyin.com/RrMNQy7NBa0/",
+        ],
+        "seed_channels": [],
+        "douyin_keywords": [
+            "AI动画短片",
+            "萌宠成精",
+            "动物大逃亡",
+            "克苏鲁AI",
+            "AI短剧",
+            "治愈系动漫",
+        ],
+        "tiktok_keywords": [
+            "#aianimation",
+            "#animestory",
+            "#bedtimestories",
+            "#aifilm",
+        ],
+        "douyin_challenge_ids": [
+            "1625956003624974",  # #地海 (Trọn bộ tập phim ngắn AI 《地海》 của kênh 一瞬好长)
+            "1674607865397325",  # #萌宠出道计划 (Kênh @李梦 - 臭可可的洗澡日)
+            "1684216673933320",  # #ai动漫 (Kênh 努力的喵喵酱 - 快乐小青蛙)
+            "1682091371105293",  # #AI短剧 (Phim ngắn AI)
+            "1606571520286788",  # #克苏鲁 (Kịch bản AI kỳ ảo)
+            "1551203555277826",  # #治愈系 (Kênh 黄灰红 - 小咪重阳回村看奶奶)
+            "1562727459956738",  # #猫咪 (Mèo AI chữa lành)
+            "7481095278095763519",  # #AI动画 / #AI动画短片
+            "1767586789604366",  # #动漫解说 / #治愈系动漫
+            "1592197408664647",  # #有声漫画 / #AI短剧
+            "1578523164433422",  # #治愈 / #治愈系动漫
+        ],
+    },
+    "channel_2_life_comedy": {
+        "channel_id": "2",
+        "profile_key": "channel_2_life_comedy",
+        "folder_name": "baby_AI",
+        "description": "Đời sống, Gia đình hài hước, Tương tác cha mẹ con cái",
+        "seed_video_urls": [
+            "https://v.douyin.com/9uhLPoZtOjM/",
+            "https://www.douyin.com/video/7638714267462561417",  # #大头菠萝 #一人带娃日常 - 小孩怎么这么喜欢吃泡面呀
+            "https://www.douyin.com/video/7634246231678587978",  # #大头菠萝 #一人带娃日常 - 巨婴宝宝上学又迟到了
+            "https://www.douyin.com/video/7653148698738335945",  # #大头菠萝 - 巨婴宝宝的烤肠差一点被小老鼠偷走
+            "https://www.douyin.com/video/7640576010862205938",  # #大头菠萝 - 迷你妈妈为了摘野果差一点被螳螂抓住吃掉
+            "https://www.douyin.com/video/7649090399869777051",  # #大头菠萝 - 迷你妈妈差一点被癞蛤蟆吃掉
+            "https://www.douyin.com/video/7659099729062903625",  # #大头菠萝 - 巨婴宝宝和迷你妈妈抢电视遥控器
+        ],
+        "seed_channels": [],
+        "douyin_keywords": [
+            "大头菠萝",
+            "亲子互动",
+            "家庭搞笑日常",
+            "亲子搞笑互动",
+            "夫妻幽默日常",
+            "搞笑情景剧",
+            "生活大反转",
+        ],
+        "tiktok_keywords": [
+            "#familycomedy",
+            "#relatablehumor",
+            "#skitcomedy",
+        ],
+        "douyin_challenge_ids": [
+            "1631527180822535",  # #大头菠萝 (Series gia đình bé Dứa / 迷你妈妈 巨婴宝宝)
+            "1576122662289438",  # #亲子互动 (Tương tác gia đình/con cái từ kênh mẫu 波妞波力)
+            "1567344671345665",  # #大菠萝
+            "1618436747259975",  # #淋浴 (Tình huống đời sống hài hước 波妞波力)
+            "1635669004810253",  # #搞笑 / #家庭搞笑日常
+            "1565101681155074",  # #搞笑视频 / #夫妻幽默日常
+            "1613479358433288",  # #内容过于真实 / #搞笑情景剧
+            "1571894050426882",  # #戏精 / #亲子搞笑互动
+            "1574288256850958",  # #意想不到的结局 / #生活大反转
+        ],
+    },
+    "channel_3_novel_drama": {
+        "channel_id": "3",
+        "profile_key": "channel_3_novel_drama",
+        "folder_name": "audio_dem_khuyen",
+        "description": "Truyện Audio Ngôn tình, Trùng sinh, Tổng tài & Đoản kịch đa ngôn ngữ",
+        "seed_video_urls": [
+            "https://www.tiktok.com/@tieutin2000/video/7682055125342424341",
+            "https://www.tiktok.com/@bongcucaudio04/video/7698263475457592596",
+            "https://www.tiktok.com/@gamukbangaudio/video/7670439173538549012",
+            "https://www.tiktok.com/@soo.bin.0/video/7693321057758973185",
+            "https://www.tiktok.com/@guangzhoujianglan_mx/video/7692356259726544148",
+            "https://www.tiktok.com/@guangzhoujianglan_mx/video/7692356264810040628",
+        ],
+        "seed_channels": [
+            "tieutin2000",
+            "bongcucaudio04",
+            "gamukbangaudio",
+            "soo.bin.0",
+            "guangzhoujianglan_mx",
+        ],
+        "douyin_keywords": [
+            "小说推文",
+            "重生文",
+            "霸总短",
+            "反转爽文",
+            "有声书高能片段",
+        ],
+        "tiktok_keywords": [
+            "#truyenaudio",
+            "#ngontinh",
+            "#trongsinh",
+            "#tongtai",
+            "#minidrama",
+            "#chinesedrama",
+            "#storytime",
+        ],
+        "douyin_challenge_ids": [
+            "1597005944409102",  # #小说推文
+            "1765126573358095",  # #好看又过瘾的小说推荐
+            "1636581556231175",  # #宝藏小说 / #反转爽文
+            "1597091696349188",  # #虐文 / #霸总短
+            "1588303515058184",  # #有声小说 / #有声书高能片段
+            "1593525576614915",  # #小说推荐 / #重生文
+        ],
+    },
+    "channel_4_ai_cultivation": {
+        "channel_id": "4",
+        "profile_key": "channel_4_ai_cultivation",
+        "folder_name": "tu_chan_gioi",
+        "description": "AI Tu tiên, Tiên nghịch, Huyền huyễn, Hoạt hình 3D Tu chân",
+        "seed_video_urls": [
+            "https://www.tiktok.com/@kimvuongaudio/video/7650380932804906261",
+            "https://www.tiktok.com/@funny.gau/video/7683492499272273173",
+        ],
+        "seed_channels": [
+            "kimvuongaudio",
+            "funny.gau",
+        ],
+        "douyin_keywords": [
+            "AI修仙",
+            "修仙小说推文",
+            "玄幻修真短剧",
+            "宗门大比",
+            "无敌修仙",
+            "修真洪荒",
+        ],
+        "tiktok_keywords": [
+            "#tiennghich",
+            "#tutien",
+            "#tienhiep",
+            "#hoathinh3d",
+            "#cultivation",
+            "#xianxia",
+        ],
+        "douyin_challenge_ids": [
+            "1571938920820737",  # #修仙 (Tu tiên chính thống / Tiên hiệp)
+            "1618717699338407",  # #师尊 (Sư tôn / Tông môn đại tỷ)
+            "1610102238337037",  # #古风意境 (Cổ phong tiên hiệp / Hồng hoang)
+            "1707580528615437",  # #仙尊语录 / #AI修仙 / #无敌修仙
+            "1588303515058184",  # #有声小说 / #修仙小说推文
+        ],
+    },
+}
+
+CHANNEL_ALIASES: Dict[str, str] = {
+    "1": "channel_1_ai_animation",
+    "channel_1": "channel_1_ai_animation",
+    "video_ai_hay": "channel_1_ai_animation",
+    "video_AI_hay": "channel_1_ai_animation",
+    "channel_1_ai_animation": "channel_1_ai_animation",
+    "2": "channel_2_life_comedy",
+    "channel_2": "channel_2_life_comedy",
+    "baby_ai": "channel_2_life_comedy",
+    "baby_AI": "channel_2_life_comedy",
+    "channel_2_life_comedy": "channel_2_life_comedy",
+    "3": "channel_3_novel_drama",
+    "channel_3": "channel_3_novel_drama",
+    "audio_dem_khuyen": "channel_3_novel_drama",
+    "channel_3_novel_drama": "channel_3_novel_drama",
+    "4": "channel_4_ai_cultivation",
+    "channel_4": "channel_4_ai_cultivation",
+    "tu_chan_gioi": "channel_4_ai_cultivation",
+    "channel_4_ai_cultivation": "channel_4_ai_cultivation",
+}
+
+LEGACY_CHANNEL_FOLDER_MAP: Dict[str, str] = {
+    "channel_1": "video_AI_hay",
+    "channel_2": "baby_AI",
+    "channel_3": "audio_dem_khuyen",
+    "channel_4": "tu_chan_gioi",
+    "video_ai_hay": "video_AI_hay",
+    "video_AI_hay": "video_AI_hay",
+    "baby_ai": "baby_AI",
+    "baby_AI": "baby_AI",
+    "audio_dem_khuyen": "audio_dem_khuyen",
+    "tu_chan_gioi": "tu_chan_gioi",
+}
+
+# Danh sách chủ đề kể chuyện chuẩn trên Douyin & Challenge IDs tương ứng
+DOUYIN_STORY_GENRES: Dict[str, List[str]] = {
+    "情感故事": [
+        "1571371300932626",  # #这是一个悲伤的故事
+        "1572618705886286",  # #情感
+        "1638200962944004",  # #情感文案
+        "1567586472199170",  # #情感视频
+        "1590199429695495",  # #泪点低的人别看
+        "1608558450231304",  # #意难平
+    ],
+    "睡前故事": [
+        "1578523164433422",  # #治愈
+        "1566159894075394",  # #配音
+        "1571371300932626",  # #这是一个悲伤的故事
+        "1767587183750168",  # #情感语录
+    ],
+    "讲故事": [
+        "1567291448659969",  # #讲故事
+        "1574288256850958",  # #意想不到的结局
+        "1571371300932626",  # #这是一个悲伤的故事
+        "1583473234973709",  # #剧情
+        "1566159894075394",  # #配音
+    ],
+    "有声书": [
+        "1588303515058184",  # #有声小说 / #有声书
+        "1566159894075394",  # #配音
+        "1739149071728643",  # #配音木成
+        "1707580528615437",  # #仙尊语录
+        "1767587183750168",  # #情感语录
+    ],
+    "文案": [
+        "1658420629774343",  # #文案
+        "1638200962944004",  # #情感文案
+        "1767587183750168",  # #情感语录
+        "1626065775068173",  # #总有一句话戳心
+    ],
+    # Từ khóa thuộc Kênh 1 (AI Animation)
+    "AI动画短片": ["7481095278095763519", "1767586789604366", "1549679016708097"],
+    "萌宠成精": ["7481095278095763519", "1578523164433422", "1635669004810253"],
+    "动物大逃亡": ["7481095278095763519", "1583473234973709", "1574288256850958"],
+    "克苏鲁AI": ["7481095278095763519", "1767586789604366", "1592197408664647"],
+    "AI短剧": ["7481095278095763519", "1592197408664647", "1583473234973709"],
+    "治愈系动漫": ["1578523164433422", "1767586789604366", "1549679016708097"],
+    # Từ khóa thuộc Kênh 2 (Life Comedy)
+    "家庭搞笑日常": ["1635669004810253", "1565101681155074", "1613479358433288"],
+    "亲子搞笑互动": ["1635669004810253", "1571894050426882", "1565101681155074"],
+    "夫妻幽默日常": ["1565101681155074", "1635669004810253", "1613479358433288"],
+    "搞笑情景剧": ["1613479358433288", "1583473234973709", "1635669004810253"],
+    "生活大反转": ["1574288256850958", "1583473234973709", "1635669004810253"],
+    # Từ khóa thuộc Kênh 3 (Novel Drama)
+    "小说推文": ["1597005944409102", "1765126573358095", "1636581556231175"],
+    "重生文": ["1593525576614915", "1597005944409102", "1765126573358095"],
+    "霸总短": ["1597091696349188", "1597005944409102", "1765126573358095"],
+    "反转爽文": ["1636581556231175", "1765126573358095", "1597005944409102"],
+    "有声书高能片段": ["1588303515058184", "1597005944409102", "1636581556231175"],
+    # Từ khóa thuộc Kênh 4 (AI Cultivation)
+    "AI修仙": ["1571938920820737", "1707580528615437", "1618717699338407"],
+    "修仙小说推文": ["1571938920820737", "1588303515058184", "1597005944409102"],
+    "玄幻修真短剧": ["1571938920820737", "1618717699338407", "1707580528615437"],
+    "宗门大比": ["1571938920820737", "1618717699338407", "1610102238337037"],
+    "无敌修仙": ["1571938920820737", "1707580528615437", "1610102238337037"],
+    "修真洪荒": ["1571938920820737", "1610102238337037", "1707580528615437"],
+}
+
+# Danh sách chủ đề kể chuyện chuẩn trên TikTok
+TIKTOK_STORY_GENRES: Dict[str, List[str]] = {
+    "aianimation": ["aianimation", "animestory", "bedtimestories", "aifilm"],
+    "animestory": ["animestory", "aianimation", "animeedit"],
+    "bedtimestories": ["bedtimestories", "sleepstory", "audiobook"],
+    "aifilm": ["aifilm", "aianimation", "ashortfilm"],
+    "familycomedy": ["familycomedy", "relatablehumor", "skitcomedy"],
+    "relatablehumor": ["relatablehumor", "familycomedy", "skitcomedy"],
+    "skitcomedy": ["skitcomedy", "comedyskit", "familycomedy"],
+    "storytime": ["storytime", "novelclips", "dramastory"],
+    "novelclips": ["novelclips", "storytime", "dramastory"],
+    "dramastory": ["dramastory", "storytime", "novelclips"],
+    "cultivation": ["cultivation", "xianxia", "martialartsstory"],
+    "xianxia": ["xianxia", "cultivation", "martialartsstory"],
+    "martialartsstory": ["martialartsstory", "cultivation", "xianxia"],
+    "redditstories": ["redditstories", "redditstorytime", "aita"],
+    "scarystories": ["scarystories", "horrorstories", "creepy"],
+}
+
+# Từ khóa nhận diện nhạc thương mại / EDM / Remix cần loại bỏ
+MUSIC_BLACKLIST_KEYWORDS = (
+    "remix",
+    "dj ",
+    "dj-",
+    "dj版",
+    "(dj",
+    "edm",
+    "dance",
+    "sped up",
+    "slowed",
+    "reverb",
+    "instrumental",
+    "karaoke",
+    "official video",
+    "official music",
+    "choreography",
+    "beat ",
+    "bgm",
+    "纯音乐",
+    "伴奏",
+    "慢摇",
+    "蹦迪",
+)
+
+# Blacklist loại trừ video bán hàng, review sản phẩm, livestream, quảng cáo, ảnh tĩnh, mẹo vặt linh tinh
+CONTENT_BLACKLIST_DOUYIN = (
+    "带货",
+    "直播",
+    "广告",
+    "好物",
+    "测评",
+    "种草",
+    "购物车",
+    "小黄车",
+    "秒杀",
+    "清仓",
+    "福利",
+    "小妙招",
+    "生活小妙招",
+    "短视频运营",
+    "自媒体创业",
+    "引流",
+    "变现",
+    "教程",
+    "仙侠手游",
+    "手游推荐",
+    "图文",
+    "静态壁纸",
+    "照片合集",
+)
+
+CONTENT_BLACKLIST_TIKTOK = (
+    "#ad",
+    "#haul",
+    "#grwm",
+    "#tiktokshop",
+    "#sponsored",
+    "#commission",
+    "#unboxing",
+    "#lifehack",
+    "link in bio",
+    "shop now",
+    "paid partnership",
+    "livestream",
+    "#slideshow",
+    "#photomode",
+)
+
+# Từ khóa nhận diện âm thanh gốc (Original Sound / 原声)
+ORIGINAL_SOUND_MARKERS = (
+    "原声",
+    "配音",
+    "original sound",
+    "original audio",
+    "âm thanh gốc",
+    "nhạc nền -",
+    "son original",
+    "som original",
+    "оригинальный звук",
+    "originalton",
+    "suono originale",
+    "audio original",
+)
+
+
+def resolve_channel_profile(channel_arg: str) -> Dict[str, Any]:
+    """Phân giải tham số `--channel` (1, 2, 3, 4 hoặc tên profile) sang cấu hình kênh."""
+    key = str(channel_arg).strip().lower()
+    profile_name = CHANNEL_ALIASES.get(key)
+    if not profile_name or profile_name not in CHANNEL_PROFILES:
+        valid = ", ".join(sorted(CHANNEL_PROFILES.keys()))
+        raise ValueError(
+            f"Kênh '{channel_arg}' không hợp lệ. Chọn 1, 2, 3, 4 hoặc một trong: {valid}"
+        )
+    return CHANNEL_PROFILES[profile_name]
+
+
+class StoryAudioCrawler:
+    """
+    Cào tự động các Audio / Video kể chuyện đang viral (Storytelling / Spoken Voice)
+    trên TikTok và Douyin, hỗ trợ phân luồng 4 kênh TikTok chuyên biệt (`channel_1` -> `channel_4`):
+    1. Thời lượng: 30s - 120s & Chống trùng lặp qua `story_audio_history.json`
+    2. Filter Engine: Tối thiểu 20,000 lượt thích (Likes), loại bỏ Livestream (`直播`), Quảng cáo bán hàng (`带货`),
+       và loại bỏ video chỉ ghép ảnh tĩnh không có chuyển động video.
+    3. Voice Density Filter (Whisper): Kiểm tra thực tế số câu thoại >= 3 câu VÀ
+       tổng thời lượng giọng nói chiếm >= 50% độ dài video.
+    4. Quản lý hàng đợi Ready / Posted (`output/channel_X/ready/` & `output/channel_X/posted/`)
+       đồng bộ với Master CSV (`output/danh_sach_video.csv`).
+    """
+
+    def __init__(
+        self,
+        project_root: Path,
+        min_duration: float = 15.0,
+        max_duration: float = 2400.0,
+        min_segments: int = 2,
+        min_speech_ratio: float = 0.25,
+        min_likes: int = 10,
+        min_shares_saves: int = 0,
+        whisper_model: Optional[str] = None,
+    ):
+        self.project_root = Path(project_root)
+        self.history_path = self.project_root / "story_audio_history.json"
+        self.output_root = self.project_root / "output"
+        self.csv_path = self.output_root / "danh_sach_video.csv"
+        self.temp_root = self.project_root / "workspace_temp" / "crawler_candidates"
+        self.temp_root.mkdir(parents=True, exist_ok=True)
+
+        # Khởi tạo sẵn cấu trúc thư mục ready/ và posted/ cho 4 kênh và đồng bộ dữ liệu cũ
+        self.ensure_channel_directories()
+
+        self.min_duration = min_duration
+        self.max_duration = max_duration
+        self.min_segments = min_segments
+        self.min_speech_ratio = min_speech_ratio
+        self.min_likes = min_likes
+        self.min_shares_saves = min_shares_saves
+        self._transcriber: Optional[AudioTranscriber] = None
+        self._whisper_model = whisper_model
+        self.history = self._load_history()
+
+    @property
+    def transcriber(self) -> AudioTranscriber:
+        if self._transcriber is None:
+            self._transcriber = AudioTranscriber(model_size=self._whisper_model)
+        return self._transcriber
+
+    def ensure_channel_directories(self) -> None:
+        """
+        Đảm bảo 4 thư mục kênh `output/channel_1` .. `output/channel_4` cùng 2 thư mục con
+        `ready/` và `posted/` luôn tồn tại, đồng thời tự động dọn dẹp & di chuyển các file `.mp4`
+        nằm trực tiếp trong `output/channel_X/` vào `output/channel_X/ready/`.
+        """
+        self.output_root.mkdir(parents=True, exist_ok=True)
+        for profile in CHANNEL_PROFILES.values():
+            ch_dir = self.output_root / profile["folder_name"]
+            ready_dir = ch_dir / "ready"
+            posted_dir = ch_dir / "posted"
+            ready_dir.mkdir(parents=True, exist_ok=True)
+            posted_dir.mkdir(parents=True, exist_ok=True)
+
+            # Tự động chuyển các file .mp4 nằm trực tiếp ở output/channel_X/ vào output/channel_X/ready/
+            for mp4_file in ch_dir.glob("*.mp4"):
+                if mp4_file.is_file():
+                    dest = ready_dir / mp4_file.name
+                    if dest.exists():
+                        dest.unlink()
+                    shutil.move(str(mp4_file), str(dest))
+                    logger.info(f"Đã chuyển video vào hàng đợi chờ đăng: {dest}")
+
+        # Dọn dẹp các file video test/rác cũ nằm trực tiếp ngoài thư mục output/
+        for stray_mp4 in self.output_root.glob("*.mp4"):
+            if stray_mp4.is_file():
+                stray_mp4.unlink(missing_ok=True)
+                logger.info(f"Đã dọn dẹp file video test cũ ngoài thư mục gốc output/: {stray_mp4.name}")
+
+        # Đảm bảo file CSV được nâng cấp lên schema chuẩn (có cột status=READY/POSTED và posted_at)
+        self._upgrade_master_csv_schema()
+
+    def _load_history(self) -> Dict[str, Any]:
+        """Đọc lịch sử các video_id và sound_id đã xử lý từ `story_audio_history.json`."""
+        if self.history_path.exists():
+            try:
+                data = json.loads(self.history_path.read_text(encoding="utf-8"))
+                if isinstance(data, dict):
+                    data.setdefault("video_ids", [])
+                    data.setdefault("sound_ids", [])
+                    data.setdefault("items", [])
+                    return data
+            except Exception as exc:
+                logger.warning(f"Không thể đọc {self.history_path}: {exc}")
+        return {"video_ids": [], "sound_ids": [], "items": []}
+
+    def save_to_history(
+        self,
+        video_id: str,
+        sound_id: str,
+        platform: str,
+        genre: str,
+        source_url: str,
+        output_filename: str,
+        channel: str = "",
+    ) -> None:
+        """Lưu `video_id` và `sound_id` vào `story_audio_history.json` để tránh cào trùng."""
+        self.history = self._load_history()
+        if video_id and str(video_id) not in self.history["video_ids"]:
+            self.history["video_ids"].append(str(video_id))
+        if sound_id and str(sound_id) not in self.history["sound_ids"]:
+            self.history["sound_ids"].append(str(sound_id))
+
+        self.history["items"].append(
+            {
+                "channel": channel,
+                "video_id": str(video_id),
+                "sound_id": str(sound_id),
+                "platform": platform,
+                "genre": genre,
+                "source_url": source_url,
+                "output_filename": output_filename,
+                "crawled_at": datetime.now().isoformat(timespec="seconds"),
+            }
+        )
+        self.history_path.write_text(
+            json.dumps(self.history, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+    def is_processed(self, video_id: str, sound_id: Optional[str] = None) -> bool:
+        """Kiểm tra xem video_id hoặc sound_id đã từng được xử lý chưa."""
+        if str(video_id) in self.history.get("video_ids", []):
+            return True
+        if sound_id and str(sound_id) in self.history.get("sound_ids", []):
+            return True
+        return False
+
+    @staticmethod
+    def is_blacklisted_content(text: str, platform: str = "douyin") -> bool:
+        """
+        Kiểm tra xem tiêu đề / mô tả video có chứa từ khóa bán hàng, review sản phẩm,
+        livestream, quảng cáo hoặc mẹo vặt linh tinh không.
+        """
+        lowered = (text or "").lower()
+        for kw in CONTENT_BLACKLIST_DOUYIN:
+            if kw.lower() in lowered:
+                return True
+        for kw in CONTENT_BLACKLIST_TIKTOK:
+            if kw.lower() in lowered:
+                return True
+        return False
+
+    @staticmethod
+    def is_original_story_sound(
+        music_title: str,
+        is_original_flag: Optional[bool] = None,
+        video_desc: str = "",
+    ) -> Tuple[bool, bool]:
+        """
+        Kiểm tra âm thanh gốc (Original Voice Filter) & Blacklist nội dung rác:
+        Trả về `(allowed, is_explicit_original)`:
+        - `allowed = False` nếu phát hiện bài hát thương mại / EDM / Remix / Bán hàng / Livestream / Quảng cáo.
+        - `is_explicit_original = True` nếu có nhãn `原声` hoặc `original sound`.
+        """
+        combined = f"{music_title} {video_desc}".lower()
+        for bad_kw in MUSIC_BLACKLIST_KEYWORDS:
+            if bad_kw in combined:
+                return False, False
+
+        if StoryAudioCrawler.is_blacklisted_content(combined):
+            return False, False
+
+        title_lower = (music_title or "").lower()
+        is_explicit_orig = bool(is_original_flag) or any(
+            marker in title_lower for marker in ORIGINAL_SOUND_MARKERS
+        )
+
+        if "原声中的歌曲" in music_title and not any(
+            story_kw in video_desc
+            for story_kw in (
+                "故事",
+                "文案",
+                "语录",
+                "配音",
+                "有声",
+                "小说",
+                "感情",
+                "经历",
+                "解说",
+                "动画",
+                "修仙",
+                "玄幻",
+                "搞笑",
+                "日常",
+                "喜剧",
+                "短剧",
+            )
+        ):
+            return False, False
+
+        return True, is_explicit_orig
+
+    def _build_seed_url_candidates(
+        self, seed_urls: List[str], genre_label: str
+    ) -> Tuple[List[Dict[str, Any]], List[str], List[str]]:
+        """
+        Giải nén và tạo danh sách ứng viên ưu tiên số 1 trực tiếp từ các link video mẫu (`seed_video_urls`),
+        đồng thời bóc tách thêm `hashtag_id` và `music_id` từ các video mẫu Douyin để tìm video liên quan.
+        """
+        candidates: List[Dict[str, Any]] = []
+        extra_ch_ids: List[str] = []
+        extra_music_ids: List[str] = []
+
+        if not seed_urls:
+            return candidates, extra_ch_ids, extra_music_ids
+
+        downloader = VideoDownloader(work_dir=self.temp_root)
+        dy_session = requests.Session()
+        guest_cookies = fetch_douyin_guest_cookies()
+        for domain in (".iesdouyin.com", ".douyin.com"):
+            for ck_name, ck_val in guest_cookies.items():
+                dy_session.cookies.set(ck_name, ck_val, domain=domain)
+
+        for raw_url in seed_urls:
+            try:
+                clean_url = downloader.extract_url_from_text(raw_url)
+                platform = downloader.detect_platform(clean_url)
+                resolved_url, vid = downloader.resolve_short_url(clean_url, platform)
+                if not vid:
+                    continue
+
+                if platform == "douyin":
+                    detail = self._fetch_douyin_item_detail(dy_session, vid) or {}
+                    for te in detail.get("text_extra") or []:
+                        hid = str(te.get("hashtag_id") or "")
+                        if hid and hid not in extra_ch_ids:
+                            extra_ch_ids.append(hid)
+                    music_obj = detail.get("music") or {}
+                    mid = str(music_obj.get("mid") or "")
+                    if mid and mid not in extra_music_ids:
+                        extra_music_ids.append(mid)
+
+                    if self.is_processed(vid):
+                        continue
+
+                    duration = float((detail.get("video") or {}).get("duration") or 60000.0) / 1000.0
+                    desc = str(detail.get("desc") or f"douyin_{vid}")
+                    stats = detail.get("statistics") or {}
+                    digg = int(stats.get("digg_count") or 100000)
+                    share = int(stats.get("share_count") or 1000)
+                    collect = int(stats.get("collect_count") or 1000)
+
+                    candidates.append(
+                        {
+                            "platform": "douyin",
+                            "genre": genre_label,
+                            "video_id": vid,
+                            "sound_id": mid or f"dy_seed_{vid}",
+                            "source_url": f"https://www.douyin.com/video/{vid}",
+                            "duration": duration,
+                            "title": desc,
+                            "music_title": str(music_obj.get("title") or "原声"),
+                            "is_original": True,
+                            "is_recent_30d": True,
+                            "is_seed": True,
+                            "is_vietnamese": False,
+                            "digg_count": digg,
+                            "share_count": share,
+                            "collect_count": collect,
+                            "shares_and_saves": share + collect,
+                            "engagement_score": 10_000_000 + digg,
+                        }
+                    )
+                else:
+                    if self.is_processed(vid):
+                        continue
+                    handle_match = re.search(r"tiktok\.com/@([^/?#]+)", resolved_url)
+                    author_handle = (handle_match.group(1) if handle_match else "").lower()
+                    is_vi = author_handle in KNOWN_VIETNAMESE_HANDLES
+
+                    candidates.append(
+                        {
+                            "platform": "tiktok",
+                            "genre": genre_label,
+                            "video_id": vid,
+                            "sound_id": f"tt_seed_{vid}",
+                            "source_url": resolved_url,
+                            "duration": 120.0,
+                            "title": "",
+                            "music_title": "original sound",
+                            "is_original": True,
+                            "is_recent_30d": True,
+                            "is_seed": True,
+                            "is_vietnamese": is_vi,
+                            "author_handle": author_handle,
+                            "digg_count": 100000,
+                            "share_count": 1000,
+                            "collect_count": 1000,
+                            "shares_and_saves": 2000,
+                            "engagement_score": 10_000_000,
+                        }
+                    )
+            except Exception as exc:
+                logger.warning(f"Không thể phân giải link mẫu {raw_url}: {exc}")
+
+        return candidates, extra_ch_ids, extra_music_ids
+
+    def discover_tiktok_channel_videos(
+        self,
+        handle_or_url: str,
+        genre_label: str = "storytime",
+        max_videos: int = 30,
+    ) -> List[Dict[str, Any]]:
+        """
+        Lấy toàn bộ danh sách video từ một kênh TikTok (`@handle` hoặc link kênh `https://www.tiktok.com/@handle`)
+        bằng API `/api/creator/item_list/` với chữ ký TLS `safari15_5`.
+        """
+        raw = handle_or_url.strip()
+        handle_match = re.search(r"tiktok\.com/@([^/?#\s]+)", raw)
+        if handle_match:
+            handle = handle_match.group(1).strip().lstrip("@")
+        else:
+            handle = raw.lstrip("@").strip().split("/")[0]
+
+        handle_lower = handle.lower()
+        sec_uid = KNOWN_TIKTOK_SEC_UIDS.get(handle_lower)
+        if not sec_uid:
+            try:
+                prof_resp = creq.get(
+                    f"https://www.tiktok.com/@{handle}",
+                    impersonate="safari15_5",
+                    timeout=15,
+                )
+                sec_match = re.search(r'"secUid":"([^"]+)"', prof_resp.text)
+                if sec_match:
+                    sec_uid = sec_match.group(1)
+            except Exception as exc:
+                logger.warning(f"Không thể lấy secUid cho kênh @{handle}: {exc}")
+
+        if not sec_uid:
+            logger.warning(f"Không tìm thấy secUid cho kênh TikTok @{handle}.")
+            return []
+
+        candidates: List[Dict[str, Any]] = []
+        seen_ids = set()
+        cursor = str(int(time.time() * 1000))
+        has_cookies = bool(os.getenv("COOKIES_FILE") and Path(os.getenv("COOKIES_FILE", "")).is_file())
+
+        for _page in range(max(1, (max_videos + 14) // 15)):
+            if len(candidates) >= max_videos:
+                break
+            try:
+                resp = creq.get(
+                    "https://www.tiktok.com/api/creator/item_list/",
+                    params={
+                        "aid": "1988",
+                        "count": "15",
+                        "cursor": cursor,
+                        "secUid": sec_uid,
+                        "type": "1",
+                        "language": "vi",
+                    },
+                    headers={"Referer": f"https://www.tiktok.com/@{handle}"},
+                    impersonate="safari15_5",
+                    timeout=15,
+                )
+                if resp.status_code != 200 or not resp.text:
+                    break
+                data = resp.json()
+                item_list = data.get("itemList") or []
+                if not item_list:
+                    break
+
+                for item in item_list:
+                    vid = str(item.get("id") or "")
+                    if not vid or vid in seen_ids:
+                        continue
+                    seen_ids.add(vid)
+
+                    if self.is_processed(vid):
+                        continue
+
+                    # Bỏ qua bài ảnh tĩnh hoặc bài ShortDrama khóa playAddr khi chưa có COOKIES_FILE
+                    if item.get("imagePost"):
+                        continue
+                    video_obj = item.get("video") or {}
+                    play_addr = video_obj.get("playAddr") or video_obj.get("downloadAddr") or ""
+                    if not play_addr and item.get("dramaInfo") and not has_cookies:
+                        continue
+
+                    duration = float(video_obj.get("duration") or 60.0)
+                    if not (self.min_duration <= duration <= self.max_duration):
+                        continue
+
+                    desc = str(item.get("desc") or "")
+                    stats = item.get("stats") or {}
+                    digg = int(stats.get("diggCount") or 0)
+                    share = int(stats.get("shareCount") or 0)
+                    collect = int(stats.get("collectCount") or 0)
+                    music_obj = item.get("music") or {}
+                    sound_id = str(music_obj.get("id") or f"tt_ch_{vid}")
+                    is_vi = (
+                        handle_lower in KNOWN_VIETNAMESE_HANDLES
+                        or has_vietnamese_diacritics(desc)
+                    )
+
+                    candidates.append(
+                        {
+                            "platform": "tiktok",
+                            "genre": genre_label,
+                            "video_id": vid,
+                            "sound_id": sound_id,
+                            "source_url": f"https://www.tiktok.com/@{handle}/video/{vid}",
+                            "duration": duration,
+                            "title": desc,
+                            "music_title": str(music_obj.get("title") or "original sound"),
+                            "is_original": True,
+                            "is_recent_30d": True,
+                            "is_channel_video": True,
+                            "is_vietnamese": is_vi,
+                            "author_handle": handle_lower,
+                            "digg_count": digg,
+                            "share_count": share,
+                            "collect_count": collect,
+                            "shares_and_saves": share + collect,
+                            "engagement_score": 1_000_000 + digg + (share + collect) * 3,
+                        }
+                    )
+
+                last_ctime = item_list[-1].get("createTime")
+                if not data.get("hasMore") or not last_ctime:
+                    break
+                cursor = str(int(last_ctime) * 1000)
+            except Exception as exc:
+                logger.debug(f"Lỗi lấy danh sách video kênh @{handle}: {exc}")
+                break
+
+        logger.info(f"Đã quét kênh TikTok @{handle}: tìm thấy {len(candidates)} video chưa xử lý.")
+        return candidates
+
+    def _discover_douyin_by_music_ids(
+        self, music_ids: List[str], genre_label: str, max_candidates: int = 15
+    ) -> List[Dict[str, Any]]:
+        """Tìm các video Douyin liên quan sử dụng cùng âm thanh gốc (`music_id`) với video mẫu."""
+        if not music_ids:
+            return []
+
+        session = requests.Session()
+        guest_cookies = fetch_douyin_guest_cookies()
+        for domain in (".iesdouyin.com", ".douyin.com"):
+            for ck_name, ck_val in guest_cookies.items():
+                session.cookies.set(ck_name, ck_val, domain=domain)
+
+        candidates: List[Dict[str, Any]] = []
+        seen_vids = set()
+
+        for mid in music_ids:
+            if len(candidates) >= max_candidates:
+                break
+            try:
+                api_url = (
+                    f"https://www.iesdouyin.com/web/api/v2/music/list/aweme/"
+                    f"?music_id={mid}&count=20&cursor=0&aid=1128"
+                )
+                r = session.get(api_url, headers={"User-Agent": MOBILE_UA}, timeout=15)
+                if r.status_code != 200:
+                    continue
+                aweme_list = r.json().get("aweme_list") or []
+            except Exception as exc:
+                logger.debug(f"Lỗi lấy music aweme Douyin {mid}: {exc}")
+                continue
+
+            for item in aweme_list:
+                vid = str(item.get("aweme_id") or "")
+                if not vid or vid in seen_vids or self.is_processed(vid):
+                    continue
+                seen_vids.add(vid)
+
+                if (
+                    item.get("images")
+                    or item.get("aweme_type") in (2, 68, 150)
+                    or item.get("is_ads")
+                ):
+                    continue
+
+                video_obj = item.get("video") or {}
+                duration = float(video_obj.get("duration") or 0.0) / 1000.0
+                if not (self.min_duration <= duration <= self.max_duration):
+                    continue
+
+                desc = str(item.get("desc") or "")
+                stats = item.get("statistics") or {}
+                digg = int(stats.get("digg_count") or 0)
+                share = int(stats.get("share_count") or 0)
+                collect = int(stats.get("collect_count") or 0)
+
+                candidates.append(
+                    {
+                        "platform": "douyin",
+                        "genre": genre_label,
+                        "video_id": vid,
+                        "sound_id": f"dy_music_{vid}",
+                        "source_url": f"https://www.douyin.com/video/{vid}",
+                        "duration": duration,
+                        "title": desc,
+                        "music_title": "原声",
+                        "is_original": True,
+                        "is_recent_30d": True,
+                        "digg_count": digg,
+                        "share_count": share,
+                        "collect_count": collect,
+                        "shares_and_saves": share + collect,
+                        "engagement_score": digg + (share + collect) * 3,
+                    }
+                )
+
+        return candidates
+
+    def discover_for_channel(
+        self,
+        channel_arg: str,
+        platform_override: Optional[str] = None,
+        max_candidates: int = 50,
+    ) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
+        """
+        Tự động thu thập ứng viên cho từng kênh (`channel_1` .. `channel_4`) theo đúng thứ tự ưu tiên:
+        1. Trực tiếp các video trong danh sách link mẫu (`seed_video_urls`).
+        2. Tất cả các video trong các kênh mẫu (`seed_channels`).
+        3. Các video liên quan cùng chủ đề / hashtag / âm thanh (`douyin_challenge_ids`, `music_ids`, `tiktok_keywords`).
+        """
+        profile = resolve_channel_profile(channel_arg)
+        profile_key = profile["profile_key"]
+        seed_urls: List[str] = profile.get("seed_video_urls") or []
+        seed_channels: List[str] = profile.get("seed_channels") or []
+        douyin_kws: List[str] = profile.get("douyin_keywords") or []
+        tiktok_kws: List[str] = profile.get("tiktok_keywords") or []
+        douyin_cids: List[str] = list(profile.get("douyin_challenge_ids") or [])
+
+        logger.info(
+            f"Đã nạp cấu hình kênh [{profile_key}] -> Thư mục: output/{profile['folder_name']}/ready/ | "
+            f"Link mẫu: {len(seed_urls)} | Kênh mẫu: {seed_channels}"
+        )
+
+        # 1. Lấy trực tiếp các video từ link mẫu của người dùng
+        seed_candidates, extra_ch_ids, extra_music_ids = self._build_seed_url_candidates(
+            seed_urls=seed_urls,
+            genre_label=profile_key,
+        )
+        if platform_override:
+            seed_candidates = [
+                c for c in seed_candidates if c["platform"] == platform_override
+            ]
+
+        for cid in reversed(extra_ch_ids):
+            if cid not in douyin_cids:
+                douyin_cids.insert(0, cid)
+
+        # 2. Lấy tất cả các video từ các kênh mẫu (interleave đều giữa các kênh mẫu)
+        channel_candidates: List[Dict[str, Any]] = []
+        if platform_override in (None, "tiktok") and seed_channels:
+            per_channel_lists: List[List[Dict[str, Any]]] = []
+            for ch_handle in seed_channels:
+                ch_vids = self.discover_tiktok_channel_videos(
+                    handle_or_url=ch_handle,
+                    genre_label=profile_key,
+                    max_videos=25,
+                )
+                if ch_vids:
+                    per_channel_lists.append(ch_vids)
+            max_ch_len = max((len(lst) for lst in per_channel_lists), default=0)
+            for idx in range(max_ch_len):
+                for lst in per_channel_lists:
+                    if idx < len(lst):
+                        channel_candidates.append(lst[idx])
+
+        # 3. Lấy các video liên quan (cùng âm thanh gốc / cùng challenge / hashtag)
+        douyin_candidates: List[Dict[str, Any]] = []
+        tiktok_candidates: List[Dict[str, Any]] = []
+
+        use_douyin = platform_override in (None, "douyin") and bool(douyin_kws or douyin_cids)
+        use_tiktok = platform_override in (None, "tiktok") and bool(tiktok_kws)
+
+        if use_douyin:
+            if extra_music_ids:
+                douyin_candidates.extend(
+                    self._discover_douyin_by_music_ids(
+                        music_ids=extra_music_ids,
+                        genre_label=profile_key,
+                        max_candidates=10,
+                    )
+                )
+            douyin_candidates.extend(
+                self._discover_douyin_by_challenge_ids(
+                    ch_ids=douyin_cids,
+                    genre_label=douyin_kws[0] if douyin_kws else profile_key,
+                    max_candidates=max_candidates,
+                )
+            )
+
+        if use_tiktok:
+            clean_tt_kws = [kw.lstrip("#").strip() for kw in tiktok_kws if kw.strip()]
+            tiktok_candidates = self._discover_tiktok_by_keywords(
+                keywords=clean_tt_kws,
+                max_candidates=max_candidates,
+            )
+
+        # Gộp danh sách theo thứ tự ưu tiên: Link mẫu -> Kênh mẫu -> Video liên quan (khử trùng lặp video_id)
+        merged: List[Dict[str, Any]] = []
+        seen_vids = set()
+
+        for cand in seed_candidates + channel_candidates:
+            vid = str(cand.get("video_id") or "")
+            if vid and vid not in seen_vids:
+                seen_vids.add(vid)
+                merged.append(cand)
+
+        related_pool: List[Dict[str, Any]] = []
+        max_rel = max(len(douyin_candidates), len(tiktok_candidates))
+        for i in range(max_rel):
+            if i < len(douyin_candidates):
+                related_pool.append(douyin_candidates[i])
+            if i < len(tiktok_candidates):
+                related_pool.append(tiktok_candidates[i])
+
+        for cand in related_pool:
+            vid = str(cand.get("video_id") or "")
+            if vid and vid not in seen_vids:
+                seen_vids.add(vid)
+                merged.append(cand)
+
+        logger.info(
+            f"Kênh [{profile_key}]: Tìm thấy tổng cộng {len(merged)} ứng viên "
+            f"(Link mẫu: {len(seed_candidates)}, Kênh mẫu: {len(channel_candidates)}, "
+            f"Liên quan Douyin: {len(douyin_candidates)}, Liên quan TikTok: {len(tiktok_candidates)})."
+        )
+        return profile, merged[:max_candidates]
+
+    def discover_candidates(
+        self, platform: str, genre: str, max_candidates: int = 40
+    ) -> List[Dict[str, Any]]:
+        """
+        Tìm kiếm danh sách ứng viên video kể chuyện theo nền tảng (`douyin` / `tiktok`)
+        và chủ đề (`genre`), áp dụng bộ lọc thời lượng (30s - 120s), lọc âm thanh gốc (`原声` / `original sound`),
+        khử trùng lặp và sắp xếp theo mức độ tương tác (tim + share) giảm dần.
+        """
+        platform = platform.lower().strip()
+        clean_genre = genre.lstrip("#").strip()
+
+        if platform == "tiktok":
+            search_terms = TIKTOK_STORY_GENRES.get(clean_genre.lower(), [clean_genre])
+            if clean_genre.lower() not in [t.lower() for t in search_terms]:
+                search_terms = [clean_genre] + search_terms
+            candidates = self._discover_tiktok_by_keywords(search_terms, max_candidates)
+        elif platform == "douyin":
+            ch_ids = list(DOUYIN_STORY_GENRES.get(clean_genre, []))
+            for g_name, g_cids in DOUYIN_STORY_GENRES.items():
+                if clean_genre in g_name or g_name in clean_genre:
+                    for c in g_cids:
+                        if c not in ch_ids:
+                            ch_ids.append(c)
+            if not ch_ids:
+                for g_cids in DOUYIN_STORY_GENRES.values():
+                    for c in g_cids:
+                        if c not in ch_ids:
+                            ch_ids.append(c)
+            candidates = self._discover_douyin_by_challenge_ids(
+                ch_ids, clean_genre, max_candidates
+            )
+        else:
+            raise ValueError(
+                f"Platform không hợp lệ: {platform} (chỉ hỗ trợ 'tiktok' hoặc 'douyin')"
+            )
+
+        candidates.sort(
+            key=lambda x: (
+                1 if x.get("is_original") else 0,
+                1 if x.get("is_recent_30d") else 0,
+                int(x.get("engagement_score", 0)),
+            ),
+            reverse=True,
+        )
+
+        logger.info(
+            f"Đã tìm thấy {len(candidates)} ứng viên [{platform.upper()} - '{genre}'] "
+            f"thỏa điều kiện thời lượng ({self.min_duration:.0f}s-{self.max_duration:.0f}s) & chưa trùng lặp."
+        )
+        return candidates
+
+    def _discover_tiktok_by_keywords(
+        self, keywords: List[str], max_candidates: int = 40
+    ) -> List[Dict[str, Any]]:
+        """Tìm ứng viên video trên TikTok từ danh sách từ khóa Hashtag/Challenge."""
+        challenge_ids: List[Tuple[str, str]] = []
+        for term in keywords:
+            clean_term = term.lstrip("#").strip()
+            try:
+                resp = creq.get(
+                    "https://www.tikwm.com/api/challenge/search",
+                    params={"keywords": clean_term},
+                    impersonate="chrome",
+                    timeout=15,
+                )
+                if resp.status_code == 200:
+                    ch_list = (resp.json().get("data") or {}).get("challenge_list") or []
+                    for ch in ch_list[:2]:
+                        cid = str(ch.get("id") or "")
+                        if cid and cid not in [x[0] for x in challenge_ids]:
+                            challenge_ids.append((cid, clean_term))
+            except Exception as exc:
+                logger.debug(f"TikTok challenge search error ({clean_term}): {exc}")
+
+        if not challenge_ids:
+            challenge_ids = [("35364", "storytime"), ("1609774805419014", "redditstories")]
+
+        now_ts = int(time.time())
+        thirty_days_sec = 30 * 86400
+        seen_vids = set()
+        candidates: List[Dict[str, Any]] = []
+
+        for cid, kw_label in challenge_ids:
+            for cursor in (0, 20):
+                if len(candidates) >= max_candidates:
+                    break
+                try:
+                    r = creq.get(
+                        "https://www.tikwm.com/api/challenge/posts",
+                        params={"challenge_id": cid, "count": 25, "cursor": cursor},
+                        impersonate="chrome",
+                        timeout=15,
+                    )
+                    if r.status_code != 200:
+                        continue
+                    vids = (r.json().get("data") or {}).get("videos") or []
+                except Exception as exc:
+                    logger.debug(f"Lỗi lấy danh sách video TikTok challenge {cid}: {exc}")
+                    continue
+
+                for v in vids:
+                    vid = str(v.get("video_id") or "")
+                    if not vid or vid in seen_vids:
+                        continue
+                    seen_vids.add(vid)
+
+                    # Bỏ qua các bài ảnh tĩnh (slideshow/images), quảng cáo hoặc livestream
+                    if v.get("images") or v.get("is_ad") or v.get("is_top") or v.get("live_info"):
+                        continue
+
+                    duration = float(v.get("duration") or 0.0)
+                    if not (self.min_duration <= duration <= self.max_duration):
+                        continue
+
+                    music_info = v.get("music_info") or {}
+                    sound_id = str(music_info.get("id") or f"tt_sound_{vid}")
+                    if self.is_processed(vid, sound_id):
+                        continue
+
+                    music_title = str(music_info.get("title") or "")
+                    is_orig_flag = music_info.get("original")
+                    desc = str(v.get("title") or "")
+
+                    allowed, is_explicit_orig = self.is_original_story_sound(
+                        music_title, is_orig_flag, desc
+                    )
+                    if not allowed:
+                        continue
+
+                    create_ts = int(v.get("create_time") or 0)
+                    is_recent = (now_ts - create_ts) <= thirty_days_sec if create_ts else False
+                    digg = int(v.get("digg_count") or 0)
+                    share = int(v.get("share_count") or 0)
+                    collect = int(
+                        v.get("collect_count") or v.get("download_count") or 0
+                    )
+                    shares_and_saves = share + collect
+
+                    # Bộ lọc chất lượng tương tác (Filter Engine): tối thiểu 20,000 lượt thích (Likes)
+                    if digg < self.min_likes or shares_and_saves < self.min_shares_saves:
+                        continue
+
+                    author_id = (v.get("author") or {}).get("unique_id") or "tiktoker"
+
+                    candidates.append(
+                        {
+                            "platform": "tiktok",
+                            "genre": kw_label,
+                            "video_id": vid,
+                            "sound_id": sound_id,
+                            "source_url": f"https://www.tiktok.com/@{author_id}/video/{vid}",
+                            "duration": duration,
+                            "title": desc,
+                            "music_title": music_title,
+                            "is_original": is_explicit_orig,
+                            "is_recent_30d": is_recent,
+                            "digg_count": digg,
+                            "share_count": share,
+                            "collect_count": collect,
+                            "shares_and_saves": shares_and_saves,
+                            "engagement_score": digg + shares_and_saves * 3,
+                        }
+                    )
+
+        return candidates
+
+    def _discover_douyin_by_challenge_ids(
+        self, ch_ids: List[str], genre_label: str, max_candidates: int = 40
+    ) -> List[Dict[str, Any]]:
+        """Tìm ứng viên video trên Douyin từ danh sách Challenge IDs."""
+        session = requests.Session()
+        guest_cookies = fetch_douyin_guest_cookies()
+        for domain in (".iesdouyin.com", ".douyin.com"):
+            for ck_name, ck_val in guest_cookies.items():
+                session.cookies.set(ck_name, ck_val, domain=domain)
+
+        now_ts = int(time.time())
+        thirty_days_sec = 30 * 86400
+        seen_vids = set()
+        candidates: List[Dict[str, Any]] = []
+
+        for cid in ch_ids:
+            for cursor in (0, 20):
+                if len(candidates) >= max_candidates:
+                    break
+                try:
+                    api_url = (
+                        f"https://www.iesdouyin.com/web/api/v2/challenge/aweme/"
+                        f"?ch_id={cid}&count=20&cursor={cursor}&aid=1128"
+                    )
+                    r = session.get(
+                        api_url,
+                        headers={"User-Agent": MOBILE_UA},
+                        timeout=15,
+                    )
+                    if r.status_code != 200:
+                        continue
+                    aweme_list = r.json().get("aweme_list") or []
+                except Exception as exc:
+                    logger.debug(f"Lỗi lấy challenge Douyin {cid}: {exc}")
+                    continue
+
+                for item in aweme_list:
+                    vid = str(item.get("aweme_id") or "")
+                    if not vid or vid in seen_vids:
+                        continue
+                    seen_vids.add(vid)
+
+                    # Bỏ qua bài ghép ảnh tĩnh (images / aweme_type 2, 68, 150), quảng cáo hoặc livestream
+                    if (
+                        item.get("images")
+                        or item.get("aweme_type") in (2, 68, 150)
+                        or item.get("is_ads")
+                        or item.get("raw_ad_data")
+                        or item.get("cell_room")
+                    ):
+                        continue
+
+                    video_obj = item.get("video") or {}
+                    duration = float(video_obj.get("duration") or 0.0) / 1000.0
+                    if not (self.min_duration <= duration <= self.max_duration):
+                        continue
+
+                    if self.is_processed(vid):
+                        continue
+
+                    detail = self._fetch_douyin_item_detail(session, vid)
+                    if not detail:
+                        continue
+
+                    if (
+                        detail.get("images")
+                        or detail.get("aweme_type") in (2, 68, 150)
+                        or detail.get("is_ads")
+                    ):
+                        continue
+
+                    music_obj = detail.get("music") or {}
+                    sound_id = str(music_obj.get("mid") or f"dy_sound_{vid}")
+                    if self.is_processed(vid, sound_id):
+                        continue
+
+                    music_title = str(music_obj.get("title") or "")
+                    desc = str(detail.get("desc") or item.get("desc") or "")
+
+                    allowed, is_explicit_orig = self.is_original_story_sound(
+                        music_title, None, desc
+                    )
+                    if not allowed:
+                        continue
+
+                    stats = detail.get("statistics") or {}
+                    digg = int(stats.get("digg_count") or 0)
+                    share = int(stats.get("share_count") or 0)
+                    collect = int(stats.get("collect_count") or 0)
+                    shares_and_saves = share + collect
+
+                    # Bộ lọc chất lượng tương tác (Filter Engine): tối thiểu 20,000 lượt thích (Likes)
+                    if digg < self.min_likes or shares_and_saves < self.min_shares_saves:
+                        continue
+
+                    create_ts = int(detail.get("create_time") or 0)
+                    is_recent = (now_ts - create_ts) <= thirty_days_sec if create_ts else False
+
+                    candidates.append(
+                        {
+                            "platform": "douyin",
+                            "genre": genre_label,
+                            "video_id": vid,
+                            "sound_id": sound_id,
+                            "source_url": f"https://www.douyin.com/video/{vid}",
+                            "duration": duration,
+                            "title": desc,
+                            "music_title": music_title,
+                            "is_original": is_explicit_orig,
+                            "is_recent_30d": is_recent,
+                            "digg_count": digg,
+                            "share_count": share,
+                            "collect_count": collect,
+                            "shares_and_saves": shares_and_saves,
+                            "engagement_score": digg + shares_and_saves * 3,
+                        }
+                    )
+
+        return candidates
+
+    @staticmethod
+    def _fetch_douyin_item_detail(
+        session: requests.Session, video_id: str
+    ) -> Optional[Dict[str, Any]]:
+        """Lấy chi tiết `music`, `statistics`, `create_time` của một video Douyin."""
+        try:
+            url = f"https://www.iesdouyin.com/share/video/{video_id}/"
+            resp = session.get(url, headers={"User-Agent": MOBILE_UA}, timeout=12)
+            if resp.status_code != 200:
+                return None
+            match = re.search(
+                r"window\._ROUTER_DATA\s*=\s*(\{.*?\})\s*</script>",
+                resp.text,
+                re.DOTALL,
+            )
+            if not match:
+                return None
+            router_data = json.loads(match.group(1))
+            for val in (router_data.get("loaderData") or {}).values():
+                if isinstance(val, dict) and "videoInfoRes" in val:
+                    item_list = val["videoInfoRes"].get("item_list") or []
+                    if item_list:
+                        return item_list[0]
+        except Exception:
+            return None
+        return None
+
+    @staticmethod
+    def has_video_motion(video_path: Path, min_diff_score: float = 1.8) -> bool:
+        """
+        Kiểm tra video có chuyển động hình ảnh thực sự hay chỉ là ảnh tĩnh ghép nhạc/thoại.
+        Trích xuất nhanh các khung hình vùng trung tâm bằng ffmpeg (1 fps, 160x160 grayscale)
+        và đo độ biến thiên pixel trung bình giữa các khung hình liên tiếp.
+        """
+        try:
+            ffmpeg_bin, _ = ensure_ffmpeg()
+            cmd = [
+                ffmpeg_bin,
+                "-v",
+                "error",
+                "-i",
+                str(video_path),
+                "-t",
+                "15",
+                "-vf",
+                "fps=1,crop=iw*0.80:ih*0.55:iw*0.10:ih*0.15,scale=160:160",
+                "-f",
+                "rawvideo",
+                "-pix_fmt",
+                "gray",
+                "-",
+            ]
+            res = subprocess.run(cmd, capture_output=True, check=False, timeout=15)
+            raw_bytes = res.stdout
+            frame_size = 160 * 160
+            num_frames = len(raw_bytes) // frame_size
+            if num_frames < 3:
+                return True
+            frames = np.frombuffer(
+                raw_bytes[: num_frames * frame_size], dtype=np.uint8
+            ).reshape((num_frames, 160, 160)).astype(np.float32)
+            diffs = np.mean(np.abs(frames[1:] - frames[:-1]), axis=(1, 2))
+            mean_motion = float(np.mean(diffs))
+            return mean_motion >= min_diff_score
+        except Exception:
+            return True
+
+    def verify_voice_density(
+        self, candidate: Dict[str, Any]
+    ) -> Tuple[bool, Optional[Dict[str, Any]]]:
+        """
+        Bộ lọc kiểm tra chuyển động hình ảnh & mật độ giọng đọc (Motion & Voice Density Filter):
+        - Tải video và trích xuất audio mẫu.
+        - Kiểm tra chuyển động hình ảnh (`has_video_motion`): Loại bỏ các video chỉ ghép ảnh tĩnh.
+        - Chạy `faster-whisper` kiểm tra nhanh:
+          + Số lượng câu thoại (`len(segments)`) >= `self.min_segments` (3 câu).
+          + Tổng thời gian có lời thoại chiếm >= `self.min_speech_ratio` (50%) độ dài video.
+        """
+        vid = candidate["video_id"]
+        platform = candidate["platform"]
+        source_url = candidate["source_url"]
+
+        cand_dir = self.temp_root / f"{platform}_{vid}"
+        if cand_dir.exists():
+            shutil.rmtree(cand_dir, ignore_errors=True)
+        cand_dir.mkdir(parents=True, exist_ok=True)
+
+        logger.info(
+            f"[Voice Filter] Đang kiểm tra ứng viên {platform.upper()} ID={vid} "
+            f"(thời lượng={candidate['duration']:.1f}s, sound='{candidate['music_title']}', "
+            f"tim={candidate['digg_count']}, share={candidate['share_count']})..."
+        )
+
+        try:
+            downloader = VideoDownloader(work_dir=cand_dir)
+            dl_info = downloader.download(source_url)
+            raw_video_path: Path = dl_info["video_path"]
+            audio_path: Path = dl_info["audio_path"]
+            dl_title = str(dl_info.get("title") or candidate.get("title") or "")
+            if dl_title and not candidate.get("title"):
+                candidate["title"] = dl_title
+
+            actual_duration = get_media_duration(raw_video_path) or float(
+                candidate["duration"]
+            )
+            is_priority = bool(
+                candidate.get("is_seed") or candidate.get("is_channel_video")
+            )
+
+            if not is_priority and not (
+                self.min_duration <= actual_duration <= self.max_duration
+            ):
+                logger.info(
+                    f"[Voice Filter] Loại bỏ {vid}: thời lượng thực tế {actual_duration:.1f}s "
+                    f"nằm ngoài khoảng [{self.min_duration:.0f}s, {self.max_duration:.0f}s]."
+                )
+                shutil.rmtree(cand_dir, ignore_errors=True)
+                return False, None
+
+            # Nếu video thuộc kênh tiếng Việt hoặc tiêu đề đã là tiếng Việt -> Giữ nguyên 100% không cần chạy Whisper/TTS
+            if candidate.get("is_vietnamese") or has_vietnamese_diacritics(dl_title):
+                logger.info(
+                    f"[Voice Filter] Video {vid} là Tiếng Việt ('vi') có sẵn -> "
+                    "Giữ nguyên video & âm thanh gốc 100%."
+                )
+                transcript_data = {
+                    "language": "vi",
+                    "segments": [],
+                    "original_title": dl_title,
+                }
+                return True, {
+                    "candidate": candidate,
+                    "work_dir": cand_dir,
+                    "raw_video_path": raw_video_path,
+                    "audio_path": audio_path,
+                    "actual_duration": actual_duration,
+                    "transcript_data": transcript_data,
+                    "speech_ratio": 1.0,
+                    "spoken_seconds": round(actual_duration, 2),
+                    "original_title": dl_title,
+                }
+
+            # Kiểm tra chuyển động video cho các video liên quan (không áp dụng cho link mẫu / kênh mẫu)
+            if not is_priority and not self.has_video_motion(raw_video_path):
+                logger.info(
+                    f"[Motion Filter] Loại bỏ {vid}: Video chỉ ghép ảnh tĩnh không có chuyển động khung hình."
+                )
+                shutil.rmtree(cand_dir, ignore_errors=True)
+                return False, None
+
+            transcript_json = cand_dir / "transcript_raw.json"
+            transcript_data = self.transcriber.transcribe(
+                audio_path=audio_path,
+                save_json_path=transcript_json,
+            )
+            transcript_data["original_title"] = dl_title
+            detected_lang = (transcript_data.get("language") or "zh").lower()
+
+            if detected_lang == "vi":
+                logger.info(
+                    f"[Voice Filter] Whisper xác nhận video {vid} là Tiếng Việt ('vi') -> "
+                    "Giữ nguyên video & âm thanh gốc 100%."
+                )
+                return True, {
+                    "candidate": candidate,
+                    "work_dir": cand_dir,
+                    "raw_video_path": raw_video_path,
+                    "audio_path": audio_path,
+                    "actual_duration": actual_duration,
+                    "transcript_data": transcript_data,
+                    "speech_ratio": 1.0,
+                    "spoken_seconds": round(actual_duration, 2),
+                    "original_title": dl_title,
+                }
+
+            segments = transcript_data.get("segments") or []
+            seg_count = len(segments)
+
+            intervals = sorted(
+                (max(0.0, float(s["start"])), min(actual_duration, float(s["end"])))
+                for s in segments
+                if float(s["end"]) > float(s["start"])
+            )
+            merged_intervals: List[Tuple[float, float]] = []
+            for st, en in intervals:
+                if not merged_intervals or st > merged_intervals[-1][1]:
+                    merged_intervals.append((st, en))
+                else:
+                    merged_intervals[-1] = (
+                        merged_intervals[-1][0],
+                        max(merged_intervals[-1][1], en),
+                    )
+
+            spoken_seconds = sum(en - st for st, en in merged_intervals)
+            speech_ratio = (
+                spoken_seconds / actual_duration if actual_duration > 0 else 0.0
+            )
+
+            mean_logprob = float(transcript_data.get("mean_avg_logprob", -0.3) or -0.3)
+            ocr_coverage = float(transcript_data.get("ocr_coverage", 0.0) or 0.0)
+            total_chars = sum(len((s.get("text") or "").strip()) for s in segments)
+            avg_chars = total_chars / seg_count if seg_count > 0 else 0.0
+
+            logger.info(
+                f"[Voice Filter] Kết quả đo {vid}: lang={detected_lang}, số câu={seg_count}, "
+                f"độ dài TB={avg_chars:.1f} ký tự/câu, "
+                f"thời gian thoại={spoken_seconds:.1f}s/{actual_duration:.1f}s ({speech_ratio:.1%}), "
+                f"logprob={mean_logprob:.2f}, ocr={ocr_coverage:.0%}"
+            )
+
+            if is_priority:
+                if seg_count < 1:
+                    logger.info(f"[Voice Filter] Loại bỏ {vid}: không tìm thấy câu thoại nào để dịch.")
+                    shutil.rmtree(cand_dir, ignore_errors=True)
+                    return False, None
+            else:
+                if seg_count < self.min_segments or speech_ratio < self.min_speech_ratio:
+                    logger.info(
+                        f"[Voice Filter] -> LOẠI BỎ {vid} (không đạt chuẩn mật độ câu thoại)."
+                    )
+                    shutil.rmtree(cand_dir, ignore_errors=True)
+                    return False, None
+
+            logger.info(
+                f"[Voice Filter] -> ĐẠT CHUẨN! Chọn video {vid} để dịch trực tiếp sang tiếng Việt & lồng tiếng."
+            )
+            return True, {
+                "candidate": candidate,
+                "work_dir": cand_dir,
+                "raw_video_path": raw_video_path,
+                "audio_path": audio_path,
+                "actual_duration": actual_duration,
+                "transcript_data": transcript_data,
+                "speech_ratio": round(speech_ratio, 4),
+                "spoken_seconds": round(spoken_seconds, 2),
+                "original_title": dl_title,
+            }
+        except Exception as exc:
+            logger.warning(f"[Voice Filter] Lỗi khi kiểm tra ứng viên {vid}: {exc}")
+            shutil.rmtree(cand_dir, ignore_errors=True)
+            return False, None
+
+    @staticmethod
+    def clear_macl_xattr(file_path: Path) -> None:
+        """Xóa thuộc tính mở rộng `com.apple.macl` khi mới xuất video vào `ready/` để tránh nhận diện nhầm."""
+        try:
+            subprocess.run(
+                ["xattr", "-d", "com.apple.macl", str(file_path)],
+                capture_output=True,
+                check=False,
+                timeout=5,
+            )
+        except Exception:
+            pass
+
+    @staticmethod
+    def has_browser_upload_macl(file_path: Path) -> bool:
+        """
+        Phát hiện tự động trên macOS khi người dùng đã chọn file video từ `output/channel_X/ready/`
+        trong hộp thoại Upload File của trình duyệt (Chrome/Safari/Brave/Arc `NSOpenPanel`)
+        để đăng lên TikTok (`com.apple.macl` có cờ `08 00`).
+        """
+        try:
+            res = subprocess.run(
+                ["xattr", "-px", "com.apple.macl", str(file_path)],
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=5,
+            )
+            if res.returncode != 0 or not res.stdout.strip():
+                return False
+            raw_bytes = bytes.fromhex("".join(res.stdout.split()))
+            for idx in range(0, len(raw_bytes), 18):
+                chunk = raw_bytes[idx : idx + 18]
+                if len(chunk) == 18 and chunk[:2] == b"\x08\x00" and any(chunk[2:18]):
+                    return True
+        except Exception:
+            return False
+        return False
+
+    def auto_sync_posted_videos(self, min_age_seconds: float = 35.0) -> List[Dict[str, Any]]:
+        """
+        Tự động đồng bộ trạng thái `READY` <-> `POSTED` trên toàn bộ 4 kênh (`channel_1` .. `channel_4`):
+        1. Phát hiện các video trong `output/channel_X/ready/` đã được chọn upload lên TikTok qua trình duyệt
+           (`has_browser_upload_macl` == True và đã qua `min_age_seconds` để trình duyệt đọc xong file)
+           -> Tự động chuyển sang `output/channel_X/posted/` và cập nhật `output/danh_sach_video.csv` (`POSTED`).
+        2. Đồng bộ 2 chiều giữa thư mục ổ cứng (`ready/`, `posted/`) và file `output/danh_sach_video.csv`.
+        """
+        self.ensure_channel_directories()
+        auto_moved: List[Dict[str, Any]] = []
+        now_ts = time.time()
+
+        for profile in CHANNEL_PROFILES.values():
+            ch_folder = profile["folder_name"]
+            ready_dir = self.output_root / ch_folder / "ready"
+            posted_dir = self.output_root / ch_folder / "posted"
+            for mp4 in sorted(ready_dir.glob("*.mp4")):
+                if not mp4.is_file():
+                    continue
+                if self.has_browser_upload_macl(mp4):
+                    st = mp4.stat()
+                    if (now_ts - st.st_ctime) >= min_age_seconds:
+                        posted_time_str = datetime.fromtimestamp(st.st_ctime).strftime(
+                            "%Y-%m-%d %H:%M:%S"
+                        )
+                        dest_file = posted_dir / mp4.name
+                        if dest_file.exists():
+                            dest_file.unlink()
+                        shutil.move(str(mp4), str(dest_file))
+                        logger.info(
+                            f"[Auto-Sync Posted] Phát hiện video đã được chọn upload lên TikTok: "
+                            f"{ch_folder}/ready/{mp4.name} -> Đã chuyển sang {ch_folder}/posted/{mp4.name} "
+                            f"(posted_at={posted_time_str})"
+                        )
+                        auto_moved.append(
+                            {
+                                "channel": ch_folder,
+                                "filename": f"{ch_folder}/posted/{mp4.name}",
+                                "moved_to": str(dest_file),
+                                "status": "POSTED",
+                                "posted_at": posted_time_str,
+                            }
+                        )
+
+        self._upgrade_master_csv_schema()
+        return auto_moved
+
+    def _upgrade_master_csv_schema(self) -> None:
+        """
+        Đảm bảo `output/danh_sach_video.csv` luôn có đúng 7 cột chuẩn:
+        `channel,filename,source_url,caption,hashtags,status,posted_at`
+        và tự động đồng bộ 2 chiều giữa ổ cứng (`ready/` <-> `posted/`) và CSV cho cả 4 kênh.
+        """
+        expected_header = [
+            "channel",
+            "filename",
+            "source_url",
+            "caption",
+            "hashtags",
+            "status",
+            "posted_at",
+        ]
+        if not self.csv_path.exists() or self.csv_path.stat().st_size == 0:
+            return
+
+        with open(self.csv_path, mode="r", newline="", encoding="utf-8") as rf:
+            rows = list(csv.reader(rf))
+        if not rows:
+            return
+
+        needs_rewrite = rows[0] != expected_header
+        upgraded_rows = [expected_header]
+        seen_basenames = set()
+
+        for r in rows[1:]:
+            if not r:
+                continue
+            if len(r) == 5:
+                ch, fn, url, cap, tags = "general", r[0], r[1], r[2], r[3]
+                st, pat = r[4], ""
+            elif len(r) == 6:
+                ch, fn, url, cap, tags, st = r[0], r[1], r[2], r[3], r[4], r[5]
+                pat = ""
+            else:
+                ch, fn, url, cap, tags, st, pat = r[0], r[1], r[2], r[3], r[4], r[5], r[6]
+
+            st_clean = st.strip()
+            # Chuẩn hóa trạng thái READY / POSTED
+            if st_clean.lower() in ("da_dang", "posted", "done", "1", "x", "đã đăng"):
+                if st != "POSTED":
+                    needs_rewrite = True
+                st = "POSTED"
+            elif st_clean.lower() in ("chua_dang", "ready", "", "0", "chờ đăng"):
+                if st != "READY":
+                    needs_rewrite = True
+                st = "READY"
+
+            # Chuẩn hóa tên kênh (chuyển đổi tự động từ channel_1..4 sang tên mới)
+            ch_clean = ch.strip()
+            mapped_ch = LEGACY_CHANNEL_FOLDER_MAP.get(
+                ch_clean, LEGACY_CHANNEL_FOLDER_MAP.get(ch_clean.lower(), ch_clean)
+            )
+            if mapped_ch != ch:
+                ch = mapped_ch
+                needs_rewrite = True
+
+            # Chuẩn hóa đường dẫn filename theo thư mục ready/ hoặc posted/ và đồng bộ 2 chiều với ổ cứng
+            parts = Path(fn).parts
+            basename = Path(fn).name
+            seen_basenames.add(basename)
+            valid_folders = {p["folder_name"] for p in CHANNEL_PROFILES.values()}
+
+            if ch in valid_folders:
+                ready_p = self.output_root / ch / "ready" / basename
+                posted_p = self.output_root / ch / "posted" / basename
+
+                # Nếu người dùng đánh dấu POSTED trong CSV mà file vẫn nằm ở ready/ -> tự động di chuyển sang posted/
+                if st == "POSTED" and ready_p.exists() and not posted_p.exists():
+                    posted_p.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.move(str(ready_p), str(posted_p))
+                    needs_rewrite = True
+
+                if posted_p.exists():
+                    new_fn = f"{ch}/posted/{basename}"
+                    if fn != new_fn or st != "POSTED" or not pat:
+                        fn = new_fn
+                        st = "POSTED"
+                        if not pat:
+                            pat = datetime.fromtimestamp(posted_p.stat().st_ctime).strftime(
+                                "%Y-%m-%d %H:%M:%S"
+                            )
+                        needs_rewrite = True
+                elif ready_p.exists():
+                    new_fn = f"{ch}/ready/{basename}"
+                    if fn != new_fn or st != "READY":
+                        fn = new_fn
+                        st = "READY"
+                        pat = ""
+                        needs_rewrite = True
+                else:
+                    # File không còn tồn tại trong cả ready/ lẫn posted/ -> loại bỏ dòng rác khỏi CSV
+                    needs_rewrite = True
+                    continue
+            elif len(parts) == 2 and parts[0] in LEGACY_CHANNEL_FOLDER_MAP:
+                sub = "posted" if st == "POSTED" else "ready"
+                mapped_p0 = LEGACY_CHANNEL_FOLDER_MAP[parts[0]]
+                new_fn = f"{mapped_p0}/{sub}/{parts[1]}"
+                if new_fn != fn:
+                    fn = new_fn
+                    needs_rewrite = True
+
+            upgraded_rows.append([ch, fn, url, cap, tags, st, pat])
+
+        # Quét bổ sung các file .mp4 có trên ổ cứng (ready/ hoặc posted/) nhưng chưa có trong CSV
+        for profile in CHANNEL_PROFILES.values():
+            ch_folder = profile["folder_name"]
+            for sub_name, st_label in (("ready", "READY"), ("posted", "POSTED")):
+                sub_dir = self.output_root / ch_folder / sub_name
+                if not sub_dir.exists():
+                    continue
+                for mp4 in sorted(sub_dir.glob("*.mp4")):
+                    if not mp4.is_file() or mp4.name in seen_basenames:
+                        continue
+                    seen_basenames.add(mp4.name)
+                    rel_fn = f"{ch_folder}/{sub_name}/{mp4.name}"
+                    pat_str = (
+                        datetime.fromtimestamp(mp4.stat().st_ctime).strftime("%Y-%m-%d %H:%M:%S")
+                        if st_label == "POSTED"
+                        else ""
+                    )
+                    upgraded_rows.append(
+                        [ch_folder, rel_fn, "", mp4.stem, "", st_label, pat_str]
+                    )
+                    needs_rewrite = True
+
+        if needs_rewrite:
+            with open(self.csv_path, mode="w", newline="", encoding="utf-8") as wf:
+                csv.writer(wf).writerows(upgraded_rows)
+            logger.info(f"Đã đồng bộ Master CSV ({self.csv_path}) với thư mục ready/ và posted/ của 4 kênh.")
+
+    def append_to_master_csv(
+        self,
+        filename: str,
+        source_url: str,
+        caption: str,
+        hashtags: str,
+        status: str = "READY",
+        channel: str = "general",
+        posted_at: str = "",
+    ) -> Path:
+        """
+        Ghi / append thông tin video đã hoàn thiện vào Master List `output/danh_sach_video.csv`
+        với các cột: `channel,filename,source_url,caption,hashtags,status,posted_at`.
+        """
+        self.csv_path.parent.mkdir(parents=True, exist_ok=True)
+        expected_header = [
+            "channel",
+            "filename",
+            "source_url",
+            "caption",
+            "hashtags",
+            "status",
+            "posted_at",
+        ]
+
+        self._upgrade_master_csv_schema()
+        file_exists = self.csv_path.exists() and self.csv_path.stat().st_size > 0
+
+        norm_status = "POSTED" if status.upper() == "POSTED" else "READY"
+        with open(self.csv_path, mode="a", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            if not file_exists:
+                writer.writerow(expected_header)
+            writer.writerow(
+                [channel, filename, source_url, caption, hashtags, norm_status, posted_at]
+            )
+
+        logger.info(
+            f"Đã cập nhật Master List CSV: {self.csv_path} "
+            f"(channel={channel}, file={filename}, status={norm_status})"
+        )
+        return self.csv_path
+
+    def mark_video_posted(self, identifier: str) -> Dict[str, Any]:
+        """
+        Đánh dấu một (hoặc nhiều) video đã được đăng lên TikTok (`--mark-posted <đường_dẫn_hoặc_tên_file_hoặc_id>`):
+        1. Hỗ trợ cả đường dẫn tuyệt đối (`/Users/.../output/channel_3/ready/xxx.mp4`), đường dẫn tương đối,
+           tên file (`xxx.mp4`), hoặc ID video (`7682055125342424341`).
+        2. Tự động di chuyển file từ `output/channel_X/ready/` sang `output/channel_X/posted/`.
+        3. Cập nhật dòng tương ứng trong `output/danh_sach_video.csv` thành `status = POSTED`,
+           cập nhật đường dẫn `filename`, và ghi thời gian hiện tại vào cột `posted_at`.
+        4. Đồng thời kích hoạt `auto_sync_posted_videos()` để đồng bộ toàn bộ 4 kênh.
+        """
+        raw_ident = str(identifier).strip()
+        if not raw_ident:
+            raise ValueError("Vui lòng truyền đường dẫn file, tên file hoặc video ID hợp lệ cho --mark-posted.")
+
+        # Hỗ trợ truyền nhiều file/ID cách nhau bằng dấu phẩy
+        if "," in raw_ident:
+            parts = [p.strip() for p in raw_ident.split(",") if p.strip()]
+            if len(parts) > 1:
+                results = [self.mark_video_posted(p) for p in parts]
+                return {"batch_marked": len(results), "items": results}
+
+        self.ensure_channel_directories()
+        now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        ident_name = Path(raw_ident).name
+        ident_stem = Path(raw_ident).stem
+
+        matched_ready_file: Optional[Path] = None
+        matched_channel_folder: Optional[str] = None
+
+        for profile in CHANNEL_PROFILES.values():
+            ch_folder = profile["folder_name"]
+            ready_dir = self.output_root / ch_folder / "ready"
+            for mp4 in sorted(ready_dir.glob("*.mp4")):
+                if (
+                    raw_ident == str(mp4)
+                    or raw_ident == str(mp4.resolve())
+                    or ident_name == mp4.name
+                    or ident_stem == mp4.stem
+                    or raw_ident in mp4.name
+                    or ident_name in mp4.name
+                    or f"{ch_folder}/ready/{mp4.name}" == raw_ident
+                ):
+                    matched_ready_file = mp4
+                    matched_channel_folder = ch_folder
+                    break
+            if matched_ready_file:
+                break
+
+        # Nếu file đã nằm trong posted/ từ trước, kiểm tra để đồng bộ CSV
+        already_posted_file: Optional[Path] = None
+        if not matched_ready_file:
+            for profile in CHANNEL_PROFILES.values():
+                ch_folder = profile["folder_name"]
+                posted_dir = self.output_root / ch_folder / "posted"
+                for mp4 in sorted(posted_dir.glob("*.mp4")):
+                    if (
+                        raw_ident == str(mp4)
+                        or raw_ident == str(mp4.resolve())
+                        or ident_name == mp4.name
+                        or ident_stem == mp4.stem
+                        or raw_ident in mp4.name
+                        or ident_name in mp4.name
+                    ):
+                        already_posted_file = mp4
+                        matched_channel_folder = ch_folder
+                        break
+                if already_posted_file:
+                    break
+
+        if not matched_ready_file and not already_posted_file:
+            raise FileNotFoundError(
+                f"Không tìm thấy video nào khớp với '{raw_ident}' trong các thư mục output/channel_X/ready/."
+            )
+
+        if matched_ready_file and matched_channel_folder:
+            posted_dir = self.output_root / matched_channel_folder / "posted"
+            posted_dir.mkdir(parents=True, exist_ok=True)
+            dest_file = posted_dir / matched_ready_file.name
+            if dest_file.exists():
+                dest_file.unlink()
+            shutil.move(str(matched_ready_file), str(dest_file))
+            target_basename = dest_file.name
+        else:
+            dest_file = already_posted_file  # type: ignore[assignment]
+            target_basename = dest_file.name
+
+        new_rel_filename = f"{matched_channel_folder}/posted/{target_basename}"
+        updated_csv_rows = 0
+
+        if self.csv_path.exists() and self.csv_path.stat().st_size > 0:
+            with open(self.csv_path, mode="r", newline="", encoding="utf-8") as rf:
+                rows = list(csv.reader(rf))
+            header = rows[0] if rows else [
+                "channel",
+                "filename",
+                "source_url",
+                "caption",
+                "hashtags",
+                "status",
+                "posted_at",
+            ]
+            new_rows = [header]
+            for r in rows[1:]:
+                if len(r) < 7:
+                    r = r + [""] * (7 - len(r))
+                row_fn = r[1]
+                row_url = r[2]
+                if (
+                    target_basename in row_fn
+                    or ident_name in row_fn
+                    or (raw_ident.isdigit() and raw_ident in row_url)
+                ):
+                    r[1] = new_rel_filename
+                    r[5] = "POSTED"
+                    r[6] = now_str
+                    updated_csv_rows += 1
+                new_rows.append(r[:7])
+
+            with open(self.csv_path, mode="w", newline="", encoding="utf-8") as wf:
+                csv.writer(wf).writerows(new_rows)
+
+        # Đồng bộ luôn các kênh còn lại (nếu có video đã chọn upload qua trình duyệt hoặc chỉnh CSV)
+        auto_synced_others = self.auto_sync_posted_videos()
+
+        logger.info(
+            f"Đã đánh dấu POSTED thành công: {dest_file} | posted_at={now_str} "
+            f"(đã cập nhật {updated_csv_rows} dòng trong CSV, tự động đồng bộ thêm {len(auto_synced_others)} video)"
+        )
+        return {
+            "channel": matched_channel_folder,
+            "filename": new_rel_filename,
+            "moved_to": str(dest_file),
+            "status": "POSTED",
+            "posted_at": now_str,
+            "csv_rows_updated": updated_csv_rows,
+            "auto_synced_other_channels": auto_synced_others,
+        }
+
+    def get_inventory_status(self) -> Dict[str, Any]:
+        """
+        Tự động đồng bộ trạng thái `READY` <-> `POSTED` trên toàn bộ 4 kênh
+        rồi thống kê số lượng video đang chờ đăng (`ready/`) và đã đăng (`posted/`)
+        của từng kênh (`channel_1` .. `channel_4`).
+        """
+        self.ensure_channel_directories()
+        auto_synced = self.auto_sync_posted_videos()
+        channels_stats: List[Dict[str, Any]] = []
+        total_ready = 0
+        total_posted = 0
+
+        for profile in CHANNEL_PROFILES.values():
+            ch_folder = profile["folder_name"]
+            ready_dir = self.output_root / ch_folder / "ready"
+            posted_dir = self.output_root / ch_folder / "posted"
+            ready_files = sorted(f.name for f in ready_dir.glob("*.mp4") if f.is_file())
+            posted_files = sorted(f.name for f in posted_dir.glob("*.mp4") if f.is_file())
+            r_cnt = len(ready_files)
+            p_cnt = len(posted_files)
+            total_ready += r_cnt
+            total_posted += p_cnt
+            channels_stats.append(
+                {
+                    "channel_id": profile["channel_id"],
+                    "channel": ch_folder,
+                    "profile_key": profile["profile_key"],
+                    "description": profile["description"],
+                    "ready_count": r_cnt,
+                    "posted_count": p_cnt,
+                    "total_count": r_cnt + p_cnt,
+                    "ready_files": ready_files,
+                    "posted_files": posted_files,
+                }
+            )
+
+        return {
+            "channels": channels_stats,
+            "total_ready": total_ready,
+            "total_posted": total_posted,
+            "total_videos": total_ready + total_posted,
+            "auto_synced": auto_synced,
+            "csv_path": str(self.csv_path),
+        }
+
+    def format_inventory_status_table(self) -> str:
+        """Tạo bảng thống kê текстовый (ASCII Table) đẹp mắt cho lệnh `--status`."""
+        inv = self.get_inventory_status()
+        lines = [
+            "=" * 100,
+            "THỐNG KÊ TỒN KHO VIDEO TIKTOK THEO KÊNH (READY / POSTED QUEUE)",
+            "=" * 100,
+            f"{'KÊNH':<18} | {'CHỦ ĐỀ NGÁCH (PROFILE)':<26} | {'READY (CHỜ ĐĂNG)':>17} | {'POSTED (ĐÃ ĐĂNG)':>17} | {'TỔNG CỘNG':>10}",
+            "-" * 100,
+        ]
+        for ch in inv["channels"]:
+            lines.append(
+                f"{ch['channel']:<18} | {ch['profile_key']:<26} | {ch['ready_count']:>17} | {ch['posted_count']:>17} | {ch['total_count']:>10}"
+            )
+        lines.extend(
+            [
+                "-" * 100,
+                f"{'TỔNG KẾT':<18} | {'Toàn bộ 4 kênh TikTok':<26} | {inv['total_ready']:>17} | {inv['total_posted']:>17} | {inv['total_videos']:>10}",
+                "=" * 100,
+                f"Master CSV: {inv['csv_path']}",
+            ]
+        )
+        return "\n".join(lines)

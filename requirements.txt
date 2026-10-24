@@ -1,0 +1,9 @@
+yt-dlp>=2025.1.1
+faster-whisper>=1.0.0
+edge-tts>=6.1.12
+requests>=2.31.0
+curl_cffi>=0.7.0
+python-dotenv>=1.0.1
+pillow>=10.0.0
+static-ffmpeg>=2.7
+playwright>=1.48.0

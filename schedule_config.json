@@ -1,0 +1,33 @@
+{
+  "timezone": "Asia/Ho_Chi_Minh",
+  "default_post_times": [
+    "08:00",
+    "12:30",
+    "20:00"
+  ],
+  "channel_post_times": {
+    "video_AI_hay": [
+      "08:00",
+      "12:30",
+      "20:00"
+    ],
+    "baby_AI": [
+      "08:10",
+      "12:40",
+      "20:10"
+    ],
+    "audio_dem_khuyen": [
+      "08:20",
+      "12:50",
+      "20:20"
+    ],
+    "tu_chan_gioi": [
+      "08:30",
+      "13:00",
+      "20:30"
+    ]
+  },
+  "headless": false,
+  "random_jitter_minutes": 9,
+  "warmup_before_upload": true
+}

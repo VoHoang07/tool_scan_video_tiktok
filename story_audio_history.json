@@ -1,0 +1,272 @@
+{
+  "video_ids": [
+    "7698023893977599272",
+    "7682055125342424341",
+    "7698263475457592596",
+    "7670439173538549012",
+    "7693321057758973185",
+    "7699432430851116309",
+    "7650380932804906261",
+    "7683492499272273173",
+    "7688598953742322962",
+    "7698299779394080050",
+    "7697561971461197082",
+    "7699324236191517973",
+    "7699354713556323590",
+    "7699450249655454996",
+    "7693305358323895553",
+    "7688210540929256712",
+    "7690915418453708052",
+    "7687959643695484178",
+    "7665616691048598799",
+    "7684239577346739456",
+    "7638714267462561417",
+    "7634246231678587978"
+  ],
+  "sound_ids": [
+    "dy_seed_7698023893977599272",
+    "tt_seed_7682055125342424341",
+    "tt_seed_7698263475457592596",
+    "tt_seed_7670439173538549012",
+    "tt_seed_7693321057758973185",
+    "7699432494294207239",
+    "tt_seed_7650380932804906261",
+    "tt_seed_7683492499272273173",
+    "7688599034174491410",
+    "7698299746641267494",
+    "7697561958874172187",
+    "7699324305642883861",
+    "7699354850622032660",
+    "6756879114637934600",
+    "7693306031398734613",
+    "7688210632584596244",
+    "7558512764935883541",
+    "7687959742542629652",
+    "7665616776478247731",
+    "7684239654367349547",
+    "7638714154345450250",
+    "7634246152468089610"
+  ],
+  "items": [
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7698023893977599272",
+      "sound_id": "dy_seed_7698023893977599272",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/7698023893977599272",
+      "output_filename": "video_AI_hay/ready/20261020_205837_douyin_story_7698023893977599272.mp4",
+      "crawled_at": "2026-10-22T23:20:00"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "7682055125342424341",
+      "sound_id": "tt_seed_7682055125342424341",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.tiktok.com/@tieutin2000/video/7682055125342424341",
+      "output_filename": "audio_dem_khuyen/ready/20261022_232340_tiktok_story_7682055125342424341.mp4",
+      "crawled_at": "2026-10-22T23:23:40"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "7698263475457592596",
+      "sound_id": "tt_seed_7698263475457592596",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.tiktok.com/@bongcucaudio04/video/7698263475457592596",
+      "output_filename": "audio_dem_khuyen/ready/20261022_232411_tiktok_story_7698263475457592596.mp4",
+      "crawled_at": "2026-10-22T23:24:11"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "7670439173538549012",
+      "sound_id": "tt_seed_7670439173538549012",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.tiktok.com/@gamukbangaudio/video/7670439173538549012",
+      "output_filename": "audio_dem_khuyen/ready/20261022_232520_tiktok_story_7670439173538549012.mp4",
+      "crawled_at": "2026-10-22T23:25:20"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "7693321057758973185",
+      "sound_id": "tt_seed_7693321057758973185",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.tiktok.com/@soo.bin.0/video/7693321057758973185",
+      "output_filename": "audio_dem_khuyen/ready/20261022_232608_tiktok_story_7693321057758973185.mp4",
+      "crawled_at": "2026-10-22T23:26:08"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "7699432430851116309",
+      "sound_id": "7699432494294207239",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.tiktok.com/@tieutin2000/video/7699432430851116309",
+      "output_filename": "audio_dem_khuyen/ready/20261022_232626_tiktok_story_7699432430851116309.mp4",
+      "crawled_at": "2026-10-22T23:26:26"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7650380932804906261",
+      "sound_id": "tt_seed_7650380932804906261",
+      "platform": "tiktok",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.tiktok.com/@kimvuongaudio/video/7650380932804906261",
+      "output_filename": "tu_chan_gioi/ready/20261022_232748_tiktok_story_7650380932804906261.mp4",
+      "crawled_at": "2026-10-22T23:27:48"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7683492499272273173",
+      "sound_id": "tt_seed_7683492499272273173",
+      "platform": "tiktok",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.tiktok.com/@funny.gau/video/7683492499272273173",
+      "output_filename": "tu_chan_gioi/ready/20261022_232750_tiktok_story_7683492499272273173.mp4",
+      "crawled_at": "2026-10-22T23:27:50"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7688598953742322962",
+      "sound_id": "7688599034174491410",
+      "platform": "tiktok",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.tiktok.com/@kimvuongaudio/video/7688598953742322962",
+      "output_filename": "tu_chan_gioi/ready/20261022_232802_tiktok_story_7688598953742322962.mp4",
+      "crawled_at": "2026-10-22T23:28:02"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7698299779394080050",
+      "sound_id": "7698299746641267494",
+      "platform": "douyin",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.douyin.com/video/7698299779394080050",
+      "output_filename": "baby_AI/ready/20261022_233021_douyin_story_7698299779394080050.mp4",
+      "crawled_at": "2026-10-22T23:31:15"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7697561971461197082",
+      "sound_id": "7697561958874172187",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/7697561971461197082",
+      "output_filename": "video_AI_hay/ready/20261022_233309_douyin_story_7697561971461197082.mp4",
+      "crawled_at": "2026-10-22T23:35:09"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "7699324236191517973",
+      "sound_id": "7699324305642883861",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.tiktok.com/@tieutin2000/video/7699324236191517973",
+      "output_filename": "audio_dem_khuyen/ready/20261023_085756_tiktok_story_7699324236191517973.mp4",
+      "crawled_at": "2026-10-23T08:57:56"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "7699354713556323590",
+      "sound_id": "7699354850622032660",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.tiktok.com/@bongcucaudio04/video/7699354713556323590",
+      "output_filename": "audio_dem_khuyen/ready/20261023_085817_tiktok_story_7699354713556323590.mp4",
+      "crawled_at": "2026-10-23T08:58:17"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "7699450249655454996",
+      "sound_id": "6756879114637934600",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.tiktok.com/@gamukbangaudio/video/7699450249655454996",
+      "output_filename": "audio_dem_khuyen/ready/20261023_090007_tiktok_story_7699450249655454996.mp4",
+      "crawled_at": "2026-10-23T09:00:07"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "7693305358323895553",
+      "sound_id": "7693306031398734613",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.tiktok.com/@soo.bin.0/video/7693305358323895553",
+      "output_filename": "audio_dem_khuyen/ready/20261023_090038_tiktok_story_7693305358323895553.mp4",
+      "crawled_at": "2026-10-23T09:00:38"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7688210540929256712",
+      "sound_id": "7688210632584596244",
+      "platform": "tiktok",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.tiktok.com/@kimvuongaudio/video/7688210540929256712",
+      "output_filename": "tu_chan_gioi/ready/20261023_090129_tiktok_story_7688210540929256712.mp4",
+      "crawled_at": "2026-10-23T09:01:29"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7690915418453708052",
+      "sound_id": "7558512764935883541",
+      "platform": "tiktok",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.tiktok.com/@funny.gau/video/7690915418453708052",
+      "output_filename": "tu_chan_gioi/ready/20261023_090135_tiktok_story_7690915418453708052.mp4",
+      "crawled_at": "2026-10-23T09:01:35"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7687959643695484178",
+      "sound_id": "7687959742542629652",
+      "platform": "tiktok",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.tiktok.com/@kimvuongaudio/video/7687959643695484178",
+      "output_filename": "tu_chan_gioi/ready/20261023_090152_tiktok_story_7687959643695484178.mp4",
+      "crawled_at": "2026-10-23T09:01:52"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7665616691048598799",
+      "sound_id": "7665616776478247731",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/7665616691048598799",
+      "output_filename": "video_AI_hay/ready/20261023_090526_douyin_story_7665616691048598799.mp4",
+      "crawled_at": "2026-10-23T09:10:58"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7684239577346739456",
+      "sound_id": "7684239654367349547",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/7684239577346739456",
+      "output_filename": "video_AI_hay/ready/20261023_091132_douyin_story_7684239577346739456.mp4",
+      "crawled_at": "2026-10-23T09:15:35"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7638714267462561417",
+      "sound_id": "7638714154345450250",
+      "platform": "douyin",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.douyin.com/video/7638714267462561417",
+      "output_filename": "baby_AI/ready/20261023_091726_douyin_story_7638714267462561417.mp4",
+      "crawled_at": "2026-10-23T09:18:29"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7634246231678587978",
+      "sound_id": "7634246152468089610",
+      "platform": "douyin",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.douyin.com/video/7634246231678587978",
+      "output_filename": "baby_AI/ready/20261023_091904_douyin_story_7634246231678587978.mp4",
+      "crawled_at": "2026-10-23T09:21:09"
+    }
+  ]
+}
