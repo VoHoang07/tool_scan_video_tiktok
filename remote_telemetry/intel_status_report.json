@@ -1,0 +1,34 @@
+{
+  "latest_event": {
+    "timestamp": "2026-10-26 00:21:05",
+    "machine_arch": "x86_64",
+    "event_type": "upload",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "details": {
+      "video_file": "20261023_090135_tiktok_story_7690915418453708052.mp4",
+      "caption": "⚔️ [Tu Chân Giới] Tiểu Sư Muội 4 Tuổi Sở Hữu Cực Phẩm Song Linh Căn P1. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+      "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #viral #foryou",
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+    }
+  },
+  "recent_events": [
+    {
+      "timestamp": "2026-10-26 00:21:05",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261023_090135_tiktok_story_7690915418453708052.mp4",
+        "caption": "⚔️ [Tu Chân Giới] Tiểu Sư Muội 4 Tuổi Sở Hữu Cực Phẩm Song Linh Căn P1. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #viral #foryou",
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    }
+  ]
+}
