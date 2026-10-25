@@ -771,6 +771,13 @@ def run_continuous_mode(
                 if stop_requested:
                     break
 
+                # Kiểm tra Hot-Reload & lịch đăng ngay trước mỗi kênh để phản hồi tức thì
+                _check_hot_reload()
+                try:
+                    poster.check_and_run_scheduled_posts()
+                except Exception as post_exc:
+                    logger.warning(f"[Auto-Poster] Lỗi kiểm tra lịch đăng: {post_exc}")
+
                 try:
                     # Tự động đồng bộ trạng thái READY <-> POSTED trước khi đếm kho
                     crawler.auto_sync_posted_videos()
