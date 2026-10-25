@@ -1,20 +1,101 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 00:21:05",
+    "timestamp": "2026-10-26 00:23:20",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "filter24h",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261023_090135_tiktok_story_7690915418453708052.mp4",
-      "caption": "⚔️ [Tu Chân Giới] Tiểu Sư Muội 4 Tuổi Sở Hữu Cực Phẩm Song Linh Căn P1. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-      "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #viral #foryou",
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 2,
+      "records": [
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7699797629311520007",
+          "video_url": "https://www.tiktok.com/@nguyt.v.vui.tnh/video/7699797629311520007",
+          "creator_handle": "@nguyt.v.vui.tnh",
+          "watched_seconds": 20.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": false,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "interacted_at": "2026-10-26 00:22:17",
+          "follow_back_window_until": "2026-10-27 00:22:17"
+        },
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7699660510093905166",
+          "video_url": "https://www.tiktok.com/@hng.v.m.thc/video/7699660510093905166",
+          "creator_handle": "@hng.v.m.thc",
+          "watched_seconds": 29.4,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": false,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "interacted_at": "2026-10-26 00:23:20",
+          "follow_back_window_until": "2026-10-27 00:23:20"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 00:23:20",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 2,
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7699797629311520007",
+            "video_url": "https://www.tiktok.com/@nguyt.v.vui.tnh/video/7699797629311520007",
+            "creator_handle": "@nguyt.v.vui.tnh",
+            "watched_seconds": 20.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "interacted_at": "2026-10-26 00:22:17",
+            "follow_back_window_until": "2026-10-27 00:22:17"
+          },
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7699660510093905166",
+            "video_url": "https://www.tiktok.com/@hng.v.m.thc/video/7699660510093905166",
+            "creator_handle": "@hng.v.m.thc",
+            "watched_seconds": 29.4,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "interacted_at": "2026-10-26 00:23:20",
+            "follow_back_window_until": "2026-10-27 00:23:20"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 00:21:05",
       "machine_arch": "x86_64",
