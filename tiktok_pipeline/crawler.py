@@ -15,7 +15,7 @@ from curl_cffi import requests as creq
 
 from .downloader import DESKTOP_UA, MOBILE_UA, VideoDownloader, fetch_douyin_guest_cookies
 from .transcriber import AudioTranscriber
-from .translator import has_vietnamese_diacritics
+from .translator import SubtitleTranslator, has_vietnamese_diacritics
 from .utils import ensure_ffmpeg, get_media_duration, logger
 
 # Danh sách secUid đã xác thực của các kênh mẫu TikTok để lấy toàn bộ video trong kênh nhanh & ổn định
@@ -1680,6 +1680,149 @@ class StoryAudioCrawler:
         self._upgrade_master_csv_schema()
         return auto_moved
 
+    @staticmethod
+    def is_raw_filename_caption(text: str, stem: str = "") -> bool:
+        """
+        Kiểm tra xem chuỗi `text` có đang bị chứa tên file thô / dãy số ID
+        (ví dụ: `20261025_152239_tiktok_story_7696574490729303310`) thay vì kịch bản mô tả tiếng Việt hay không.
+        """
+        cleaned = (text or "").strip()
+        if not cleaned:
+            return True
+        if stem and cleaned == stem.strip():
+            return True
+        if (
+            re.search(r"\b20\d{6}_\d{6}\b", cleaned)
+            or "tiktok_story" in cleaned.lower()
+            or "douyin_story" in cleaned.lower()
+            or re.match(r"^[\d_\-\s\.mp4]+$", cleaned.lower())
+        ):
+            return True
+        return False
+
+    def recover_contextual_caption_and_hashtags(
+        self, ch_folder: str, filename_or_stem: str, source_url: str = ""
+    ) -> Tuple[str, str, str]:
+        """
+        Tự động khôi phục / sinh mới Kịch bản ngắn tiếng Việt theo đúng ngữ cảnh video + bộ Hashtag Hot Search
+        cho các file video trong `ready/` hoặc `posted/` (kể cả khi `danh_sach_video.csv` bị thiếu dòng hoặc mất cột caption).
+        Tuyệt đối không bao giờ trả về tên file hay dãy số ID.
+        """
+        stem = Path(filename_or_stem).stem
+        m = re.search(r"(tiktok|douyin)_story_(\d+)", stem, re.IGNORECASE)
+        platform = (m.group(1).lower() if m else "tiktok")
+        video_id = (m.group(2) if m else "")
+        if not video_id and source_url:
+            m_url = re.search(r"/video/(\d+)", source_url)
+            if m_url:
+                video_id = m_url.group(1)
+
+        resolved_url = (source_url or "").strip()
+        if not resolved_url and video_id:
+            if platform == "douyin":
+                resolved_url = f"https://www.douyin.com/video/{video_id}"
+            else:
+                resolved_url = f"https://www.tiktok.com/@tiktok/video/{video_id}"
+
+        original_title = ""
+        segments: List[Dict[str, Any]] = []
+
+        # 1. Kiểm tra bản lưu tạm trong temp/ nếu có
+        if video_id:
+            for p_try in (platform, "tiktok", "douyin"):
+                tr_path = self.temp_root / f"{p_try}_{video_id}" / "transcript_raw.json"
+                if tr_path.exists():
+                    try:
+                        tr_data = json.loads(tr_path.read_text(encoding="utf-8"))
+                        original_title = str(tr_data.get("original_title") or "").strip()
+                        segments = tr_data.get("segments") or []
+                        if original_title or segments:
+                            break
+                    except Exception:
+                        pass
+
+        # 2. Nếu chưa có tiêu đề gốc, truy vấn nhanh API tikwm / douyin theo video_id (timeout ngắn 5s)
+        if not original_title and video_id:
+            if platform == "tiktok":
+                try:
+                    resp = requests.get(
+                        "https://www.tikwm.com/api/",
+                        params={"url": f"https://www.tiktok.com/@tiktok/video/{video_id}"},
+                        headers={"User-Agent": DESKTOP_UA},
+                        timeout=5,
+                    )
+                    if resp.status_code == 200:
+                        data = (resp.json() or {}).get("data") or {}
+                        original_title = str(data.get("title") or "").strip()
+                        author_uid = str((data.get("author") or {}).get("unique_id") or "").strip()
+                        if author_uid and "@tiktok/" in resolved_url:
+                            resolved_url = f"https://www.tiktok.com/@{author_uid}/video/{video_id}"
+                except Exception:
+                    pass
+            elif platform == "douyin":
+                try:
+                    item = self._fetch_douyin_item_detail(requests.Session(), video_id)
+                    if item:
+                        original_title = str(item.get("desc") or "").strip()
+                except Exception:
+                    pass
+
+        # Loại bỏ mọi dấu vết tên file nếu original_title vô tình chứa dãy số, hoặc nếu tiêu đề là tiếng Anh rác không thuộc văn cảnh Việt/Trung của kênh
+        if self.is_raw_filename_caption(original_title, stem):
+            original_title = ""
+        elif original_title and not (
+            has_vietnamese_diacritics(original_title)
+            or bool(re.search(r"[\u4e00-\u9fff]", original_title))
+        ):
+            original_title = ""
+
+        # 3. Nếu offline hoặc video gốc không có tiêu đề chữ, dùng chủ đề chuẩn theo ngách kênh + biến thiên theo video_id
+        if not original_title and not segments:
+            fallback_topics = {
+                "tu_chan_gioi": [
+                    "Phàm nhân nghịch thiên cải mệnh thức tỉnh huyết mạch thượng cổ tại Tu Chân Giới",
+                    "Tưởng là phế vật dưới đáy tông môn ai ngờ ẩn giấu thực lực chấn động thiên địa",
+                    "Hành trình tu tiên vượt mọi đại kiếp bước lên đỉnh cao vạn giới",
+                    "Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ",
+                ],
+                "audio_dem_khuyen": [
+                    "Biến cố bất ngờ lúc nửa đêm và sự thật chấn động phía sau cuộc hôn nhân",
+                    "Góc khuất tình cảm và màn đáp trả cực gắt khiến trà xanh không kịp trở tay",
+                    "Lòng người khó đoán chỉ đến khi biến cố ập tới mới biết ai thật lòng",
+                    "Cú quay xe nghẹt thở ở phút cuối của câu chuyện đêm khuya",
+                ],
+                "video_AI_hay": [
+                    "Thú cưng thành tinh và màn phiêu lưu kỳ ảo không thể rời mắt",
+                    "Phim ngắn hoạt hình AI siêu cuốn với tình tiết bất ngờ ở giây cuối cùng",
+                    "Câu chuyện hoạt hình AI chữa lành khiến hàng triệu người xem đi xem lại",
+                    "Thế giới AI kỳ ảo với màn biến hình đỉnh cao",
+                ],
+                "baby_AI": [
+                    "Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh",
+                    "Tình huống dở khóc dở cười của hai mẹ con khiến cả nhà bật cười",
+                    "Pha xử lý đi vào lòng đất của em bé tinh nghịch trong gia đình",
+                    "Khoảnh khắc đáng yêu và hài hước nhất trong ngày của bé",
+                ],
+            }
+            topic_list = fallback_topics.get(ch_folder, fallback_topics["video_AI_hay"])
+            idx = int(video_id[-4:]) % len(topic_list) if (video_id and video_id[-4:].isdigit()) else 0
+            original_title = topic_list[idx]
+
+        translator = SubtitleTranslator()
+        src_lang = "vi" if has_vietnamese_diacritics(original_title) else "zh"
+        meta = translator.generate_story_metadata(
+            segments=segments,
+            platform=platform,
+            genre=ch_folder,
+            original_title=original_title,
+            src_lang=src_lang,
+        )
+        caption = (meta.get("caption") or "").strip()
+        hashtags = (meta.get("hashtags") or "").strip()
+        if not hashtags:
+            hashtags = "#xuhuong #xuhuongtiktok #fyp #viral #tiktokvn"
+        return caption, hashtags, resolved_url
+
     def _upgrade_master_csv_schema(self) -> None:
         """
         Đảm bảo `output/danh_sach_video.csv` luôn có đúng 7 cột chuẩn:
@@ -1784,6 +1927,19 @@ class StoryAudioCrawler:
                     fn = new_fn
                     needs_rewrite = True
 
+            # Tự động sửa lại nếu cột caption đang bị ghi tên file/dãy số hoặc thiếu hashtags
+            if self.is_raw_filename_caption(cap, Path(basename).stem) or not (tags or "").strip():
+                rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(
+                    ch, basename, url
+                )
+                if self.is_raw_filename_caption(cap, Path(basename).stem):
+                    cap = rec_cap
+                if not (tags or "").strip():
+                    tags = rec_tags
+                if not (url or "").strip() and rec_url:
+                    url = rec_url
+                needs_rewrite = True
+
             upgraded_rows.append([ch, fn, url, cap, tags, st, pat])
 
         # Quét bổ sung các file .mp4 có trên ổ cứng (ready/ hoặc posted/) nhưng chưa có trong CSV
@@ -1803,8 +1959,11 @@ class StoryAudioCrawler:
                         if st_label == "POSTED"
                         else ""
                     )
+                    rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(
+                        ch_folder, mp4.name
+                    )
                     upgraded_rows.append(
-                        [ch_folder, rel_fn, "", mp4.stem, "", st_label, pat_str]
+                        [ch_folder, rel_fn, rec_url, rec_cap, rec_tags, st_label, pat_str]
                     )
                     needs_rewrite = True
 

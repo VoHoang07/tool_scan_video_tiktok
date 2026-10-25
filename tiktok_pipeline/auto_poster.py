@@ -347,6 +347,91 @@ class TikTokAutoPoster:
         except Exception as exc:
             logger.debug(f"[{ch_folder}] Bỏ qua bước warmup nhẹ: {exc}")
 
+    def _scroll_upload_form(self, page: Any, delta_y: int) -> None:
+        """
+        Cuộn khung nội dung chính bên phải của trang TikTok Studio Upload (`rect.left > 240`),
+        đảm bảo không cuộn nhầm vào thanh menu bên trái (`Bài đăng`).
+        """
+        try:
+            page.mouse.move(680, 500)
+            page.mouse.wheel(0, delta_y)
+        except Exception:
+            pass
+        try:
+            page.evaluate(
+                """(dy) => {
+                    window.scrollBy({ top: dy, behavior: 'smooth' });
+                    const containers = Array.from(document.querySelectorAll('div, main, section'));
+                    for (const el of containers) {
+                        const st = window.getComputedStyle(el);
+                        if ((st.overflowY === 'auto' || st.overflowY === 'scroll') && el.scrollHeight > el.clientHeight + 40) {
+                            const r = el.getBoundingClientRect();
+                            if (r.left >= 180 && r.width > 400) {
+                                el.scrollTop += dy;
+                            }
+                        }
+                    }
+                }""",
+                delta_y,
+            )
+        except Exception:
+            pass
+
+    def _select_hashtag_suggestion_if_open(self, page: Any, tag_word: str) -> bool:
+        """
+        Kiểm tra xem menu gợi ý Hashtag của TikTok Studio có đang mở bên dưới ô `Mô tả` hay không.
+        Nếu có mục gợi ý khớp với `#tag_word` (hoặc mục đầu tiên trong danh sách gợi ý hashtag),
+        click trực tiếp vào mục đó để gắn thẻ Hashtag Pill chuẩn của TikTok.
+        """
+        try:
+            pos = page.evaluate(
+                """(kw) => {
+                    const kwLower = (kw || '').toLowerCase();
+                    const editor = document.querySelector('div.public-DraftEditor-content[contenteditable="true"], div[contenteditable="true"]');
+                    const edRect = editor ? editor.getBoundingClientRect() : { top: 100, bottom: 260, left: 260 };
+
+                    // Tìm các phần tử gợi ý hashtag nằm trong popup/listbox bên dưới ô Mô tả
+                    const candidates = Array.from(
+                        document.querySelectorAll(
+                            '[role="option"], [role="listbox"] li, [role="listbox"] div, ' +
+                            '[class*="hashtag" i] li, [class*="hashtag" i] div, ' +
+                            '[class*="suggestion" i] li, [class*="suggestion" i] div, ' +
+                            '[class*="mention" i] li, [class*="mention" i] div'
+                        )
+                    );
+                    const matches = [];
+                    for (const el of candidates) {
+                        if (editor && editor.contains(el)) continue;
+                        if (el.children.length > 4) continue;
+                        const r = el.getBoundingClientRect();
+                        if (r.width < 40 || r.height < 16 || r.height > 65) continue;
+                        if (r.top < edRect.top - 10 || r.top > edRect.bottom + 320) continue;
+                        const txt = (el.innerText || el.textContent || '').trim();
+                        if (!txt) continue;
+                        const tLower = txt.toLowerCase();
+                        if (tLower.includes('#' + kwLower) || tLower.startsWith(kwLower) || tLower.startsWith('#')) {
+                            matches.push({
+                                x: r.left + Math.min(80, r.width / 2),
+                                y: r.top + r.height / 2,
+                                exact: tLower.includes(kwLower) ? 1 : 0,
+                                top: r.top
+                            });
+                        }
+                    }
+                    if (matches.length === 0) return null;
+                    matches.sort((a, b) => (b.exact - a.exact) || (a.top - b.top));
+                    return matches[0];
+                }""",
+                tag_word,
+            )
+            if pos and "x" in pos and "y" in pos:
+                page.mouse.click(float(pos["x"]), float(pos["y"]), delay=45)
+                time.sleep(0.35)
+                return True
+        except Exception:
+            pass
+        return False
+
     def _clear_and_type_caption_hashtags(
         self,
         page: Any,
@@ -356,19 +441,33 @@ class TikTokAutoPoster:
         video_stem: str,
     ) -> None:
         """
-        Xóa sạch tên file mặc định (`20261023_085817_tiktok_story_...`) mà TikTok Studio tự điền vào ô `Mô tả`,
-        sau đó gõ Kịch bản ngắn (`caption`) và chọn từng thẻ `#hashtag` Hot Search từ menu gợi ý của TikTok.
+        Xóa sạch tên file mặc định (`20261025_152239_tiktok_story_...`) mà TikTok Studio tự điền vào ô `Mô tả`
+        (KHÔNG dùng `execCommand('delete')` trên root DraftJS để tránh làm hỏng cấu trúc DOM của Hashtag),
+        đảm bảo 100% `caption` là mô tả tiếng Việt theo ngữ cảnh (không bao giờ gõ lại dãy số tên file),
+        sau đó gõ Kịch bản ngắn (`caption`) và gắn đầy đủ các thẻ `#hashtag` Hot Search.
         """
+        # Chốt chặn tuyệt đối: Nếu caption vô tình là tên file / dãy số, khôi phục ngay mô tả tiếng Việt theo ngữ cảnh
+        if self.crawler.is_raw_filename_caption(caption, video_stem) or not (hashtags_str or "").strip():
+            rec_cap, rec_tags, _ = self.crawler.recover_contextual_caption_and_hashtags(
+                ch_folder, video_stem
+            )
+            if self.crawler.is_raw_filename_caption(caption, video_stem):
+                caption = rec_cap
+            if not (hashtags_str or "").strip():
+                hashtags_str = rec_tags
+
         self._dismiss_all_studio_popovers(page, ch_folder)
-        page.evaluate("window.scrollTo({ top: 0, behavior: 'smooth' })")
+        self._scroll_upload_form(page, -1500)
         time.sleep(0.8)
 
-        caption_box = page.locator('div[contenteditable="true"]').first
+        caption_box = page.locator(
+            'div.public-DraftEditor-content[contenteditable="true"], div[contenteditable="true"][role="textbox"], div[contenteditable="true"]'
+        ).first
         caption_box.wait_for(state="visible", timeout=25000)
         caption_box.scroll_into_view_if_needed()
 
-        # Đợi TikTok tự điền tên file mặc định vào ô Mô tả rồi tắt mọi popup hướng dẫn và xóa sạch 100%
-        time.sleep(random.uniform(1.5, 2.5))
+        # Đợi TikTok tự điền tên file mặc định vào ô Mô tả rồi tắt mọi popup hướng dẫn
+        time.sleep(random.uniform(1.2, 2.0))
         self._dismiss_all_studio_popovers(page, ch_folder)
 
         box_bounds = caption_box.bounding_box()
@@ -379,37 +478,22 @@ class TikTokAutoPoster:
                 box_bounds["y"] + box_bounds["height"] * random.uniform(0.3, 0.7),
             )
 
-        for attempt in range(5):
+        # Xóa sạch tên file mặc định bằng bàn phím chuẩn (giữ nguyên cấu trúc DraftJS để gõ được #hashtag)
+        for attempt in range(6):
             self._dismiss_all_studio_popovers(page, ch_folder)
-            caption_box.click()
-            time.sleep(0.25)
-            page.keyboard.press("Meta+A")
-            time.sleep(0.15)
-            page.keyboard.press("Backspace")
-            time.sleep(0.15)
-            page.keyboard.press("Control+A")
-            time.sleep(0.15)
-            page.keyboard.press("Backspace")
-
-            # Dự phòng chọn toàn bộ node con trong DraftJS / ProseMirror contenteditable + xóa sạch
             try:
-                page.evaluate(
-                    """() => {
-                        const el = document.querySelector('div[contenteditable="true"]');
-                        if (el) {
-                            el.focus();
-                            const sel = window.getSelection();
-                            const range = document.createRange();
-                            range.selectNodeContents(el);
-                            sel.removeAllRanges();
-                            sel.addRange(range);
-                            document.execCommand('delete', false, null);
-                        }
-                    }"""
-                )
+                caption_box.click(click_count=3)
+                time.sleep(0.15)
+                page.keyboard.press("Backspace")
             except Exception:
-                pass
-            time.sleep(0.2)
+                caption_box.click()
+            time.sleep(0.15)
+            page.keyboard.press("Meta+A")
+            time.sleep(0.1)
+            page.keyboard.press("Backspace")
+            time.sleep(0.1)
+            page.keyboard.press("Control+A")
+            time.sleep(0.1)
             page.keyboard.press("Backspace")
 
             remaining = ""
@@ -418,18 +502,13 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
-            if remaining and (
-                video_stem in remaining
-                or "tiktok_story" in remaining
-                or "douyin_story" in remaining
-                or "2026" in remaining
-            ):
-                # Bấm End rồi nhấn Backspace liên hoàn xóa từng ký tự tên file cứng đầu
+            if remaining:
                 caption_box.click()
                 page.keyboard.press("End")
-                for _ in range(len(remaining) + 12):
+                for _ in range(min(120, len(remaining) + 18)):
                     page.keyboard.press("Backspace")
-                for _ in range(12):
+                page.keyboard.press("Home")
+                for _ in range(min(60, len(remaining) + 10)):
                     page.keyboard.press("Delete")
                 time.sleep(0.2)
                 try:
@@ -441,38 +520,76 @@ class TikTokAutoPoster:
                 video_stem not in remaining
                 and "tiktok_story" not in remaining
                 and "douyin_story" not in remaining
-                and "2026" not in remaining
+                and not re.search(r"\b20\d{6}_\d{6}\b", remaining)
             ):
                 break
             logger.debug(f"[{ch_folder}] Xóa lại tên file mặc định lần {attempt + 1}: '{remaining}'")
 
-        time.sleep(random.uniform(0.4, 0.7))
+        time.sleep(random.uniform(0.35, 0.6))
 
-        # Gõ trực tiếp từng ký tự Kịch bản ngắn vào DraftJS của Chrome để không bị mất focus bởi popup
+        # Gõ Kịch bản mô tả tiếng Việt theo ngữ cảnh vào ô Mô tả
         clean_caption = caption.strip()
         caption_box.click()
         time.sleep(0.2)
-        for ch in clean_caption:
-            page.keyboard.type(ch, delay=random.randint(22, 52))
-            if ch in (".", ",", "!", "?", "—", ":"):
-                time.sleep(random.uniform(0.08, 0.18))
-            elif ch == " " and random.random() < 0.2:
-                time.sleep(random.uniform(0.04, 0.10))
-
-        page.keyboard.type(" ", delay=60)
+        page.keyboard.insert_text(clean_caption)
+        time.sleep(0.25)
+        page.keyboard.type(" ", delay=55)
         time.sleep(random.uniform(0.4, 0.7))
 
-        # Gõ từng #hashtag và chờ menu gợi ý của TikTok hiện ra rồi nhấn Enter
-        tags = [t.strip() for t in hashtags_str.split() if t.strip().startswith("#")]
-        for tag in tags:
-            page.keyboard.type(tag, delay=random.randint(38, 75))
-            time.sleep(random.uniform(0.95, 1.35))
-            page.keyboard.press("Enter")
-            time.sleep(random.uniform(0.25, 0.45))
-            page.keyboard.type(" ", delay=random.randint(35, 65))
+        # Chuẩn hóa danh sách #hashtag
+        raw_tokens = [t.strip() for t in hashtags_str.split() if t.strip()]
+        tags: List[str] = []
+        for t in raw_tokens:
+            norm_t = t if t.startswith("#") else f"#{t}"
+            if len(norm_t) > 1 and norm_t.lower() not in [x.lower() for x in tags]:
+                tags.append(norm_t)
+        if not tags:
+            tags = ["#xuhuong", "#xuhuongtiktok", "#fyp", "#tiktokvn"]
 
-        page.keyboard.press("Escape")
-        logger.info(f"[{ch_folder}] Đã xóa tên file mặc định, gõ xong kịch bản ngắn & gắn thẻ Hashtag Hot Search.")
+        # Gõ từng #hashtag: gõ '#' + từ khóa để kích hoạt gợi ý của TikTok, nếu có popup gợi ý thì click chọn,
+        # nếu không có popup thì bấm phím Space (' ') (TUYỆT ĐỐI không bấm Enter mù làm xuống dòng hỏng hashtag!)
+        for tag in tags:
+            tag_word = tag.lstrip("#").strip()
+            if not tag_word:
+                continue
+            caption_box.click()
+            page.keyboard.press("End")
+            time.sleep(0.1)
+            page.keyboard.type("#", delay=55)
+            time.sleep(0.2)
+            page.keyboard.type(tag_word, delay=random.randint(35, 60))
+            time.sleep(random.uniform(0.95, 1.3))
+
+            picked = self._select_hashtag_suggestion_if_open(page, tag_word)
+            if not picked:
+                page.keyboard.type(" ", delay=55)
+            else:
+                time.sleep(0.2)
+                page.keyboard.press("End")
+                page.keyboard.type(" ", delay=50)
+            time.sleep(random.uniform(0.2, 0.35))
+
+        # Kiểm tra xác nhận nội dung trong ô Mô tả đã có đủ Kịch bản tiếng Việt + Hashtag và không còn tên file số
+        try:
+            final_text = (caption_box.inner_text() or "").strip()
+            if (
+                not final_text
+                or self.crawler.is_raw_filename_caption(final_text, video_stem)
+                or "#" not in final_text
+            ):
+                caption_box.click()
+                page.keyboard.press("Meta+A")
+                page.keyboard.press("Backspace")
+                full_combined = f"{clean_caption} {' '.join(tags)} "
+                page.keyboard.insert_text(full_combined)
+                time.sleep(0.25)
+                page.keyboard.type(" ", delay=50)
+                final_text = (caption_box.inner_text() or "").strip()
+            logger.info(
+                f"[{ch_folder}] Đã nhập xong Mô tả & Hashtag vào TikTok Studio: \"{final_text[:140]}...\""
+            )
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] Kiểm tra lại văn bản ô Mô tả: {exc}")
 
     def _click_public_option_in_open_dropdown(self, page: Any) -> bool:
         """
@@ -614,8 +731,8 @@ class TikTokAutoPoster:
             f"[{ch_folder}] Đang tự động cấu hình mục Cài đặt & Quyền riêng tư = 'Mọi người' (Công khai) trên trang Upload..."
         )
         try:
-            # Cuộn xuống phần Cài đặt
-            page.mouse.wheel(0, 480)
+            # Cuộn xuống phần Cài đặt trong khung form chính bên phải
+            self._scroll_upload_form(page, 480)
             time.sleep(random.uniform(1.0, 1.6))
 
             # 1. Thời điểm đăng -> Bây giờ
@@ -725,7 +842,7 @@ class TikTokAutoPoster:
             )
 
             # Cuộn xuống phần Kiểm tra & nút Đăng
-            page.mouse.wheel(0, 420)
+            self._scroll_upload_form(page, 520)
             time.sleep(random.uniform(0.8, 1.3))
 
             # 6. Kiểm tra bản quyền nhạc & Kiểm tra nội dung nhanh -> BẬT (ON)
@@ -752,24 +869,90 @@ class TikTokAutoPoster:
                     // Nếu đang hiện phần trăm dạng 47.12% kèm "Còn ... giây" hoặc "MB/"
                     const hasProgressPct = /\\b\\d{1,2}\\.\\d{1,2}%\\b/.test(bodyText);
                     const hasRemainingSec = /Còn\\s+\\d+\\s*(giây|phút)/i.test(bodyText);
-                    return hasProgressPct || hasRemainingSec;
+                    const isUploadingLabel = /Đang tải lên|Uploading/i.test(bodyText);
+                    return hasProgressPct || hasRemainingSec || isUploadingLabel;
                 }"""
             )
             return not bool(uploading_state)
         except Exception:
             return True
 
+    def _find_exact_post_button(
+        self, page: Any, scroll_into_view: bool = False
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Tìm CHÍNH XÁC nút đỏ `Đăng` (`button[data-e2e="post_video_button"]` hoặc nút có nhãn đúng bằng `'Đăng'` / `'Post'`)
+        nằm ở cuối biểu mẫu Upload (bên phải thanh menu, `rect.left > 220`).
+        TUYỆT ĐỐI KHÔNG BAO GIỜ chọn nhầm nút `'Bài đăng'` ở thanh menu bên trái hay nút `'Hủy bỏ'` / `'Thoát'`.
+        """
+        try:
+            return page.evaluate(
+                """(doScroll) => {
+                    let targetBtn = document.querySelector('button[data-e2e="post_video_button"], [data-e2e="post_video_button"]');
+                    if (!targetBtn) {
+                        const allBtns = Array.from(document.querySelectorAll('button, [role="button"]'));
+                        for (const b of allBtns) {
+                            if (b.closest('nav, aside')) continue;
+                            const e2e = (b.getAttribute('data-e2e') || '').toLowerCase();
+                            if (e2e.includes('cancel') || e2e.includes('discard') || e2e.includes('draft')) continue;
+                            const txt = (b.innerText || b.textContent || '').trim();
+                            if (txt !== 'Đăng' && txt !== 'Post') continue;
+                            const r = b.getBoundingClientRect();
+                            if (r.left < 220 || r.width < 50 || r.height < 24) continue;
+                            targetBtn = b;
+                            break;
+                        }
+                    }
+                    if (!targetBtn) return null;
+                    if (doScroll) {
+                        try {
+                            targetBtn.scrollIntoView({ block: 'center', inline: 'nearest' });
+                        } catch (e) {}
+                    }
+                    const rect = targetBtn.getBoundingClientRect();
+                    const disabledAttr = targetBtn.getAttribute('disabled');
+                    const ariaDisabled = targetBtn.getAttribute('aria-disabled');
+                    const cls = (targetBtn.className || '').toString();
+                    const isDisabled = (
+                        targetBtn.disabled === true ||
+                        disabledAttr !== null ||
+                        ariaDisabled === 'true' ||
+                        /disabled|loading/i.test(cls)
+                    );
+                    return {
+                        found: rect.width > 20 && rect.height > 15,
+                        enabled: !isDisabled,
+                        x: rect.left + rect.width / 2,
+                        y: rect.top + rect.height / 2,
+                        width: rect.width,
+                        height: rect.height,
+                        text: (targetBtn.innerText || targetBtn.textContent || '').trim(),
+                        dataE2e: targetBtn.getAttribute('data-e2e') || ''
+                    };
+                }""",
+                scroll_into_view,
+            )
+        except Exception:
+            return None
+
     def _click_confirm_modal_if_present(self, page: Any) -> bool:
         """
-        Tự động bấm nút xác nhận nếu TikTok hiện popup hộp thoại (ví dụ: `Đăng ngay`,
-        `Tiếp tục đăng`, `Xác nhận`, `Đồng ý`, `Lưu`, `Post now`, `Confirm`).
+        Xử lý thông minh hộp thoại popup của TikTok Studio:
+        1. Nếu vô tình hiện hộp thoại hỏi 'Bạn có muốn rời khỏi / Hủy bỏ bài đăng?' -> Bấm ngay 'Tiếp tục chỉnh sửa' / 'Ở lại'
+           để TUYỆT ĐỐI KHÔNG BAO GIỜ thoát trang khi chưa đăng!
+        2. Nếu hiện hộp thoại xác nhận đăng bài ('Đăng ngay', 'Tiếp tục đăng', 'Post now', 'Continue to post') -> Bấm xác nhận đăng!
         """
         try:
             pos = page.evaluate(
                 """() => {
-                    const confirmLabels = [
-                        'Đăng ngay', 'Tiếp tục đăng', 'Tiếp tục', 'Xác nhận',
-                        'Đồng ý', 'Lưu', 'Post now', 'Confirm', 'Continue to post'
+                    const stayLabels = [
+                        'Tiếp tục chỉnh sửa', 'Ở lại', 'Quay lại', 'Keep editing', 'Stay'
+                    ];
+                    const confirmPostLabels = [
+                        'Đăng ngay', 'Tiếp tục đăng', 'Post now', 'Continue to post'
+                    ];
+                    const forbiddenExitLabels = [
+                        'Thoát', 'Rời khỏi', 'Hủy bỏ', 'Hủy', 'Leave', 'Discard', 'Exit'
                     ];
                     const modals = Array.from(
                         document.querySelectorAll('[role="dialog"], [class*="Modal"], [class*="modal"], [class*="Dialog"], [class*="Popup"]')
@@ -779,9 +962,23 @@ class TikTokAutoPoster:
                         const mRect = m.getBoundingClientRect();
                         if (mRect.width < 100 || mRect.height < 60) continue;
                         const btns = Array.from(m.querySelectorAll('button, [role="button"]'));
+
+                        // Ưu tiên 1: Nếu là hộp thoại cảnh báo thoát/hủy -> bấm 'Tiếp tục chỉnh sửa' / 'Ở lại'
                         for (const b of btns) {
                             const txt = (b.innerText || b.textContent || '').trim();
-                            if (confirmLabels.some(l => txt === l || txt.includes(l))) {
+                            if (stayLabels.some(l => txt === l || txt.includes(l))) {
+                                const r = b.getBoundingClientRect();
+                                if (r.width > 20 && r.height > 15) {
+                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2, text: txt };
+                                }
+                            }
+                        }
+
+                        // Ưu tiên 2: Nếu là hộp thoại xác nhận Đăng ngay / Tiếp tục đăng
+                        for (const b of btns) {
+                            const txt = (b.innerText || b.textContent || '').trim();
+                            if (forbiddenExitLabels.some(f => txt === f || txt.includes(f))) continue;
+                            if (confirmPostLabels.some(l => txt === l || txt.includes(l))) {
                                 const r = b.getBoundingClientRect();
                                 if (r.width > 20 && r.height > 15) {
                                     return { x: r.left + r.width / 2, y: r.top + r.height / 2, text: txt };
@@ -793,6 +990,7 @@ class TikTokAutoPoster:
                 }"""
             )
             if pos and "x" in pos and "y" in pos:
+                logger.info(f"[Modal Handler] Tự động bấm nút hộp thoại: '{pos.get('text')}'")
                 self._human_move_mouse(page, float(pos["x"]), float(pos["y"]))
                 time.sleep(random.uniform(0.25, 0.5))
                 page.mouse.click(float(pos["x"]), float(pos["y"]))
@@ -992,8 +1190,10 @@ class TikTokAutoPoster:
         self, ch_folder: str
     ) -> Optional[Tuple[Path, str, str]]:
         """
-        Lấy video chờ đăng tiếp theo trong `output/<ch_folder>/ready/` cùng `caption` (kịch bản ngắn)
+        Lấy video chờ đăng tiếp theo trong `output/<ch_folder>/ready/` cùng `caption` (kịch bản ngắn tiếng Việt)
         và `hashtags` (Hot Search) từ `output/danh_sach_video.csv`.
+        Nếu video chưa có trong CSV hoặc `caption` đang bị ghi tên file/dãy số (`20261025_...`),
+        tự động khôi phục Kịch bản mô tả tiếng Việt theo ngữ cảnh + Hashtag Hot Search và lưu lại vào CSV.
         """
         ready_dir = self.project_root / "output" / ch_folder / "ready"
         if not ready_dir.exists():
@@ -1003,8 +1203,10 @@ class TikTokAutoPoster:
             return None
 
         target_video = ready_files[0]
-        caption = target_video.stem
-        hashtags = "#xuhuong #xuhuongtiktok #fyp"
+        caption = ""
+        hashtags = ""
+        m_id = re.search(r"(?:tiktok|douyin)_story_(\d+)", target_video.stem, re.IGNORECASE)
+        vid_id = m_id.group(1) if m_id else ""
 
         csv_path = self.project_root / "output" / "danh_sach_video.csv"
         if csv_path.exists():
@@ -1012,10 +1214,26 @@ class TikTokAutoPoster:
                 with open(csv_path, mode="r", newline="", encoding="utf-8") as rf:
                     for row in csv.DictReader(rf):
                         fn = (row.get("filename") or "").strip()
-                        if Path(fn).name == target_video.name:
-                            caption = (row.get("caption") or caption).strip()
-                            hashtags = (row.get("hashtags") or hashtags).strip()
+                        s_url = (row.get("source_url") or "").strip()
+                        if Path(fn).name == target_video.name or (
+                            vid_id and (vid_id in fn or vid_id in s_url)
+                        ):
+                            caption = (row.get("caption") or "").strip()
+                            hashtags = (row.get("hashtags") or "").strip()
                             break
+            except Exception:
+                pass
+
+        if self.crawler.is_raw_filename_caption(caption, target_video.stem) or not hashtags.strip():
+            rec_cap, rec_tags, _ = self.crawler.recover_contextual_caption_and_hashtags(
+                ch_folder, target_video.name
+            )
+            if self.crawler.is_raw_filename_caption(caption, target_video.stem):
+                caption = rec_cap
+            if not hashtags.strip():
+                hashtags = rec_tags
+            try:
+                self.crawler._upgrade_master_csv_schema()
             except Exception:
                 pass
 
@@ -1036,8 +1254,8 @@ class TikTokAutoPoster:
            - `Cho phép người dùng`: `Bình luận` (`ON`)
            - `Khai báo nội dung bài đăng` & `Nội dung do AI tạo`: `OFF`
            - `Kiểm tra bản quyền nhạc` & `Kiểm tra nội dung nhanh`: `ON`
-        5. Đợi tải video đạt 100%, bấm nút `Đăng`, sau đó chuyển sang trang `tiktokstudio/content` (mục `Bài đăng`)
-           để kiểm tra cột `Quyền riêng tư` và tự động chuyển mọi bài đang ở `Chỉ mình tôi` sang `Mọi người` (Công khai).
+        5. Đợi tải video đạt 100%, bấm chính xác nút đỏ `Đăng` (`post_video_button`), xác nhận bài đăng thành công
+           rồi chuyển sang trang `tiktokstudio/content` (mục `Bài đăng`) để đảm bảo `Quyền riêng tư` là `Mọi người` (Công khai).
         """
         try:
             from playwright.sync_api import sync_playwright
@@ -1106,11 +1324,7 @@ class TikTokAutoPoster:
                     f"[{ch_folder}] Đã nạp file video vào TikTok Studio. Đang chờ tải lên 100% và tự động đóng các hộp thoại hướng dẫn ('Đã hiểu')..."
                 )
 
-                # Bước 4: Đợi video tải lên đạt 100% TRƯỚC, trong lúc đợi liên tục tắt popup 'Bổ sung tính năng chỉnh sửa mới -> Đã hiểu'
-                post_btn = page.locator(
-                    'button[data-e2e="post_video_button"], button:has-text("Đăng"), button:has-text("Post")'
-                ).first
-
+                # Bước 4: Đợi video tải lên đạt 100% TRƯỚC, kiểm tra đúng nút đỏ `post_video_button` (không nhầm với 'Bài đăng' ở menu trái!)
                 ready_to_post = False
                 for _ in range(120):
                     time.sleep(2)
@@ -1118,12 +1332,10 @@ class TikTokAutoPoster:
                     try:
                         if not self._is_video_upload_100_percent_done(page):
                             continue
-                        if post_btn.is_visible() and post_btn.is_enabled():
-                            disabled_attr = post_btn.get_attribute("disabled")
-                            aria_disabled = post_btn.get_attribute("aria-disabled")
-                            if disabled_attr is None and aria_disabled != "true":
-                                ready_to_post = True
-                                break
+                        btn_info = self._find_exact_post_button(page, scroll_into_view=False)
+                        if btn_info and btn_info.get("found") and btn_info.get("enabled"):
+                            ready_to_post = True
+                            break
                     except Exception:
                         pass
 
@@ -1150,28 +1362,79 @@ class TikTokAutoPoster:
                 self._configure_upload_settings_public(page, ch_folder)
                 self._dismiss_all_studio_popovers(page, ch_folder)
 
-                # Cuộn xuống nút Đăng, di chuột đường cong Bezier, hover rồi click
-                post_btn.scroll_into_view_if_needed()
-                time.sleep(random.uniform(1.2, 2.0))
+                # Cuộn khung form xuống cuối trang tới đúng nút đỏ `Đăng` (post_video_button) và click
+                self._scroll_upload_form(page, 900)
+                time.sleep(random.uniform(1.0, 1.5))
                 self._dismiss_all_studio_popovers(page, ch_folder)
-                btn_box = post_btn.bounding_box()
-                if btn_box:
-                    click_x = btn_box["x"] + btn_box["width"] * random.uniform(0.35, 0.65)
-                    click_y = btn_box["y"] + btn_box["height"] * random.uniform(0.35, 0.65)
+
+                btn_info = self._find_exact_post_button(page, scroll_into_view=True)
+                time.sleep(0.8)
+                btn_info = self._find_exact_post_button(page, scroll_into_view=False) or btn_info
+                if btn_info and btn_info.get("found"):
+                    click_x = float(btn_info["x"])
+                    click_y = float(btn_info["y"])
+                    logger.info(
+                        f"[{ch_folder}] Đang bấm nút đỏ ĐĂNG ('{btn_info.get('text')}', data-e2e='{btn_info.get('dataE2e')}') tại ({click_x:.1f}, {click_y:.1f})..."
+                    )
                     self._os_click_viewport(page, click_x, click_y)
                 else:
-                    post_btn.click()
+                    exact_loc = page.locator('button[data-e2e="post_video_button"]').first
+                    exact_loc.scroll_into_view_if_needed()
+                    exact_loc.click()
 
-                logger.info(f"[{ch_folder}] Đã bấm nút ĐĂNG! Đang xử lý hộp thoại xác nhận (nếu có) và chuyển sang trang Bài đăng...")
-                time.sleep(random.uniform(2.5, 4.0))
-                self._click_confirm_modal_if_present(page)
+                logger.info(
+                    f"[{ch_folder}] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất..."
+                )
 
-                # Đợi TikTok chuyển sang trang Quản lý Bài đăng (tiktokstudio/content)
-                for _ in range(10):
-                    if "tiktokstudio/content" in page.url:
-                        break
-                    time.sleep(1.2)
+                # Đợi đến khi TikTok thực sự gửi bài đăng thành công (chuyển sang tiktokstudio/content hoặc hiện thông báo đã đăng)
+                post_confirmed = False
+                for wait_idx in range(30):
+                    time.sleep(1.5)
+                    self._dismiss_all_studio_popovers(page, ch_folder)
                     self._click_confirm_modal_if_present(page)
+
+                    if "tiktokstudio/content" in page.url:
+                        post_confirmed = True
+                        break
+
+                    # Kiểm tra thông báo đăng thành công trên màn hình
+                    try:
+                        is_done_toast = page.evaluate(
+                            """() => {
+                                const txt = document.body ? (document.body.innerText || '') : '';
+                                return /Video đã được đăng|Đã đăng video|Quản lý bài đăng của bạn|Đăng thêm video khác|Your video is being uploaded|Video published/i.test(txt);
+                            }"""
+                        )
+                        if is_done_toast:
+                            post_confirmed = True
+                            break
+                    except Exception:
+                        pass
+
+                    # Nếu sau 4.5s nút đỏ Đăng vẫn còn nguyên và đang enabled (chưa ăn click), bấm trực tiếp lần nữa
+                    if wait_idx in (3, 7, 12):
+                        still_btn = self._find_exact_post_button(page, scroll_into_view=True)
+                        if still_btn and still_btn.get("found") and still_btn.get("enabled"):
+                            logger.info(
+                                f"[{ch_folder}] Nút ĐĂNG vẫn đang chờ trên màn hình (lần thử {wait_idx}), thực hiện click trực tiếp vào post_video_button..."
+                            )
+                            try:
+                                page.evaluate(
+                                    """() => {
+                                        const b = document.querySelector('button[data-e2e="post_video_button"], [data-e2e="post_video_button"]');
+                                        if (b) b.click();
+                                    }"""
+                                )
+                            except Exception:
+                                pass
+                            self._os_click_viewport(page, float(still_btn["x"]), float(still_btn["y"]))
+
+                if post_confirmed:
+                    logger.info(f"[{ch_folder}] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!")
+                else:
+                    logger.warning(
+                        f"[{ch_folder}] Đã hết thời gian chờ phản hồi sau khi bấm Đăng, tiến hành kiểm tra tại trang Quản lý Bài đăng..."
+                    )
 
                 # Bước 7 (Ảnh chụp màn hình 5): Tại trang tiktok.com/tiktokstudio/content,
                 # kiểm tra cột "Quyền riêng tư" và chuyển mọi bài đang ở "Chỉ mình tôi" sang "Mọi người" (Công khai)!
