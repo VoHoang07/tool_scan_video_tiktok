@@ -695,12 +695,12 @@ def run_continuous_mode(
         nonlocal stop_requested
         sig_name = signal.Signals(signum).name if hasattr(signal, "Signals") else str(signum)
         print(
-            f"\n[Graceful Shutdown] Nhận tín hiệu dừng ({sig_name} / Ctrl+C). "
-            "Đang hoàn tất bước hiện tại và thoát an toàn...",
+            f"\n[Shutdown] Nhận tín hiệu dừng ({sig_name} / Ctrl+C). Đang dừng ngay lập tức...",
             flush=True,
         )
-        logger.info(f"Nhận tín hiệu dừng {sig_name} (Graceful Shutdown).")
+        logger.info(f"Nhận tín hiệu dừng {sig_name} (Ctrl+C).")
         stop_requested = True
+        raise KeyboardInterrupt()
 
     prev_sigint = signal.signal(signal.SIGINT, _signal_handler)
     prev_sigterm = signal.signal(signal.SIGTERM, _signal_handler)
@@ -903,6 +903,7 @@ def run_continuous_mode(
             )
 
     except KeyboardInterrupt:
+        stop_requested = True
         logger.info("Đã nhận Ctrl+C (Graceful Shutdown).")
     finally:
         signal.signal(signal.SIGINT, prev_sigint)
@@ -911,6 +912,9 @@ def run_continuous_mode(
             f"=== ĐÃ DỪNG CONTINUOUS WORKER AN TOÀN (Tổng số chu kỳ: {cycle_count} | "
             f"Tổng số video mới đã xuất: {total_produced}) ==="
         )
+
+    if stop_requested:
+        sys.exit(130)
 
     return {
         "cycles_completed": cycle_count,

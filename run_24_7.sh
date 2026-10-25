@@ -31,6 +31,8 @@ echo "======================================================================"
 
 # Chạy dưới caffeinate để Mac không bao giờ Sleep CPU/Wi-Fi/Disk
 caffeinate -dimsu bash -c '
+    trap "echo \"\"; echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Đã nhận lệnh dừng từ người dùng (Ctrl+C).\"; kill 0 2>/dev/null; exit 130" INT TERM
+
     sync_from_github() {
         if [ -d .git ]; then
             git fetch origin main >/dev/null 2>&1 || true
