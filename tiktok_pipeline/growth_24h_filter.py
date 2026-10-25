@@ -231,7 +231,7 @@ class TikTok24hFilterEngine:
         cx_approx = w * 0.5
         cy_approx = h * 0.52
 
-        y_min, y_max = max(0, int(h * 0.34)), min(h, int(h * 0.72))
+        y_min, y_max = max(0, int(h * 0.36)), min(h, int(h * 0.615))
         x_min, x_max = max(0, int(w * 0.38)), min(w, int(w * 0.62))
         sub = arr[y_min:y_max, x_min:x_max]
         ys, xs = np.where(sub.mean(axis=2) > 75)
@@ -297,21 +297,10 @@ class TikTok24hFilterEngine:
                 best_score = score
                 best_deg = deg
 
-        # Tìm thanh trượt bên dưới hình tròn
-        sy0, sy1 = min(h - 1, int(y1 + 8)), min(h, int(y1 + 70))
-        sx0, sx1 = max(0, int(cx - 190)), min(w, int(cx + 190))
-        sub_s = arr[sy0:sy1, sx0:sx1]
-        tys, txs = np.where(sub_s.mean(axis=2) > 38)
-        if len(txs) > 50:
-            track_left = float(txs.min() + sx0)
-            track_right = float(txs.max() + sx0)
-            track_width = max(260.0, track_right - track_left)
-            handle_y = float((tys.min() + tys.max()) * 0.5 + sy0)
-            handle_x = track_left + 31.5
-        else:
-            track_width = 347.0
-            handle_x = cx - 347.0 * 0.5 + 31.5
-            handle_y = float(y1 + 32.0)
+        # Thanh trượt chuẩn TikTok Dark-Mode nằm ngay dưới hình tròn (trackWidth=347, handleWidth=63)
+        track_width = 347.0
+        handle_x = float(cx - 142.0)
+        handle_y = float(y1 + 24.5)
 
         return {
             "frac": max(0.05, min(0.95, best_deg / 360.0)),
@@ -373,45 +362,34 @@ class TikTok24hFilterEngine:
 
                         const outerRect = outerImg.getBoundingClientRect();
                         const innerRect = innerImg.getBoundingClientRect();
+                        const centerX = outerRect.left + outerRect.width / 2;
 
                         let handleEl = document.querySelector(
-                            '#captcha_slide_button, .secsdk-captcha-drag-icon, [class*="captcha-drag-icon"], [class*="secsdk_captcha_drag_icon"], [class*="DragIcon"]'
+                            "#captcha_slide_button, .secsdk-captcha-drag-icon, [class*=\"captcha-drag-icon\"], [class*=\"secsdk_captcha_drag_icon\"]"
                         );
                         if (!handleEl) {
-                            const candidates = Array.from(document.querySelectorAll('div, button, span')).filter(el => {
+                            const candidates = Array.from(document.querySelectorAll("div, button, span")).filter(el => {
                                 const r = el.getBoundingClientRect();
                                 return (
-                                    r.top > outerRect.bottom - 15 &&
-                                    r.top < outerRect.bottom + 140 &&
-                                    r.width >= 30 && r.width <= 100 &&
-                                    r.height >= 22 && r.height <= 68 &&
-                                    r.left >= outerRect.left - 140 &&
-                                    r.left <= outerRect.left + 80
+                                    r.top >= outerRect.bottom + 2 &&
+                                    r.top <= outerRect.bottom + 36 &&
+                                    r.width >= 52 && r.width <= 74 &&
+                                    r.height >= 32 && r.height <= 46 &&
+                                    Math.abs(r.left - (centerX - 173.5)) < 22
                                 );
                             });
-                            candidates.sort((a, b) => b.getBoundingClientRect().width - a.getBoundingClientRect().width);
                             handleEl = candidates[0] || null;
                         }
 
-                        let handleX = 0, handleY = 0, handleWidth = 63, trackWidth = 347;
+                        let handleX = centerX - 142.0;
+                        let handleY = outerRect.bottom + 24.5;
+                        let handleWidth = 63.0;
+                        let trackWidth = 347.0;
                         if (handleEl) {
                             const handleRect = handleEl.getBoundingClientRect();
                             handleX = handleRect.left + handleRect.width / 2;
                             handleY = handleRect.top + handleRect.height / 2;
-                            handleWidth = Math.max(48, Math.min(80, handleRect.width));
-                            let parent = handleEl.parentElement;
-                            for (let i = 0; i < 5 && parent; i++) {
-                                const pr = parent.getBoundingClientRect();
-                                if (pr.width >= 240 && pr.width <= 440) {
-                                    trackWidth = pr.width;
-                                    break;
-                                }
-                                parent = parent.parentElement;
-                            }
-                        } else {
-                            const centerX = outerRect.left + outerRect.width / 2;
-                            handleX = centerX - 347 / 2 + 63 / 2;
-                            handleY = outerRect.bottom + 28;
+                            handleWidth = Math.max(52, Math.min(74, handleRect.width));
                         }
 
                         return {
