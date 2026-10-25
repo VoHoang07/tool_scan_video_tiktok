@@ -1201,6 +1201,29 @@ class TikTokAutoPoster:
         history = self._load_post_history()
         posted_results: List[Dict[str, Any]] = []
 
+        # 0. Kiểm tra lệnh kích hoạt chạy thử từ xa (Remote Trigger từ máy Silicon sang máy Intel qua GitHub)
+        remote_trig = cfg.get("remote_trigger_filter_24h")
+        if isinstance(remote_trig, dict) and remote_trig.get("trigger_id"):
+            import platform as _plat
+
+            target_arch = str(remote_trig.get("target_arch") or "").strip()
+            if not target_arch or _plat.machine() == target_arch:
+                trig_id = str(remote_trig["trigger_id"]).strip()
+                trig_key = f"remote_trig_{trig_id}"
+                if trig_id and trig_key not in history:
+                    trig_ch = str(remote_trig.get("channel") or "video_AI_hay").strip()
+                    trig_cnt = int(remote_trig.get("video_count") or 2)
+                    logger.info(
+                        f"[Remote Trigger] Nhận lệnh chạy thử 'Bộ lọc 24 giờ' từ máy Silicon ({trig_id}) -> "
+                        f"Kênh [{trig_ch}], số lượng {trig_cnt} video!"
+                    )
+                    try:
+                        self.run_24h_filter_for_channel(trig_ch, video_count=trig_cnt, headless=headless)
+                        history[trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        self._save_post_history(history)
+                    except Exception as exc:
+                        logger.error(f"[Remote Trigger] Lỗi khi chạy thử Bộ lọc 24h ({trig_id}): {exc}")
+
         for profile in CHANNEL_PROFILES.values():
             ch_folder = profile["folder_name"]
 

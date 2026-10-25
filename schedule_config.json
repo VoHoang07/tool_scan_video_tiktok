@@ -51,6 +51,12 @@
       "22:06"
     ]
   },
+  "remote_trigger_filter_24h": {
+    "trigger_id": "intel_live_test_20261025_1424",
+    "target_arch": "x86_64",
+    "channel": "video_AI_hay",
+    "video_count": 2
+  },
   "headless": false,
   "random_jitter_minutes": 9,
   "warmup_before_upload": true,
