@@ -1,6 +1,13 @@
 # Môi trường ảo riêng của từng chip (Apple Silicon vs Intel)
 venv/
 .venv/
+.bin/
+.uv_cache/
+.uv_python/
+.xdg_data/
+.xdg_cache/
+.xdg_config/
+.playwright_browsers/
 __pycache__/
 *.py[cod]
 
