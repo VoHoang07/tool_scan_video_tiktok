@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 00:36:01",
+    "timestamp": "2026-10-26 00:47:10",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
     "channel": "video_AI_hay",
@@ -10,10 +10,10 @@
       "records": [
         {
           "channel": "video_AI_hay",
-          "video_id": "7699501821760687381",
-          "video_url": "https://www.tiktok.com/@shopq.nng/video/7699501821760687381",
-          "creator_handle": "@shopq.nng",
-          "watched_seconds": 42.0,
+          "video_id": "7699592855781772564",
+          "video_url": "https://www.tiktok.com/@hangorder1/video/7699592855781772564",
+          "creator_handle": "@hangorder1",
+          "watched_seconds": 18.0,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": true,
@@ -22,14 +22,44 @@
             "5_followed_creator": true,
             "6_commented_after_follow": true
           },
-          "comment_text": "Xem trọn vẹn hết video rồi mới tương tác đủ combo (tim + lưu yêu thích + sao chép liên kết + follow) cho bạn rồi nha! Mình comment lại sau khi follow để bạn dễ nhận diện trả tương tác 24h nhé 🌟",
-          "interacted_at": "2026-10-26 00:36:01",
-          "follow_back_window_until": "2026-10-27 00:36:01"
+          "comment_text": "Đã xem hết 100% thời lượng video, bấm tim, thêm vào yêu thích, copy link và follow bạn đầy đủ 5 bước rồi nhé! Nhớ trả tương tác giúp mình trong 24 giờ để cùng nhau lên xu hướng nhé ✨",
+          "interacted_at": "2026-10-26 00:47:10",
+          "follow_back_window_until": "2026-10-27 00:47:10"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 00:47:10",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7699592855781772564",
+            "video_url": "https://www.tiktok.com/@hangorder1/video/7699592855781772564",
+            "creator_handle": "@hangorder1",
+            "watched_seconds": 18.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Đã xem hết 100% thời lượng video, bấm tim, thêm vào yêu thích, copy link và follow bạn đầy đủ 5 bước rồi nhé! Nhớ trả tương tác giúp mình trong 24 giờ để cùng nhau lên xu hướng nhé ✨",
+            "interacted_at": "2026-10-26 00:47:10",
+            "follow_back_window_until": "2026-10-27 00:47:10"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 00:36:01",
       "machine_arch": "x86_64",
