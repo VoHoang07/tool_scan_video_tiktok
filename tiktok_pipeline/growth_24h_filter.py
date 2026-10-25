@@ -144,12 +144,11 @@ class TikTok24hFilterEngine:
         outer_bytes: bytes, inner_bytes: bytes, inner_to_outer_ratio: float = 0.608
     ) -> float:
         """
-        Thuật toán Thị giác máy tính (Circular Boundary Edge & Color Correlation bằng Pillow + NumPy):
+        Thuật toán Thị giác máy tính Đa Vành (Multi-Band Circular Boundary Correlation + L1 RGB MAE + Edge Gradient):
         - Khi kéo thanh trượt một tỷ lệ `frac` trong `[0.0, 1.0]`, vòng trong xoay thuận chiều `+180 * frac` độ
           và vòng ngoài xoay ngược chiều `-180 * frac` độ (tổng góc quay tương đối `360 * frac` độ).
-        - Lấy 360 mẫu điểm ảnh dọc theo đường tròn ranh giới tiếp giáp giữa ảnh vòng trong (`inner_img`)
-          và ảnh vòng ngoài (`outer_img`), tìm góc lệch `delta_deg` (từ `18°` đến `342°`) có sai số màu RGB
-          và độ dốc biên (Edge Gradient) nhỏ nhất.
+        - Lấy 360 mẫu điểm ảnh trên 3 vành đồng tâm sát ranh giới tiếp giáp giữa `inner_img` và `outer_img`,
+          kết hợp tương quan chuẩn hóa (NCC), sai số tuyệt đối màu L1 (MAE) và đạo hàm biên chu vi để tìm góc khớp chính xác.
         """
         import io
         import numpy as np
@@ -170,23 +169,26 @@ class TikTok24hFilterEngine:
         cos_a = np.cos(angles_rad)
         sin_a = np.sin(angles_rad)
 
-        # Lấy vành điểm ảnh sát mép ngoài của vòng trong và sát mép trong của vòng ngoài
-        r_in = (inner_size * 0.5) * 0.93
-        r_out = (inner_size * 0.5) * 1.07
-
         cx_in, cy_in = (inner_size - 1) * 0.5, (inner_size - 1) * 0.5
         cx_out, cy_out = (size - 1) * 0.5, (size - 1) * 0.5
+        half_in = inner_size * 0.5
 
-        ix = np.clip(np.round(cx_in + r_in * cos_a).astype(int), 0, inner_size - 1)
-        iy = np.clip(np.round(cy_in + r_in * sin_a).astype(int), 0, inner_size - 1)
+        in_bands = []
+        for mult in (0.91, 0.94, 0.97):
+            r_in = half_in * mult
+            ix = np.clip(np.round(cx_in + r_in * cos_a).astype(int), 0, inner_size - 1)
+            iy = np.clip(np.round(cy_in + r_in * sin_a).astype(int), 0, inner_size - 1)
+            in_bands.append(inner_arr[iy, ix])
+        ring_in = np.mean(np.stack(in_bands, axis=0), axis=0)
 
-        ox = np.clip(np.round(cx_out + r_out * cos_a).astype(int), 0, size - 1)
-        oy = np.clip(np.round(cy_out + r_out * sin_a).astype(int), 0, size - 1)
+        out_bands = []
+        for mult in (1.03, 1.06, 1.09):
+            r_out = half_in * mult
+            ox = np.clip(np.round(cx_out + r_out * cos_a).astype(int), 0, size - 1)
+            oy = np.clip(np.round(cy_out + r_out * sin_a).astype(int), 0, size - 1)
+            out_bands.append(outer_arr[oy, ox])
+        ring_out = np.mean(np.stack(out_bands, axis=0), axis=0)
 
-        ring_in = inner_arr[iy, ix]  # (360, 3)
-        ring_out = outer_arr[oy, ox]  # (360, 3)
-
-        # Kết hợp đặc trưng màu sắc chuẩn hóa + đạo hàm biên dọc theo chu vi hình tròn
         grad_in = np.roll(ring_in, -1, axis=0) - np.roll(ring_in, 1, axis=0)
         grad_out = np.roll(ring_out, -1, axis=0) - np.roll(ring_out, 1, axis=0)
 
@@ -196,27 +198,28 @@ class TikTok24hFilterEngine:
         best_deg = 180
         best_score = -1e9
 
-        for deg in range(18, 343, 2):
-            # Vòng trong xoay thuận +deg/2, vòng ngoài xoay ngược -deg/2 -> độ lệch tương đối = deg
+        for deg in range(15, 346, 1):
             shifted_in = np.roll(ring_in_norm, deg, axis=0)
+            shifted_raw = np.roll(ring_in, deg, axis=0)
             shifted_grad_in = np.roll(grad_in, deg, axis=0)
 
             color_corr = float(np.mean(shifted_in * ring_out_norm))
+            mae_diff = float(np.mean(np.abs(shifted_raw - ring_out))) / 255.0
             grad_diff = float(np.mean(np.abs(shifted_grad_in - grad_out))) / 255.0
-            score = color_corr - 0.65 * grad_diff
+            score = color_corr - 0.80 * mae_diff - 0.50 * grad_diff
 
             if score > best_score:
                 best_score = score
                 best_deg = deg
 
-        return max(0.06, min(0.94, best_deg / 360.0))
+        return max(0.05, min(0.95, best_deg / 360.0))
 
     def solve_tiktok_rotation_captcha_if_present(
-        self, page: Any, ch_folder: str, max_attempts: int = 3
+        self, page: Any, ch_folder: str, max_attempts: int = 5
     ) -> bool:
         """
         Tự động phát hiện và giải Captcha xoay hình tròn của TikTok ('Kéo thanh trượt để ghép hình')
-        bằng Thị giác máy tính (Circular Boundary Correlation) + kéo chuột phần cứng macOS (`CoreGraphics CGEvent`).
+        bằng Thị giác máy tính Đa Vành + kéo chuột tự nhiên trên trình duyệt & phần cứng macOS.
         """
         from curl_cffi import requests as creq
 
@@ -227,11 +230,14 @@ class TikTok24hFilterEngine:
                         const modalTexts = ['Kéo thanh trượt để ghép hình', 'Drag the slider to fit the puzzle', 'Verify to continue'];
                         const bodyTxt = document.body ? (document.body.innerText || '') : '';
                         const hasText = modalTexts.some(t => bodyTxt.includes(t));
+                        const hasContainer = !!document.querySelector(
+                            '#captcha-verify-container-main-page, .captcha-verify-container, [class*="captcha-verify"]'
+                        );
                         const imgs = Array.from(document.querySelectorAll('img')).filter(img => {
                             const r = img.getBoundingClientRect();
-                            return r.width >= 80 && r.width <= 380 && Math.abs(r.width - r.height) <= 12 && img.src;
+                            return r.width >= 65 && r.width <= 380 && Math.abs(r.width - r.height) <= 16 && img.src;
                         });
-                        if (!hasText && imgs.length < 2) return null;
+                        if (!hasText && !hasContainer && imgs.length < 2) return null;
                         if (imgs.length < 2) return null;
 
                         imgs.sort((a, b) => b.getBoundingClientRect().width - a.getBoundingClientRect().width);
@@ -240,46 +246,55 @@ class TikTok24hFilterEngine:
                         const outerRect = outerImg.getBoundingClientRect();
                         const innerRect = innerImg.getBoundingClientRect();
 
-                        // Tìm nút kéo (slider handle) nằm bên dưới hình tròn
+                        // 1. Tìm nút kéo (slider handle) bằng selector hoặc tọa độ hình học mở rộng (r.left >= outerRect.left - 140)
                         let handleEl = document.querySelector(
-                            '.secsdk-captcha-drag-icon, [class*="captcha-drag-icon"], [class*="secsdk_captcha_drag_icon"]'
+                            '#captcha_slide_button, .secsdk-captcha-drag-icon, [class*="captcha-drag-icon"], [class*="secsdk_captcha_drag_icon"], [class*="DragIcon"]'
                         );
                         if (!handleEl) {
                             const candidates = Array.from(document.querySelectorAll('div, button, span')).filter(el => {
                                 const r = el.getBoundingClientRect();
                                 return (
-                                    r.top > outerRect.bottom - 10 &&
+                                    r.top > outerRect.bottom - 15 &&
                                     r.top < outerRect.bottom + 140 &&
-                                    r.width >= 36 && r.width <= 85 &&
-                                    r.height >= 28 && r.height <= 65 &&
-                                    r.left >= outerRect.left - 60 &&
+                                    r.width >= 30 && r.width <= 100 &&
+                                    r.height >= 22 && r.height <= 68 &&
+                                    r.left >= outerRect.left - 140 &&
                                     r.left <= outerRect.left + 80
                                 );
                             });
                             candidates.sort((a, b) => a.getBoundingClientRect().width - b.getBoundingClientRect().width);
                             handleEl = candidates[0] || null;
                         }
-                        if (!handleEl) return null;
 
-                        const handleRect = handleEl.getBoundingClientRect();
-                        let trackWidth = 280;
-                        let parent = handleEl.parentElement;
-                        for (let i = 0; i < 4 && parent; i++) {
-                            const pr = parent.getBoundingClientRect();
-                            if (pr.width >= 200 && pr.width <= 440) {
-                                trackWidth = pr.width;
-                                break;
+                        let handleX = 0, handleY = 0, handleWidth = 63, trackWidth = 347;
+                        if (handleEl) {
+                            const handleRect = handleEl.getBoundingClientRect();
+                            handleX = handleRect.left + handleRect.width / 2;
+                            handleY = handleRect.top + handleRect.height / 2;
+                            handleWidth = handleRect.width;
+                            let parent = handleEl.parentElement;
+                            for (let i = 0; i < 5 && parent; i++) {
+                                const pr = parent.getBoundingClientRect();
+                                if (pr.width >= 240 && pr.width <= 440) {
+                                    trackWidth = pr.width;
+                                    break;
+                                }
+                                parent = parent.parentElement;
                             }
-                            parent = parent.parentElement;
+                        } else {
+                            // Fallback hình học chính xác theo khung chuẩn TikTok Dark-Mode (trackWidth=347, handleWidth=63)
+                            const centerX = outerRect.left + outerRect.width / 2;
+                            handleX = centerX - 347 / 2 + 63 / 2;
+                            handleY = outerRect.bottom + 28;
                         }
 
                         return {
                             outerSrc: outerImg.src,
                             innerSrc: innerImg.src,
                             ratio: innerRect.width / Math.max(1, outerRect.width),
-                            handleX: handleRect.left + handleRect.width / 2,
-                            handleY: handleRect.top + handleRect.height / 2,
-                            handleWidth: handleRect.width,
+                            handleX: handleX,
+                            handleY: handleY,
+                            handleWidth: handleWidth,
                             trackWidth: trackWidth
                         };
                     }"""
@@ -300,48 +315,47 @@ class TikTok24hFilterEngine:
                     inner_bytes=r_in.content,
                     inner_to_outer_ratio=float(captcha_data.get("ratio") or 0.608),
                 )
+                if attempt == 4:
+                    frac = 1.0 - frac
+
                 max_slide_px = max(
-                    160.0,
-                    float(captcha_data["trackWidth"]) - float(captcha_data["handleWidth"]) - 4.0,
+                    180.0,
+                    float(captcha_data["trackWidth"]) - float(captcha_data["handleWidth"]) - 2.0,
                 )
                 drag_px = frac * max_slide_px
 
                 start_x = float(captcha_data["handleX"])
                 start_y = float(captcha_data["handleY"])
                 end_x = start_x + drag_px
-                end_y = start_y + random.uniform(-1.5, 1.5)
+                end_y = start_y + random.uniform(-1.2, 1.2)
 
                 logger.info(
-                    f"[{ch_folder}] [Auto-Captcha Solver] Góc khớp tối ưu: {frac * 360:.1f}° -> Kéo thanh trượt {drag_px:.1f}px / {max_slide_px:.1f}px..."
+                    f"[{ch_folder}] [Auto-Captcha Solver] Góc khớp tối ưu: {frac * 360:.1f}° -> Kéo thanh trượt {drag_px:.1f}px / {max_slide_px:.1f}px (từ x={start_x:.0f}, y={start_y:.0f})..."
                 )
 
-                # Kéo mượt mà kết hợp chuột phần cứng macOS và trình duyệt (có giảm tốc cuối hành trình như người thật)
                 self._human_move_mouse(page, start_x, start_y)
-                time.sleep(random.uniform(0.18, 0.32))
+                time.sleep(random.uniform(0.18, 0.30))
                 page.mouse.down()
-                steps = random.randint(24, 34)
+                steps = random.randint(28, 38)
                 for s in range(1, steps + 1):
-                    # Đường cong Ease-Out tự nhiên của tay người khi căn chỉnh hình tròn
                     t = s / steps
                     eased = 1.0 - pow(1.0 - t, 2.2)
-                    cur_x = start_x + drag_px * eased + random.uniform(-0.8, 0.8) * (1.0 - t)
-                    cur_y = start_y + random.uniform(-1.8, 1.8)
+                    cur_x = start_x + drag_px * eased + random.uniform(-0.6, 0.6) * (1.0 - t)
+                    cur_y = start_y + random.uniform(-1.5, 1.5)
                     page.mouse.move(cur_x, cur_y)
-                    time.sleep(random.uniform(0.014, 0.028))
+                    time.sleep(random.uniform(0.015, 0.026))
 
-                # Giữ nhẹ 0.25s để mắt người kiểm tra khớp hình rồi nhả chuột
                 page.mouse.move(end_x, end_y)
-                time.sleep(random.uniform(0.22, 0.38))
+                time.sleep(random.uniform(0.28, 0.42))
                 page.mouse.up()
 
                 try:
-                    sx1, sy1 = self.desktop.convert_viewport_to_screen_coords(page, start_x, start_y)
                     sx2, sy2 = self.desktop.convert_viewport_to_screen_coords(page, end_x, end_y)
                     self.desktop.move_mouse_os(sx2, sy2)
                 except Exception:
                     pass
 
-                time.sleep(random.uniform(2.8, 4.0))
+                time.sleep(random.uniform(2.8, 3.8))
 
                 still_present = page.evaluate(
                     """() => {
@@ -596,7 +610,7 @@ class TikTok24hFilterEngine:
             if self._locate_comment_input_box(page):
                 return True
 
-            # 1. Tìm tab 'Bình luận' / 'Comments' ở thanh tiêu đề khung bên phải (x > 600, 40 < y < 240)
+            # 1. Tìm tab 'Bình luận' / 'Comments' ở thanh tiêu đề khung bên phải (x > 550, 40 < y < 250)
             tab_pos = page.evaluate(
                 """() => {
                     const tabLabels = ['Bình luận', 'Comments'];
@@ -607,7 +621,6 @@ class TikTok24hFilterEngine:
                         if (tabLabels.some(l => txt === l || txt.startsWith(l + ' (')) && txt.length < 30) {
                             const r = el.getBoundingClientRect();
                             if (r.left > 550 && r.top > 40 && r.top < 250 && r.width > 30 && r.height > 14) {
-                                el.click();
                                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                             }
                         }
@@ -617,7 +630,8 @@ class TikTok24hFilterEngine:
             )
             if tab_pos:
                 self._os_click_viewport(page, float(tab_pos["x"]), float(tab_pos["y"]))
-                time.sleep(random.uniform(1.4, 2.0))
+                time.sleep(random.uniform(1.6, 2.3))
+                self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
                 if self._locate_comment_input_box(page):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đã chuyển sang tab 'Bình luận' ở khung phải.")
                     return True
@@ -640,7 +654,8 @@ class TikTok24hFilterEngine:
             )
             if icon_pos:
                 self._os_click_viewport(page, float(icon_pos["x"]), float(icon_pos["y"]))
-                time.sleep(random.uniform(1.5, 2.2))
+                time.sleep(random.uniform(1.6, 2.3))
+                self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
                 if self._locate_comment_input_box(page):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đã mở khung 'Bình luận' qua icon 💬.")
                     return True
@@ -1157,29 +1172,31 @@ class TikTok24hFilterEngine:
         time.sleep(random.uniform(3.0, 4.5))
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
-        # Mở ngay tab 'Bình luận' ở khung bên phải (thay vì tab 'Bạn có thể thích' mặc định)
-        self._ensure_comment_tab_open(page, ch_folder)
-
-        # 1. Xem hết video của người khác
+        # 1. Xem hết video của người khác trước (như người thật để tránh kích hoạt Captcha sớm)
         watched_sec = self._step1_watch_full_video(page, ch_folder, video_url)
+        self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
         # 2. Thả tim video (bấm đúng 1 lần)
         liked = self._step2_like_video(page, ch_folder)
         time.sleep(random.uniform(0.8, 1.5))
 
         # 3. Sao chép liên kết video đó
+        self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
         copied_link = self._step3_copy_video_link(page, ch_folder, video_url)
         time.sleep(random.uniform(0.8, 1.5))
 
         # 4. Thêm video vào mục yêu thích (bấm đúng 1 lần)
+        self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
         favorited = self._step4_favorite_video(page, ch_folder)
         time.sleep(random.uniform(0.8, 1.5))
 
         # 5. Follow người đăng video đó (bấm đúng 1 lần)
+        self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
         followed = self._step5_follow_creator(page, ch_folder)
         time.sleep(random.uniform(1.0, 1.8))
 
-        # 6. Để lại 1 bình luận có ý nghĩa (sau khi đã follow để chủ kênh không bỏ sót và trả follow trong 24h)
+        # 6. Để lại 1 bình luận có ý nghĩa (mở tab Bình luận sau khi đã follow để chủ kênh không bỏ sót)
+        self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
         comment_text = self._step6_post_meaningful_comment(page, ch_folder, creator_handle)
 
         # Chụp ảnh màn hình kết quả tương tác vào remote_telemetry/ để giám sát từ xa
