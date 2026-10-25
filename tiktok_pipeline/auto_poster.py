@@ -1201,7 +1201,31 @@ class TikTokAutoPoster:
         history = self._load_post_history()
         posted_results: List[Dict[str, Any]] = []
 
-        # 0. Kiểm tra lệnh kích hoạt chạy thử từ xa (Remote Trigger từ máy Silicon sang máy Intel qua GitHub)
+        # 0a. Kiểm tra lệnh kích hoạt ĐĂNG NGAY TỪ XA (Remote Trigger Post-Now từ máy Silicon sang máy Intel qua GitHub)
+        remote_post = cfg.get("remote_trigger_post_now")
+        if isinstance(remote_post, dict) and remote_post.get("trigger_id"):
+            import platform as _plat
+
+            target_arch = str(remote_post.get("target_arch") or "").strip()
+            if not target_arch or _plat.machine() == target_arch:
+                p_trig_id = str(remote_post["trigger_id"]).strip()
+                p_trig_key = f"remote_post_{p_trig_id}"
+                if p_trig_id and p_trig_key not in history:
+                    p_trig_ch = str(remote_post.get("channel") or "tu_chan_gioi").strip()
+                    logger.info(
+                        f"[Remote Trigger Post-Now] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon ({p_trig_id}) -> "
+                        f"Kênh [{p_trig_ch}]!"
+                    )
+                    try:
+                        res = self.upload_one_channel_video(p_trig_ch, headless=headless)
+                        if res:
+                            history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            self._save_post_history(history)
+                            posted_results.append(res)
+                    except Exception as exc:
+                        logger.error(f"[Remote Trigger Post-Now] Lỗi khi đăng ngay ({p_trig_id}): {exc}")
+
+        # 0b. Kiểm tra lệnh kích hoạt chạy thử Bộ lọc 24h từ xa (Remote Trigger từ máy Silicon sang máy Intel qua GitHub)
         remote_trig = cfg.get("remote_trigger_filter_24h")
         if isinstance(remote_trig, dict) and remote_trig.get("trigger_id"):
             import platform as _plat
