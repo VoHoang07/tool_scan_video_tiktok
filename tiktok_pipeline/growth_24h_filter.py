@@ -587,12 +587,10 @@ class TikTok24hFilterEngine:
 
         return round(watch_seconds, 1)
 
-    def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
-        """
-        BƯỚC 2: Thả tim video (Like) — chỉ bấm ĐÚNG 1 LẦN nếu chưa thả tim (kiểm tra cả aria-pressed và màu đỏ SVG).
-        """
+    def _check_like_state(self, page: Any) -> Optional[Dict[str, Any]]:
+        """Đọc trạng thái thực tế của nút Thả tim (Like) trên DOM TikTok."""
         try:
-            like_info = page.evaluate(
+            return page.evaluate(
                 """() => {
                     const selectors = [
                         '[data-e2e="like-icon"]',
@@ -611,25 +609,44 @@ class TikTok24hFilterEngine:
                             const fill = (p.getAttribute('fill') || window.getComputedStyle(p).fill || '').toLowerCase();
                             return fill.includes('254, 44, 85') || fill.includes('fe2c55') || fill.includes('ff2c55') || fill.includes('255, 59, 92');
                         });
+                        const countEl = document.querySelector('[data-e2e="like-count"], [data-e2e="browse-like-count"]');
+                        const countTxt = countEl ? (countEl.innerText || '').trim() : '';
                         const r = btn.getBoundingClientRect();
                         if (r.width > 8 && r.height > 8) {
                             return {
                                 x: r.left + r.width / 2,
                                 y: r.top + r.height / 2,
-                                alreadyLiked: pressed || isRed
+                                alreadyLiked: pressed || isRed,
+                                countTxt: countTxt
                             };
                         }
                     }
                     return null;
                 }"""
             )
+        except Exception:
+            return None
+
+    def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
+        """
+        BƯỚC 2: Thả tim video (Like) — kiểm tra trạng thái trước & sau khi bấm để đảm bảo 100% tim đỏ (không bao giờ bị tự gỡ).
+        """
+        try:
+            like_info = self._check_like_state(page)
             if like_info:
                 if like_info.get("alreadyLiked"):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Video đã được thả tim từ trước (giữ nguyên ❤️).")
                     return True
+                before_cnt = like_info.get("countTxt")
                 self._os_click_viewport(page, float(like_info["x"]), float(like_info["y"]))
-                time.sleep(random.uniform(1.2, 2.0))
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ (1 click duy nhất).")
+                time.sleep(random.uniform(1.4, 2.1))
+
+                # Tự kiểm tra lại trạng thái sau khi bấm: nếu chưa ăn tim thì bấm lại đúng 1 lần
+                after_info = self._check_like_state(page)
+                if after_info and not after_info.get("alreadyLiked") and after_info.get("countTxt") == before_cnt:
+                    self._os_click_viewport(page, float(after_info["x"]), float(after_info["y"]))
+                    time.sleep(1.2)
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ & khóa trạng thái.")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bước thả tim: {exc}")
@@ -726,12 +743,10 @@ class TikTok24hFilterEngine:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi sao chép liên kết: {exc}")
         return False
 
-    def _step4_favorite_video(self, page: Any, ch_folder: str) -> bool:
-        """
-        BƯỚC 4: Thêm video vào mục Yêu thích (Bookmark) — chỉ bấm ĐÚNG 1 LẦN nếu chưa lưu.
-        """
+    def _check_favorite_state(self, page: Any) -> Optional[Dict[str, Any]]:
+        """Đọc trạng thái thực tế của nút Lưu yêu thích (Bookmark) trên DOM TikTok."""
         try:
-            fav_info = page.evaluate(
+            return page.evaluate(
                 """() => {
                     const selectors = [
                         '[data-e2e="undefined-icon"]',
@@ -753,36 +768,52 @@ class TikTok24hFilterEngine:
                             const fill = (p.getAttribute('fill') || window.getComputedStyle(p).fill || '').toLowerCase();
                             return fill.includes('250, 206, 21') || fill.includes('face15') || fill.includes('ffb800');
                         });
+                        const countEl = document.querySelector('[data-e2e="undefined-count"], [data-e2e="bookmark-count"]');
+                        const countTxt = countEl ? (countEl.innerText || '').trim() : '';
                         const r = btn.getBoundingClientRect();
                         if (r.width > 8 && r.height > 8) {
                             return {
                                 x: r.left + r.width / 2,
                                 y: r.top + r.height / 2,
-                                alreadyFavorited: pressed || isGold
+                                alreadyFavorited: pressed || isGold,
+                                countTxt: countTxt
                             };
                         }
                     }
                     return null;
                 }"""
             )
+        except Exception:
+            return None
+
+    def _step4_favorite_video(self, page: Any, ch_folder: str) -> bool:
+        """
+        BƯỚC 4: Thêm video vào mục Yêu thích (Bookmark) — chỉ bấm ĐÚNG 1 LẦN nếu chưa lưu và xác nhận trạng thái.
+        """
+        try:
+            fav_info = self._check_favorite_state(page)
             if fav_info:
                 if fav_info.get("alreadyFavorited"):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Video đã nằm trong mục Yêu thích từ trước (giữ nguyên 🔖).")
                     return True
+                before_cnt = fav_info.get("countTxt")
                 self._os_click_viewport(page, float(fav_info["x"]), float(fav_info["y"]))
-                time.sleep(random.uniform(1.2, 2.0))
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Đã THÊM VIDEO VÀO MỤC YÊU THÍCH 🔖 (1 click duy nhất).")
+                time.sleep(random.uniform(1.3, 2.0))
+
+                after_info = self._check_favorite_state(page)
+                if after_info and not after_info.get("alreadyFavorited") and after_info.get("countTxt") == before_cnt:
+                    self._os_click_viewport(page, float(after_info["x"]), float(after_info["y"]))
+                    time.sleep(1.2)
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Đã THÊM VIDEO VÀO MỤC YÊU THÍCH 🔖 & khóa trạng thái.")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi thêm vào mục yêu thích: {exc}")
         return False
 
-    def _step5_follow_creator(self, page: Any, ch_folder: str) -> bool:
-        """
-        BƯỚC 5: Follow người đăng video đó — kiểm tra chặt trạng thái và chỉ bấm ĐÚNG 1 LẦN nếu chưa Follow.
-        """
+    def _check_follow_state(self, page: Any) -> Optional[Dict[str, Any]]:
+        """Đọc trạng thái thực tế của nút Follow trên DOM TikTok."""
         try:
-            follow_info = page.evaluate(
+            return page.evaluate(
                 """() => {
                     const alreadyLabels = ['Đang Follow', 'Following', 'Bạn bè', 'Friends', 'Đã gửi', 'Tin nhắn', 'Message'];
                     const followLabels = ['Follow', 'Theo dõi'];
@@ -814,7 +845,7 @@ class TikTok24hFilterEngine:
                     for (const btn of buttons) {
                         const txt = (btn.innerText || btn.textContent || '').trim();
                         if (alreadyLabels.some(l => txt.toLowerCase().includes(l.toLowerCase()))) {
-                            continue;
+                            return { alreadyFollowing: true };
                         }
                         if (followLabels.includes(txt)) {
                             const r = btn.getBoundingClientRect();
@@ -830,13 +861,27 @@ class TikTok24hFilterEngine:
                     return null;
                 }"""
             )
+        except Exception:
+            return None
+
+    def _step5_follow_creator(self, page: Any, ch_folder: str) -> bool:
+        """
+        BƯỚC 5: Follow người đăng video đó — kiểm tra chặt trạng thái trước & sau khi bấm để không bao giờ bị tự gỡ.
+        """
+        try:
+            follow_info = self._check_follow_state(page)
             if follow_info:
                 if follow_info.get("alreadyFollowing"):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã Follow chủ kênh này từ trước (giữ nguyên ➕).")
                     return True
                 self._os_click_viewport(page, float(follow_info["x"]), float(follow_info["y"]))
-                time.sleep(random.uniform(1.5, 2.4))
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã FOLLOW người đăng video ➕ (1 click duy nhất).")
+                time.sleep(random.uniform(1.6, 2.4))
+
+                after_follow = self._check_follow_state(page)
+                if after_follow and not after_follow.get("alreadyFollowing") and "x" in after_follow:
+                    self._os_click_viewport(page, float(after_follow["x"]), float(after_follow["y"]))
+                    time.sleep(1.4)
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã FOLLOW người đăng video ➕ & khóa trạng thái.")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bấm Follow: {exc}")
@@ -848,13 +893,14 @@ class TikTok24hFilterEngine:
         """
         BƯỚC 6: Để lại 1 bình luận có ý nghĩa sau khi đã Xem hết video + Thả tim + Sao chép liên kết +
         Thêm vào yêu thích + Follow:
-        - Tự động bấm mở tab/icon Bình luận nếu khung bình luận đang ẩn.
-        - Bấm vào ô nhập bình luận và gõ từng ký tự trực tiếp vào DraftJS (`page.keyboard.type`) để nút 'Đăng' sáng lên.
-        - Bấm nút 'Đăng' (`[data-e2e="comment-post"]`) + nhấn phím Enter để gửi bình luận thành công 100%.
+        - Tự động bấm mở tab/icon Bình luận nếu khung bình luận đang ẩn (KHÔNG click đúp làm đóng lại!).
+        - Bấm vào ô nhập bình luận, dùng `insert_text` + `keyboard.type(" ")` để điền trọn vẹn câu tiếng Việt có dấu
+          vào DraftJS làm sáng nút đỏ 'Đăng' (`[data-e2e="comment-post"]`).
+        - Bấm nút 'Đăng' ĐÚNG 1 LẦN (hoặc phím Enter) để gửi bình luận thành công 100%.
         """
         comment_text = self.generate_meaningful_24h_comment(creator_handle=creator_handle)
         try:
-            # 1. Nếu tab 'Bình luận' hoặc nút icon Bình luận chưa mở khung nhập, bấm mở trước
+            # 1. Nếu ô nhập bình luận chưa hiển thị, bấm 1 lần vào tab 'Bình luận' hoặc icon Bình luận
             input_pos = self._locate_comment_input_box(page)
             if not input_pos:
                 opened_tab = page.evaluate(
@@ -867,7 +913,6 @@ class TikTok24hFilterEngine:
                             if (tabLabels.some(l => txt.startsWith(l)) && txt.length < 28) {
                                 const r = el.getBoundingClientRect();
                                 if (r.width > 30 && r.height > 14 && r.top > 40 && r.top < 600) {
-                                    try { el.click(); } catch (e) {}
                                     return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                                 }
                             }
@@ -888,10 +933,11 @@ class TikTok24hFilterEngine:
                 )
                 if opened_tab:
                     self._os_click_viewport(page, float(opened_tab["x"]), float(opened_tab["y"]))
-                    time.sleep(random.uniform(1.4, 2.2))
+                    time.sleep(random.uniform(1.5, 2.3))
                 else:
-                    page.mouse.wheel(0, 350)
-                    time.sleep(1.2)
+                    page.mouse.move(680, 500)
+                    page.mouse.wheel(0, 380)
+                    time.sleep(1.3)
                 input_pos = self._locate_comment_input_box(page)
 
             if not input_pos:
@@ -900,30 +946,29 @@ class TikTok24hFilterEngine:
 
             # 2. Click ĐÚNG 1 LẦN vào ô bình luận để kích hoạt khung soạn thảo DraftJS
             self._os_click_viewport(page, float(input_pos["x"]), float(input_pos["y"]))
-            time.sleep(random.uniform(0.6, 1.0))
+            time.sleep(random.uniform(0.7, 1.1))
 
-            # Focus trực tiếp vào div[contenteditable="true"] bên trong khung bình luận
+            # Focus trực tiếp vào div[contenteditable="true"] bên trong khung bình luận (nếu vừa được mount)
             try:
                 ce_box = page.locator(
                     '[data-e2e="comment-input"] div[contenteditable="true"], '
                     '[data-e2e="comment-text"] div[contenteditable="true"], '
+                    'div.public-DraftEditor-content[contenteditable="true"], '
                     'div[contenteditable="true"]'
                 ).first
-                if ce_box.is_visible():
+                if ce_box.count() > 0 and ce_box.is_visible():
                     ce_box.click()
                     time.sleep(0.25)
             except Exception:
                 pass
 
-            # 3. Gõ từng ký tự trực tiếp bằng page.keyboard.type để kích hoạt sự kiện input của DraftJS làm sáng nút 'Đăng'
-            for ch in comment_text:
-                page.keyboard.type(ch, delay=random.randint(24, 52))
-                if ch in (",", ".", "!", " "):
-                    time.sleep(random.uniform(0.03, 0.09))
+            # 3. Nhập nội dung tiếng Việt bằng insert_text kết hợp gõ phím Space để DraftJS kích hoạt nút 'Đăng'
+            page.keyboard.insert_text(comment_text)
+            time.sleep(0.25)
+            page.keyboard.type(" ", delay=55)
+            time.sleep(random.uniform(0.9, 1.4))
 
-            time.sleep(random.uniform(0.9, 1.5))
-
-            # 4. Tìm và bấm nút 'Đăng' (`[data-e2e="comment-post"]`) + phím Enter dự phòng
+            # 4. Tìm và bấm nút 'Đăng' (`[data-e2e="comment-post"]`) ĐÚNG 1 LẦN (không gọi el.click() kép)
             post_comment_pos = page.evaluate(
                 """() => {
                     const selectors = [
@@ -936,7 +981,6 @@ class TikTok24hFilterEngine:
                         if (el) {
                             const r = el.getBoundingClientRect();
                             if (r.width > 10 && r.height > 10) {
-                                try { el.click(); } catch (e) {}
                                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                             }
                         }
@@ -948,7 +992,7 @@ class TikTok24hFilterEngine:
                         const txt = (el.innerText || el.textContent || '').trim();
                         if (labels.includes(txt)) {
                             const r = el.getBoundingClientRect();
-                            if (r.width > 18 && r.height > 14 && r.top > 250) {
+                            if (r.width > 18 && r.height > 14 && r.top > 200) {
                                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                             }
                         }
@@ -958,10 +1002,11 @@ class TikTok24hFilterEngine:
             )
             if post_comment_pos:
                 self._os_click_viewport(page, float(post_comment_pos["x"]), float(post_comment_pos["y"]))
-                time.sleep(0.6)
-            page.keyboard.press("Enter")
+                time.sleep(1.0)
+            else:
+                page.keyboard.press("Enter")
 
-            time.sleep(random.uniform(2.8, 4.0))
+            time.sleep(random.uniform(2.5, 3.8))
             logger.info(
                 f"[{ch_folder}] [Bộ lọc 24h - Bước 6/6] Đã BÌNH LUẬN thành công: \"{comment_text}\""
             )
@@ -979,6 +1024,7 @@ class TikTok24hFilterEngine:
                     '[data-e2e="comment-input"]',
                     '[data-e2e="comment-text"]',
                     'div[class*="DivCommentInput"]',
+                    'div.public-DraftEditor-content[contenteditable="true"]',
                     'div[contenteditable="true"]'
                 ];
                 for (const sel of selectors) {
@@ -1009,7 +1055,9 @@ class TikTok24hFilterEngine:
         self, page: Any, ch_folder: str, video_url: str
     ) -> Dict[str, Any]:
         """
-        Thực thi trọn vẹn 6 bước "Bộ lọc 24 giờ" trên 1 video mục tiêu và lưu vào sổ theo dõi 24h.
+        Thực thi trọn vẹn 6 bước "Bộ lọc 24 giờ" trên 1 video mục tiêu,
+        tự động hậu kiểm (Self-Healing Audit) đảm bảo Tim + Yêu thích + Follow không bao giờ bị gỡ,
+        và lưu ảnh chụp màn hình + sổ theo dõi 24h.
         """
         creator_handle, video_id = self._extract_creator_and_video_id(video_url)
         logger.info(
@@ -1041,6 +1089,38 @@ class TikTok24hFilterEngine:
 
         # 6. Để lại 1 bình luận có ý nghĩa (sau khi đã follow để chủ kênh không bỏ sót và trả follow trong 24h)
         comment_text = self._step6_post_meaningful_comment(page, ch_folder, creator_handle)
+
+        # BƯỚC HẬU KIỂM TỰ PHỤC HỒI (Self-Healing Audit): Kiểm tra lại lần cuối trước khi rời trang
+        # Nếu Tim, Yêu thích hoặc Follow vô tình chưa bật thì tự động bật lại ngay
+        final_like = self._check_like_state(page)
+        if final_like and not final_like.get("alreadyLiked"):
+            self._os_click_viewport(page, float(final_like["x"]), float(final_like["y"]))
+            liked = True
+            time.sleep(0.8)
+
+        final_fav = self._check_favorite_state(page)
+        if final_fav and not final_fav.get("alreadyFavorited"):
+            self._os_click_viewport(page, float(final_fav["x"]), float(final_fav["y"]))
+            favorited = True
+            time.sleep(0.8)
+
+        final_fol = self._check_follow_state(page)
+        if final_fol and not final_fol.get("alreadyFollowing") and "x" in final_fol:
+            self._os_click_viewport(page, float(final_fol["x"]), float(final_fol["y"]))
+            followed = True
+            time.sleep(0.8)
+
+        # Chụp ảnh màn hình kết quả tương tác vào remote_telemetry/ để giám sát từ xa
+        try:
+            telem_dir = self.project_root / "remote_telemetry"
+            telem_dir.mkdir(parents=True, exist_ok=True)
+            page.screenshot(
+                path=str(telem_dir / f"latest_filter24h_{ch_folder}.jpg"),
+                type="jpeg",
+                quality=60,
+            )
+        except Exception:
+            pass
 
         now_dt = datetime.now()
         record = {

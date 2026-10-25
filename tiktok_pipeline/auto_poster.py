@@ -1367,6 +1367,18 @@ class TikTokAutoPoster:
                 time.sleep(random.uniform(1.0, 1.5))
                 self._dismiss_all_studio_popovers(page, ch_folder)
 
+                # Chụp ảnh màn hình ngay trước khi bấm Đăng để có thể kiểm tra từ xa
+                try:
+                    telem_dir = self.project_root / "remote_telemetry"
+                    telem_dir.mkdir(parents=True, exist_ok=True)
+                    page.screenshot(
+                        path=str(telem_dir / f"latest_upload_{ch_folder}_before_post.jpg"),
+                        type="jpeg",
+                        quality=60,
+                    )
+                except Exception:
+                    pass
+
                 btn_info = self._find_exact_post_button(page, scroll_into_view=True)
                 time.sleep(0.8)
                 btn_info = self._find_exact_post_button(page, scroll_into_view=False) or btn_info
@@ -1443,9 +1455,35 @@ class TikTokAutoPoster:
                     f"[{ch_folder}] Hoàn tất kiểm tra trang Bài đăng (đã chuyển {switched_public} bài từ 'Chỉ mình tôi' -> 'Mọi người')."
                 )
 
+                # Chụp ảnh màn hình kết quả sau khi đăng & đồng bộ báo cáo từ xa lên GitHub
+                self._save_and_push_telemetry(
+                    page=page,
+                    event_type="upload",
+                    ch_folder=ch_folder,
+                    details={
+                        "video_file": video_path.name,
+                        "caption": caption,
+                        "hashtags": hashtags,
+                        "post_confirmed": post_confirmed,
+                        "switched_public_count": switched_public,
+                        "final_url": page.url,
+                    },
+                )
+
                 dwell_sec = random.randint(8, 15)
                 time.sleep(dwell_sec)
 
+            except Exception as up_exc:
+                try:
+                    self._save_and_push_telemetry(
+                        page=page,
+                        event_type="upload_error",
+                        ch_folder=ch_folder,
+                        details={"video_file": video_path.name, "error": str(up_exc)},
+                    )
+                except Exception:
+                    pass
+                raise
             finally:
                 try:
                     context.close()
@@ -1456,6 +1494,95 @@ class TikTokAutoPoster:
         marked = self.crawler.mark_video_posted(str(video_path))
         logger.info(f"[{ch_folder}] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: {marked['filename']}")
         return marked
+
+    def _save_and_push_telemetry(
+        self,
+        page: Any,
+        event_type: str,
+        ch_folder: str,
+        details: Dict[str, Any],
+    ) -> None:
+        """
+        Chụp ảnh màn hình trình duyệt hiện tại và ghi báo cáo trạng thái vào `remote_telemetry/`,
+        sau đó tự động `git commit` & `git push` lên GitHub để người dùng ở xa (trên máy Silicon)
+        có thể kiểm tra hình ảnh & nhật ký của máy Intel bất kỳ lúc nào mà không cần có mặt ở nhà.
+        """
+        import platform as _plat
+        import subprocess
+
+        try:
+            telem_dir = self.project_root / "remote_telemetry"
+            telem_dir.mkdir(parents=True, exist_ok=True)
+            img_name = f"latest_{event_type}_{ch_folder}.jpg"
+            img_path = telem_dir / img_name
+            if page:
+                try:
+                    page.screenshot(path=str(img_path), type="jpeg", quality=60)
+                except Exception:
+                    pass
+
+            report_path = telem_dir / "intel_status_report.json"
+            existing: Dict[str, Any] = {}
+            if report_path.exists():
+                try:
+                    existing = json.loads(report_path.read_text(encoding="utf-8"))
+                except Exception:
+                    existing = {}
+
+            now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            entry = {
+                "timestamp": now_str,
+                "machine_arch": _plat.machine(),
+                "event_type": event_type,
+                "channel": ch_folder,
+                "screenshot": f"remote_telemetry/{img_name}",
+                "details": details,
+            }
+            existing["latest_event"] = entry
+            history_list = existing.get("recent_events") or []
+            history_list.insert(0, entry)
+            existing["recent_events"] = history_list[:15]
+            report_path.write_text(
+                json.dumps(existing, ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
+
+            # Tự động đẩy ảnh chụp màn hình & báo cáo trạng thái lên GitHub
+            subprocess.run(
+                ["git", "add", "remote_telemetry"],
+                cwd=str(self.project_root),
+                capture_output=True,
+                timeout=10,
+                check=False,
+            )
+            subprocess.run(
+                [
+                    "git",
+                    "-c",
+                    "user.name=IntelMacBot",
+                    "-c",
+                    "user.email=bot@tiktokpipeline.local",
+                    "commit",
+                    "-m",
+                    f"Auto-Telemetry [{event_type}] {ch_folder} at {now_str}",
+                ],
+                cwd=str(self.project_root),
+                capture_output=True,
+                timeout=10,
+                check=False,
+            )
+            subprocess.run(
+                ["git", "push", "origin", "main"],
+                cwd=str(self.project_root),
+                capture_output=True,
+                timeout=25,
+                check=False,
+            )
+            logger.info(
+                f"[{ch_folder}] [Remote Telemetry] Đã chụp ảnh màn hình & đẩy báo cáo trạng thái ({img_name}) lên GitHub!"
+            )
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] [Remote Telemetry] Bỏ qua đồng bộ telemetry phụ: {exc}")
 
     def run_24h_filter_for_channel(
         self,
@@ -1506,6 +1633,12 @@ class TikTokAutoPoster:
                         "interacted_count": len(records),
                         "records": records,
                     }
+                    self._save_and_push_telemetry(
+                        page=page,
+                        event_type="filter24h",
+                        ch_folder=ch_folder,
+                        details={"interacted_count": len(records), "records": records},
+                    )
                     time.sleep(random.uniform(3.0, 5.0))
                 finally:
                     try:
