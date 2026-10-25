@@ -52,12 +52,12 @@
     ]
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_tu_chan_gioi_20261025_2035",
+    "trigger_id": "post_now_tu_chan_gioi_20261025_2242",
     "target_arch": "x86_64",
     "channel": "tu_chan_gioi"
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "intel_live_test_20261025_1424",
+    "trigger_id": "intel_live_test_20261025_2242",
     "target_arch": "x86_64",
     "channel": "video_AI_hay",
     "video_count": 2

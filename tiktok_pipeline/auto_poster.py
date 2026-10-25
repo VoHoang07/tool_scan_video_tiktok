@@ -185,7 +185,6 @@ class TikTokAutoPoster:
         bật WebGL/GPU tự nhiên, tiêm `STEALTH_INIT_SCRIPT`).
         """
         launch_args = [
-            "--disable-blink-features=AutomationControlled",
             "--disable-infobars",
             "--no-first-run",
             "--no-default-browser-check",
@@ -239,18 +238,87 @@ class TikTokAutoPoster:
 
     def _os_click_viewport(self, page: Any, viewport_x: float, viewport_y: float) -> None:
         """
-        Click vào tọa độ `(viewport_x, viewport_y)` bằng sự kiện chuột phần cứng `CoreGraphics CGEvent`
-        của hệ điều hành macOS (`macos-desktop-control`), kèm dự phòng click trình duyệt.
+        Di chuyển chuột phần cứng hệ điều hành macOS (`CoreGraphics CGEvent` từ `macos-desktop-control`)
+        kết hợp đường cong Bezier tới `(viewport_x, viewport_y)` và thực hiện ĐÚNG 1 LẦN CLICK DUY NHẤT
+        (tuyệt đối không click đúp 2 lần làm tự gỡ Follow / gỡ Thả tim).
         """
         self._human_move_mouse(page, viewport_x, viewport_y)
-        try:
-            self.desktop.ensure_app_focus("Google Chrome", delay_sec=0.08)
-            sx, sy = self.desktop.convert_viewport_to_screen_coords(page, viewport_x, viewport_y)
-            self.desktop.click_os(sx, sy, smooth_move=False)
-            time.sleep(0.15)
-        except Exception:
-            pass
-        page.mouse.click(viewport_x, viewport_y)
+        time.sleep(random.uniform(0.06, 0.14))
+        page.mouse.click(viewport_x, viewport_y, delay=random.randint(45, 90))
+
+    def _dismiss_all_studio_popovers(self, page: Any, ch_folder: str) -> int:
+        """
+        Tự động phát hiện và bấm đóng tất cả hộp thoại hướng dẫn / giới thiệu tính năng mới của TikTok Studio
+        (ví dụ: 'Bổ sung tính năng chỉnh sửa mới' -> nút đỏ 'Đã hiểu', 'Got it', 'OK', 'Đóng', 'Bỏ qua', 'Tiếp theo').
+        """
+        dismissed = 0
+        for _ in range(4):
+            try:
+                btn_pos = page.evaluate(
+                    """() => {
+                        const targetLabels = [
+                            'Đã hiểu', 'Got it', 'Tôi đã hiểu', 'Bỏ qua', 'Skip',
+                            'Để sau', 'Not now', 'Đóng', 'Close', 'OK', 'Tiếp theo', 'Hoàn tất'
+                        ];
+                        const hintKeywords = [
+                            'Bổ sung tính năng', 'tính năng chỉnh sửa mới', 'chuyên nghiệp và cuốn hút',
+                            'Hướng dẫn', 'Mẹo', 'Tính năng mới'
+                        ];
+                        const allEls = Array.from(document.querySelectorAll('button, div[role="button"], span, div'));
+
+                        // 1. Ưu tiên tìm nút 'Đã hiểu' / 'Got it' (click trực tiếp bằng JS + trả về tọa độ)
+                        for (const el of allEls) {
+                            if (el.children.length > 2) continue;
+                            const txt = (el.innerText || el.textContent || '').trim();
+                            if (!targetLabels.includes(txt)) continue;
+                            const btn = el.closest('button') || el.closest('[role="button"]') || el;
+                            const r = btn.getBoundingClientRect();
+                            if (r.width > 24 && r.height > 16 && r.top > 50) {
+                                try { btn.click(); } catch (e) {}
+                                try { el.click(); } catch (e) {}
+                                return {
+                                    label: txt,
+                                    x: r.left + r.width / 2,
+                                    y: Math.min(window.innerHeight - 10, Math.max(10, r.top + Math.min(r.height / 2, 16)))
+                                };
+                            }
+                        }
+
+                        // 2. Nếu có thẻ chứa 'Bổ sung tính năng chỉnh sửa mới', tìm mọi nút bên trong nó
+                        for (const container of Array.from(document.querySelectorAll('div, section, aside'))) {
+                            const cTxt = (container.innerText || '').trim();
+                            if (cTxt.length > 350 || !hintKeywords.some(k => cTxt.includes(k))) continue;
+                            const btns = Array.from(container.querySelectorAll('button, [role="button"]'));
+                            for (const b of btns) {
+                                const r = b.getBoundingClientRect();
+                                if (r.width > 20 && r.height > 14) {
+                                    try { b.click(); } catch (e) {}
+                                    return {
+                                        label: (b.innerText || 'PopoverButton').trim(),
+                                        x: r.left + r.width / 2,
+                                        y: Math.min(window.innerHeight - 10, Math.max(10, r.top + 14))
+                                    };
+                                }
+                            }
+                        }
+                        return null;
+                    }"""
+                )
+                if btn_pos and "x" in btn_pos and "y" in btn_pos:
+                    dismissed += 1
+                    logger.info(
+                        f"[{ch_folder}] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: '{btn_pos.get('label')}'"
+                    )
+                    try:
+                        self._os_click_viewport(page, float(btn_pos["x"]), float(btn_pos["y"]))
+                    except Exception:
+                        pass
+                    time.sleep(0.8)
+                else:
+                    break
+            except Exception:
+                break
+        return dismissed
 
     def _simulate_human_warmup(self, page: Any, ch_folder: str) -> None:
         """
@@ -291,11 +359,18 @@ class TikTokAutoPoster:
         Xóa sạch tên file mặc định (`20261023_085817_tiktok_story_...`) mà TikTok Studio tự điền vào ô `Mô tả`,
         sau đó gõ Kịch bản ngắn (`caption`) và chọn từng thẻ `#hashtag` Hot Search từ menu gợi ý của TikTok.
         """
+        self._dismiss_all_studio_popovers(page, ch_folder)
+        page.evaluate("window.scrollTo({ top: 0, behavior: 'smooth' })")
+        time.sleep(0.8)
+
         caption_box = page.locator('div[contenteditable="true"]').first
         caption_box.wait_for(state="visible", timeout=25000)
+        caption_box.scroll_into_view_if_needed()
 
-        # Đợi TikTok tự điền tên file mặc định vào ô Mô tả rồi xóa sạch 100%
-        time.sleep(random.uniform(2.0, 3.5))
+        # Đợi TikTok tự điền tên file mặc định vào ô Mô tả rồi tắt mọi popup hướng dẫn và xóa sạch 100%
+        time.sleep(random.uniform(1.5, 2.5))
+        self._dismiss_all_studio_popovers(page, ch_folder)
+
         box_bounds = caption_box.bounding_box()
         if box_bounds:
             self._human_move_mouse(
@@ -304,7 +379,8 @@ class TikTokAutoPoster:
                 box_bounds["y"] + box_bounds["height"] * random.uniform(0.3, 0.7),
             )
 
-        for attempt in range(4):
+        for attempt in range(5):
+            self._dismiss_all_studio_popovers(page, ch_folder)
             caption_box.click()
             time.sleep(0.25)
             page.keyboard.press("Meta+A")
@@ -315,7 +391,7 @@ class TikTokAutoPoster:
             time.sleep(0.15)
             page.keyboard.press("Backspace")
 
-            # Dự phòng chọn toàn bộ node con trong DraftJS / ProseMirror contenteditable
+            # Dự phòng chọn toàn bộ node con trong DraftJS / ProseMirror contenteditable + xóa sạch
             try:
                 page.evaluate(
                     """() => {
@@ -333,7 +409,7 @@ class TikTokAutoPoster:
                 )
             except Exception:
                 pass
-            time.sleep(0.25)
+            time.sleep(0.2)
             page.keyboard.press("Backspace")
 
             remaining = ""
@@ -341,48 +417,59 @@ class TikTokAutoPoster:
                 remaining = (caption_box.inner_text() or "").strip()
             except Exception:
                 pass
+
+            if remaining and (
+                video_stem in remaining
+                or "tiktok_story" in remaining
+                or "douyin_story" in remaining
+                or "2026" in remaining
+            ):
+                # Bấm End rồi nhấn Backspace liên hoàn xóa từng ký tự tên file cứng đầu
+                caption_box.click()
+                page.keyboard.press("End")
+                for _ in range(len(remaining) + 12):
+                    page.keyboard.press("Backspace")
+                for _ in range(12):
+                    page.keyboard.press("Delete")
+                time.sleep(0.2)
+                try:
+                    remaining = (caption_box.inner_text() or "").strip()
+                except Exception:
+                    remaining = ""
+
             if not remaining or (
                 video_stem not in remaining
                 and "tiktok_story" not in remaining
                 and "douyin_story" not in remaining
+                and "2026" not in remaining
             ):
                 break
             logger.debug(f"[{ch_folder}] Xóa lại tên file mặc định lần {attempt + 1}: '{remaining}'")
 
-        time.sleep(random.uniform(0.4, 0.8))
+        time.sleep(random.uniform(0.4, 0.7))
 
-        # Gõ Kịch bản ngắn (Short Script) kết hợp macOS Native Input (macos-desktop-control) & nhịp gõ người thật
+        # Gõ trực tiếp từng ký tự Kịch bản ngắn vào DraftJS của Chrome để không bị mất focus bởi popup
         clean_caption = caption.strip()
-        try:
-            self.desktop.ensure_app_focus("Google Chrome", delay_sec=0.1)
-            self.desktop.type_text_humanly_os(clean_caption, chunk_by_word=True)
-            time.sleep(0.35)
-            after_os_txt = (caption_box.inner_text() or "").strip()
-            if len(after_os_txt) < max(5, len(clean_caption) // 3):
-                for ch in clean_caption:
-                    page.keyboard.type(ch, delay=random.randint(25, 68))
-        except Exception:
-            for ch in clean_caption:
-                page.keyboard.type(ch, delay=random.randint(25, 68))
-                if ch in (".", ",", "!", "?", "—", ":"):
-                    time.sleep(random.uniform(0.12, 0.30))
-                elif ch == " " and random.random() < 0.25:
-                    time.sleep(random.uniform(0.05, 0.14))
+        caption_box.click()
+        time.sleep(0.2)
+        for ch in clean_caption:
+            page.keyboard.type(ch, delay=random.randint(22, 52))
+            if ch in (".", ",", "!", "?", "—", ":"):
+                time.sleep(random.uniform(0.08, 0.18))
+            elif ch == " " and random.random() < 0.2:
+                time.sleep(random.uniform(0.04, 0.10))
 
         page.keyboard.type(" ", delay=60)
         time.sleep(random.uniform(0.4, 0.7))
 
-        # Gõ từng #hashtag và chờ menu gợi ý của TikTok hiện ra rồi nhấn Enter (kèm phím cứng macOS Return)
+        # Gõ từng #hashtag và chờ menu gợi ý của TikTok hiện ra rồi nhấn Enter
         tags = [t.strip() for t in hashtags_str.split() if t.strip().startswith("#")]
         for tag in tags:
-            page.keyboard.type(tag, delay=random.randint(42, 88))
-            time.sleep(random.uniform(0.95, 1.40))
-            try:
-                self.desktop.key_press_os("return")
-            except Exception:
-                page.keyboard.press("Enter")
+            page.keyboard.type(tag, delay=random.randint(38, 75))
+            time.sleep(random.uniform(0.95, 1.35))
+            page.keyboard.press("Enter")
             time.sleep(random.uniform(0.25, 0.45))
-            page.keyboard.type(" ", delay=random.randint(35, 75))
+            page.keyboard.type(" ", delay=random.randint(35, 65))
 
         page.keyboard.press("Escape")
         logger.info(f"[{ch_folder}] Đã xóa tên file mặc định, gõ xong kịch bản ngắn & gắn thẻ Hashtag Hot Search.")
@@ -1015,21 +1102,11 @@ class TikTokAutoPoster:
                 file_input = page.locator('input[type="file"]').first
                 file_input.wait_for(state="attached", timeout=30000)
                 file_input.set_input_files(str(video_path))
-                logger.info(f"[{ch_folder}] Đã nạp file video vào TikTok Studio...")
-
-                # Bước 4: Xóa sạch tên file mặc định trong ô Mô tả & gõ Kịch bản ngắn + Hashtags Hot Search
-                self._clear_and_type_caption_hashtags(
-                    page=page,
-                    ch_folder=ch_folder,
-                    caption=caption,
-                    hashtags_str=hashtags,
-                    video_stem=video_path.stem,
+                logger.info(
+                    f"[{ch_folder}] Đã nạp file video vào TikTok Studio. Đang chờ tải lên 100% và tự động đóng các hộp thoại hướng dẫn ('Đã hiểu')..."
                 )
 
-                # Bước 5: Tự động cấu hình toàn bộ mục Cài đặt & Kiểm tra (Công khai = Mọi người, HD = ON, Bình luận = ON)
-                self._configure_upload_settings_public(page, ch_folder)
-
-                # Bước 6: Đợi video tải lên đủ 100% và nút Đăng (Post) khả dụng
+                # Bước 4: Đợi video tải lên đạt 100% TRƯỚC, trong lúc đợi liên tục tắt popup 'Bổ sung tính năng chỉnh sửa mới -> Đã hiểu'
                 post_btn = page.locator(
                     'button[data-e2e="post_video_button"], button:has-text("Đăng"), button:has-text("Post")'
                 ).first
@@ -1037,6 +1114,7 @@ class TikTokAutoPoster:
                 ready_to_post = False
                 for _ in range(120):
                     time.sleep(2)
+                    self._dismiss_all_studio_popovers(page, ch_folder)
                     try:
                         if not self._is_video_upload_100_percent_done(page):
                             continue
@@ -1054,9 +1132,28 @@ class TikTokAutoPoster:
                         f"[{ch_folder}] Quá thời gian chờ tải video lên TikTok Studio (240s)."
                     )
 
-                # Cuộn xuống nút Đăng, di chuột phần cứng macOS (CGEvent) đường cong Bezier, hover rồi click
+                # Đợi thêm 1.5s sau khi tải xong 100% để bắt trọn mọi popup 'Đã hiểu' xuất hiện muộn
+                time.sleep(1.5)
+                self._dismiss_all_studio_popovers(page, ch_folder)
+
+                # Bước 5: Xóa sạch tên file mặc định (20261025_...) trong ô Mô tả & gõ Kịch bản ngắn + Hashtags Hot Search
+                self._clear_and_type_caption_hashtags(
+                    page=page,
+                    ch_folder=ch_folder,
+                    caption=caption,
+                    hashtags_str=hashtags,
+                    video_stem=video_path.stem,
+                )
+
+                # Bước 6: Tự động cấu hình toàn bộ mục Cài đặt & Kiểm tra (Công khai = Mọi người, HD = ON, Bình luận = ON)
+                self._dismiss_all_studio_popovers(page, ch_folder)
+                self._configure_upload_settings_public(page, ch_folder)
+                self._dismiss_all_studio_popovers(page, ch_folder)
+
+                # Cuộn xuống nút Đăng, di chuột đường cong Bezier, hover rồi click
                 post_btn.scroll_into_view_if_needed()
-                time.sleep(random.uniform(1.2, 2.2))
+                time.sleep(random.uniform(1.2, 2.0))
+                self._dismiss_all_studio_popovers(page, ch_folder)
                 btn_box = post_btn.bounding_box()
                 if btn_box:
                     click_x = btn_box["x"] + btn_box["width"] * random.uniform(0.35, 0.65)
