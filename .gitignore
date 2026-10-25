@@ -8,6 +8,8 @@ venv/
 .xdg_cache/
 .xdg_config/
 .playwright_browsers/
+.lean_ctx_cache/
+integrations/macos-desktop-control/node_modules/
 __pycache__/
 *.py[cod]
 

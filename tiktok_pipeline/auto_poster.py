@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from .crawler import CHANNEL_PROFILES, StoryAudioCrawler, resolve_channel_profile
+from .macos_desktop_controller import MacOSDesktopController
 from .utils import logger
 
 DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
@@ -22,6 +23,7 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
     },
     "random_jitter_minutes": 9,
     "warmup_before_upload": True,
+    "use_macos_native_input": True,
     "headless": False,
 }
 
@@ -102,6 +104,7 @@ class TikTokAutoPoster:
         self.schedule_config_path = self.project_root / "schedule_config.json"
         self.post_log_path = self.project_root / "posted_schedule_history.json"
         self.crawler = StoryAudioCrawler(project_root=self.project_root)
+        self.desktop = MacOSDesktopController(project_root=self.project_root)
         self.ensure_schedule_config()
 
     def ensure_schedule_config(self) -> Dict[str, Any]:
@@ -200,16 +203,39 @@ class TikTokAutoPoster:
         context.add_init_script(STEALTH_INIT_SCRIPT)
         return context
 
-    @staticmethod
-    def _human_move_mouse(page: Any, target_x: float, target_y: float) -> None:
-        """Di chuyển chuột theo đường cong mềm mại nhiều bước kèm nhiễu nhỏ như tay người thật."""
-        steps = random.randint(12, 24)
+    def _human_move_mouse(self, page: Any, target_x: float, target_y: float) -> None:
+        """
+        Di chuyển chuột theo đường cong Bezier mềm mại nhiều bước:
+        - Kết hợp điều khiển con trỏ phần cứng hệ điều hành macOS (`CoreGraphics CGEvent` từ `macos-desktop-control`)
+          và sự kiện con trỏ trình duyệt để tạo điểm tin cậy hành vi `isTrusted = true` tuyệt đối.
+        """
+        try:
+            sx, sy = self.desktop.convert_viewport_to_screen_coords(page, target_x, target_y)
+            self.desktop.move_mouse_smooth_os(sx, sy, steps=14)
+        except Exception:
+            pass
+        steps = random.randint(10, 18)
         for s in range(1, steps + 1):
             frac = s / steps
-            jitter_x = random.uniform(-4.0, 4.0) * (1.0 - frac)
-            jitter_y = random.uniform(-4.0, 4.0) * (1.0 - frac)
+            jitter_x = random.uniform(-3.5, 3.5) * (1.0 - frac)
+            jitter_y = random.uniform(-3.5, 3.5) * (1.0 - frac)
             page.mouse.move(target_x * frac + jitter_x, target_y * frac + jitter_y)
-            time.sleep(random.uniform(0.007, 0.020))
+            time.sleep(random.uniform(0.005, 0.015))
+
+    def _os_click_viewport(self, page: Any, viewport_x: float, viewport_y: float) -> None:
+        """
+        Click vào tọa độ `(viewport_x, viewport_y)` bằng sự kiện chuột phần cứng `CoreGraphics CGEvent`
+        của hệ điều hành macOS (`macos-desktop-control`), kèm dự phòng click trình duyệt.
+        """
+        self._human_move_mouse(page, viewport_x, viewport_y)
+        try:
+            self.desktop.ensure_app_focus("Google Chrome", delay_sec=0.08)
+            sx, sy = self.desktop.convert_viewport_to_screen_coords(page, viewport_x, viewport_y)
+            self.desktop.click_os(sx, sy, smooth_move=False)
+            time.sleep(0.15)
+        except Exception:
+            pass
+        page.mouse.click(viewport_x, viewport_y)
 
     def _simulate_human_warmup(self, page: Any, ch_folder: str) -> None:
         """
@@ -301,24 +327,36 @@ class TikTokAutoPoster:
 
         time.sleep(random.uniform(0.4, 0.8))
 
-        # Gõ Kịch bản ngắn (Short Script) như người thật
+        # Gõ Kịch bản ngắn (Short Script) kết hợp macOS Native Input (macos-desktop-control) & nhịp gõ người thật
         clean_caption = caption.strip()
-        for ch in clean_caption:
-            page.keyboard.type(ch, delay=random.randint(25, 68))
-            if ch in (".", ",", "!", "?", "—", ":"):
-                time.sleep(random.uniform(0.12, 0.30))
-            elif ch == " " and random.random() < 0.25:
-                time.sleep(random.uniform(0.05, 0.14))
+        try:
+            self.desktop.ensure_app_focus("Google Chrome", delay_sec=0.1)
+            self.desktop.type_text_humanly_os(clean_caption, chunk_by_word=True)
+            time.sleep(0.35)
+            after_os_txt = (caption_box.inner_text() or "").strip()
+            if len(after_os_txt) < max(5, len(clean_caption) // 3):
+                for ch in clean_caption:
+                    page.keyboard.type(ch, delay=random.randint(25, 68))
+        except Exception:
+            for ch in clean_caption:
+                page.keyboard.type(ch, delay=random.randint(25, 68))
+                if ch in (".", ",", "!", "?", "—", ":"):
+                    time.sleep(random.uniform(0.12, 0.30))
+                elif ch == " " and random.random() < 0.25:
+                    time.sleep(random.uniform(0.05, 0.14))
 
         page.keyboard.type(" ", delay=60)
         time.sleep(random.uniform(0.4, 0.7))
 
-        # Gõ từng #hashtag và chờ menu gợi ý của TikTok hiện ra rồi nhấn Enter để gắn thẻ Hashtag thật
+        # Gõ từng #hashtag và chờ menu gợi ý của TikTok hiện ra rồi nhấn Enter (kèm phím cứng macOS Return)
         tags = [t.strip() for t in hashtags_str.split() if t.strip().startswith("#")]
         for tag in tags:
             page.keyboard.type(tag, delay=random.randint(42, 88))
             time.sleep(random.uniform(0.95, 1.40))
-            page.keyboard.press("Enter")
+            try:
+                self.desktop.key_press_os("return")
+            except Exception:
+                page.keyboard.press("Enter")
             time.sleep(random.uniform(0.25, 0.45))
             page.keyboard.type(" ", delay=random.randint(35, 75))
 
@@ -368,9 +406,7 @@ class TikTokAutoPoster:
             }"""
         )
         if pos and "x" in pos and "y" in pos:
-            self._human_move_mouse(page, float(pos["x"]), float(pos["y"]))
-            time.sleep(random.uniform(0.2, 0.45))
-            page.mouse.click(float(pos["x"]), float(pos["y"]))
+            self._os_click_viewport(page, float(pos["x"]), float(pos["y"]))
             return True
         return False
 
@@ -728,9 +764,7 @@ class TikTokAutoPoster:
 
                 for btn in private_buttons:
                     bx, by = float(btn["x"]), float(btn["y"])
-                    self._human_move_mouse(page, bx, by)
-                    time.sleep(random.uniform(0.3, 0.6))
-                    page.mouse.click(bx, by)
+                    self._os_click_viewport(page, bx, by)
                     time.sleep(random.uniform(0.85, 1.35))
 
                     if self._click_public_option_in_open_dropdown(page):
@@ -996,16 +1030,14 @@ class TikTokAutoPoster:
                         f"[{ch_folder}] Quá thời gian chờ tải video lên TikTok Studio (240s)."
                     )
 
-                # Cuộn xuống nút Đăng, di chuột đường cong Bezier, hover rồi click
+                # Cuộn xuống nút Đăng, di chuột phần cứng macOS (CGEvent) đường cong Bezier, hover rồi click
                 post_btn.scroll_into_view_if_needed()
                 time.sleep(random.uniform(1.2, 2.2))
                 btn_box = post_btn.bounding_box()
                 if btn_box:
                     click_x = btn_box["x"] + btn_box["width"] * random.uniform(0.35, 0.65)
                     click_y = btn_box["y"] + btn_box["height"] * random.uniform(0.35, 0.65)
-                    self._human_move_mouse(page, click_x, click_y)
-                    time.sleep(random.uniform(0.8, 1.5))
-                    page.mouse.click(click_x, click_y)
+                    self._os_click_viewport(page, click_x, click_y)
                 else:
                     post_btn.click()
 

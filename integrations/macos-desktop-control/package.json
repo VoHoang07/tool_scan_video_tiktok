@@ -1,0 +1,13 @@
+{
+  "name": "macos-desktop-control",
+  "version": "3.1.0",
+  "description": "MCP Server for macOS desktop control via screencapture, cliclick, and osascript",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schemaVersion": 1,
+  "componentName": "macos-desktop-control",
+  "repo": "d-wwei/macos-desktop-control",
+  "releaseChannel": "tags",
+  "currentVersionSource": {
+    "type": "package.json",
+    "path": "./package.json"
+  },
+  "installStrategy": {
+    "type": "git_pull"
+  },
+  "statePath": "./.update-kit/state.json",
+  "auditLogPath": "./.update-kit/audit.log",
+  "lockPath": "./.update-kit/update.lock",
+  "autoUpdatePolicy": "patch",
+  "allowedUpdateLevels": ["patch", "minor"],
+  "preflightHooks": [
+    {
+      "type": "builtin",
+      "builtin": "command_exists",
+      "value": "git",
+      "description": "Verify git is available"
+    },
+    {
+      "type": "builtin",
+      "builtin": "command_exists",
+      "value": "cliclick",
+      "description": "Verify cliclick is installed"
+    }
+  ],
+  "verificationHooks": [
+    {
+      "type": "command",
+      "command": ["node", "--check", "src/index.js"],
+      "description": "Verify source syntax after update",
+      "phase": "after_switch"
+    }
+  ],
+  "updateCheckEnabled": true,
+  "cache": {
+    "upToDateTtlMs": 3600000,
+    "upgradeAvailableTtlMs": 43200000
+  },
+  "github": {
+    "tokenEnv": "GITHUB_TOKEN",
+    "includePrerelease": false
+  }
+}

@@ -1,0 +1,222 @@
+#!/usr/bin/env bash
+# lctx — lean-ctx launcher for AI coding agents
+#
+# Usage:
+#   lctx                              # auto-detect agent, current dir
+#   lctx --agent claude               # start Claude Code
+#   lctx --agent cursor               # configure Cursor
+#   lctx --agent gemini               # start Gemini CLI
+#   lctx --agent codex                # configure Codex
+#   lctx --agent windsurf             # configure Windsurf
+#   lctx --scan-only                  # build graph only
+#   lctx /path/to/project             # specific project
+#   lctx /path/to/project "prompt"    # with initial prompt (Claude only)
+#   lctx --resume ID                  # resume Claude session
+set -euo pipefail
+
+LEAN_CTX=""
+AGENT=""
+AGENTS=""
+PROJECT_DIR=""
+PROMPT=""
+RESUME_ID=""
+SCAN_ONLY=false
+PARALLEL=false
+
+find_lean_ctx() {
+  if command -v lean-ctx &>/dev/null; then
+    LEAN_CTX="$(command -v lean-ctx)"
+  elif [[ -x "${SCRIPT_DIR}/../rust/target/release/lean-ctx" ]]; then
+    LEAN_CTX="${SCRIPT_DIR}/../rust/target/release/lean-ctx"
+  else
+    echo "Error: lean-ctx not found."
+    echo "Install: cargo install lean-ctx"
+    echo "     or: curl -fsSL https://raw.githubusercontent.com/yvgude/lean-ctx/main/install.sh | bash -s -- --download"
+    exit 1
+  fi
+}
+
+detect_agent() {
+  if [[ -n "$AGENT" ]]; then return; fi
+
+  if command -v claude &>/dev/null && [[ -d "$HOME/.claude" ]]; then
+    AGENT="claude"
+  elif command -v codebuddy &>/dev/null || [[ -d "$HOME/.codebuddy" ]]; then
+    AGENT="codebuddy"
+  elif [[ -d "$HOME/.cursor" ]]; then
+    AGENT="cursor"
+  elif command -v gemini &>/dev/null || [[ -d "$HOME/.gemini" ]]; then
+    AGENT="gemini"
+  elif command -v codex &>/dev/null || [[ -d "$HOME/.codex" ]]; then
+    AGENT="codex"
+  else
+    AGENT="claude"
+  fi
+
+  echo "Auto-detected agent: $AGENT"
+}
+
+find_project_root() {
+  if [[ -n "$PROJECT_DIR" ]]; then return; fi
+
+  if git rev-parse --show-toplevel &>/dev/null 2>&1; then
+    PROJECT_DIR="$(git rev-parse --show-toplevel)"
+  else
+    PROJECT_DIR="$(pwd)"
+  fi
+}
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --agent|-a)
+      AGENT="$2"; shift 2 ;;
+    --agents)
+      AGENTS="$2"; PARALLEL=true; shift 2 ;;
+    --resume|-r)
+      RESUME_ID="$2"; shift 2 ;;
+    --scan-only)
+      SCAN_ONLY=true; shift ;;
+    --help|-h)
+      echo "Usage: lctx [options] [project_dir] [prompt]"
+      echo ""
+      echo "Options:"
+      echo "  --agent, -a NAME    Agent to use: claude|codebuddy|cursor|gemini|codex|windsurf|cline"
+      echo "  --agents LIST       Launch multiple agents in parallel (comma-separated)"
+      echo "  --resume, -r ID     Resume Claude Code session"
+      echo "  --scan-only         Build project graph only, don't launch agent"
+      echo "  --help, -h          Show this help"
+      echo ""
+      echo "Examples:"
+      echo "  lctx                                     # auto-detect, current dir"
+      echo "  lctx --agent claude ~/my-project         # Claude Code on specific project"
+      echo '  lctx ~/my-project "fix auth"             # Claude Code with prompt'
+      echo "  lctx --agents claude,gemini              # parallel agents"
+      echo "  lctx --scan-only                         # just build the graph"
+      exit 0 ;;
+    -*)
+      echo "Unknown option: $1"; exit 1 ;;
+    *)
+      if [[ -z "$PROJECT_DIR" && -d "$1" ]]; then
+        PROJECT_DIR="$(cd "$1" && pwd)"
+      elif [[ -z "$PROMPT" ]]; then
+        PROMPT="$1"
+      else
+        PROMPT="$PROMPT $1"
+      fi
+      shift ;;
+  esac
+done
+
+find_lean_ctx
+find_project_root
+echo "Project: $PROJECT_DIR"
+echo "Using:   $LEAN_CTX"
+
+echo ""
+echo "Building project graph..."
+"$LEAN_CTX" graph build "$PROJECT_DIR" 2>/dev/null \
+  || echo "(graph build skipped — will be built automatically in MCP mode)"
+
+if $SCAN_ONLY; then
+  echo "Done (scan only)."
+  exit 0
+fi
+
+if $PARALLEL; then
+  echo "Multi-Agent Launch: $AGENTS"
+  echo ""
+  IFS=',' read -ra AGENT_LIST <<< "$AGENTS"
+  PIDS=()
+  for ag in "${AGENT_LIST[@]}"; do
+    ag="$(echo "$ag" | xargs)"
+    echo "Starting agent: $ag"
+    (
+      export LEAN_CTX_AGENT_ROLE="$ag"
+      "$0" --agent "$ag" "$PROJECT_DIR" ${PROMPT:+"$PROMPT"}
+    ) &
+    PIDS+=($!)
+  done
+  echo ""
+  echo "Launched ${#AGENT_LIST[@]} agents in parallel (PIDs: ${PIDS[*]})"
+  echo "Use 'lean-ctx agent sync' or ctx_agent(action=sync) to monitor."
+  wait
+  exit 0
+fi
+
+detect_agent
+echo ""
+
+case "$AGENT" in
+  claude|claude-code)
+    echo "Setting up lean-ctx for Claude Code..."
+    "$LEAN_CTX" init --agent claude --global 2>/dev/null || true
+
+    CLAUDE_ARGS=()
+    if [[ -n "$RESUME_ID" ]]; then
+      CLAUDE_ARGS+=("--resume" "$RESUME_ID")
+    elif [[ -n "$PROMPT" ]]; then
+      CLAUDE_ARGS+=("-p" "$PROMPT")
+    fi
+
+    echo "Launching Claude Code..."
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    cd "$PROJECT_DIR"
+    exec claude ${CLAUDE_ARGS[@]+"${CLAUDE_ARGS[@]}"} ;;
+
+  codebuddy)
+    echo "Setting up lean-ctx for CodeBuddy..."
+    "$LEAN_CTX" init --agent codebuddy --global 2>/dev/null || true
+
+    CODEBUDDY_ARGS=()
+    if [[ -n "$RESUME_ID" ]]; then
+      CODEBUDDY_ARGS+=("--resume" "$RESUME_ID")
+    elif [[ -n "$PROMPT" ]]; then
+      CODEBUDDY_ARGS+=("-p" "$PROMPT")
+    fi
+
+    echo "Launching CodeBuddy..."
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    cd "$PROJECT_DIR"
+    exec codebuddy ${CODEBUDDY_ARGS[@]+"${CODEBUDDY_ARGS[@]}"} ;;
+
+  cursor)
+    echo "Setting up lean-ctx for Cursor..."
+    "$LEAN_CTX" init --agent cursor --global 2>/dev/null || true
+    echo ""
+    echo "Cursor configured. Open your project in Cursor to use lean-ctx MCP tools."
+    echo "  cursor $PROJECT_DIR" ;;
+
+  gemini)
+    echo "Setting up lean-ctx for Gemini CLI..."
+    "$LEAN_CTX" init --agent gemini --global 2>/dev/null || true
+
+    echo "Launching Gemini CLI..."
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    cd "$PROJECT_DIR"
+    exec gemini ;;
+
+  codex)
+    echo "Setting up lean-ctx for Codex..."
+    "$LEAN_CTX" init --agent codex --global 2>/dev/null || true
+    echo ""
+    echo "Codex configured. lean-ctx hooks installed." ;;
+
+  windsurf)
+    echo "Setting up lean-ctx for Windsurf..."
+    "$LEAN_CTX" init --agent windsurf 2>/dev/null || true
+    echo ""
+    echo "Windsurf configured. Open your project in Windsurf." ;;
+
+  cline|roo)
+    echo "Setting up lean-ctx for Cline/Roo..."
+    "$LEAN_CTX" init --agent cline 2>/dev/null || true
+    echo ""
+    echo "Cline configured." ;;
+
+  *)
+    echo "Unknown agent: $AGENT"
+    echo "Supported: claude, cursor, gemini, codex, windsurf, cline"
+    exit 1 ;;
+esac

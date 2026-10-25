@@ -6,6 +6,7 @@ from typing import Any, Dict, List, Optional
 
 import requests
 
+from .lean_context import LeanContextGateway
 from .utils import logger
 
 SYSTEM_PROMPT = """Bạn là một Biên dịch viên phụ đề video chuyên nghiệp từ {source_lang_name} sang Tiếng Việt.
@@ -956,12 +957,24 @@ class SubtitleTranslator:
             16,
         )
 
-        # Lấy câu thoại cao trào / mở đầu (nếu có) để đưa vào kịch bản ngắn
+        # Nén ngữ cảnh kịch bản bằng LeanCTX (SDE Target-Density Compression) để chọn câu cao trào giàu thông tin nhất
+        ctx_gateway = LeanContextGateway(target_density=0.45)
+        ctx_compressed = ctx_gateway.compress_transcript_context(story_lines)
+        cache_key = f"{ch_key}|{core_topic}|{ctx_compressed['compressed_text'][:220]}"
+        cached_meta = ctx_gateway.get_cached_metadata(cache_key)
+        if cached_meta:
+            return cached_meta
+
+        # Lấy câu thoại cao trào / mở đầu (đã qua bộ lọc Shannon Entropy của LeanCTX) để đưa vào kịch bản ngắn
         extra_summary = ""
         if len(story_lines) >= 2:
-            sample_line = story_lines[min(1, len(story_lines) - 1)]
-            if sample_line and sample_line.lower() not in core_topic.lower():
-                extra_summary = f" \"{sample_line[:95].rstrip('.,!?')}...\""
+            best_line = max(
+                story_lines[1 : min(12, len(story_lines))],
+                key=lambda s: LeanContextGateway._shannon_entropy(s),
+                default=story_lines[1],
+            )
+            if best_line and best_line.lower() not in core_topic.lower():
+                extra_summary = f" \"{best_line[:95].rstrip('.,!?')}...\""
 
         # Bộ mẫu Short Script chuẩn thuật toán giữ chân & kích thích bình luận theo từng kênh
         script_templates = {
@@ -1089,7 +1102,14 @@ class SubtitleTranslator:
             if t.lower() not in [u.lower() for u in combined_tags]:
                 combined_tags.append(t)
 
-        return {
+        result_meta = {
             "caption": short_script,
             "hashtags": " ".join(combined_tags[:8]),
         }
+        ctx_gateway.save_cached_metadata(
+            cache_key=cache_key,
+            caption=result_meta["caption"],
+            hashtags=result_meta["hashtags"],
+            compression_info=ctx_compressed,
+        )
+        return result_meta

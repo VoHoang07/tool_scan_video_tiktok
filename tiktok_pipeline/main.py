@@ -968,6 +968,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument(
+        "--desktop-status",
+        action="store_true",
+        help=(
+            "Kiểm tra trạng thái hoạt động của 2 bộ mã nguồn mở tích hợp: "
+            "macos-desktop-control (CoreGraphics CGEvent) và LeanCTX (yvgude/lean-ctx)"
+        ),
+    )
+    parser.add_argument(
         "--platform",
         choices=["douyin", "tiktok"],
         default=None,
@@ -1085,6 +1093,31 @@ def main() -> None:
             print("\n" + "=" * 70)
             print("KẾT QUẢ CHUYỂN TRẠNG THÁI CÔNG KHAI ('MỌI NGƯỜI') TRÊN TIKTOK STUDIO:")
             print(json.dumps(res, ensure_ascii=False, indent=2))
+            print("=" * 70 + "\n")
+            return
+
+        # 2f. Kiểm tra trạng thái tích hợp macos-desktop-control & LeanCTX --desktop-status
+        if args.desktop_status:
+            from .lean_context import LeanContextGateway
+            from .macos_desktop_controller import MacOSDesktopController
+
+            desktop = MacOSDesktopController(project_root=project_root)
+            ctx_gw = LeanContextGateway(project_root=project_root)
+            windows = desktop.list_windows()
+            mouse_pos = desktop.get_mouse_position()
+            report = {
+                "macos_desktop_control": {
+                    "mcp_server_js": str(desktop.mcp_server_path),
+                    "coregraphics_jxa_ready": True,
+                    "current_mouse_position": {"x": mouse_pos[0], "y": mouse_pos[1]},
+                    "visible_windows_count": len(windows),
+                    "sample_windows": windows[:5],
+                },
+                "lean_ctx": ctx_gw.get_engine_status(),
+            }
+            print("\n" + "=" * 70)
+            print("TRẠNG THÁI TÍCH HỢP MACOS-DESKTOP-CONTROL & LEAN-CTX:")
+            print(json.dumps(report, ensure_ascii=False, indent=2))
             print("=" * 70 + "\n")
             return
 
