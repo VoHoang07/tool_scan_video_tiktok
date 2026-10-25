@@ -587,6 +587,67 @@ class TikTok24hFilterEngine:
 
         return round(watch_seconds, 1)
 
+    def _ensure_comment_tab_open(self, page: Any, ch_folder: str) -> bool:
+        """
+        Đảm bảo khung bên phải đang mở tab 'Bình luận' (thay vì tab 'Bạn có thể thích')
+        để hiển thị đầy đủ: ô nhập bình luận, nút Follow chữ nhật và nút Sao chép liên kết.
+        """
+        try:
+            if self._locate_comment_input_box(page):
+                return True
+
+            # 1. Tìm tab 'Bình luận' / 'Comments' ở thanh tiêu đề khung bên phải (x > 600, 40 < y < 240)
+            tab_pos = page.evaluate(
+                """() => {
+                    const tabLabels = ['Bình luận', 'Comments'];
+                    const els = Array.from(document.querySelectorAll('div, span, button, p, a'));
+                    for (const el of els) {
+                        if (el.children.length > 2) continue;
+                        const txt = (el.innerText || el.textContent || '').trim();
+                        if (tabLabels.some(l => txt === l || txt.startsWith(l + ' (')) && txt.length < 30) {
+                            const r = el.getBoundingClientRect();
+                            if (r.left > 550 && r.top > 40 && r.top < 250 && r.width > 30 && r.height > 14) {
+                                el.click();
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if tab_pos:
+                self._os_click_viewport(page, float(tab_pos["x"]), float(tab_pos["y"]))
+                time.sleep(random.uniform(1.4, 2.0))
+                if self._locate_comment_input_box(page):
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đã chuyển sang tab 'Bình luận' ở khung phải.")
+                    return True
+
+            # 2. Nếu vẫn chưa thấy ô nhập bình luận, bấm ĐÚNG 1 LẦN vào icon Bình luận 💬 trên cột tương tác
+            icon_pos = page.evaluate(
+                """() => {
+                    const iconSels = ['[data-e2e="comment-icon"]', '[data-e2e="browse-comment-icon"]'];
+                    for (const sel of iconSels) {
+                        const icon = document.querySelector(sel);
+                        if (!icon) continue;
+                        const btn = icon.closest('button') || icon.parentElement || icon;
+                        const r = btn.getBoundingClientRect();
+                        if (r.left > 260 && r.width > 8 && r.height > 8) {
+                            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if icon_pos:
+                self._os_click_viewport(page, float(icon_pos["x"]), float(icon_pos["y"]))
+                time.sleep(random.uniform(1.5, 2.2))
+                if self._locate_comment_input_box(page):
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đã mở khung 'Bình luận' qua icon 💬.")
+                    return True
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi mở tab Bình luận: {exc}")
+        return False
+
     def _check_like_state(self, page: Any) -> Optional[Dict[str, Any]]:
         """Đọc trạng thái thực tế của nút Thả tim (Like) trên DOM TikTok."""
         try:
@@ -603,23 +664,19 @@ class TikTok24hFilterEngine:
                         const el = document.querySelector(sel);
                         if (!el) continue;
                         const btn = el.closest('button') || el.parentElement || el;
+                        const r = btn.getBoundingClientRect();
+                        if (r.left < 260 || r.width <= 8 || r.height <= 8) continue;
                         const pressed = btn.getAttribute('aria-pressed') === 'true';
                         const svgPaths = Array.from(btn.querySelectorAll('svg, path, use'));
                         const isRed = svgPaths.some(p => {
                             const fill = (p.getAttribute('fill') || window.getComputedStyle(p).fill || '').toLowerCase();
                             return fill.includes('254, 44, 85') || fill.includes('fe2c55') || fill.includes('ff2c55') || fill.includes('255, 59, 92');
                         });
-                        const countEl = document.querySelector('[data-e2e="like-count"], [data-e2e="browse-like-count"]');
-                        const countTxt = countEl ? (countEl.innerText || '').trim() : '';
-                        const r = btn.getBoundingClientRect();
-                        if (r.width > 8 && r.height > 8) {
-                            return {
-                                x: r.left + r.width / 2,
-                                y: r.top + r.height / 2,
-                                alreadyLiked: pressed || isRed,
-                                countTxt: countTxt
-                            };
-                        }
+                        return {
+                            x: r.left + r.width / 2,
+                            y: r.top + r.height / 2,
+                            alreadyLiked: pressed || isRed
+                        };
                     }
                     return null;
                 }"""
@@ -629,7 +686,7 @@ class TikTok24hFilterEngine:
 
     def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 2: Thả tim video (Like) — kiểm tra trạng thái trước & sau khi bấm để đảm bảo 100% tim đỏ (không bao giờ bị tự gỡ).
+        BƯỚC 2: Thả tim video (Like) — chỉ bấm ĐÚNG 1 LẦN duy nhất nếu chưa tim để tuyệt đối không bao giờ tự gỡ tim.
         """
         try:
             like_info = self._check_like_state(page)
@@ -637,16 +694,9 @@ class TikTok24hFilterEngine:
                 if like_info.get("alreadyLiked"):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Video đã được thả tim từ trước (giữ nguyên ❤️).")
                     return True
-                before_cnt = like_info.get("countTxt")
                 self._os_click_viewport(page, float(like_info["x"]), float(like_info["y"]))
                 time.sleep(random.uniform(1.4, 2.1))
-
-                # Tự kiểm tra lại trạng thái sau khi bấm: nếu chưa ăn tim thì bấm lại đúng 1 lần
-                after_info = self._check_like_state(page)
-                if after_info and not after_info.get("alreadyLiked") and after_info.get("countTxt") == before_cnt:
-                    self._os_click_viewport(page, float(after_info["x"]), float(after_info["y"]))
-                    time.sleep(1.2)
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ & khóa trạng thái.")
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ (bấm đúng 1 lần, khóa trạng thái).")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bước thả tim: {exc}")
@@ -654,13 +704,20 @@ class TikTok24hFilterEngine:
 
     def _step3_copy_video_link(self, page: Any, ch_folder: str, video_url: str) -> bool:
         """
-        BƯỚC 3: Sao chép liên kết video đó (Copy Link) — bấm ĐÚNG 1 LẦN.
+        BƯỚC 3: Sao chép liên kết video đó (Copy Link) — bấm nút Sao chép liên kết hoặc mở menu Chia sẻ ↗️ rồi bấm Sao chép.
         """
         try:
+            # Luôn chép sẵn URL vào clipboard trình duyệt như lớp bảo hiểm
+            try:
+                page.evaluate("(url) => navigator.clipboard && navigator.clipboard.writeText(url)", video_url)
+            except Exception:
+                pass
+
             direct_copy = page.evaluate(
                 """() => {
                     const directSelectors = [
                         '[data-e2e="video-share-copy"]',
+                        '[data-e2e="browse-copy"]',
                         'button[aria-label*="Sao chép"]',
                         'button[aria-label*="Copy link"]'
                     ];
@@ -668,7 +725,7 @@ class TikTok24hFilterEngine:
                         const el = document.querySelector(sel);
                         if (el) {
                             const r = el.getBoundingClientRect();
-                            if (r.width > 8 && r.height > 8) {
+                            if (r.left > 260 && r.width > 8 && r.height > 8) {
                                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                             }
                         }
@@ -680,7 +737,7 @@ class TikTok24hFilterEngine:
                         const t = (el.innerText || el.textContent || '').trim();
                         if (texts.includes(t)) {
                             const r = el.getBoundingClientRect();
-                            if (r.width > 12 && r.height > 10) {
+                            if (r.left > 260 && r.width > 12 && r.height > 10) {
                                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                             }
                         }
@@ -690,54 +747,96 @@ class TikTok24hFilterEngine:
             )
             if direct_copy:
                 self._os_click_viewport(page, float(direct_copy["x"]), float(direct_copy["y"]))
-                time.sleep(random.uniform(1.0, 1.8))
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 3/6] Đã SAO CHÉP LIÊN KẾT video 🔗.")
+                time.sleep(random.uniform(1.0, 1.6))
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 3/6] Đã SAO CHÉP LIÊN KẾT video 🔗 (nút trực tiếp).")
                 return True
 
+            # Tìm nút Chia sẻ (mũi tên ↗️ trên cột tương tác bên phải video)
             share_btn = page.evaluate(
                 """() => {
                     const selectors = [
                         '[data-e2e="share-icon"]',
                         '[data-e2e="browse-share-icon"]',
-                        'button[aria-label*="Chia sẻ"]',
-                        'button[aria-label*="Share"]'
+                        '[data-e2e="video-share-icon"]',
+                        'button[aria-label*="Chia sẻ" i]',
+                        'button[aria-label*="Share" i]'
                     ];
                     for (const sel of selectors) {
                         const el = document.querySelector(sel);
                         if (!el) continue;
                         const btn = el.closest('button') || el.parentElement || el;
                         const r = btn.getBoundingClientRect();
-                        if (r.width > 8 && r.height > 8) {
+                        if (r.left > 260 && r.width > 8 && r.height > 8) {
                             return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                        }
+                    }
+                    // Fallback: nút hành động nằm ngay bên dưới nút Bookmark (Yêu thích) trên cùng cột dọc
+                    const favEl = document.querySelector('[data-e2e="undefined-icon"], [data-e2e="bookmark-icon"], [data-e2e="browse-bookmark-icon"]');
+                    if (favEl) {
+                        const fr = (favEl.closest('button') || favEl).getBoundingClientRect();
+                        const favX = fr.left + fr.width / 2;
+                        const favY = fr.top + fr.height / 2;
+                        const buttons = Array.from(document.querySelectorAll('button'));
+                        for (const b of buttons) {
+                            const br = b.getBoundingClientRect();
+                            const bx = br.left + br.width / 2;
+                            const by = br.top + br.height / 2;
+                            if (Math.abs(bx - favX) < 30 && by - favY > 40 && by - favY < 120) {
+                                return { x: bx, y: by };
+                            }
                         }
                     }
                     return null;
                 }"""
             )
             if share_btn:
+                # Di chuột vào nút Chia sẻ trước, nếu menu chưa bung ra thì click mở menu Chia sẻ
                 self._human_move_mouse(page, float(share_btn["x"]), float(share_btn["y"]))
-                time.sleep(random.uniform(1.2, 1.8))
-                copy_in_menu = page.evaluate(
-                    """() => {
-                        const labels = ['Sao chép liên kết', 'Copy link'];
-                        const els = Array.from(document.querySelectorAll('a, button, span, p, div'));
-                        for (const el of els) {
-                            if (el.children.length > 2) continue;
-                            const txt = (el.innerText || el.textContent || '').trim();
-                            if (labels.some(l => txt.includes(l))) {
-                                const r = el.getBoundingClientRect();
-                                if (r.width > 10 && r.height > 10) {
-                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                time.sleep(1.0)
+
+                def _find_copy_in_popup() -> Optional[Dict[str, float]]:
+                    return page.evaluate(
+                        """() => {
+                            const copySels = ['[data-e2e="video-share-copy"]', '[data-e2e*="copy"]', 'a[href*="#copy"]'];
+                            for (const sel of copySels) {
+                                const el = document.querySelector(sel);
+                                if (el) {
+                                    const r = el.getBoundingClientRect();
+                                    if (r.width > 10 && r.height > 10) {
+                                        return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                    }
                                 }
                             }
-                        }
-                        return null;
-                    }"""
-                )
+                            const labels = ['Sao chép liên kết', 'Sao chép', 'Copy link', 'Copy'];
+                            const els = Array.from(document.querySelectorAll('a, button, span, p, div'));
+                            for (const el of els) {
+                                if (el.children.length > 2) continue;
+                                const txt = (el.innerText || el.textContent || '').trim();
+                                if (labels.some(l => txt === l || txt.includes('Sao chép liên kết') || txt.includes('Copy link'))) {
+                                    const r = el.getBoundingClientRect();
+                                    if (r.left > 260 && r.width > 10 && r.height > 10) {
+                                        return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                    }
+                                }
+                            }
+                            return null;
+                        }"""
+                    )
+
+                copy_in_menu = _find_copy_in_popup()
+                if not copy_in_menu:
+                    # Bấm 1 lần vào nút Chia sẻ ↗️ để bung menu Chia sẻ
+                    self._os_click_viewport(page, float(share_btn["x"]), float(share_btn["y"]))
+                    time.sleep(1.3)
+                    copy_in_menu = _find_copy_in_popup()
+
                 if copy_in_menu:
                     self._os_click_viewport(page, float(copy_in_menu["x"]), float(copy_in_menu["y"]))
-                    time.sleep(random.uniform(1.0, 1.6))
+                    time.sleep(random.uniform(1.0, 1.5))
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 3/6] Đã mở menu Chia sẻ & SAO CHÉP LIÊN KẾT video 🔗.")
+                    return True
+                else:
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 3/6] Đã kích hoạt nút Chia sẻ & chép liên kết vào Clipboard 🔗.")
                     return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi sao chép liên kết: {exc}")
@@ -762,23 +861,19 @@ class TikTok24hFilterEngine:
                         const el = document.querySelector(sel);
                         if (!el) continue;
                         const btn = el.closest('button') || el.parentElement || el;
+                        const r = btn.getBoundingClientRect();
+                        if (r.left < 260 || r.width <= 8 || r.height <= 8) continue;
                         const pressed = btn.getAttribute('aria-pressed') === 'true';
                         const svgPaths = Array.from(btn.querySelectorAll('svg, path, use'));
                         const isGold = svgPaths.some(p => {
                             const fill = (p.getAttribute('fill') || window.getComputedStyle(p).fill || '').toLowerCase();
                             return fill.includes('250, 206, 21') || fill.includes('face15') || fill.includes('ffb800');
                         });
-                        const countEl = document.querySelector('[data-e2e="undefined-count"], [data-e2e="bookmark-count"]');
-                        const countTxt = countEl ? (countEl.innerText || '').trim() : '';
-                        const r = btn.getBoundingClientRect();
-                        if (r.width > 8 && r.height > 8) {
-                            return {
-                                x: r.left + r.width / 2,
-                                y: r.top + r.height / 2,
-                                alreadyFavorited: pressed || isGold,
-                                countTxt: countTxt
-                            };
-                        }
+                        return {
+                            x: r.left + r.width / 2,
+                            y: r.top + r.height / 2,
+                            alreadyFavorited: pressed || isGold
+                        };
                     }
                     return null;
                 }"""
@@ -788,7 +883,7 @@ class TikTok24hFilterEngine:
 
     def _step4_favorite_video(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 4: Thêm video vào mục Yêu thích (Bookmark) — chỉ bấm ĐÚNG 1 LẦN nếu chưa lưu và xác nhận trạng thái.
+        BƯỚC 4: Thêm video vào mục Yêu thích (Bookmark) — chỉ bấm ĐÚNG 1 LẦN duy nhất nếu chưa lưu.
         """
         try:
             fav_info = self._check_favorite_state(page)
@@ -796,44 +891,37 @@ class TikTok24hFilterEngine:
                 if fav_info.get("alreadyFavorited"):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Video đã nằm trong mục Yêu thích từ trước (giữ nguyên 🔖).")
                     return True
-                before_cnt = fav_info.get("countTxt")
                 self._os_click_viewport(page, float(fav_info["x"]), float(fav_info["y"]))
                 time.sleep(random.uniform(1.3, 2.0))
-
-                after_info = self._check_favorite_state(page)
-                if after_info and not after_info.get("alreadyFavorited") and after_info.get("countTxt") == before_cnt:
-                    self._os_click_viewport(page, float(after_info["x"]), float(after_info["y"]))
-                    time.sleep(1.2)
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Đã THÊM VIDEO VÀO MỤC YÊU THÍCH 🔖 & khóa trạng thái.")
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Đã THÊM VIDEO VÀO MỤC YÊU THÍCH 🔖 (bấm đúng 1 lần).")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi thêm vào mục yêu thích: {exc}")
         return False
 
     def _check_follow_state(self, page: Any) -> Optional[Dict[str, Any]]:
-        """Đọc trạng thái thực tế của nút Follow trên DOM TikTok."""
+        """
+        Đọc trạng thái thực tế của nút Follow trên DOM TikTok:
+        - Loại trừ hoàn toàn thanh menu bên trái (r.left < 260, nơi có chữ 'Bạn bè' và 'Tin nhắn').
+        - Hỗ trợ cả nút chữ nhật '[data-e2e="follow-button"]' lẫn nút dấu cộng đỏ '+' tròn trên avatar
+          ('[data-e2e="feed-follow"]' / '[data-e2e="browse-follow"]', vốn không có innerText).
+        """
         try:
             return page.evaluate(
                 """() => {
-                    const alreadyLabels = ['Đang Follow', 'Following', 'Bạn bè', 'Friends', 'Đã gửi', 'Tin nhắn', 'Message'];
+                    const alreadyLabels = ['Đang Follow', 'Following', 'Bạn bè', 'Friends'];
                     const followLabels = ['Follow', 'Theo dõi'];
-                    const selectors = [
-                        '[data-e2e="follow-button"]',
-                        '[data-e2e="browse-follow"]',
-                        '[data-e2e="feed-follow"]'
-                    ];
-                    for (const sel of selectors) {
-                        const el = document.querySelector(sel);
-                        if (!el) continue;
+
+                    // 1. Kiểm tra nút Follow chữ nhật [data-e2e="follow-button"] ở khung phải (r.left > 260)
+                    const rectBtns = Array.from(document.querySelectorAll('[data-e2e="follow-button"]'));
+                    for (const el of rectBtns) {
+                        const r = el.getBoundingClientRect();
+                        if (r.left < 260 || r.width < 12 || r.height < 12) continue;
                         const txt = (el.innerText || el.textContent || '').trim();
-                        if (alreadyLabels.some(l => txt.toLowerCase().includes(l.toLowerCase()))) {
+                        if (alreadyLabels.some(l => txt.toLowerCase() === l.toLowerCase() || txt.toLowerCase().includes(l.toLowerCase()))) {
                             return { alreadyFollowing: true };
                         }
-                        if (!followLabels.some(l => txt.toLowerCase() === l.toLowerCase())) {
-                            continue;
-                        }
-                        const r = el.getBoundingClientRect();
-                        if (r.width > 12 && r.height > 12) {
+                        if (!txt || followLabels.some(l => txt.toLowerCase() === l.toLowerCase())) {
                             return {
                                 x: r.left + r.width / 2,
                                 y: r.top + r.height / 2,
@@ -841,20 +929,62 @@ class TikTok24hFilterEngine:
                             };
                         }
                     }
-                    const buttons = Array.from(document.querySelectorAll('button'));
-                    for (const btn of buttons) {
-                        const txt = (btn.innerText || btn.textContent || '').trim();
+
+                    // 2. Kiểm tra huy hiệu dấu '+' đỏ trên avatar ([data-e2e="feed-follow"], [data-e2e="browse-follow"])
+                    const badgeSels = ['[data-e2e="feed-follow"]', '[data-e2e="browse-follow"]'];
+                    for (const sel of badgeSels) {
+                        const el = document.querySelector(sel);
+                        if (!el) continue;
+                        const r = el.getBoundingClientRect();
+                        if (r.left < 260 || r.width < 10 || r.height < 10) continue;
+                        const style = window.getComputedStyle(el);
+                        if (style.display === 'none' || style.visibility === 'hidden' || parseFloat(style.opacity || '1') < 0.1) {
+                            continue;
+                        }
+                        const txt = (el.innerText || el.textContent || '').trim();
                         if (alreadyLabels.some(l => txt.toLowerCase().includes(l.toLowerCase()))) {
                             return { alreadyFollowing: true };
                         }
+                        return {
+                            x: r.left + r.width / 2,
+                            y: r.top + r.height / 2,
+                            alreadyFollowing: false
+                        };
+                    }
+
+                    // 3. Quét các nút button ngoài vùng sidebar trái (r.left > 260, không nằm trong nav/aside)
+                    const buttons = Array.from(document.querySelectorAll('button, div[role="button"]'));
+                    for (const btn of buttons) {
+                        if (btn.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
+                        const r = btn.getBoundingClientRect();
+                        if (r.left < 260 || r.width < 14 || r.height < 14 || r.top < 40 || r.top > 750) continue;
+                        const txt = (btn.innerText || btn.textContent || '').trim();
                         if (followLabels.includes(txt)) {
-                            const r = btn.getBoundingClientRect();
-                            if (r.width > 25 && r.height > 16 && r.top > 45 && r.top < 500) {
-                                return {
-                                    x: r.left + r.width / 2,
-                                    y: r.top + r.height / 2,
-                                    alreadyFollowing: false
-                                };
+                            return {
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2,
+                                alreadyFollowing: false
+                            };
+                        }
+                    }
+
+                    // 4. Fallback tọa độ hình học: tìm nút dấu '+' đỏ nằm ngay phía trên nút Thả tim (cùng cột dọc x)
+                    const likeEl = document.querySelector('[data-e2e="like-icon"], [data-e2e="browse-like-icon"]');
+                    if (likeEl) {
+                        const lr = (likeEl.closest('button') || likeEl).getBoundingClientRect();
+                        const likeX = lr.left + lr.width / 2;
+                        const likeY = lr.top + lr.height / 2;
+                        const candidates = Array.from(document.querySelectorAll('button, div, span, svg'));
+                        for (const c of candidates) {
+                            const cr = c.getBoundingClientRect();
+                            if (cr.width < 14 || cr.width > 36 || cr.height < 14 || cr.height > 36) continue;
+                            const cx = cr.left + cr.width / 2;
+                            const cy = cr.top + cr.height / 2;
+                            if (Math.abs(cx - likeX) < 28 && (likeY - cy) > 40 && (likeY - cy) < 105) {
+                                const bg = (window.getComputedStyle(c).backgroundColor || '').toLowerCase();
+                                if (bg.includes('254, 44, 85') || bg.includes('255, 59, 92') || c.tagName.toLowerCase() === 'button') {
+                                    return { x: cx, y: cy, alreadyFollowing: false };
+                                }
                             }
                         }
                     }
@@ -866,7 +996,7 @@ class TikTok24hFilterEngine:
 
     def _step5_follow_creator(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 5: Follow người đăng video đó — kiểm tra chặt trạng thái trước & sau khi bấm để không bao giờ bị tự gỡ.
+        BƯỚC 5: Follow người đăng video đó — bấm ĐÚNG 1 LẦN vào nút Follow hoặc dấu '+' đỏ trên avatar.
         """
         try:
             follow_info = self._check_follow_state(page)
@@ -876,12 +1006,7 @@ class TikTok24hFilterEngine:
                     return True
                 self._os_click_viewport(page, float(follow_info["x"]), float(follow_info["y"]))
                 time.sleep(random.uniform(1.6, 2.4))
-
-                after_follow = self._check_follow_state(page)
-                if after_follow and not after_follow.get("alreadyFollowing") and "x" in after_follow:
-                    self._os_click_viewport(page, float(after_follow["x"]), float(after_follow["y"]))
-                    time.sleep(1.4)
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã FOLLOW người đăng video ➕ & khóa trạng thái.")
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã FOLLOW người đăng video ➕ (bấm đúng 1 lần).")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bấm Follow: {exc}")
@@ -893,52 +1018,16 @@ class TikTok24hFilterEngine:
         """
         BƯỚC 6: Để lại 1 bình luận có ý nghĩa sau khi đã Xem hết video + Thả tim + Sao chép liên kết +
         Thêm vào yêu thích + Follow:
-        - Tự động bấm mở tab/icon Bình luận nếu khung bình luận đang ẩn (KHÔNG click đúp làm đóng lại!).
-        - Bấm vào ô nhập bình luận, dùng `insert_text` + `keyboard.type(" ")` để điền trọn vẹn câu tiếng Việt có dấu
+        - Đảm bảo tab 'Bình luận' ở khung phải đã mở.
+        - Bấm vào ô 'Thêm bình luận...', dùng `insert_text` + `keyboard.type(" ")` để điền trọn vẹn câu tiếng Việt
           vào DraftJS làm sáng nút đỏ 'Đăng' (`[data-e2e="comment-post"]`).
         - Bấm nút 'Đăng' ĐÚNG 1 LẦN (hoặc phím Enter) để gửi bình luận thành công 100%.
         """
         comment_text = self.generate_meaningful_24h_comment(creator_handle=creator_handle)
         try:
-            # 1. Nếu ô nhập bình luận chưa hiển thị, bấm 1 lần vào tab 'Bình luận' hoặc icon Bình luận
+            # 1. Đảm bảo tab 'Bình luận' đã mở và tìm tọa độ ô nhập bình luận
+            self._ensure_comment_tab_open(page, ch_folder)
             input_pos = self._locate_comment_input_box(page)
-            if not input_pos:
-                opened_tab = page.evaluate(
-                    """() => {
-                        const tabLabels = ['Bình luận', 'Comments'];
-                        const els = Array.from(document.querySelectorAll('div, span, button, p'));
-                        for (const el of els) {
-                            if (el.children.length > 2) continue;
-                            const txt = (el.innerText || el.textContent || '').trim();
-                            if (tabLabels.some(l => txt.startsWith(l)) && txt.length < 28) {
-                                const r = el.getBoundingClientRect();
-                                if (r.width > 30 && r.height > 14 && r.top > 40 && r.top < 600) {
-                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-                                }
-                            }
-                        }
-                        const iconSels = ['[data-e2e="comment-icon"]', '[data-e2e="browse-comment-icon"]'];
-                        for (const sel of iconSels) {
-                            const icon = document.querySelector(sel);
-                            if (icon) {
-                                const btn = icon.closest('button') || icon.parentElement || icon;
-                                const r = btn.getBoundingClientRect();
-                                if (r.width > 8 && r.height > 8) {
-                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
-                                }
-                            }
-                        }
-                        return null;
-                    }"""
-                )
-                if opened_tab:
-                    self._os_click_viewport(page, float(opened_tab["x"]), float(opened_tab["y"]))
-                    time.sleep(random.uniform(1.5, 2.3))
-                else:
-                    page.mouse.move(680, 500)
-                    page.mouse.wheel(0, 380)
-                    time.sleep(1.3)
-                input_pos = self._locate_comment_input_box(page)
 
             if not input_pos:
                 logger.warning(f"[{ch_folder}] [Bộ lọc 24h] Không tìm thấy ô bình luận trên video này.")
@@ -968,7 +1057,7 @@ class TikTok24hFilterEngine:
             page.keyboard.type(" ", delay=55)
             time.sleep(random.uniform(0.9, 1.4))
 
-            # 4. Tìm và bấm nút 'Đăng' (`[data-e2e="comment-post"]`) ĐÚNG 1 LẦN (không gọi el.click() kép)
+            # 4. Tìm và bấm nút 'Đăng' (`[data-e2e="comment-post"]`) ĐÚNG 1 LẦN
             post_comment_pos = page.evaluate(
                 """() => {
                     const selectors = [
@@ -992,7 +1081,7 @@ class TikTok24hFilterEngine:
                         const txt = (el.innerText || el.textContent || '').trim();
                         if (labels.includes(txt)) {
                             const r = el.getBoundingClientRect();
-                            if (r.width > 18 && r.height > 14 && r.top > 200) {
+                            if (r.left > 500 && r.width > 18 && r.height > 14 && r.top > 200) {
                                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                             }
                         }
@@ -1031,7 +1120,7 @@ class TikTok24hFilterEngine:
                     const el = document.querySelector(sel);
                     if (!el) continue;
                     const r = el.getBoundingClientRect();
-                    if (r.width > 40 && r.height > 14 && r.top > 50 && r.top < window.innerHeight - 5) {
+                    if (r.left > 260 && r.width > 40 && r.height > 14 && r.top > 50 && r.top < window.innerHeight - 5) {
                         return { x: r.left + Math.min(r.width * 0.35, 120), y: r.top + r.height * 0.5 };
                     }
                 }
@@ -1042,7 +1131,7 @@ class TikTok24hFilterEngine:
                     const txt = (el.innerText || el.getAttribute('placeholder') || '').trim();
                     if (placeholders.some(p => txt.includes(p))) {
                         const r = el.getBoundingClientRect();
-                        if (r.width > 40 && r.height > 14 && r.top > 50 && r.top < window.innerHeight - 5) {
+                        if (r.left > 260 && r.width > 40 && r.height > 14 && r.top > 50 && r.top < window.innerHeight - 5) {
                             return { x: r.left + Math.min(r.width * 0.35, 120), y: r.top + r.height * 0.5 };
                         }
                     }
@@ -1056,7 +1145,7 @@ class TikTok24hFilterEngine:
     ) -> Dict[str, Any]:
         """
         Thực thi trọn vẹn 6 bước "Bộ lọc 24 giờ" trên 1 video mục tiêu,
-        tự động hậu kiểm (Self-Healing Audit) đảm bảo Tim + Yêu thích + Follow không bao giờ bị gỡ,
+        bấm ĐÚNG 1 LẦN cho từng nút (Tim + Copy Link + Yêu thích + Follow + Bình luận) để không bao giờ bị tự gỡ,
         và lưu ảnh chụp màn hình + sổ theo dõi 24h.
         """
         creator_handle, video_id = self._extract_creator_and_video_id(video_url)
@@ -1068,10 +1157,13 @@ class TikTok24hFilterEngine:
         time.sleep(random.uniform(3.0, 4.5))
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
+        # Mở ngay tab 'Bình luận' ở khung bên phải (thay vì tab 'Bạn có thể thích' mặc định)
+        self._ensure_comment_tab_open(page, ch_folder)
+
         # 1. Xem hết video của người khác
         watched_sec = self._step1_watch_full_video(page, ch_folder, video_url)
 
-        # 2. Thả tim video
+        # 2. Thả tim video (bấm đúng 1 lần)
         liked = self._step2_like_video(page, ch_folder)
         time.sleep(random.uniform(0.8, 1.5))
 
@@ -1079,36 +1171,16 @@ class TikTok24hFilterEngine:
         copied_link = self._step3_copy_video_link(page, ch_folder, video_url)
         time.sleep(random.uniform(0.8, 1.5))
 
-        # 4. Thêm video vào mục yêu thích
+        # 4. Thêm video vào mục yêu thích (bấm đúng 1 lần)
         favorited = self._step4_favorite_video(page, ch_folder)
         time.sleep(random.uniform(0.8, 1.5))
 
-        # 5. Follow người đăng video đó
+        # 5. Follow người đăng video đó (bấm đúng 1 lần)
         followed = self._step5_follow_creator(page, ch_folder)
         time.sleep(random.uniform(1.0, 1.8))
 
         # 6. Để lại 1 bình luận có ý nghĩa (sau khi đã follow để chủ kênh không bỏ sót và trả follow trong 24h)
         comment_text = self._step6_post_meaningful_comment(page, ch_folder, creator_handle)
-
-        # BƯỚC HẬU KIỂM TỰ PHỤC HỒI (Self-Healing Audit): Kiểm tra lại lần cuối trước khi rời trang
-        # Nếu Tim, Yêu thích hoặc Follow vô tình chưa bật thì tự động bật lại ngay
-        final_like = self._check_like_state(page)
-        if final_like and not final_like.get("alreadyLiked"):
-            self._os_click_viewport(page, float(final_like["x"]), float(final_like["y"]))
-            liked = True
-            time.sleep(0.8)
-
-        final_fav = self._check_favorite_state(page)
-        if final_fav and not final_fav.get("alreadyFavorited"):
-            self._os_click_viewport(page, float(final_fav["x"]), float(final_fav["y"]))
-            favorited = True
-            time.sleep(0.8)
-
-        final_fol = self._check_follow_state(page)
-        if final_fol and not final_fol.get("alreadyFollowing") and "x" in final_fol:
-            self._os_click_viewport(page, float(final_fol["x"]), float(final_fol["y"]))
-            followed = True
-            time.sleep(0.8)
 
         # Chụp ảnh màn hình kết quả tương tác vào remote_telemetry/ để giám sát từ xa
         try:
