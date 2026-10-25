@@ -240,6 +240,18 @@ def run_pipeline(
     ffmpeg_bin, _ = ensure_ffmpeg()
     logger.info(f"Đã xác nhận công cụ hệ thống ffmpeg: {ffmpeg_bin}")
 
+    from .lean_context import LeanContextGateway
+
+    ctx_status = LeanContextGateway(project_root=project_root).get_engine_status()
+    logger.info(
+        "[Open-Source Engine #1] Đã kích hoạt macos-desktop-control "
+        "(d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)"
+    )
+    logger.info(
+        f"[Open-Source Engine #2] Đã kích hoạt LeanCTX "
+        f"(yvgude/lean-ctx | SDE Target-Density={ctx_status['target_density']} | version={ctx_status['version']})"
+    )
+
     base_output_dir = Path(output_dir) if output_dir else (project_root / "output")
     crawler = StoryAudioCrawler(project_root=project_root, whisper_model=whisper_model)
 
@@ -403,6 +415,18 @@ def run_crawl_story_mode(
     ffmpeg_bin, _ = ensure_ffmpeg()
     logger.info(f"Đã xác nhận công cụ hệ thống ffmpeg: {ffmpeg_bin}")
 
+    from .lean_context import LeanContextGateway
+
+    ctx_status = LeanContextGateway(project_root=project_root).get_engine_status()
+    logger.info(
+        "[Open-Source Engine #1] Đã kích hoạt macos-desktop-control "
+        "(d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)"
+    )
+    logger.info(
+        f"[Open-Source Engine #2] Đã kích hoạt LeanCTX "
+        f"(yvgude/lean-ctx | SDE Target-Density={ctx_status['target_density']} | version={ctx_status['version']})"
+    )
+
     base_output_dir = Path(output_dir) if output_dir else (project_root / "output")
     base_output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -541,26 +565,76 @@ def _get_codebase_mtime_snapshot(project_root: Path) -> Dict[str, float]:
 def _auto_git_pull_if_available(project_root: Path) -> bool:
     """
     Nếu thư mục dự án đã kết nối Git Remote (GitHub), tự động kéo code/cấu hình mới nhất
-    từ máy Apple Silicon về máy Mac Intel mà không làm ảnh hưởng tới venv/ hoặc browser_profiles/.
+    từ máy Apple Silicon về máy Mac Intel bằng `git fetch` + `git reset --hard origin/main`
+    (bảo toàn `story_audio_history.json` và `output/danh_sach_video.csv` của máy Intel,
+    không bao giờ bị kẹt lỗi merge conflict hay thiếu git user.email).
     """
     git_dir = project_root / ".git"
     if not git_dir.exists():
         return False
     try:
+        import shutil
         import subprocess
-        res = subprocess.run(
-            ["git", "pull", "--rebase", "--autostash"],
+        import tempfile
+
+        subprocess.run(
+            ["git", "fetch", "origin", "main"],
             cwd=str(project_root),
             capture_output=True,
             text=True,
             timeout=25,
+            check=False,
         )
-        out = (res.stdout or "").strip()
-        if res.returncode == 0 and out and "Already up to date" not in out and "Already up-to-date" not in out:
-            logger.info(f"[Auto-Git-Sync] Đã tự động kéo bản cập nhật mới từ Git: {out}")
+        local_sha = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=str(project_root),
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=False,
+        ).stdout.strip()
+        remote_sha = subprocess.run(
+            ["git", "rev-parse", "origin/main"],
+            cwd=str(project_root),
+            capture_output=True,
+            text=True,
+            timeout=10,
+            check=False,
+        ).stdout.strip()
+
+        if local_sha and remote_sha and local_sha != remote_sha:
+            tmp_dir = Path(tempfile.gettempdir())
+            hist_path = project_root / "story_audio_history.json"
+            csv_path = project_root / "output" / "danh_sach_video.csv"
+            hist_bak = tmp_dir / "tiktok_story_audio_history.bak.json"
+            csv_bak = tmp_dir / "tiktok_danh_sach_video.bak.csv"
+
+            if hist_path.exists():
+                shutil.copy2(hist_path, hist_bak)
+            if csv_path.exists():
+                shutil.copy2(csv_path, csv_bak)
+
+            subprocess.run(
+                ["git", "reset", "--hard", "origin/main"],
+                cwd=str(project_root),
+                capture_output=True,
+                text=True,
+                timeout=15,
+                check=False,
+            )
+
+            if hist_bak.exists():
+                shutil.copy2(hist_bak, hist_path)
+            if csv_bak.exists():
+                csv_path.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(csv_bak, csv_path)
+
+            logger.info(
+                f"[Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub ({local_sha[:7]} -> {remote_sha[:7]})!"
+            )
             return True
-    except Exception:
-        pass
+    except Exception as exc:
+        logger.debug(f"[Auto-Git-Sync] Bỏ qua kiểm tra git: {exc}")
     return False
 
 
@@ -589,6 +663,18 @@ def run_continuous_mode(
 
     ffmpeg_bin, _ = ensure_ffmpeg()
     logger.info(f"Đã xác nhận công cụ hệ thống ffmpeg: {ffmpeg_bin}")
+
+    from .lean_context import LeanContextGateway
+
+    ctx_status = LeanContextGateway(project_root=project_root).get_engine_status()
+    logger.info(
+        "[Open-Source Engine #1] Đã kích hoạt macos-desktop-control "
+        "(d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)"
+    )
+    logger.info(
+        f"[Open-Source Engine #2] Đã kích hoạt LeanCTX "
+        f"(yvgude/lean-ctx | SDE Target-Density={ctx_status['target_density']} | version={ctx_status['version']})"
+    )
 
     base_output_dir = Path(output_dir) if output_dir else (project_root / "output")
     base_output_dir.mkdir(parents=True, exist_ok=True)
