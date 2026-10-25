@@ -214,12 +214,119 @@ class TikTok24hFilterEngine:
 
         return max(0.05, min(0.95, best_deg / 360.0))
 
+    @staticmethod
+    def _solve_whirl_from_viewport_screenshot(png_bytes: bytes) -> Optional[Dict[str, float]]:
+        """
+        Giải Captcha xoay hình tròn trực tiếp từ ảnh chụp màn hình viewport (Pure-Vision Screenshot Solver):
+        - Không phụ thuộc vào cấu trúc DOM hay tải mạng `img.src`.
+        - Tự động định vị tâm hình tròn `(cx, cy)`, bán kính ranh giới `best_r`, thanh trượt `track` và nút kéo `handle`.
+        """
+        import io
+        import numpy as np
+        from PIL import Image
+
+        im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
+        arr = np.asarray(im, dtype=np.float32)
+        h, w, _ = arr.shape
+        cx_approx = w * 0.5
+        cy_approx = h * 0.52
+
+        y_min, y_max = max(0, int(h * 0.34)), min(h, int(h * 0.72))
+        x_min, x_max = max(0, int(w * 0.38)), min(w, int(w * 0.62))
+        sub = arr[y_min:y_max, x_min:x_max]
+        ys, xs = np.where(sub.mean(axis=2) > 75)
+        if len(xs) < 400:
+            return None
+
+        x0, x1 = int(xs.min() + x_min), int(xs.max() + x_min)
+        y0, y1 = int(ys.min() + y_min), int(ys.max() + y_min)
+        cx, cy = (x0 + x1) * 0.5, (y0 + y1) * 0.5
+
+        angles = np.deg2rad(np.arange(360, dtype=np.float32))
+        cos_a, sin_a = np.cos(angles), np.sin(angles)
+
+        best_r, max_jump = 64, 0.0
+        for r in range(48, 82):
+            iy1 = np.clip(np.round(cy + (r - 1.5) * sin_a).astype(int), 0, h - 1)
+            ix1 = np.clip(np.round(cx + (r - 1.5) * cos_a).astype(int), 0, w - 1)
+            iy2 = np.clip(np.round(cy + (r + 1.5) * sin_a).astype(int), 0, h - 1)
+            ix2 = np.clip(np.round(cx + (r + 1.5) * cos_a).astype(int), 0, w - 1)
+            jump = float(np.mean(np.abs(arr[iy2, ix2] - arr[iy1, ix1])))
+            if jump > max_jump:
+                max_jump = jump
+                best_r = r
+
+        r_ins = [best_r - 5.0, best_r - 3.5, best_r - 2.0]
+        r_outs = [best_r + 2.0, best_r + 3.5, best_r + 5.0]
+        ring_in = np.mean(
+            [
+                arr[
+                    np.clip(np.round(cy + r * sin_a).astype(int), 0, h - 1),
+                    np.clip(np.round(cx + r * cos_a).astype(int), 0, w - 1),
+                ]
+                for r in r_ins
+            ],
+            axis=0,
+        )
+        ring_out = np.mean(
+            [
+                arr[
+                    np.clip(np.round(cy + r * sin_a).astype(int), 0, h - 1),
+                    np.clip(np.round(cx + r * cos_a).astype(int), 0, w - 1),
+                ]
+                for r in r_outs
+            ],
+            axis=0,
+        )
+
+        ring_in_norm = (ring_in - ring_in.mean(axis=0)) / (ring_in.std(axis=0) + 1e-5)
+        ring_out_norm = (ring_out - ring_out.mean(axis=0)) / (ring_out.std(axis=0) + 1e-5)
+        grad_in = np.roll(ring_in, -1, axis=0) - np.roll(ring_in, 1, axis=0)
+        grad_out = np.roll(ring_out, -1, axis=0) - np.roll(ring_out, 1, axis=0)
+
+        best_deg, best_score = 180, -1e9
+        for deg in range(15, 346):
+            s_in = np.roll(ring_in_norm, deg, axis=0)
+            s_raw = np.roll(ring_in, deg, axis=0)
+            s_grad = np.roll(grad_in, deg, axis=0)
+            corr = float(np.mean(s_in * ring_out_norm))
+            mae = float(np.mean(np.abs(s_raw - ring_out))) / 255.0
+            gdiff = float(np.mean(np.abs(s_grad - grad_out))) / 255.0
+            score = corr - 0.80 * mae - 0.50 * gdiff
+            if score > best_score:
+                best_score = score
+                best_deg = deg
+
+        # Tìm thanh trượt bên dưới hình tròn
+        sy0, sy1 = min(h - 1, int(y1 + 8)), min(h, int(y1 + 70))
+        sx0, sx1 = max(0, int(cx - 190)), min(w, int(cx + 190))
+        sub_s = arr[sy0:sy1, sx0:sx1]
+        tys, txs = np.where(sub_s.mean(axis=2) > 38)
+        if len(txs) > 50:
+            track_left = float(txs.min() + sx0)
+            track_right = float(txs.max() + sx0)
+            track_width = max(260.0, track_right - track_left)
+            handle_y = float((tys.min() + tys.max()) * 0.5 + sy0)
+            handle_x = track_left + 31.5
+        else:
+            track_width = 347.0
+            handle_x = cx - 347.0 * 0.5 + 31.5
+            handle_y = float(y1 + 32.0)
+
+        return {
+            "frac": max(0.05, min(0.95, best_deg / 360.0)),
+            "handleX": handle_x,
+            "handleY": handle_y,
+            "handleWidth": 63.0,
+            "trackWidth": track_width,
+        }
+
     def solve_tiktok_rotation_captcha_if_present(
         self, page: Any, ch_folder: str, max_attempts: int = 5
     ) -> bool:
         """
         Tự động phát hiện và giải Captcha xoay hình tròn của TikTok ('Kéo thanh trượt để ghép hình')
-        bằng Thị giác máy tính Đa Vành + kéo chuột tự nhiên trên trình duyệt & phần cứng macOS.
+        bằng Thị giác máy tính Đa Vành (DOM + Pure-Vision Screenshot Fallback) & kéo chuột tự nhiên.
         """
         from curl_cffi import requests as creq
 
@@ -233,20 +340,40 @@ class TikTok24hFilterEngine:
                         const hasContainer = !!document.querySelector(
                             '#captcha-verify-container-main-page, .captcha-verify-container, [class*="captcha-verify"]'
                         );
+                        if (!hasText && !hasContainer) return null;
+
                         const imgs = Array.from(document.querySelectorAll('img')).filter(img => {
                             const r = img.getBoundingClientRect();
                             return r.width >= 65 && r.width <= 380 && Math.abs(r.width - r.height) <= 16 && img.src;
                         });
-                        if (!hasText && !hasContainer && imgs.length < 2) return null;
-                        if (imgs.length < 2) return null;
-
                         imgs.sort((a, b) => b.getBoundingClientRect().width - a.getBoundingClientRect().width);
-                        const outerImg = imgs[0];
-                        const innerImg = imgs[1];
+
+                        let outerImg = null, innerImg = null;
+                        for (let i = 0; i < imgs.length; i++) {
+                            for (let j = i + 1; j < imgs.length; j++) {
+                                const r1 = imgs[i].getBoundingClientRect();
+                                const r2 = imgs[j].getBoundingClientRect();
+                                const cx1 = r1.left + r1.width / 2, cy1 = r1.top + r1.height / 2;
+                                const cx2 = r2.left + r2.width / 2, cy2 = r2.top + r2.height / 2;
+                                if (Math.abs(cx1 - cx2) < 20 && Math.abs(cy1 - cy2) < 20 && r1.width > r2.width + 15) {
+                                    outerImg = imgs[i];
+                                    innerImg = imgs[j];
+                                    break;
+                                }
+                            }
+                            if (outerImg) break;
+                        }
+                        if (!outerImg && imgs.length >= 2) {
+                            outerImg = imgs[0];
+                            innerImg = imgs[1];
+                        }
+                        if (!outerImg || !innerImg) {
+                            return { screenshotOnly: true };
+                        }
+
                         const outerRect = outerImg.getBoundingClientRect();
                         const innerRect = innerImg.getBoundingClientRect();
 
-                        // 1. Tìm nút kéo (slider handle) bằng selector hoặc tọa độ hình học mở rộng (r.left >= outerRect.left - 140)
                         let handleEl = document.querySelector(
                             '#captcha_slide_button, .secsdk-captcha-drag-icon, [class*="captcha-drag-icon"], [class*="secsdk_captcha_drag_icon"], [class*="DragIcon"]'
                         );
@@ -262,7 +389,7 @@ class TikTok24hFilterEngine:
                                     r.left <= outerRect.left + 80
                                 );
                             });
-                            candidates.sort((a, b) => a.getBoundingClientRect().width - b.getBoundingClientRect().width);
+                            candidates.sort((a, b) => b.getBoundingClientRect().width - a.getBoundingClientRect().width);
                             handleEl = candidates[0] || null;
                         }
 
@@ -271,7 +398,7 @@ class TikTok24hFilterEngine:
                             const handleRect = handleEl.getBoundingClientRect();
                             handleX = handleRect.left + handleRect.width / 2;
                             handleY = handleRect.top + handleRect.height / 2;
-                            handleWidth = handleRect.width;
+                            handleWidth = Math.max(48, Math.min(80, handleRect.width));
                             let parent = handleEl.parentElement;
                             for (let i = 0; i < 5 && parent; i++) {
                                 const pr = parent.getBoundingClientRect();
@@ -282,13 +409,13 @@ class TikTok24hFilterEngine:
                                 parent = parent.parentElement;
                             }
                         } else {
-                            // Fallback hình học chính xác theo khung chuẩn TikTok Dark-Mode (trackWidth=347, handleWidth=63)
                             const centerX = outerRect.left + outerRect.width / 2;
                             handleX = centerX - 347 / 2 + 63 / 2;
                             handleY = outerRect.bottom + 28;
                         }
 
                         return {
+                            screenshotOnly: false,
                             outerSrc: outerImg.src,
                             innerSrc: innerImg.src,
                             ratio: innerRect.width / Math.max(1, outerRect.width),
@@ -305,27 +432,42 @@ class TikTok24hFilterEngine:
                 logger.info(
                     f"[{ch_folder}] [Auto-Captcha Solver] Phát hiện Captcha xoay hình tròn của TikTok (lần thử {attempt}/{max_attempts}), đang tính góc khớp biên..."
                 )
-                r_out = creq.get(captcha_data["outerSrc"], impersonate="chrome", timeout=10)
-                r_in = creq.get(captcha_data["innerSrc"], impersonate="chrome", timeout=10)
-                if r_out.status_code != 200 or r_in.status_code != 200:
-                    return False
 
-                frac = self._compute_best_whirl_rotation_fraction(
-                    outer_bytes=r_out.content,
-                    inner_bytes=r_in.content,
-                    inner_to_outer_ratio=float(captcha_data.get("ratio") or 0.608),
-                )
+                frac: Optional[float] = None
+                start_x = float(captcha_data.get("handleX") or 540.0)
+                start_y = float(captcha_data.get("handleY") or 552.0)
+                handle_w = float(captcha_data.get("handleWidth") or 63.0)
+                track_w = float(captcha_data.get("trackWidth") or 347.0)
+
+                if not captcha_data.get("screenshotOnly") and captcha_data.get("outerSrc") and captcha_data.get("innerSrc"):
+                    try:
+                        r_out = creq.get(captcha_data["outerSrc"], impersonate="chrome", timeout=8)
+                        r_in = creq.get(captcha_data["innerSrc"], impersonate="chrome", timeout=8)
+                        if r_out.status_code == 200 and r_in.status_code == 200:
+                            frac = self._compute_best_whirl_rotation_fraction(
+                                outer_bytes=r_out.content,
+                                inner_bytes=r_in.content,
+                                inner_to_outer_ratio=float(captcha_data.get("ratio") or 0.608),
+                            )
+                    except Exception:
+                        frac = None
+
+                if frac is None:
+                    png_bytes = page.screenshot(type="png")
+                    vis = self._solve_whirl_from_viewport_screenshot(png_bytes)
+                    if not vis:
+                        return False
+                    frac = float(vis["frac"])
+                    start_x = float(vis["handleX"])
+                    start_y = float(vis["handleY"])
+                    handle_w = float(vis["handleWidth"])
+                    track_w = float(vis["trackWidth"])
+
                 if attempt == 4:
                     frac = 1.0 - frac
 
-                max_slide_px = max(
-                    180.0,
-                    float(captcha_data["trackWidth"]) - float(captcha_data["handleWidth"]) - 2.0,
-                )
+                max_slide_px = max(180.0, track_w - handle_w - 2.0)
                 drag_px = frac * max_slide_px
-
-                start_x = float(captcha_data["handleX"])
-                start_y = float(captcha_data["handleY"])
                 end_x = start_x + drag_px
                 end_y = start_y + random.uniform(-1.2, 1.2)
 

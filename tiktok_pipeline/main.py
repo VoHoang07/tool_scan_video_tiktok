@@ -713,10 +713,23 @@ def run_continuous_mode(
     scheduler_lock = threading.Lock()
 
     def _run_scheduler_safe() -> None:
+        nonlocal poster
         if not scheduler_lock.acquire(blocking=False):
             return
         try:
-            _auto_git_pull_if_available(project_root)
+            pulled = _auto_git_pull_if_available(project_root)
+            if pulled or _get_codebase_mtime_snapshot(project_root) != initial_code_snapshot:
+                try:
+                    import importlib
+                    from . import growth_24h_filter as _g24_mod
+                    from . import auto_poster as _ap_mod
+
+                    importlib.reload(_g24_mod)
+                    importlib.reload(_ap_mod)
+                    poster = _ap_mod.TikTokAutoPoster(project_root=project_root)
+                    logger.info("[Hot-Reload In-Place] Đã nạp nóng code mới cho TikTokAutoPoster & Bộ lọc 24h!")
+                except Exception as rel_exc:
+                    logger.debug(f"[Hot-Reload In-Place] Bỏ qua lỗi nạp nóng phụ: {rel_exc}")
             crawler.auto_sync_posted_videos()
             poster.check_and_run_scheduled_posts()
         except Exception as sched_exc:

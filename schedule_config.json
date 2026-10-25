@@ -57,7 +57,7 @@
     "channel": "tu_chan_gioi"
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "intel_live_test_20261026_0045",
+    "trigger_id": "intel_live_test_20261026_0053",
     "target_arch": "x86_64",
     "channel": "video_AI_hay",
     "video_count": 1

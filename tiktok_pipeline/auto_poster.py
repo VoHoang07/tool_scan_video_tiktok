@@ -1624,6 +1624,19 @@ class TikTokAutoPoster:
                     playwright_obj=p, user_data_dir=user_data_dir, headless=headless
                 )
                 try:
+                    try:
+                        import importlib
+                        from . import growth_24h_filter as _g24_mod
+
+                        importlib.reload(_g24_mod)
+                        self.filter_24h = _g24_mod.TikTok24hFilterEngine(
+                            project_root=self.project_root,
+                            desktop=self.desktop,
+                            human_move_fn=self._human_move_mouse,
+                            os_click_fn=self._os_click_viewport,
+                        )
+                    except Exception:
+                        pass
                     page = context.pages[0] if context.pages else context.new_page()
                     records = self.filter_24h.run_session_on_page(
                         page=page, ch_folder=ch_folder, video_count=video_count
