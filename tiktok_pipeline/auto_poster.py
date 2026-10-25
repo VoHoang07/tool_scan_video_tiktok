@@ -191,7 +191,7 @@ class TikTokAutoPoster:
             "--no-default-browser-check",
             "--lang=vi-VN",
         ]
-        ignore_args = ["--enable-automation"]
+        ignore_args = ["--enable-automation", "--no-sandbox"]
 
         try:
             context = playwright_obj.chromium.launch_persistent_context(
@@ -1124,12 +1124,10 @@ class TikTokAutoPoster:
         for ch_folder in target_channels:
             user_data_dir = self.profiles_root / ch_folder
             if not user_data_dir.exists():
-                logger.warning(
-                    f"Kênh [{ch_folder}] chưa có phiên đăng nhập tại {user_data_dir}. "
-                    f"Hãy chạy: `./venv/bin/python main.py --login-channel {ch_folder}` trước."
+                logger.info(
+                    f"Kênh [{ch_folder}] chưa có thư mục profile tại {user_data_dir}, đang khởi tạo profile mới..."
                 )
-                summary[ch_folder] = {"status": "SKIPPED_NO_LOGIN", "interacted_count": 0}
-                continue
+                user_data_dir.mkdir(parents=True, exist_ok=True)
 
             logger.info(
                 f"=== BẮT ĐẦU CHẠY TỰ ĐỘNG 'BỘ LỌC 24 GIỜ' CHO KÊNH [{ch_folder}] ({video_count} video mục tiêu) ==="

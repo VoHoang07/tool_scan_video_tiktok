@@ -224,89 +224,98 @@ class TikTok24hFilterEngine:
         """
         Tìm kiếm các video "Bộ lọc 24 giờ" mới đăng trên TikTok, lọc bỏ những video/chủ kênh
         đã tương tác trước đó.
+        Ưu tiên lấy danh sách trực tiếp từ Challenge API 24h (#tuongtaccheo, #moixaykenh, #boloc24h)
+        để mở thẳng vào trang video mà KHÔNG đi qua trang Search (tránh 100% Captcha kéo hình của trang Search).
         """
         seen_videos, seen_creators = self._get_interacted_sets(ch_folder)
         own_handles = {h.lower().lstrip("@") for h in KNOWN_VIETNAMESE_HANDLES}
         candidates: List[str] = []
 
-        queries = list(FILTER_24H_SEARCH_QUERIES)
-        random.shuffle(queries)
+        # 1. Lấy trực tiếp từ Challenge API của cộng đồng #tuongtaccheo / #moixaykenh / #boloc24h (không dính Captcha Search)
+        try:
+            from curl_cffi import requests as creq
 
-        for query in queries[:3]:
-            if len(candidates) >= needed_count * 2:
-                break
-            encoded_q = urllib.parse.quote(query)
-            search_url = f"https://www.tiktok.com/search/video?q={encoded_q}&lang=vi-VN"
-            logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đang tìm video mới xây kênh với từ khóa: '{query}'...")
+            challenge_ids = [
+                ("1599780740982785", "tuongtaccheo"),
+                ("7205228809015164955", "moixaykenh"),
+                ("7352162388008763408", "moixaykenhtiktok"),
+                ("1679983099973633", "tuongtac_cheo"),
+            ]
+            random.shuffle(challenge_ids)
+            scored_items: List[Tuple[int, int, str]] = []
 
-            try:
-                page.goto(search_url, wait_until="domcontentloaded", timeout=45000)
-                time.sleep(random.uniform(3.5, 5.5))
-
-                # Bật bộ lọc "24 giờ qua" trên giao diện tìm kiếm TikTok
-                self._apply_24h_search_filter_on_page(page, ch_folder)
-
-                # Cuộn nhẹ 2 lần để tải danh sách video
-                for _ in range(2):
-                    self._human_move_mouse(page, random.uniform(420, 860), random.uniform(300, 620))
-                    page.mouse.wheel(0, random.randint(450, 750))
-                    time.sleep(random.uniform(1.8, 2.8))
-
-                hrefs: List[str] = page.evaluate(
-                    """() => {
-                        const links = Array.from(document.querySelectorAll('a[href*="/video/"]'));
-                        return links.map(a => a.href).filter(Boolean);
-                    }"""
+            for cid, label in challenge_ids[:3]:
+                logger.info(
+                    f"[{ch_folder}] [Bộ lọc 24h] Đang quét video mới xây kênh 24h qua thẻ #{label}..."
                 )
-                for href in hrefs:
-                    clean_url = href.split("?")[0].strip()
-                    creator, vid = self._extract_creator_and_video_id(clean_url)
-                    if not vid or not creator:
-                        continue
-                    c_lower = creator.lower().lstrip("@")
-                    if vid in seen_videos or c_lower in seen_creators or c_lower in own_handles:
-                        continue
-                    if clean_url not in candidates:
-                        candidates.append(clean_url)
-            except Exception as exc:
-                logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi quét trang search '{query}': {exc}")
-
-        # Dự phòng bằng yt-dlp ttsearch nếu giao diện Search Web bị ẩn link
-        if len(candidates) < needed_count:
-            try:
-                import yt_dlp
-
-                fallback_q = random.choice(FILTER_24H_SEARCH_QUERIES)
-                ydl_opts = {
-                    "quiet": True,
-                    "no_warnings": True,
-                    "extract_flat": False,
-                    "skip_download": True,
-                }
-                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                    info = ydl.extract_info(f"ttsearch10:{fallback_q}", download=False)
-                    entries = (info or {}).get("entries") or []
-                    for entry in entries:
-                        if not entry:
+                r = creq.get(
+                    "https://www.tikwm.com/api/challenge/posts",
+                    params={"challenge_id": cid, "count": 20, "cursor": 0},
+                    impersonate="chrome",
+                    timeout=15,
+                )
+                if r.status_code == 200 and r.text.strip():
+                    vids = (r.json().get("data") or {}).get("videos") or []
+                    for v in vids:
+                        vid = str(v.get("video_id") or "")
+                        author_id = (v.get("author") or {}).get("unique_id") or ""
+                        if not vid or not author_id:
                             continue
-                        w_url = str(entry.get("webpage_url") or entry.get("url") or "").split("?")[0]
-                        creator, vid = self._extract_creator_and_video_id(w_url)
-                        if not vid:
-                            vid = str(entry.get("id") or "")
-                            creator = str(entry.get("uploader") or entry.get("channel") or "user")
-                            if vid:
-                                w_url = f"https://www.tiktok.com/@{creator}/video/{vid}"
+                        c_lower = author_id.lower().lstrip("@")
+                        if vid in seen_videos or c_lower in seen_creators or c_lower in own_handles:
+                            continue
+                        title_lower = str(v.get("title") or "").lower()
+                        bonus = 1 if any(
+                            kw in title_lower
+                            for kw in ("boloc24", "bộ lọc 24", "tuongtaccheo", "followcheo", "mới xây kênh", "moixaykenh")
+                        ) else 0
+                        create_ts = int(v.get("create_time") or 0)
+                        w_url = f"https://www.tiktok.com/@{author_id}/video/{vid}"
+                        scored_items.append((bonus, create_ts, w_url))
+                time.sleep(1.1)
+
+            scored_items.sort(key=lambda x: (x[0], x[1]), reverse=True)
+            for _b, _ts, w_url in scored_items:
+                if w_url not in candidates:
+                    candidates.append(w_url)
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi quét Challenge 24h API: {exc}")
+
+        # 2. Chỉ dùng trang Search trên trình duyệt nếu API chưa đủ số lượng
+        if len(candidates) < needed_count:
+            queries = list(FILTER_24H_SEARCH_QUERIES)
+            random.shuffle(queries)
+            for query in queries[:1]:
+                encoded_q = urllib.parse.quote(query)
+                search_url = f"https://www.tiktok.com/search/video?q={encoded_q}&lang=vi-VN"
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đang tìm video mới xây kênh với từ khóa: '{query}'...")
+                try:
+                    page.goto(search_url, wait_until="domcontentloaded", timeout=45000)
+                    time.sleep(random.uniform(3.5, 5.5))
+                    self._apply_24h_search_filter_on_page(page, ch_folder)
+                    for _ in range(2):
+                        self._human_move_mouse(page, random.uniform(420, 860), random.uniform(300, 620))
+                        page.mouse.wheel(0, random.randint(450, 750))
+                        time.sleep(random.uniform(1.8, 2.8))
+
+                    hrefs: List[str] = page.evaluate(
+                        """() => {
+                            const links = Array.from(document.querySelectorAll('a[href*="/video/"]'));
+                            return links.map(a => a.href).filter(Boolean);
+                        }"""
+                    )
+                    for href in hrefs:
+                        clean_url = href.split("?")[0].strip()
+                        creator, vid = self._extract_creator_and_video_id(clean_url)
+                        if not vid or not creator:
+                            continue
                         c_lower = creator.lower().lstrip("@")
-                        if (
-                            vid
-                            and vid not in seen_videos
-                            and c_lower not in seen_creators
-                            and c_lower not in own_handles
-                            and w_url not in candidates
-                        ):
-                            candidates.append(w_url)
-            except Exception as exc:
-                logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Dự phòng yt-dlp ttsearch: {exc}")
+                        if vid in seen_videos or c_lower in seen_creators or c_lower in own_handles:
+                            continue
+                        if clean_url not in candidates:
+                            candidates.append(clean_url)
+                except Exception as exc:
+                    logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi quét trang search '{query}': {exc}")
 
         return candidates[: max(needed_count, 1)]
 
