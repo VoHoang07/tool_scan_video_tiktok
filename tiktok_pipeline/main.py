@@ -433,7 +433,7 @@ def run_crawl_story_mode(
     crawler = StoryAudioCrawler(
         project_root=project_root,
         min_duration=15.0,
-        max_duration=2400.0,
+        max_duration=300.0,
         min_segments=2,
         min_speech_ratio=0.25,
         min_likes=10,
@@ -682,7 +682,7 @@ def run_continuous_mode(
     crawler = StoryAudioCrawler(
         project_root=project_root,
         min_duration=15.0,
-        max_duration=2400.0,
+        max_duration=300.0,
         min_segments=2,
         min_speech_ratio=0.25,
         min_likes=10,
@@ -708,6 +708,38 @@ def run_continuous_mode(
     poster = TikTokAutoPoster(project_root=project_root)
     initial_code_snapshot = _get_codebase_mtime_snapshot(project_root)
 
+    import threading
+
+    scheduler_lock = threading.Lock()
+
+    def _run_scheduler_safe() -> None:
+        if not scheduler_lock.acquire(blocking=False):
+            return
+        try:
+            _auto_git_pull_if_available(project_root)
+            crawler.auto_sync_posted_videos()
+            poster.check_and_run_scheduled_posts()
+        except Exception as sched_exc:
+            logger.debug(f"[Background Scheduler] Bỏ qua lỗi phụ: {sched_exc}")
+        finally:
+            scheduler_lock.release()
+
+    def _background_scheduler_loop() -> None:
+        """
+        Luồng chạy ngầm độc lập kiểm tra lịch đăng bài, Remote Trigger và đồng bộ GitHub mỗi 45 giây
+        ngay cả khi luồng chính đang lồng tiếng (Edge-TTS) hoặc ghép phụ đề (FFmpeg).
+        """
+        while not stop_requested:
+            time.sleep(45)
+            if stop_requested:
+                break
+            _run_scheduler_safe()
+
+    bg_sched_thread = threading.Thread(
+        target=_background_scheduler_loop, name="TikTokSchedulerThread", daemon=True
+    )
+    bg_sched_thread.start()
+
     def _check_hot_reload() -> None:
         _auto_git_pull_if_available(project_root)
         current_snapshot = _get_codebase_mtime_snapshot(project_root)
@@ -731,8 +763,7 @@ def run_continuous_mode(
             if sec_idx > 0 and sec_idx % 30 == 0:
                 try:
                     _check_hot_reload()
-                    crawler.auto_sync_posted_videos()
-                    poster.check_and_run_scheduled_posts()
+                    _run_scheduler_safe()
                 except SystemExit:
                     raise
                 except Exception:
@@ -762,10 +793,7 @@ def run_continuous_mode(
 
             # Kiểm tra cập nhật code tự động (Hot-Reload) & lịch đăng tự động ở đầu mỗi chu kỳ
             _check_hot_reload()
-            try:
-                poster.check_and_run_scheduled_posts()
-            except Exception as post_exc:
-                logger.warning(f"[Auto-Poster] Lỗi kiểm tra lịch đăng: {post_exc}")
+            _run_scheduler_safe()
 
             for ch_id in channel_sequence:
                 if stop_requested:
@@ -773,10 +801,7 @@ def run_continuous_mode(
 
                 # Kiểm tra Hot-Reload & lịch đăng ngay trước mỗi kênh để phản hồi tức thì
                 _check_hot_reload()
-                try:
-                    poster.check_and_run_scheduled_posts()
-                except Exception as post_exc:
-                    logger.warning(f"[Auto-Poster] Lỗi kiểm tra lịch đăng: {post_exc}")
+                _run_scheduler_safe()
 
                 try:
                     # Tự động đồng bộ trạng thái READY <-> POSTED trước khi đếm kho

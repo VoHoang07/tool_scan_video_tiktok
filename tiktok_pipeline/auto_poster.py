@@ -1264,8 +1264,8 @@ class TikTokAutoPoster:
                 jitter = self._compute_daily_jitter_minutes(today_str, ch_folder, slot, max_jitter)
                 effective_slot_min = max(0, min(23 * 60 + 59, sh * 60 + sm + jitter))
 
-                # Kích hoạt nếu thời gian hiện tại nằm trong khoảng [effective_slot_min, effective_slot_min + 18 phút]
-                if 0 <= (now_minutes - effective_slot_min) <= 18:
+                # Kích hoạt nếu thời gian hiện tại nằm trong khoảng [effective_slot_min, effective_slot_min + 180 phút (bù giờ tự động 3 tiếng)]
+                if 0 <= (now_minutes - effective_slot_min) <= 180:
                     eff_hh, eff_mm = effective_slot_min // 60, effective_slot_min % 60
                     logger.info(
                         f"[Anti-Detect Scheduler] Đã điểm giờ đăng ngẫu nhiên hôm nay của kênh [{ch_folder}]: "
