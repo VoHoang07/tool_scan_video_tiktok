@@ -27,7 +27,32 @@
       "20:30"
     ]
   },
+  "filter_24h_enabled": true,
+  "filter_24h_videos_per_session": 2,
+  "channel_filter_24h_times": {
+    "video_AI_hay": [
+      "09:30",
+      "15:00",
+      "21:30"
+    ],
+    "baby_AI": [
+      "09:42",
+      "15:12",
+      "21:42"
+    ],
+    "audio_dem_khuyen": [
+      "09:54",
+      "15:24",
+      "21:54"
+    ],
+    "tu_chan_gioi": [
+      "10:06",
+      "15:36",
+      "22:06"
+    ]
+  },
   "headless": false,
   "random_jitter_minutes": 9,
-  "warmup_before_upload": true
+  "warmup_before_upload": true,
+  "use_macos_native_input": true
 }

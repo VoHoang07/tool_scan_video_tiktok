@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 from .crawler import CHANNEL_PROFILES, StoryAudioCrawler, resolve_channel_profile
+from .growth_24h_filter import TikTok24hFilterEngine
 from .macos_desktop_controller import MacOSDesktopController
 from .utils import logger
 
@@ -20,6 +21,14 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
         "baby_AI": ["08:15", "12:45", "20:15"],
         "audio_dem_khuyen": ["08:30", "13:00", "20:30"],
         "tu_chan_gioi": ["08:45", "13:15", "20:45"],
+    },
+    "filter_24h_enabled": True,
+    "filter_24h_videos_per_session": 2,
+    "channel_filter_24h_times": {
+        "video_AI_hay": ["09:30", "15:00", "21:30"],
+        "baby_AI": ["09:42", "15:12", "21:42"],
+        "audio_dem_khuyen": ["09:54", "15:24", "21:54"],
+        "tu_chan_gioi": ["10:06", "15:36", "22:06"],
     },
     "random_jitter_minutes": 9,
     "warmup_before_upload": True,
@@ -105,6 +114,12 @@ class TikTokAutoPoster:
         self.post_log_path = self.project_root / "posted_schedule_history.json"
         self.crawler = StoryAudioCrawler(project_root=self.project_root)
         self.desktop = MacOSDesktopController(project_root=self.project_root)
+        self.filter_24h = TikTok24hFilterEngine(
+            project_root=self.project_root,
+            desktop=self.desktop,
+            human_move_fn=self._human_move_mouse,
+            os_click_fn=self._os_click_viewport,
+        )
         self.ensure_schedule_config()
 
     def ensure_schedule_config(self) -> Dict[str, Any]:
@@ -240,7 +255,9 @@ class TikTokAutoPoster:
     def _simulate_human_warmup(self, page: Any, ch_folder: str) -> None:
         """
         Mô phỏng người dùng thật mở trang chủ TikTok, di chuột và lướt xem 2-3 video (12-22 giây)
-        trước khi bấm vào trang Upload để tạo điểm tin cậy hành vi (Behavioral Trust Score) cho `mssdk`.
+        kết hợp thực thi 1 lượt "Bộ lọc 24 giờ" (Xem hết video + Thả tim + Sao chép liên kết +
+        Thêm yêu thích + Follow + Bình luận) trước khi bấm vào trang Upload để vừa tăng follow chéo,
+        vừa tạo điểm tin cậy hành vi (Behavioral Trust Score) cao nhất cho `mssdk`.
         """
         try:
             logger.info(f"[{ch_folder}] [Anti-Detect Warmup] Đang lướt dạo trang chủ TikTok 15s như người dùng thật...")
@@ -252,6 +269,13 @@ class TikTokAutoPoster:
                 page.mouse.wheel(0, random.randint(450, 750))
                 time.sleep(random.uniform(3.2, 6.0))
                 self._human_move_mouse(page, random.uniform(380, 820), random.uniform(280, 600))
+
+            cfg = self.ensure_schedule_config()
+            if cfg.get("filter_24h_enabled", True):
+                logger.info(
+                    f"[{ch_folder}] [Bộ lọc 24h Warmup] Kết hợp chạy 1 video tương tác chéo 'Bộ lọc 24 giờ' trước khi đăng bài..."
+                )
+                self.filter_24h.run_session_on_page(page, ch_folder, video_count=1)
         except Exception as exc:
             logger.debug(f"[{ch_folder}] Bỏ qua bước warmup nhẹ: {exc}")
 
@@ -1073,6 +1097,66 @@ class TikTokAutoPoster:
         logger.info(f"[{ch_folder}] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: {marked['filename']}")
         return marked
 
+    def run_24h_filter_for_channel(
+        self,
+        channel_arg: str,
+        video_count: int = 2,
+        headless: bool = False,
+    ) -> Dict[str, Any]:
+        """
+        Thực thi tự động "Bộ lọc 24 giờ" (Xem hết video -> Thả tim -> Sao chép liên kết ->
+        Thêm vào yêu thích -> Follow chủ kênh -> Bình luận có ý nghĩa xác nhận đã follow)
+        cho 1 kênh hoặc toàn bộ 4 kênh (`all`).
+        """
+        try:
+            from playwright.sync_api import sync_playwright
+        except ImportError as exc:
+            raise RuntimeError(
+                "Chưa cài đặt `playwright`. Vui lòng chạy: `./venv/bin/pip install playwright && ./venv/bin/playwright install chromium`"
+            ) from exc
+
+        if channel_arg.strip().lower() == "all":
+            target_channels = [p["folder_name"] for p in CHANNEL_PROFILES.values()]
+        else:
+            target_channels = [resolve_channel_profile(channel_arg)["folder_name"]]
+
+        summary: Dict[str, Any] = {}
+        for ch_folder in target_channels:
+            user_data_dir = self.profiles_root / ch_folder
+            if not user_data_dir.exists():
+                logger.warning(
+                    f"Kênh [{ch_folder}] chưa có phiên đăng nhập tại {user_data_dir}. "
+                    f"Hãy chạy: `./venv/bin/python main.py --login-channel {ch_folder}` trước."
+                )
+                summary[ch_folder] = {"status": "SKIPPED_NO_LOGIN", "interacted_count": 0}
+                continue
+
+            logger.info(
+                f"=== BẮT ĐẦU CHẠY TỰ ĐỘNG 'BỘ LỌC 24 GIỜ' CHO KÊNH [{ch_folder}] ({video_count} video mục tiêu) ==="
+            )
+            with sync_playwright() as p:
+                context = self._launch_stealth_chrome_context(
+                    playwright_obj=p, user_data_dir=user_data_dir, headless=headless
+                )
+                try:
+                    page = context.pages[0] if context.pages else context.new_page()
+                    records = self.filter_24h.run_session_on_page(
+                        page=page, ch_folder=ch_folder, video_count=video_count
+                    )
+                    summary[ch_folder] = {
+                        "status": "OK",
+                        "interacted_count": len(records),
+                        "records": records,
+                    }
+                    time.sleep(random.uniform(3.0, 5.0))
+                finally:
+                    try:
+                        context.close()
+                    except Exception:
+                        pass
+
+        return summary
+
     def _load_post_history(self) -> Dict[str, str]:
         if not self.post_log_path.exists():
             return {}
@@ -1101,12 +1185,15 @@ class TikTokAutoPoster:
 
     def check_and_run_scheduled_posts(self) -> List[Dict[str, Any]]:
         """
-        Kiểm tra giờ hiện tại (`HH:MM`) so với lịch đăng của từng kênh trong `schedule_config.json`
-        (kèm độ lệch ngẫu nhiên ± phút mỗi ngày `random_jitter_minutes`).
+        Kiểm tra giờ hiện tại (`HH:MM`) so với lịch đăng bài và lịch chạy 'Bộ lọc 24 giờ'
+        của từng kênh trong `schedule_config.json` (kèm độ lệch ngẫu nhiên ± phút mỗi ngày).
         """
         cfg = self.ensure_schedule_config()
         ch_times_map: Dict[str, List[str]] = cfg.get("channel_post_times") or {}
         default_times: List[str] = cfg.get("default_post_times") or ["08:00", "12:30", "20:00"]
+        filter_enabled = bool(cfg.get("filter_24h_enabled", True))
+        filter_count = int(cfg.get("filter_24h_videos_per_session", 2))
+        filter_times_map: Dict[str, List[str]] = cfg.get("channel_filter_24h_times") or {}
         max_jitter = int(cfg.get("random_jitter_minutes", 9))
         headless = bool(cfg.get("headless", False))
 
@@ -1118,6 +1205,8 @@ class TikTokAutoPoster:
 
         for profile in CHANNEL_PROFILES.values():
             ch_folder = profile["folder_name"]
+
+            # 1. Kiểm tra khung giờ ĐĂNG BÀI tự động
             slots = ch_times_map.get(ch_folder) or default_times
             for slot in slots:
                 slot_key = f"{today_str}_{ch_folder}_{slot}"
@@ -1145,5 +1234,34 @@ class TikTokAutoPoster:
                             posted_results.append(res)
                     except Exception as exc:
                         logger.error(f"Lỗi tự động đăng theo lịch kênh [{ch_folder}] khung {slot}: {exc}")
+
+            # 2. Kiểm tra khung giờ TƯƠNG TÁC CHÉO 'BỘ LỌC 24 GIỜ' tự động
+            if filter_enabled:
+                f_slots = filter_times_map.get(ch_folder) or ["09:30", "15:00", "21:30"]
+                for f_slot in f_slots:
+                    f_key = f"{today_str}_filter24h_{ch_folder}_{f_slot}"
+                    if f_key in history:
+                        continue
+                    try:
+                        fh, fm = map(int, f_slot.split(":"))
+                    except Exception:
+                        continue
+                    f_jitter = self._compute_daily_jitter_minutes(today_str, f"f24_{ch_folder}", f_slot, max_jitter)
+                    eff_f_min = max(0, min(23 * 60 + 59, fh * 60 + fm + f_jitter))
+
+                    if 0 <= (now_minutes - eff_f_min) <= 20:
+                        eff_hh, eff_mm = eff_f_min // 60, eff_f_min % 60
+                        logger.info(
+                            f"[Bộ lọc 24h Scheduler] Đã điểm giờ chăm kênh & tương tác chéo 'Bộ lọc 24 giờ' của kênh [{ch_folder}]: "
+                            f"{eff_hh:02d}:{eff_mm:02d} (khung gốc {f_slot}, lệch {f_jitter:+d} phút)"
+                        )
+                        try:
+                            self.run_24h_filter_for_channel(
+                                ch_folder, video_count=filter_count, headless=headless
+                            )
+                            history[f_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            self._save_post_history(history)
+                        except Exception as exc:
+                            logger.error(f"Lỗi chạy Bộ lọc 24h kênh [{ch_folder}] khung {f_slot}: {exc}")
 
         return posted_results

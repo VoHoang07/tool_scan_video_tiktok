@@ -1073,6 +1073,21 @@ def build_arg_parser() -> argparse.ArgumentParser:
         ),
     )
     parser.add_argument(
+        "--filter-24h",
+        default=None,
+        help=(
+            "Chạy tự động 'Bộ lọc 24 giờ' (Xem hết video + Thả tim + Sao chép liên kết + "
+            "Thêm vào yêu thích + Follow chủ kênh + Bình luận có ý nghĩa xác nhận đã follow) "
+            "cho kênh chỉ định hoặc 'all' (tất cả 4 kênh)"
+        ),
+    )
+    parser.add_argument(
+        "--filter-count",
+        type=int,
+        default=2,
+        help="Số lượng video mục tiêu tương tác mỗi kênh trong 1 phiên --filter-24h (mặc định: 2)",
+    )
+    parser.add_argument(
         "--platform",
         choices=["douyin", "tiktok"],
         default=None,
@@ -1215,6 +1230,19 @@ def main() -> None:
             print("\n" + "=" * 70)
             print("TRẠNG THÁI TÍCH HỢP MACOS-DESKTOP-CONTROL & LEAN-CTX:")
             print(json.dumps(report, ensure_ascii=False, indent=2))
+            print("=" * 70 + "\n")
+            return
+
+        # 2g. Chạy tương tác chéo "Bộ lọc 24 giờ" --filter-24h <channel|all>
+        if args.filter_24h:
+            poster = TikTokAutoPoster(project_root=project_root)
+            res = poster.run_24h_filter_for_channel(
+                channel_arg=args.filter_24h.strip(),
+                video_count=max(1, args.filter_count),
+            )
+            print("\n" + "=" * 70)
+            print("KẾT QUẢ TƯƠNG TÁC CHÉO 'BỘ LỌC 24 GIỜ' (6 BƯỚC CHUẨN):")
+            print(json.dumps(res, ensure_ascii=False, indent=2))
             print("=" * 70 + "\n")
             return
 

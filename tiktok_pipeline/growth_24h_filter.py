@@ -1,0 +1,809 @@
+import json
+import random
+import re
+import time
+import urllib.parse
+from datetime import datetime, timedelta
+from pathlib import Path
+from typing import Any, Callable, Dict, List, Optional, Tuple
+
+from .crawler import KNOWN_VIETNAMESE_HANDLES
+from .macos_desktop_controller import MacOSDesktopController
+from .utils import logger
+
+# Danh sách từ khóa tìm kiếm đúng tệp người dùng đang áp dụng "Bộ lọc 24 giờ" / mới xây kênh trên TikTok
+FILTER_24H_SEARCH_QUERIES: List[str] = [
+    "bộ lọc 24 giờ",
+    "bộ lọc 24h mới xây kênh",
+    "tương tác chéo bộ lọc 24 giờ",
+    "mới xây kênh follow chéo",
+    "trả tương tác bộ lọc 24h",
+    "bộ lọc 24 giờ cùng nhau phát triển",
+    "xây kênh từ con số 0 bộ lọc 24h",
+]
+
+# Kho mẫu bình luận có ý nghĩa, thân thiện, chuẩn cộng đồng "Bộ lọc 24 giờ"
+# (Tự động kết hợp ngẫu nhiên Mở đầu + Thân bài + Kết bài để tạo ra hàng trăm biến thể không trùng lặp)
+COMMENT_OPENERS: List[str] = [
+    "Mình đã xem hết video của bạn,",
+    "Xem trọn vẹn hết video rồi mới",
+    "Mình vừa xem kỹ hết video,",
+    "Đã xem hết 100% thời lượng video,",
+    "Hữu duyên gặp kênh bạn qua bộ lọc 24 giờ, mình đã xem hết video,",
+    "Ủng hộ người mới xây kênh, mình đã xem hết video,",
+    "Đúng chuẩn bộ lọc 24h, mình vừa xem hết video của bạn,",
+]
+
+COMMENT_ACTIONS: List[str] = [
+    "thả tim, lưu yêu thích, sao chép liên kết và bấm follow kênh bạn đủ bộ rồi nha!",
+    "bấm tim, thêm vào yêu thích, copy link và follow bạn đầy đủ 5 bước rồi nhé!",
+    "tương tác đủ combo (tim + lưu yêu thích + sao chép liên kết + follow) cho bạn rồi nha!",
+    "làm đủ các bước bộ lọc 24 giờ: thả tim, lưu yêu thích, sao chép liên kết và follow bạn rồi đó!",
+    "thả tim, lưu video vào yêu thích, sao chép liên kết và đăng ký theo dõi kênh bạn luôn rồi nhé!",
+]
+
+COMMENT_CLOSERS: List[str] = [
+    "Cùng tương tác chéo phát triển kênh trong 24h nhé 💯",
+    "Chúc kênh bạn sớm lên xu hướng, rảnh ghé tương tác lại cùng mình nha 🔥",
+    "Nhớ trả tương tác giúp mình trong 24 giờ để cùng nhau lên xu hướng nhé ✨",
+    "Cùng nhau kiên trì xây kênh thật tốt nha bạn ơi, mình follow rồi đó 💪",
+    "Chúc bạn xây kênh thành công rực rỡ, nhớ ghé trả tương tác cho mình nha ❤️",
+    "Mình comment lại sau khi follow để bạn dễ nhận diện trả tương tác 24h nhé 🌟",
+]
+
+
+class TikTok24hFilterEngine:
+    """
+    Bộ máy tự động thực thi "BỘ LỌC 24 GIỜ" (24-Hour TikTok Channel Growth & Cross-Follow Filter)
+    trên cả 4 kênh TikTok (`video_AI_hay`, `baby_AI`, `audio_dem_khuyen`, `tu_chan_gioi`):
+
+    Quy trình chuẩn 6 bước trên mỗi video mục tiêu:
+      1. Xem hết video của người khác (100% thời lượng hoặc 20-42s kèm di chuột phần cứng Bezier).
+      2. Thả tim video (Like) bằng chuột phần cứng macOS (`CoreGraphics CGEvent`).
+      3. Sao chép liên kết video đó (Copy Link -> tính 1 lượt Share thuật toán).
+      4. Thêm video vào mục Yêu thích (Bookmark / Save to Favorites).
+      5. Follow người đăng video đó (Follow Creator).
+      6. Để lại 1 bình luận có ý nghĩa xác nhận đã làm đủ combo & đã follow để chủ kênh
+         trả follow lại trong vòng 24 giờ.
+    """
+
+    def __init__(
+        self,
+        project_root: Path,
+        desktop: MacOSDesktopController,
+        human_move_fn: Callable[[Any, float, float], None],
+        os_click_fn: Callable[[Any, float, float], None],
+    ):
+        self.project_root = Path(project_root).resolve()
+        self.desktop = desktop
+        self._human_move_mouse = human_move_fn
+        self._os_click_viewport = os_click_fn
+        self.history_path = self.project_root / "growth_24h_history.json"
+
+    def load_history(self) -> Dict[str, Any]:
+        if not self.history_path.exists():
+            return {"interactions": [], "daily_runs": {}}
+        try:
+            data = json.loads(self.history_path.read_text(encoding="utf-8"))
+            if "interactions" not in data:
+                data["interactions"] = []
+            if "daily_runs" not in data:
+                data["daily_runs"] = {}
+            return data
+        except Exception:
+            return {"interactions": [], "daily_runs": {}}
+
+    def save_history(self, data: Dict[str, Any]) -> None:
+        self.history_path.write_text(
+            json.dumps(data, ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+
+    def _get_interacted_sets(self, ch_folder: str) -> Tuple[set, set]:
+        """Lấy tập hợp video_id và creator_handle mà kênh `ch_folder` đã tương tác."""
+        hist = self.load_history()
+        seen_videos = set()
+        seen_creators = set()
+        for item in hist.get("interactions", []):
+            if item.get("channel") == ch_folder:
+                vid = item.get("video_id")
+                creator = item.get("creator_handle")
+                if vid:
+                    seen_videos.add(str(vid))
+                if creator:
+                    seen_creators.add(str(creator).lower().lstrip("@"))
+        return seen_videos, seen_creators
+
+    @staticmethod
+    def _extract_creator_and_video_id(url: str) -> Tuple[str, str]:
+        m = re.search(r"tiktok\.com/@([^/?#]+)/video/(\d+)", url)
+        if m:
+            return m.group(1), m.group(2)
+        return "", ""
+
+    @staticmethod
+    def generate_meaningful_24h_comment(creator_handle: str = "", video_desc: str = "") -> str:
+        """
+        Tạo bình luận tiếng Việt tự nhiên, có ý nghĩa, không trùng lặp và nhấn mạnh đã hoàn tất
+        đủ các bước của Bộ lọc 24 giờ (kèm xác nhận đã follow để không bị chủ kênh bỏ sót).
+        """
+        opener = random.choice(COMMENT_OPENERS)
+        action = random.choice(COMMENT_ACTIONS)
+        closer = random.choice(COMMENT_CLOSERS)
+
+        clean_handle = creator_handle.strip().lstrip("@")
+        if clean_handle and not clean_handle.startswith("user") and len(clean_handle) <= 22 and random.random() < 0.45:
+            comment = f"Chào @{clean_handle}, {opener[0].lower() + opener[1:]} {action} {closer}"
+        else:
+            comment = f"{opener} {action} {closer}"
+
+        return re.sub(r"\s+", " ", comment).strip()
+
+    def _apply_24h_search_filter_on_page(self, page: Any, ch_folder: str) -> bool:
+        """
+        Trên trang tìm kiếm TikTok (`tiktok.com/search/video`), bấm vào nút `Bộ lọc` (`Filter`)
+        -> chọn `24 giờ qua` (`Past 24 hours` / `Hôm qua`) -> bấm `Áp dụng` (`Apply`).
+        """
+        try:
+            # 1. Tìm nút Bộ lọc / Filter ở góc phải thanh tìm kiếm
+            filter_pos = page.evaluate(
+                """() => {
+                    const labels = ['Bộ lọc', 'Filter', 'Filters'];
+                    const els = Array.from(document.querySelectorAll('div, button, span, p'));
+                    for (const el of els) {
+                        if (el.children.length > 3) continue;
+                        const txt = (el.innerText || el.textContent || '').trim();
+                        if (labels.includes(txt)) {
+                            const r = el.getBoundingClientRect();
+                            if (r.width > 15 && r.height > 12 && r.top > 40 && r.top < 320) {
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if not filter_pos:
+                return False
+
+            self._os_click_viewport(page, float(filter_pos["x"]), float(filter_pos["y"]))
+            time.sleep(random.uniform(1.2, 2.0))
+
+            # 2. Chọn tùy chọn "24 giờ qua" / "Hôm qua" / "Past 24 hours"
+            opt_pos = page.evaluate(
+                """() => {
+                    const labels = ['24 giờ qua', 'Trong 24 giờ qua', 'Hôm qua', 'Past 24 hours', 'Yesterday', 'Last 24 hours'];
+                    const els = Array.from(document.querySelectorAll('div, span, label, li, button, p'));
+                    for (const el of els) {
+                        if (el.children.length > 3) continue;
+                        const txt = (el.innerText || el.textContent || '').trim();
+                        if (labels.some(l => txt === l || txt.includes(l))) {
+                            const r = el.getBoundingClientRect();
+                            if (r.width > 15 && r.height > 12) {
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if opt_pos:
+                self._os_click_viewport(page, float(opt_pos["x"]), float(opt_pos["y"]))
+                time.sleep(random.uniform(0.8, 1.4))
+
+                # 3. Bấm nút "Áp dụng" / "Apply" (nếu có hộp thoại Bộ lọc)
+                apply_pos = page.evaluate(
+                    """() => {
+                        const labels = ['Áp dụng', 'Apply'];
+                        const els = Array.from(document.querySelectorAll('button, div, span'));
+                        for (const el of els) {
+                            if (el.children.length > 2) continue;
+                            const txt = (el.innerText || el.textContent || '').trim();
+                            if (labels.includes(txt)) {
+                                const r = el.getBoundingClientRect();
+                                if (r.width > 20 && r.height > 15) {
+                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                }
+                            }
+                        }
+                        return null;
+                    }"""
+                )
+                if apply_pos:
+                    self._os_click_viewport(page, float(apply_pos["x"]), float(apply_pos["y"]))
+                    time.sleep(random.uniform(2.5, 4.0))
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đã bật bộ lọc tìm kiếm '24 giờ qua' trên TikTok.")
+                return True
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Bỏ qua thao tác mở menu Bộ lọc phụ: {exc}")
+        return False
+
+    def _discover_target_videos(
+        self, page: Any, ch_folder: str, needed_count: int = 3
+    ) -> List[str]:
+        """
+        Tìm kiếm các video "Bộ lọc 24 giờ" mới đăng trên TikTok, lọc bỏ những video/chủ kênh
+        đã tương tác trước đó.
+        """
+        seen_videos, seen_creators = self._get_interacted_sets(ch_folder)
+        own_handles = {h.lower().lstrip("@") for h in KNOWN_VIETNAMESE_HANDLES}
+        candidates: List[str] = []
+
+        queries = list(FILTER_24H_SEARCH_QUERIES)
+        random.shuffle(queries)
+
+        for query in queries[:3]:
+            if len(candidates) >= needed_count * 2:
+                break
+            encoded_q = urllib.parse.quote(query)
+            search_url = f"https://www.tiktok.com/search/video?q={encoded_q}&lang=vi-VN"
+            logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đang tìm video mới xây kênh với từ khóa: '{query}'...")
+
+            try:
+                page.goto(search_url, wait_until="domcontentloaded", timeout=45000)
+                time.sleep(random.uniform(3.5, 5.5))
+
+                # Bật bộ lọc "24 giờ qua" trên giao diện tìm kiếm TikTok
+                self._apply_24h_search_filter_on_page(page, ch_folder)
+
+                # Cuộn nhẹ 2 lần để tải danh sách video
+                for _ in range(2):
+                    self._human_move_mouse(page, random.uniform(420, 860), random.uniform(300, 620))
+                    page.mouse.wheel(0, random.randint(450, 750))
+                    time.sleep(random.uniform(1.8, 2.8))
+
+                hrefs: List[str] = page.evaluate(
+                    """() => {
+                        const links = Array.from(document.querySelectorAll('a[href*="/video/"]'));
+                        return links.map(a => a.href).filter(Boolean);
+                    }"""
+                )
+                for href in hrefs:
+                    clean_url = href.split("?")[0].strip()
+                    creator, vid = self._extract_creator_and_video_id(clean_url)
+                    if not vid or not creator:
+                        continue
+                    c_lower = creator.lower().lstrip("@")
+                    if vid in seen_videos or c_lower in seen_creators or c_lower in own_handles:
+                        continue
+                    if clean_url not in candidates:
+                        candidates.append(clean_url)
+            except Exception as exc:
+                logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi quét trang search '{query}': {exc}")
+
+        # Dự phòng bằng yt-dlp ttsearch nếu giao diện Search Web bị ẩn link
+        if len(candidates) < needed_count:
+            try:
+                import yt_dlp
+
+                fallback_q = random.choice(FILTER_24H_SEARCH_QUERIES)
+                ydl_opts = {
+                    "quiet": True,
+                    "no_warnings": True,
+                    "extract_flat": False,
+                    "skip_download": True,
+                }
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    info = ydl.extract_info(f"ttsearch10:{fallback_q}", download=False)
+                    entries = (info or {}).get("entries") or []
+                    for entry in entries:
+                        if not entry:
+                            continue
+                        w_url = str(entry.get("webpage_url") or entry.get("url") or "").split("?")[0]
+                        creator, vid = self._extract_creator_and_video_id(w_url)
+                        if not vid:
+                            vid = str(entry.get("id") or "")
+                            creator = str(entry.get("uploader") or entry.get("channel") or "user")
+                            if vid:
+                                w_url = f"https://www.tiktok.com/@{creator}/video/{vid}"
+                        c_lower = creator.lower().lstrip("@")
+                        if (
+                            vid
+                            and vid not in seen_videos
+                            and c_lower not in seen_creators
+                            and c_lower not in own_handles
+                            and w_url not in candidates
+                        ):
+                            candidates.append(w_url)
+            except Exception as exc:
+                logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Dự phòng yt-dlp ttsearch: {exc}")
+
+        return candidates[: max(needed_count, 1)]
+
+    def _step1_watch_full_video(self, page: Any, ch_folder: str, video_url: str) -> float:
+        """
+        BƯỚC 1: Xem hết video của người khác.
+        Đọc thời lượng thực của thẻ `<video>` trên trang và xem trọn vẹn (từ 18s đến 42s),
+        đồng thời di chuyển chuột phần cứng macOS theo đường cong Bezier để TikTok tính 100% view thật.
+        """
+        try:
+            duration = float(
+                page.evaluate(
+                    """() => {
+                        const v = document.querySelector('video');
+                        if (v) {
+                            try { v.muted = false; v.play().catch(() => {}); } catch (e) {}
+                            if (v.duration && isFinite(v.duration) && v.duration > 2) {
+                                return v.duration;
+                            }
+                        }
+                        return 24.0;
+                    }"""
+                )
+                or 24.0
+            )
+        except Exception:
+            duration = 24.0
+
+        # Xem hết 100% thời lượng nếu video <= 42s; nếu video dài hơn thì xem 25s-42s
+        watch_seconds = min(max(duration + 1.5, 18.0), 42.0)
+        logger.info(
+            f"[{ch_folder}] [Bộ lọc 24h - Bước 1/6] Đang XEM HẾT VIDEO ({watch_seconds:.1f}s / thời lượng gốc {duration:.1f}s): {video_url}"
+        )
+
+        elapsed = 0.0
+        while elapsed < watch_seconds:
+            chunk = min(random.uniform(4.0, 6.5), watch_seconds - elapsed)
+            time.sleep(chunk)
+            elapsed += chunk
+            # Di chuột nhẹ trên vùng video bằng CoreGraphics CGEvent như người thật đang cầm chuột xem
+            self._human_move_mouse(
+                page,
+                random.uniform(340, 760),
+                random.uniform(240, 580),
+            )
+
+        return round(watch_seconds, 1)
+
+    def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
+        """
+        BƯỚC 2: Thả tim video (Like) bằng chuột phần cứng macOS (chỉ bấm nếu chưa thả tim).
+        """
+        try:
+            like_info = page.evaluate(
+                """() => {
+                    const selectors = [
+                        '[data-e2e="like-icon"]',
+                        '[data-e2e="browse-like-icon"]',
+                        'button[aria-label*="Thích"]',
+                        'button[aria-label*="Like"]',
+                        'span[data-e2e="like-icon"]'
+                    ];
+                    for (const sel of selectors) {
+                        const el = document.querySelector(sel);
+                        if (!el) continue;
+                        const btn = el.closest('button') || el.parentElement || el;
+                        const pressed = btn.getAttribute('aria-pressed') === 'true';
+                        const r = btn.getBoundingClientRect();
+                        if (r.width > 8 && r.height > 8) {
+                            return {
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2,
+                                alreadyLiked: pressed
+                            };
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if like_info:
+                if like_info.get("alreadyLiked"):
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Video đã được thả tim từ trước.")
+                    return True
+                self._os_click_viewport(page, float(like_info["x"]), float(like_info["y"]))
+                time.sleep(random.uniform(1.0, 1.8))
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️.")
+                return True
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bước thả tim: {exc}")
+        return False
+
+    def _step3_copy_video_link(self, page: Any, ch_folder: str, video_url: str) -> bool:
+        """
+        BƯỚC 3: Sao chép liên kết video đó (Copy Link).
+        Bấm trực tiếp nút 'Sao chép liên kết' (`[data-e2e="video-share-copy"]`) hoặc mở menu Chia sẻ -> Sao chép liên kết
+        để thuật toán TikTok cộng +1 lượt Chia sẻ (Share) cho chủ kênh.
+        """
+        try:
+            # Trường hợp 1: Nút "Sao chép liên kết" hiển thị trực tiếp trên trang chi tiết video
+            direct_copy = page.evaluate(
+                """() => {
+                    const directSelectors = [
+                        '[data-e2e="video-share-copy"]',
+                        'button[aria-label*="Sao chép"]',
+                        'button[aria-label*="Copy link"]'
+                    ];
+                    for (const sel of directSelectors) {
+                        const el = document.querySelector(sel);
+                        if (el) {
+                            const r = el.getBoundingClientRect();
+                            if (r.width > 8 && r.height > 8) {
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                            }
+                        }
+                    }
+                    const texts = ['Sao chép liên kết', 'Sao chép', 'Copy link'];
+                    const all = Array.from(document.querySelectorAll('button, p, span, a, div'));
+                    for (const el of all) {
+                        if (el.children.length > 2) continue;
+                        const t = (el.innerText || el.textContent || '').trim();
+                        if (texts.includes(t)) {
+                            const r = el.getBoundingClientRect();
+                            if (r.width > 12 && r.height > 10) {
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if direct_copy:
+                self._os_click_viewport(page, float(direct_copy["x"]), float(direct_copy["y"]))
+                time.sleep(random.uniform(1.0, 1.8))
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 3/6] Đã SAO CHÉP LIÊN KẾT video 🔗.")
+                return True
+
+            # Trường hợp 2: Di chuột (Hover) vào icon Chia sẻ (`share-icon`) để hiện menu Sao chép liên kết
+            share_btn = page.evaluate(
+                """() => {
+                    const selectors = [
+                        '[data-e2e="share-icon"]',
+                        '[data-e2e="browse-share-icon"]',
+                        'button[aria-label*="Chia sẻ"]',
+                        'button[aria-label*="Share"]'
+                    ];
+                    for (const sel of selectors) {
+                        const el = document.querySelector(sel);
+                        if (!el) continue;
+                        const btn = el.closest('button') || el.parentElement || el;
+                        const r = btn.getBoundingClientRect();
+                        if (r.width > 8 && r.height > 8) {
+                            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if share_btn:
+                self._human_move_mouse(page, float(share_btn["x"]), float(share_btn["y"]))
+                time.sleep(random.uniform(1.0, 1.6))
+                copy_in_menu = page.evaluate(
+                    """() => {
+                        const labels = ['Sao chép liên kết', 'Copy link', 'Sao chép'];
+                        const els = Array.from(document.querySelectorAll('a, button, span, p, div'));
+                        for (const el of els) {
+                            if (el.children.length > 2) continue;
+                            const txt = (el.innerText || el.textContent || '').trim();
+                            if (labels.some(l => txt.includes(l))) {
+                                const r = el.getBoundingClientRect();
+                                if (r.width > 10 && r.height > 10) {
+                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                }
+                            }
+                        }
+                        return null;
+                    }"""
+                )
+                if copy_in_menu:
+                    self._os_click_viewport(page, float(copy_in_menu["x"]), float(copy_in_menu["y"]))
+                else:
+                    self._os_click_viewport(page, float(share_btn["x"]), float(share_btn["y"]))
+                time.sleep(random.uniform(1.0, 1.6))
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 3/6] Đã bấm Chia sẻ & SAO CHÉP LIÊN KẾT video 🔗.")
+                return True
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi sao chép liên kết: {exc}")
+        return False
+
+    def _step4_favorite_video(self, page: Any, ch_folder: str) -> bool:
+        """
+        BƯỚC 4: Thêm video vào mục Yêu thích (Bookmark / Save to Favorites).
+        """
+        try:
+            fav_info = page.evaluate(
+                """() => {
+                    const selectors = [
+                        '[data-e2e="undefined-icon"]',
+                        '[data-e2e="bookmark-icon"]',
+                        '[data-e2e="browse-bookmark-icon"]',
+                        '[data-e2e="favorite-icon"]',
+                        'button[aria-label*="Yêu thích"]',
+                        'button[aria-label*="Thêm vào Mục yêu thích"]',
+                        'button[aria-label*="Favorite"]',
+                        'button[aria-label*="Bookmark"]'
+                    ];
+                    for (const sel of selectors) {
+                        const el = document.querySelector(sel);
+                        if (!el) continue;
+                        const btn = el.closest('button') || el.parentElement || el;
+                        const pressed = btn.getAttribute('aria-pressed') === 'true';
+                        const r = btn.getBoundingClientRect();
+                        if (r.width > 8 && r.height > 8) {
+                            return {
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2,
+                                alreadyFavorited: pressed
+                            };
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if fav_info:
+                if fav_info.get("alreadyFavorited"):
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Video đã nằm trong mục Yêu thích từ trước.")
+                    return True
+                self._os_click_viewport(page, float(fav_info["x"]), float(fav_info["y"]))
+                time.sleep(random.uniform(1.0, 1.8))
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Đã THÊM VIDEO VÀO MỤC YÊU THÍCH 🔖.")
+                return True
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi thêm vào mục yêu thích: {exc}")
+        return False
+
+    def _step5_follow_creator(self, page: Any, ch_folder: str) -> bool:
+        """
+        BƯỚC 5: Follow người đăng video đó (`[data-e2e="follow-button"]` / `[data-e2e="browse-follow"]`).
+        Chỉ bấm nếu chưa Follow (tránh bấm nhầm vào nút 'Đang Follow' gây hủy Follow!).
+        """
+        try:
+            follow_info = page.evaluate(
+                """() => {
+                    const alreadyLabels = ['Đang Follow', 'Following', 'Bạn bè', 'Friends', 'Đã gửi'];
+                    const followLabels = ['Follow', 'Theo dõi'];
+                    const selectors = [
+                        '[data-e2e="follow-button"]',
+                        '[data-e2e="browse-follow"]',
+                        '[data-e2e="feed-follow"]'
+                    ];
+                    for (const sel of selectors) {
+                        const el = document.querySelector(sel);
+                        if (!el) continue;
+                        const txt = (el.innerText || el.textContent || '').trim();
+                        if (alreadyLabels.some(l => txt.toLowerCase() === l.toLowerCase())) {
+                            return { alreadyFollowing: true };
+                        }
+                        const r = el.getBoundingClientRect();
+                        if (r.width > 12 && r.height > 12) {
+                            return {
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2,
+                                alreadyFollowing: false
+                            };
+                        }
+                    }
+                    const buttons = Array.from(document.querySelectorAll('button'));
+                    for (const btn of buttons) {
+                        const txt = (btn.innerText || btn.textContent || '').trim();
+                        if (followLabels.includes(txt)) {
+                            const r = btn.getBoundingClientRect();
+                            if (r.width > 25 && r.height > 16 && r.top > 45 && r.top < 500) {
+                                return {
+                                    x: r.left + r.width / 2,
+                                    y: r.top + r.height / 2,
+                                    alreadyFollowing: false
+                                };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if follow_info:
+                if follow_info.get("alreadyFollowing"):
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã Follow chủ kênh này từ trước.")
+                    return True
+                self._os_click_viewport(page, float(follow_info["x"]), float(follow_info["y"]))
+                time.sleep(random.uniform(1.2, 2.2))
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã FOLLOW người đăng video ➕.")
+                return True
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bấm Follow: {exc}")
+        return False
+
+    def _step6_post_meaningful_comment(
+        self, page: Any, ch_folder: str, creator_handle: str
+    ) -> Optional[str]:
+        """
+        BƯỚC 6: Để lại 1 bình luận có ý nghĩa sau khi đã Xem hết video + Thả tim + Sao chép liên kết +
+        Thêm vào yêu thích + Follow (đáp ứng cả yêu cầu comment xác nhận sau khi follow để chủ kênh
+        nhận diện và trả follow trong vòng 24 giờ).
+        """
+        comment_text = self.generate_meaningful_24h_comment(creator_handle=creator_handle)
+        try:
+            # Tìm ô nhập bình luận trên giao diện TikTok Web
+            input_pos = page.evaluate(
+                """() => {
+                    const selectors = [
+                        '[data-e2e="comment-input"]',
+                        '[data-e2e="comment-text"]',
+                        'div[contenteditable="true"]'
+                    ];
+                    for (const sel of selectors) {
+                        const el = document.querySelector(sel);
+                        if (!el) continue;
+                        const r = el.getBoundingClientRect();
+                        if (r.width > 40 && r.height > 14) {
+                            return { x: r.left + r.width * 0.35, y: r.top + r.height * 0.5 };
+                        }
+                    }
+                    const placeholders = ['Thêm bình luận', 'Add comment', 'Viết bình luận'];
+                    const all = Array.from(document.querySelectorAll('div, span, p, input, textarea'));
+                    for (const el of all) {
+                        if (el.children.length > 2) continue;
+                        const txt = (el.innerText || el.getAttribute('placeholder') || '').trim();
+                        if (placeholders.some(p => txt.includes(p))) {
+                            const r = el.getBoundingClientRect();
+                            if (r.width > 40 && r.height > 14) {
+                                return { x: r.left + r.width * 0.35, y: r.top + r.height * 0.5 };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if not input_pos:
+                # Cuộn nhẹ xuống khu vực bình luận nếu màn hình nhỏ
+                page.mouse.wheel(0, 320)
+                time.sleep(1.0)
+                input_pos = page.evaluate(
+                    """() => {
+                        const el = document.querySelector('div[contenteditable="true"], [data-e2e="comment-input"]');
+                        if (!el) return null;
+                        const r = el.getBoundingClientRect();
+                        if (r.width > 30 && r.height > 12) {
+                            return { x: r.left + r.width * 0.35, y: r.top + r.height * 0.5 };
+                        }
+                        return null;
+                    }"""
+                )
+
+            if not input_pos:
+                logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Không tìm thấy ô bình luận trên video này.")
+                return None
+
+            # Bấm vào ô bình luận bằng chuột phần cứng macOS
+            self._os_click_viewport(page, float(input_pos["x"]), float(input_pos["y"]))
+            time.sleep(random.uniform(0.6, 1.1))
+
+            # Gõ bình luận có ý nghĩa bằng macos-desktop-control + nhịp gõ người thật
+            typed_ok = False
+            try:
+                self.desktop.ensure_app_focus("Google Chrome", delay_sec=0.08)
+                typed_ok = self.desktop.type_text_humanly_os(comment_text, chunk_by_word=True)
+                time.sleep(0.35)
+            except Exception:
+                typed_ok = False
+
+            if not typed_ok:
+                for ch in comment_text:
+                    page.keyboard.type(ch, delay=random.randint(25, 65))
+
+            time.sleep(random.uniform(0.6, 1.2))
+
+            # Bấm nút "Đăng" (`[data-e2e="comment-post"]`) hoặc nhấn phím Return phần cứng
+            post_comment_pos = page.evaluate(
+                """() => {
+                    const el = document.querySelector('[data-e2e="comment-post"]');
+                    if (el) {
+                        const r = el.getBoundingClientRect();
+                        if (r.width > 10 && r.height > 10) {
+                            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if post_comment_pos:
+                self._os_click_viewport(page, float(post_comment_pos["x"]), float(post_comment_pos["y"]))
+            else:
+                try:
+                    self.desktop.key_press_os("return")
+                except Exception:
+                    page.keyboard.press("Enter")
+
+            time.sleep(random.uniform(2.2, 3.5))
+            logger.info(
+                f"[{ch_folder}] [Bộ lọc 24h - Bước 6/6] Đã BÌNH LUẬN có ý nghĩa: \"{comment_text}\""
+            )
+            return comment_text
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi gửi bình luận: {exc}")
+            return None
+
+    def interact_with_single_video(
+        self, page: Any, ch_folder: str, video_url: str
+    ) -> Dict[str, Any]:
+        """
+        Thực thi trọn vẹn 6 bước "Bộ lọc 24 giờ" trên 1 video mục tiêu và lưu vào sổ theo dõi 24h.
+        """
+        creator_handle, video_id = self._extract_creator_and_video_id(video_url)
+        logger.info(
+            f"[{ch_folder}] === BẮT ĐẦU BỘ LỌC 24 GIỜ TRÊN VIDEO CỦA @{creator_handle or 'creator'} ({video_url}) ==="
+        )
+
+        page.goto(f"{video_url}?lang=vi-VN", wait_until="domcontentloaded", timeout=45000)
+        time.sleep(random.uniform(3.0, 4.5))
+
+        # 1. Xem hết video của người khác
+        watched_sec = self._step1_watch_full_video(page, ch_folder, video_url)
+
+        # 2. Thả tim video
+        liked = self._step2_like_video(page, ch_folder)
+        time.sleep(random.uniform(0.8, 1.5))
+
+        # 3. Sao chép liên kết video đó
+        copied_link = self._step3_copy_video_link(page, ch_folder, video_url)
+        time.sleep(random.uniform(0.8, 1.5))
+
+        # 4. Thêm video vào mục yêu thích
+        favorited = self._step4_favorite_video(page, ch_folder)
+        time.sleep(random.uniform(0.8, 1.5))
+
+        # 5. Follow người đăng video đó
+        followed = self._step5_follow_creator(page, ch_folder)
+        time.sleep(random.uniform(1.0, 1.8))
+
+        # 6. Để lại 1 bình luận có ý nghĩa (sau khi đã follow để chủ kênh không bỏ sót và trả follow trong 24h)
+        comment_text = self._step6_post_meaningful_comment(page, ch_folder, creator_handle)
+
+        now_dt = datetime.now()
+        record = {
+            "channel": ch_folder,
+            "video_id": video_id,
+            "video_url": video_url,
+            "creator_handle": f"@{creator_handle}" if creator_handle else "",
+            "watched_seconds": watched_sec,
+            "steps_completed": {
+                "1_watched_full": watched_sec >= 15.0,
+                "2_liked_video": liked,
+                "3_copied_link": copied_link,
+                "4_added_favorite": favorited,
+                "5_followed_creator": followed,
+                "6_commented_after_follow": bool(comment_text),
+            },
+            "comment_text": comment_text or "",
+            "interacted_at": now_dt.strftime("%Y-%m-%d %H:%M:%S"),
+            "follow_back_window_until": (now_dt + timedelta(hours=24)).strftime("%Y-%m-%d %H:%M:%S"),
+        }
+
+        hist = self.load_history()
+        hist["interactions"].append(record)
+        self.save_history(hist)
+
+        logger.info(
+            f"[{ch_folder}] === HOÀN TẤT BỘ LỌC 24 GIỜ CHO @{creator_handle}: "
+            f"Xem={watched_sec}s | Tim={liked} | CopyLink={copied_link} | YêuThích={favorited} | "
+            f"Follow={followed} | Comment={bool(comment_text)} | Chờ trả follow đến {record['follow_back_window_until']} ==="
+        )
+        return record
+
+    def run_session_on_page(
+        self, page: Any, ch_folder: str, video_count: int = 2
+    ) -> List[Dict[str, Any]]:
+        """
+        Chạy 1 phiên "Bộ lọc 24 giờ" cho kênh `ch_folder` trên `page` đang mở sẵn.
+        """
+        target_urls = self._discover_target_videos(page, ch_folder, needed_count=video_count)
+        if not target_urls:
+            logger.warning(
+                f"[{ch_folder}] [Bộ lọc 24h] Chưa tìm thấy video mục tiêu mới trong phiên này."
+            )
+            return []
+
+        results: List[Dict[str, Any]] = []
+        for idx, url in enumerate(target_urls[:video_count], start=1):
+            try:
+                logger.info(
+                    f"[{ch_folder}] [Bộ lọc 24h] Đang tương tác video #{idx}/{min(len(target_urls), video_count)}: {url}"
+                )
+                rec = self.interact_with_single_video(page, ch_folder, url)
+                results.append(rec)
+                if idx < min(len(target_urls), video_count):
+                    pause_s = random.uniform(5.0, 10.0)
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h] Nghỉ tự nhiên {pause_s:.1f}s trước khi sang video kế tiếp...")
+                    time.sleep(pause_s)
+            except Exception as exc:
+                logger.warning(f"[{ch_folder}] [Bộ lọc 24h] Lỗi khi tương tác video {url}: {exc}")
+
+        return results
