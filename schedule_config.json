@@ -57,9 +57,9 @@
     "channel": "audio_dem_khuyen"
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "intel_filter24h_video_AI_hay_20261026_1118",
+    "trigger_id": "intel_filter24h_live_now_20261026_1954",
     "target_arch": "x86_64",
-    "channel": "video_AI_hay",
+    "channel": "all",
     "video_count": 1
   },
   "headless": false,
