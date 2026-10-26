@@ -1,20 +1,65 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 08:36:00",
+    "timestamp": "2026-10-26 09:01:53",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "filter24h",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261025_170051_tiktok_story_7699677240048569621.mp4",
-      "caption": "📖 Góc Kể Chuyện: Tập 126 - Biến cố bất ngờ và sự thật phía sau. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
-      "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #xuhuong #viral",
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 1,
+      "records": [
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7700464104539983125",
+          "video_url": "https://www.tiktok.com/@chupei75/video/7700464104539983125",
+          "creator_handle": "@chupei75",
+          "watched_seconds": 24.9,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Chào @chupei75, đã xem hết 100% thời lượng video, làm đủ các bước bộ lọc 24 giờ: thả tim, lưu yêu thích, sao chép liên kết và follow bạn rồi đó! Chúc kênh bạn sớm lên xu hướng, rảnh ghé tương tác lại cùng mình nha 🔥",
+          "interacted_at": "2026-10-26 09:01:53",
+          "follow_back_window_until": "2026-10-27 09:01:53"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 09:01:53",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7700464104539983125",
+            "video_url": "https://www.tiktok.com/@chupei75/video/7700464104539983125",
+            "creator_handle": "@chupei75",
+            "watched_seconds": 24.9,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Chào @chupei75, đã xem hết 100% thời lượng video, làm đủ các bước bộ lọc 24 giờ: thả tim, lưu yêu thích, sao chép liên kết và follow bạn rồi đó! Chúc kênh bạn sớm lên xu hướng, rảnh ghé tương tác lại cùng mình nha 🔥",
+            "interacted_at": "2026-10-26 09:01:53",
+            "follow_back_window_until": "2026-10-27 09:01:53"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 08:36:00",
       "machine_arch": "x86_64",
