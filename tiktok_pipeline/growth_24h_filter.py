@@ -246,10 +246,10 @@ class TikTok24hFilterEngine:
             return None
 
         # 2. Định vị chính xác khung bao hình tròn trong vùng trung tâm y=[305..530], x=[565..800]
-        y_min, y_max = 305, 530
+        y_min, y_max = 314, 530
         x_min, x_max = 565, 800
         sub = arr[y_min:y_max, x_min:x_max]
-        ys, xs = np.where(sub.mean(axis=2) > 65)
+        ys, xs = np.where(sub.mean(axis=2) > 75)
         if len(xs) < 400:
             return None
 
@@ -261,7 +261,7 @@ class TikTok24hFilterEngine:
         cos_a, sin_a = np.cos(angles), np.sin(angles)
 
         # Bán kính ranh giới chuẩn giữa hình tròn trong và vành ngoài của TikTok (60.8% bán kính ngoài = 64.0px)
-        best_r = max(60.0, min(67.0, (x1 - x0) * 0.5 * 0.608))
+        best_r = 64.0
 
         r_ins = [best_r - 5.0, best_r - 3.5, best_r - 2.0]
         r_outs = [best_r + 2.0, best_r + 3.5, best_r + 5.0]
