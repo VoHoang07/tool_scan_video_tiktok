@@ -706,7 +706,7 @@ class TikTok24hFilterEngine:
         return False
 
     def _check_like_state(self, page: Any) -> Optional[Dict[str, Any]]:
-        """Tìm tọa độ thực tế tại đúng tâm icon SVG của nút Thả tim (Like) và trạng thái aria-pressed trên cột hành động video TikTok."""
+        """Tìm tọa độ thực tế tại đúng tâm icon SVG của nút Thả tim (Like) đang hiển thị trong viewport (200 <= y <= innerHeight - 30)."""
         try:
             return page.evaluate(
                 """() => {
@@ -723,7 +723,7 @@ class TikTok24hFilterEngine:
                             const btn = el.closest('button') || el.parentElement || el;
                             const svg = el.querySelector('svg') || btn.querySelector('svg');
                             const svgColor = svg ? ((svg.getAttribute('color') || window.getComputedStyle(svg).color || '')).toLowerCase() : '';
-                            const cntEl = document.querySelector('[data-e2e="like-count"], [data-e2e="browse-like-count"]');
+                            const cntEl = el.querySelector('[data-e2e="like-count"], strong') || (btn && btn.querySelector('[data-e2e="like-count"], strong'));
                             const likeCount = cntEl ? (cntEl.innerText || cntEl.textContent || '').trim() : '';
                             const ariaPressed = (
                                 el.getAttribute('aria-pressed') === 'true' ||
@@ -733,7 +733,15 @@ class TikTok24hFilterEngine:
                                 svgColor.includes('255, 59, 92')
                             );
                             const svgRect = svg ? svg.getBoundingClientRect() : null;
-                            if (svgRect && svgRect.left >= 260 && svgRect.left <= 1150 && svgRect.width > 8 && svgRect.height > 8) {
+                            if (
+                                svgRect &&
+                                svgRect.left >= 260 &&
+                                svgRect.left <= 1150 &&
+                                svgRect.top >= 200 &&
+                                svgRect.top <= window.innerHeight - 30 &&
+                                svgRect.width > 8 &&
+                                svgRect.height > 8
+                            ) {
                                 return {
                                     x: svgRect.left + svgRect.width / 2,
                                     y: svgRect.top + svgRect.height / 2,
@@ -744,7 +752,14 @@ class TikTok24hFilterEngine:
                             }
                             const iconRect = el.getBoundingClientRect();
                             const r = (iconRect.width > 12 && iconRect.height > 12) ? iconRect : btn.getBoundingClientRect();
-                            if (r.left < 260 || r.left > 1150 || r.width <= 8 || r.height <= 8) continue;
+                            if (
+                                r.left < 260 ||
+                                r.left > 1150 ||
+                                r.top < 200 ||
+                                r.top > window.innerHeight - 30 ||
+                                r.width <= 8 ||
+                                r.height <= 8
+                            ) continue;
                             return {
                                 x: r.left + r.width / 2,
                                 y: r.top + Math.min(r.width, r.height) / 2,
@@ -771,7 +786,11 @@ class TikTok24hFilterEngine:
             im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
             arr = np.asarray(im, dtype=np.float32)
             ix, iy = int(round(x)), int(round(y))
-            patch = arr[max(0, iy - 22) : min(arr.shape[0], iy + 23), max(0, ix - 22) : min(arr.shape[1], ix + 23)]
+            if ix < 0 or iy < 0 or ix >= arr.shape[1] or iy >= arr.shape[0]:
+                return False
+            y0, y1 = max(0, iy - 22), max(0, min(arr.shape[0], iy + 23))
+            x0, x1 = max(0, ix - 22), max(0, min(arr.shape[1], ix + 23))
+            patch = arr[y0:y1, x0:x1]
             if patch.size == 0:
                 return False
             red_mask = (patch[:, :, 0] > 185) & ((patch[:, :, 0] - patch[:, :, 1]) > 85)
@@ -790,7 +809,11 @@ class TikTok24hFilterEngine:
             im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
             arr = np.asarray(im, dtype=np.float32)
             ix, iy = int(round(x)), int(round(y))
-            patch = arr[max(0, iy - 22) : min(arr.shape[0], iy + 23), max(0, ix - 22) : min(arr.shape[1], ix + 23)]
+            if ix < 0 or iy < 0 or ix >= arr.shape[1] or iy >= arr.shape[0]:
+                return False
+            y0, y1 = max(0, iy - 22), max(0, min(arr.shape[0], iy + 23))
+            x0, x1 = max(0, ix - 22), max(0, min(arr.shape[1], ix + 23))
+            patch = arr[y0:y1, x0:x1]
             if patch.size == 0:
                 return False
             gold_mask = (patch[:, :, 0] > 210) & (patch[:, :, 1] > 165) & (patch[:, :, 2] < 105)
@@ -809,7 +832,11 @@ class TikTok24hFilterEngine:
             im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
             arr = np.asarray(im, dtype=np.float32)
             ix, iy = int(round(x)), int(round(y))
-            patch = arr[max(0, iy - 9) : min(arr.shape[0], iy + 10), max(0, ix - 9) : min(arr.shape[1], ix + 10)]
+            if ix < 0 or iy < 0 or ix >= arr.shape[1] or iy >= arr.shape[0]:
+                return False
+            y0, y1 = max(0, iy - 9), max(0, min(arr.shape[0], iy + 10))
+            x0, x1 = max(0, ix - 9), max(0, min(arr.shape[1], ix + 10))
+            patch = arr[y0:y1, x0:x1]
             if patch.size == 0:
                 return False
             red_px = int(np.sum((patch[:, :, 0] > 190) & ((patch[:, :, 0] - patch[:, :, 1]) > 90)))
@@ -821,7 +848,7 @@ class TikTok24hFilterEngine:
     def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
         """
         BƯỚC 2: Thả tim video (Like) — kiểm tra cả aria-pressed/color lẫn màu điểm ảnh thực tế tại tâm nút Tim (#FE2C55):
-        - Ghi nhận trace chi tiết trước và sau từng cú click để xác nhận tim đỏ bền vững.
+        - Chỉ tương tác với nút Tim đang hiển thị trong viewport (200 <= y <= innerHeight - 30).
         """
         trace: Dict[str, Any] = getattr(self, "_last_like_debug", {}) or {}
         try:
@@ -836,9 +863,9 @@ class TikTok24hFilterEngine:
                     self._last_like_debug = trace
                     return True
 
-                # Cách 1: Dùng _os_click_viewport tại tâm SVG (giống hệt Bookmark & Follow đang thành công 100%)
+                # Cách 1: Dùng _os_click_viewport tại tâm SVG đang hiển thị (giống hệt Bookmark & Follow đang thành công 100%)
                 self._os_click_viewport(page, lx, ly)
-                time.sleep(0.45)
+                time.sleep(0.5)
                 st_05 = self._check_like_state(page)
                 red_05 = self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly)
                 trace["after_os_click_05s"] = {"state": st_05, "red": red_05}
@@ -852,30 +879,15 @@ class TikTok24hFilterEngine:
                 trace["after_os_click_25s"] = {"state": recheck, "red": red_25}
 
                 if not (bool(recheck and recheck.get("ariaPressed")) or red_25):
-                    # Cách 2: Click vào button bên trong [data-e2e="like-icon"]
-                    try:
-                        btn_loc = page.locator('[data-e2e="like-icon"] button, [data-e2e="like-icon"]').first
-                        if btn_loc.count() > 0 and btn_loc.is_visible():
-                            btn_loc.click(timeout=2500)
-                        else:
-                            page.mouse.click(rx, ry)
-                    except Exception:
-                        page.mouse.click(rx, ry)
+                    # Cách 2: Click trực tiếp tại (rx, ry) bằng page.mouse.click
+                    page.mouse.click(rx, ry)
                     time.sleep(2.2)
                     self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
                     recheck2 = self._check_like_state(page)
                     rx2 = float(recheck2["x"]) if recheck2 else rx
                     ry2 = float(recheck2["y"]) if recheck2 else ry
                     red_btn = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx2, ry2)
-                    trace["after_btn_click"] = {"state": recheck2, "red": red_btn}
-
-                    if not (bool(recheck2 and recheck2.get("ariaPressed")) or red_btn):
-                        # Cách 3: Double-click vào giữa khung hình video (thao tác thả tim chuẩn của TikTok, không bao giờ tự gỡ tim)
-                        page.mouse.dblclick(520, 430, delay=60)
-                        time.sleep(2.2)
-                        recheck3 = self._check_like_state(page)
-                        red_dbl = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx2, ry2)
-                        trace["after_dblclick"] = {"state": recheck3, "red": red_dbl}
+                    trace["after_mouse_click"] = {"state": recheck2, "red": red_btn}
 
                 self._last_like_debug = trace
                 logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ (xác nhận tim đỏ #FE2C55).")
@@ -946,12 +958,13 @@ class TikTok24hFilterEngine:
                         'button[aria-label*="Share" i]'
                     ];
                     for (const sel of selectors) {
-                        const el = document.querySelector(sel);
-                        if (!el) continue;
-                        const btn = el.closest('button') || el.parentElement || el;
-                        const r = btn.getBoundingClientRect();
-                        if (r.left > 260 && r.width > 8 && r.height > 8) {
-                            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                        const els = Array.from(document.querySelectorAll(sel));
+                        for (const el of els) {
+                            const btn = el.closest('button') || el.parentElement || el;
+                            const r = btn.getBoundingClientRect();
+                            if (r.left > 260 && r.top >= 200 && r.top <= window.innerHeight - 20 && r.width > 8 && r.height > 8) {
+                                return { x: r.left + r.width / 2, y: r.top + Math.min(r.width, r.height) / 2 };
+                            }
                         }
                     }
                     // Fallback: nút hành động nằm ngay bên dưới nút Bookmark (Yêu thích) trên cùng cột dọc
@@ -1048,7 +1061,15 @@ class TikTok24hFilterEngine:
                             const btn = el.closest('button') || el.parentElement || el;
                             const svg = el.querySelector('svg') || btn.querySelector('svg');
                             const svgRect = svg ? svg.getBoundingClientRect() : null;
-                            if (svgRect && svgRect.left >= 260 && svgRect.left <= 1150 && svgRect.width > 8 && svgRect.height > 8) {
+                            if (
+                                svgRect &&
+                                svgRect.left >= 260 &&
+                                svgRect.left <= 1150 &&
+                                svgRect.top >= 200 &&
+                                svgRect.top <= window.innerHeight - 20 &&
+                                svgRect.width > 8 &&
+                                svgRect.height > 8
+                            ) {
                                 return {
                                     x: svgRect.left + svgRect.width / 2,
                                     y: svgRect.top + svgRect.height / 2
@@ -1056,7 +1077,14 @@ class TikTok24hFilterEngine:
                             }
                             const iconRect = el.getBoundingClientRect();
                             const r = (iconRect.width > 12 && iconRect.height > 12) ? iconRect : btn.getBoundingClientRect();
-                            if (r.left < 260 || r.left > 1150 || r.width <= 8 || r.height <= 8) continue;
+                            if (
+                                r.left < 260 ||
+                                r.left > 1150 ||
+                                r.top < 200 ||
+                                r.top > window.innerHeight - 20 ||
+                                r.width <= 8 ||
+                                r.height <= 8
+                            ) continue;
                             return {
                                 x: r.left + r.width / 2,
                                 y: r.top + Math.min(r.width, r.height) / 2
