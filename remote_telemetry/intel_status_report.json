@@ -1,36 +1,18 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 10:06:31",
+    "timestamp": "2026-10-26 10:12:22",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
-      "interacted_count": 2,
+      "interacted_count": 1,
       "records": [
         {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7700464104539983125",
-          "video_url": "https://www.tiktok.com/@chupei75/video/7700464104539983125",
-          "creator_handle": "@chupei75",
-          "watched_seconds": 24.9,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-          "interacted_at": "2026-10-26 10:04:29",
-          "follow_back_window_until": "2026-10-27 10:04:29"
-        },
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7700269161548795157",
-          "video_url": "https://www.tiktok.com/@bunny.work2026/video/7700269161548795157",
-          "creator_handle": "@bunny.work2026",
+          "channel": "video_AI_hay",
+          "video_id": "7700087291213106453",
+          "video_url": "https://www.tiktok.com/@mnh.ty26/video/7700087291213106453",
+          "creator_handle": "@mnh.ty26",
           "watched_seconds": 18.0,
           "steps_completed": {
             "1_watched_full": true,
@@ -41,13 +23,43 @@
             "6_commented_after_follow": true
           },
           "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-          "interacted_at": "2026-10-26 10:06:31",
-          "follow_back_window_until": "2026-10-27 10:06:31"
+          "interacted_at": "2026-10-26 10:12:22",
+          "follow_back_window_until": "2026-10-27 10:12:22"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 10:12:22",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7700087291213106453",
+            "video_url": "https://www.tiktok.com/@mnh.ty26/video/7700087291213106453",
+            "creator_handle": "@mnh.ty26",
+            "watched_seconds": 18.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "interacted_at": "2026-10-26 10:12:22",
+            "follow_back_window_until": "2026-10-27 10:12:22"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 10:06:31",
       "machine_arch": "x86_64",
@@ -518,36 +530,6 @@
             "comment_text": "Hữu duyên gặp kênh bạn qua bộ lọc 24 giờ, mình đã xem hết video, bấm tim, thêm vào yêu thích, copy link và follow bạn đầy đủ 5 bước rồi nhé! Cùng nhau kiên trì xây kênh thật tốt nha bạn ơi, mình follow rồi đó 💪",
             "interacted_at": "2026-10-26 09:03:51",
             "follow_back_window_until": "2026-10-27 09:03:51"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 09:01:53",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7700464104539983125",
-            "video_url": "https://www.tiktok.com/@chupei75/video/7700464104539983125",
-            "creator_handle": "@chupei75",
-            "watched_seconds": 24.9,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Chào @chupei75, đã xem hết 100% thời lượng video, làm đủ các bước bộ lọc 24 giờ: thả tim, lưu yêu thích, sao chép liên kết và follow bạn rồi đó! Chúc kênh bạn sớm lên xu hướng, rảnh ghé tương tác lại cùng mình nha 🔥",
-            "interacted_at": "2026-10-26 09:01:53",
-            "follow_back_window_until": "2026-10-27 09:01:53"
           }
         ]
       }
