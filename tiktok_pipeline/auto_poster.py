@@ -386,20 +386,63 @@ class TikTokAutoPoster:
         except Exception:
             pass
 
+    def _move_caret_to_end_of_editor(self, page: Any, ensure_trailing_space: bool = False) -> None:
+        """
+        Đưa con trỏ soạn thảo (caret) về chính xác vị trí cuối cùng của ô `Mô tả` DraftJS trên macOS.
+        Tuyệt đối KHÔNG dùng `caption_box.click()` (vì click vào tâm 50%/50% sẽ chèn chữ vào giữa câu đầu)
+        và KHÔNG dùng phím `End` (trên macOS phím `End` cuộn trang làm mất focus thay vì đưa trỏ về cuối câu).
+        """
+        try:
+            needs_space = page.evaluate(
+                """() => {
+                    const editor = document.querySelector(
+                        'div.public-DraftEditor-content[contenteditable="true"], ' +
+                        'div[contenteditable="true"][role="textbox"], ' +
+                        'div[contenteditable="true"]'
+                    );
+                    if (!editor) return false;
+                    editor.scrollIntoView({ block: 'center', inline: 'nearest' });
+                    editor.focus();
+                    const sel = window.getSelection();
+                    if (sel) {
+                        const range = document.createRange();
+                        range.selectNodeContents(editor);
+                        range.collapse(false);
+                        sel.removeAllRanges();
+                        sel.addRange(range);
+                    }
+                    const raw = editor.innerText || editor.textContent || '';
+                    return raw.length > 0 && !/\\s$/.test(raw.replace(/\\n+$/, ''));
+                }"""
+            )
+            time.sleep(0.08)
+            page.keyboard.press("Meta+ArrowDown")
+            time.sleep(0.05)
+            page.keyboard.press("Meta+ArrowRight")
+            if ensure_trailing_space and needs_space:
+                time.sleep(0.05)
+                page.keyboard.type(" ", delay=40)
+        except Exception:
+            pass
+
     def _select_hashtag_suggestion_if_open(self, page: Any, tag_word: str) -> bool:
         """
-        Kiểm tra xem menu gợi ý Hashtag của TikTok Studio có đang mở bên dưới ô `Mô tả` hay không.
-        Nếu có mục gợi ý khớp với `#tag_word` (hoặc mục đầu tiên trong danh sách gợi ý hashtag),
-        click trực tiếp vào mục đó để gắn thẻ Hashtag Pill chuẩn của TikTok.
+        Kiểm tra xem menu gợi ý Hashtag thực sự của TikTok Studio có đang mở bên dưới ô `Mô tả` hay không.
+        Loại trừ tuyệt đối nút thanh công cụ `# Hashtag` / `@ Nhắc đến`.
+        Nếu có mục gợi ý khớp với `#tag_word`, click chọn trực tiếp để tạo thẻ Hashtag Pill chuẩn có thể bấm vào được.
         """
         try:
             pos = page.evaluate(
                 """(kw) => {
-                    const kwLower = (kw || '').toLowerCase();
-                    const editor = document.querySelector('div.public-DraftEditor-content[contenteditable="true"], div[contenteditable="true"]');
+                    const kwLower = (kw || '').toLowerCase().replace(/^#+/, '');
+                    if (!kwLower) return null;
+                    const editor = document.querySelector(
+                        'div.public-DraftEditor-content[contenteditable="true"], ' +
+                        'div[contenteditable="true"][role="textbox"], ' +
+                        'div[contenteditable="true"]'
+                    );
                     const edRect = editor ? editor.getBoundingClientRect() : { top: 100, bottom: 260, left: 260 };
 
-                    // Tìm các phần tử gợi ý hashtag nằm trong popup/listbox bên dưới ô Mô tả
                     const candidates = Array.from(
                         document.querySelectorAll(
                             '[role="option"], [role="listbox"] li, [role="listbox"] div, ' +
@@ -411,19 +454,34 @@ class TikTokAutoPoster:
                     const matches = [];
                     for (const el of candidates) {
                         if (editor && editor.contains(el)) continue;
-                        if (el.children.length > 4) continue;
+                        if (el.children.length > 5) continue;
                         const r = el.getBoundingClientRect();
-                        if (r.width < 40 || r.height < 16 || r.height > 65) continue;
-                        if (r.top < edRect.top - 10 || r.top > edRect.bottom + 320) continue;
+                        if (r.width < 45 || r.height < 18 || r.height > 72) continue;
+                        if (r.top < edRect.top - 10 || r.top > edRect.bottom + 340) continue;
+
                         const txt = (el.innerText || el.textContent || '').trim();
                         if (!txt) continue;
                         const tLower = txt.toLowerCase();
-                        if (tLower.includes('#' + kwLower) || tLower.startsWith(kwLower) || tLower.startsWith('#')) {
+
+                        // Loại trừ tuyệt đối nút công cụ '# Hashtag' và '@ Nhắc đến' nằm ngay dưới ô Mô tả
+                        if (
+                            /^#\\s*hashtag$/i.test(txt) ||
+                            /^hashtag$/i.test(txt) ||
+                            /^#\\s+/.test(txt) ||
+                            tLower.includes('nhắc đến') ||
+                            tLower.includes('mention')
+                        ) {
+                            continue;
+                        }
+
+                        const firstToken = tLower.split(/\\s+/)[0].replace(/^#+/, '');
+                        if (firstToken === kwLower || firstToken.startsWith(kwLower)) {
                             matches.push({
-                                x: r.left + Math.min(80, r.width / 2),
+                                x: r.left + Math.min(90, r.width / 2),
                                 y: r.top + r.height / 2,
-                                exact: tLower.includes(kwLower) ? 1 : 0,
-                                top: r.top
+                                exact: firstToken === kwLower ? 2 : 1,
+                                top: r.top,
+                                label: txt.slice(0, 50)
                             });
                         }
                     }
@@ -450,12 +508,11 @@ class TikTokAutoPoster:
         video_stem: str,
     ) -> None:
         """
-        Xóa sạch tên file mặc định (`20261025_152239_tiktok_story_...`) mà TikTok Studio tự điền vào ô `Mô tả`
-        (KHÔNG dùng `execCommand('delete')` trên root DraftJS để tránh làm hỏng cấu trúc DOM của Hashtag),
-        đảm bảo 100% `caption` là mô tả tiếng Việt theo ngữ cảnh (không bao giờ gõ lại dãy số tên file),
-        sau đó gõ Kịch bản ngắn (`caption`) và gắn đầy đủ các thẻ `#hashtag` Hot Search.
+        Xóa sạch tên file mặc định (`20261025_152239_tiktok_story_...`) mà TikTok Studio tự điền vào ô `Mô tả`,
+        đảm bảo 100% `caption` là mô tả tiếng Việt theo ngữ cảnh, sau đó đưa con trỏ về ĐÚNG CUỐI CÂU
+        (`_move_caret_to_end_of_editor`) và gắn từng thẻ `#hashtag` Hot Search tách biệt bằng khoảng trắng
+        để tất cả hashtag đều xanh/bấm vào ra danh sách xu hướng trên TikTok.
         """
-        # Chốt chặn tuyệt đối: Nếu caption vô tình là tên file / dãy số, khôi phục ngay mô tả tiếng Việt theo ngữ cảnh
         if self.crawler.is_raw_filename_caption(caption, video_stem) or not (hashtags_str or "").strip():
             rec_cap, rec_tags, _ = self.crawler.recover_contextual_caption_and_hashtags(
                 ch_folder, video_stem
@@ -487,7 +544,7 @@ class TikTokAutoPoster:
                 box_bounds["y"] + box_bounds["height"] * random.uniform(0.3, 0.7),
             )
 
-        # Xóa sạch tên file mặc định bằng bàn phím chuẩn (giữ nguyên cấu trúc DraftJS để gõ được #hashtag)
+        # Xóa sạch tên file mặc định bằng phím tắt macOS chuẩn (Meta+A -> Backspace)
         for attempt in range(6):
             self._dismiss_all_studio_popovers(page, ch_folder)
             try:
@@ -512,11 +569,11 @@ class TikTokAutoPoster:
                 pass
 
             if remaining:
-                caption_box.click()
-                page.keyboard.press("End")
+                self._move_caret_to_end_of_editor(page, ensure_trailing_space=False)
                 for _ in range(min(120, len(remaining) + 18)):
                     page.keyboard.press("Backspace")
-                page.keyboard.press("Home")
+                page.keyboard.press("Meta+ArrowUp")
+                page.keyboard.press("Meta+ArrowLeft")
                 for _ in range(min(60, len(remaining) + 10)):
                     page.keyboard.press("Delete")
                 time.sleep(0.2)
@@ -536,14 +593,14 @@ class TikTokAutoPoster:
 
         time.sleep(random.uniform(0.35, 0.6))
 
-        # Gõ Kịch bản mô tả tiếng Việt theo ngữ cảnh vào ô Mô tả
+        # Gõ Kịch bản mô tả tiếng Việt theo ngữ cảnh vào ô Mô tả đang trống
         clean_caption = caption.strip()
         caption_box.click()
         time.sleep(0.2)
         page.keyboard.insert_text(clean_caption)
         time.sleep(0.25)
-        page.keyboard.type(" ", delay=55)
-        time.sleep(random.uniform(0.4, 0.7))
+        self._move_caret_to_end_of_editor(page, ensure_trailing_space=True)
+        time.sleep(random.uniform(0.35, 0.6))
 
         # Chuẩn hóa danh sách #hashtag
         raw_tokens = [t.strip() for t in hashtags_str.split() if t.strip()]
@@ -555,47 +612,65 @@ class TikTokAutoPoster:
         if not tags:
             tags = ["#xuhuong", "#xuhuongtiktok", "#fyp", "#tiktokvn"]
 
-        # Gõ từng #hashtag: gõ '#' + từ khóa để kích hoạt gợi ý của TikTok, nếu có popup gợi ý thì click chọn,
-        # nếu không có popup thì bấm phím Space (' ') (TUYỆT ĐỐI không bấm Enter mù làm xuống dòng hỏng hashtag!)
+        # Gõ từng #hashtag ở ĐÚNG CUỐI VĂN BẢN (có dấu cách phía trước '#'):
+        # 1. Đưa con trỏ về cuối câu bằng JS Selection + Meta+ArrowDown (TUYỆT ĐỐI không click vào tâm ô làm nhảy trỏ vào giữa chữ!)
+        # 2. Gõ '#' + từ khóa để mở gợi ý Hashtag thực của TikTok Studio.
+        # 3. Nếu có mục gợi ý khớp từ khóa trong dropdown -> click chọn để gắn thẻ Hashtag Pill.
+        # 4. Đưa con trỏ về cuối và gõ dấu cách ' ' để khóa thẻ hashtag và chuẩn bị cho thẻ tiếp theo.
         for tag in tags:
             tag_word = tag.lstrip("#").strip()
             if not tag_word:
                 continue
-            caption_box.click()
-            page.keyboard.press("End")
+            self._move_caret_to_end_of_editor(page, ensure_trailing_space=True)
             time.sleep(0.1)
             page.keyboard.type("#", delay=55)
-            time.sleep(0.2)
-            page.keyboard.type(tag_word, delay=random.randint(35, 60))
-            time.sleep(random.uniform(0.95, 1.3))
+            time.sleep(0.22)
+            page.keyboard.type(tag_word, delay=random.randint(35, 58))
+            time.sleep(random.uniform(1.0, 1.35))
 
             picked = self._select_hashtag_suggestion_if_open(page, tag_word)
             if not picked:
+                self._move_caret_to_end_of_editor(page, ensure_trailing_space=False)
                 page.keyboard.type(" ", delay=55)
             else:
-                time.sleep(0.2)
-                page.keyboard.press("End")
-                page.keyboard.type(" ", delay=50)
+                time.sleep(0.25)
+                self._move_caret_to_end_of_editor(page, ensure_trailing_space=True)
             time.sleep(random.uniform(0.2, 0.35))
 
-        # Kiểm tra xác nhận nội dung trong ô Mô tả đã có đủ Kịch bản tiếng Việt + Hashtag và không còn tên file số
+        # Kiểm tra xác nhận nội dung trong ô Mô tả đã có đủ Kịch bản tiếng Việt + tất cả Hashtag tách rời ở cuối câu
         try:
             final_text = (caption_box.inner_text() or "").strip()
+            has_broken_midword_tag = bool(re.search(r"[^\s#]#[a-zA-Z0-9_]", final_text))
+            tag_count_in_text = len(re.findall(r"(?:^|\s)#[a-zA-Z0-9_]+", final_text))
             if (
                 not final_text
                 or self.crawler.is_raw_filename_caption(final_text, video_stem)
-                or "#" not in final_text
+                or has_broken_midword_tag
+                or tag_count_in_text < min(3, len(tags))
             ):
-                caption_box.click()
+                logger.info(
+                    f"[{ch_folder}] Chuẩn hóa lại khối Mô tả + Hashtag ở cuối câu (tag_count={tag_count_in_text}, midword={has_broken_midword_tag})..."
+                )
+                self._move_caret_to_end_of_editor(page, ensure_trailing_space=False)
                 page.keyboard.press("Meta+A")
+                time.sleep(0.1)
                 page.keyboard.press("Backspace")
-                full_combined = f"{clean_caption} {' '.join(tags)} "
-                page.keyboard.insert_text(full_combined)
-                time.sleep(0.25)
-                page.keyboard.type(" ", delay=50)
+                time.sleep(0.15)
+                page.keyboard.insert_text(clean_caption + " ")
+                time.sleep(0.2)
+                for tag in tags:
+                    tw = tag.lstrip("#").strip()
+                    if not tw:
+                        continue
+                    self._move_caret_to_end_of_editor(page, ensure_trailing_space=True)
+                    page.keyboard.type(f"#{tw}", delay=35)
+                    time.sleep(0.85)
+                    if not self._select_hashtag_suggestion_if_open(page, tw):
+                        self._move_caret_to_end_of_editor(page, ensure_trailing_space=False)
+                        page.keyboard.type(" ", delay=45)
                 final_text = (caption_box.inner_text() or "").strip()
             logger.info(
-                f"[{ch_folder}] Đã nhập xong Mô tả & Hashtag vào TikTok Studio: \"{final_text[:140]}...\""
+                f"[{ch_folder}] Đã nhập xong Mô tả & {len(tags)} Hashtag chuẩn vào TikTok Studio: \"{final_text[:160]}...\""
             )
         except Exception as exc:
             logger.debug(f"[{ch_folder}] Kiểm tra lại văn bản ô Mô tả: {exc}")
