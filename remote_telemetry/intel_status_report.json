@@ -1,15 +1,15 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 09:55:57",
+    "timestamp": "2026-10-26 09:58:21",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "audio_dem_khuyen",
+          "channel": "tu_chan_gioi",
           "video_id": "7700515993637965077",
           "video_url": "https://www.tiktok.com/@kenhcuamylinh/video/7700515993637965077",
           "creator_handle": "@kenhcuamylinh",
@@ -23,13 +23,43 @@
             "6_commented_after_follow": true
           },
           "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-          "interacted_at": "2026-10-26 09:55:56",
-          "follow_back_window_until": "2026-10-27 09:55:56"
+          "interacted_at": "2026-10-26 09:58:21",
+          "follow_back_window_until": "2026-10-27 09:58:21"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 09:58:21",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7700515993637965077",
+            "video_url": "https://www.tiktok.com/@kenhcuamylinh/video/7700515993637965077",
+            "creator_handle": "@kenhcuamylinh",
+            "watched_seconds": 20.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "interacted_at": "2026-10-26 09:58:21",
+            "follow_back_window_until": "2026-10-27 09:58:21"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 09:55:57",
       "machine_arch": "x86_64",
@@ -433,21 +463,6 @@
         "video_file": "20261023_090135_tiktok_story_7690915418453708052.mp4",
         "caption": "⚔️ [Tu Chân Giới] Tiểu Sư Muội 4 Tuổi Sở Hữu Cực Phẩm Song Linh Căn P1. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
         "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #viral #foryou",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-26 08:14:40",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261025_163628_douyin_story_7653148698738335945.mp4",
-        "caption": "🥰 Nhật ký gia đình siêu lầy: 宝宝,来,吃烤肠啦. \"没有番茄酱,不吃不吃...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #foryou",
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
