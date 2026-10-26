@@ -184,6 +184,33 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
+    def _acquire_browser_process_lock(self) -> Any:
+        """
+        Khóa đồng bộ liên tiến trình (`fcntl.flock`) để khi chạy 2 cửa sổ Terminal độc lập
+        (`--stream-upload` và `--stream-filter24h`), 2 dòng hoạt động tuần tự nhường Chrome & chuột OS cho nhau.
+        """
+        import fcntl
+
+        lock_path = self.project_root / "workspace_temp" / ".tiktok_browser_session.lock"
+        lock_path.parent.mkdir(parents=True, exist_ok=True)
+        fh = open(lock_path, "w", encoding="utf-8")
+        fcntl.flock(fh.fileno(), fcntl.LOCK_EX)
+        return fh
+
+    @staticmethod
+    def _release_browser_process_lock(fh: Any) -> None:
+        import fcntl
+
+        if fh is not None:
+            try:
+                fcntl.flock(fh.fileno(), fcntl.LOCK_UN)
+            except Exception:
+                pass
+            try:
+                fh.close()
+            except Exception:
+                pass
+
     @staticmethod
     def _launch_stealth_chrome_context(playwright_obj: Any, user_data_dir: Path, headless: bool = False) -> Any:
         """
@@ -1953,6 +1980,7 @@ class TikTokAutoPoster:
                     )
                     any_ok = False
                     for single_ch in target_channels:
+                        lock_fh = self._acquire_browser_process_lock()
                         try:
                             res = self.upload_one_channel_video(single_ch, headless=headless)
                             if res:
@@ -1962,6 +1990,8 @@ class TikTokAutoPoster:
                             logger.error(
                                 f"[Dòng 1 - Đăng Video] Lỗi khi đăng ngay ({p_trig_id}) kênh [{single_ch}]: {exc}"
                             )
+                        finally:
+                            self._release_browser_process_lock(lock_fh)
                     if any_ok:
                         history = self._load_post_history()
                         history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -1989,6 +2019,7 @@ class TikTokAutoPoster:
                         f"[Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [{ch_folder}]: "
                         f"{eff_hh:02d}:{eff_mm:02d} (khung gốc {slot}, lệch {jitter:+d} phút)"
                     )
+                    lock_fh = self._acquire_browser_process_lock()
                     try:
                         res = self.upload_one_channel_video(ch_folder, headless=headless)
                         if res:
@@ -1998,6 +2029,8 @@ class TikTokAutoPoster:
                             posted_results.append(res)
                     except Exception as exc:
                         logger.error(f"[Dòng 1 - Lịch Đăng Video] Lỗi tự động đăng kênh [{ch_folder}] khung {slot}: {exc}")
+                    finally:
+                        self._release_browser_process_lock(lock_fh)
 
         return posted_results
 
@@ -2035,6 +2068,7 @@ class TikTokAutoPoster:
                         f"[Dòng 2 - Bộ lọc 24h] Nhận lệnh chạy ngay từ máy Silicon ({trig_id}) -> "
                         f"Kênh [{trig_ch}], số lượng {trig_cnt} video/kênh!"
                     )
+                    lock_fh = self._acquire_browser_process_lock()
                     try:
                         res = self.run_24h_filter_for_channel(trig_ch, video_count=trig_cnt, headless=headless)
                         filter_results[trig_key] = res
@@ -2043,6 +2077,8 @@ class TikTokAutoPoster:
                         self._save_post_history(history)
                     except Exception as exc:
                         logger.error(f"[Dòng 2 - Bộ lọc 24h] Lỗi khi chạy Remote Trigger ({trig_id}): {exc}")
+                    finally:
+                        self._release_browser_process_lock(lock_fh)
 
         if not filter_enabled:
             return filter_results
@@ -2080,6 +2116,7 @@ class TikTokAutoPoster:
                         f"[Dòng 2 - Bộ lọc 24h (Lần {round_idx}/{len(f_slots)} trong ngày)] "
                         f"Mở kênh [{ch_folder}] lúc {eff_hh:02d}:{eff_mm:02d} (khung {f_slot}) -> Chạy {filter_count} video!"
                     )
+                    lock_fh = self._acquire_browser_process_lock()
                     try:
                         res = self.run_24h_filter_for_channel(
                             ch_folder, video_count=filter_count, headless=headless
@@ -2092,6 +2129,8 @@ class TikTokAutoPoster:
                         logger.error(
                             f"[Dòng 2 - Bộ lọc 24h] Lỗi chạy kênh [{ch_folder}] khung {f_slot}: {exc}"
                         )
+                    finally:
+                        self._release_browser_process_lock(lock_fh)
 
         return filter_results
 

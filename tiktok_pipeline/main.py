@@ -660,6 +660,7 @@ def run_continuous_mode(
     voice: Optional[str] = None,
     llm_provider: Optional[str] = None,
     original_volume: Optional[float] = None,
+    enable_stream2_filter24h: bool = True,
 ) -> Dict[str, Any]:
     """
     Chế độ CÀO VÀ XỬ LÝ LIÊN TỤC (Daemon / Continuous Worker Mode):
@@ -767,7 +768,8 @@ def run_continuous_mode(
 
     def _run_scheduler_safe() -> None:
         _run_stream1_upload_safe()
-        _run_stream2_filter24h_safe()
+        if enable_stream2_filter24h:
+            _run_stream2_filter24h_safe()
 
     def _stream1_upload_loop() -> None:
         """Luồng chạy ngầm Dòng 1: Kiểm tra lịch đăng video cố định của 4 kênh mỗi 30 giây."""
@@ -788,11 +790,12 @@ def run_continuous_mode(
     stream1_thread = threading.Thread(
         target=_stream1_upload_loop, name="Stream1-UploadSchedulerThread", daemon=True
     )
-    stream2_thread = threading.Thread(
-        target=_stream2_filter24h_loop, name="Stream2-Filter24hThread", daemon=True
-    )
     stream1_thread.start()
-    stream2_thread.start()
+    if enable_stream2_filter24h:
+        stream2_thread = threading.Thread(
+            target=_stream2_filter24h_loop, name="Stream2-Filter24hThread", daemon=True
+        )
+        stream2_thread.start()
 
     def _check_hot_reload() -> None:
         if scheduler_lock.locked():
@@ -1341,20 +1344,47 @@ def main() -> None:
             return
 
         # 2h. Chạy riêng Dòng Hoạt Động 1 (--stream-upload) hoặc Dòng Hoạt Động 2 (--stream-filter24h)
-        if args.stream_upload or args.stream_filter24h:
-            poster = TikTokAutoPoster(project_root=project_root)
-            stream_label = (
-                "DÒNG 1 (ĐĂNG VIDEO 4 KÊNH THEO KHUNG GIỜ CỐ ĐỊNH)"
-                if args.stream_upload and not args.stream_filter24h
-                else "DÒNG 2 (MỞ 4 KÊNH CHẠY BỘ LỌC 24 GIỜ: 7 LẦN/NGÀY × 10 VIDEO/KÊNH)"
+        if args.stream_upload and not args.stream_filter24h:
+            logger.info(
+                "=== KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): "
+                "LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ==="
             )
-            logger.info(f"=== KHỞI ĐỘNG DAEMON CHUYÊN BIỆT: {stream_label} ===")
+            run_continuous_mode(
+                max_ready=args.max_ready,
+                sleep_between=args.sleep_between,
+                max_cycles=args.max_cycles,
+                platform=args.platform,
+                output_dir=Path(args.output_dir) if args.output_dir else None,
+                whisper_model=args.whisper_model,
+                voice=args.voice,
+                llm_provider=args.provider,
+                original_volume=args.duck_volume,
+                enable_stream2_filter24h=False,
+            )
+            return
+
+        if args.stream_filter24h:
+            poster = TikTokAutoPoster(project_root=project_root)
+            snap = _get_codebase_mtime_snapshot(project_root)
+            logger.info(
+                "=== KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 2 (--stream-filter24h): "
+                "MỞ 4 KÊNH CHẠY BỘ LỌC 24 GIỜ (7 LẦN/NGÀY × 10 VIDEO/KÊNH) ==="
+            )
             while True:
-                _auto_git_pull_if_available(project_root)
-                if args.stream_upload:
-                    poster.check_and_run_stream1_upload_schedule()
-                if args.stream_filter24h:
-                    poster.check_and_run_stream2_filter24h_schedule()
+                pulled = _auto_git_pull_if_available(project_root)
+                if pulled or _get_codebase_mtime_snapshot(project_root) != snap:
+                    try:
+                        import importlib
+                        from . import growth_24h_filter as _g24_mod
+                        from . import auto_poster as _ap_mod
+
+                        importlib.reload(_g24_mod)
+                        importlib.reload(_ap_mod)
+                        poster = _ap_mod.TikTokAutoPoster(project_root=project_root)
+                        snap = _get_codebase_mtime_snapshot(project_root)
+                    except Exception:
+                        pass
+                poster.check_and_run_stream2_filter24h_schedule()
                 time.sleep(30)
             return
 
