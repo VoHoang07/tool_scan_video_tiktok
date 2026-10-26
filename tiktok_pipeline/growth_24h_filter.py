@@ -870,24 +870,25 @@ class TikTok24hFilterEngine:
                 red_05 = self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly)
                 trace["after_os_click_05s"] = {"state": st_05, "red": red_05}
 
-                time.sleep(2.1)
+                time.sleep(3.5)
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
                 recheck = self._check_like_state(page)
                 rx = float(recheck["x"]) if recheck else lx
                 ry = float(recheck["y"]) if recheck else ly
-                red_25 = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx, ry)
-                trace["after_os_click_25s"] = {"state": recheck, "red": red_25}
+                red_40 = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx, ry)
+                trace["after_os_click_40s"] = {"state": recheck, "red": red_40}
 
-                if not (bool(recheck and recheck.get("ariaPressed")) or red_25):
-                    # Cách 2: Click trực tiếp tại (rx, ry) bằng page.mouse.click
-                    page.mouse.click(rx, ry)
-                    time.sleep(2.2)
+                if not (bool(recheck and recheck.get("ariaPressed")) or red_40):
+                    # Cách 2: Double-click vào vùng giữa trình phát video (<video>) như người dùng thật thả tim
+                    self._human_move_mouse(page, 520.0, 420.0)
+                    page.mouse.dblclick(520.0, 420.0, delay=random.randint(65, 115))
+                    time.sleep(3.8)
                     self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
                     recheck2 = self._check_like_state(page)
                     rx2 = float(recheck2["x"]) if recheck2 else rx
                     ry2 = float(recheck2["y"]) if recheck2 else ry
-                    red_btn = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx2, ry2)
-                    trace["after_mouse_click"] = {"state": recheck2, "red": red_btn}
+                    red_dbl = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx2, ry2)
+                    trace["after_dblclick_40s"] = {"state": recheck2, "red": red_dbl}
 
                 self._last_like_debug = trace
                 logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ (xác nhận tim đỏ #FE2C55).")
@@ -1413,7 +1414,12 @@ class TikTok24hFilterEngine:
         except Exception:
             pass
 
-        page.goto(f"{video_url}?lang=vi-VN", wait_until="domcontentloaded", timeout=45000)
+        page.goto(
+            f"{video_url}?lang=vi-VN",
+            referer="https://www.tiktok.com/",
+            wait_until="domcontentloaded",
+            timeout=45000,
+        )
         time.sleep(random.uniform(3.0, 4.5))
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 

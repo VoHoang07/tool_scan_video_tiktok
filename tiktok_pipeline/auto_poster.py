@@ -39,13 +39,8 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
 # Script chống phát hiện trình duyệt tự động (Stealth Anti-Detect cho TikTok mssdk / secsdk)
 STEALTH_INIT_SCRIPT = """
 (() => {
-    // 1. Xóa dấu vết navigator.webdriver
-    Object.defineProperty(navigator, 'webdriver', {
-        get: () => undefined,
-        configurable: true
-    });
-
-    // 2. Xóa các biến toàn cục của Playwright / Automation
+    // Chỉ dọn biến toàn cục của Playwright nếu có, giữ nguyên 100% prototype C++ gốc của Google Chrome
+    // (đã tắt AutomationControlled ở tầng C++ Blink qua cờ --disable-blink-features=AutomationControlled)
     const automationProps = [
         '__playwright', '__pw_manual', '__PW_inspect',
         'cdc_adoQpoasnfa76pfcZLmcfl_Array',
@@ -54,34 +49,6 @@ STEALTH_INIT_SCRIPT = """
     ];
     for (const prop of automationProps) {
         try { delete window[prop]; } catch (e) {}
-    }
-
-    // 3. Giả lập đối tượng window.chrome chuẩn của Google Chrome thật
-    if (!window.chrome) {
-        window.chrome = {};
-    }
-    if (!window.chrome.runtime) {
-        window.chrome.runtime = {
-            PlatformOs: { MAC: 'mac', WIN: 'win', ANDROID: 'android', CROS: 'cros', LINUX: 'linux', OPENBSD: 'openbsd' },
-            PlatformArch: { ARM: 'arm', X86_32: 'x86-32', X86_64: 'x86-64' },
-            PlatformNaclArch: { ARM: 'arm', X86_32: 'x86-32', X86_64: 'x86-64' },
-            RequestUpdateCheckStatus: { THROTTLED: 'throttled', NO_UPDATE: 'no_update', UPDATE_AVAILABLE: 'update_available' }
-        };
-    }
-
-    // 4. Chuẩn hóa ngôn ngữ trình duyệt sang Tiếng Việt
-    Object.defineProperty(navigator, 'languages', {
-        get: () => ['vi-VN', 'vi', 'en-US', 'en']
-    });
-
-    // 5. Chuẩn hóa Permissions API
-    if (navigator.permissions && navigator.permissions.query) {
-        const originalQuery = navigator.permissions.query.bind(navigator.permissions);
-        navigator.permissions.query = (parameters) => (
-            parameters.name === 'notifications'
-                ? Promise.resolve({ state: Notification.permission })
-                : originalQuery(parameters)
-        );
     }
 })();
 """
@@ -212,6 +179,7 @@ class TikTokAutoPoster:
         """
         TikTokAutoPoster._cleanup_stale_chrome_profile_locks(user_data_dir)
         launch_args = [
+            "--disable-blink-features=AutomationControlled",
             "--disable-infobars",
             "--no-first-run",
             "--no-default-browser-check",
