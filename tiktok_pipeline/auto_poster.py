@@ -26,17 +26,18 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
     "default_post_times": ["08:00", "12:30", "20:00"],
     "channel_post_times": {
         "video_AI_hay": ["08:00", "12:30", "20:00"],
-        "baby_AI": ["08:15", "12:45", "20:15"],
-        "audio_dem_khuyen": ["08:30", "13:00", "20:30"],
-        "tu_chan_gioi": ["08:45", "13:15", "20:45"],
+        "baby_AI": ["08:10", "12:40", "20:10"],
+        "audio_dem_khuyen": ["08:20", "12:50", "20:20"],
+        "tu_chan_gioi": ["08:20", "13:00", "20:30"],
     },
     "filter_24h_enabled": True,
-    "filter_24h_videos_per_session": 2,
+    "filter_24h_runs_per_day": 7,
+    "filter_24h_videos_per_session": 10,
     "channel_filter_24h_times": {
-        "video_AI_hay": ["09:30", "15:00", "21:30"],
-        "baby_AI": ["09:42", "15:12", "21:42"],
-        "audio_dem_khuyen": ["09:54", "15:24", "21:54"],
-        "tu_chan_gioi": ["10:06", "15:36", "22:06"],
+        "video_AI_hay": ["06:00", "09:30", "11:00", "14:00", "16:00", "18:00", "21:30"],
+        "baby_AI": ["06:15", "09:45", "11:15", "14:15", "16:15", "18:15", "21:45"],
+        "audio_dem_khuyen": ["06:30", "10:00", "11:30", "14:30", "16:30", "18:30", "22:00"],
+        "tu_chan_gioi": ["06:45", "10:15", "11:45", "14:45", "16:45", "18:45", "22:15"],
     },
     "random_jitter_minutes": 9,
     "warmup_before_upload": True,
@@ -1814,7 +1815,7 @@ class TikTokAutoPoster:
     def run_24h_filter_for_channel(
         self,
         channel_arg: str,
-        video_count: int = 2,
+        video_count: int = 10,
         headless: bool = False,
     ) -> Dict[str, Any]:
         """
@@ -1913,17 +1914,15 @@ class TikTokAutoPoster:
         h_val = int(hashlib.md5(seed_str.encode("utf-8")).hexdigest()[:8], 16)
         return (h_val % (max_jitter + 4)) - 3
 
-    def check_and_run_scheduled_posts(self) -> List[Dict[str, Any]]:
+    def check_and_run_stream1_upload_schedule(self) -> List[Dict[str, Any]]:
         """
-        Kiểm tra giờ hiện tại (`HH:MM`) so với lịch đăng bài và lịch chạy 'Bộ lọc 24 giờ'
-        của từng kênh trong `schedule_config.json` (kèm độ lệch ngẫu nhiên ± phút mỗi ngày).
+        [DÒNG HOẠT ĐỘNG 1 — TỰ ĐỘNG ĐĂNG VIDEO THEO KHUNG GIỜ CỐ ĐỊNH CHO 4 KÊNH]:
+        Giữ nguyên 100% khung giờ đăng bài mỗi ngày của 4 kênh trong `schedule_config.json`
+        (`channel_post_times`) và lệnh kích hoạt đăng ngay từ xa (`remote_trigger_post_now`).
         """
         cfg = self.ensure_schedule_config()
         ch_times_map: Dict[str, List[str]] = cfg.get("channel_post_times") or {}
         default_times: List[str] = cfg.get("default_post_times") or ["08:00", "12:30", "20:00"]
-        filter_enabled = bool(cfg.get("filter_24h_enabled", True))
-        filter_count = int(cfg.get("filter_24h_videos_per_session", 2))
-        filter_times_map: Dict[str, List[str]] = cfg.get("channel_filter_24h_times") or {}
         max_jitter = int(cfg.get("random_jitter_minutes", 9))
         headless = bool(cfg.get("headless", False))
 
@@ -1933,7 +1932,7 @@ class TikTokAutoPoster:
         history = self._load_post_history()
         posted_results: List[Dict[str, Any]] = []
 
-        # 0a. Kiểm tra lệnh kích hoạt ĐĂNG NGAY TỪ XA (Remote Trigger Post-Now từ máy Silicon sang máy Intel qua GitHub)
+        # 0a. Kiểm tra lệnh kích hoạt ĐĂNG NGAY TỪ XA (Remote Trigger Post-Now)
         remote_post = cfg.get("remote_trigger_post_now")
         if isinstance(remote_post, dict) and remote_post.get("trigger_id"):
             import platform as _plat
@@ -1949,7 +1948,7 @@ class TikTokAutoPoster:
                     else:
                         target_channels = [c.strip() for c in p_trig_ch.split(",") if c.strip()]
                     logger.info(
-                        f"[Remote Trigger Post-Now] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon ({p_trig_id}) -> "
+                        f"[Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon ({p_trig_id}) -> "
                         f"Kênh {target_channels}!"
                     )
                     any_ok = False
@@ -1961,41 +1960,18 @@ class TikTokAutoPoster:
                                 posted_results.append(res)
                         except Exception as exc:
                             logger.error(
-                                f"[Remote Trigger Post-Now] Lỗi khi đăng ngay ({p_trig_id}) kênh [{single_ch}]: {exc}"
+                                f"[Dòng 1 - Đăng Video] Lỗi khi đăng ngay ({p_trig_id}) kênh [{single_ch}]: {exc}"
                             )
                     if any_ok:
+                        history = self._load_post_history()
                         history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                         self._save_post_history(history)
 
-        # 0b. Kiểm tra lệnh kích hoạt chạy thử Bộ lọc 24h từ xa (Remote Trigger từ máy Silicon sang máy Intel qua GitHub)
-        remote_trig = cfg.get("remote_trigger_filter_24h")
-        if isinstance(remote_trig, dict) and remote_trig.get("trigger_id"):
-            import platform as _plat
-
-            target_arch = str(remote_trig.get("target_arch") or "").strip()
-            if not target_arch or _plat.machine() == target_arch:
-                trig_id = str(remote_trig["trigger_id"]).strip()
-                trig_key = f"remote_trig_{trig_id}"
-                if trig_id and trig_key not in history:
-                    trig_ch = str(remote_trig.get("channel") or "video_AI_hay").strip()
-                    trig_cnt = int(remote_trig.get("video_count") or 2)
-                    logger.info(
-                        f"[Remote Trigger] Nhận lệnh chạy thử 'Bộ lọc 24 giờ' từ máy Silicon ({trig_id}) -> "
-                        f"Kênh [{trig_ch}], số lượng {trig_cnt} video!"
-                    )
-                    try:
-                        self.run_24h_filter_for_channel(trig_ch, video_count=trig_cnt, headless=headless)
-                        history[trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                        self._save_post_history(history)
-                    except Exception as exc:
-                        logger.error(f"[Remote Trigger] Lỗi khi chạy thử Bộ lọc 24h ({trig_id}): {exc}")
-
         for profile in CHANNEL_PROFILES.values():
             ch_folder = profile["folder_name"]
-
-            # 1. Kiểm tra khung giờ ĐĂNG BÀI tự động
             slots = ch_times_map.get(ch_folder) or default_times
             for slot in slots:
+                history = self._load_post_history()
                 slot_key = f"{today_str}_{ch_folder}_{slot}"
                 if slot_key in history:
                     continue
@@ -2006,49 +1982,125 @@ class TikTokAutoPoster:
                 jitter = self._compute_daily_jitter_minutes(today_str, ch_folder, slot, max_jitter)
                 effective_slot_min = max(0, min(23 * 60 + 59, sh * 60 + sm + jitter))
 
-                # Kích hoạt nếu thời gian hiện tại nằm trong khoảng [effective_slot_min, effective_slot_min + 180 phút (bù giờ tự động 3 tiếng)]
+                # Kích hoạt nếu thời gian hiện tại nằm trong khoảng [effective_slot_min, effective_slot_min + 180 phút]
                 if 0 <= (now_minutes - effective_slot_min) <= 180:
                     eff_hh, eff_mm = effective_slot_min // 60, effective_slot_min % 60
                     logger.info(
-                        f"[Anti-Detect Scheduler] Đã điểm giờ đăng ngẫu nhiên hôm nay của kênh [{ch_folder}]: "
+                        f"[Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [{ch_folder}]: "
                         f"{eff_hh:02d}:{eff_mm:02d} (khung gốc {slot}, lệch {jitter:+d} phút)"
                     )
                     try:
                         res = self.upload_one_channel_video(ch_folder, headless=headless)
                         if res:
+                            history = self._load_post_history()
                             history[slot_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             self._save_post_history(history)
                             posted_results.append(res)
                     except Exception as exc:
-                        logger.error(f"Lỗi tự động đăng theo lịch kênh [{ch_folder}] khung {slot}: {exc}")
+                        logger.error(f"[Dòng 1 - Lịch Đăng Video] Lỗi tự động đăng kênh [{ch_folder}] khung {slot}: {exc}")
 
-            # 2. Kiểm tra khung giờ TƯƠNG TÁC CHÉO 'BỘ LỌC 24 GIỜ' tự động
-            if filter_enabled:
-                f_slots = filter_times_map.get(ch_folder) or ["09:30", "15:00", "21:30"]
-                for f_slot in f_slots:
-                    f_key = f"{today_str}_filter24h_{ch_folder}_{f_slot}"
-                    if f_key in history:
-                        continue
+        return posted_results
+
+    def check_and_run_stream2_filter24h_schedule(self) -> Dict[str, Any]:
+        """
+        [DÒNG HOẠT ĐỘNG 2 — MỞ 4 KÊNH CHẠY BỘ LỌC 24 GIỜ (7 LẦN/NGÀY × 10 VIDEO/KÊNH)]:
+        Tự động mở lần lượt 4 kênh theo 7 khung giờ mỗi ngày (`channel_filter_24h_times`),
+        mỗi kênh tương tác `filter_24h_videos_per_session` (mặc định 10 video).
+        Giữa mỗi kênh sẽ kiểm tra nhanh Dòng 1 (`check_and_run_stream1_upload_schedule`) để đảm bảo
+        không bao giờ làm trễ khung giờ đăng video chính.
+        """
+        cfg = self.ensure_schedule_config()
+        filter_enabled = bool(cfg.get("filter_24h_enabled", True))
+        filter_count = int(cfg.get("filter_24h_videos_per_session", 10))
+        filter_times_map: Dict[str, List[str]] = cfg.get("channel_filter_24h_times") or {}
+        max_jitter = int(cfg.get("random_jitter_minutes", 9))
+        headless = bool(cfg.get("headless", False))
+
+        history = self._load_post_history()
+        filter_results: Dict[str, Any] = {}
+
+        # 0b. Kiểm tra lệnh kích hoạt chạy thử Bộ lọc 24h từ xa (Remote Trigger)
+        remote_trig = cfg.get("remote_trigger_filter_24h")
+        if isinstance(remote_trig, dict) and remote_trig.get("trigger_id"):
+            import platform as _plat
+
+            target_arch = str(remote_trig.get("target_arch") or "").strip()
+            if not target_arch or _plat.machine() == target_arch:
+                trig_id = str(remote_trig["trigger_id"]).strip()
+                trig_key = f"remote_trig_{trig_id}"
+                if trig_id and trig_key not in history:
+                    trig_ch = str(remote_trig.get("channel") or "all").strip()
+                    trig_cnt = int(remote_trig.get("video_count") or filter_count)
+                    logger.info(
+                        f"[Dòng 2 - Bộ lọc 24h] Nhận lệnh chạy ngay từ máy Silicon ({trig_id}) -> "
+                        f"Kênh [{trig_ch}], số lượng {trig_cnt} video/kênh!"
+                    )
                     try:
-                        fh, fm = map(int, f_slot.split(":"))
-                    except Exception:
-                        continue
-                    f_jitter = self._compute_daily_jitter_minutes(today_str, f"f24_{ch_folder}", f_slot, max_jitter)
-                    eff_f_min = max(0, min(23 * 60 + 59, fh * 60 + fm + f_jitter))
+                        res = self.run_24h_filter_for_channel(trig_ch, video_count=trig_cnt, headless=headless)
+                        filter_results[trig_key] = res
+                        history = self._load_post_history()
+                        history[trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        self._save_post_history(history)
+                    except Exception as exc:
+                        logger.error(f"[Dòng 2 - Bộ lọc 24h] Lỗi khi chạy Remote Trigger ({trig_id}): {exc}")
 
-                    if 0 <= (now_minutes - eff_f_min) <= 20:
-                        eff_hh, eff_mm = eff_f_min // 60, eff_f_min % 60
-                        logger.info(
-                            f"[Bộ lọc 24h Scheduler] Đã điểm giờ chăm kênh & tương tác chéo 'Bộ lọc 24 giờ' của kênh [{ch_folder}]: "
-                            f"{eff_hh:02d}:{eff_mm:02d} (khung gốc {f_slot}, lệch {f_jitter:+d} phút)"
+        if not filter_enabled:
+            return filter_results
+
+        default_7_slots = ["06:00", "09:30", "11:00", "14:00", "16:00", "18:00", "21:30"]
+        for profile in CHANNEL_PROFILES.values():
+            # Trước khi mở kênh tiếp theo trong Dòng 2, ưu tiên kiểm tra Dòng 1 (Khung giờ đăng video)
+            try:
+                self.check_and_run_stream1_upload_schedule()
+            except Exception:
+                pass
+
+            ch_folder = profile["folder_name"]
+            now = datetime.now()
+            today_str = now.strftime("%Y-%m-%d")
+            now_minutes = now.hour * 60 + now.minute
+            history = self._load_post_history()
+
+            f_slots = filter_times_map.get(ch_folder) or default_7_slots
+            for round_idx, f_slot in enumerate(f_slots, start=1):
+                f_key = f"{today_str}_filter24h_{ch_folder}_{f_slot}"
+                if f_key in history:
+                    continue
+                try:
+                    fh, fm = map(int, f_slot.split(":"))
+                except Exception:
+                    continue
+                f_jitter = self._compute_daily_jitter_minutes(today_str, f"f24_{ch_folder}", f_slot, max_jitter)
+                eff_f_min = max(0, min(23 * 60 + 59, fh * 60 + fm + f_jitter))
+
+                # Cửa sổ kích hoạt 90 phút để cả 4 kênh nối tiếp nhau chạy đủ 10 video/kênh trong mỗi lượt
+                if 0 <= (now_minutes - eff_f_min) <= 90:
+                    eff_hh, eff_mm = eff_f_min // 60, eff_f_min % 60
+                    logger.info(
+                        f"[Dòng 2 - Bộ lọc 24h (Lần {round_idx}/{len(f_slots)} trong ngày)] "
+                        f"Mở kênh [{ch_folder}] lúc {eff_hh:02d}:{eff_mm:02d} (khung {f_slot}) -> Chạy {filter_count} video!"
+                    )
+                    try:
+                        res = self.run_24h_filter_for_channel(
+                            ch_folder, video_count=filter_count, headless=headless
                         )
-                        try:
-                            self.run_24h_filter_for_channel(
-                                ch_folder, video_count=filter_count, headless=headless
-                            )
-                            history[f_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                            self._save_post_history(history)
-                        except Exception as exc:
-                            logger.error(f"Lỗi chạy Bộ lọc 24h kênh [{ch_folder}] khung {f_slot}: {exc}")
+                        filter_results[f_key] = res
+                        history = self._load_post_history()
+                        history[f_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        self._save_post_history(history)
+                    except Exception as exc:
+                        logger.error(
+                            f"[Dòng 2 - Bộ lọc 24h] Lỗi chạy kênh [{ch_folder}] khung {f_slot}: {exc}"
+                        )
 
+        return filter_results
+
+    def check_and_run_scheduled_posts(self) -> List[Dict[str, Any]]:
+        """
+        Điều phối cả 2 dòng hoạt động:
+        - Dòng 1: Giữ nguyên khung giờ đăng video cho 4 kênh (`check_and_run_stream1_upload_schedule`).
+        - Dòng 2: Mở 4 kênh chạy Bộ lọc 24 giờ 7 lần/ngày × 10 video/kênh (`check_and_run_stream2_filter24h_schedule`).
+        """
+        posted_results = self.check_and_run_stream1_upload_schedule()
+        self.check_and_run_stream2_filter24h_schedule()
         return posted_results

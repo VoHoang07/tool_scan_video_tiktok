@@ -173,7 +173,15 @@ def _hot_patch_live_auto_poster_stealth() -> None:
                 if getattr(cls, "__name__", "") == "TikTokAutoPoster":
                     setattr(cls, "_launch_stealth_chrome_context", staticmethod(_clean_launch_stealth_chrome_context))
                     if fresh_cls is not None and cls is not fresh_cls:
-                        for attr_name in ("_human_move_mouse", "_os_click_viewport", "_save_and_push_telemetry"):
+                        for attr_name in (
+                            "_human_move_mouse",
+                            "_os_click_viewport",
+                            "_save_and_push_telemetry",
+                            "run_24h_filter_for_channel",
+                            "check_and_run_stream1_upload_schedule",
+                            "check_and_run_stream2_filter24h_schedule",
+                            "check_and_run_scheduled_posts",
+                        ):
                             if hasattr(fresh_cls, attr_name):
                                 setattr(cls, attr_name, getattr(fresh_cls, attr_name))
             except Exception:
@@ -736,41 +744,50 @@ class TikTok24hFilterEngine:
                 ("7205228809015164955", "moixaykenh"),
                 ("7352162388008763408", "moixaykenhtiktok"),
                 ("1679983099973633", "tuongtac_cheo"),
+                ("1611592400490497", "followcheo"),
+                ("1645709894507521", "flcheo"),
+                ("1707202297664522", "xaykenh"),
+                ("1688674735601665", "xaykenhtiktok"),
             ]
             random.shuffle(challenge_ids)
             scored_items: List[Tuple[int, int, str]] = []
+            seen_cand_vids: set[str] = set()
 
-            for cid, label in challenge_ids[:3]:
-                logger.info(
-                    f"[{ch_folder}] [Bộ lọc 24h] Đang quét video mới xây kênh 24h qua thẻ #{label}..."
-                )
-                r = creq.get(
-                    "https://www.tikwm.com/api/challenge/posts",
-                    params={"challenge_id": cid, "count": 20, "cursor": 0},
-                    impersonate="chrome",
-                    timeout=10,
-                )
-                if r.status_code == 200 and r.text.strip():
-                    vids = (r.json().get("data") or {}).get("videos") or []
-                    for v in vids:
-                        vid = str(v.get("video_id") or "")
-                        author_id = (v.get("author") or {}).get("unique_id") or ""
-                        if not vid or not author_id:
-                            continue
-                        c_lower = author_id.lower().lstrip("@")
-                        if vid in seen_videos or c_lower in seen_creators or c_lower in own_handles:
-                            continue
-                        title_lower = str(v.get("title") or "").lower()
-                        bonus = 1 if any(
-                            kw in title_lower
-                            for kw in ("boloc24", "bộ lọc 24", "tuongtaccheo", "followcheo", "mới xây kênh", "moixaykenh")
-                        ) else 0
-                        create_ts = int(v.get("create_time") or 0)
-                        w_url = f"https://www.tiktok.com/@{author_id}/video/{vid}"
-                        scored_items.append((bonus, create_ts, w_url))
-                if len(scored_items) >= max(needed_count * 2, 4):
+            for cursor_val in (0, 20):
+                for cid, label in challenge_ids:
+                    logger.info(
+                        f"[{ch_folder}] [Bộ lọc 24h] Đang quét video mới xây kênh 24h qua thẻ #{label} (cursor={cursor_val})..."
+                    )
+                    r = creq.get(
+                        "https://www.tikwm.com/api/challenge/posts",
+                        params={"challenge_id": cid, "count": 20, "cursor": cursor_val},
+                        impersonate="chrome",
+                        timeout=10,
+                    )
+                    if r.status_code == 200 and r.text.strip():
+                        vids = (r.json().get("data") or {}).get("videos") or []
+                        for v in vids:
+                            vid = str(v.get("video_id") or "")
+                            author_id = (v.get("author") or {}).get("unique_id") or ""
+                            if not vid or not author_id or vid in seen_cand_vids:
+                                continue
+                            c_lower = author_id.lower().lstrip("@")
+                            if vid in seen_videos or c_lower in seen_creators or c_lower in own_handles:
+                                continue
+                            seen_cand_vids.add(vid)
+                            title_lower = str(v.get("title") or "").lower()
+                            bonus = 1 if any(
+                                kw in title_lower
+                                for kw in ("boloc24", "bộ lọc 24", "tuongtaccheo", "followcheo", "mới xây kênh", "moixaykenh", "flcheo")
+                            ) else 0
+                            create_ts = int(v.get("create_time") or 0)
+                            w_url = f"https://www.tiktok.com/@{author_id}/video/{vid}"
+                            scored_items.append((bonus, create_ts, w_url))
+                    if len(scored_items) >= max(needed_count * 2, 14):
+                        break
+                    time.sleep(0.2)
+                if len(scored_items) >= max(needed_count * 2, 14):
                     break
-                time.sleep(0.25)
 
             scored_items.sort(key=lambda x: (x[0], x[1]), reverse=True)
             for _b, _ts, w_url in scored_items:
@@ -843,8 +860,8 @@ class TikTok24hFilterEngine:
         except Exception:
             duration = 24.0
 
-        # Xem hết 100% thời lượng nếu video <= 42s; nếu video dài hơn thì xem 25s-42s
-        watch_seconds = min(max(duration + 1.5, 18.0), 42.0)
+        # Xem hết 100% thời lượng nếu video ngắn <= 26s; nếu video dài hơn thì xem 18s-26s để phiên 10 video/kênh chạy mượt mà
+        watch_seconds = min(max(duration + 0.8, 15.0), 26.0)
         logger.info(
             f"[{ch_folder}] [Bộ lọc 24h - Bước 1/6] Đang XEM HẾT VIDEO ({watch_seconds:.1f}s / thời lượng gốc {duration:.1f}s): {video_url}"
         )
@@ -1746,10 +1763,10 @@ class TikTok24hFilterEngine:
         return record
 
     def run_session_on_page(
-        self, page: Any, ch_folder: str, video_count: int = 2
+        self, page: Any, ch_folder: str, video_count: int = 10
     ) -> List[Dict[str, Any]]:
         """
-        Chạy 1 phiên "Bộ lọc 24 giờ" cho kênh `ch_folder` trên `page` đang mở sẵn.
+        Chạy 1 phiên "Bộ lọc 24 giờ" cho kênh `ch_folder` trên `page` đang mở sẵn (mặc định 10 video/phiên).
         """
         target_urls = self._discover_target_videos(page, ch_folder, needed_count=video_count)
         if not target_urls:
@@ -1767,8 +1784,8 @@ class TikTok24hFilterEngine:
                 rec = self.interact_with_single_video(page, ch_folder, url)
                 results.append(rec)
                 if idx < min(len(target_urls), video_count):
-                    pause_s = random.uniform(5.0, 10.0)
-                    logger.info(f"[{ch_folder}] [Bộ lọc 24h] Nghỉ tự nhiên {pause_s:.1f}s trước khi sang video kế tiếp...")
+                    pause_s = random.uniform(1.2, 2.2)
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h] Chuyển nhanh sau {pause_s:.1f}s sang video kế tiếp...")
                     time.sleep(pause_s)
             except Exception as exc:
                 logger.warning(f"[{ch_folder}] [Bộ lọc 24h] Lỗi khi tương tác video {url}: {exc}")

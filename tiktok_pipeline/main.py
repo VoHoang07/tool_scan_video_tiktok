@@ -724,46 +724,75 @@ def run_continuous_mode(
 
     scheduler_lock = threading.Lock()
 
-    def _run_scheduler_safe() -> None:
+    def _reload_poster_if_updated() -> None:
         nonlocal poster
+        pulled = _auto_git_pull_if_available(project_root)
+        if pulled or _get_codebase_mtime_snapshot(project_root) != initial_code_snapshot:
+            try:
+                import importlib
+                from . import growth_24h_filter as _g24_mod
+                from . import auto_poster as _ap_mod
+
+                importlib.reload(_g24_mod)
+                importlib.reload(_ap_mod)
+                poster = _ap_mod.TikTokAutoPoster(project_root=project_root)
+                logger.info("[Hot-Reload In-Place] Đã nạp nóng code mới cho 2 Dòng Hoạt Động (Đăng Video & Bộ lọc 24h)!")
+            except Exception as rel_exc:
+                logger.debug(f"[Hot-Reload In-Place] Bỏ qua lỗi nạp nóng phụ: {rel_exc}")
+
+    def _run_stream1_upload_safe() -> None:
+        """Dòng hoạt động 1: Giữ nguyên khung giờ đăng video cho 4 kênh (Ưu tiên cao)."""
         if not scheduler_lock.acquire(blocking=False):
             return
         try:
-            pulled = _auto_git_pull_if_available(project_root)
-            if pulled or _get_codebase_mtime_snapshot(project_root) != initial_code_snapshot:
-                try:
-                    import importlib
-                    from . import growth_24h_filter as _g24_mod
-                    from . import auto_poster as _ap_mod
-
-                    importlib.reload(_g24_mod)
-                    importlib.reload(_ap_mod)
-                    poster = _ap_mod.TikTokAutoPoster(project_root=project_root)
-                    logger.info("[Hot-Reload In-Place] Đã nạp nóng code mới cho TikTokAutoPoster & Bộ lọc 24h!")
-                except Exception as rel_exc:
-                    logger.debug(f"[Hot-Reload In-Place] Bỏ qua lỗi nạp nóng phụ: {rel_exc}")
+            _reload_poster_if_updated()
             crawler.auto_sync_posted_videos()
-            poster.check_and_run_scheduled_posts()
+            poster.check_and_run_stream1_upload_schedule()
         except Exception as sched_exc:
-            logger.debug(f"[Background Scheduler] Bỏ qua lỗi phụ: {sched_exc}")
+            logger.debug(f"[Dòng 1 - Upload Scheduler] Bỏ qua lỗi phụ: {sched_exc}")
         finally:
             scheduler_lock.release()
 
-    def _background_scheduler_loop() -> None:
-        """
-        Luồng chạy ngầm độc lập kiểm tra lịch đăng bài, Remote Trigger và đồng bộ GitHub mỗi 45 giây
-        ngay cả khi luồng chính đang lồng tiếng (Edge-TTS) hoặc ghép phụ đề (FFmpeg).
-        """
+    def _run_stream2_filter24h_safe() -> None:
+        """Dòng hoạt động 2: Mở 4 kênh chạy Bộ lọc 24 giờ (7 lần/ngày × 10 video/kênh)."""
+        if not scheduler_lock.acquire(blocking=False):
+            return
+        try:
+            _reload_poster_if_updated()
+            poster.check_and_run_stream2_filter24h_schedule()
+        except Exception as sched_exc:
+            logger.debug(f"[Dòng 2 - Filter 24h Scheduler] Bỏ qua lỗi phụ: {sched_exc}")
+        finally:
+            scheduler_lock.release()
+
+    def _run_scheduler_safe() -> None:
+        _run_stream1_upload_safe()
+        _run_stream2_filter24h_safe()
+
+    def _stream1_upload_loop() -> None:
+        """Luồng chạy ngầm Dòng 1: Kiểm tra lịch đăng video cố định của 4 kênh mỗi 30 giây."""
+        while not stop_requested:
+            time.sleep(30)
+            if stop_requested:
+                break
+            _run_stream1_upload_safe()
+
+    def _stream2_filter24h_loop() -> None:
+        """Luồng chạy ngầm Dòng 2: Mở 4 kênh chạy Bộ lọc 24 giờ (7 lần/ngày × 10 video/kênh) mỗi 45 giây."""
         while not stop_requested:
             time.sleep(45)
             if stop_requested:
                 break
-            _run_scheduler_safe()
+            _run_stream2_filter24h_safe()
 
-    bg_sched_thread = threading.Thread(
-        target=_background_scheduler_loop, name="TikTokSchedulerThread", daemon=True
+    stream1_thread = threading.Thread(
+        target=_stream1_upload_loop, name="Stream1-UploadSchedulerThread", daemon=True
     )
-    bg_sched_thread.start()
+    stream2_thread = threading.Thread(
+        target=_stream2_filter24h_loop, name="Stream2-Filter24hThread", daemon=True
+    )
+    stream1_thread.start()
+    stream2_thread.start()
 
     def _check_hot_reload() -> None:
         if scheduler_lock.locked():
@@ -1139,8 +1168,18 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--filter-count",
         type=int,
-        default=2,
-        help="Số lượng video mục tiêu tương tác mỗi kênh trong 1 phiên --filter-24h (mặc định: 2)",
+        default=10,
+        help="Số lượng video mục tiêu tương tác mỗi kênh trong 1 phiên --filter-24h (mặc định: 10)",
+    )
+    parser.add_argument(
+        "--stream-upload",
+        action="store_true",
+        help="Chạy riêng Dòng Hoạt Động 1: Giữ nguyên khung giờ đăng video 4 kênh (08:00, 12:30, 20:00)",
+    )
+    parser.add_argument(
+        "--stream-filter24h",
+        action="store_true",
+        help="Chạy riêng Dòng Hoạt Động 2: Mở 4 kênh chạy Bộ lọc 24 giờ (7 lần/ngày × 10 video/kênh)",
     )
     parser.add_argument(
         "--platform",
@@ -1299,6 +1338,24 @@ def main() -> None:
             print("KẾT QUẢ TƯƠNG TÁC CHÉO 'BỘ LỌC 24 GIỜ' (6 BƯỚC CHUẨN):")
             print(json.dumps(res, ensure_ascii=False, indent=2))
             print("=" * 70 + "\n")
+            return
+
+        # 2h. Chạy riêng Dòng Hoạt Động 1 (--stream-upload) hoặc Dòng Hoạt Động 2 (--stream-filter24h)
+        if args.stream_upload or args.stream_filter24h:
+            poster = TikTokAutoPoster(project_root=project_root)
+            stream_label = (
+                "DÒNG 1 (ĐĂNG VIDEO 4 KÊNH THEO KHUNG GIỜ CỐ ĐỊNH)"
+                if args.stream_upload and not args.stream_filter24h
+                else "DÒNG 2 (MỞ 4 KÊNH CHẠY BỘ LỌC 24 GIỜ: 7 LẦN/NGÀY × 10 VIDEO/KÊNH)"
+            )
+            logger.info(f"=== KHỞI ĐỘNG DAEMON CHUYÊN BIỆT: {stream_label} ===")
+            while True:
+                _auto_git_pull_if_available(project_root)
+                if args.stream_upload:
+                    poster.check_and_run_stream1_upload_schedule()
+                if args.stream_filter24h:
+                    poster.check_and_run_stream2_filter24h_schedule()
+                time.sleep(30)
             return
 
         # 3. Chế độ Cào và xử lý liên tục (Daemon / Continuous Worker Mode) --continuous
