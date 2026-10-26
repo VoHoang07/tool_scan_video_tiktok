@@ -1,19 +1,19 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 09:05:51",
+    "timestamp": "2026-10-26 09:08:17",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7700556128714771720",
-          "video_url": "https://www.tiktok.com/@myxuyen61/video/7700556128714771720",
-          "creator_handle": "@myxuyen61",
-          "watched_seconds": 25.5,
+          "channel": "tu_chan_gioi",
+          "video_id": "7700558744848960775",
+          "video_url": "https://www.tiktok.com/@follow.cheo6666/video/7700558744848960775",
+          "creator_handle": "@follow.cheo6666",
+          "watched_seconds": 18.0,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": true,
@@ -22,14 +22,44 @@
             "5_followed_creator": true,
             "6_commented_after_follow": true
           },
-          "comment_text": "Chào @myxuyen61, đúng chuẩn bộ lọc 24h, mình vừa xem hết video của bạn, bấm tim, thêm vào yêu thích, copy link và follow bạn đầy đủ 5 bước rồi nhé! Chúc bạn xây kênh thành công rực rỡ, nhớ ghé trả tương tác cho mình nha ❤️",
-          "interacted_at": "2026-10-26 09:05:51",
-          "follow_back_window_until": "2026-10-27 09:05:51"
+          "comment_text": "Chào @follow.cheo6666, mình đã xem hết video của bạn, làm đủ các bước bộ lọc 24 giờ: thả tim, lưu yêu thích, sao chép liên kết và follow bạn rồi đó! Cùng nhau kiên trì xây kênh thật tốt nha bạn ơi, mình follow rồi đó 💪",
+          "interacted_at": "2026-10-26 09:08:17",
+          "follow_back_window_until": "2026-10-27 09:08:17"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 09:08:17",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7700558744848960775",
+            "video_url": "https://www.tiktok.com/@follow.cheo6666/video/7700558744848960775",
+            "creator_handle": "@follow.cheo6666",
+            "watched_seconds": 18.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Chào @follow.cheo6666, mình đã xem hết video của bạn, làm đủ các bước bộ lọc 24 giờ: thả tim, lưu yêu thích, sao chép liên kết và follow bạn rồi đó! Cùng nhau kiên trì xây kênh thật tốt nha bạn ơi, mình follow rồi đó 💪",
+            "interacted_at": "2026-10-26 09:08:17",
+            "follow_back_window_until": "2026-10-27 09:08:17"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 09:05:51",
       "machine_arch": "x86_64",
