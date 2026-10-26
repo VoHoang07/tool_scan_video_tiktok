@@ -759,9 +759,10 @@ def run_continuous_mode(
         if current_snapshot != initial_code_snapshot:
             logger.info(
                 "[Hot-Reload] Phát hiện code Python vừa được cập nhật từ máy chủ Silicon! "
-                "Đang tự động khởi động lại Worker trong 2 giây để áp dụng code mới..."
+                "Đang tự động khởi động lại Worker tại chỗ (os.execv) để áp dụng code mới..."
             )
-            sys.exit(42)
+            time.sleep(1.0)
+            os.execv(sys.executable, [sys.executable] + sys.argv)
 
     def _interruptible_sleep(seconds: int, reason: str) -> None:
         if seconds <= 0 or stop_requested:
