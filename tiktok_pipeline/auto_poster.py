@@ -183,6 +183,10 @@ class TikTokAutoPoster:
             "--disable-infobars",
             "--no-first-run",
             "--no-default-browser-check",
+            "--enable-gpu-rasterization",
+            "--enable-zero-copy",
+            "--disable-renderer-backgrounding",
+            "--disable-background-timer-throttling",
             "--lang=vi-VN",
         ]
         ignore_args = ["--enable-automation", "--no-sandbox"]

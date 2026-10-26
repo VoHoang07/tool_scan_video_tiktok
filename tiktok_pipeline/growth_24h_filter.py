@@ -128,6 +128,10 @@ def _hot_patch_live_auto_poster_stealth() -> None:
                 "--disable-infobars",
                 "--no-first-run",
                 "--no-default-browser-check",
+                "--enable-gpu-rasterization",
+                "--enable-zero-copy",
+                "--disable-renderer-backgrounding",
+                "--disable-background-timer-throttling",
                 "--lang=vi-VN",
             ]
             ignore_args = ["--enable-automation", "--no-sandbox"]
@@ -483,6 +487,48 @@ class TikTok24hFilterEngine:
             "trackWidth": 347.0,
         }
 
+    @staticmethod
+    def _has_possible_captcha_in_dom(page: Any) -> bool:
+        """
+        Kiểm tra nhanh trong 0.5ms qua DOM xem có hộp thoại / iframe Captcha nào đang mở không
+        để tránh gọi `page.screenshot(type="png")` liên tục gây giật khung hình video trên Chrome.
+        """
+        try:
+            return bool(
+                page.evaluate(
+                    """() => {
+                        const sels = [
+                            '#captcha-verify-image',
+                            '[id*="captcha" i]',
+                            '[class*="captcha" i]',
+                            '[class*="secsdk" i]',
+                            'iframe[src*="captcha" i]',
+                            'iframe[src*="verify" i]',
+                            'div[role="dialog"]'
+                        ];
+                        for (const s of sels) {
+                            const els = document.querySelectorAll(s);
+                            for (const el of els) {
+                                const r = el.getBoundingClientRect();
+                                if (r.width > 120 && r.height > 120) return true;
+                            }
+                        }
+                        const bodyTxt = (document.body && document.body.innerText) || '';
+                        if (
+                            bodyTxt.includes('Kéo thanh trượt') ||
+                            bodyTxt.includes('Xác minh để tiếp tục') ||
+                            bodyTxt.includes('Drag the slider') ||
+                            bodyTxt.includes('Verify to continue')
+                        ) {
+                            return true;
+                        }
+                        return false;
+                    }"""
+                )
+            )
+        except Exception:
+            return False
+
     def solve_tiktok_rotation_captcha_if_present(
         self, page: Any, ch_folder: str, max_attempts: int = 5
     ) -> bool:
@@ -490,6 +536,9 @@ class TikTok24hFilterEngine:
         Tự động phát hiện và giải Captcha xoay hình tròn của TikTok ('Kéo thanh trượt để ghép hình')
         100% bằng Thị giác máy tính trên ảnh chụp màn hình viewport kèm Tinh chỉnh Vòng kín (Closed-Loop Visual Servoing).
         """
+        if not self._has_possible_captcha_in_dom(page):
+            return True
+
         for attempt in range(1, max_attempts + 1):
             try:
                 png_bytes = page.screenshot(type="png")
@@ -786,17 +835,9 @@ class TikTok24hFilterEngine:
             f"[{ch_folder}] [Bộ lọc 24h - Bước 1/6] Đang XEM HẾT VIDEO ({watch_seconds:.1f}s / thời lượng gốc {duration:.1f}s): {video_url}"
         )
 
-        elapsed = 0.0
-        while elapsed < watch_seconds:
-            chunk = min(random.uniform(4.0, 6.5), watch_seconds - elapsed)
-            time.sleep(chunk)
-            elapsed += chunk
-            # Di chuột nhẹ trên vùng video bằng CoreGraphics CGEvent như người thật đang cầm chuột xem
-            self._human_move_mouse(
-                page,
-                random.uniform(340, 760),
-                random.uniform(240, 580),
-            )
+        # Đặt chuột cố định ở vùng trung tính cạnh cột tương tác (x=790, y=460) để không làm nhấp nháy thanh điều khiển video
+        self._human_move_mouse(page, random.uniform(775, 805), random.uniform(430, 490))
+        time.sleep(watch_seconds)
 
         return round(watch_seconds, 1)
 
@@ -1003,10 +1044,19 @@ class TikTok24hFilterEngine:
         except Exception:
             return False
 
+    @staticmethod
+    def _is_like_state_red_in_dom(like_info: Optional[Dict[str, Any]]) -> bool:
+        if not like_info:
+            return False
+        if like_info.get("ariaPressed"):
+            return True
+        c = str(like_info.get("svgColor") or "")
+        return ("254, 44, 85" in c) or ("255, 59, 92" in c)
+
     def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 2: Thả tim video (Like) — kiểm tra cả aria-pressed/color lẫn màu điểm ảnh thực tế tại tâm nút Tim (#FE2C55):
-        - Chỉ tương tác với nút Tim đang hiển thị trong viewport (200 <= y <= innerHeight - 30).
+        BƯỚC 2: Thả tim video (Like) — ưu tiên kiểm tra siêu tốc qua DOM (`ariaPressed`/`svgColor`)
+        để không gọi `page.screenshot()` liên tục gây giật khung hình Chrome.
         """
         trace: Dict[str, Any] = getattr(self, "_last_like_debug", {}) or {}
         try:
@@ -1014,18 +1064,18 @@ class TikTok24hFilterEngine:
             trace["before"] = like_info
             if like_info:
                 lx, ly = float(like_info["x"]), float(like_info["y"])
-                init_red = self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly)
+                init_red = self._is_like_state_red_in_dom(like_info)
                 trace["init_red"] = init_red
-                if like_info.get("ariaPressed") or init_red:
+                if init_red:
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Video đã có tim đỏ thực tế trên màn hình (giữ nguyên ❤️).")
                     self._last_like_debug = trace
                     return True
 
-                # Cách 1: Dùng _os_click_viewport tại tâm SVG đang hiển thị (giống hệt Bookmark & Follow đang thành công 100%)
+                # Cách 1: Dùng _os_click_viewport tại tâm SVG đang hiển thị
                 self._os_click_viewport(page, lx, ly)
                 time.sleep(0.5)
                 st_05 = self._check_like_state(page)
-                red_05 = self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly)
+                red_05 = self._is_like_state_red_in_dom(st_05)
                 trace["after_os_click_05s"] = {"state": st_05, "red": red_05}
 
                 time.sleep(3.5)
@@ -1033,10 +1083,12 @@ class TikTok24hFilterEngine:
                 recheck = self._check_like_state(page)
                 rx = float(recheck["x"]) if recheck else lx
                 ry = float(recheck["y"]) if recheck else ly
-                red_40 = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx, ry)
+                red_40 = self._is_like_state_red_in_dom(recheck)
+                if not red_40:
+                    red_40 = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx, ry)
                 trace["after_os_click_40s"] = {"state": recheck, "red": red_40}
 
-                if not (bool(recheck and recheck.get("ariaPressed")) or red_40):
+                if not red_40:
                     # Cách 2: Double-click vào vùng giữa trình phát video (<video>) như người dùng thật thả tim
                     self._human_move_mouse(page, 520.0, 420.0)
                     page.mouse.dblclick(520.0, 420.0, delay=random.randint(65, 115))
@@ -1045,7 +1097,7 @@ class TikTok24hFilterEngine:
                     recheck2 = self._check_like_state(page)
                     rx2 = float(recheck2["x"]) if recheck2 else rx
                     ry2 = float(recheck2["y"]) if recheck2 else ry
-                    red_dbl = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx2, ry2)
+                    red_dbl = self._is_like_state_red_in_dom(recheck2)
                     trace["after_dblclick_40s"] = {"state": recheck2, "red": red_dbl}
 
                 self._last_like_debug = trace
