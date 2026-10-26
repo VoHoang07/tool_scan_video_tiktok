@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 22:46:15",
+    "timestamp": "2026-10-26 22:46:39",
     "machine_arch": "x86_64",
-    "event_type": "upload",
+    "event_type": "filter24h",
     "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261025_165053_tiktok_story_7684163510250507541.mp4",
-      "caption": "🐉 Tưởng là phế vật dưới đáy tông môn ai ngờ ẩn giấu thực lực chấn động thiên địa — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 0,
+      "records": []
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 22:46:39",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+      "details": {
+        "interacted_count": 0,
+        "records": []
+      }
+    },
     {
       "timestamp": "2026-10-26 22:46:15",
       "machine_arch": "x86_64",
@@ -911,140 +918,6 @@
             },
             "interacted_at": "2026-10-26 15:35:02",
             "follow_back_window_until": "2026-10-27 15:35:02"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 15:20:16",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
-      "details": {
-        "interacted_count": 2,
-        "records": [
-          {
-            "channel": "baby_AI",
-            "video_id": "7700640182126513414",
-            "video_url": "https://www.tiktok.com/@minh.khi.shop0/video/7700640182126513414",
-            "creator_handle": "@minh.khi.shop0",
-            "watched_seconds": 42.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026161720990A1B9A385C2E8BE3F9\",\"now\":1793002640000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026161720990A1B9A385C2E8BE3F9\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "hasOwnWebdriver": false,
-                "hasFakeChromeRuntime": false
-              },
-              "before": {
-                "x": 835.375,
-                "y": 564,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "7"
-              },
-              "init_red": true,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 835.375,
-                  "y": 564,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "7"
-                },
-                "red": true
-              },
-              "after_os_click_40s": {
-                "state": {
-                  "x": 835.375,
-                  "y": 564,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "7"
-                },
-                "red": true
-              }
-            },
-            "interacted_at": "2026-10-26 15:18:34",
-            "follow_back_window_until": "2026-10-27 15:18:34"
-          },
-          {
-            "channel": "baby_AI",
-            "video_id": "7700501735424511250",
-            "video_url": "https://www.tiktok.com/@follow.cho589/video/7700501735424511250",
-            "creator_handle": "@follow.cho589",
-            "watched_seconds": 18.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026161904BDD7666BD70B6284E13C\",\"now\":1793002745000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026161904BDD7666BD70B6284E13C\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026161904BDD7666BD70B6284E13C\",\"now\":1793002745000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026161904BDD7666BD70B6284E13C\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "hasOwnWebdriver": false,
-                "hasFakeChromeRuntime": false
-              },
-              "before": {
-                "x": 835.375,
-                "y": 564,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "107"
-              },
-              "init_red": true,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 835.375,
-                  "y": 564,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "107"
-                },
-                "red": true
-              },
-              "after_os_click_40s": {
-                "state": {
-                  "x": 835.375,
-                  "y": 564,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "107"
-                },
-                "red": true
-              }
-            },
-            "interacted_at": "2026-10-26 15:20:16",
-            "follow_back_window_until": "2026-10-27 15:20:16"
           }
         ]
       }
