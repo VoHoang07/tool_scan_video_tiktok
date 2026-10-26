@@ -1,18 +1,18 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 10:21:57",
+    "timestamp": "2026-10-26 10:23:57",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "video_AI_hay",
-          "video_id": "7700060628186172693",
-          "video_url": "https://www.tiktok.com/@diu.linh6062/video/7700060628186172693",
-          "creator_handle": "@diu.linh6062",
+          "channel": "baby_AI",
+          "video_id": "7700177664904105237",
+          "video_url": "https://www.tiktok.com/@niine116/video/7700177664904105237",
+          "creator_handle": "@niine116",
           "watched_seconds": 18.0,
           "steps_completed": {
             "1_watched_full": true,
@@ -24,23 +24,122 @@
           },
           "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
           "like_debug": {
-            "digg_responses": [],
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026112239E1923BABDD8B1865C411\",\"now\":1792984959000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026112239E1923BABDD8B1865C411\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026112345FC9C1AF9EEEF9562F3A4\",\"now\":1792985025000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026112345FC9C1AF9EEEF9562F3A4\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
             "before": {
-              "x": 835.375,
-              "y": -348,
+              "x": 788.796875,
+              "y": 563.9921875,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "6.7M"
+              "likeCount": "32"
             },
-            "init_red": true
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 788.796875,
+                "y": 563.9921875,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "33"
+              },
+              "red": true
+            },
+            "after_os_click_25s": {
+              "state": {
+                "x": 788.796875,
+                "y": 563.9921875,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "33"
+              },
+              "red": true
+            }
           },
-          "interacted_at": "2026-10-26 10:21:57",
-          "follow_back_window_until": "2026-10-27 10:21:57"
+          "interacted_at": "2026-10-26 10:23:57",
+          "follow_back_window_until": "2026-10-27 10:23:57"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 10:23:57",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "baby_AI",
+            "video_id": "7700177664904105237",
+            "video_url": "https://www.tiktok.com/@niine116/video/7700177664904105237",
+            "creator_handle": "@niine116",
+            "watched_seconds": 18.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026112239E1923BABDD8B1865C411\",\"now\":1792984959000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026112239E1923BABDD8B1865C411\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026112345FC9C1AF9EEEF9562F3A4\",\"now\":1792985025000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026112345FC9C1AF9EEEF9562F3A4\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "before": {
+                "x": 788.796875,
+                "y": 563.9921875,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "32"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 788.796875,
+                  "y": 563.9921875,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "33"
+                },
+                "red": true
+              },
+              "after_os_click_25s": {
+                "state": {
+                  "x": 788.796875,
+                  "y": 563.9921875,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "33"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-26 10:23:57",
+            "follow_back_window_until": "2026-10-27 10:23:57"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 10:21:57",
       "machine_arch": "x86_64",
@@ -522,36 +621,6 @@
             "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
             "interacted_at": "2026-10-26 09:42:21",
             "follow_back_window_until": "2026-10-27 09:42:21"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 09:40:11",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "baby_AI",
-            "video_id": "7700576863076273416",
-            "video_url": "https://www.tiktok.com/@thu_thuy19661/video/7700576863076273416",
-            "creator_handle": "@thu_thuy19661",
-            "watched_seconds": 42.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-            "interacted_at": "2026-10-26 09:40:11",
-            "follow_back_window_until": "2026-10-27 09:40:11"
           }
         ]
       }
