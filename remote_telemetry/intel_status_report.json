@@ -1,19 +1,19 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 11:15:54",
+    "timestamp": "2026-10-26 11:18:10",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "baby_AI",
-          "video_id": "7700060628186172693",
-          "video_url": "https://www.tiktok.com/@diu.linh6062/video/7700060628186172693",
-          "creator_handle": "@diu.linh6062",
-          "watched_seconds": 18.0,
+          "channel": "audio_dem_khuyen",
+          "video_id": "7699882372312960257",
+          "video_url": "https://www.tiktok.com/@tin318783/video/7699882372312960257",
+          "creator_handle": "@tin318783",
+          "watched_seconds": 37.8,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": true,
@@ -27,7 +27,7 @@
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610261214425B1DA278E8DDFA937235\",\"now\":1792988082000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610261214425B1DA278E8DDFA937235\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610261216586F022F2D2C041A840644\",\"now\":1792988218000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610261216586F022F2D2C041A840644\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "env_check": {
@@ -40,7 +40,7 @@
               "y": 512,
               "ariaPressed": true,
               "svgColor": "rgba(254, 44, 85, 1)",
-              "likeCount": "8"
+              "likeCount": "19"
             },
             "init_red": true,
             "after_os_click_05s": {
@@ -49,7 +49,7 @@
                 "y": 512,
                 "ariaPressed": true,
                 "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "8"
+                "likeCount": "19"
               },
               "red": true
             },
@@ -59,18 +59,89 @@
                 "y": 512,
                 "ariaPressed": true,
                 "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "8"
+                "likeCount": "19"
               },
               "red": true
             }
           },
-          "interacted_at": "2026-10-26 11:15:54",
-          "follow_back_window_until": "2026-10-27 11:15:54"
+          "interacted_at": "2026-10-26 11:18:10",
+          "follow_back_window_until": "2026-10-27 11:18:10"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 11:18:10",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "audio_dem_khuyen",
+            "video_id": "7699882372312960257",
+            "video_url": "https://www.tiktok.com/@tin318783/video/7699882372312960257",
+            "creator_handle": "@tin318783",
+            "watched_seconds": 37.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610261216586F022F2D2C041A840644\",\"now\":1792988218000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610261216586F022F2D2C041A840644\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 835.375,
+                "y": 512,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "19"
+              },
+              "init_red": true,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 835.375,
+                  "y": 512,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "19"
+                },
+                "red": true
+              },
+              "after_os_click_40s": {
+                "state": {
+                  "x": 835.375,
+                  "y": 512,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "19"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-26 11:18:10",
+            "follow_back_window_until": "2026-10-27 11:18:10"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 11:15:54",
       "machine_arch": "x86_64",
@@ -1191,47 +1262,6 @@
             },
             "interacted_at": "2026-10-26 10:23:57",
             "follow_back_window_until": "2026-10-27 10:23:57"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 10:21:57",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7700060628186172693",
-            "video_url": "https://www.tiktok.com/@diu.linh6062/video/7700060628186172693",
-            "creator_handle": "@diu.linh6062",
-            "watched_seconds": 18.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-            "like_debug": {
-              "digg_responses": [],
-              "before": {
-                "x": 835.375,
-                "y": -348,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "6.7M"
-              },
-              "init_red": true
-            },
-            "interacted_at": "2026-10-26 10:21:57",
-            "follow_back_window_until": "2026-10-27 10:21:57"
           }
         ]
       }
