@@ -1,15 +1,15 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 09:08:17",
+    "timestamp": "2026-10-26 09:37:33",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "tu_chan_gioi",
+          "channel": "video_AI_hay",
           "video_id": "7700558744848960775",
           "video_url": "https://www.tiktok.com/@follow.cheo6666/video/7700558744848960775",
           "creator_handle": "@follow.cheo6666",
@@ -22,14 +22,44 @@
             "5_followed_creator": true,
             "6_commented_after_follow": true
           },
-          "comment_text": "Chào @follow.cheo6666, mình đã xem hết video của bạn, làm đủ các bước bộ lọc 24 giờ: thả tim, lưu yêu thích, sao chép liên kết và follow bạn rồi đó! Cùng nhau kiên trì xây kênh thật tốt nha bạn ơi, mình follow rồi đó 💪",
-          "interacted_at": "2026-10-26 09:08:17",
-          "follow_back_window_until": "2026-10-27 09:08:17"
+          "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+          "interacted_at": "2026-10-26 09:37:33",
+          "follow_back_window_until": "2026-10-27 09:37:33"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 09:37:33",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7700558744848960775",
+            "video_url": "https://www.tiktok.com/@follow.cheo6666/video/7700558744848960775",
+            "creator_handle": "@follow.cheo6666",
+            "watched_seconds": 18.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "interacted_at": "2026-10-26 09:37:33",
+            "follow_back_window_until": "2026-10-27 09:37:33"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 09:08:17",
       "machine_arch": "x86_64",
