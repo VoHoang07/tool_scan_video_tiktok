@@ -1561,9 +1561,25 @@ class TikTok24hFilterEngine:
 
     @staticmethod
     def _locate_comment_input_box(page: Any) -> Optional[Dict[str, float]]:
-        """Tìm tọa độ ô nhập bình luận trên trang chi tiết hoặc trang feed video TikTok."""
+        """
+        Tìm tọa độ ô nhập bình luận trên trang chi tiết hoặc trang feed video TikTok.
+        Kiểm tra `document.elementFromPoint(x, y)` để chắc chắn ô bình luận đang hiển thị trên cùng
+        (không bị tab 'Bạn có thể thích' che khuất dẫn tới bấm nhầm vào thẻ video gợi ý).
+        """
         return page.evaluate(
             """() => {
+                const isPointTrulyCommentBox = (el, tx, ty) => {
+                    const topEl = document.elementFromPoint(tx, ty);
+                    if (!topEl) return false;
+                    if (topEl.closest('a[href*="/video/"], [data-e2e*="recommend"], [data-e2e*="user-post-item"]')) {
+                        return false;
+                    }
+                    return Boolean(
+                        el.contains(topEl) ||
+                        topEl.contains(el) ||
+                        topEl.closest('[data-e2e*="comment"], [class*="CommentInput"], [class*="BottomComment"]')
+                    );
+                };
                 const selectors = [
                     '[data-e2e="comment-input"]',
                     '[data-e2e="comment-text"]',
@@ -1576,7 +1592,11 @@ class TikTok24hFilterEngine:
                     if (!el) continue;
                     const r = el.getBoundingClientRect();
                     if (r.left > 260 && r.width > 40 && r.height > 14 && r.top > 50 && r.top < window.innerHeight - 5) {
-                        return { x: r.left + Math.min(r.width * 0.35, 120), y: r.top + r.height * 0.5 };
+                        const tx = r.left + Math.min(r.width * 0.35, 120);
+                        const ty = r.top + r.height * 0.5;
+                        if (isPointTrulyCommentBox(el, tx, ty)) {
+                            return { x: tx, y: ty };
+                        }
                     }
                 }
                 const placeholders = ['Thêm bình luận', 'Add comment', 'Viết bình luận', 'Bình luận...'];
@@ -1587,7 +1607,11 @@ class TikTok24hFilterEngine:
                     if (placeholders.some(p => txt.includes(p))) {
                         const r = el.getBoundingClientRect();
                         if (r.left > 260 && r.width > 40 && r.height > 14 && r.top > 50 && r.top < window.innerHeight - 5) {
-                            return { x: r.left + Math.min(r.width * 0.35, 120), y: r.top + r.height * 0.5 };
+                            const tx = r.left + Math.min(r.width * 0.35, 120);
+                            const ty = r.top + r.height * 0.5;
+                            if (isPointTrulyCommentBox(el, tx, ty)) {
+                                return { x: tx, y: ty };
+                            }
                         }
                     }
                 }
