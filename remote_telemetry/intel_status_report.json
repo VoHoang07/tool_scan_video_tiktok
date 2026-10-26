@@ -1,19 +1,19 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 09:37:33",
+    "timestamp": "2026-10-26 09:40:11",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "video_AI_hay",
-          "video_id": "7700558744848960775",
-          "video_url": "https://www.tiktok.com/@follow.cheo6666/video/7700558744848960775",
-          "creator_handle": "@follow.cheo6666",
-          "watched_seconds": 18.0,
+          "channel": "baby_AI",
+          "video_id": "7700576863076273416",
+          "video_url": "https://www.tiktok.com/@thu_thuy19661/video/7700576863076273416",
+          "creator_handle": "@thu_thuy19661",
+          "watched_seconds": 42.0,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": true,
@@ -23,13 +23,43 @@
             "6_commented_after_follow": true
           },
           "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-          "interacted_at": "2026-10-26 09:37:33",
-          "follow_back_window_until": "2026-10-27 09:37:33"
+          "interacted_at": "2026-10-26 09:40:11",
+          "follow_back_window_until": "2026-10-27 09:40:11"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 09:40:11",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "baby_AI",
+            "video_id": "7700576863076273416",
+            "video_url": "https://www.tiktok.com/@thu_thuy19661/video/7700576863076273416",
+            "creator_handle": "@thu_thuy19661",
+            "watched_seconds": 42.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "interacted_at": "2026-10-26 09:40:11",
+            "follow_back_window_until": "2026-10-27 09:40:11"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 09:37:33",
       "machine_arch": "x86_64",
@@ -406,21 +436,6 @@
             "follow_back_window_until": "2026-10-27 00:23:20"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 00:21:05",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261023_090135_tiktok_story_7690915418453708052.mp4",
-        "caption": "⚔️ [Tu Chân Giới] Tiểu Sư Muội 4 Tuổi Sở Hữu Cực Phẩm Song Linh Căn P1. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-        "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #viral #foryou",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
