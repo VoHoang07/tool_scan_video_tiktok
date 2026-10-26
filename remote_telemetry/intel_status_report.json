@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 12:44:48",
+    "timestamp": "2026-10-26 12:59:54",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261025_165507_douyin_story_7640576010862205938.mp4",
-      "caption": "😂 找到这么大一颗山莓果. \"山莓果又大又甜...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xh",
+      "video_file": "20261025_181833_tiktok_story_7698936354142506260.mp4",
+      "caption": "🌙 Thức đêm nghe truyện: Tập 123 - Biến cố bất ngờ và sự thật phía sau. Từng tình tiết đều khiến người nghe nổi da gà, đừng bỏ lỡ đoạn kết!",
+      "hashtags": "#truyenngan #audiodemkhuya #truyenaudio #ngontinh #trongsinh #tongtai #viral #foryou",
       "post_confirmed": true,
       "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 12:59:54",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261025_181833_tiktok_story_7698936354142506260.mp4",
+        "caption": "🌙 Thức đêm nghe truyện: Tập 123 - Biến cố bất ngờ và sự thật phía sau. Từng tình tiết đều khiến người nghe nổi da gà, đừng bỏ lỡ đoạn kết!",
+        "hashtags": "#truyenngan #audiodemkhuya #truyenaudio #ngontinh #trongsinh #tongtai #viral #foryou",
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-26 12:44:48",
       "machine_arch": "x86_64",
@@ -980,76 +995,6 @@
             },
             "interacted_at": "2026-10-26 10:37:15",
             "follow_back_window_until": "2026-10-27 10:37:15"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 10:35:13",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7699882372312960257",
-            "video_url": "https://www.tiktok.com/@tin318783/video/7699882372312960257",
-            "creator_handle": "@tin318783",
-            "watched_seconds": 37.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102611335775763CD6761D085C7AE6\",\"now\":1792985637000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102611335775763CD6761D085C7AE6\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026113508EBD9AA1C1005315D3300\",\"now\":1792985708000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026113508EBD9AA1C1005315D3300\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "before": {
-                "x": 835.375,
-                "y": 512,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "18"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 835.375,
-                  "y": 512,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "19"
-                },
-                "red": true
-              },
-              "after_os_click_25s": {
-                "state": {
-                  "x": 835.375,
-                  "y": 512,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "19"
-                },
-                "red": true
-              }
-            },
-            "interacted_at": "2026-10-26 10:35:13",
-            "follow_back_window_until": "2026-10-27 10:35:13"
           }
         ]
       }
