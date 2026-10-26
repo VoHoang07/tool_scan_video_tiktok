@@ -11,6 +11,163 @@ from .crawler import KNOWN_VIETNAMESE_HANDLES
 from .macos_desktop_controller import MacOSDesktopController
 from .utils import logger
 
+DIGG_UI_GUARD_SCRIPT = """
+(() => {
+    try { delete navigator.webdriver; } catch (e) {}
+    try { if (window.chrome && window.chrome.runtime && window.chrome.runtime.PlatformOs) delete window.chrome.runtime; } catch (e) {}
+
+    if (window.__tiktokDiggGuardInstalled) return;
+    window.__tiktokDiggGuardInstalled = true;
+    window.__tiktokDiggLogs = window.__tiktokDiggLogs || [];
+
+    const origFetch = window.fetch;
+    if (typeof origFetch === "function") {
+        window.fetch = async function(...args) {
+            const url = (typeof args[0] === "string" ? args[0] : (args[0] && args[0].url)) || "";
+            const resp = await origFetch.apply(this, args);
+            if (url.includes("/commit/item/digg") || url.includes("/item/digg")) {
+                try {
+                    const clone = resp.clone();
+                    const rawText = await clone.text();
+                    window.__tiktokDiggLogs.push({ via: "fetch", status: resp.status, body: rawText.slice(0, 240) });
+                    if (rawText.includes('"is_digg":1') || rawText.includes('"is_digg": 1')) {
+                        const fixedText = rawText.replace(/"is_digg"\\s*:\\s*1/g, '"is_digg":0');
+                        return new Response(fixedText, {
+                            status: resp.status,
+                            statusText: resp.statusText,
+                            headers: resp.headers
+                        });
+                    }
+                } catch (e) {}
+            }
+            return resp;
+        };
+    }
+
+    const protoDescText = Object.getOwnPropertyDescriptor(XMLHttpRequest.prototype, "responseText");
+    const protoDescResp = Object.getOwnPropertyDescriptor(XMLHttpRequest.prototype, "response");
+    const origOpen = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function(method, url, ...rest) {
+        const u = typeof url === "string" ? url : String(url || "");
+        if (u.includes("/commit/item/digg") || u.includes("/item/digg")) {
+            let logged = false;
+            if (protoDescText && protoDescText.get) {
+                Object.defineProperty(this, "responseText", {
+                    get: function() {
+                        const raw = protoDescText.get.call(this);
+                        if (typeof raw === "string" && raw.length > 0) {
+                            if (!logged && this.readyState === 4) {
+                                logged = true;
+                                window.__tiktokDiggLogs.push({ via: "xhr", status: this.status, body: raw.slice(0, 240) });
+                            }
+                            return raw.replace(/"is_digg"\\s*:\\s*1/g, '"is_digg":0');
+                        }
+                        return raw;
+                    },
+                    configurable: true
+                });
+            }
+            if (protoDescResp && protoDescResp.get) {
+                Object.defineProperty(this, "response", {
+                    get: function() {
+                        const raw = protoDescResp.get.call(this);
+                        if (typeof raw === "string" && raw.length > 0) {
+                            if (!logged && this.readyState === 4) {
+                                logged = true;
+                                window.__tiktokDiggLogs.push({ via: "xhr", status: this.status, body: raw.slice(0, 240) });
+                            }
+                            return raw.replace(/"is_digg"\\s*:\\s*1/g, '"is_digg":0');
+                        }
+                        if (raw && typeof raw === "object" && raw.is_digg === 1) {
+                            return Object.assign({}, raw, { is_digg: 0 });
+                        }
+                        return raw;
+                    },
+                    configurable: true
+                });
+            }
+        }
+        return origOpen.call(this, method, url, ...rest);
+    };
+})();
+"""
+
+
+def _hot_patch_live_auto_poster_stealth() -> None:
+    """
+    Cập nhật trực tiếp `_launch_stealth_chrome_context` trên mọi class/instance `TikTokAutoPoster`
+    đang chạy trong bộ nhớ tiến trình Daemon trên máy Intel để bật `--disable-blink-features=AutomationControlled`
+    và tiêm `DIGG_UI_GUARD_SCRIPT` ngay khi khởi tạo trình duyệt.
+    """
+    try:
+        import gc
+
+        def _clean_launch_stealth_chrome_context(playwright_obj: Any, user_data_dir: Path, headless: bool = False) -> Any:
+            import subprocess
+
+            try:
+                subprocess.run(
+                    ["pkill", "-9", "-f", str(user_data_dir)],
+                    capture_output=True,
+                    timeout=5,
+                    check=False,
+                )
+                time.sleep(0.6)
+            except Exception:
+                pass
+            for lock_name in ("SingletonLock", "SingletonSocket", "SingletonCookie"):
+                try:
+                    lock_file = Path(user_data_dir) / lock_name
+                    if lock_file.exists() or lock_file.is_symlink():
+                        lock_file.unlink()
+                except Exception:
+                    pass
+
+            launch_args = [
+                "--disable-blink-features=AutomationControlled",
+                "--disable-infobars",
+                "--no-first-run",
+                "--no-default-browser-check",
+                "--lang=vi-VN",
+            ]
+            ignore_args = ["--enable-automation", "--no-sandbox"]
+            try:
+                ctx = playwright_obj.chromium.launch_persistent_context(
+                    user_data_dir=str(user_data_dir),
+                    channel="chrome",
+                    headless=headless,
+                    viewport={"width": 1366, "height": 860},
+                    locale="vi-VN",
+                    timezone_id="Asia/Ho_Chi_Minh",
+                    args=launch_args,
+                    ignore_default_args=ignore_args,
+                )
+            except Exception:
+                ctx = playwright_obj.chromium.launch_persistent_context(
+                    user_data_dir=str(user_data_dir),
+                    headless=headless,
+                    viewport={"width": 1366, "height": 860},
+                    locale="vi-VN",
+                    timezone_id="Asia/Ho_Chi_Minh",
+                    args=launch_args,
+                    ignore_default_args=ignore_args,
+                )
+            ctx.add_init_script(DIGG_UI_GUARD_SCRIPT)
+            return ctx
+
+        for obj in gc.get_objects():
+            try:
+                cls = obj if isinstance(obj, type) else type(obj)
+                if getattr(cls, "__name__", "") == "TikTokAutoPoster":
+                    setattr(cls, "_launch_stealth_chrome_context", staticmethod(_clean_launch_stealth_chrome_context))
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+
+_hot_patch_live_auto_poster_stealth()
+
 # Danh sách từ khóa tìm kiếm đúng tệp người dùng đang áp dụng "Bộ lọc 24 giờ" / mới xây kênh trên TikTok
 FILTER_24H_SEARCH_QUERIES: List[str] = [
     "bộ lọc 24 giờ",
@@ -1414,12 +1571,28 @@ class TikTok24hFilterEngine:
         except Exception:
             pass
 
+        try:
+            page.context.add_init_script(DIGG_UI_GUARD_SCRIPT)
+        except Exception:
+            pass
+
         page.goto(
             f"{video_url}?lang=vi-VN",
             referer="https://www.tiktok.com/",
             wait_until="domcontentloaded",
             timeout=45000,
         )
+        try:
+            page.evaluate(DIGG_UI_GUARD_SCRIPT)
+            self._last_like_debug["env_check"] = page.evaluate(
+                """() => ({
+                    webdriver: navigator.webdriver,
+                    hasOwnWebdriver: Object.prototype.hasOwnProperty.call(navigator, "webdriver"),
+                    hasFakeChromeRuntime: Boolean(window.chrome && window.chrome.runtime && window.chrome.runtime.PlatformOs)
+                })"""
+            )
+        except Exception:
+            pass
         time.sleep(random.uniform(3.0, 4.5))
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
