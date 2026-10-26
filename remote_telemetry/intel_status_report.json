@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 08:28:48",
+    "timestamp": "2026-10-26 08:36:00",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261023_090135_tiktok_story_7690915418453708052.mp4",
-      "caption": "⚔️ [Tu Chân Giới] Tiểu Sư Muội 4 Tuổi Sở Hữu Cực Phẩm Song Linh Căn P1. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-      "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #viral #foryou",
+      "video_file": "20261025_170051_tiktok_story_7699677240048569621.mp4",
+      "caption": "📖 Góc Kể Chuyện: Tập 126 - Biến cố bất ngờ và sự thật phía sau. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+      "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #xuhuong #viral",
       "post_confirmed": true,
       "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 08:36:00",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261025_170051_tiktok_story_7699677240048569621.mp4",
+        "caption": "📖 Góc Kể Chuyện: Tập 126 - Biến cố bất ngờ và sự thật phía sau. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+        "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #xuhuong #viral",
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-26 08:28:48",
       "machine_arch": "x86_64",
