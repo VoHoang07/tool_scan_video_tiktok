@@ -1,20 +1,155 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 20:22:58",
+    "timestamp": "2026-10-26 22:37:41",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "filter24h",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261025_183742_tiktok_story_7698594900329221397.mp4",
-      "caption": "🎧 [Truyện Đêm Khuya] Tập 122 - Biến cố bất ngờ và sự thật phía sau. Một câu chuyện đầy kịch tính với cú quay xe cực gắt ở phút cuối. Nếu ở trong hoàn cảnh của nhân vật chính, bạn sẽ chọn tha thứ hay trả đũa?",
-      "hashtags": "#audiodemkhuya #truyenaudio #kechuyendemkhuya #truyenfull #dramatiktok #phimngantrungquoc #xuhuongtiktok #tiktokvn",
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 1,
+      "records": [
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7700838234913246485",
+          "video_url": "https://www.tiktok.com/@kimle253/video/7700838234913246485",
+          "creator_handle": "@kimle253",
+          "watched_seconds": 21.2,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102623362583CF0A84742DA893B7EE\",\"now\":1793028985000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102623362583CF0A84742DA893B7EE\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102623373553BBB53C0EC7A681F18D\",\"now\":1793029055000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102623373553BBB53C0EC7A681F18D\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "hasOwnWebdriver": false,
+              "hasFakeChromeRuntime": false
+            },
+            "before": {
+              "x": 885,
+              "y": 541.375,
+              "ariaPressed": false,
+              "svgColor": "rgba(255, 255, 255, .9)",
+              "likeCount": "230.6K"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 885,
+                "y": 541.375,
+                "ariaPressed": true,
+                "svgColor": "rgba(255, 59, 92, 1)",
+                "likeCount": "230.6K"
+              },
+              "red": true
+            },
+            "after_os_click_40s": {
+              "state": {
+                "x": 885,
+                "y": 541.375,
+                "ariaPressed": true,
+                "svgColor": "rgba(255, 59, 92, 1)",
+                "likeCount": "230.6K"
+              },
+              "red": true
+            }
+          },
+          "interacted_at": "2026-10-26 22:37:41",
+          "follow_back_window_until": "2026-10-27 22:37:41"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 22:37:41",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7700838234913246485",
+            "video_url": "https://www.tiktok.com/@kimle253/video/7700838234913246485",
+            "creator_handle": "@kimle253",
+            "watched_seconds": 21.2,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102623362583CF0A84742DA893B7EE\",\"now\":1793028985000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102623362583CF0A84742DA893B7EE\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102623373553BBB53C0EC7A681F18D\",\"now\":1793029055000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102623373553BBB53C0EC7A681F18D\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 885,
+                "y": 541.375,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "230.6K"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 885,
+                  "y": 541.375,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(255, 59, 92, 1)",
+                  "likeCount": "230.6K"
+                },
+                "red": true
+              },
+              "after_os_click_40s": {
+                "state": {
+                  "x": 885,
+                  "y": 541.375,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(255, 59, 92, 1)",
+                  "likeCount": "230.6K"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-26 22:37:41",
+            "follow_back_window_until": "2026-10-27 22:37:41"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 20:22:58",
       "machine_arch": "x86_64",
@@ -928,21 +1063,6 @@
         "video_file": "20261025_165507_douyin_story_7640576010862205938.mp4",
         "caption": "😂 找到这么大一颗山莓果. \"山莓果又大又甜...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
         "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xh",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-26 12:33:09",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261025_142722_tiktok_story_7694494576270216478.mp4",
-        "caption": "✨ Câu chuyện AI cực cuốn: Câu chuyện hoạt hình AI chữa lành khiến hàng triệu người xem đi xem lại. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
-        "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #foryou",
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
