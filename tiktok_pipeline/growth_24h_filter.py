@@ -728,22 +728,24 @@ class TikTok24hFilterEngine:
                         'span[data-e2e="like-icon"]'
                     ];
                     for (const sel of selectors) {
-                        const el = document.querySelector(sel);
-                        if (!el) continue;
-                        const btn = el.closest('button') || el.parentElement || el;
-                        const r = btn.getBoundingClientRect();
-                        if (r.left < 260 || r.width <= 8 || r.height <= 8) continue;
-                        const pressed = btn.getAttribute('aria-pressed') === 'true';
-                        const svgPaths = Array.from(btn.querySelectorAll('svg, path, use'));
-                        const isRed = svgPaths.some(p => {
-                            const fill = (p.getAttribute('fill') || window.getComputedStyle(p).fill || '').toLowerCase();
-                            return fill.includes('254, 44, 85') || fill.includes('fe2c55') || fill.includes('ff2c55') || fill.includes('255, 59, 92');
-                        });
-                        return {
-                            x: r.left + r.width / 2,
-                            y: r.top + r.height / 2,
-                            alreadyLiked: pressed || isRed
-                        };
+                        const els = Array.from(document.querySelectorAll(sel));
+                        for (const el of els) {
+                            const iconRect = el.getBoundingClientRect();
+                            const btn = el.closest('button') || el.parentElement || el;
+                            const r = (iconRect.width > 12 && iconRect.height > 12) ? iconRect : btn.getBoundingClientRect();
+                            if (r.left < 260 || r.left > 920 || r.width <= 8 || r.height <= 8) continue;
+                            const pressed = btn.getAttribute('aria-pressed') === 'true';
+                            const svgPaths = Array.from(btn.querySelectorAll('svg, path, use'));
+                            const isRed = svgPaths.some(p => {
+                                const fill = (p.getAttribute('fill') || window.getComputedStyle(p).fill || '').toLowerCase();
+                                return fill.includes('254, 44, 85') || fill.includes('fe2c55') || fill.includes('ff2c55') || fill.includes('255, 59, 92');
+                            });
+                            return {
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2,
+                                alreadyLiked: pressed || isRed
+                            };
+                        }
                     }
                     return null;
                 }"""
@@ -751,19 +753,56 @@ class TikTok24hFilterEngine:
         except Exception:
             return None
 
+    @staticmethod
+    def _is_heart_red_on_screenshot(png_bytes: bytes, x: float, y: float) -> bool:
+        """Kiểm tra điểm ảnh thực tế tại tâm nút Tim xem đã chuyển sang màu đỏ TikTok (#FE2C55) chưa."""
+        try:
+            import io
+            import numpy as np
+            from PIL import Image
+
+            im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
+            arr = np.asarray(im, dtype=np.float32)
+            ix, iy = int(round(x)), int(round(y))
+            patch = arr[max(0, iy - 10) : min(arr.shape[0], iy + 11), max(0, ix - 10) : min(arr.shape[1], ix + 11)]
+            if patch.size == 0:
+                return False
+            red_mask = (patch[:, :, 0] > 185) & ((patch[:, :, 0] - patch[:, :, 1]) > 85)
+            return int(np.sum(red_mask)) >= 8
+        except Exception:
+            return False
+
     def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 2: Thả tim video (Like) — chỉ bấm ĐÚNG 1 LẦN duy nhất nếu chưa tim để tuyệt đối không bao giờ tự gỡ tim.
+        BƯỚC 2: Thả tim video (Like) — bấm vào tâm icon trái tim; nếu cú click đầu làm bật Captcha xoay tròn
+        thì giải Captcha ngay rồi kiểm tra màu điểm ảnh thực tế của trái tim để bấm bù đúng 1 lần nếu tim chưa đỏ.
         """
         try:
             like_info = self._check_like_state(page)
             if like_info:
+                lx, ly = float(like_info["x"]), float(like_info["y"])
                 if like_info.get("alreadyLiked"):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Video đã được thả tim từ trước (giữ nguyên ❤️).")
                     return True
-                self._os_click_viewport(page, float(like_info["x"]), float(like_info["y"]))
-                time.sleep(random.uniform(1.4, 2.1))
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ (bấm đúng 1 lần, khóa trạng thái).")
+                self._os_click_viewport(page, lx, ly)
+                time.sleep(random.uniform(1.4, 2.0))
+                self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+
+                # Kiểm tra nếu cú click đầu bị Captcha chặn làm tim vẫn còn màu đen/trắng thì bấm bù đúng 1 lần
+                recheck = self._check_like_state(page)
+                rx = float(recheck["x"]) if recheck else lx
+                ry = float(recheck["y"]) if recheck else ly
+                dom_liked = bool(recheck and recheck.get("alreadyLiked"))
+                vis_liked = False
+                try:
+                    vis_liked = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx, ry)
+                except Exception:
+                    pass
+                if not (dom_liked or vis_liked):
+                    self._os_click_viewport(page, rx, ry)
+                    time.sleep(random.uniform(1.2, 1.8))
+
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ (xác nhận tim đỏ).")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bước thả tim: {exc}")
