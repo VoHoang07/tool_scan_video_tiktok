@@ -723,6 +723,8 @@ class TikTok24hFilterEngine:
                             const btn = el.closest('button') || el.parentElement || el;
                             const svg = el.querySelector('svg') || btn.querySelector('svg');
                             const svgColor = svg ? ((svg.getAttribute('color') || window.getComputedStyle(svg).color || '')).toLowerCase() : '';
+                            const cntEl = document.querySelector('[data-e2e="like-count"], [data-e2e="browse-like-count"]');
+                            const likeCount = cntEl ? (cntEl.innerText || cntEl.textContent || '').trim() : '';
                             const ariaPressed = (
                                 el.getAttribute('aria-pressed') === 'true' ||
                                 (btn && btn.getAttribute('aria-pressed') === 'true') ||
@@ -735,7 +737,9 @@ class TikTok24hFilterEngine:
                                 return {
                                     x: svgRect.left + svgRect.width / 2,
                                     y: svgRect.top + svgRect.height / 2,
-                                    ariaPressed
+                                    ariaPressed,
+                                    svgColor,
+                                    likeCount
                                 };
                             }
                             const iconRect = el.getBoundingClientRect();
@@ -744,7 +748,9 @@ class TikTok24hFilterEngine:
                             return {
                                 x: r.left + r.width / 2,
                                 y: r.top + Math.min(r.width, r.height) / 2,
-                                ariaPressed
+                                ariaPressed,
+                                svgColor,
+                                likeCount
                             };
                         }
                     }
@@ -815,42 +821,68 @@ class TikTok24hFilterEngine:
     def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
         """
         BƯỚC 2: Thả tim video (Like) — kiểm tra cả aria-pressed/color lẫn màu điểm ảnh thực tế tại tâm nút Tim (#FE2C55):
-        - Dùng Playwright locator click trực tiếp vào `[data-e2e="like-icon"]` (kèm fallback click tọa độ SVG) để tránh lệch thanh địa chỉ OS.
+        - Ghi nhận trace chi tiết trước và sau từng cú click để xác nhận tim đỏ bền vững.
         """
+        trace: Dict[str, Any] = getattr(self, "_last_like_debug", {}) or {}
         try:
             like_info = self._check_like_state(page)
+            trace["before"] = like_info
             if like_info:
                 lx, ly = float(like_info["x"]), float(like_info["y"])
-                if like_info.get("ariaPressed") or self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly):
+                init_red = self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly)
+                trace["init_red"] = init_red
+                if like_info.get("ariaPressed") or init_red:
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Video đã có tim đỏ thực tế trên màn hình (giữ nguyên ❤️).")
+                    self._last_like_debug = trace
                     return True
 
-                try:
-                    like_loc = page.locator('[data-e2e="like-icon"], [data-e2e="browse-like-icon"]').first
-                    if like_loc.count() > 0 and like_loc.is_visible():
-                        like_loc.click(timeout=3000)
-                    else:
-                        page.mouse.click(lx, ly)
-                except Exception:
-                    page.mouse.click(lx, ly)
+                # Cách 1: Dùng _os_click_viewport tại tâm SVG (giống hệt Bookmark & Follow đang thành công 100%)
+                self._os_click_viewport(page, lx, ly)
+                time.sleep(0.45)
+                st_05 = self._check_like_state(page)
+                red_05 = self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly)
+                trace["after_os_click_05s"] = {"state": st_05, "red": red_05}
 
-                time.sleep(random.uniform(2.2, 2.9))
+                time.sleep(2.1)
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
-
                 recheck = self._check_like_state(page)
                 rx = float(recheck["x"]) if recheck else lx
                 ry = float(recheck["y"]) if recheck else ly
-                already_liked_now = bool(recheck and recheck.get("ariaPressed")) or self._is_heart_red_on_screenshot(
-                    page.screenshot(type="png"), rx, ry
-                )
-                if not already_liked_now:
-                    page.mouse.click(rx, ry)
-                    time.sleep(random.uniform(2.0, 2.6))
-                    self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+                red_25 = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx, ry)
+                trace["after_os_click_25s"] = {"state": recheck, "red": red_25}
 
+                if not (bool(recheck and recheck.get("ariaPressed")) or red_25):
+                    # Cách 2: Click vào button bên trong [data-e2e="like-icon"]
+                    try:
+                        btn_loc = page.locator('[data-e2e="like-icon"] button, [data-e2e="like-icon"]').first
+                        if btn_loc.count() > 0 and btn_loc.is_visible():
+                            btn_loc.click(timeout=2500)
+                        else:
+                            page.mouse.click(rx, ry)
+                    except Exception:
+                        page.mouse.click(rx, ry)
+                    time.sleep(2.2)
+                    self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+                    recheck2 = self._check_like_state(page)
+                    rx2 = float(recheck2["x"]) if recheck2 else rx
+                    ry2 = float(recheck2["y"]) if recheck2 else ry
+                    red_btn = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx2, ry2)
+                    trace["after_btn_click"] = {"state": recheck2, "red": red_btn}
+
+                    if not (bool(recheck2 and recheck2.get("ariaPressed")) or red_btn):
+                        # Cách 3: Double-click vào giữa khung hình video (thao tác thả tim chuẩn của TikTok, không bao giờ tự gỡ tim)
+                        page.mouse.dblclick(520, 430, delay=60)
+                        time.sleep(2.2)
+                        recheck3 = self._check_like_state(page)
+                        red_dbl = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx2, ry2)
+                        trace["after_dblclick"] = {"state": recheck3, "red": red_dbl}
+
+                self._last_like_debug = trace
                 logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ (xác nhận tim đỏ #FE2C55).")
                 return True
         except Exception as exc:
+            trace["error"] = str(exc)
+            self._last_like_debug = trace
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bước thả tim: {exc}")
         return False
 
@@ -1336,6 +1368,23 @@ class TikTok24hFilterEngine:
             f"[{ch_folder}] === BẮT ĐẦU BỘ LỌC 24 GIỜ TRÊN VIDEO CỦA @{creator_handle or 'creator'} ({video_url}) ==="
         )
 
+        self._last_like_debug = {"digg_responses": []}
+
+        def _on_response(resp: Any) -> None:
+            try:
+                u = resp.url or ""
+                if "/commit/item/digg" in u or "/item/digg" in u:
+                    self._last_like_debug["digg_responses"].append(
+                        {"status": resp.status, "body": (resp.text() or "")[:240]}
+                    )
+            except Exception:
+                pass
+
+        try:
+            page.on("response", _on_response)
+        except Exception:
+            pass
+
         page.goto(f"{video_url}?lang=vi-VN", wait_until="domcontentloaded", timeout=45000)
         time.sleep(random.uniform(3.0, 4.5))
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
@@ -1403,6 +1452,7 @@ class TikTok24hFilterEngine:
                 "6_commented_after_follow": bool(comment_text),
             },
             "comment_text": comment_text or "",
+            "like_debug": getattr(self, "_last_like_debug", {}),
             "interacted_at": now_dt.strftime("%Y-%m-%d %H:%M:%S"),
             "follow_back_window_until": (now_dt + timedelta(hours=24)).strftime("%Y-%m-%d %H:%M:%S"),
         }
