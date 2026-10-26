@@ -809,7 +809,7 @@ class TikTok24hFilterEngine:
             if self._locate_comment_input_box(page):
                 return True
 
-            # 1. Tìm tab 'Bình luận' / 'Comments' ở thanh tiêu đề khung bên phải (x > 550, 40 < y < 250)
+            # 1. Tìm tab 'Bình luận' / 'Comments' ở thanh tiêu đề khung bên phải (x > 550, 40 < y < 420 — kể cả khi có Quảng cáo Sponsored ở đầu cột phải)
             tab_pos = page.evaluate(
                 """() => {
                     const tabLabels = ['Bình luận', 'Comments'];
@@ -819,7 +819,7 @@ class TikTok24hFilterEngine:
                         const txt = (el.innerText || el.textContent || '').trim();
                         if (tabLabels.some(l => txt === l || txt.startsWith(l + ' (')) && txt.length < 30) {
                             const r = el.getBoundingClientRect();
-                            if (r.left > 550 && r.top > 40 && r.top < 250 && r.width > 30 && r.height > 14) {
+                            if (r.left > 550 && r.top > 40 && r.top < 420 && r.width > 30 && r.height > 14) {
                                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                             }
                         }
@@ -835,17 +835,18 @@ class TikTok24hFilterEngine:
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đã chuyển sang tab 'Bình luận' ở khung phải.")
                     return True
 
-            # 2. Nếu vẫn chưa thấy ô nhập bình luận, bấm ĐÚNG 1 LẦN vào icon Bình luận 💬 trên cột tương tác
+            # 2. Nếu vẫn chưa thấy ô nhập bình luận, bấm ĐÚNG 1 LẦN vào icon Bình luận 💬 trên cột tương tác đang hiển thị
             icon_pos = page.evaluate(
                 """() => {
                     const iconSels = ['[data-e2e="comment-icon"]', '[data-e2e="browse-comment-icon"]'];
                     for (const sel of iconSels) {
-                        const icon = document.querySelector(sel);
-                        if (!icon) continue;
-                        const btn = icon.closest('button') || icon.parentElement || icon;
-                        const r = btn.getBoundingClientRect();
-                        if (r.left > 260 && r.width > 8 && r.height > 8) {
-                            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                        const icons = Array.from(document.querySelectorAll(sel));
+                        for (const icon of icons) {
+                            const btn = icon.closest('button') || icon.parentElement || icon;
+                            const r = btn.getBoundingClientRect();
+                            if (r.left > 260 && r.top >= 180 && r.top <= window.innerHeight - 30 && r.width > 8 && r.height > 8) {
+                                return { x: r.left + r.width / 2, y: r.top + Math.min(r.width, r.height) / 2 };
+                            }
                         }
                     }
                     return null;
@@ -1319,23 +1320,24 @@ class TikTok24hFilterEngine:
                     // 2. Kiểm tra huy hiệu dấu '+' đỏ trên avatar ([data-e2e="feed-follow"], [data-e2e="browse-follow"])
                     const badgeSels = ['[data-e2e="feed-follow"]', '[data-e2e="browse-follow"]'];
                     for (const sel of badgeSels) {
-                        const el = document.querySelector(sel);
-                        if (!el) continue;
-                        const r = el.getBoundingClientRect();
-                        if (r.left < 260 || r.width < 10 || r.height < 10) continue;
-                        const style = window.getComputedStyle(el);
-                        if (style.display === 'none' || style.visibility === 'hidden' || parseFloat(style.opacity || '1') < 0.1) {
-                            continue;
+                        const els = Array.from(document.querySelectorAll(sel));
+                        for (const el of els) {
+                            const r = el.getBoundingClientRect();
+                            if (r.left < 260 || r.top < 150 || r.top > window.innerHeight - 30 || r.width < 10 || r.height < 10) continue;
+                            const style = window.getComputedStyle(el);
+                            if (style.display === 'none' || style.visibility === 'hidden' || parseFloat(style.opacity || '1') < 0.1) {
+                                continue;
+                            }
+                            const txt = (el.innerText || el.textContent || '').trim();
+                            if (alreadyLabels.some(l => txt.toLowerCase().includes(l.toLowerCase()))) {
+                                return { alreadyFollowing: true };
+                            }
+                            return {
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2,
+                                alreadyFollowing: false
+                            };
                         }
-                        const txt = (el.innerText || el.textContent || '').trim();
-                        if (alreadyLabels.some(l => txt.toLowerCase().includes(l.toLowerCase()))) {
-                            return { alreadyFollowing: true };
-                        }
-                        return {
-                            x: r.left + r.width / 2,
-                            y: r.top + r.height / 2,
-                            alreadyFollowing: false
-                        };
                     }
 
                     // 3. Quét các nút button ngoài vùng sidebar trái (r.left > 260, không nằm trong nav/aside)
@@ -1393,7 +1395,7 @@ class TikTok24hFilterEngine:
                     return True
                 fx, fy = float(follow_info["x"]), float(follow_info["y"])
                 png_now = page.screenshot(type="png")
-                if not self._is_follow_badge_unfollowed_red(png_now, fx, fy) and fx > 800 and fy > 420:
+                if not self._is_follow_badge_unfollowed_red(png_now, fx, fy) and fx > 780 and fy > 150:
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Huy hiệu trên avatar đã là dấu tích ✓ (đã Follow, giữ nguyên).")
                     return True
 
@@ -1626,6 +1628,7 @@ class TikTok24hFilterEngine:
         # 7. Kiểm tra lại trạng thái Tim đỏ ❤️ & Bookmark vàng 🔖 & Follow ✓ một lần cuối trước khi chụp ảnh
         time.sleep(2.5)
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+        self._ensure_comment_tab_open(page, ch_folder)
         liked = self._step2_like_video(page, ch_folder) or liked
         favorited = self._step4_favorite_video(page, ch_folder) or favorited
         followed = self._step5_follow_creator(page, ch_folder) or followed
