@@ -1718,18 +1718,28 @@ class TikTokAutoPoster:
                 p_trig_key = f"remote_post_{p_trig_id}"
                 if p_trig_id and p_trig_key not in history:
                     p_trig_ch = str(remote_post.get("channel") or "tu_chan_gioi").strip()
+                    if p_trig_ch.lower() == "all":
+                        target_channels = [p["folder_name"] for p in CHANNEL_PROFILES.values()]
+                    else:
+                        target_channels = [c.strip() for c in p_trig_ch.split(",") if c.strip()]
                     logger.info(
                         f"[Remote Trigger Post-Now] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon ({p_trig_id}) -> "
-                        f"Kênh [{p_trig_ch}]!"
+                        f"Kênh {target_channels}!"
                     )
-                    try:
-                        res = self.upload_one_channel_video(p_trig_ch, headless=headless)
-                        if res:
-                            history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                            self._save_post_history(history)
-                            posted_results.append(res)
-                    except Exception as exc:
-                        logger.error(f"[Remote Trigger Post-Now] Lỗi khi đăng ngay ({p_trig_id}): {exc}")
+                    any_ok = False
+                    for single_ch in target_channels:
+                        try:
+                            res = self.upload_one_channel_video(single_ch, headless=headless)
+                            if res:
+                                any_ok = True
+                                posted_results.append(res)
+                        except Exception as exc:
+                            logger.error(
+                                f"[Remote Trigger Post-Now] Lỗi khi đăng ngay ({p_trig_id}) kênh [{single_ch}]: {exc}"
+                            )
+                    if any_ok:
+                        history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        self._save_post_history(history)
 
         # 0b. Kiểm tra lệnh kích hoạt chạy thử Bộ lọc 24h từ xa (Remote Trigger từ máy Silicon sang máy Intel qua GitHub)
         remote_trig = cfg.get("remote_trigger_filter_24h")
