@@ -1,19 +1,19 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 10:18:42",
+    "timestamp": "2026-10-26 10:21:57",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "tu_chan_gioi",
-          "video_id": "7700464104539983125",
-          "video_url": "https://www.tiktok.com/@chupei75/video/7700464104539983125",
-          "creator_handle": "@chupei75",
-          "watched_seconds": 24.9,
+          "channel": "video_AI_hay",
+          "video_id": "7700060628186172693",
+          "video_url": "https://www.tiktok.com/@diu.linh6062/video/7700060628186172693",
+          "creator_handle": "@diu.linh6062",
+          "watched_seconds": 18.0,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": true,
@@ -23,13 +23,65 @@
             "6_commented_after_follow": true
           },
           "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-          "interacted_at": "2026-10-26 10:18:42",
-          "follow_back_window_until": "2026-10-27 10:18:42"
+          "like_debug": {
+            "digg_responses": [],
+            "before": {
+              "x": 835.375,
+              "y": -348,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "6.7M"
+            },
+            "init_red": true
+          },
+          "interacted_at": "2026-10-26 10:21:57",
+          "follow_back_window_until": "2026-10-27 10:21:57"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 10:21:57",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7700060628186172693",
+            "video_url": "https://www.tiktok.com/@diu.linh6062/video/7700060628186172693",
+            "creator_handle": "@diu.linh6062",
+            "watched_seconds": 18.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "like_debug": {
+              "digg_responses": [],
+              "before": {
+                "x": 835.375,
+                "y": -348,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "6.7M"
+              },
+              "init_red": true
+            },
+            "interacted_at": "2026-10-26 10:21:57",
+            "follow_back_window_until": "2026-10-27 10:21:57"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 10:18:42",
       "machine_arch": "x86_64",
@@ -500,36 +552,6 @@
             "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
             "interacted_at": "2026-10-26 09:40:11",
             "follow_back_window_until": "2026-10-27 09:40:11"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 09:37:33",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7700558744848960775",
-            "video_url": "https://www.tiktok.com/@follow.cheo6666/video/7700558744848960775",
-            "creator_handle": "@follow.cheo6666",
-            "watched_seconds": 18.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-            "interacted_at": "2026-10-26 09:37:33",
-            "follow_back_window_until": "2026-10-27 09:37:33"
           }
         ]
       }
