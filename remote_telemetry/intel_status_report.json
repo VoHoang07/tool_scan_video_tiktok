@@ -1,19 +1,19 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 10:53:05",
+    "timestamp": "2026-10-26 10:55:40",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "baby_AI",
-          "video_id": "7699882372312960257",
-          "video_url": "https://www.tiktok.com/@tin318783/video/7699882372312960257",
-          "creator_handle": "@tin318783",
-          "watched_seconds": 37.8,
+          "channel": "audio_dem_khuyen",
+          "video_id": "7699737787402112274",
+          "video_url": "https://www.tiktok.com/@gocngheaudio_cuanam/video/7699737787402112274",
+          "creator_handle": "@gocngheaudio_cuanam",
+          "watched_seconds": 42.0,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": true,
@@ -27,67 +27,155 @@
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610261151391E7C6E77C2C93373EBA6\",\"now\":1792986699000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610261151391E7C6E77C2C93373EBA6\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102611541277A36500B6C97D89CE2A\",\"now\":1792986852000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102611541277A36500B6C97D89CE2A\"},\"status_code\":0,\"status_msg\":\"\"}"
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610261151447FED3D75FA07938DCC4C\",\"now\":1792986704000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610261151447FED3D75FA07938DCC4C\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026115418983048A51286B56586C6\",\"now\":1792986858000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026115418983048A51286B56586C6\"},\"status_code\":0,\"status_msg\":\"\"}"
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102611525370BF410F092678638D22\",\"now\":1792986773000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102611525370BF410F092678638D22\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610261155272D159426B8A2CFA75271\",\"now\":1792986927000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610261155272D159426B8A2CFA75271\"},\"status_code\":0,\"status_msg\":\"\"}"
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026115258A3382580A7A05263A3E7\",\"now\":1792986778000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026115258A3382580A7A05263A3E7\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026115533983048A51286B5659FEB\",\"now\":1792986933000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026115533983048A51286B5659FEB\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "before": {
               "x": 835.375,
-              "y": 512,
+              "y": 564,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "18"
+              "likeCount": "53"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
                 "x": 835.375,
-                "y": 512,
+                "y": 564,
                 "ariaPressed": true,
                 "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "19"
+                "likeCount": "54"
               },
               "red": true
             },
             "after_os_click_40s": {
               "state": {
                 "x": 835.375,
-                "y": 512,
+                "y": 564,
                 "ariaPressed": false,
                 "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "18"
+                "likeCount": "53"
               },
               "red": false
             },
             "after_dblclick_40s": {
               "state": {
                 "x": 835.375,
-                "y": 512,
+                "y": 564,
                 "ariaPressed": false,
                 "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "18"
+                "likeCount": "53"
               },
               "red": false
             }
           },
-          "interacted_at": "2026-10-26 10:53:05",
-          "follow_back_window_until": "2026-10-27 10:53:05"
+          "interacted_at": "2026-10-26 10:55:40",
+          "follow_back_window_until": "2026-10-27 10:55:40"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 10:55:40",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "audio_dem_khuyen",
+            "video_id": "7699737787402112274",
+            "video_url": "https://www.tiktok.com/@gocngheaudio_cuanam/video/7699737787402112274",
+            "creator_handle": "@gocngheaudio_cuanam",
+            "watched_seconds": 42.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102611541277A36500B6C97D89CE2A\",\"now\":1792986852000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102611541277A36500B6C97D89CE2A\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026115418983048A51286B56586C6\",\"now\":1792986858000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026115418983048A51286B56586C6\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610261155272D159426B8A2CFA75271\",\"now\":1792986927000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610261155272D159426B8A2CFA75271\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026115533983048A51286B5659FEB\",\"now\":1792986933000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026115533983048A51286B5659FEB\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "before": {
+                "x": 835.375,
+                "y": 564,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "53"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 835.375,
+                  "y": 564,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "54"
+                },
+                "red": true
+              },
+              "after_os_click_40s": {
+                "state": {
+                  "x": 835.375,
+                  "y": 564,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "53"
+                },
+                "red": false
+              },
+              "after_dblclick_40s": {
+                "state": {
+                  "x": 835.375,
+                  "y": 564,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "53"
+                },
+                "red": false
+              }
+            },
+            "interacted_at": "2026-10-26 10:55:40",
+            "follow_back_window_until": "2026-10-27 10:55:40"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 10:53:05",
       "machine_arch": "x86_64",
@@ -1017,36 +1105,6 @@
             "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
             "interacted_at": "2026-10-26 10:14:30",
             "follow_back_window_until": "2026-10-27 10:14:30"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 10:12:22",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7700087291213106453",
-            "video_url": "https://www.tiktok.com/@mnh.ty26/video/7700087291213106453",
-            "creator_handle": "@mnh.ty26",
-            "watched_seconds": 18.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-            "interacted_at": "2026-10-26 10:12:22",
-            "follow_back_window_until": "2026-10-27 10:12:22"
           }
         ]
       }
