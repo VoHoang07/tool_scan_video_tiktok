@@ -1,19 +1,19 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 09:51:26",
+    "timestamp": "2026-10-26 09:53:45",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "video_AI_hay",
-          "video_id": "7700177664904105237",
-          "video_url": "https://www.tiktok.com/@niine116/video/7700177664904105237",
-          "creator_handle": "@niine116",
-          "watched_seconds": 18.0,
+          "channel": "baby_AI",
+          "video_id": "7700556128714771720",
+          "video_url": "https://www.tiktok.com/@myxuyen61/video/7700556128714771720",
+          "creator_handle": "@myxuyen61",
+          "watched_seconds": 25.5,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": true,
@@ -23,13 +23,43 @@
             "6_commented_after_follow": true
           },
           "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-          "interacted_at": "2026-10-26 09:51:26",
-          "follow_back_window_until": "2026-10-27 09:51:26"
+          "interacted_at": "2026-10-26 09:53:45",
+          "follow_back_window_until": "2026-10-27 09:53:45"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 09:53:45",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "baby_AI",
+            "video_id": "7700556128714771720",
+            "video_url": "https://www.tiktok.com/@myxuyen61/video/7700556128714771720",
+            "creator_handle": "@myxuyen61",
+            "watched_seconds": 25.5,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "interacted_at": "2026-10-26 09:53:45",
+            "follow_back_window_until": "2026-10-27 09:53:45"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 09:51:26",
       "machine_arch": "x86_64",
@@ -406,36 +436,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-26 01:06:26",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7699497933418401044",
-            "video_url": "https://www.tiktok.com/@kieumy2k001/video/7699497933418401044",
-            "creator_handle": "@kieumy2k001",
-            "watched_seconds": 30.7,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Chào @kieumy2k001, xem trọn vẹn hết video rồi mới thả tim, lưu yêu thích, sao chép liên kết và bấm follow kênh bạn đủ bộ rồi nha! Cùng nhau kiên trì xây kênh thật tốt nha bạn ơi, mình follow rồi đó 💪",
-            "interacted_at": "2026-10-26 01:06:26",
-            "follow_back_window_until": "2026-10-27 01:06:26"
-          }
-        ]
       }
     }
   ]
