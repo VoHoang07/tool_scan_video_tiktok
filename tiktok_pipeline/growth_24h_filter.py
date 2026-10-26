@@ -124,20 +124,10 @@ class TikTok24hFilterEngine:
     @staticmethod
     def generate_meaningful_24h_comment(creator_handle: str = "", video_desc: str = "") -> str:
         """
-        Tạo bình luận tiếng Việt tự nhiên, có ý nghĩa, không trùng lặp và nhấn mạnh đã hoàn tất
-        đủ các bước của Bộ lọc 24 giờ (kèm xác nhận đã follow để không bị chủ kênh bỏ sót).
+        Trả về đúng 1 câu bình luận cố định theo yêu cầu:
+        "chào mn, mình mới xây kênh, nhận follow chéo ạ"
         """
-        opener = random.choice(COMMENT_OPENERS)
-        action = random.choice(COMMENT_ACTIONS)
-        closer = random.choice(COMMENT_CLOSERS)
-
-        clean_handle = creator_handle.strip().lstrip("@")
-        if clean_handle and not clean_handle.startswith("user") and len(clean_handle) <= 22 and random.random() < 0.45:
-            comment = f"Chào @{clean_handle}, {opener[0].lower() + opener[1:]} {action} {closer}"
-        else:
-            comment = f"{opener} {action} {closer}"
-
-        return re.sub(r"\s+", " ", comment).strip()
+        return "chào mn, mình mới xây kênh, nhận follow chéo ạ"
 
     @staticmethod
     def _compute_best_whirl_rotation_fraction(
@@ -716,16 +706,16 @@ class TikTok24hFilterEngine:
         return False
 
     def _check_like_state(self, page: Any) -> Optional[Dict[str, Any]]:
-        """Đọc trạng thái thực tế của nút Thả tim (Like) trên DOM TikTok."""
+        """Tìm tọa độ thực tế của nút Thả tim (Like) trên cột hành động video TikTok."""
         try:
             return page.evaluate(
                 """() => {
                     const selectors = [
                         '[data-e2e="like-icon"]',
                         '[data-e2e="browse-like-icon"]',
+                        'span[data-e2e="like-icon"]',
                         'button[aria-label*="Thích"]',
-                        'button[aria-label*="Like"]',
-                        'span[data-e2e="like-icon"]'
+                        'button[aria-label*="Like"]'
                     ];
                     for (const sel of selectors) {
                         const els = Array.from(document.querySelectorAll(sel));
@@ -734,16 +724,9 @@ class TikTok24hFilterEngine:
                             const btn = el.closest('button') || el.parentElement || el;
                             const r = (iconRect.width > 12 && iconRect.height > 12) ? iconRect : btn.getBoundingClientRect();
                             if (r.left < 260 || r.left > 920 || r.width <= 8 || r.height <= 8) continue;
-                            const pressed = btn.getAttribute('aria-pressed') === 'true';
-                            const svgPaths = Array.from(btn.querySelectorAll('svg, path, use'));
-                            const isRed = svgPaths.some(p => {
-                                const fill = (p.getAttribute('fill') || window.getComputedStyle(p).fill || '').toLowerCase();
-                                return fill.includes('254, 44, 85') || fill.includes('fe2c55') || fill.includes('ff2c55') || fill.includes('255, 59, 92');
-                            });
                             return {
                                 x: r.left + r.width / 2,
-                                y: r.top + r.height / 2,
-                                alreadyLiked: pressed || isRed
+                                y: r.top + r.height / 2
                             };
                         }
                     }
@@ -764,45 +747,80 @@ class TikTok24hFilterEngine:
             im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
             arr = np.asarray(im, dtype=np.float32)
             ix, iy = int(round(x)), int(round(y))
-            patch = arr[max(0, iy - 10) : min(arr.shape[0], iy + 11), max(0, ix - 10) : min(arr.shape[1], ix + 11)]
+            patch = arr[max(0, iy - 12) : min(arr.shape[0], iy + 13), max(0, ix - 12) : min(arr.shape[1], ix + 13)]
             if patch.size == 0:
                 return False
             red_mask = (patch[:, :, 0] > 185) & ((patch[:, :, 0] - patch[:, :, 1]) > 85)
-            return int(np.sum(red_mask)) >= 8
+            return int(np.sum(red_mask)) >= 10
+        except Exception:
+            return False
+
+    @staticmethod
+    def _is_bookmark_gold_on_screenshot(png_bytes: bytes, x: float, y: float) -> bool:
+        """Kiểm tra điểm ảnh thực tế tại tâm nút Lưu yêu thích xem đã chuyển sang màu vàng (#FACE15) chưa."""
+        try:
+            import io
+            import numpy as np
+            from PIL import Image
+
+            im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
+            arr = np.asarray(im, dtype=np.float32)
+            ix, iy = int(round(x)), int(round(y))
+            patch = arr[max(0, iy - 12) : min(arr.shape[0], iy + 13), max(0, ix - 12) : min(arr.shape[1], ix + 13)]
+            if patch.size == 0:
+                return False
+            gold_mask = (patch[:, :, 0] > 210) & (patch[:, :, 1] > 165) & (patch[:, :, 2] < 105)
+            return int(np.sum(gold_mask)) >= 10
+        except Exception:
+            return False
+
+    @staticmethod
+    def _is_follow_badge_unfollowed_red(png_bytes: bytes, x: float, y: float) -> bool:
+        """Kiểm tra xem huy hiệu dưới avatar có đang là hình tròn đỏ dấu '+' (chưa follow) hay không."""
+        try:
+            import io
+            import numpy as np
+            from PIL import Image
+
+            im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
+            arr = np.asarray(im, dtype=np.float32)
+            ix, iy = int(round(x)), int(round(y))
+            patch = arr[max(0, iy - 9) : min(arr.shape[0], iy + 10), max(0, ix - 9) : min(arr.shape[1], ix + 10)]
+            if patch.size == 0:
+                return False
+            red_px = int(np.sum((patch[:, :, 0] > 190) & ((patch[:, :, 0] - patch[:, :, 1]) > 90)))
+            white_px = int(np.sum((patch[:, :, 0] > 210) & (patch[:, :, 1] > 210) & (patch[:, :, 2] > 210)))
+            return red_px >= 75 and white_px < 75
         except Exception:
             return False
 
     def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 2: Thả tim video (Like) — bấm vào tâm icon trái tim; nếu cú click đầu làm bật Captcha xoay tròn
-        thì giải Captcha ngay rồi kiểm tra màu điểm ảnh thực tế của trái tim để bấm bù đúng 1 lần nếu tim chưa đỏ.
+        BƯỚC 2: Thả tim video (Like) — kiểm tra màu điểm ảnh thực tế tại tâm nút Tim (#FE2C55):
+        - Tuyệt đối không dựa vào thuộc tính SVG ẩn trong DOM (tránh nhận nhầm tim đen là đã tim).
+        - Nếu chưa đỏ thì click đúng 1 lần; nếu cú click làm bật Captcha thì giải Captcha rồi kiểm tra lại điểm ảnh để bấm bù.
         """
         try:
             like_info = self._check_like_state(page)
             if like_info:
                 lx, ly = float(like_info["x"]), float(like_info["y"])
-                if like_info.get("alreadyLiked"):
-                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Video đã được thả tim từ trước (giữ nguyên ❤️).")
+                if self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly):
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Video đã có tim đỏ thực tế trên màn hình (giữ nguyên ❤️).")
                     return True
+
                 self._os_click_viewport(page, lx, ly)
-                time.sleep(random.uniform(1.4, 2.0))
+                time.sleep(random.uniform(2.0, 2.8))
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
-                # Kiểm tra nếu cú click đầu bị Captcha chặn làm tim vẫn còn màu đen/trắng thì bấm bù đúng 1 lần
                 recheck = self._check_like_state(page)
                 rx = float(recheck["x"]) if recheck else lx
                 ry = float(recheck["y"]) if recheck else ly
-                dom_liked = bool(recheck and recheck.get("alreadyLiked"))
-                vis_liked = False
-                try:
-                    vis_liked = self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx, ry)
-                except Exception:
-                    pass
-                if not (dom_liked or vis_liked):
+                if not self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx, ry):
                     self._os_click_viewport(page, rx, ry)
-                    time.sleep(random.uniform(1.2, 1.8))
+                    time.sleep(random.uniform(2.0, 2.6))
+                    self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ (xác nhận tim đỏ).")
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Đã THẢ TIM video ❤️ (xác nhận tim đỏ #FE2C55).")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bước thả tim: {exc}")
@@ -913,13 +931,14 @@ class TikTok24hFilterEngine:
                                     }
                                 }
                             }
-                            const labels = ['Sao chép liên kết', 'Sao chép', 'Copy link', 'Copy'];
+                            const labels = ['Sao chép liên kết', 'Sao chép', 'Copy link'];
                             const els = Array.from(document.querySelectorAll('a, button, span, p, div'));
                             for (const el of els) {
-                                if (el.children.length > 2) continue;
+                                if (el.children.length > 4) continue;
                                 const txt = (el.innerText || el.textContent || '').trim();
-                                if (labels.some(l => txt === l || txt.includes('Sao chép liên kết') || txt.includes('Copy link'))) {
-                                    const r = el.getBoundingClientRect();
+                                if (labels.some(l => txt === l || (txt.length < 30 && (txt.includes('Sao chép liên kết') || txt.includes('Copy link'))))) {
+                                    const target = el.closest('a, button, [role="button"]') || el;
+                                    const r = target.getBoundingClientRect();
                                     if (r.left > 260 && r.width > 10 && r.height > 10) {
                                         return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                                     }
@@ -933,12 +952,12 @@ class TikTok24hFilterEngine:
                 if not copy_in_menu:
                     # Bấm 1 lần vào nút Chia sẻ ↗️ để bung menu Chia sẻ
                     self._os_click_viewport(page, float(share_btn["x"]), float(share_btn["y"]))
-                    time.sleep(1.3)
+                    time.sleep(1.5)
                     copy_in_menu = _find_copy_in_popup()
 
                 if copy_in_menu:
                     self._os_click_viewport(page, float(copy_in_menu["x"]), float(copy_in_menu["y"]))
-                    time.sleep(random.uniform(1.0, 1.5))
+                    time.sleep(random.uniform(1.4, 2.0))
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 3/6] Đã mở menu Chia sẻ & SAO CHÉP LIÊN KẾT video 🔗.")
                     return True
                 else:
@@ -949,7 +968,7 @@ class TikTok24hFilterEngine:
         return False
 
     def _check_favorite_state(self, page: Any) -> Optional[Dict[str, Any]]:
-        """Đọc trạng thái thực tế của nút Lưu yêu thích (Bookmark) trên DOM TikTok."""
+        """Tìm tọa độ thực tế của nút Lưu yêu thích (Bookmark) trên cột hành động video TikTok."""
         try:
             return page.evaluate(
                 """() => {
@@ -964,22 +983,17 @@ class TikTok24hFilterEngine:
                         'button[aria-label*="Bookmark"]'
                     ];
                     for (const sel of selectors) {
-                        const el = document.querySelector(sel);
-                        if (!el) continue;
-                        const btn = el.closest('button') || el.parentElement || el;
-                        const r = btn.getBoundingClientRect();
-                        if (r.left < 260 || r.width <= 8 || r.height <= 8) continue;
-                        const pressed = btn.getAttribute('aria-pressed') === 'true';
-                        const svgPaths = Array.from(btn.querySelectorAll('svg, path, use'));
-                        const isGold = svgPaths.some(p => {
-                            const fill = (p.getAttribute('fill') || window.getComputedStyle(p).fill || '').toLowerCase();
-                            return fill.includes('250, 206, 21') || fill.includes('face15') || fill.includes('ffb800');
-                        });
-                        return {
-                            x: r.left + r.width / 2,
-                            y: r.top + r.height / 2,
-                            alreadyFavorited: pressed || isGold
-                        };
+                        const els = Array.from(document.querySelectorAll(sel));
+                        for (const el of els) {
+                            const iconRect = el.getBoundingClientRect();
+                            const btn = el.closest('button') || el.parentElement || el;
+                            const r = (iconRect.width > 12 && iconRect.height > 12) ? iconRect : btn.getBoundingClientRect();
+                            if (r.left < 260 || r.left > 920 || r.width <= 8 || r.height <= 8) continue;
+                            return {
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2
+                            };
+                        }
                     }
                     return null;
                 }"""
@@ -989,17 +1003,29 @@ class TikTok24hFilterEngine:
 
     def _step4_favorite_video(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 4: Thêm video vào mục Yêu thích (Bookmark) — chỉ bấm ĐÚNG 1 LẦN duy nhất nếu chưa lưu.
+        BƯỚC 4: Thêm video vào mục Yêu thích (Bookmark) — kiểm tra màu vàng thực tế (#FACE15) trên ảnh chụp màn hình.
         """
         try:
             fav_info = self._check_favorite_state(page)
             if fav_info:
-                if fav_info.get("alreadyFavorited"):
-                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Video đã nằm trong mục Yêu thích từ trước (giữ nguyên 🔖).")
+                bx, by = float(fav_info["x"]), float(fav_info["y"])
+                if self._is_bookmark_gold_on_screenshot(page.screenshot(type="png"), bx, by):
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Video đã có dấu Yêu thích màu vàng thực tế (giữ nguyên 🔖).")
                     return True
-                self._os_click_viewport(page, float(fav_info["x"]), float(fav_info["y"]))
-                time.sleep(random.uniform(1.3, 2.0))
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Đã THÊM VIDEO VÀO MỤC YÊU THÍCH 🔖 (bấm đúng 1 lần).")
+
+                self._os_click_viewport(page, bx, by)
+                time.sleep(random.uniform(2.0, 2.8))
+                self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+
+                recheck = self._check_favorite_state(page)
+                rx = float(recheck["x"]) if recheck else bx
+                ry = float(recheck["y"]) if recheck else by
+                if not self._is_bookmark_gold_on_screenshot(page.screenshot(type="png"), rx, ry):
+                    self._os_click_viewport(page, rx, ry)
+                    time.sleep(random.uniform(2.0, 2.6))
+                    self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 4/6] Đã THÊM VIDEO VÀO MỤC YÊU THÍCH 🔖 (xác nhận vàng #FACE15).")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi thêm vào mục yêu thích: {exc}")
@@ -1102,7 +1128,8 @@ class TikTok24hFilterEngine:
 
     def _step5_follow_creator(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 5: Follow người đăng video đó — bấm ĐÚNG 1 LẦN vào nút Follow hoặc dấu '+' đỏ trên avatar.
+        BƯỚC 5: Follow người đăng video đó — kiểm tra điểm ảnh huy hiệu dấu '+' đỏ trên avatar
+        (tránh bấm nhầm khi huy hiệu đã chuyển sang hình tròn trắng dấu tích đỏ '✓').
         """
         try:
             follow_info = self._check_follow_state(page)
@@ -1110,9 +1137,23 @@ class TikTok24hFilterEngine:
                 if follow_info.get("alreadyFollowing"):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã Follow chủ kênh này từ trước (giữ nguyên ➕).")
                     return True
-                self._os_click_viewport(page, float(follow_info["x"]), float(follow_info["y"]))
-                time.sleep(random.uniform(1.6, 2.4))
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã FOLLOW người đăng video ➕ (bấm đúng 1 lần).")
+                fx, fy = float(follow_info["x"]), float(follow_info["y"])
+                png_now = page.screenshot(type="png")
+                if not self._is_follow_badge_unfollowed_red(png_now, fx, fy) and fx > 800 and fy > 420:
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Huy hiệu trên avatar đã là dấu tích ✓ (đã Follow, giữ nguyên).")
+                    return True
+
+                self._os_click_viewport(page, fx, fy)
+                time.sleep(random.uniform(2.2, 3.0))
+                self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+
+                # Nếu sau khi giải Captcha huy hiệu vẫn còn là hình tròn đỏ '+', bấm bù đúng 1 lần
+                if self._is_follow_badge_unfollowed_red(page.screenshot(type="png"), fx, fy):
+                    self._os_click_viewport(page, fx, fy)
+                    time.sleep(random.uniform(2.0, 2.8))
+                    self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã FOLLOW người đăng video ➕ (xác nhận dấu tích ✓).")
                 return True
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi bấm Follow: {exc}")
@@ -1267,28 +1308,36 @@ class TikTok24hFilterEngine:
         watched_sec = self._step1_watch_full_video(page, ch_folder, video_url)
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
-        # 2. Thả tim video (bấm đúng 1 lần)
+        # 2. Thả tim video (xác nhận tim đỏ #FE2C55)
         liked = self._step2_like_video(page, ch_folder)
-        time.sleep(random.uniform(0.8, 1.5))
+        time.sleep(random.uniform(1.8, 2.6))
 
         # 3. Sao chép liên kết video đó
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
         copied_link = self._step3_copy_video_link(page, ch_folder, video_url)
-        time.sleep(random.uniform(0.8, 1.5))
+        time.sleep(random.uniform(1.8, 2.6))
 
-        # 4. Thêm video vào mục yêu thích (bấm đúng 1 lần)
+        # 4. Thêm video vào mục yêu thích (xác nhận bookmark vàng #FACE15)
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
         favorited = self._step4_favorite_video(page, ch_folder)
-        time.sleep(random.uniform(0.8, 1.5))
+        time.sleep(random.uniform(1.8, 2.6))
 
-        # 5. Follow người đăng video đó (bấm đúng 1 lần)
+        # 5. Follow người đăng video đó (xác nhận dấu tích ✓)
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
         followed = self._step5_follow_creator(page, ch_folder)
-        time.sleep(random.uniform(1.0, 1.8))
+        time.sleep(random.uniform(2.0, 3.0))
 
-        # 6. Để lại 1 bình luận có ý nghĩa (mở tab Bình luận sau khi đã follow để chủ kênh không bỏ sót)
+        # 6. Để lại đúng 1 câu bình luận: "chào mn, mình mới xây kênh, nhận follow chéo ạ"
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
         comment_text = self._step6_post_meaningful_comment(page, ch_folder, creator_handle)
+
+        # 7. Kiểm tra lại trạng thái Tim đỏ ❤️ & Bookmark vàng 🔖 & Follow ✓ một lần cuối trước khi chụp ảnh
+        time.sleep(2.5)
+        self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+        liked = self._step2_like_video(page, ch_folder) or liked
+        favorited = self._step4_favorite_video(page, ch_folder) or favorited
+        followed = self._step5_follow_creator(page, ch_folder) or followed
+        time.sleep(2.0)
 
         # Chụp ảnh màn hình kết quả tương tác vào remote_telemetry/ để giám sát từ xa
         try:
