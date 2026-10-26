@@ -231,29 +231,28 @@ class TikTokAutoPoster:
 
     def _human_move_mouse(self, page: Any, target_x: float, target_y: float) -> None:
         """
-        Di chuyển con trỏ trình duyệt theo đường cong mượt từ vị trí hiện tại tới `(target_x, target_y)`
-        (không dịch chuyển con trỏ OS lệch thanh địa chỉ Chrome để tránh hover nhầm vào Avatar chủ kênh).
+        Di chuyển con trỏ trình duyệt tốc độ cao (4-6 bước mượt, tổng ~8ms) tới `(target_x, target_y)`
+        để thao tác tức thì không gây trễ/lag.
         """
         start_x, start_y = getattr(self, "_last_vp_mouse", (520.0, 430.0))
-        steps = random.randint(8, 14)
+        steps = random.randint(4, 6)
         for s in range(1, steps + 1):
             frac = s / steps
-            jitter_x = random.uniform(-2.0, 2.0) * (1.0 - frac)
-            jitter_y = random.uniform(-2.0, 2.0) * (1.0 - frac)
+            jitter_x = random.uniform(-1.5, 1.5) * (1.0 - frac)
+            jitter_y = random.uniform(-1.5, 1.5) * (1.0 - frac)
             cur_x = start_x + (target_x - start_x) * frac + jitter_x
             cur_y = start_y + (target_y - start_y) * frac + jitter_y
             page.mouse.move(cur_x, cur_y)
-            time.sleep(random.uniform(0.004, 0.010))
+            time.sleep(0.0015)
         self._last_vp_mouse = (float(target_x), float(target_y))
 
     def _os_click_viewport(self, page: Any, viewport_x: float, viewport_y: float) -> None:
         """
-        Di chuyển con trỏ mượt tới `(viewport_x, viewport_y)` và thực hiện ĐÚNG 1 LẦN CLICK DUY NHẤT
-        (tuyệt đối không click đúp 2 lần làm tự gỡ Follow / gỡ Thả tim).
+        Di chuyển con trỏ siêu tốc tới `(viewport_x, viewport_y)` và thực hiện ĐÚNG 1 LẦN CLICK DUY NHẤT.
         """
         self._human_move_mouse(page, viewport_x, viewport_y)
-        time.sleep(random.uniform(0.04, 0.09))
-        page.mouse.click(viewport_x, viewport_y, delay=random.randint(15, 35))
+        time.sleep(random.uniform(0.012, 0.025))
+        page.mouse.click(viewport_x, viewport_y, delay=random.randint(10, 22))
 
     def _dismiss_all_studio_popovers(self, page: Any, ch_folder: str) -> int:
         """
@@ -1717,11 +1716,12 @@ class TikTokAutoPoster:
     ) -> None:
         """
         Chụp ảnh màn hình trình duyệt hiện tại và ghi báo cáo trạng thái vào `remote_telemetry/`,
-        sau đó tự động `git commit` & `git push` lên GitHub để người dùng ở xa (trên máy Silicon)
-        có thể kiểm tra hình ảnh & nhật ký của máy Intel bất kỳ lúc nào mà không cần có mặt ở nhà.
+        sau đó đẩy `git commit` & `git push` chạy ngầm (Async Background Thread) để đóng trình duyệt
+        ngay tức khắc mà không bị treo chờ mạng GitHub.
         """
         import platform as _plat
         import subprocess
+        import threading
 
         try:
             telem_dir = self.project_root / "remote_telemetry"
@@ -1760,46 +1760,53 @@ class TikTokAutoPoster:
                 encoding="utf-8",
             )
 
-            # Tự động đẩy ảnh chụp màn hình & báo cáo trạng thái lên GitHub
-            subprocess.run(
-                ["git", "add", "remote_telemetry"],
-                cwd=str(self.project_root),
-                capture_output=True,
-                timeout=10,
-                check=False,
-            )
-            subprocess.run(
-                [
-                    "git",
-                    "-c",
-                    "user.name=IntelMacBot",
-                    "-c",
-                    "user.email=bot@tiktokpipeline.local",
-                    "commit",
-                    "-m",
-                    f"Auto-Telemetry [{event_type}] {ch_folder} at {now_str}",
-                ],
-                cwd=str(self.project_root),
-                capture_output=True,
-                timeout=10,
-                check=False,
-            )
-            subprocess.run(
-                ["git", "pull", "--rebase", "--autostash", "origin", "main"],
-                cwd=str(self.project_root),
-                capture_output=True,
-                timeout=20,
-                check=False,
-            )
-            subprocess.run(
-                ["git", "push", "origin", "main"],
-                cwd=str(self.project_root),
-                capture_output=True,
-                timeout=25,
-                check=False,
-            )
+            proj_str = str(self.project_root)
+
+            def _async_git_push() -> None:
+                try:
+                    subprocess.run(
+                        ["git", "add", "remote_telemetry"],
+                        cwd=proj_str,
+                        capture_output=True,
+                        timeout=10,
+                        check=False,
+                    )
+                    subprocess.run(
+                        [
+                            "git",
+                            "-c",
+                            "user.name=IntelMacBot",
+                            "-c",
+                            "user.email=bot@tiktokpipeline.local",
+                            "commit",
+                            "-m",
+                            f"Auto-Telemetry [{event_type}] {ch_folder} at {now_str}",
+                        ],
+                        cwd=proj_str,
+                        capture_output=True,
+                        timeout=10,
+                        check=False,
+                    )
+                    subprocess.run(
+                        ["git", "pull", "--rebase", "--autostash", "origin", "main"],
+                        cwd=proj_str,
+                        capture_output=True,
+                        timeout=20,
+                        check=False,
+                    )
+                    subprocess.run(
+                        ["git", "push", "origin", "main"],
+                        cwd=proj_str,
+                        capture_output=True,
+                        timeout=25,
+                        check=False,
+                    )
+                except Exception:
+                    pass
+
+            threading.Thread(target=_async_git_push, daemon=True).start()
             logger.info(
-                f"[{ch_folder}] [Remote Telemetry] Đã chụp ảnh màn hình & đẩy báo cáo trạng thái ({img_name}) lên GitHub!"
+                f"[{ch_folder}] [Remote Telemetry] Đã lưu ảnh ({img_name}) & đẩy đồng bộ GitHub chạy ngầm!"
             )
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Remote Telemetry] Bỏ qua đồng bộ telemetry phụ: {exc}")
@@ -1872,7 +1879,6 @@ class TikTokAutoPoster:
                         ch_folder=ch_folder,
                         details={"interacted_count": len(records), "records": records},
                     )
-                    time.sleep(random.uniform(3.0, 5.0))
                 finally:
                     try:
                         context.close()
