@@ -52,9 +52,9 @@
     ]
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_tu_chan_gioi_20261026_0018",
+    "trigger_id": "post_now_audio_dem_khuyen_20261026_0831",
     "target_arch": "x86_64",
-    "channel": "tu_chan_gioi"
+    "channel": "audio_dem_khuyen"
   },
   "remote_trigger_filter_24h": {
     "trigger_id": "intel_live_test_20261026_0726",

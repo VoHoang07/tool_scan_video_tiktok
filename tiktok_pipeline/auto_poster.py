@@ -179,11 +179,38 @@ class TikTokAutoPoster:
         return cfg
 
     @staticmethod
+    def _cleanup_stale_chrome_profile_locks(user_data_dir: Path) -> None:
+        """
+        Dọn dẹp tiến trình Chrome bị treo (orphan) và các file khóa SingletonLock/SingletonSocket
+        trong `user_data_dir` trước khi mở phiên trình duyệt mới để không bao giờ bị lỗi Profile In Use.
+        """
+        import subprocess
+
+        try:
+            subprocess.run(
+                ["pkill", "-9", "-f", str(user_data_dir)],
+                capture_output=True,
+                timeout=5,
+                check=False,
+            )
+            time.sleep(0.6)
+        except Exception:
+            pass
+        for lock_name in ("SingletonLock", "SingletonSocket", "SingletonCookie"):
+            try:
+                lock_file = user_data_dir / lock_name
+                if lock_file.exists() or lock_file.is_symlink():
+                    lock_file.unlink()
+            except Exception:
+                pass
+
+    @staticmethod
     def _launch_stealth_chrome_context(playwright_obj: Any, user_data_dir: Path, headless: bool = False) -> Any:
         """
         Khởi chạy Google Chrome thật với cấu hình Anti-Detect (xóa `--enable-automation`,
         bật WebGL/GPU tự nhiên, tiêm `STEALTH_INIT_SCRIPT`).
         """
+        TikTokAutoPoster._cleanup_stale_chrome_profile_locks(user_data_dir)
         launch_args = [
             "--disable-infobars",
             "--no-first-run",
@@ -204,6 +231,7 @@ class TikTokAutoPoster:
                 ignore_default_args=ignore_args,
             )
         except Exception:
+            TikTokAutoPoster._cleanup_stale_chrome_profile_locks(user_data_dir)
             context = playwright_obj.chromium.launch_persistent_context(
                 user_data_dir=str(user_data_dir),
                 headless=headless,
@@ -1569,6 +1597,13 @@ class TikTokAutoPoster:
                 cwd=str(self.project_root),
                 capture_output=True,
                 timeout=10,
+                check=False,
+            )
+            subprocess.run(
+                ["git", "pull", "--rebase", "--autostash", "origin", "main"],
+                cwd=str(self.project_root),
+                capture_output=True,
+                timeout=20,
                 check=False,
             )
             subprocess.run(

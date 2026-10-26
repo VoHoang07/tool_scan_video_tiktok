@@ -754,9 +754,13 @@ def run_continuous_mode(
     bg_sched_thread.start()
 
     def _check_hot_reload() -> None:
+        if scheduler_lock.locked():
+            return
         _auto_git_pull_if_available(project_root)
         current_snapshot = _get_codebase_mtime_snapshot(project_root)
         if current_snapshot != initial_code_snapshot:
+            if scheduler_lock.locked():
+                return
             logger.info(
                 "[Hot-Reload] Phát hiện code Python vừa được cập nhật từ máy chủ Silicon! "
                 "Đang tự động khởi động lại Worker tại chỗ (os.execv) để áp dụng code mới..."
