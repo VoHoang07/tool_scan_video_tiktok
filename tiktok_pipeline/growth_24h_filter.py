@@ -706,7 +706,7 @@ class TikTok24hFilterEngine:
         return False
 
     def _check_like_state(self, page: Any) -> Optional[Dict[str, Any]]:
-        """Tìm tọa độ thực tế của nút Thả tim (Like) trên cột hành động video TikTok."""
+        """Tìm tọa độ thực tế tại đúng tâm icon SVG của nút Thả tim (Like) trên cột hành động video TikTok."""
         try:
             return page.evaluate(
                 """() => {
@@ -720,13 +720,21 @@ class TikTok24hFilterEngine:
                     for (const sel of selectors) {
                         const els = Array.from(document.querySelectorAll(sel));
                         for (const el of els) {
-                            const iconRect = el.getBoundingClientRect();
                             const btn = el.closest('button') || el.parentElement || el;
+                            const svg = el.querySelector('svg') || btn.querySelector('svg');
+                            const svgRect = svg ? svg.getBoundingClientRect() : null;
+                            if (svgRect && svgRect.left >= 260 && svgRect.left <= 1150 && svgRect.width > 8 && svgRect.height > 8) {
+                                return {
+                                    x: svgRect.left + svgRect.width / 2,
+                                    y: svgRect.top + svgRect.height / 2
+                                };
+                            }
+                            const iconRect = el.getBoundingClientRect();
                             const r = (iconRect.width > 12 && iconRect.height > 12) ? iconRect : btn.getBoundingClientRect();
-                            if (r.left < 260 || r.left > 920 || r.width <= 8 || r.height <= 8) continue;
+                            if (r.left < 260 || r.left > 1150 || r.width <= 8 || r.height <= 8) continue;
                             return {
                                 x: r.left + r.width / 2,
-                                y: r.top + r.height / 2
+                                y: r.top + Math.min(r.width, r.height) / 2
                             };
                         }
                     }
@@ -738,7 +746,7 @@ class TikTok24hFilterEngine:
 
     @staticmethod
     def _is_heart_red_on_screenshot(png_bytes: bytes, x: float, y: float) -> bool:
-        """Kiểm tra điểm ảnh thực tế tại tâm nút Tim xem đã chuyển sang màu đỏ TikTok (#FE2C55) chưa."""
+        """Kiểm tra điểm ảnh thực tế tại tâm icon Tim xem đã chuyển sang màu đỏ TikTok (#FE2C55) chưa."""
         try:
             import io
             import numpy as np
@@ -747,17 +755,17 @@ class TikTok24hFilterEngine:
             im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
             arr = np.asarray(im, dtype=np.float32)
             ix, iy = int(round(x)), int(round(y))
-            patch = arr[max(0, iy - 12) : min(arr.shape[0], iy + 13), max(0, ix - 12) : min(arr.shape[1], ix + 13)]
+            patch = arr[max(0, iy - 22) : min(arr.shape[0], iy + 23), max(0, ix - 22) : min(arr.shape[1], ix + 23)]
             if patch.size == 0:
                 return False
             red_mask = (patch[:, :, 0] > 185) & ((patch[:, :, 0] - patch[:, :, 1]) > 85)
-            return int(np.sum(red_mask)) >= 10
+            return int(np.sum(red_mask)) >= 15
         except Exception:
             return False
 
     @staticmethod
     def _is_bookmark_gold_on_screenshot(png_bytes: bytes, x: float, y: float) -> bool:
-        """Kiểm tra điểm ảnh thực tế tại tâm nút Lưu yêu thích xem đã chuyển sang màu vàng (#FACE15) chưa."""
+        """Kiểm tra điểm ảnh thực tế tại tâm icon Lưu yêu thích xem đã chuyển sang màu vàng (#FACE15) chưa."""
         try:
             import io
             import numpy as np
@@ -766,11 +774,11 @@ class TikTok24hFilterEngine:
             im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
             arr = np.asarray(im, dtype=np.float32)
             ix, iy = int(round(x)), int(round(y))
-            patch = arr[max(0, iy - 12) : min(arr.shape[0], iy + 13), max(0, ix - 12) : min(arr.shape[1], ix + 13)]
+            patch = arr[max(0, iy - 22) : min(arr.shape[0], iy + 23), max(0, ix - 22) : min(arr.shape[1], ix + 23)]
             if patch.size == 0:
                 return False
             gold_mask = (patch[:, :, 0] > 210) & (patch[:, :, 1] > 165) & (patch[:, :, 2] < 105)
-            return int(np.sum(gold_mask)) >= 10
+            return int(np.sum(gold_mask)) >= 15
         except Exception:
             return False
 
@@ -968,7 +976,7 @@ class TikTok24hFilterEngine:
         return False
 
     def _check_favorite_state(self, page: Any) -> Optional[Dict[str, Any]]:
-        """Tìm tọa độ thực tế của nút Lưu yêu thích (Bookmark) trên cột hành động video TikTok."""
+        """Tìm tọa độ thực tế tại đúng tâm icon SVG của nút Lưu yêu thích (Bookmark) trên cột hành động video TikTok."""
         try:
             return page.evaluate(
                 """() => {
@@ -985,13 +993,21 @@ class TikTok24hFilterEngine:
                     for (const sel of selectors) {
                         const els = Array.from(document.querySelectorAll(sel));
                         for (const el of els) {
-                            const iconRect = el.getBoundingClientRect();
                             const btn = el.closest('button') || el.parentElement || el;
+                            const svg = el.querySelector('svg') || btn.querySelector('svg');
+                            const svgRect = svg ? svg.getBoundingClientRect() : null;
+                            if (svgRect && svgRect.left >= 260 && svgRect.left <= 1150 && svgRect.width > 8 && svgRect.height > 8) {
+                                return {
+                                    x: svgRect.left + svgRect.width / 2,
+                                    y: svgRect.top + svgRect.height / 2
+                                };
+                            }
+                            const iconRect = el.getBoundingClientRect();
                             const r = (iconRect.width > 12 && iconRect.height > 12) ? iconRect : btn.getBoundingClientRect();
-                            if (r.left < 260 || r.left > 920 || r.width <= 8 || r.height <= 8) continue;
+                            if (r.left < 260 || r.left > 1150 || r.width <= 8 || r.height <= 8) continue;
                             return {
                                 x: r.left + r.width / 2,
-                                y: r.top + r.height / 2
+                                y: r.top + Math.min(r.width, r.height) / 2
                             };
                         }
                     }
