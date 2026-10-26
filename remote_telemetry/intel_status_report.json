@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 20:17:03",
+    "timestamp": "2026-10-26 20:22:58",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261025_172156_tiktok_story_7696217946204441869.mp4",
-      "caption": "🥰 Nhật ký gia đình siêu lầy: Before you get the purple present, come on, you get this one, you get the purple present,. \"You get this blue present, Let's see what it is, Here it is...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #foryou",
+      "video_file": "20261025_183742_tiktok_story_7698594900329221397.mp4",
+      "caption": "🎧 [Truyện Đêm Khuya] Tập 122 - Biến cố bất ngờ và sự thật phía sau. Một câu chuyện đầy kịch tính với cú quay xe cực gắt ở phút cuối. Nếu ở trong hoàn cảnh của nhân vật chính, bạn sẽ chọn tha thứ hay trả đũa?",
+      "hashtags": "#audiodemkhuya #truyenaudio #kechuyendemkhuya #truyenfull #dramatiktok #phimngantrungquoc #xuhuongtiktok #tiktokvn",
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 20:22:58",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261025_183742_tiktok_story_7698594900329221397.mp4",
+        "caption": "🎧 [Truyện Đêm Khuya] Tập 122 - Biến cố bất ngờ và sự thật phía sau. Một câu chuyện đầy kịch tính với cú quay xe cực gắt ở phút cuối. Nếu ở trong hoàn cảnh của nhân vật chính, bạn sẽ chọn tha thứ hay trả đũa?",
+        "hashtags": "#audiodemkhuya #truyenaudio #kechuyendemkhuya #truyenfull #dramatiktok #phimngantrungquoc #xuhuongtiktok #tiktokvn",
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-26 20:17:03",
       "machine_arch": "x86_64",
@@ -931,95 +946,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-26 11:23:09",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7698983892149177608",
-            "video_url": "https://www.tiktok.com/@linkiee67/video/7698983892149177608",
-            "creator_handle": "@linkiee67",
-            "watched_seconds": 22.7,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026122140C29A97F77C370D67CFBD\",\"now\":1792988500000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026122140C29A97F77C370D67CFBD\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610261221459D0970F9B6EB8C649C6F\",\"now\":1792988505000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610261221459D0970F9B6EB8C649C6F\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261026122256C2D68C555319D08EF32A\",\"now\":1792988576000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261026122256C2D68C555319D08EF32A\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "hasOwnWebdriver": false,
-                "hasFakeChromeRuntime": false
-              },
-              "before": {
-                "x": 835.1875,
-                "y": 511.9921875,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "623.6K"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 835.1875,
-                  "y": 511.9921875,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "623.6K"
-                },
-                "red": true
-              },
-              "after_os_click_40s": {
-                "state": {
-                  "x": 835.1875,
-                  "y": 511.9921875,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "623.6K"
-                },
-                "red": true
-              },
-              "after_dblclick_40s": {
-                "state": {
-                  "x": 835.375,
-                  "y": 512,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "219"
-                },
-                "red": true
-              }
-            },
-            "interacted_at": "2026-10-26 11:23:09",
-            "follow_back_window_until": "2026-10-27 11:23:09"
-          }
-        ]
       }
     }
   ]
