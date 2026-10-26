@@ -706,7 +706,7 @@ class TikTok24hFilterEngine:
         return False
 
     def _check_like_state(self, page: Any) -> Optional[Dict[str, Any]]:
-        """Tìm tọa độ thực tế tại đúng tâm icon SVG của nút Thả tim (Like) trên cột hành động video TikTok."""
+        """Tìm tọa độ thực tế tại đúng tâm icon SVG của nút Thả tim (Like) và trạng thái aria-pressed trên cột hành động video TikTok."""
         try:
             return page.evaluate(
                 """() => {
@@ -722,11 +722,20 @@ class TikTok24hFilterEngine:
                         for (const el of els) {
                             const btn = el.closest('button') || el.parentElement || el;
                             const svg = el.querySelector('svg') || btn.querySelector('svg');
+                            const svgColor = svg ? ((svg.getAttribute('color') || window.getComputedStyle(svg).color || '')).toLowerCase() : '';
+                            const ariaPressed = (
+                                el.getAttribute('aria-pressed') === 'true' ||
+                                (btn && btn.getAttribute('aria-pressed') === 'true') ||
+                                svgColor.includes('254, 44, 85') ||
+                                svgColor.includes('fe2c55') ||
+                                svgColor.includes('255, 59, 92')
+                            );
                             const svgRect = svg ? svg.getBoundingClientRect() : null;
                             if (svgRect && svgRect.left >= 260 && svgRect.left <= 1150 && svgRect.width > 8 && svgRect.height > 8) {
                                 return {
                                     x: svgRect.left + svgRect.width / 2,
-                                    y: svgRect.top + svgRect.height / 2
+                                    y: svgRect.top + svgRect.height / 2,
+                                    ariaPressed
                                 };
                             }
                             const iconRect = el.getBoundingClientRect();
@@ -734,7 +743,8 @@ class TikTok24hFilterEngine:
                             if (r.left < 260 || r.left > 1150 || r.width <= 8 || r.height <= 8) continue;
                             return {
                                 x: r.left + r.width / 2,
-                                y: r.top + Math.min(r.width, r.height) / 2
+                                y: r.top + Math.min(r.width, r.height) / 2,
+                                ariaPressed
                             };
                         }
                     }
@@ -804,27 +814,37 @@ class TikTok24hFilterEngine:
 
     def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 2: Thả tim video (Like) — kiểm tra màu điểm ảnh thực tế tại tâm nút Tim (#FE2C55):
-        - Tuyệt đối không dựa vào thuộc tính SVG ẩn trong DOM (tránh nhận nhầm tim đen là đã tim).
-        - Nếu chưa đỏ thì click đúng 1 lần; nếu cú click làm bật Captcha thì giải Captcha rồi kiểm tra lại điểm ảnh để bấm bù.
+        BƯỚC 2: Thả tim video (Like) — kiểm tra cả aria-pressed/color lẫn màu điểm ảnh thực tế tại tâm nút Tim (#FE2C55):
+        - Dùng Playwright locator click trực tiếp vào `[data-e2e="like-icon"]` (kèm fallback click tọa độ SVG) để tránh lệch thanh địa chỉ OS.
         """
         try:
             like_info = self._check_like_state(page)
             if like_info:
                 lx, ly = float(like_info["x"]), float(like_info["y"])
-                if self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly):
+                if like_info.get("ariaPressed") or self._is_heart_red_on_screenshot(page.screenshot(type="png"), lx, ly):
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 2/6] Video đã có tim đỏ thực tế trên màn hình (giữ nguyên ❤️).")
                     return True
 
-                self._os_click_viewport(page, lx, ly)
-                time.sleep(random.uniform(2.0, 2.8))
+                try:
+                    like_loc = page.locator('[data-e2e="like-icon"], [data-e2e="browse-like-icon"]').first
+                    if like_loc.count() > 0 and like_loc.is_visible():
+                        like_loc.click(timeout=3000)
+                    else:
+                        page.mouse.click(lx, ly)
+                except Exception:
+                    page.mouse.click(lx, ly)
+
+                time.sleep(random.uniform(2.2, 2.9))
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
                 recheck = self._check_like_state(page)
                 rx = float(recheck["x"]) if recheck else lx
                 ry = float(recheck["y"]) if recheck else ly
-                if not self._is_heart_red_on_screenshot(page.screenshot(type="png"), rx, ry):
-                    self._os_click_viewport(page, rx, ry)
+                already_liked_now = bool(recheck and recheck.get("ariaPressed")) or self._is_heart_red_on_screenshot(
+                    page.screenshot(type="png"), rx, ry
+                )
+                if not already_liked_now:
+                    page.mouse.click(rx, ry)
                     time.sleep(random.uniform(2.0, 2.6))
                     self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 

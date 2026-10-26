@@ -247,32 +247,29 @@ class TikTokAutoPoster:
 
     def _human_move_mouse(self, page: Any, target_x: float, target_y: float) -> None:
         """
-        Di chuyển chuột theo đường cong Bezier mềm mại nhiều bước:
-        - Kết hợp điều khiển con trỏ phần cứng hệ điều hành macOS (`CoreGraphics CGEvent` từ `macos-desktop-control`)
-          và sự kiện con trỏ trình duyệt để tạo điểm tin cậy hành vi `isTrusted = true` tuyệt đối.
+        Di chuyển con trỏ trình duyệt theo đường cong mượt từ vị trí hiện tại tới `(target_x, target_y)`
+        (không dịch chuyển con trỏ OS lệch thanh địa chỉ Chrome để tránh hover nhầm vào Avatar chủ kênh).
         """
-        try:
-            sx, sy = self.desktop.convert_viewport_to_screen_coords(page, target_x, target_y)
-            self.desktop.move_mouse_smooth_os(sx, sy, steps=14)
-        except Exception:
-            pass
-        steps = random.randint(10, 18)
+        start_x, start_y = getattr(self, "_last_vp_mouse", (520.0, 430.0))
+        steps = random.randint(8, 14)
         for s in range(1, steps + 1):
             frac = s / steps
-            jitter_x = random.uniform(-3.5, 3.5) * (1.0 - frac)
-            jitter_y = random.uniform(-3.5, 3.5) * (1.0 - frac)
-            page.mouse.move(target_x * frac + jitter_x, target_y * frac + jitter_y)
-            time.sleep(random.uniform(0.005, 0.015))
+            jitter_x = random.uniform(-2.0, 2.0) * (1.0 - frac)
+            jitter_y = random.uniform(-2.0, 2.0) * (1.0 - frac)
+            cur_x = start_x + (target_x - start_x) * frac + jitter_x
+            cur_y = start_y + (target_y - start_y) * frac + jitter_y
+            page.mouse.move(cur_x, cur_y)
+            time.sleep(random.uniform(0.004, 0.010))
+        self._last_vp_mouse = (float(target_x), float(target_y))
 
     def _os_click_viewport(self, page: Any, viewport_x: float, viewport_y: float) -> None:
         """
-        Di chuyển chuột phần cứng hệ điều hành macOS (`CoreGraphics CGEvent` từ `macos-desktop-control`)
-        kết hợp đường cong Bezier tới `(viewport_x, viewport_y)` và thực hiện ĐÚNG 1 LẦN CLICK DUY NHẤT
+        Di chuyển con trỏ mượt tới `(viewport_x, viewport_y)` và thực hiện ĐÚNG 1 LẦN CLICK DUY NHẤT
         (tuyệt đối không click đúp 2 lần làm tự gỡ Follow / gỡ Thả tim).
         """
         self._human_move_mouse(page, viewport_x, viewport_y)
-        time.sleep(random.uniform(0.06, 0.14))
-        page.mouse.click(viewport_x, viewport_y, delay=random.randint(45, 90))
+        time.sleep(random.uniform(0.04, 0.09))
+        page.mouse.click(viewport_x, viewport_y, delay=random.randint(15, 35))
 
     def _dismiss_all_studio_popovers(self, page: Any, ch_folder: str) -> int:
         """
