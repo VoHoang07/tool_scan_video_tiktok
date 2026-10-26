@@ -1,19 +1,19 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 09:53:45",
+    "timestamp": "2026-10-26 09:55:57",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
     "details": {
       "interacted_count": 1,
       "records": [
         {
-          "channel": "baby_AI",
-          "video_id": "7700556128714771720",
-          "video_url": "https://www.tiktok.com/@myxuyen61/video/7700556128714771720",
-          "creator_handle": "@myxuyen61",
-          "watched_seconds": 25.5,
+          "channel": "audio_dem_khuyen",
+          "video_id": "7700515993637965077",
+          "video_url": "https://www.tiktok.com/@kenhcuamylinh/video/7700515993637965077",
+          "creator_handle": "@kenhcuamylinh",
+          "watched_seconds": 20.8,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": true,
@@ -23,13 +23,43 @@
             "6_commented_after_follow": true
           },
           "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-          "interacted_at": "2026-10-26 09:53:45",
-          "follow_back_window_until": "2026-10-27 09:53:45"
+          "interacted_at": "2026-10-26 09:55:56",
+          "follow_back_window_until": "2026-10-27 09:55:56"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 09:55:57",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+      "details": {
+        "interacted_count": 1,
+        "records": [
+          {
+            "channel": "audio_dem_khuyen",
+            "video_id": "7700515993637965077",
+            "video_url": "https://www.tiktok.com/@kenhcuamylinh/video/7700515993637965077",
+            "creator_handle": "@kenhcuamylinh",
+            "watched_seconds": 20.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "interacted_at": "2026-10-26 09:55:56",
+            "follow_back_window_until": "2026-10-27 09:55:56"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 09:53:45",
       "machine_arch": "x86_64",
@@ -418,21 +448,6 @@
         "video_file": "20261025_163628_douyin_story_7653148698738335945.mp4",
         "caption": "🥰 Nhật ký gia đình siêu lầy: 宝宝,来,吃烤肠啦. \"没有番茄酱,不吃不吃...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
         "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #foryou",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-26 08:09:55",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261025_140905_tiktok_story_7691716032381127966.mp4",
-        "caption": "✨ Câu chuyện AI cực cuốn: Does everybody hate us?. \"One day, they're gonna see what I'm really worth, Don't worry, ma'am...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
-        "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #xuhuong",
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
