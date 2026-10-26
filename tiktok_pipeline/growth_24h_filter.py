@@ -215,11 +215,13 @@ class TikTok24hFilterEngine:
         return max(0.05, min(0.95, best_deg / 360.0))
 
     @staticmethod
-    def _solve_whirl_from_viewport_screenshot(png_bytes: bytes) -> Optional[Dict[str, float]]:
+    def _solve_whirl_from_viewport_screenshot(
+        png_bytes: bytes, check_track: bool = True
+    ) -> Optional[Dict[str, float]]:
         """
         Phát hiện và giải Captcha xoay hình tròn trực tiếp từ ảnh chụp màn hình viewport (Pure-Vision Screenshot Solver):
         - Xuyên qua mọi Shadow DOM / iframe mà `document.querySelector` không nhìn thấy.
-        - Kiểm tra 4 vùng chữ ký điểm ảnh (2 lề xám tối của hộp thoại, thanh trượt xám và hình tròn trung tâm).
+        - Hỗ trợ cả giao diện Dark-Mode (ban đêm) và Light-Mode (ban ngày) của TikTok.
         - Tự động định vị tâm hình tròn `(cx, cy)`, bán kính ranh giới `best_r`, và tính góc khớp Đa Vành.
         """
         import io
@@ -232,30 +234,49 @@ class TikTok24hFilterEngine:
         if h < 650 or w < 1000:
             return None
 
-        # 1. Kiểm tra chữ ký điểm ảnh của hộp thoại Captcha TikTok Dark-Mode ở chính giữa màn hình
+        # 1. Kiểm tra chữ ký điểm ảnh của hộp thoại Captcha TikTok (hỗ trợ cả Dark-Mode ban đêm & Light-Mode ban ngày)
         left_strip = arr[340:500, 505:555]
         right_strip = arr[340:500, 810:860]
         track_strip = arr[542:564, 620:830]
         circle_reg = arr[340:500, 600:765]
 
-        left_ok = 22.0 <= float(left_strip.mean()) <= 40.0 and float(left_strip.std()) < 5.5
-        right_ok = 22.0 <= float(right_strip.mean()) <= 40.0 and float(right_strip.std()) < 5.5
-        track_ok = 46.0 <= float(track_strip.mean()) <= 70.0 and float(track_strip.std()) < 6.5
-        circle_ok = float(circle_reg.mean()) > 60.0 and float(circle_reg.std()) > 18.0
-        if not (left_ok and right_ok and track_ok and circle_ok):
+        left_mean, left_std = float(left_strip.mean()), float(left_strip.std())
+        right_mean, right_std = float(right_strip.mean()), float(right_strip.std())
+        track_mean, track_std = float(track_strip.mean()), float(track_strip.std())
+
+        is_dark_modal = (
+            20.0 <= left_mean <= 45.0
+            and 20.0 <= right_mean <= 45.0
+            and left_std < 6.5
+            and right_std < 6.5
+            and (not check_track or (42.0 <= track_mean <= 75.0 and track_std < 7.5))
+        )
+        is_light_modal = (
+            240.0 <= left_mean <= 255.0
+            and 240.0 <= right_mean <= 255.0
+            and left_std < 6.5
+            and right_std < 6.5
+            and (not check_track or (232.0 <= track_mean <= 253.0 and track_std < 7.5))
+        )
+        circle_ok = float(circle_reg.std()) > 16.0
+        if not ((is_dark_modal or is_light_modal) and circle_ok):
             return None
 
-        # 2. Định vị chính xác khung bao hình tròn trong vùng trung tâm y=[305..530], x=[565..800]
+        # 2. Định vị chính xác khung bao hình tròn so với màu nền hộp thoại (Dark hoặc Light)
+        bg_rgb = left_strip.mean(axis=(0, 1))
         y_min, y_max = 314, 530
         x_min, x_max = 565, 800
         sub = arr[y_min:y_max, x_min:x_max]
-        ys, xs = np.where(sub.mean(axis=2) > 75)
+        ys, xs = np.where(np.abs(sub - bg_rgb).max(axis=2) > 12.0)
         if len(xs) < 400:
             return None
 
         x0, x1 = int(xs.min() + x_min), int(xs.max() + x_min)
         y0, y1 = int(ys.min() + y_min), int(ys.max() + y_min)
-        cx, cy = (x0 + x1) * 0.5, (y0 + y1) * 0.5
+        cx = (x0 + x1) * 0.5 if 208 <= (x1 - x0) <= 216 else 683.0
+        cy = (y0 + y1) * 0.5 if 208 <= (y1 - y0) <= 216 else 421.0
+        if not (524 <= y1 <= 529):
+            y1 = 527
 
         angles = np.deg2rad(np.arange(360, dtype=np.float32))
         cos_a, sin_a = np.cos(angles), np.sin(angles)
@@ -291,8 +312,9 @@ class TikTok24hFilterEngine:
         grad_in = np.roll(ring_in, -1, axis=0) - np.roll(ring_in, 1, axis=0)
         grad_out = np.roll(ring_out, -1, axis=0) - np.roll(ring_out, 1, axis=0)
 
+        deg_range = range(15, 346) if check_track else range(0, 360)
         best_deg, best_score = 180, -1e9
-        for deg in range(15, 346):
+        for deg in deg_range:
             s_in = np.roll(ring_in_norm, deg, axis=0)
             s_raw = np.roll(ring_in, deg, axis=0)
             s_grad = np.roll(grad_in, deg, axis=0)
@@ -304,8 +326,9 @@ class TikTok24hFilterEngine:
                 best_score = score
                 best_deg = deg
 
-        # Thanh trượt chuẩn TikTok Dark-Mode nằm ngay dưới hình tròn (trackWidth=347, handleWidth=63, tâm nút kéo tại x=540.5, y=552.5)
+        # Thanh trượt chuẩn TikTok nằm ngay dưới hình tròn (trackWidth=347, handleWidth=63, tâm nút kéo tại x=541.0, y=552.5)
         return {
+            "deg": float(best_deg),
             "frac": max(0.05, min(0.95, best_deg / 360.0)),
             "handleX": float(cx - 142.0),
             "handleY": float(y1 + 25.5),
@@ -318,17 +341,18 @@ class TikTok24hFilterEngine:
     ) -> bool:
         """
         Tự động phát hiện và giải Captcha xoay hình tròn của TikTok ('Kéo thanh trượt để ghép hình')
-        100% bằng Thị giác máy tính trên ảnh chụp màn hình viewport (xuyên qua mọi Shadow DOM / iframe).
+        100% bằng Thị giác máy tính trên ảnh chụp màn hình viewport kèm Tinh chỉnh Vòng kín (Closed-Loop Visual Servoing).
         """
         for attempt in range(1, max_attempts + 1):
             try:
                 png_bytes = page.screenshot(type="png")
-                vis = self._solve_whirl_from_viewport_screenshot(png_bytes)
+                vis = self._solve_whirl_from_viewport_screenshot(png_bytes, check_track=True)
                 if not vis:
                     return True
 
+                deg0 = float(vis["deg"])
                 frac = float(vis["frac"])
-                if attempt == 4:
+                if attempt == 2:
                     frac = 1.0 - frac
 
                 start_x = float(vis["handleX"])
@@ -339,27 +363,48 @@ class TikTok24hFilterEngine:
                 max_slide_px = max(200.0, track_w - handle_w)
                 drag_px = frac * max_slide_px
                 end_x = start_x + drag_px
-                end_y = start_y + random.uniform(-1.0, 1.0)
+                end_y = start_y + random.uniform(-0.8, 0.8)
 
                 logger.info(
                     f"[{ch_folder}] [Auto-Captcha Solver] Phát hiện Captcha xoay hình tròn (lần {attempt}/{max_attempts}) -> "
-                    f"Góc khớp: {frac * 360:.1f}° | Kéo thanh trượt {drag_px:.1f}px / {max_slide_px:.1f}px (từ x={start_x:.1f}, y={start_y:.1f} tới x={end_x:.1f})..."
+                    f"Góc khớp: {deg0:.1f}° | Kéo thanh trượt {drag_px:.1f}px / {max_slide_px:.1f}px (từ x={start_x:.1f}, y={start_y:.1f} tới x={end_x:.1f})..."
                 )
 
                 self._human_move_mouse(page, start_x, start_y)
                 time.sleep(random.uniform(0.18, 0.28))
                 page.mouse.down()
-                steps = random.randint(30, 42)
+                steps = random.randint(28, 38)
                 for s in range(1, steps + 1):
                     t = s / steps
                     eased = 1.0 - pow(1.0 - t, 2.2)
                     cur_x = start_x + drag_px * eased + random.uniform(-0.4, 0.4) * (1.0 - t)
-                    cur_y = start_y + random.uniform(-1.0, 1.0)
+                    cur_y = start_y + random.uniform(-0.8, 0.8)
                     page.mouse.move(cur_x, cur_y)
-                    time.sleep(random.uniform(0.015, 0.025))
+                    time.sleep(random.uniform(0.014, 0.022))
 
                 page.mouse.move(end_x, end_y)
-                time.sleep(random.uniform(0.30, 0.45))
+                time.sleep(0.22)
+
+                # Tinh chỉnh vòng kín (Closed-Loop Visual Servoing) ngay khi vẫn đang giữ chuột trước lúc nhả
+                try:
+                    mid_png = page.screenshot(type="png")
+                    mid_vis = self._solve_whirl_from_viewport_screenshot(mid_png, check_track=False)
+                    if mid_vis:
+                        rem_deg = float(mid_vis["deg"])
+                        signed_rem = rem_deg if rem_deg <= 180.0 else rem_deg - 360.0
+                        if abs(signed_rem) > 6.0:
+                            corr_px = (signed_rem / 360.0) * max_slide_px
+                            fine_x = max(start_x + 12.0, min(start_x + max_slide_px - 6.0, end_x + corr_px))
+                            fine_steps = 10
+                            for fs in range(1, fine_steps + 1):
+                                fx = end_x + (fine_x - end_x) * (fs / fine_steps)
+                                page.mouse.move(fx, end_y)
+                                time.sleep(0.018)
+                            end_x = fine_x
+                            time.sleep(0.18)
+                except Exception:
+                    pass
+
                 page.mouse.up()
 
                 try:
