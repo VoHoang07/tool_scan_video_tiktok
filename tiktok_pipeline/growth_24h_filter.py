@@ -217,9 +217,10 @@ class TikTok24hFilterEngine:
     @staticmethod
     def _solve_whirl_from_viewport_screenshot(png_bytes: bytes) -> Optional[Dict[str, float]]:
         """
-        Giải Captcha xoay hình tròn trực tiếp từ ảnh chụp màn hình viewport (Pure-Vision Screenshot Solver):
-        - Không phụ thuộc vào cấu trúc DOM hay tải mạng `img.src`.
-        - Tự động định vị tâm hình tròn `(cx, cy)`, bán kính ranh giới `best_r`, thanh trượt `track` và nút kéo `handle`.
+        Phát hiện và giải Captcha xoay hình tròn trực tiếp từ ảnh chụp màn hình viewport (Pure-Vision Screenshot Solver):
+        - Xuyên qua mọi Shadow DOM / iframe mà `document.querySelector` không nhìn thấy.
+        - Kiểm tra 4 vùng chữ ký điểm ảnh (2 lề xám tối của hộp thoại, thanh trượt xám và hình tròn trung tâm).
+        - Tự động định vị tâm hình tròn `(cx, cy)`, bán kính ranh giới `best_r`, và tính góc khớp Đa Vành.
         """
         import io
         import numpy as np
@@ -228,13 +229,27 @@ class TikTok24hFilterEngine:
         im = Image.open(io.BytesIO(png_bytes)).convert("RGB")
         arr = np.asarray(im, dtype=np.float32)
         h, w, _ = arr.shape
-        cx_approx = w * 0.5
-        cy_approx = h * 0.52
+        if h < 650 or w < 1000:
+            return None
 
-        y_min, y_max = max(0, int(h * 0.36)), min(h, int(h * 0.615))
-        x_min, x_max = max(0, int(w * 0.38)), min(w, int(w * 0.62))
+        # 1. Kiểm tra chữ ký điểm ảnh của hộp thoại Captcha TikTok Dark-Mode ở chính giữa màn hình
+        left_strip = arr[340:500, 505:555]
+        right_strip = arr[340:500, 810:860]
+        track_strip = arr[542:564, 620:830]
+        circle_reg = arr[340:500, 600:765]
+
+        left_ok = 22.0 <= float(left_strip.mean()) <= 40.0 and float(left_strip.std()) < 5.5
+        right_ok = 22.0 <= float(right_strip.mean()) <= 40.0 and float(right_strip.std()) < 5.5
+        track_ok = 46.0 <= float(track_strip.mean()) <= 70.0 and float(track_strip.std()) < 6.5
+        circle_ok = float(circle_reg.mean()) > 60.0 and float(circle_reg.std()) > 18.0
+        if not (left_ok and right_ok and track_ok and circle_ok):
+            return None
+
+        # 2. Định vị chính xác khung bao hình tròn trong vùng trung tâm y=[305..530], x=[565..800]
+        y_min, y_max = 305, 530
+        x_min, x_max = 565, 800
         sub = arr[y_min:y_max, x_min:x_max]
-        ys, xs = np.where(sub.mean(axis=2) > 75)
+        ys, xs = np.where(sub.mean(axis=2) > 65)
         if len(xs) < 400:
             return None
 
@@ -245,16 +260,8 @@ class TikTok24hFilterEngine:
         angles = np.deg2rad(np.arange(360, dtype=np.float32))
         cos_a, sin_a = np.cos(angles), np.sin(angles)
 
-        best_r, max_jump = 64, 0.0
-        for r in range(48, 82):
-            iy1 = np.clip(np.round(cy + (r - 1.5) * sin_a).astype(int), 0, h - 1)
-            ix1 = np.clip(np.round(cx + (r - 1.5) * cos_a).astype(int), 0, w - 1)
-            iy2 = np.clip(np.round(cy + (r + 1.5) * sin_a).astype(int), 0, h - 1)
-            ix2 = np.clip(np.round(cx + (r + 1.5) * cos_a).astype(int), 0, w - 1)
-            jump = float(np.mean(np.abs(arr[iy2, ix2] - arr[iy1, ix1])))
-            if jump > max_jump:
-                max_jump = jump
-                best_r = r
+        # Bán kính ranh giới chuẩn giữa hình tròn trong và vành ngoài của TikTok (60.8% bán kính ngoài = 64.0px)
+        best_r = max(60.0, min(67.0, (x1 - x0) * 0.5 * 0.608))
 
         r_ins = [best_r - 5.0, best_r - 3.5, best_r - 2.0]
         r_outs = [best_r + 2.0, best_r + 3.5, best_r + 5.0]
@@ -297,17 +304,13 @@ class TikTok24hFilterEngine:
                 best_score = score
                 best_deg = deg
 
-        # Thanh trượt chuẩn TikTok Dark-Mode nằm ngay dưới hình tròn (trackWidth=347, handleWidth=63)
-        track_width = 347.0
-        handle_x = float(cx - 142.0)
-        handle_y = float(y1 + 24.5)
-
+        # Thanh trượt chuẩn TikTok Dark-Mode nằm ngay dưới hình tròn (trackWidth=347, handleWidth=63, tâm nút kéo tại x=540.5, y=552.5)
         return {
             "frac": max(0.05, min(0.95, best_deg / 360.0)),
-            "handleX": handle_x,
-            "handleY": handle_y,
+            "handleX": float(cx - 142.0),
+            "handleY": float(y1 + 25.5),
             "handleWidth": 63.0,
-            "trackWidth": track_width,
+            "trackWidth": 347.0,
         }
 
     def solve_tiktok_rotation_captcha_if_present(
@@ -315,158 +318,48 @@ class TikTok24hFilterEngine:
     ) -> bool:
         """
         Tự động phát hiện và giải Captcha xoay hình tròn của TikTok ('Kéo thanh trượt để ghép hình')
-        bằng Thị giác máy tính Đa Vành (DOM + Pure-Vision Screenshot Fallback) & kéo chuột tự nhiên.
+        100% bằng Thị giác máy tính trên ảnh chụp màn hình viewport (xuyên qua mọi Shadow DOM / iframe).
         """
-        from curl_cffi import requests as creq
-
         for attempt in range(1, max_attempts + 1):
             try:
-                captcha_data = page.evaluate(
-                    """() => {
-                        const modalTexts = ['Kéo thanh trượt để ghép hình', 'Drag the slider to fit the puzzle', 'Verify to continue'];
-                        const bodyTxt = document.body ? (document.body.innerText || '') : '';
-                        const hasText = modalTexts.some(t => bodyTxt.includes(t));
-                        const hasContainer = !!document.querySelector(
-                            '#captcha-verify-container-main-page, .captcha-verify-container, [class*="captcha-verify"]'
-                        );
-                        if (!hasText && !hasContainer) return null;
-
-                        const imgs = Array.from(document.querySelectorAll('img')).filter(img => {
-                            const r = img.getBoundingClientRect();
-                            return r.width >= 65 && r.width <= 380 && Math.abs(r.width - r.height) <= 16 && img.src;
-                        });
-                        imgs.sort((a, b) => b.getBoundingClientRect().width - a.getBoundingClientRect().width);
-
-                        let outerImg = null, innerImg = null;
-                        for (let i = 0; i < imgs.length; i++) {
-                            for (let j = i + 1; j < imgs.length; j++) {
-                                const r1 = imgs[i].getBoundingClientRect();
-                                const r2 = imgs[j].getBoundingClientRect();
-                                const cx1 = r1.left + r1.width / 2, cy1 = r1.top + r1.height / 2;
-                                const cx2 = r2.left + r2.width / 2, cy2 = r2.top + r2.height / 2;
-                                if (Math.abs(cx1 - cx2) < 20 && Math.abs(cy1 - cy2) < 20 && r1.width > r2.width + 15) {
-                                    outerImg = imgs[i];
-                                    innerImg = imgs[j];
-                                    break;
-                                }
-                            }
-                            if (outerImg) break;
-                        }
-                        if (!outerImg && imgs.length >= 2) {
-                            outerImg = imgs[0];
-                            innerImg = imgs[1];
-                        }
-                        if (!outerImg || !innerImg) {
-                            return { screenshotOnly: true };
-                        }
-
-                        const outerRect = outerImg.getBoundingClientRect();
-                        const innerRect = innerImg.getBoundingClientRect();
-                        const centerX = outerRect.left + outerRect.width / 2;
-
-                        let handleEl = document.querySelector(
-                            "#captcha_slide_button, .secsdk-captcha-drag-icon, [class*=\"captcha-drag-icon\"], [class*=\"secsdk_captcha_drag_icon\"]"
-                        );
-                        if (!handleEl) {
-                            const candidates = Array.from(document.querySelectorAll("div, button, span")).filter(el => {
-                                const r = el.getBoundingClientRect();
-                                return (
-                                    r.top >= outerRect.bottom + 2 &&
-                                    r.top <= outerRect.bottom + 36 &&
-                                    r.width >= 52 && r.width <= 74 &&
-                                    r.height >= 32 && r.height <= 46 &&
-                                    Math.abs(r.left - (centerX - 173.5)) < 22
-                                );
-                            });
-                            handleEl = candidates[0] || null;
-                        }
-
-                        let handleX = centerX - 142.0;
-                        let handleY = outerRect.bottom + 24.5;
-                        let handleWidth = 63.0;
-                        let trackWidth = 347.0;
-                        if (handleEl) {
-                            const handleRect = handleEl.getBoundingClientRect();
-                            handleX = handleRect.left + handleRect.width / 2;
-                            handleY = handleRect.top + handleRect.height / 2;
-                            handleWidth = Math.max(52, Math.min(74, handleRect.width));
-                        }
-
-                        return {
-                            screenshotOnly: false,
-                            outerSrc: outerImg.src,
-                            innerSrc: innerImg.src,
-                            ratio: innerRect.width / Math.max(1, outerRect.width),
-                            handleX: handleX,
-                            handleY: handleY,
-                            handleWidth: handleWidth,
-                            trackWidth: trackWidth
-                        };
-                    }"""
-                )
-                if not captcha_data:
+                png_bytes = page.screenshot(type="png")
+                vis = self._solve_whirl_from_viewport_screenshot(png_bytes)
+                if not vis:
                     return True
 
-                logger.info(
-                    f"[{ch_folder}] [Auto-Captcha Solver] Phát hiện Captcha xoay hình tròn của TikTok (lần thử {attempt}/{max_attempts}), đang tính góc khớp biên..."
-                )
-
-                frac: Optional[float] = None
-                start_x = float(captcha_data.get("handleX") or 540.0)
-                start_y = float(captcha_data.get("handleY") or 552.0)
-                handle_w = float(captcha_data.get("handleWidth") or 63.0)
-                track_w = float(captcha_data.get("trackWidth") or 347.0)
-
-                if not captcha_data.get("screenshotOnly") and captcha_data.get("outerSrc") and captcha_data.get("innerSrc"):
-                    try:
-                        r_out = creq.get(captcha_data["outerSrc"], impersonate="chrome", timeout=8)
-                        r_in = creq.get(captcha_data["innerSrc"], impersonate="chrome", timeout=8)
-                        if r_out.status_code == 200 and r_in.status_code == 200:
-                            frac = self._compute_best_whirl_rotation_fraction(
-                                outer_bytes=r_out.content,
-                                inner_bytes=r_in.content,
-                                inner_to_outer_ratio=float(captcha_data.get("ratio") or 0.608),
-                            )
-                    except Exception:
-                        frac = None
-
-                if frac is None:
-                    png_bytes = page.screenshot(type="png")
-                    vis = self._solve_whirl_from_viewport_screenshot(png_bytes)
-                    if not vis:
-                        return False
-                    frac = float(vis["frac"])
-                    start_x = float(vis["handleX"])
-                    start_y = float(vis["handleY"])
-                    handle_w = float(vis["handleWidth"])
-                    track_w = float(vis["trackWidth"])
-
+                frac = float(vis["frac"])
                 if attempt == 4:
                     frac = 1.0 - frac
 
-                max_slide_px = max(180.0, track_w - handle_w - 2.0)
+                start_x = float(vis["handleX"])
+                start_y = float(vis["handleY"])
+                handle_w = float(vis["handleWidth"])
+                track_w = float(vis["trackWidth"])
+
+                max_slide_px = max(200.0, track_w - handle_w)
                 drag_px = frac * max_slide_px
                 end_x = start_x + drag_px
-                end_y = start_y + random.uniform(-1.2, 1.2)
+                end_y = start_y + random.uniform(-1.0, 1.0)
 
                 logger.info(
-                    f"[{ch_folder}] [Auto-Captcha Solver] Góc khớp tối ưu: {frac * 360:.1f}° -> Kéo thanh trượt {drag_px:.1f}px / {max_slide_px:.1f}px (từ x={start_x:.0f}, y={start_y:.0f})..."
+                    f"[{ch_folder}] [Auto-Captcha Solver] Phát hiện Captcha xoay hình tròn (lần {attempt}/{max_attempts}) -> "
+                    f"Góc khớp: {frac * 360:.1f}° | Kéo thanh trượt {drag_px:.1f}px / {max_slide_px:.1f}px (từ x={start_x:.1f}, y={start_y:.1f} tới x={end_x:.1f})..."
                 )
 
                 self._human_move_mouse(page, start_x, start_y)
-                time.sleep(random.uniform(0.18, 0.30))
+                time.sleep(random.uniform(0.18, 0.28))
                 page.mouse.down()
-                steps = random.randint(28, 38)
+                steps = random.randint(30, 42)
                 for s in range(1, steps + 1):
                     t = s / steps
                     eased = 1.0 - pow(1.0 - t, 2.2)
-                    cur_x = start_x + drag_px * eased + random.uniform(-0.6, 0.6) * (1.0 - t)
-                    cur_y = start_y + random.uniform(-1.5, 1.5)
+                    cur_x = start_x + drag_px * eased + random.uniform(-0.4, 0.4) * (1.0 - t)
+                    cur_y = start_y + random.uniform(-1.0, 1.0)
                     page.mouse.move(cur_x, cur_y)
-                    time.sleep(random.uniform(0.015, 0.026))
+                    time.sleep(random.uniform(0.015, 0.025))
 
                 page.mouse.move(end_x, end_y)
-                time.sleep(random.uniform(0.28, 0.42))
+                time.sleep(random.uniform(0.30, 0.45))
                 page.mouse.up()
 
                 try:
@@ -475,16 +368,10 @@ class TikTok24hFilterEngine:
                 except Exception:
                     pass
 
-                time.sleep(random.uniform(2.8, 3.8))
+                time.sleep(random.uniform(3.0, 4.0))
 
-                still_present = page.evaluate(
-                    """() => {
-                        const modalTexts = ['Kéo thanh trượt để ghép hình', 'Drag the slider to fit the puzzle'];
-                        const bodyTxt = document.body ? (document.body.innerText || '') : '';
-                        return modalTexts.some(t => bodyTxt.includes(t));
-                    }"""
-                )
-                if not still_present:
+                check_png = page.screenshot(type="png")
+                if not self._solve_whirl_from_viewport_screenshot(check_png):
                     logger.info(
                         f"[{ch_folder}] [Auto-Captcha Solver] Đã VƯỢT THÀNH CÔNG Captcha xoay hình tròn của TikTok!"
                     )
