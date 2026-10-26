@@ -606,13 +606,21 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
             tmp_dir = Path(tempfile.gettempdir())
             hist_path = project_root / "story_audio_history.json"
             csv_path = project_root / "output" / "danh_sach_video.csv"
+            reg_path = project_root / "uploaded_videos_registry.json"
+            post_log_path = project_root / "posted_schedule_history.json"
             hist_bak = tmp_dir / "tiktok_story_audio_history.bak.json"
             csv_bak = tmp_dir / "tiktok_danh_sach_video.bak.csv"
+            reg_bak = tmp_dir / "tiktok_uploaded_videos_registry.bak.json"
+            post_log_bak = tmp_dir / "tiktok_posted_schedule_history.bak.json"
 
             if hist_path.exists():
                 shutil.copy2(hist_path, hist_bak)
             if csv_path.exists():
                 shutil.copy2(csv_path, csv_bak)
+            if reg_path.exists():
+                shutil.copy2(reg_path, reg_bak)
+            if post_log_path.exists():
+                shutil.copy2(post_log_path, post_log_bak)
 
             subprocess.run(
                 ["git", "reset", "--hard", "origin/main"],
@@ -628,6 +636,10 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
             if csv_bak.exists():
                 csv_path.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(csv_bak, csv_path)
+            if reg_bak.exists():
+                shutil.copy2(reg_bak, reg_path)
+            if post_log_bak.exists():
+                shutil.copy2(post_log_bak, post_log_path)
 
             logger.info(
                 f"[Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub ({local_sha[:7]} -> {remote_sha[:7]})!"

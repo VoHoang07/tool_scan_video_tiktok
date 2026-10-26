@@ -8,6 +8,14 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+import importlib as _importlib
+from . import crawler as _crawler_mod
+
+try:
+    _importlib.reload(_crawler_mod)
+except Exception:
+    pass
+
 from .crawler import CHANNEL_PROFILES, StoryAudioCrawler, resolve_channel_profile
 from .growth_24h_filter import TikTok24hFilterEngine
 from .macos_desktop_controller import MacOSDesktopController
@@ -80,6 +88,10 @@ class TikTokAutoPoster:
         self.schedule_config_path = self.project_root / "schedule_config.json"
         self.post_log_path = self.project_root / "posted_schedule_history.json"
         self.crawler = StoryAudioCrawler(project_root=self.project_root)
+        try:
+            self.crawler.auto_sync_posted_videos()
+        except Exception:
+            pass
         self.desktop = MacOSDesktopController(project_root=self.project_root)
         self.filter_24h = TikTok24hFilterEngine(
             project_root=self.project_root,
@@ -1183,23 +1195,150 @@ class TikTokAutoPoster:
         logger.info(f"Đã lưu phiên đăng nhập TikTok cho kênh [{ch_folder}] tại: {user_data_dir}")
         return user_data_dir
 
+    @staticmethod
+    def _quick_video_fingerprint(file_path: Path) -> str:
+        """Tính vân tay nhị phân nhanh (size + 64KB đầu/cuối) để phát hiện 2 file MP4 giống hệt nội dung dù khác tên."""
+        import hashlib
+
+        try:
+            st = file_path.stat()
+            size = st.st_size
+            h = hashlib.sha256()
+            h.update(str(size).encode("utf-8"))
+            with open(file_path, "rb") as f:
+                h.update(f.read(65536))
+                if size > 131072:
+                    f.seek(max(0, size - 65536))
+                    h.update(f.read(65536))
+            return f"{size}:{h.hexdigest()[:24]}"
+        except Exception:
+            return ""
+
+    def _record_uploaded_video_in_registry(
+        self, ch_folder: str, video_path: Path, caption: str = ""
+    ) -> None:
+        """Ghi nhận ngay lập tức file/story_id đã bấm Đăng vào `uploaded_videos_registry.json` để chống đăng trùng tuyệt đối."""
+        reg_path = self.project_root / "uploaded_videos_registry.json"
+        data: Dict[str, Any] = {
+            "posted_story_ids": [],
+            "posted_filenames": [],
+            "posted_fingerprints": [],
+            "history": [],
+        }
+        if reg_path.exists():
+            try:
+                loaded = json.loads(reg_path.read_text(encoding="utf-8"))
+                if isinstance(loaded, dict):
+                    data.update(loaded)
+            except Exception:
+                pass
+
+        m_id = re.search(r"(?:tiktok|douyin)_story_(\d+)", video_path.stem, re.IGNORECASE)
+        vid_id = m_id.group(1) if m_id else ""
+        fp = self._quick_video_fingerprint(video_path) if video_path.exists() else ""
+
+        sids = set(str(x) for x in (data.get("posted_story_ids") or []) if x)
+        fns = set(str(x) for x in (data.get("posted_filenames") or []) if x)
+        fps = set(str(x) for x in (data.get("posted_fingerprints") or []) if x)
+
+        if vid_id:
+            sids.add(vid_id)
+        fns.add(video_path.name)
+        if fp:
+            fps.add(fp)
+
+        data["posted_story_ids"] = sorted(sids)
+        data["posted_filenames"] = sorted(fns)
+        data["posted_fingerprints"] = sorted(fps)
+        hist = list(data.get("history") or [])
+        hist.insert(
+            0,
+            {
+                "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "channel": ch_folder,
+                "filename": video_path.name,
+                "story_id": vid_id,
+                "fingerprint": fp,
+                "caption": caption[:160],
+            },
+        )
+        data["history"] = hist[:200]
+        try:
+            reg_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        except Exception:
+            pass
+
     def _get_next_ready_video_for_channel(
         self, ch_folder: str
     ) -> Optional[Tuple[Path, str, str]]:
         """
         Lấy video chờ đăng tiếp theo trong `output/<ch_folder>/ready/` cùng `caption` (kịch bản ngắn tiếng Việt)
         và `hashtags` (Hot Search) từ `output/danh_sach_video.csv`.
-        Nếu video chưa có trong CSV hoặc `caption` đang bị ghi tên file/dãy số (`20261025_...`),
-        tự động khôi phục Kịch bản mô tả tiếng Việt theo ngữ cảnh + Hashtag Hot Search và lưu lại vào CSV.
+        Tự động kiểm tra chống đăng trùng 3 lớp (story_id + filename + binary fingerprint) so với `posted/`,
+        CSV, `uploaded_videos_registry.json` và lịch sử Telemetry trước khi chọn file.
         """
+        try:
+            self.crawler.auto_sync_posted_videos()
+        except Exception:
+            pass
+
         ready_dir = self.project_root / "output" / ch_folder / "ready"
+        posted_dir = self.project_root / "output" / ch_folder / "posted"
+        posted_dir.mkdir(parents=True, exist_ok=True)
         if not ready_dir.exists():
             return None
-        ready_files = sorted(f for f in ready_dir.glob("*.mp4") if f.is_file())
-        if not ready_files:
+
+        posted_ids, posted_filenames = self.crawler._collect_all_known_posted_story_ids_and_files()
+        posted_fingerprints: set[str] = set()
+        for p_mp4 in posted_dir.glob("*.mp4"):
+            if p_mp4.is_file():
+                fp = self._quick_video_fingerprint(p_mp4)
+                if fp:
+                    posted_fingerprints.add(fp)
+
+        reg_path = self.project_root / "uploaded_videos_registry.json"
+        if reg_path.exists():
+            try:
+                reg_data = json.loads(reg_path.read_text(encoding="utf-8"))
+                for fp in reg_data.get("posted_fingerprints") or []:
+                    if fp:
+                        posted_fingerprints.add(str(fp))
+            except Exception:
+                pass
+
+        target_video: Optional[Path] = None
+        for cand in sorted(f for f in ready_dir.glob("*.mp4") if f.is_file()):
+            m_cand = re.search(r"(?:tiktok|douyin)_story_(\d+)", cand.stem, re.IGNORECASE)
+            cand_id = m_cand.group(1) if m_cand else ""
+            cand_fp = self._quick_video_fingerprint(cand)
+
+            if (
+                cand.name in posted_filenames
+                or (cand_id and cand_id in posted_ids)
+                or (cand_fp and cand_fp in posted_fingerprints)
+            ):
+                dest_dup = posted_dir / cand.name
+                has_same_sid = bool(cand_id and any(cand_id in p.name for p in posted_dir.glob("*.mp4")))
+                if has_same_sid and not dest_dup.exists():
+                    cand.unlink(missing_ok=True)
+                    logger.info(
+                        f"[{ch_folder}] [Anti-Duplicate Guard] Đã xóa bản trùng {cand.name} (story_id={cand_id}) khỏi ready/."
+                    )
+                else:
+                    if dest_dup.exists():
+                        dest_dup.unlink()
+                    shutil.move(str(cand), str(dest_dup))
+                    logger.info(
+                        f"[{ch_folder}] [Anti-Duplicate Guard] Bỏ qua {cand.name} (story_id={cand_id}) vì ĐÃ ĐĂNG TRƯỚC ĐÓ -> chuyển sang posted/."
+                    )
+                continue
+
+            target_video = cand
+            break
+
+        if not target_video:
             return None
 
-        target_video = ready_files[0]
         caption = ""
         hashtags = ""
         m_id = re.search(r"(?:tiktok|douyin)_story_(\d+)", target_video.stem, re.IGNORECASE)
@@ -1445,6 +1584,10 @@ class TikTokAutoPoster:
                         f"[{ch_folder}] Đã hết thời gian chờ phản hồi sau khi bấm Đăng, tiến hành kiểm tra tại trang Quản lý Bài đăng..."
                     )
 
+                # Ghi nhận vào sổ cái chống đăng trùng & chuyển ngay sang posted/ trước khi làm các bước phụ
+                self._record_uploaded_video_in_registry(ch_folder, video_path, caption)
+                marked = self.crawler.mark_video_posted(str(video_path))
+
                 # Bước 7 (Ảnh chụp màn hình 5): Tại trang tiktok.com/tiktokstudio/content,
                 # kiểm tra cột "Quyền riêng tư" và chuyển mọi bài đang ở "Chỉ mình tôi" sang "Mọi người" (Công khai)!
                 switched_public = self._ensure_posts_public_in_content_page(page, ch_folder)
@@ -1487,8 +1630,6 @@ class TikTokAutoPoster:
                 except Exception:
                     pass
 
-        # Bước 8: Đánh dấu đã đăng: chuyển từ ready/ sang posted/ và cập nhật CSV
-        marked = self.crawler.mark_video_posted(str(video_path))
         logger.info(f"[{ch_folder}] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: {marked['filename']}")
         return marked
 

@@ -510,19 +510,147 @@ class StoryAudioCrawler:
         # Đảm bảo file CSV được nâng cấp lên schema chuẩn (có cột status=READY/POSTED và posted_at)
         self._upgrade_master_csv_schema()
 
+    def _collect_all_known_posted_story_ids_and_files(self) -> Tuple[Set[str], Set[str]]:
+        """
+        Thu thập toàn bộ `story_id` và `filename` đã từng được đăng trên cả 4 kênh từ:
+        1. Thư mục `output/<channel>/posted/*.mp4`
+        2. File `output/danh_sach_video.csv` (cột `status == POSTED`)
+        3. File `uploaded_videos_registry.json` (sổ cái chống đăng trùng vĩnh viễn)
+        4. File `remote_telemetry/intel_status_report.json` (lịch sử telemetry upload)
+        5. Tập hạt giống `KNOWN_POSTED_IDS` đã xác nhận từ lịch sử Git.
+        """
+        posted_ids: Set[str] = {
+            "7690915418453708052",
+            "7691716032381127966",
+            "7694494576270216478",
+            "7653148698738335945",
+            "7640576010862205938",
+            "7696217946204441869",
+            "7699677240048569621",
+            "7698936354142506260",
+            "7698023893977599272",
+            "7697561971461197082",
+            "7682055125342424341",
+            "7670439173538549012",
+            "7699354713556323590",
+            "7650380932804906261",
+            "7683492499272273173",
+            "7698299779394080050",
+            "7638714267462561417",
+        }
+        posted_filenames: Set[str] = {
+            "20261023_090135_tiktok_story_7690915418453708052.mp4",
+            "20261025_140905_tiktok_story_7691716032381127966.mp4",
+            "20261025_145613_tiktok_story_7691716032381127966.mp4",
+            "20261025_142722_tiktok_story_7694494576270216478.mp4",
+            "20261025_163628_douyin_story_7653148698738335945.mp4",
+            "20261025_165507_douyin_story_7640576010862205938.mp4",
+            "20261025_172156_tiktok_story_7696217946204441869.mp4",
+            "20261025_170051_tiktok_story_7699677240048569621.mp4",
+            "20261025_181833_tiktok_story_7698936354142506260.mp4",
+        }
+
+        def _extract_sid(text: str) -> str:
+            m = re.search(r"(?:tiktok|douyin)_story_(\d+)", str(text or ""), re.IGNORECASE)
+            if m:
+                return m.group(1)
+            m2 = re.search(r"/video/(\d+)", str(text or ""))
+            return m2.group(1) if m2 else ""
+
+        for profile in CHANNEL_PROFILES.values():
+            ch_folder = profile["folder_name"]
+            posted_dir = self.output_root / ch_folder / "posted"
+            if posted_dir.exists():
+                for mp4 in posted_dir.glob("*.mp4"):
+                    if mp4.is_file():
+                        posted_filenames.add(mp4.name)
+                        sid = _extract_sid(mp4.name)
+                        if sid:
+                            posted_ids.add(sid)
+
+        if self.csv_path.exists():
+            try:
+                with open(self.csv_path, mode="r", newline="", encoding="utf-8") as rf:
+                    for row in csv.DictReader(rf):
+                        st = (row.get("status") or "").strip().upper()
+                        fn = (row.get("filename") or "").strip()
+                        s_url = (row.get("source_url") or "").strip()
+                        if st == "POSTED" or "/posted/" in fn:
+                            if fn:
+                                posted_filenames.add(Path(fn).name)
+                            sid = _extract_sid(fn) or _extract_sid(s_url)
+                            if sid:
+                                posted_ids.add(sid)
+            except Exception:
+                pass
+
+        reg_path = self.project_root / "uploaded_videos_registry.json"
+        if reg_path.exists():
+            try:
+                reg_data = json.loads(reg_path.read_text(encoding="utf-8"))
+                for sid in reg_data.get("posted_story_ids") or []:
+                    if sid:
+                        posted_ids.add(str(sid))
+                for fn in reg_data.get("posted_filenames") or []:
+                    if fn:
+                        posted_filenames.add(Path(str(fn)).name)
+            except Exception:
+                pass
+
+        telem_path = self.project_root / "remote_telemetry" / "intel_status_report.json"
+        if telem_path.exists():
+            try:
+                tdata = json.loads(telem_path.read_text(encoding="utf-8"))
+                events = list(tdata.get("recent_events") or [])
+                if tdata.get("latest_event"):
+                    events.append(tdata["latest_event"])
+                for ev in events:
+                    if isinstance(ev, dict) and ev.get("event_type") == "upload":
+                        vfile = str((ev.get("details") or {}).get("video_file") or "").strip()
+                        if vfile:
+                            posted_filenames.add(Path(vfile).name)
+                            sid = _extract_sid(vfile)
+                            if sid:
+                                posted_ids.add(sid)
+            except Exception:
+                pass
+
+        return posted_ids, posted_filenames
+
     def _load_history(self) -> Dict[str, Any]:
-        """Đọc lịch sử các video_id và sound_id đã xử lý từ `story_audio_history.json`."""
+        """Đọc lịch sử các video_id và sound_id đã xử lý từ `story_audio_history.json` + đồng bộ ổ cứng."""
+        data: Dict[str, Any] = {"video_ids": [], "sound_ids": [], "items": []}
         if self.history_path.exists():
             try:
-                data = json.loads(self.history_path.read_text(encoding="utf-8"))
-                if isinstance(data, dict):
-                    data.setdefault("video_ids", [])
-                    data.setdefault("sound_ids", [])
-                    data.setdefault("items", [])
-                    return data
+                loaded = json.loads(self.history_path.read_text(encoding="utf-8"))
+                if isinstance(loaded, dict):
+                    loaded.setdefault("video_ids", [])
+                    loaded.setdefault("sound_ids", [])
+                    loaded.setdefault("items", [])
+                    data = loaded
             except Exception as exc:
                 logger.warning(f"Không thể đọc {self.history_path}: {exc}")
-        return {"video_ids": [], "sound_ids": [], "items": []}
+
+        try:
+            posted_ids, _ = self._collect_all_known_posted_story_ids_and_files()
+            existing_vids = set(str(v) for v in data.get("video_ids", []))
+            for sid in posted_ids:
+                if sid not in existing_vids:
+                    data["video_ids"].append(sid)
+                    existing_vids.add(sid)
+            for profile in CHANNEL_PROFILES.values():
+                ch_folder = profile["folder_name"]
+                for sub in ("ready", "posted"):
+                    sub_dir = self.output_root / ch_folder / sub
+                    if sub_dir.exists():
+                        for mp4 in sub_dir.glob("*.mp4"):
+                            m = re.search(r"(?:tiktok|douyin)_story_(\d+)", mp4.stem, re.IGNORECASE)
+                            if m and m.group(1) not in existing_vids:
+                                data["video_ids"].append(m.group(1))
+                                existing_vids.add(m.group(1))
+        except Exception:
+            pass
+        return data
 
     def save_to_history(
         self,
@@ -559,11 +687,22 @@ class StoryAudioCrawler:
         )
 
     def is_processed(self, video_id: str, sound_id: Optional[str] = None) -> bool:
-        """Kiểm tra xem video_id hoặc sound_id đã từng được xử lý chưa."""
-        if str(video_id) in self.history.get("video_ids", []):
+        """Kiểm tra xem video_id hoặc sound_id đã từng được xử lý hoặc đã nằm trong ready/posted chưa."""
+        vid_str = str(video_id).strip()
+        if vid_str in self.history.get("video_ids", []):
             return True
         if sound_id and str(sound_id) in self.history.get("sound_ids", []):
             return True
+        if vid_str:
+            posted_ids, _ = self._collect_all_known_posted_story_ids_and_files()
+            if vid_str in posted_ids:
+                return True
+            for profile in CHANNEL_PROFILES.values():
+                ch_folder = profile["folder_name"]
+                for sub in ("ready", "posted"):
+                    sub_dir = self.output_root / ch_folder / sub
+                    if sub_dir.exists() and any(vid_str in f.name for f in sub_dir.glob("*.mp4")):
+                        return True
         return False
 
     @staticmethod
@@ -1636,22 +1775,60 @@ class StoryAudioCrawler:
     def auto_sync_posted_videos(self, min_age_seconds: float = 35.0) -> List[Dict[str, Any]]:
         """
         Tự động đồng bộ trạng thái `READY` <-> `POSTED` trên toàn bộ 4 kênh (`channel_1` .. `channel_4`):
-        1. Phát hiện các video trong `output/channel_X/ready/` đã được chọn upload lên TikTok qua trình duyệt
+        1. Loại bỏ/di chuyển ngay mọi video trong `ready/` có `story_id` hoặc `filename` đã từng được đăng
+           (`_collect_all_known_posted_story_ids_and_files`), hoặc bị trùng lặp `story_id` ngay trong cùng `ready/`.
+        2. Phát hiện các video trong `output/channel_X/ready/` đã được chọn upload lên TikTok qua trình duyệt
            (`has_browser_upload_macl` == True và đã qua `min_age_seconds` để trình duyệt đọc xong file)
            -> Tự động chuyển sang `output/channel_X/posted/` và cập nhật `output/danh_sach_video.csv` (`POSTED`).
-        2. Đồng bộ 2 chiều giữa thư mục ổ cứng (`ready/`, `posted/`) và file `output/danh_sach_video.csv`.
+        3. Đồng bộ 2 chiều giữa thư mục ổ cứng (`ready/`, `posted/`) và file `output/danh_sach_video.csv`.
         """
         self.ensure_channel_directories()
         auto_moved: List[Dict[str, Any]] = []
         now_ts = time.time()
+        posted_ids, posted_filenames = self._collect_all_known_posted_story_ids_and_files()
 
         for profile in CHANNEL_PROFILES.values():
             ch_folder = profile["folder_name"]
             ready_dir = self.output_root / ch_folder / "ready"
             posted_dir = self.output_root / ch_folder / "posted"
+            seen_ready_story_ids: Set[str] = set()
+
             for mp4 in sorted(ready_dir.glob("*.mp4")):
                 if not mp4.is_file():
                     continue
+                m_sid = re.search(r"(?:tiktok|douyin)_story_(\d+)", mp4.stem, re.IGNORECASE)
+                sid = m_sid.group(1) if m_sid else ""
+
+                # 1. Chặn đứng đăng trùng: nếu video_id hoặc filename đã nằm trong danh sách ĐÃ ĐĂNG
+                if mp4.name in posted_filenames or (sid and sid in posted_ids):
+                    dest_file = posted_dir / mp4.name
+                    has_same_sid_in_posted = bool(
+                        sid and any(sid in p.name for p in posted_dir.glob("*.mp4"))
+                    )
+                    if has_same_sid_in_posted and not dest_file.exists():
+                        mp4.unlink(missing_ok=True)
+                        logger.info(
+                            f"[Anti-Duplicate Guard] Đã xóa bản sao video trùng story_id={sid} trong {ch_folder}/ready/{mp4.name} (vì đã có bản đã đăng trong posted/)."
+                        )
+                    else:
+                        if dest_file.exists():
+                            dest_file.unlink()
+                        shutil.move(str(mp4), str(dest_file))
+                        logger.info(
+                            f"[Anti-Duplicate Guard] Phát hiện video trong {ch_folder}/ready/{mp4.name} (story_id={sid}) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!"
+                        )
+                    continue
+
+                # 2. Chặn trùng lặp ngay trong cùng thư mục ready/ (2 file khác timestamp nhưng cùng story_id)
+                if sid:
+                    if sid in seen_ready_story_ids:
+                        mp4.unlink(missing_ok=True)
+                        logger.info(
+                            f"[Anti-Duplicate Guard] Đã xóa file trùng lặp story_id={sid} ngay trong {ch_folder}/ready/{mp4.name}."
+                        )
+                        continue
+                    seen_ready_story_ids.add(sid)
+
                 if self.has_browser_upload_macl(mp4):
                     st = mp4.stat()
                     if (now_ts - st.st_ctime) >= min_age_seconds:
@@ -1662,6 +1839,9 @@ class StoryAudioCrawler:
                         if dest_file.exists():
                             dest_file.unlink()
                         shutil.move(str(mp4), str(dest_file))
+                        if sid:
+                            posted_ids.add(sid)
+                        posted_filenames.add(mp4.name)
                         logger.info(
                             f"[Auto-Sync Posted] Phát hiện video đã được chọn upload lên TikTok: "
                             f"{ch_folder}/ready/{mp4.name} -> Đã chuyển sang {ch_folder}/posted/{mp4.name} "
@@ -1684,7 +1864,8 @@ class StoryAudioCrawler:
     def is_raw_filename_caption(text: str, stem: str = "") -> bool:
         """
         Kiểm tra xem chuỗi `text` có đang bị chứa tên file thô / dãy số ID
-        (ví dụ: `20261025_152239_tiktok_story_7696574490729303310`) thay vì kịch bản mô tả tiếng Việt hay không.
+        (ví dụ: `20261025_152239_tiktok_story_7696574490729303310`) hoặc chữ Trung/Anh chưa dịch
+        thay vì kịch bản mô tả tiếng Việt hoàn chỉnh hay không.
         """
         cleaned = (text or "").strip()
         if not cleaned:
@@ -1696,6 +1877,7 @@ class StoryAudioCrawler:
             or "tiktok_story" in cleaned.lower()
             or "douyin_story" in cleaned.lower()
             or re.match(r"^[\d_\-\s\.mp4]+$", cleaned.lower())
+            or bool(re.search(r"[\u4e00-\u9fff]", cleaned))
         ):
             return True
         return False

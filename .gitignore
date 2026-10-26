@@ -16,6 +16,7 @@ __pycache__/
 # Phiên trình duyệt và lịch sử đăng/tương tác 24h riêng trên từng máy
 browser_profiles/
 posted_schedule_history.json
+uploaded_videos_registry.json
 growth_24h_history.json
 
 # Thư mục tạm và log
