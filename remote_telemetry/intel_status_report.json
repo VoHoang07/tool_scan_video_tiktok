@@ -1,15 +1,15 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-26 09:44:31",
+    "timestamp": "2026-10-26 09:48:28",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
-      "interacted_count": 1,
+      "interacted_count": 2,
       "records": [
         {
-          "channel": "tu_chan_gioi",
+          "channel": "video_AI_hay",
           "video_id": "7700550611183357205",
           "video_url": "https://www.tiktok.com/@trucanhshop05/video/7700550611183357205",
           "creator_handle": "@trucanhshop05",
@@ -23,13 +23,79 @@
             "6_commented_after_follow": true
           },
           "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-          "interacted_at": "2026-10-26 09:44:31",
-          "follow_back_window_until": "2026-10-27 09:44:31"
+          "interacted_at": "2026-10-26 09:46:31",
+          "follow_back_window_until": "2026-10-27 09:46:31"
+        },
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7700515993637965077",
+          "video_url": "https://www.tiktok.com/@kenhcuamylinh/video/7700515993637965077",
+          "creator_handle": "@kenhcuamylinh",
+          "watched_seconds": 20.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+          "interacted_at": "2026-10-26 09:48:28",
+          "follow_back_window_until": "2026-10-27 09:48:28"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-26 09:48:28",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 2,
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7700550611183357205",
+            "video_url": "https://www.tiktok.com/@trucanhshop05/video/7700550611183357205",
+            "creator_handle": "@trucanhshop05",
+            "watched_seconds": 18.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "interacted_at": "2026-10-26 09:46:31",
+            "follow_back_window_until": "2026-10-27 09:46:31"
+          },
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7700515993637965077",
+            "video_url": "https://www.tiktok.com/@kenhcuamylinh/video/7700515993637965077",
+            "creator_handle": "@kenhcuamylinh",
+            "watched_seconds": 20.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
+            "interacted_at": "2026-10-26 09:48:28",
+            "follow_back_window_until": "2026-10-27 09:48:28"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-26 09:44:31",
       "machine_arch": "x86_64",
@@ -386,36 +452,6 @@
             "comment_text": "Mình đã xem hết video của bạn, tương tác đủ combo (tim + lưu yêu thích + sao chép liên kết + follow) cho bạn rồi nha! Chúc kênh bạn sớm lên xu hướng, rảnh ghé tương tác lại cùng mình nha 🔥",
             "interacted_at": "2026-10-26 00:55:20",
             "follow_back_window_until": "2026-10-27 00:55:20"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 00:47:10",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7699592855781772564",
-            "video_url": "https://www.tiktok.com/@hangorder1/video/7699592855781772564",
-            "creator_handle": "@hangorder1",
-            "watched_seconds": 18.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Đã xem hết 100% thời lượng video, bấm tim, thêm vào yêu thích, copy link và follow bạn đầy đủ 5 bước rồi nhé! Nhớ trả tương tác giúp mình trong 24 giờ để cùng nhau lên xu hướng nhé ✨",
-            "interacted_at": "2026-10-26 00:47:10",
-            "follow_back_window_until": "2026-10-27 00:47:10"
           }
         ]
       }
