@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-27 20:20:13",
+    "timestamp": "2026-10-27 20:37:45",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261026_093256_tiktok_story_7700149454669843732.mp4",
-      "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 70 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
-      "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #vahmattraxanh #gocchiaSe #tamtrang #truyenaudio #viral",
+      "video_file": "20261025_184357_tiktok_story_7682408323186150677.mp4",
+      "caption": "⚔️ [Tu Chân Giới] [Đam Mỹ Audio] TÔI LÀ CẬU THIẾU GIA GIẢ ĐƯỢC NUÔNG CHIỀU TỪ BÉ. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+      "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #xuhuong #viral",
       "post_confirmed": true,
       "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-27 20:37:45",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261025_184357_tiktok_story_7682408323186150677.mp4",
+        "caption": "⚔️ [Tu Chân Giới] [Đam Mỹ Audio] TÔI LÀ CẬU THIẾU GIA GIẢ ĐƯỢC NUÔNG CHIỀU TỪ BÉ. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #xuhuong #viral",
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-27 20:20:13",
       "machine_arch": "x86_64",
@@ -4033,21 +4048,6 @@
         "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #xh #xuhuongtiktok",
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-27 08:04:41",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261026_083110_douyin_story_7681137499921550619.mp4",
-        "caption": "🎬 最近我耳边的模糊您男生又出现了. \"船长 今天怎么这么早...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-        "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #hoathinhhai #xuhuong",
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
