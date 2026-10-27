@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-27 08:15:25",
+    "timestamp": "2026-10-27 08:19:08",
     "machine_arch": "x86_64",
     "event_type": "upload",
     "channel": "baby_AI",
     "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261025_183048_douyin_story_7649090399869777051.mp4",
-      "caption": "🥰 Nhật ký gia đình siêu lầy: 我去那边摘一点椰果吃. \"妈妈在这里乖乖不要乱跑哦，嗯...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #xh #xuhuongtiktok",
+      "video_file": "20261025_230807_douyin_story_7659099729062903625.mp4",
+      "caption": "😂 臭小子,你看了一整天動畫片. \"看電視對眼睛不好呦,還是讓我看吧...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xuhuong",
       "post_confirmed": true,
       "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-27 08:19:08",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261025_230807_douyin_story_7659099729062903625.mp4",
+        "caption": "😂 臭小子,你看了一整天動畫片. \"看電視對眼睛不好呦,還是讓我看吧...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xuhuong",
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-27 08:15:25",
       "machine_arch": "x86_64",
@@ -3330,21 +3345,6 @@
         "hashtags": "#audiodemkhuya #truyenaudio #kechuyendemkhuya #truyenfull #dramatiktok #phimngantrungquoc #xuhuongtiktok #tiktokvn",
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-26 20:17:03",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261025_172156_tiktok_story_7696217946204441869.mp4",
-        "caption": "🥰 Nhật ký gia đình siêu lầy: Before you get the purple present, come on, you get this one, you get the purple present,. \"You get this blue present, Let's see what it is, Here it is...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #foryou",
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
