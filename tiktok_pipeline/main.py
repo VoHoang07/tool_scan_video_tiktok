@@ -337,6 +337,12 @@ def run_pipeline(
             save_json_path=transcript_json,
         )
         transcript_data["original_title"] = dl_title
+        detected_lang = (transcript_data.get("language") or "zh").lower().strip()
+        if detected_lang not in ("zh", "yue", "cmn", "vi"):
+            shutil.rmtree(job_work_dir, ignore_errors=True)
+            raise ValueError(
+                f"Loại bỏ video {video_id}: Ngôn ngữ '{detected_lang}' không phải Tiếng Trung ('zh') hoặc Tiếng Việt ('vi')."
+            )
 
     summary = process_prepared_story(
         raw_video_path=raw_video_path,
@@ -437,7 +443,7 @@ def run_crawl_story_mode(
         max_duration=300.0,
         min_segments=2,
         min_speech_ratio=0.25,
-        min_likes=10,
+        min_likes=5000,
         whisper_model=whisper_model,
     )
 
@@ -716,7 +722,7 @@ def run_continuous_mode(
         max_duration=300.0,
         min_segments=2,
         min_speech_ratio=0.25,
-        min_likes=10,
+        min_likes=5000,
         whisper_model=whisper_model,
     )
 
@@ -744,7 +750,7 @@ def run_continuous_mode(
     scheduler_lock = threading.Lock()
 
     def _reload_poster_if_updated() -> None:
-        nonlocal poster, initial_code_snapshot
+        nonlocal poster, crawler, initial_code_snapshot
         pulled = _auto_git_pull_if_available(project_root)
         cur_snap = _get_codebase_mtime_snapshot(project_root)
         if pulled or cur_snap != initial_code_snapshot:
@@ -760,8 +766,18 @@ def run_continuous_mode(
                 importlib.reload(_tr_mod)
                 importlib.reload(_g24_mod)
                 importlib.reload(_ap_mod)
+                crawler = _cr_mod.StoryAudioCrawler(
+                    project_root=project_root,
+                    min_duration=15.0,
+                    max_duration=300.0,
+                    min_segments=2,
+                    min_speech_ratio=0.25,
+                    min_likes=5000,
+                    whisper_model=whisper_model,
+                )
+                crawler.auto_sync_posted_videos()
                 poster = _ap_mod.TikTokAutoPoster(project_root=project_root)
-                logger.info("[Hot-Reload In-Place] Đã nạp nóng code mới cho 2 Dòng Hoạt Động (Đăng Video & Bộ lọc 24h)!")
+                logger.info("[Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!")
             except Exception as rel_exc:
                 logger.debug(f"[Hot-Reload In-Place] Bỏ qua lỗi nạp nóng phụ: {rel_exc}")
 
