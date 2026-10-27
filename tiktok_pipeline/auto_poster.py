@@ -125,6 +125,19 @@ class TikTokAutoPoster:
         )
         self.ensure_schedule_config()
         try:
+            import os as _os
+            import subprocess as _sp
+
+            if not getattr(TikTokAutoPoster, "_caffeinate_started", False):
+                _sp.Popen(
+                    ["caffeinate", "-dimsu", "-w", str(_os.getpid())],
+                    stdout=_sp.DEVNULL,
+                    stderr=_sp.DEVNULL,
+                )
+                setattr(TikTokAutoPoster, "_caffeinate_started", True)
+        except Exception:
+            pass
+        try:
             self._auto_revive_stream1_upload_if_dead()
         except Exception:
             pass
