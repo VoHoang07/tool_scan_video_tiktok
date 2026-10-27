@@ -2363,6 +2363,10 @@ class TikTokAutoPoster:
                             ch_folder, video_count=filter_count, headless=headless
                         )
                         filter_results[f_key] = res
+                        logger.info(
+                            f"[Dòng 2 - Bộ lọc 24h] Đã hoàn tất phiên [{ch_folder}] (khung {f_slot}) -> "
+                            "Đang chờ tới khung giờ kế tiếp theo lịch 7 lần/ngày..."
+                        )
                     except Exception as exc:
                         logger.error(
                             f"[Dòng 2 - Bộ lọc 24h] Lỗi chạy kênh [{ch_folder}] khung {f_slot}: {exc}"

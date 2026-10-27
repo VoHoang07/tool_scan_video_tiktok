@@ -1391,6 +1391,7 @@ def main() -> None:
                 "=== KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 2 (--stream-filter24h): "
                 "MỞ 4 KÊNH CHẠY BỘ LỌC 24 GIỜ (7 LẦN/NGÀY × 10 VIDEO/KÊNH) ==="
             )
+            f24_tick = 0
             while True:
                 pulled = _auto_git_pull_if_available(project_root)
                 if pulled or _get_codebase_mtime_snapshot(project_root) != snap:
@@ -1406,6 +1407,11 @@ def main() -> None:
                     except Exception:
                         pass
                 poster.check_and_run_stream2_filter24h_schedule()
+                f24_tick += 1
+                if f24_tick % 10 == 0:
+                    logger.info(
+                        "[Dòng 2 - Bộ lọc 24h] Đang hoạt động ổn định — canh khung giờ chạy tiếp theo (7 lần/ngày)..."
+                    )
                 time.sleep(30)
             return
 
