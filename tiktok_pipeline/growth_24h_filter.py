@@ -180,6 +180,8 @@ def _hot_patch_live_auto_poster_stealth() -> None:
                             "_acquire_browser_process_lock",
                             "_release_browser_process_lock",
                             "_was_channel_uploaded_recently",
+                            "_is_stream1_upload_process_running",
+                            "_auto_revive_stream1_upload_if_dead",
                             "upload_one_channel_video",
                             "run_24h_filter_for_channel",
                             "check_and_run_stream1_upload_schedule",

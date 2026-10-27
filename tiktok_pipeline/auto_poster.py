@@ -101,6 +101,10 @@ class TikTokAutoPoster:
             os_click_fn=self._os_click_viewport,
         )
         self.ensure_schedule_config()
+        try:
+            self._auto_revive_stream1_upload_if_dead()
+        except Exception:
+            pass
 
     def ensure_schedule_config(self) -> Dict[str, Any]:
         """Tạo hoặc đọc file cấu hình khung giờ đăng `schedule_config.json`."""
@@ -2131,13 +2135,114 @@ class TikTokAutoPoster:
 
         return posted_results
 
+    def _is_stream1_upload_process_running(self) -> bool:
+        """Kiểm tra xem tiến trình Dòng 1 (`--stream-upload` hoặc `--continuous`) có đang sống trên máy hay không."""
+        import os as _os
+        import subprocess
+
+        try:
+            my_pid = _os.getpid()
+            out = subprocess.run(
+                ["ps", "-axo", "pid,command"],
+                capture_output=True,
+                text=True,
+                timeout=5,
+                check=False,
+            ).stdout
+            for line in out.splitlines():
+                s = line.strip()
+                if not s or "main.py" not in s:
+                    continue
+                if "--stream-upload" in s or "--continuous" in s:
+                    parts = s.split(None, 1)
+                    if parts and parts[0].isdigit() and int(parts[0]) != my_pid:
+                        return True
+        except Exception:
+            pass
+        return False
+
+    def _auto_revive_stream1_upload_if_dead(self) -> None:
+        """
+        Tự động hồi sinh Cửa sổ 1 (`--stream-upload`) từ xa trên máy Intel nếu Cửa sổ 1 bị dừng
+        khi người dùng không có ở nhà (nhờ Cửa sổ 2 `--stream-filter24h` vẫn đang sống).
+        """
+        import platform as _plat
+        import subprocess
+        import sys as _sys
+
+        if _plat.machine() != "x86_64":
+            return
+        if self._is_stream1_upload_process_running():
+            return
+
+        proj_str = str(self.project_root)
+        logger.info(
+            "[Auto-Revive Watchdog] Phát hiện Cửa sổ 1 (--stream-upload) đang dừng trên máy Intel -> "
+            "Đang tự động khởi động lại Cửa sổ 1 từ xa..."
+        )
+
+        # 1. Thử gõ lệnh trực tiếp vào cửa sổ Terminal đang rảnh trên màn hình máy Intel qua AppleScript
+        apple_script = f'''
+        tell application "Terminal"
+            repeat with w in windows
+                repeat with t in tabs of w
+                    if not busy of t then
+                        do script "cd '{proj_str}' && ./venv/bin/python main.py --stream-upload" in t
+                        return "REVIVED_IN_TAB"
+                    end if
+                end repeat
+            end repeat
+        end tell
+        '''
+        try:
+            subprocess.run(
+                ["osascript", "-e", apple_script],
+                capture_output=True,
+                text=True,
+                timeout=6,
+                check=False,
+            )
+            time.sleep(2.5)
+        except Exception:
+            pass
+
+        # 2. Nếu cửa sổ Terminal chưa nhận lệnh (hoặc chưa cấp quyền Automation cho Terminal), chạy ngầm Popen trực tiếp
+        if not self._is_stream1_upload_process_running():
+            try:
+                py_bin = self.project_root / "venv" / "bin" / "python"
+                exe_str = str(py_bin) if py_bin.exists() else _sys.executable
+                log_file = open(self.project_root / "stream1_upload_revived.log", "a", encoding="utf-8")
+                subprocess.Popen(
+                    [exe_str, str(self.project_root / "main.py"), "--stream-upload"],
+                    cwd=proj_str,
+                    stdout=log_file,
+                    stderr=log_file,
+                    start_new_session=True,
+                )
+                time.sleep(1.5)
+                logger.info("[Auto-Revive Watchdog] Đã tự động bật lại tiến trình Dòng 1 (--stream-upload) thành công!")
+            except Exception as exc:
+                logger.debug(f"[Auto-Revive Watchdog] Lỗi phụ khi Popen Dòng 1: {exc}")
+
+        # 3. Nếu vì lý do gì đó vẫn chưa thấy tiến trình riêng, Cửa sổ 2 tự đảm nhận kiểm tra lịch đăng Dòng 1 luôn
+        if not self._is_stream1_upload_process_running():
+            try:
+                self.check_and_run_stream1_upload_schedule()
+            except Exception:
+                pass
+
     def check_and_run_stream2_filter24h_schedule(self) -> Dict[str, Any]:
         """
         [DÒNG HOẠT ĐỘNG 2 — MỞ 4 KÊNH CHẠY BỘ LỌC 24 GIỜ (7 LẦN/NGÀY × 10 VIDEO/KÊNH)]:
         Tự động mở lần lượt 4 kênh theo 7 khung giờ mỗi ngày (`channel_filter_24h_times`),
         mỗi kênh tương tác `filter_24h_videos_per_session` (mặc định 10 video).
-        Hoạt động độc lập 100% với Dòng 1 (KHÔNG tự ý gọi hàm đăng video để tránh đăng lặp khi mở 2 Terminal).
+        Nếu Cửa sổ 1 (`--stream-upload`) bị dừng khi vắng nhà, tự động hồi sinh Cửa sổ 1 từ xa.
         """
+        try:
+            self._auto_revive_stream1_upload_if_dead()
+        except Exception:
+            pass
+
         cfg = self.ensure_schedule_config()
         filter_enabled = bool(cfg.get("filter_24h_enabled", True))
         filter_count = int(cfg.get("filter_24h_videos_per_session", 10))
