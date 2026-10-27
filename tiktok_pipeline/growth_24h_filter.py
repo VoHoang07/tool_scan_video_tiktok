@@ -13,8 +13,6 @@ from .utils import logger
 
 DIGG_UI_GUARD_SCRIPT = """
 (() => {
-    // Giữ nguyên 100% prototype C++ gốc (window.fetch / XMLHttpRequest) để không bị TikTok webmssdk
-    // phát hiện hook hàm và đánh rơi ngầm lệnh Follow (follow_status: 0) / Tim (is_digg: 1).
     const automationProps = [
         '__playwright', '__pw_manual', '__PW_inspect',
         'cdc_adoQpoasnfa76pfcZLmcfl_Array',
@@ -24,6 +22,28 @@ DIGG_UI_GUARD_SCRIPT = """
     for (const prop of automationProps) {
         try { delete window[prop]; } catch (e) {}
     }
+    try {
+        const hasTrapGetter = (arg) => {
+            if (!arg || (typeof arg !== 'object' && typeof arg !== 'function')) return false;
+            const dStack = Object.getOwnPropertyDescriptor(arg, 'stack');
+            const dId = Object.getOwnPropertyDescriptor(arg, 'id');
+            return Boolean((dStack && dStack.get) || (dId && dId.get) || arg instanceof Error);
+        };
+        for (const m of ['debug', 'dir', 'dirxml', 'table', 'trace', 'log']) {
+            const orig = console[m];
+            if (typeof orig !== 'function') continue;
+            Object.defineProperty(console, m, {
+                value: new Proxy(orig, {
+                    apply(target, thisArg, args) {
+                        if (args && args.some(hasTrapGetter)) return undefined;
+                        return Reflect.apply(target, thisArg, args);
+                    }
+                }),
+                configurable: true,
+                writable: true
+            });
+        }
+    } catch (e) {}
 })();
 """
 
@@ -69,7 +89,20 @@ def _hot_patch_live_auto_poster_stealth() -> None:
                 "--disable-background-timer-throttling",
                 "--lang=vi-VN",
             ]
-            ignore_args = ["--enable-automation", "--no-sandbox"]
+            ignore_args = [
+                "--enable-automation",
+                "--no-sandbox",
+                "--disable-field-trial-config",
+                "--force-color-profile=srgb",
+                "--metrics-recording-only",
+                "--disable-background-networking",
+                "--disable-component-update",
+                "--disable-default-apps",
+                "--allow-pre-commit-input",
+                "--export-tagged-pdf",
+                "--no-service-autorun",
+                "--disable-sync",
+            ]
             try:
                 ctx = playwright_obj.chromium.launch_persistent_context(
                     user_data_dir=str(user_data_dir),

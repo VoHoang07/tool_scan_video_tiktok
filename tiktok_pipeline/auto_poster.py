@@ -48,8 +48,6 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
 # Script chống phát hiện trình duyệt tự động (Stealth Anti-Detect cho TikTok mssdk / secsdk)
 STEALTH_INIT_SCRIPT = """
 (() => {
-    // Chỉ dọn biến toàn cục của Playwright nếu có, giữ nguyên 100% prototype C++ gốc của Google Chrome
-    // (đã tắt AutomationControlled ở tầng C++ Blink qua cờ --disable-blink-features=AutomationControlled)
     const automationProps = [
         '__playwright', '__pw_manual', '__PW_inspect',
         'cdc_adoQpoasnfa76pfcZLmcfl_Array',
@@ -59,6 +57,29 @@ STEALTH_INIT_SCRIPT = """
     for (const prop of automationProps) {
         try { delete window[prop]; } catch (e) {}
     }
+    // Chặn bẫy dò CDP Runtime.enable của ByteDance webmssdk.js (Error.stack / custom getter qua console.*)
+    try {
+        const hasTrapGetter = (arg) => {
+            if (!arg || (typeof arg !== 'object' && typeof arg !== 'function')) return false;
+            const dStack = Object.getOwnPropertyDescriptor(arg, 'stack');
+            const dId = Object.getOwnPropertyDescriptor(arg, 'id');
+            return Boolean((dStack && dStack.get) || (dId && dId.get) || arg instanceof Error);
+        };
+        for (const m of ['debug', 'dir', 'dirxml', 'table', 'trace', 'log']) {
+            const orig = console[m];
+            if (typeof orig !== 'function') continue;
+            Object.defineProperty(console, m, {
+                value: new Proxy(orig, {
+                    apply(target, thisArg, args) {
+                        if (args && args.some(hasTrapGetter)) return undefined;
+                        return Reflect.apply(target, thisArg, args);
+                    }
+                }),
+                configurable: true,
+                writable: true
+            });
+        }
+    } catch (e) {}
 })();
 """
 
@@ -232,7 +253,20 @@ class TikTokAutoPoster:
             "--disable-background-timer-throttling",
             "--lang=vi-VN",
         ]
-        ignore_args = ["--enable-automation", "--no-sandbox"]
+        ignore_args = [
+            "--enable-automation",
+            "--no-sandbox",
+            "--disable-field-trial-config",
+            "--force-color-profile=srgb",
+            "--metrics-recording-only",
+            "--disable-background-networking",
+            "--disable-component-update",
+            "--disable-default-apps",
+            "--allow-pre-commit-input",
+            "--export-tagged-pdf",
+            "--no-service-autorun",
+            "--disable-sync",
+        ]
 
         try:
             context = playwright_obj.chromium.launch_persistent_context(
