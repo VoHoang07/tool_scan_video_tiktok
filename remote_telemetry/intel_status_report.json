@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-27 08:32:42",
+    "timestamp": "2026-10-27 08:36:05",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261026_092621_tiktok_story_7700764387950300436.mp4",
-      "caption": "📖 Góc Kể Chuyện: Tập 145 - Góc khuất tình cảm và màn đáp trả cực gắt. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
-      "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #foryou #fyp",
+      "video_file": "20261025_170711_tiktok_story_7683183620114156821.mp4",
+      "caption": "⚔️ [Tu Chân Giới] [Đam Mỹ Audio] BẠN THÂN PHÁO HÔI CỦA LONG NGẠO THIÊN LÀ VẠN NHÂN MÊ. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+      "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xh #xuhuongtiktok",
       "post_confirmed": true,
       "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-27 08:36:05",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261025_170711_tiktok_story_7683183620114156821.mp4",
+        "caption": "⚔️ [Tu Chân Giới] [Đam Mỹ Audio] BẠN THÂN PHÁO HÔI CỦA LONG NGẠO THIÊN LÀ VẠN NHÂN MÊ. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xh #xuhuongtiktok",
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-27 08:32:42",
       "machine_arch": "x86_64",
@@ -3213,77 +3228,6 @@
             },
             "interacted_at": "2026-10-26 22:41:45",
             "follow_back_window_until": "2026-10-27 22:41:45"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-26 22:39:39",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
-      "details": {
-        "interacted_count": 1,
-        "records": [
-          {
-            "channel": "baby_AI",
-            "video_id": "7700800807293308181",
-            "video_url": "https://www.tiktok.com/@thaochiped/video/7700800807293308181",
-            "creator_handle": "@thaochiped",
-            "watched_seconds": 18.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "chào mn, mình mới xây kênh, nhận follow chéo ạ",
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610262338307FCFCB3D8ED8E9ECF523\",\"now\":1793029110000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610262338307FCFCB3D8ED8E9ECF523\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "hasOwnWebdriver": false,
-                "hasFakeChromeRuntime": false
-              },
-              "before": {
-                "x": 835.375,
-                "y": 512,
-                "ariaPressed": true,
-                "svgColor": "rgba(255, 59, 92, 1)",
-                "likeCount": "38"
-              },
-              "init_red": true,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 835.375,
-                  "y": 512,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "38"
-                },
-                "red": true
-              },
-              "after_os_click_40s": {
-                "state": {
-                  "x": 835.375,
-                  "y": 512,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "38"
-                },
-                "red": true
-              }
-            },
-            "interacted_at": "2026-10-26 22:39:38",
-            "follow_back_window_until": "2026-10-27 22:39:38"
           }
         ]
       }
