@@ -603,15 +603,16 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
         ).stdout.strip()
 
         if local_sha and remote_sha and local_sha != remote_sha:
+            pid = os.getpid()
             tmp_dir = Path(tempfile.gettempdir())
             hist_path = project_root / "story_audio_history.json"
             csv_path = project_root / "output" / "danh_sach_video.csv"
             reg_path = project_root / "uploaded_videos_registry.json"
             post_log_path = project_root / "posted_schedule_history.json"
-            hist_bak = tmp_dir / "tiktok_story_audio_history.bak.json"
-            csv_bak = tmp_dir / "tiktok_danh_sach_video.bak.csv"
-            reg_bak = tmp_dir / "tiktok_uploaded_videos_registry.bak.json"
-            post_log_bak = tmp_dir / "tiktok_posted_schedule_history.bak.json"
+            hist_bak = tmp_dir / f"tiktok_story_audio_history_{pid}.bak.json"
+            csv_bak = tmp_dir / f"tiktok_danh_sach_video_{pid}.bak.csv"
+            reg_bak = tmp_dir / f"tiktok_uploaded_videos_registry_{pid}.bak.json"
+            post_log_bak = tmp_dir / f"tiktok_posted_schedule_history_{pid}.bak.json"
 
             if hist_path.exists():
                 shutil.copy2(hist_path, hist_bak)
@@ -633,13 +634,29 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
 
             if hist_bak.exists():
                 shutil.copy2(hist_bak, hist_path)
+                hist_bak.unlink(missing_ok=True)
             if csv_bak.exists():
                 csv_path.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(csv_bak, csv_path)
+                csv_bak.unlink(missing_ok=True)
             if reg_bak.exists():
                 shutil.copy2(reg_bak, reg_path)
+                reg_bak.unlink(missing_ok=True)
             if post_log_bak.exists():
-                shutil.copy2(post_log_bak, post_log_path)
+                try:
+                    bak_dict = json.loads(post_log_bak.read_text(encoding="utf-8"))
+                    cur_dict = (
+                        json.loads(post_log_path.read_text(encoding="utf-8"))
+                        if post_log_path.exists()
+                        else {}
+                    )
+                    merged = {**bak_dict, **cur_dict}
+                    post_log_path.write_text(
+                        json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8"
+                    )
+                except Exception:
+                    shutil.copy2(post_log_bak, post_log_path)
+                post_log_bak.unlink(missing_ok=True)
 
             logger.info(
                 f"[Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub ({local_sha[:7]} -> {remote_sha[:7]})!"

@@ -929,11 +929,17 @@ class SubtitleTranslator:
         """
         import hashlib
 
-        story_lines = [
-            (seg.get("translated_text") or seg.get("text") or "").strip()
-            for seg in segments
-            if (seg.get("translated_text") or seg.get("text") or "").strip()
-        ]
+        story_lines: List[str] = []
+        for seg in segments:
+            raw_l = (seg.get("translated_text") or seg.get("text") or "").strip()
+            if not raw_l:
+                continue
+            if re.search(r"[\u4e00-\u9fff]", raw_l):
+                raw_l = self._translate_single_fallback(raw_l, "zh").strip()
+                raw_l = re.sub(r"[\u4e00-\u9fff]+", "", raw_l).strip()
+            if raw_l:
+                story_lines.append(raw_l)
+
         genre_clean = genre.lstrip("#").strip()
         ch_key = self._normalize_channel_key(genre_clean)
 
@@ -941,15 +947,27 @@ class SubtitleTranslator:
         clean_title = self._clean_source_watermark_from_title(raw_title)
 
         if clean_title and not re.match(r"^(?:tiktok|douyin)_\d+$", clean_title):
-            if src_lang == "vi" or has_vietnamese_diacritics(clean_title):
+            if src_lang == "vi" and not re.search(r"[\u4e00-\u9fff]", clean_title):
+                core_topic = clean_title
+            elif has_vietnamese_diacritics(clean_title) and not re.search(r"[\u4e00-\u9fff]", clean_title):
                 core_topic = clean_title
             else:
                 core_topic = self._translate_single_fallback(clean_title, src_lang).strip()
                 core_topic = self._clean_source_watermark_from_title(core_topic)
+                core_topic = re.sub(r"[\u4e00-\u9fff]+", "", core_topic).strip(" -|~.,")
         elif story_lines:
             core_topic = story_lines[0][:110].strip()
         else:
-            core_topic = "Câu chuyện kịch tính không thể rời mắt"
+            core_topic = ""
+
+        if not core_topic or re.search(r"[\u4e00-\u9fff]", core_topic) or len(core_topic) < 6:
+            fallback_by_ch = {
+                "channel_1": "Thế giới hoạt hình AI kỳ ảo với tình tiết bất ngờ ở giây cuối cùng",
+                "channel_2": "Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh",
+                "channel_3": "Biến cố bất ngờ lúc nửa đêm và sự thật chấn động phía sau cuộc hôn nhân",
+                "channel_4": "Phàm nhân nghịch thiên cải mệnh thức tỉnh huyết mạch thượng cổ tại Tu Chân Giới",
+            }
+            core_topic = fallback_by_ch.get(ch_key, "Câu chuyện kịch tính không thể rời mắt")
 
         # Tạo seed xác định nhưng khác biệt cho từng video để xoay vòng văn phong Hook & Hashtag
         seed_val = int(

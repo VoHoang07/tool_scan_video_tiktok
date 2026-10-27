@@ -28,7 +28,7 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
         "video_AI_hay": ["08:00", "12:30", "20:00"],
         "baby_AI": ["08:10", "12:40", "20:10"],
         "audio_dem_khuyen": ["08:20", "12:50", "20:20"],
-        "tu_chan_gioi": ["08:20", "13:00", "20:30"],
+        "tu_chan_gioi": ["08:30", "13:00", "20:30"],
     },
     "filter_24h_enabled": True,
     "filter_24h_runs_per_day": 7,
@@ -1477,8 +1477,68 @@ class TikTokAutoPoster:
 
         return target_video, caption, hashtags
 
+    def _was_channel_uploaded_recently(
+        self, ch_folder: str, min_interval_minutes: float = 180.0
+    ) -> Optional[float]:
+        """
+        Kiểm tra 3 nguồn độc lập (`posted_schedule_history.json`, `uploaded_videos_registry.json`,
+        `remote_telemetry/intel_status_report.json`) xem kênh `ch_folder` có vừa đăng bài trong vòng
+        `min_interval_minutes` phút (mặc định 180 phút = 3 tiếng) gần đây hay không.
+        Trả về số phút đã trôi qua nếu vừa đăng gần đây, hoặc `None` nếu đã đủ giãn cách an toàn.
+        """
+        now_dt = datetime.now()
+        timestamps_to_check: List[str] = []
+
+        # 1. Kiểm tra posted_schedule_history.json
+        try:
+            hist = self._load_post_history()
+            for k, ts_val in hist.items():
+                if ch_folder in str(k) and "filter24h" not in str(k) and isinstance(ts_val, str):
+                    timestamps_to_check.append(ts_val.strip())
+        except Exception:
+            pass
+
+        # 2. Kiểm tra uploaded_videos_registry.json
+        try:
+            reg_path = self.project_root / "uploaded_videos_registry.json"
+            if reg_path.exists():
+                reg_data = json.loads(reg_path.read_text(encoding="utf-8"))
+                for item in reg_data.get("history") or []:
+                    if isinstance(item, dict) and item.get("channel") == ch_folder and item.get("timestamp"):
+                        timestamps_to_check.append(str(item["timestamp"]).strip())
+        except Exception:
+            pass
+
+        # 3. Kiểm tra remote_telemetry/intel_status_report.json
+        try:
+            rep_path = self.project_root / "remote_telemetry" / "intel_status_report.json"
+            if rep_path.exists():
+                rep_data = json.loads(rep_path.read_text(encoding="utf-8"))
+                for ev in rep_data.get("recent_events") or []:
+                    if (
+                        isinstance(ev, dict)
+                        and ev.get("event_type") == "upload"
+                        and ev.get("channel") == ch_folder
+                        and ev.get("timestamp")
+                    ):
+                        timestamps_to_check.append(str(ev["timestamp"]).strip())
+        except Exception:
+            pass
+
+        min_elapsed: Optional[float] = None
+        for ts_str in timestamps_to_check:
+            try:
+                dt = datetime.strptime(ts_str[:19], "%Y-%m-%d %H:%M:%S")
+                diff_min = (now_dt - dt).total_seconds() / 60.0
+                if 0.0 <= diff_min < min_interval_minutes:
+                    if min_elapsed is None or diff_min < min_elapsed:
+                        min_elapsed = diff_min
+            except Exception:
+                pass
+        return min_elapsed
+
     def upload_one_channel_video(
-        self, channel_arg: str, headless: bool = False
+        self, channel_arg: str, headless: bool = False, force: bool = False
     ) -> Optional[Dict[str, Any]]:
         """
         Tự động đăng 1 video từ `output/<ten_kenh>/ready/` lên kênh TikTok tương ứng với đầy đủ 5 bước:
@@ -1504,6 +1564,16 @@ class TikTokAutoPoster:
 
         profile = resolve_channel_profile(channel_arg)
         ch_folder = profile["folder_name"]
+
+        if not force:
+            recent_min = self._was_channel_uploaded_recently(ch_folder, min_interval_minutes=180.0)
+            if recent_min is not None:
+                logger.info(
+                    f"[{ch_folder}] [Anti-Double-Post Guard] Kênh vừa đăng bài cách đây {recent_min:.1f} phút (< 180 phút). "
+                    "Chặn tuyệt đối đăng 2 video liên tiếp!"
+                )
+                return None
+
         user_data_dir = self.profiles_root / ch_folder
         if not user_data_dir.exists():
             logger.warning(
@@ -2014,19 +2084,46 @@ class TikTokAutoPoster:
 
                 # Kích hoạt nếu thời gian hiện tại nằm trong khoảng [effective_slot_min, effective_slot_min + 180 phút]
                 if 0 <= (now_minutes - effective_slot_min) <= 180:
-                    eff_hh, eff_mm = effective_slot_min // 60, effective_slot_min % 60
-                    logger.info(
-                        f"[Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [{ch_folder}]: "
-                        f"{eff_hh:02d}:{eff_mm:02d} (khung gốc {slot}, lệch {jitter:+d} phút)"
-                    )
                     lock_fh = self._acquire_browser_process_lock()
                     try:
-                        res = self.upload_one_channel_video(ch_folder, headless=headless)
-                        if res:
-                            history = self._load_post_history()
+                        # Đọc lại lịch sử sau khi đã giữ khóa độc quyền để không bao giờ bị 2 luồng/2 cửa sổ đăng trùng
+                        history = self._load_post_history()
+                        if slot_key in history:
+                            continue
+                        recent_min = self._was_channel_uploaded_recently(ch_folder, min_interval_minutes=180.0)
+                        if recent_min is not None:
                             history[slot_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             self._save_post_history(history)
+                            logger.info(
+                                f"[{ch_folder}] [Anti-Double-Post Guard] Khung {slot} đã được đáp ứng cách đây {recent_min:.1f} phút -> Ghi nhận hoàn tất."
+                            )
+                            continue
+
+                        eff_hh, eff_mm = effective_slot_min // 60, effective_slot_min % 60
+                        logger.info(
+                            f"[Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [{ch_folder}]: "
+                            f"{eff_hh:02d}:{eff_mm:02d} (khung gốc {slot}, lệch {jitter:+d} phút)"
+                        )
+                        # Đặt chỗ trước vào posted_schedule_history.json trước khi mở Chrome
+                        claim_ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        history[slot_key] = claim_ts
+                        history[f"last_upload_ts_{ch_folder}"] = claim_ts
+                        self._save_post_history(history)
+
+                        res = self.upload_one_channel_video(ch_folder, headless=headless, force=True)
+                        if res:
+                            done_ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            history = self._load_post_history()
+                            history[slot_key] = done_ts
+                            history[f"last_upload_ts_{ch_folder}"] = done_ts
+                            self._save_post_history(history)
                             posted_results.append(res)
+                        else:
+                            # Nếu kho ready/ trống chưa có video để đăng, trả lại slot_key để thử lại khi có video mới
+                            history = self._load_post_history()
+                            history.pop(slot_key, None)
+                            history.pop(f"last_upload_ts_{ch_folder}", None)
+                            self._save_post_history(history)
                     except Exception as exc:
                         logger.error(f"[Dòng 1 - Lịch Đăng Video] Lỗi tự động đăng kênh [{ch_folder}] khung {slot}: {exc}")
                     finally:
@@ -2039,8 +2136,7 @@ class TikTokAutoPoster:
         [DÒNG HOẠT ĐỘNG 2 — MỞ 4 KÊNH CHẠY BỘ LỌC 24 GIỜ (7 LẦN/NGÀY × 10 VIDEO/KÊNH)]:
         Tự động mở lần lượt 4 kênh theo 7 khung giờ mỗi ngày (`channel_filter_24h_times`),
         mỗi kênh tương tác `filter_24h_videos_per_session` (mặc định 10 video).
-        Giữa mỗi kênh sẽ kiểm tra nhanh Dòng 1 (`check_and_run_stream1_upload_schedule`) để đảm bảo
-        không bao giờ làm trễ khung giờ đăng video chính.
+        Hoạt động độc lập 100% với Dòng 1 (KHÔNG tự ý gọi hàm đăng video để tránh đăng lặp khi mở 2 Terminal).
         """
         cfg = self.ensure_schedule_config()
         filter_enabled = bool(cfg.get("filter_24h_enabled", True))
@@ -2062,19 +2158,20 @@ class TikTokAutoPoster:
                 trig_id = str(remote_trig["trigger_id"]).strip()
                 trig_key = f"remote_trig_{trig_id}"
                 if trig_id and trig_key not in history:
-                    trig_ch = str(remote_trig.get("channel") or "all").strip()
-                    trig_cnt = int(remote_trig.get("video_count") or filter_count)
-                    logger.info(
-                        f"[Dòng 2 - Bộ lọc 24h] Nhận lệnh chạy ngay từ máy Silicon ({trig_id}) -> "
-                        f"Kênh [{trig_ch}], số lượng {trig_cnt} video/kênh!"
-                    )
                     lock_fh = self._acquire_browser_process_lock()
                     try:
-                        res = self.run_24h_filter_for_channel(trig_ch, video_count=trig_cnt, headless=headless)
-                        filter_results[trig_key] = res
                         history = self._load_post_history()
-                        history[trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                        self._save_post_history(history)
+                        if trig_key not in history:
+                            trig_ch = str(remote_trig.get("channel") or "all").strip()
+                            trig_cnt = int(remote_trig.get("video_count") or filter_count)
+                            history[trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            self._save_post_history(history)
+                            logger.info(
+                                f"[Dòng 2 - Bộ lọc 24h] Nhận lệnh chạy ngay từ máy Silicon ({trig_id}) -> "
+                                f"Kênh [{trig_ch}], số lượng {trig_cnt} video/kênh!"
+                            )
+                            res = self.run_24h_filter_for_channel(trig_ch, video_count=trig_cnt, headless=headless)
+                            filter_results[trig_key] = res
                     except Exception as exc:
                         logger.error(f"[Dòng 2 - Bộ lọc 24h] Lỗi khi chạy Remote Trigger ({trig_id}): {exc}")
                     finally:
@@ -2085,12 +2182,6 @@ class TikTokAutoPoster:
 
         default_7_slots = ["06:00", "09:30", "11:00", "14:00", "16:00", "18:00", "21:30"]
         for profile in CHANNEL_PROFILES.values():
-            # Trước khi mở kênh tiếp theo trong Dòng 2, ưu tiên kiểm tra Dòng 1 (Khung giờ đăng video)
-            try:
-                self.check_and_run_stream1_upload_schedule()
-            except Exception:
-                pass
-
             ch_folder = profile["folder_name"]
             now = datetime.now()
             today_str = now.strftime("%Y-%m-%d")
@@ -2111,20 +2202,22 @@ class TikTokAutoPoster:
 
                 # Cửa sổ kích hoạt 90 phút để cả 4 kênh nối tiếp nhau chạy đủ 10 video/kênh trong mỗi lượt
                 if 0 <= (now_minutes - eff_f_min) <= 90:
-                    eff_hh, eff_mm = eff_f_min // 60, eff_f_min % 60
-                    logger.info(
-                        f"[Dòng 2 - Bộ lọc 24h (Lần {round_idx}/{len(f_slots)} trong ngày)] "
-                        f"Mở kênh [{ch_folder}] lúc {eff_hh:02d}:{eff_mm:02d} (khung {f_slot}) -> Chạy {filter_count} video!"
-                    )
                     lock_fh = self._acquire_browser_process_lock()
                     try:
+                        history = self._load_post_history()
+                        if f_key in history:
+                            continue
+                        history[f_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        self._save_post_history(history)
+                        eff_hh, eff_mm = eff_f_min // 60, eff_f_min % 60
+                        logger.info(
+                            f"[Dòng 2 - Bộ lọc 24h (Lần {round_idx}/{len(f_slots)} trong ngày)] "
+                            f"Mở kênh [{ch_folder}] lúc {eff_hh:02d}:{eff_mm:02d} (khung {f_slot}) -> Chạy {filter_count} video!"
+                        )
                         res = self.run_24h_filter_for_channel(
                             ch_folder, video_count=filter_count, headless=headless
                         )
                         filter_results[f_key] = res
-                        history = self._load_post_history()
-                        history[f_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                        self._save_post_history(history)
                     except Exception as exc:
                         logger.error(
                             f"[Dòng 2 - Bộ lọc 24h] Lỗi chạy kênh [{ch_folder}] khung {f_slot}: {exc}"

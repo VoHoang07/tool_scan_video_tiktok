@@ -1600,12 +1600,10 @@ class StoryAudioCrawler:
                 candidate.get("is_seed") or candidate.get("is_channel_video")
             )
 
-            if not is_priority and not (
-                self.min_duration <= actual_duration <= self.max_duration
-            ):
+            if not (self.min_duration <= actual_duration <= max(self.max_duration, 360.0)):
                 logger.info(
                     f"[Voice Filter] Loại bỏ {vid}: thời lượng thực tế {actual_duration:.1f}s "
-                    f"nằm ngoài khoảng [{self.min_duration:.0f}s, {self.max_duration:.0f}s]."
+                    f"nằm ngoài khoảng [{self.min_duration:.0f}s, {max(self.max_duration, 360.0):.0f}s]."
                 )
                 shutil.rmtree(cand_dir, ignore_errors=True)
                 return False, None
