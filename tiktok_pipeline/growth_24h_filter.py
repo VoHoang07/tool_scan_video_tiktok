@@ -312,9 +312,9 @@ class TikTok24hFilterEngine:
     def generate_meaningful_24h_comment(creator_handle: str = "", video_desc: str = "") -> str:
         """
         Trả về đúng 1 câu bình luận cố định theo yêu cầu:
-        "chào mn, mình mới xây kênh, nhận follow chéo ạ"
+        "mình mới xây kênh, nhận follow chéo ạ"
         """
-        return "chào mn, mình mới xây kênh, nhận follow chéo ạ"
+        return "mình mới xây kênh, nhận follow chéo ạ"
 
     @staticmethod
     def _compute_best_whirl_rotation_fraction(
@@ -1512,25 +1512,37 @@ class TikTok24hFilterEngine:
                 return None
 
             self._os_click_viewport(page, float(input_pos["x"]), float(input_pos["y"]))
-            time.sleep(0.22)
+            time.sleep(0.12)
 
             try:
-                ce_box = page.locator(
-                    '[data-e2e="comment-input"] div[contenteditable="true"], '
-                    '[data-e2e="comment-text"] div[contenteditable="true"], '
-                    'div.public-DraftEditor-content[contenteditable="true"], '
-                    'div[contenteditable="true"]'
-                ).first
-                if ce_box.count() > 0 and ce_box.is_visible():
-                    ce_box.click()
-                    time.sleep(0.08)
+                page.evaluate(
+                    """() => {
+                        const selectors = [
+                            '[data-e2e="comment-input"] div[contenteditable="true"]',
+                            '[data-e2e="comment-text"] div[contenteditable="true"]',
+                            'div.public-DraftEditor-content[contenteditable="true"]',
+                            'div[contenteditable="true"]'
+                        ];
+                        for (const sel of selectors) {
+                            const els = Array.from(document.querySelectorAll(sel));
+                            for (const el of els) {
+                                const r = el.getBoundingClientRect();
+                                if (r.left > 260 && r.width > 30 && r.height > 10) {
+                                    el.focus();
+                                    return true;
+                                }
+                            }
+                        }
+                        return false;
+                    }"""
+                )
             except Exception:
                 pass
 
             page.keyboard.insert_text(comment_text)
-            time.sleep(0.08)
-            page.keyboard.type(" ", delay=18)
-            time.sleep(0.22)
+            time.sleep(0.05)
+            page.keyboard.type(" ", delay=10)
+            time.sleep(0.15)
 
             post_comment_pos = page.evaluate(
                 """() => {
@@ -1568,7 +1580,7 @@ class TikTok24hFilterEngine:
             else:
                 page.keyboard.press("Enter")
 
-            time.sleep(0.85)
+            time.sleep(0.45)
             logger.info(
                 f"[{ch_folder}] [Bộ lọc 24h - Bước 6/6] Đã BÌNH LUẬN thành công: \"{comment_text}\""
             )
