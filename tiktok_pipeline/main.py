@@ -1048,11 +1048,18 @@ def run_watch_sync_mode(interval_seconds: int = 5) -> None:
     logger.info(
         f"=== KHỞI ĐỘNG AUTO-SYNC WATCHER (ĐỒNG BỘ TỰ ĐỘNG 4 KÊNH MỖI {interval_seconds}s) ==="
     )
+    poster = TikTokAutoPoster(project_root=project_root)
+    tick = 0
     try:
         while True:
             moved = crawler.auto_sync_posted_videos(min_age_seconds=35.0)
             if moved:
                 print("\n" + crawler.format_inventory_status_table() + "\n", flush=True)
+            tick += 1
+            if tick % 6 == 0:
+                if _auto_git_pull_if_available(project_root):
+                    poster = _reload_poster_if_updated(project_root, poster)
+                poster._auto_revive_stream1_upload_if_dead()
             time.sleep(max(2, interval_seconds))
     except KeyboardInterrupt:
         logger.info("Đã dừng Auto-Sync Watcher.")
