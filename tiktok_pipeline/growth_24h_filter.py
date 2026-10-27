@@ -87,6 +87,8 @@ def _hot_patch_live_auto_poster_stealth() -> None:
                 "--enable-zero-copy",
                 "--disable-renderer-backgrounding",
                 "--disable-background-timer-throttling",
+                "--window-size=1366,860",
+                "--window-position=20,20",
                 "--lang=vi-VN",
             ]
             ignore_args = [
@@ -108,7 +110,7 @@ def _hot_patch_live_auto_poster_stealth() -> None:
                     user_data_dir=str(user_data_dir),
                     channel="chrome",
                     headless=headless,
-                    viewport={"width": 1366, "height": 860},
+                    no_viewport=True,
                     locale="vi-VN",
                     timezone_id="Asia/Ho_Chi_Minh",
                     args=launch_args,
@@ -118,7 +120,7 @@ def _hot_patch_live_auto_poster_stealth() -> None:
                 ctx = playwright_obj.chromium.launch_persistent_context(
                     user_data_dir=str(user_data_dir),
                     headless=headless,
-                    viewport={"width": 1366, "height": 860},
+                    no_viewport=True,
                     locale="vi-VN",
                     timezone_id="Asia/Ho_Chi_Minh",
                     args=launch_args,

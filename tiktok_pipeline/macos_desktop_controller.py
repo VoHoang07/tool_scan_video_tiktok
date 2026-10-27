@@ -224,6 +224,56 @@ class MacOSDesktopController:
         """
         self.run_jxa(jxa_code)
 
+    def fast_bezier_click_os(self, screen_x: float, screen_y: float, clicks: int = 1) -> None:
+        """
+        Di chuyển chuột phần cứng macOS theo đường cong Bezier (8 bước ~40ms) và click thật (`kCGHIDEventTap`)
+        chỉ trong 1 lời gọi JXA duy nhất để vừa không gây lag, vừa tạo sự kiện phần cứng thật (`screenY != clientY`).
+        """
+        ix, iy = int(round(screen_x)), int(round(screen_y))
+        ctrl_dx = round(random.uniform(-28.0, 28.0), 1)
+        ctrl_dy = round(random.uniform(-22.0, 22.0), 1)
+        jxa_code = f"""
+        ObjC.import("CoreGraphics");
+        try {{
+            var sys = Application("System Events");
+            var cProc = sys.processes.byName("Google Chrome");
+            if (!cProc.frontmost()) {{
+                cProc.frontmost = true;
+                delay(0.06);
+            }}
+        }} catch (e) {{}}
+        var src = $.CGEventSourceCreate($.kCGEventSourceStateHIDSystemState);
+        var curEvt = $.CGEventCreate($());
+        var loc = $.CGEventGetLocation(curEvt);
+        var sx = loc.x, sy = loc.y;
+        var tx = {ix}, ty = {iy};
+        var cx = (sx + tx) / 2.0 + ({ctrl_dx});
+        var cy = (sy + ty) / 2.0 + ({ctrl_dy});
+        var steps = 8;
+        for (var i = 1; i <= steps; i++) {{
+            var t = i / steps;
+            var bx = Math.round((1 - t) * (1 - t) * sx + 2 * (1 - t) * t * cx + t * t * tx);
+            var by = Math.round((1 - t) * (1 - t) * sy + 2 * (1 - t) * t * cy + t * t * ty);
+            var mpt = $.CGPointMake(bx, by);
+            var mevt = $.CGEventCreateMouseEvent(src, 5, mpt, 0);
+            $.CGEventPost($.kCGHIDEventTap, mevt);
+            delay(0.0045);
+        }}
+        var fpt = $.CGPointMake(tx, ty);
+        for (var c = 0; c < {int(clicks)}; c++) {{
+            var downEvt = $.CGEventCreateMouseEvent(src, 1, fpt, 0);
+            $.CGEventSetIntegerValueField(downEvt, 1, c + 1);
+            $.CGEventPost($.kCGHIDEventTap, downEvt);
+            delay(0.025);
+            var upEvt = $.CGEventCreateMouseEvent(src, 2, fpt, 0);
+            $.CGEventSetIntegerValueField(upEvt, 1, c + 1);
+            $.CGEventPost($.kCGHIDEventTap, upEvt);
+            if (c + 1 < {int(clicks)}) delay(0.03);
+        }}
+        "ok";
+        """
+        self.run_jxa(jxa_code)
+
     def click_os(
         self,
         screen_x: float,

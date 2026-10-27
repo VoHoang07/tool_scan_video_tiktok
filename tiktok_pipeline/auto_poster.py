@@ -251,6 +251,8 @@ class TikTokAutoPoster:
             "--enable-zero-copy",
             "--disable-renderer-backgrounding",
             "--disable-background-timer-throttling",
+            "--window-size=1366,860",
+            "--window-position=20,20",
             "--lang=vi-VN",
         ]
         ignore_args = [
@@ -273,7 +275,7 @@ class TikTokAutoPoster:
                 user_data_dir=str(user_data_dir),
                 channel="chrome",
                 headless=headless,
-                viewport={"width": 1366, "height": 860},
+                no_viewport=True,
                 locale="vi-VN",
                 timezone_id="Asia/Ho_Chi_Minh",
                 args=launch_args,
@@ -284,7 +286,7 @@ class TikTokAutoPoster:
             context = playwright_obj.chromium.launch_persistent_context(
                 user_data_dir=str(user_data_dir),
                 headless=headless,
-                viewport={"width": 1366, "height": 860},
+                no_viewport=True,
                 locale="vi-VN",
                 timezone_id="Asia/Ho_Chi_Minh",
                 args=launch_args,
@@ -313,11 +315,17 @@ class TikTokAutoPoster:
 
     def _os_click_viewport(self, page: Any, viewport_x: float, viewport_y: float) -> None:
         """
-        Di chuyển con trỏ siêu tốc tới `(viewport_x, viewport_y)` và thực hiện ĐÚNG 1 LẦN CLICK DUY NHẤT.
+        Di chuyển chuột phần cứng macOS (`CoreGraphics CGEvent`) theo đường cong Bezier tới tọa độ màn hình
+        tương ứng với `(viewport_x, viewport_y)` và click thật ở tầng Hệ điều hành (`screenY != clientY`).
         """
-        self._human_move_mouse(page, viewport_x, viewport_y)
-        time.sleep(random.uniform(0.012, 0.025))
-        page.mouse.click(viewport_x, viewport_y, delay=random.randint(10, 22))
+        try:
+            sx, sy = self.desktop.convert_viewport_to_screen_coords(page, viewport_x, viewport_y)
+            self.desktop.fast_bezier_click_os(sx, sy, clicks=1)
+            self._last_vp_mouse = (float(viewport_x), float(viewport_y))
+        except Exception:
+            self._human_move_mouse(page, viewport_x, viewport_y)
+            time.sleep(random.uniform(0.012, 0.025))
+            page.mouse.click(viewport_x, viewport_y, delay=random.randint(10, 22))
 
     def _dismiss_all_studio_popovers(self, page: Any, ch_folder: str) -> int:
         """
