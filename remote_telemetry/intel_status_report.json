@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-27 08:04:41",
+    "timestamp": "2026-10-27 08:15:25",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261026_083110_douyin_story_7681137499921550619.mp4",
-      "caption": "🎬 最近我耳边的模糊您男生又出现了. \"船长 今天怎么这么早...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-      "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #hoathinhhai #xuhuong",
+      "video_file": "20261025_183048_douyin_story_7649090399869777051.mp4",
+      "caption": "🥰 Nhật ký gia đình siêu lầy: 我去那边摘一点椰果吃. \"妈妈在这里乖乖不要乱跑哦，嗯...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #xh #xuhuongtiktok",
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-27 08:15:25",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261025_183048_douyin_story_7649090399869777051.mp4",
+        "caption": "🥰 Nhật ký gia đình siêu lầy: 我去那边摘一点椰果吃. \"妈妈在这里乖乖不要乱跑哦，嗯...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+        "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #xh #xuhuongtiktok",
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-27 08:04:41",
       "machine_arch": "x86_64",
@@ -3330,21 +3345,6 @@
         "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #foryou",
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-26 20:13:03",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261025_145613_tiktok_story_7691716032381127966.mp4",
-        "caption": "✨ Câu chuyện AI cực cuốn: Does everybody hate us?. \"One day, they're gonna see what I'm really worth, Don't worry, ma'am...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
-        "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #xuhuong",
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
