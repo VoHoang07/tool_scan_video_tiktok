@@ -13,82 +13,17 @@ from .utils import logger
 
 DIGG_UI_GUARD_SCRIPT = """
 (() => {
-    try { delete navigator.webdriver; } catch (e) {}
-    try { if (window.chrome && window.chrome.runtime && window.chrome.runtime.PlatformOs) delete window.chrome.runtime; } catch (e) {}
-
-    if (window.__tiktokDiggGuardInstalled) return;
-    window.__tiktokDiggGuardInstalled = true;
-    window.__tiktokDiggLogs = window.__tiktokDiggLogs || [];
-
-    const origFetch = window.fetch;
-    if (typeof origFetch === "function") {
-        window.fetch = async function(...args) {
-            const url = (typeof args[0] === "string" ? args[0] : (args[0] && args[0].url)) || "";
-            const resp = await origFetch.apply(this, args);
-            if (url.includes("/commit/item/digg") || url.includes("/item/digg")) {
-                try {
-                    const clone = resp.clone();
-                    const rawText = await clone.text();
-                    window.__tiktokDiggLogs.push({ via: "fetch", status: resp.status, body: rawText.slice(0, 240) });
-                    if (rawText.includes('"is_digg":1') || rawText.includes('"is_digg": 1')) {
-                        const fixedText = rawText.replace(/"is_digg"\\s*:\\s*1/g, '"is_digg":0');
-                        return new Response(fixedText, {
-                            status: resp.status,
-                            statusText: resp.statusText,
-                            headers: resp.headers
-                        });
-                    }
-                } catch (e) {}
-            }
-            return resp;
-        };
+    // Giữ nguyên 100% prototype C++ gốc (window.fetch / XMLHttpRequest) để không bị TikTok webmssdk
+    // phát hiện hook hàm và đánh rơi ngầm lệnh Follow (follow_status: 0) / Tim (is_digg: 1).
+    const automationProps = [
+        '__playwright', '__pw_manual', '__PW_inspect',
+        'cdc_adoQpoasnfa76pfcZLmcfl_Array',
+        'cdc_adoQpoasnfa76pfcZLmcfl_Promise',
+        'cdc_adoQpoasnfa76pfcZLmcfl_Symbol'
+    ];
+    for (const prop of automationProps) {
+        try { delete window[prop]; } catch (e) {}
     }
-
-    const protoDescText = Object.getOwnPropertyDescriptor(XMLHttpRequest.prototype, "responseText");
-    const protoDescResp = Object.getOwnPropertyDescriptor(XMLHttpRequest.prototype, "response");
-    const origOpen = XMLHttpRequest.prototype.open;
-    XMLHttpRequest.prototype.open = function(method, url, ...rest) {
-        const u = typeof url === "string" ? url : String(url || "");
-        if (u.includes("/commit/item/digg") || u.includes("/item/digg")) {
-            let logged = false;
-            if (protoDescText && protoDescText.get) {
-                Object.defineProperty(this, "responseText", {
-                    get: function() {
-                        const raw = protoDescText.get.call(this);
-                        if (typeof raw === "string" && raw.length > 0) {
-                            if (!logged && this.readyState === 4) {
-                                logged = true;
-                                window.__tiktokDiggLogs.push({ via: "xhr", status: this.status, body: raw.slice(0, 240) });
-                            }
-                            return raw.replace(/"is_digg"\\s*:\\s*1/g, '"is_digg":0');
-                        }
-                        return raw;
-                    },
-                    configurable: true
-                });
-            }
-            if (protoDescResp && protoDescResp.get) {
-                Object.defineProperty(this, "response", {
-                    get: function() {
-                        const raw = protoDescResp.get.call(this);
-                        if (typeof raw === "string" && raw.length > 0) {
-                            if (!logged && this.readyState === 4) {
-                                logged = true;
-                                window.__tiktokDiggLogs.push({ via: "xhr", status: this.status, body: raw.slice(0, 240) });
-                            }
-                            return raw.replace(/"is_digg"\\s*:\\s*1/g, '"is_digg":0');
-                        }
-                        if (raw && typeof raw === "object" && raw.is_digg === 1) {
-                            return Object.assign({}, raw, { is_digg: 0 });
-                        }
-                        return raw;
-                    },
-                    configurable: true
-                });
-            }
-        }
-        return origOpen.call(this, method, url, ...rest);
-    };
 })();
 """
 
@@ -1488,8 +1423,11 @@ class TikTok24hFilterEngine:
 
     def _step5_follow_creator(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 5: Follow người đăng video đó siêu tốc (~0.4s) — dùng micro-clip 20x20px thay vì chụp toàn màn hình.
+        BƯỚC 5: Follow người đăng video đó và kiểm tra phản hồi mạng `/commit/follow/user` (`follow_status: 1|2`).
+        Nếu bấm dấu `+` nhỏ trên video chưa kích hoạt gói tin Follow thật lên server, tự động di chuột
+        lên avatar mở thẻ hồ sơ và bấm nút `Follow` chữ nhật (`[data-e2e="follow-button"]`).
         """
+        trace: Dict[str, Any] = getattr(self, "_last_like_debug", {}) or {}
         try:
             follow_info = self._check_follow_state(page)
             if follow_info:
@@ -1497,18 +1435,43 @@ class TikTok24hFilterEngine:
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã Follow chủ kênh này từ trước (giữ nguyên ➕).")
                     return True
                 fx, fy = float(follow_info["x"]), float(follow_info["y"])
-                if not self._is_follow_badge_unfollowed_red_on_clip(page, fx, fy) and fx > 780 and fy > 150:
-                    logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Huy hiệu trên avatar đã là dấu tích ✓ (đã Follow, giữ nguyên).")
-                    return True
+                before_f_cnt = len(trace.get("follow_responses") or [])
 
                 self._os_click_viewport(page, fx, fy)
-                time.sleep(0.42)
+                time.sleep(0.55)
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
-                if self._is_follow_badge_unfollowed_red_on_clip(page, fx, fy):
-                    self._os_click_viewport(page, fx, fy)
-                    time.sleep(0.4)
-                    self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+                f_resps = (trace.get("follow_responses") or [])[before_f_cnt:]
+                server_followed = any(
+                    '"follow_status":1' in (r.get("body") or "").replace(" ", "")
+                    or '"follow_status":2' in (r.get("body") or "").replace(" ", "")
+                    for r in f_resps
+                )
+
+                if not server_followed:
+                    # Hover lên avatar chủ kênh để mở popup hồ sơ và bấm nút Follow chính
+                    self._human_move_mouse(page, fx, max(120.0, fy - 26.0))
+                    time.sleep(0.45)
+                    card_btn = page.evaluate(
+                        """() => {
+                            const btns = Array.from(document.querySelectorAll('[data-e2e="follow-button"], button'));
+                            for (const b of btns) {
+                                if (b.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
+                                const txt = (b.innerText || b.textContent || '').trim();
+                                if (txt === 'Follow' || txt === 'Theo dõi') {
+                                    const r = b.getBoundingClientRect();
+                                    if (r.left > 260 && r.width > 35 && r.height > 18) {
+                                        return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                    }
+                                }
+                            }
+                            return null;
+                        }"""
+                    )
+                    if card_btn:
+                        self._os_click_viewport(page, float(card_btn["x"]), float(card_btn["y"]))
+                        time.sleep(0.45)
+                        self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
                 logger.info(f"[{ch_folder}] [Bộ lọc 24h - Bước 5/6] Đã FOLLOW người đăng video ➕ (xác nhận dấu tích ✓).")
                 return True
@@ -1685,22 +1648,28 @@ class TikTok24hFilterEngine:
             f"[{ch_folder}] === BẮT ĐẦU BỘ LỌC 24 GIỜ TRÊN VIDEO CỦA @{creator_handle or 'creator'} ({video_url}) ==="
         )
 
-        self._last_like_debug = {"digg_responses": []}
+        self._last_like_debug = {"digg_responses": [], "follow_responses": []}
 
         def _on_response(resp: Any) -> None:
             try:
                 u = resp.url or ""
                 if "/commit/item/digg" in u or "/item/digg" in u:
-                    self._last_like_debug["digg_responses"].append(
+                    self._last_like_debug.setdefault("digg_responses", []).append(
+                        {"status": resp.status, "body": (resp.text() or "")[:240]}
+                    )
+                elif "/commit/follow/user" in u or "/follow/user" in u:
+                    self._last_like_debug.setdefault("follow_responses", []).append(
                         {"status": resp.status, "body": (resp.text() or "")[:240]}
                     )
             except Exception:
                 pass
 
-        try:
-            page.on("response", _on_response)
-        except Exception:
-            pass
+        if not getattr(page, "_f24_resp_listener_attached", False):
+            try:
+                page.on("response", _on_response)
+                setattr(page, "_f24_resp_listener_attached", True)
+            except Exception:
+                pass
 
         try:
             page.context.add_init_script(DIGG_UI_GUARD_SCRIPT)
