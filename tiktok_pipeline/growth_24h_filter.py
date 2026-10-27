@@ -308,13 +308,36 @@ class TikTok24hFilterEngine:
             return m.group(1), m.group(2)
         return "", ""
 
-    @staticmethod
-    def generate_meaningful_24h_comment(creator_handle: str = "", video_desc: str = "") -> str:
+    _LAST_COMMENT_SUFFIX: str = ""
+
+    @classmethod
+    def generate_meaningful_24h_comment(cls, creator_handle: str = "", video_desc: str = "") -> str:
         """
-        Trả về đúng 1 câu bình luận cố định theo yêu cầu:
-        "mình mới xây kênh, nhận follow chéo ạ"
+        Giữ nguyên câu gốc "mình mới xây kênh, nhận follow chéo ạ" và đảo nhẹ icon/dấu câu ở cuối
+        (không trùng lặp 2 lần liên tiếp) để mỗi bình luận có mã chuỗi riêng biệt với thuật toán TikTok.
         """
-        return "mình mới xây kênh, nhận follow chéo ạ"
+        base = "mình mới xây kênh, nhận follow chéo ạ"
+        suffixes = [
+            " ❤️",
+            " 🥰",
+            " ✨",
+            " 🤝",
+            " 🌷",
+            " 🔥",
+            " 💯",
+            " 🌟",
+            " 🫶",
+            " ❤️✨",
+            " 🥰🌷",
+            " 🤝🔥",
+            "!",
+            " nha ❤️",
+            " nhé 🥰",
+        ]
+        choices = [s for s in suffixes if s != cls._LAST_COMMENT_SUFFIX] or suffixes
+        chosen = random.choice(choices)
+        cls._LAST_COMMENT_SUFFIX = chosen
+        return f"{base}{chosen}"
 
     @staticmethod
     def _compute_best_whirl_rotation_fraction(
