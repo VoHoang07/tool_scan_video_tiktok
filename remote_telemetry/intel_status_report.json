@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-27 20:12:35",
+    "timestamp": "2026-10-27 20:20:13",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261026_091546_tiktok_story_7697650250793651486.mp4",
-      "caption": "🤣 Did you know he's a black belt in karate? — Pha xử lý đi vào lòng đất của hai mẹ con! \"But I'd keep that dentist number for when I knock your teeth out...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #foryou",
+      "video_file": "20261026_093256_tiktok_story_7700149454669843732.mp4",
+      "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 70 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
+      "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #vahmattraxanh #gocchiaSe #tamtrang #truyenaudio #viral",
       "post_confirmed": true,
       "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-27 20:20:13",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261026_093256_tiktok_story_7700149454669843732.mp4",
+        "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 70 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
+        "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #vahmattraxanh #gocchiaSe #tamtrang #truyenaudio #viral",
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-27 20:12:35",
       "machine_arch": "x86_64",
@@ -4033,21 +4048,6 @@
         "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #hoathinhhai #xuhuong",
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-27 08:00:43",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261025_225941_douyin_story_7698223650570276134.mp4",
-        "caption": "🐾 二归十机卡女比人 — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"华的工士坛步由后出女力仁改，华的二十坛共包化 土竹仁松...\" Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #viral",
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
