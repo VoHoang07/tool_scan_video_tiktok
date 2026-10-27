@@ -10,9 +10,11 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 import importlib as _importlib
 from . import crawler as _crawler_mod
+from . import macos_desktop_controller as _mdc_mod
 
 try:
     _importlib.reload(_crawler_mod)
+    _importlib.reload(_mdc_mod)
 except Exception:
     pass
 
