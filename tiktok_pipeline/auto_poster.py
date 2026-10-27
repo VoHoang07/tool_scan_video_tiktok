@@ -201,8 +201,7 @@ class TikTokAutoPoster:
         fcntl.flock(fh.fileno(), fcntl.LOCK_EX)
         return fh
 
-    @staticmethod
-    def _release_browser_process_lock(fh: Any) -> None:
+    def _release_browser_process_lock(self, fh: Any = None) -> None:
         import fcntl
 
         if fh is not None:
@@ -1867,6 +1866,13 @@ class TikTokAutoPoster:
             def _async_git_push() -> None:
                 try:
                     subprocess.run(
+                        ["git", "config", "pull.rebase", "true"],
+                        cwd=proj_str,
+                        capture_output=True,
+                        timeout=5,
+                        check=False,
+                    )
+                    subprocess.run(
                         ["git", "add", "remote_telemetry"],
                         cwd=proj_str,
                         capture_output=True,
@@ -1906,7 +1912,7 @@ class TikTokAutoPoster:
                 except Exception:
                     pass
 
-            threading.Thread(target=_async_git_push, daemon=True).start()
+            threading.Thread(target=_async_git_push, daemon=False).start()
             logger.info(
                 f"[{ch_folder}] [Remote Telemetry] Đã lưu ảnh ({img_name}) & đẩy đồng bộ GitHub chạy ngầm!"
             )
