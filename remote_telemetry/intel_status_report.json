@@ -1,31 +1,49 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-28 06:14:35",
+    "timestamp": "2026-10-28 06:20:36",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
     "details": {
       "interacted_count": 10,
       "records": [
         {
-          "channel": "video_AI_hay",
-          "video_id": "7701449050226232597",
-          "video_url": "https://www.tiktok.com/@t.xinh.xinh8/video/7701449050226232597",
-          "creator_handle": "@t.xinh.xinh8",
-          "watched_seconds": 24.8,
+          "channel": "baby_AI",
+          "video_id": "7701279949600099605",
+          "video_url": "https://www.tiktok.com/@mecuathienanh206/video/7701279949600099605",
+          "creator_handle": "@mecuathienanh206",
+          "watched_seconds": 15.0,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": true,
             "3_copied_link": true,
             "4_added_favorite": true,
             "5_followed_creator": true,
-            "6_commented_after_follow": false
+            "6_commented_after_follow": true
           },
-          "comment_text": "",
+          "comment_text": "mình mới xây kênh, nhận follow chéo ạ nha ❤️",
           "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071501A6AF529A00BB3740B714\",\"now\":1793142901000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071501A6AF529A00BB3740B714\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280715098D88F2C1F956505933B5\",\"now\":1793142909000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280715098D88F2C1F956505933B5\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280715055E0530E569F33F2497FB\",\"now\":1793142905000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280715055E0530E569F33F2497FB\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
             "env_check": {
               "webdriver": false,
               "hasOwnWebdriver": false,
@@ -36,28 +54,154 @@
               "y": 421,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "3"
+              "likeCount": "35"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
                 "x": 795.15625,
                 "y": 421,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "3"
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "36"
               },
-              "red": false
+              "red": true
             }
           },
-          "interacted_at": "2026-10-28 06:09:15",
-          "follow_back_window_until": "2026-10-29 06:09:15"
+          "interacted_at": "2026-10-28 06:15:10",
+          "follow_back_window_until": "2026-10-29 06:15:10"
         },
         {
-          "channel": "video_AI_hay",
-          "video_id": "7701279949600099605",
-          "video_url": "https://www.tiktok.com/@mecuathienanh206/video/7701279949600099605",
-          "creator_handle": "@mecuathienanh206",
+          "channel": "baby_AI",
+          "video_id": "7701261057066618132",
+          "video_url": "https://www.tiktok.com/@votongdanhvang/video/7701261057066618132",
+          "creator_handle": "@votongdanhvang",
+          "watched_seconds": 15.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🔥",
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280715318238AA1B8347632A7193\",\"now\":1793142931000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280715318238AA1B8347632A7193\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807153938D5551F9ED5050A23EB\",\"now\":1793142939000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102807153938D5551F9ED5050A23EB\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071535E4E15BD1F290C0527054\",\"now\":1793142935000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071535E4E15BD1F290C0527054\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "hasOwnWebdriver": false,
+              "hasFakeChromeRuntime": false
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 421,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "84"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "85"
+              },
+              "red": true
+            }
+          },
+          "interacted_at": "2026-10-28 06:15:40",
+          "follow_back_window_until": "2026-10-29 06:15:40"
+        },
+        {
+          "channel": "baby_AI",
+          "video_id": "7701247551298718994",
+          "video_url": "https://www.tiktok.com/@_manhmanhreview_/video/7701247551298718994",
+          "creator_handle": "@_manhmanhreview_",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🌷",
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280716094F407EF1B0331222C5E4\",\"now\":1793142969000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280716094F407EF1B0331222C5E4\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280716183911B5B427E65F62C20D\",\"now\":1793142978000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280716183911B5B427E65F62C20D\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071614794F582FE92DBA4499CC\",\"now\":1793142974000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071614794F582FE92DBA4499CC\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "hasOwnWebdriver": false,
+              "hasFakeChromeRuntime": false
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 421,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "486"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "487"
+              },
+              "red": true
+            }
+          },
+          "interacted_at": "2026-10-28 06:16:18",
+          "follow_back_window_until": "2026-10-29 06:16:18"
+        },
+        {
+          "channel": "baby_AI",
+          "video_id": "7701222149398351110",
+          "video_url": "https://www.tiktok.com/@thu.h0372/video/7701222149398351110",
+          "creator_handle": "@thu.h0372",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
@@ -72,11 +216,11 @@
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807094617369DE631591942B0DA\",\"now\":1793142586000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"2026102807094617369DE631591942B0DA\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071647CD4C3AD698B04A594449\",\"now\":1793143008000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071647CD4C3AD698B04A594449\"},\"status_code\":0,\"status_msg\":\"\"}"
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280709548AA222D741652914C81C\",\"now\":1793142594000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202610280709548AA222D741652914C81C\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280716566A0A41326DC67E3C3664\",\"now\":1793143017000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280716566A0A41326DC67E3C3664\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [
@@ -86,7 +230,7 @@
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280709509786845A8A27812D27FA\",\"now\":1793142590000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280709509786845A8A27812D27FA\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071652137E59515A7E305DC14E\",\"now\":1793143012000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071652137E59515A7E305DC14E\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "env_check": {
@@ -99,7 +243,7 @@
               "y": 421,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "179"
+              "likeCount": "26"
             },
             "init_red": false,
             "after_os_click_05s": {
@@ -108,19 +252,145 @@
                 "y": 421,
                 "ariaPressed": true,
                 "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "180"
+                "likeCount": "27"
               },
               "red": true
             }
           },
-          "interacted_at": "2026-10-28 06:09:55",
-          "follow_back_window_until": "2026-10-29 06:09:55"
+          "interacted_at": "2026-10-28 06:16:57",
+          "follow_back_window_until": "2026-10-29 06:16:57"
         },
         {
-          "channel": "video_AI_hay",
-          "video_id": "7701235927259172102",
-          "video_url": "https://www.tiktok.com/@ndtt2401/video/7701235927259172102",
-          "creator_handle": "@ndtt2401",
+          "channel": "baby_AI",
+          "video_id": "7700975842385530132",
+          "video_url": "https://www.tiktok.com/@ncvdwgh/video/7700975842385530132",
+          "creator_handle": "@ncvdwgh",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🤝🔥",
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071727317264CBE78FAC3FE35F\",\"now\":1793143047000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071727317264CBE78FAC3FE35F\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807173519EFB28E8FC9713DBB93\",\"now\":1793143056000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102807173519EFB28E8FC9713DBB93\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071731C568FB11739CB269C1AE\",\"now\":1793143051000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071731C568FB11739CB269C1AE\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "hasOwnWebdriver": false,
+              "hasFakeChromeRuntime": false
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 421,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "24"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "25"
+              },
+              "red": true
+            }
+          },
+          "interacted_at": "2026-10-28 06:17:36",
+          "follow_back_window_until": "2026-10-29 06:17:36"
+        },
+        {
+          "channel": "baby_AI",
+          "video_id": "7700956663041477896",
+          "video_url": "https://www.tiktok.com/@thao_06012006/video/7700956663041477896",
+          "creator_handle": "@thao_06012006",
+          "watched_seconds": 15.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🥰🌷",
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807175659B2939141C84027ED6F\",\"now\":1793143076000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102807175659B2939141C84027ED6F\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807180559B2939141C84027EF45\",\"now\":1793143085000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102807180559B2939141C84027EF45\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807180110FF2B2AD5D1063BDF80\",\"now\":1793143081000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026102807180110FF2B2AD5D1063BDF80\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "hasOwnWebdriver": false,
+              "hasFakeChromeRuntime": false
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 421,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "24"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "25"
+              },
+              "red": true
+            }
+          },
+          "interacted_at": "2026-10-28 06:18:06",
+          "follow_back_window_until": "2026-10-29 06:18:06"
+        },
+        {
+          "channel": "baby_AI",
+          "video_id": "7700934245820288274",
+          "video_url": "https://www.tiktok.com/@faypreocsde/video/7700934245820288274",
+          "creator_handle": "@faypreocsde",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
@@ -135,7 +405,11 @@
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071025AB6FC7BB2B50A02B26CC\",\"now\":1793142625000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261028071025AB6FC7BB2B50A02B26CC\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280718351C55DCE2B99558561FC8\",\"now\":1793143115000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280718351C55DCE2B99558561FC8\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280718446C3A503C20CFE82A1616\",\"now\":1793143124000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280718446C3A503C20CFE82A1616\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [
@@ -145,66 +419,7 @@
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071029BDE020E20A184C2C695D\",\"now\":1793142629000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071029BDE020E20A184C2C695D\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "hasOwnWebdriver": false,
-              "hasFakeChromeRuntime": false
-            },
-            "before": {
-              "x": 794.7734375,
-              "y": 368.9921875,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "172"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 369,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "281"
-              },
-              "red": true
-            }
-          },
-          "interacted_at": "2026-10-28 06:10:33",
-          "follow_back_window_until": "2026-10-29 06:10:33"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7701210068976553224",
-          "video_url": "https://www.tiktok.com/@ilovetiktok1918/video/7701210068976553224",
-          "creator_handle": "@ilovetiktok1918",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "mình mới xây kênh, nhận follow chéo ạ!",
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280710537C7BE7EA5745C91E60D5\",\"now\":1793142653000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202610280710537C7BE7EA5745C91E60D5\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280710574A6DBC08F9A7A82D5679\",\"now\":1793142657000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280710574A6DBC08F9A7A82D5679\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280718405127571F00541559C6F0\",\"now\":1793143120000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280718405127571F00541559C6F0\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "env_check": {
@@ -217,7 +432,7 @@
               "y": 421,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "133.1K"
+              "likeCount": "59"
             },
             "init_red": false,
             "after_os_click_05s": {
@@ -226,82 +441,19 @@
                 "y": 421,
                 "ariaPressed": true,
                 "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "133.1K"
+                "likeCount": "60"
               },
               "red": true
             }
           },
-          "interacted_at": "2026-10-28 06:11:01",
-          "follow_back_window_until": "2026-10-29 06:11:01"
+          "interacted_at": "2026-10-28 06:18:44",
+          "follow_back_window_until": "2026-10-29 06:18:44"
         },
         {
-          "channel": "video_AI_hay",
-          "video_id": "7700947787743104263",
-          "video_url": "https://www.tiktok.com/@bongg.riviuu/video/7700947787743104263",
-          "creator_handle": "@bongg.riviuu",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🤝🔥",
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280711220156E9063155861F3892\",\"now\":1793142682000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202610280711220156E9063155861F3892\"},\"status_code\":0,\"status_msg\":\"\"}"
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807113145A5CD4940F0171955BC\",\"now\":1793142691000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"2026102807113145A5CD4940F0171955BC\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071127B5DB3EC193FE76172A6B\",\"now\":1793142687000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071127B5DB3EC193FE76172A6B\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "hasOwnWebdriver": false,
-              "hasFakeChromeRuntime": false
-            },
-            "before": {
-              "x": 795.15625,
-              "y": 369,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "92"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 369,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "93"
-              },
-              "red": true
-            }
-          },
-          "interacted_at": "2026-10-28 06:11:31",
-          "follow_back_window_until": "2026-10-29 06:11:31"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7700881761558875412",
-          "video_url": "https://www.tiktok.com/@maddyortiz745/video/7700881761558875412",
-          "creator_handle": "@maddyortiz745",
+          "channel": "baby_AI",
+          "video_id": "7700890865237085461",
+          "video_url": "https://www.tiktok.com/@chpxiinh/video/7700890865237085461",
+          "creator_handle": "@chpxiinh",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
@@ -311,16 +463,16 @@
             "5_followed_creator": true,
             "6_commented_after_follow": true
           },
-          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🥰",
+          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🔥",
           "like_debug": {
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280712015A2560C9BED4601923BB\",\"now\":1793142721000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202610280712015A2560C9BED4601923BB\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071914F6ADEDE357910F49CE52\",\"now\":1793143154000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071914F6ADEDE357910F49CE52\"},\"status_code\":0,\"status_msg\":\"\"}"
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071210E75AEB143967492A557D\",\"now\":1793142730000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261028071210E75AEB143967492A557D\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071923437A4360D3636A54DF66\",\"now\":1793143163000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071923437A4360D3636A54DF66\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [
@@ -330,247 +482,7 @@
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071205E75AEB143967492A5428\",\"now\":1793142726000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071205E75AEB143967492A5428\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "hasOwnWebdriver": false,
-              "hasFakeChromeRuntime": false
-            },
-            "before": {
-              "x": 794.5546875,
-              "y": 420.9921875,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "25"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 794.5546875,
-                "y": 420.9921875,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "26"
-              },
-              "red": true
-            }
-          },
-          "interacted_at": "2026-10-28 06:12:10",
-          "follow_back_window_until": "2026-10-29 06:12:10"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7700847428122987796",
-          "video_url": "https://www.tiktok.com/@shopnhatom82/video/7700847428122987796",
-          "creator_handle": "@shopnhatom82",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🤝🔥",
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071242E207536A3AF2E132E8D2\",\"now\":1793142762000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261028071242E207536A3AF2E132E8D2\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280712470A1515F4471EB00E1B2B\",\"now\":1793142767000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280712470A1515F4471EB00E1B2B\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "hasOwnWebdriver": false,
-              "hasFakeChromeRuntime": false
-            },
-            "before": {
-              "x": 795.15625,
-              "y": 369,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "199"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 369,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "54.5K"
-              },
-              "red": false
-            }
-          },
-          "interacted_at": "2026-10-28 06:12:50",
-          "follow_back_window_until": "2026-10-29 06:12:50"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7700845523439209746",
-          "video_url": "https://www.tiktok.com/@emtamm___/video/7700845523439209746",
-          "creator_handle": "@emtamm___",
-          "watched_seconds": 23.2,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "mình mới xây kênh, nhận follow chéo ạ ❤️✨",
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280713195F9CC7E4FDC1351167A0\",\"now\":1793142799000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202610280713195F9CC7E4FDC1351167A0\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807132374184B4910A8F61E7809\",\"now\":1793142803000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026102807132374184B4910A8F61E7809\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "hasOwnWebdriver": false,
-              "hasFakeChromeRuntime": false
-            },
-            "before": {
-              "x": 795.15625,
-              "y": 369,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "37.2K"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 369,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "37.2K"
-              },
-              "red": true
-            }
-          },
-          "interacted_at": "2026-10-28 06:13:27",
-          "follow_back_window_until": "2026-10-29 06:13:27"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7700632010032860437",
-          "video_url": "https://www.tiktok.com/@bon.xinh.boutique/video/7700632010032860437",
-          "creator_handle": "@bon.xinh.boutique",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "mình mới xây kênh, nhận follow chéo ạ nhé 🥰",
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071357420ED16E9A650333098C\",\"now\":1793142837000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261028071357420ED16E9A650333098C\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280714020FE460D5655A8F44DB27\",\"now\":1793142842000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280714020FE460D5655A8F44DB27\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "hasOwnWebdriver": false,
-              "hasFakeChromeRuntime": false
-            },
-            "before": {
-              "x": 795.15625,
-              "y": 369,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "3"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 369,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "4"
-              },
-              "red": true
-            }
-          },
-          "interacted_at": "2026-10-28 06:14:05",
-          "follow_back_window_until": "2026-10-29 06:14:05"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7700511243399925013",
-          "video_url": "https://www.tiktok.com/@carenacolvin/video/7700511243399925013",
-          "creator_handle": "@carenacolvin",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🥰",
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071425817CB2B659E10C75859F\",\"now\":1793142865000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261028071425817CB2B659E10C75859F\"},\"status_code\":0,\"status_msg\":\"\"}"
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807143487180920CC2C802814F3\",\"now\":1793142874000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"2026102807143487180920CC2C802814F3\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071430ABC3B723858224586BE3\",\"now\":1793142870000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071430ABC3B723858224586BE3\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280719183981922E345E7F504DE2\",\"now\":1793143158000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280719183981922E345E7F504DE2\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "env_check": {
@@ -583,7 +495,7 @@
               "y": 421,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "44"
+              "likeCount": "40"
             },
             "init_red": false,
             "after_os_click_05s": {
@@ -592,18 +504,770 @@
                 "y": 421,
                 "ariaPressed": true,
                 "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "45"
+                "likeCount": "41"
               },
               "red": true
             }
           },
-          "interacted_at": "2026-10-28 06:14:35",
-          "follow_back_window_until": "2026-10-29 06:14:35"
+          "interacted_at": "2026-10-28 06:19:23",
+          "follow_back_window_until": "2026-10-29 06:19:23"
+        },
+        {
+          "channel": "baby_AI",
+          "video_id": "7700876521757478152",
+          "video_url": "https://www.tiktok.com/@linh.trn4069/video/7700876521757478152",
+          "creator_handle": "@linh.trn4069",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "mình mới xây kênh, nhận follow chéo ạ nha ❤️",
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807195313A8910CCA64A92093A0\",\"now\":1793143193000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"2026102807195313A8910CCA64A92093A0\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280719578FF586C489F728683751\",\"now\":1793143197000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280719578FF586C489F728683751\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "hasOwnWebdriver": false,
+              "hasFakeChromeRuntime": false
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 421,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "23"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "24"
+              },
+              "red": true
+            }
+          },
+          "interacted_at": "2026-10-28 06:20:01",
+          "follow_back_window_until": "2026-10-29 06:20:01"
+        },
+        {
+          "channel": "baby_AI",
+          "video_id": "7700846368465718549",
+          "video_url": "https://www.tiktok.com/@tuanmobai/video/7700846368465718549",
+          "creator_handle": "@tuanmobai",
+          "watched_seconds": 20.6,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 💯",
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280720278119C515ACD49E4C2C9C\",\"now\":1793143227000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202610280720278119C515ACD49E4C2C9C\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807203117267B0DA868641D8046\",\"now\":1793143231000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026102807203117267B0DA868641D8046\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "hasOwnWebdriver": false,
+              "hasFakeChromeRuntime": false
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 421,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "17"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "18"
+              },
+              "red": true
+            }
+          },
+          "interacted_at": "2026-10-28 06:20:35",
+          "follow_back_window_until": "2026-10-29 06:20:35"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-28 06:20:36",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+      "details": {
+        "interacted_count": 10,
+        "records": [
+          {
+            "channel": "baby_AI",
+            "video_id": "7701279949600099605",
+            "video_url": "https://www.tiktok.com/@mecuathienanh206/video/7701279949600099605",
+            "creator_handle": "@mecuathienanh206",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ nha ❤️",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071501A6AF529A00BB3740B714\",\"now\":1793142901000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071501A6AF529A00BB3740B714\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280715098D88F2C1F956505933B5\",\"now\":1793142909000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280715098D88F2C1F956505933B5\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280715055E0530E569F33F2497FB\",\"now\":1793142905000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280715055E0530E569F33F2497FB\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "35"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "36"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:15:10",
+            "follow_back_window_until": "2026-10-29 06:15:10"
+          },
+          {
+            "channel": "baby_AI",
+            "video_id": "7701261057066618132",
+            "video_url": "https://www.tiktok.com/@votongdanhvang/video/7701261057066618132",
+            "creator_handle": "@votongdanhvang",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🔥",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280715318238AA1B8347632A7193\",\"now\":1793142931000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280715318238AA1B8347632A7193\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807153938D5551F9ED5050A23EB\",\"now\":1793142939000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102807153938D5551F9ED5050A23EB\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071535E4E15BD1F290C0527054\",\"now\":1793142935000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071535E4E15BD1F290C0527054\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "84"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "85"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:15:40",
+            "follow_back_window_until": "2026-10-29 06:15:40"
+          },
+          {
+            "channel": "baby_AI",
+            "video_id": "7701247551298718994",
+            "video_url": "https://www.tiktok.com/@_manhmanhreview_/video/7701247551298718994",
+            "creator_handle": "@_manhmanhreview_",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🌷",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280716094F407EF1B0331222C5E4\",\"now\":1793142969000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280716094F407EF1B0331222C5E4\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280716183911B5B427E65F62C20D\",\"now\":1793142978000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280716183911B5B427E65F62C20D\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071614794F582FE92DBA4499CC\",\"now\":1793142974000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071614794F582FE92DBA4499CC\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "486"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "487"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:16:18",
+            "follow_back_window_until": "2026-10-29 06:16:18"
+          },
+          {
+            "channel": "baby_AI",
+            "video_id": "7701222149398351110",
+            "video_url": "https://www.tiktok.com/@thu.h0372/video/7701222149398351110",
+            "creator_handle": "@thu.h0372",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🔥",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071647CD4C3AD698B04A594449\",\"now\":1793143008000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071647CD4C3AD698B04A594449\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280716566A0A41326DC67E3C3664\",\"now\":1793143017000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280716566A0A41326DC67E3C3664\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071652137E59515A7E305DC14E\",\"now\":1793143012000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071652137E59515A7E305DC14E\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "26"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "27"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:16:57",
+            "follow_back_window_until": "2026-10-29 06:16:57"
+          },
+          {
+            "channel": "baby_AI",
+            "video_id": "7700975842385530132",
+            "video_url": "https://www.tiktok.com/@ncvdwgh/video/7700975842385530132",
+            "creator_handle": "@ncvdwgh",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🤝🔥",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071727317264CBE78FAC3FE35F\",\"now\":1793143047000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071727317264CBE78FAC3FE35F\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807173519EFB28E8FC9713DBB93\",\"now\":1793143056000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102807173519EFB28E8FC9713DBB93\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071731C568FB11739CB269C1AE\",\"now\":1793143051000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028071731C568FB11739CB269C1AE\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "24"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "25"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:17:36",
+            "follow_back_window_until": "2026-10-29 06:17:36"
+          },
+          {
+            "channel": "baby_AI",
+            "video_id": "7700956663041477896",
+            "video_url": "https://www.tiktok.com/@thao_06012006/video/7700956663041477896",
+            "creator_handle": "@thao_06012006",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🥰🌷",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807175659B2939141C84027ED6F\",\"now\":1793143076000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102807175659B2939141C84027ED6F\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807180559B2939141C84027EF45\",\"now\":1793143085000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102807180559B2939141C84027EF45\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807180110FF2B2AD5D1063BDF80\",\"now\":1793143081000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026102807180110FF2B2AD5D1063BDF80\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "24"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "25"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:18:06",
+            "follow_back_window_until": "2026-10-29 06:18:06"
+          },
+          {
+            "channel": "baby_AI",
+            "video_id": "7700934245820288274",
+            "video_url": "https://www.tiktok.com/@faypreocsde/video/7700934245820288274",
+            "creator_handle": "@faypreocsde",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 💯",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280718351C55DCE2B99558561FC8\",\"now\":1793143115000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280718351C55DCE2B99558561FC8\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280718446C3A503C20CFE82A1616\",\"now\":1793143124000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610280718446C3A503C20CFE82A1616\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280718405127571F00541559C6F0\",\"now\":1793143120000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280718405127571F00541559C6F0\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "59"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "60"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:18:44",
+            "follow_back_window_until": "2026-10-29 06:18:44"
+          },
+          {
+            "channel": "baby_AI",
+            "video_id": "7700890865237085461",
+            "video_url": "https://www.tiktok.com/@chpxiinh/video/7700890865237085461",
+            "creator_handle": "@chpxiinh",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🔥",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071914F6ADEDE357910F49CE52\",\"now\":1793143154000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071914F6ADEDE357910F49CE52\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028071923437A4360D3636A54DF66\",\"now\":1793143163000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028071923437A4360D3636A54DF66\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280719183981922E345E7F504DE2\",\"now\":1793143158000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280719183981922E345E7F504DE2\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "40"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "41"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:19:23",
+            "follow_back_window_until": "2026-10-29 06:19:23"
+          },
+          {
+            "channel": "baby_AI",
+            "video_id": "7700876521757478152",
+            "video_url": "https://www.tiktok.com/@linh.trn4069/video/7700876521757478152",
+            "creator_handle": "@linh.trn4069",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ nha ❤️",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807195313A8910CCA64A92093A0\",\"now\":1793143193000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"2026102807195313A8910CCA64A92093A0\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280719578FF586C489F728683751\",\"now\":1793143197000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610280719578FF586C489F728683751\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "23"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "24"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:20:01",
+            "follow_back_window_until": "2026-10-29 06:20:01"
+          },
+          {
+            "channel": "baby_AI",
+            "video_id": "7700846368465718549",
+            "video_url": "https://www.tiktok.com/@tuanmobai/video/7700846368465718549",
+            "creator_handle": "@tuanmobai",
+            "watched_seconds": 20.6,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 💯",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610280720278119C515ACD49E4C2C9C\",\"now\":1793143227000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202610280720278119C515ACD49E4C2C9C\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102807203117267B0DA868641D8046\",\"now\":1793143231000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026102807203117267B0DA868641D8046\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "hasOwnWebdriver": false,
+                "hasFakeChromeRuntime": false
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "17"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "18"
+                },
+                "red": true
+              }
+            },
+            "interacted_at": "2026-10-28 06:20:35",
+            "follow_back_window_until": "2026-10-29 06:20:35"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-28 06:14:35",
       "machine_arch": "x86_64",
@@ -7093,21 +7757,6 @@
             "follow_back_window_until": "2026-10-28 17:46:17"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-10-27 08:36:05",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261025_170711_tiktok_story_7683183620114156821.mp4",
-        "caption": "⚔️ [Tu Chân Giới] [Đam Mỹ Audio] BẠN THÂN PHÁO HÔI CỦA LONG NGẠO THIÊN LÀ VẠN NHÂN MÊ. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-        "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xh #xuhuongtiktok",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
