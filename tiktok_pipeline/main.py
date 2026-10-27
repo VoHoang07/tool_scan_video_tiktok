@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 import random
 import re
 import shutil
@@ -743,14 +744,20 @@ def run_continuous_mode(
     scheduler_lock = threading.Lock()
 
     def _reload_poster_if_updated() -> None:
-        nonlocal poster
+        nonlocal poster, initial_code_snapshot
         pulled = _auto_git_pull_if_available(project_root)
-        if pulled or _get_codebase_mtime_snapshot(project_root) != initial_code_snapshot:
+        cur_snap = _get_codebase_mtime_snapshot(project_root)
+        if pulled or cur_snap != initial_code_snapshot:
+            initial_code_snapshot = cur_snap
             try:
                 import importlib
+                from . import crawler as _cr_mod
+                from . import translator as _tr_mod
                 from . import growth_24h_filter as _g24_mod
                 from . import auto_poster as _ap_mod
 
+                importlib.reload(_cr_mod)
+                importlib.reload(_tr_mod)
                 importlib.reload(_g24_mod)
                 importlib.reload(_ap_mod)
                 poster = _ap_mod.TikTokAutoPoster(project_root=project_root)
@@ -817,17 +824,7 @@ def run_continuous_mode(
     def _check_hot_reload() -> None:
         if scheduler_lock.locked():
             return
-        _auto_git_pull_if_available(project_root)
-        current_snapshot = _get_codebase_mtime_snapshot(project_root)
-        if current_snapshot != initial_code_snapshot:
-            if scheduler_lock.locked():
-                return
-            logger.info(
-                "[Hot-Reload] Phát hiện code Python vừa được cập nhật từ máy chủ Silicon! "
-                "Đang tự động khởi động lại Worker tại chỗ (os.execv) để áp dụng code mới..."
-            )
-            time.sleep(1.0)
-            os.execv(sys.executable, [sys.executable] + sys.argv)
+        _reload_poster_if_updated()
 
     def _interruptible_sleep(seconds: int, reason: str) -> None:
         if seconds <= 0 or stop_requested:
