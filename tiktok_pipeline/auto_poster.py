@@ -2026,6 +2026,33 @@ class TikTokAutoPoster:
 
         summary: Dict[str, Any] = {}
         for ch_folder in target_channels:
+            try:
+                import importlib
+                from . import growth_24h_filter as _g24_mod
+
+                importlib.reload(_g24_mod)
+                self.filter_24h = _g24_mod.TikTok24hFilterEngine(
+                    project_root=self.project_root,
+                    desktop=self.desktop,
+                    human_move_fn=self._human_move_mouse,
+                    os_click_fn=self._os_click_viewport,
+                )
+                in_cd, cd_reason = self.filter_24h.is_in_cooldown(ch_folder)
+                if in_cd:
+                    logger.info(
+                        f"[{ch_folder}] [Dòng 2 - Chế Độ Xả Phạt Tự Động] Bỏ qua mở trình duyệt kênh [{ch_folder}] ({cd_reason}) -> "
+                        "Sẽ tự động mở lại ngay khi hết thời gian xả phạt!"
+                    )
+                    summary[ch_folder] = {
+                        "status": "COOLDOWN",
+                        "cooldown_reason": cd_reason,
+                        "interacted_count": 0,
+                        "records": [],
+                    }
+                    continue
+            except Exception:
+                pass
+
             user_data_dir = self.profiles_root / ch_folder
             if not user_data_dir.exists():
                 logger.info(
@@ -2041,19 +2068,6 @@ class TikTokAutoPoster:
                     playwright_obj=p, user_data_dir=user_data_dir, headless=headless
                 )
                 try:
-                    try:
-                        import importlib
-                        from . import growth_24h_filter as _g24_mod
-
-                        importlib.reload(_g24_mod)
-                        self.filter_24h = _g24_mod.TikTok24hFilterEngine(
-                            project_root=self.project_root,
-                            desktop=self.desktop,
-                            human_move_fn=self._human_move_mouse,
-                            os_click_fn=self._os_click_viewport,
-                        )
-                    except Exception:
-                        pass
                     page = context.pages[0] if context.pages else context.new_page()
                     records = self.filter_24h.run_session_on_page(
                         page=page, ch_folder=ch_folder, video_count=video_count
@@ -2377,7 +2391,32 @@ class TikTokAutoPoster:
         if not filter_enabled:
             return filter_results
 
-        default_7_slots = ["06:00", "09:30", "11:00", "14:00", "16:00", "18:00", "21:30"]
+        # 0c. Chế độ Xả Phạt Tự Động 72 giờ (Auto-Cooldown & Auto-Resume sau 3 ngày):
+        cooldown_until_str = str(cfg.get("filter_24h_cooldown_until") or "").strip()
+        if cooldown_until_str:
+            try:
+                cd_dt = datetime.strptime(cooldown_until_str, "%Y-%m-%d %H:%M:%S")
+                now_dt = datetime.now()
+                if now_dt < cd_dt:
+                    last_log = getattr(self, "_last_cooldown_log_ts", 0.0)
+                    if time.time() - last_log >= 1800.0:
+                        rem_hours = (cd_dt - now_dt).total_seconds() / 3600.0
+                        logger.info(
+                            f"[Dòng 2 - Chế Độ Xả Phạt 72h] Đang tạm nghỉ Bộ lọc 24h đến {cooldown_until_str} "
+                            f"(còn {rem_hours:.1f} giờ) -> Sẽ TỰ ĐỘNG MỞ LẠI ngay khi đủ 3 ngày!"
+                        )
+                        self._last_cooldown_log_ts = time.time()
+                    return filter_results
+                elif not getattr(self, "_cooldown_resume_logged", False):
+                    logger.info(
+                        f"[Dòng 2 - Tự Động Mở Lại Sau 3 Ngày] Đã vượt qua mốc xả phạt {cooldown_until_str} -> "
+                        "Tự động kích hoạt lại Bộ lọc 24 giờ với nhịp độ an toàn (3 lần/ngày × 3 video)!"
+                    )
+                    self._cooldown_resume_logged = True
+            except Exception:
+                pass
+
+        default_3_slots = ["09:30", "15:00", "21:00"]
         for profile in CHANNEL_PROFILES.values():
             ch_folder = profile["folder_name"]
             now = datetime.now()
@@ -2385,7 +2424,7 @@ class TikTokAutoPoster:
             now_minutes = now.hour * 60 + now.minute
             history = self._load_post_history()
 
-            f_slots = filter_times_map.get(ch_folder) or default_7_slots
+            f_slots = filter_times_map.get(ch_folder) or default_3_slots
             for round_idx, f_slot in enumerate(f_slots, start=1):
                 f_key = f"{today_str}_filter24h_{ch_folder}_{f_slot}"
                 if f_key in history:

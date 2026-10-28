@@ -28,44 +28,29 @@
     ]
   },
   "filter_24h_enabled": true,
-  "filter_24h_runs_per_day": 7,
-  "filter_24h_videos_per_session": 10,
+  "filter_24h_cooldown_until": "2026-10-31 13:45:00",
+  "filter_24h_runs_per_day": 3,
+  "filter_24h_videos_per_session": 3,
   "channel_filter_24h_times": {
     "video_AI_hay": [
-      "06:00",
       "09:30",
-      "11:00",
-      "14:00",
-      "16:00",
-      "18:00",
-      "21:30"
+      "15:00",
+      "21:00"
     ],
     "baby_AI": [
-      "06:15",
-      "09:45",
-      "11:15",
-      "14:15",
-      "16:15",
-      "18:15",
-      "21:45"
+      "10:00",
+      "15:30",
+      "21:30"
     ],
     "audio_dem_khuyen": [
-      "06:30",
-      "10:00",
-      "11:30",
-      "14:30",
-      "16:30",
-      "18:30",
+      "10:30",
+      "16:00",
       "22:00"
     ],
     "tu_chan_gioi": [
-      "06:45",
-      "10:15",
-      "11:45",
-      "14:45",
-      "16:45",
-      "18:45",
-      "22:15"
+      "11:00",
+      "16:30",
+      "22:30"
     ]
   },
   "remote_trigger_post_now": {
@@ -74,10 +59,10 @@
     "channel": "audio_dem_khuyen"
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "intel_filter24h_spa_follow_20261028_1226",
+    "trigger_id": "activate_72h_cooldown_20261028_1348",
     "target_arch": "x86_64",
     "channel": "baby_AI",
-    "video_count": 5
+    "video_count": 1
   },
   "headless": false,
   "random_jitter_minutes": 9,

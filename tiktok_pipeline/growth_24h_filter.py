@@ -316,36 +316,42 @@ class TikTok24hFilterEngine:
             return m.group(1), m.group(2)
         return "", ""
 
-    _LAST_COMMENT_SUFFIX: str = ""
+    _LAST_COMMENT_TEXT: str = ""
 
     @classmethod
     def generate_meaningful_24h_comment(cls, creator_handle: str = "", video_desc: str = "") -> str:
         """
-        Giữ nguyên câu gốc "mình mới xây kênh, nhận follow chéo ạ" và đảo nhẹ icon/dấu câu ở cuối
-        (không trùng lặp 2 lần liên tiếp) để mỗi bình luận có mã chuỗi riêng biệt với thuật toán TikTok.
+        Tạo bình luận khen ngợi tự nhiên theo nội dung video (loại bỏ hoàn toàn cụm từ
+        nhạy cảm 'follow chéo' / 'tương tác chéo' để không bị bộ lọc NLP của TikTok Shark gắn cờ spam).
         """
-        base = "mình mới xây kênh, nhận follow chéo ạ"
-        suffixes = [
-            " ❤️",
-            " 🥰",
-            " ✨",
-            " 🤝",
-            " 🌷",
-            " 🔥",
-            " 💯",
-            " 🌟",
-            " 🫶",
-            " ❤️✨",
-            " 🥰🌷",
-            " 🤝🔥",
-            "!",
-            " nha ❤️",
-            " nhé 🥰",
+        natural_comments = [
+            "Video hay và ý nghĩa quá bạn ơi, chúc kênh ngày càng phát triển nhé ❤️",
+            "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
+            "Hình ảnh với âm thanh đỉnh thật sự, ủng hộ kênh bạn lâu dài nha 🔥",
+            "Xem cuốn luôn á, mong kênh ra thêm nhiều video chất lượng như này nhé 🥰",
+            "Video chỉnh chu quá, chúc bạn sớm lên xu hướng nha 💯",
+            "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
+            "Quá tuyệt vời luôn bạn ơi, thả tim ủng hộ kênh nhiệt tình nhé ❤️✨",
+            "Cách làm video của bạn cuốn thật sự, xem một mạch tới cuối luôn 🌟",
+            "Một chiếc video đầy năng lượng tích cực, chúc kênh luôn bùng nổ view nhé 🔥",
+            "Mê cái vibe của kênh bạn ghê, sẽ theo dõi ủng hộ dài lâu ạ 🫶",
+            "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
+            "Nhạc với hình hợp nhau thực sự, xem đi xem lại vẫn thấy cuốn 🥰",
+            "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
+            "Kênh đầu tư chỉn chu từ hình ảnh tới âm thanh, chúc bạn phát triển mạnh nha ✨",
+            "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
+            "Xem cuốn từ giây đầu tới giây cuối luôn, tuyệt vời lắm bạn ơi 🔥",
+            "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
+            "Video chất lượng lắm ạ, mong chờ các tập tiếp theo từ kênh của bạn 🫶",
+            "Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️",
+            "Ý tưởng video sáng tạo và cuốn hút thật sự, chúc kênh mau lên xu hướng nha 💯",
+            "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
+            "Đỉnh của chóp luôn bạn ơi, giữ vững phong độ ra nhiều clip hay nữa nha 🔥",
         ]
-        choices = [s for s in suffixes if s != cls._LAST_COMMENT_SUFFIX] or suffixes
+        choices = [c for c in natural_comments if c != cls._LAST_COMMENT_TEXT] or natural_comments
         chosen = random.choice(choices)
-        cls._LAST_COMMENT_SUFFIX = chosen
-        return f"{base}{chosen}"
+        cls._LAST_COMMENT_TEXT = chosen
+        return chosen
 
     @staticmethod
     def _compute_best_whirl_rotation_fraction(
@@ -1154,9 +1160,11 @@ class TikTok24hFilterEngine:
 
     def _step2_like_video(self, page: Any, ch_folder: str) -> bool:
         """
-        BƯỚC 2: Thả tim video (Like) và chờ vượt qua bộ đếm rollback 3.0s (`3e3` trong `atom.init.js`) của TikTok
-        để xác nhận máy chủ thực sự chấp nhận lượt Like (`is_digg: 0` + tim giữ màu đỏ #FE2C55 sau 3.35s).
+        BƯỚC 2: Thả tim video (Like) ĐÚNG 1 LẦN (Single-Click) và chờ vượt qua bộ đếm rollback 3.0s (`3e3` trong `atom.init.js`) của TikTok.
+        - Nếu máy chủ trả về `"is_digg": 1` (tài khoản đang bị giới hạn thao tác ngầm): KÍCH HOẠT CẦU DAO TỰ NGẮT (`_circuit_breaker_tripped = True`),
+          tuyệt đối KHÔNG bấm nhồi lần 2 để tránh làm TikTok reset bộ đếm phạt 24h-72h.
         """
+        self._circuit_breaker_tripped = False
         trace: Dict[str, Any] = getattr(self, "_last_like_debug", {}) or {}
         try:
             like_info = self._check_like_state(page)
@@ -1184,21 +1192,25 @@ class TikTok24hFilterEngine:
                     and '"status_code":0' in (r.get("body") or "").replace(" ", "")
                     for r in d_resps
                 )
+                server_digg_rejected = any(
+                    '"is_digg":1' in (r.get("body") or "").replace(" ", "")
+                    for r in d_resps
+                )
                 trace["after_os_click_05s"] = {
                     "state": st_after,
                     "red": red_after,
                     "server_digg_ok": server_digg_ok,
+                    "server_digg_rejected": server_digg_rejected,
                 }
 
-                if not red_after or (d_resps and not server_digg_ok):
-                    # Thử thả tim bằng thao tác Double-Click tự nhiên vào giữa khung hình video (enter_method=double_click)
-                    self._human_move_mouse(page, 520.0, 420.0)
-                    page.mouse.dblclick(520.0, 420.0, delay=55)
-                    time.sleep(3.35)
-                    self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
-                    recheck = self._check_like_state(page)
-                    red_after = self._is_like_state_red_in_dom(recheck)
-                    trace["after_dblclick_33s"] = {"state": recheck, "red": red_after}
+                if server_digg_rejected:
+                    self._circuit_breaker_tripped = True
+                    self._last_like_debug = trace
+                    logger.warning(
+                        f"[{ch_folder}] [Circuit Breaker Anti-Shark] Máy chủ TikTok trả về is_digg=1 (tài khoản đang trong thời gian giới hạn thả tim/follow) -> "
+                        "Ngắt thao tác ngay, KHÔNG bấm nhồi lần 2 để tránh reset bộ đếm phạt!"
+                    )
+                    return False
 
                 self._last_like_debug = trace
                 logger.info(
@@ -1953,47 +1965,64 @@ class TikTok24hFilterEngine:
         watched_sec = self._step1_watch_full_video(page, ch_folder, video_url)
         self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
-        # 2. Thả tim video (chờ 3.35s vượt qua timer rollback 3000ms của TikTok để xác nhận lưu thật)
+        # 2. Thả tim video (Single-Click + kiểm tra Circuit Breaker is_digg=1)
+        self._circuit_breaker_tripped = False
         liked = self._step2_like_video(page, ch_folder)
         time.sleep(random.uniform(1.2, 1.8))
 
-        # 3. Sao chép liên kết video đó
-        copied_link = self._step3_copy_video_link(page, ch_folder, video_url)
-        time.sleep(random.uniform(1.2, 1.8))
+        copied_link = False
+        favorited = False
+        comment_text: Optional[str] = None
+        profile_followed = False
+        followed = False
 
-        # 4. Thêm video vào mục yêu thích (xác nhận bookmark vàng #FACE15)
-        favorited = self._step4_favorite_video(page, ch_folder)
-        time.sleep(random.uniform(1.2, 1.8))
-
-        # 5. Để lại bình luận bằng nhịp gõ phím tự nhiên trên trang video
-        comment_text = self._step6_post_meaningful_comment(page, ch_folder, creator_handle)
-
-        # Kiểm tra lại tim đỏ trên trang video trước khi chụp ảnh telemetry
-        if not self._is_like_state_red_in_dom(self._check_like_state(page)):
-            liked = self._step2_like_video(page, ch_folder) or liked
-        time.sleep(0.6)
-
-        # Chụp ảnh màn hình kết quả tương tác trên trang video vào remote_telemetry/
-        try:
-            telem_dir = self.project_root / "remote_telemetry"
-            telem_dir.mkdir(parents=True, exist_ok=True)
-            page.screenshot(
-                path=str(telem_dir / f"latest_filter24h_{ch_folder}.jpg"),
-                type="jpeg",
-                quality=60,
+        if getattr(self, "_circuit_breaker_tripped", False):
+            logger.warning(
+                f"[{ch_folder}] [Circuit Breaker Anti-Shark] Bỏ qua toàn bộ thao tác phụ trên video @{creator_handle} để bảo vệ tài khoản!"
             )
-        except Exception:
-            pass
+        else:
+            # Ngẫu nhiên hóa hành vi (Partial Randomized Actions) để phá vỡ hoàn toàn mẫu Bot Macro 5 bước 100%:
+            do_copy = random.random() < 0.35
+            do_fav = random.random() < 0.45
+            do_comment = random.random() < 0.65
+            do_follow = random.random() < 0.75
 
-        # 6. Click trực tiếp vào tên/avatar chủ kênh trên trang video để chuyển SPA sang trang Hồ sơ @creator_handle
-        # và bấm ĐÚNG 1 LẦN nút Follow chữ nhật chính ([data-e2e="follow-button"])
-        profile_followed = self._verify_and_follow_on_creator_profile(
-            page=page,
-            ch_folder=ch_folder,
-            creator_handle=creator_handle,
-            video_url=video_url,
-        )
-        followed = bool(profile_followed)
+            # 3. Sao chép liên kết video (xác suất ~35%)
+            if do_copy:
+                copied_link = self._step3_copy_video_link(page, ch_folder, video_url)
+                time.sleep(random.uniform(1.2, 1.8))
+
+            # 4. Thêm video vào mục yêu thích (xác suất ~45%)
+            if do_fav:
+                favorited = self._step4_favorite_video(page, ch_folder)
+                time.sleep(random.uniform(1.2, 1.8))
+
+            # 5. Để lại bình luận khen tự nhiên theo nội dung (xác suất ~65%)
+            if do_comment:
+                comment_text = self._step6_post_meaningful_comment(page, ch_folder, creator_handle)
+                time.sleep(random.uniform(0.8, 1.4))
+
+            # Chụp ảnh màn hình kết quả tương tác trên trang video vào remote_telemetry/
+            try:
+                telem_dir = self.project_root / "remote_telemetry"
+                telem_dir.mkdir(parents=True, exist_ok=True)
+                page.screenshot(
+                    path=str(telem_dir / f"latest_filter24h_{ch_folder}.jpg"),
+                    type="jpeg",
+                    quality=60,
+                )
+            except Exception:
+                pass
+
+            # 6. Chuyển SPA sang trang Hồ sơ @creator_handle và bấm ĐÚNG 1 LẦN nút Follow (xác suất ~75%)
+            if do_follow:
+                profile_followed = self._verify_and_follow_on_creator_profile(
+                    page=page,
+                    ch_folder=ch_folder,
+                    creator_handle=creator_handle,
+                    video_url=video_url,
+                )
+                followed = bool(profile_followed)
 
         now_dt = datetime.now()
         record = {
@@ -2011,6 +2040,7 @@ class TikTok24hFilterEngine:
                 "6_commented_after_follow": bool(comment_text),
             },
             "comment_text": comment_text or "",
+            "circuit_breaker_tripped": bool(getattr(self, "_circuit_breaker_tripped", False)),
             "like_debug": getattr(self, "_last_like_debug", {}),
             "interacted_at": now_dt.strftime("%Y-%m-%d %H:%M:%S"),
             "follow_back_window_until": (now_dt + timedelta(hours=24)).strftime("%Y-%m-%d %H:%M:%S"),
@@ -2097,13 +2127,58 @@ class TikTok24hFilterEngine:
             logger.debug(f"[{ch_folder}] Bỏ qua kiểm chứng hồ sơ kênh: {exc}")
             return {}
 
+    def is_in_cooldown(self, ch_folder: str) -> Tuple[bool, str]:
+        """
+        Kiểm tra xem Dòng 2 (`filter24h`) đang trong thời gian Xả Phạt Tự Động 72h (`filter_24h_cooldown_until`
+        trong `schedule_config.json`) hoặc kênh `ch_folder` đang trong thời gian Cầu Dao Tự Ngắt 24h
+        (`channel_cooldown_until` trong `growth_24h_history.json`) hay không.
+        Khi thời gian hiện tại vượt qua mốc cooldown, tự động trả về `(False, "")` để mở lại bình thường.
+        """
+        now_dt = datetime.now()
+        try:
+            sched_path = self.project_root / "schedule_config.json"
+            if sched_path.exists():
+                cfg = json.loads(sched_path.read_text(encoding="utf-8"))
+                global_cd = str(cfg.get("filter_24h_cooldown_until") or "").strip()
+                if global_cd:
+                    cd_dt = datetime.strptime(global_cd, "%Y-%m-%d %H:%M:%S")
+                    if now_dt < cd_dt:
+                        rem_hours = (cd_dt - now_dt).total_seconds() / 3600.0
+                        return True, f"Xả phạt 72h toàn cục đến {global_cd} (còn {rem_hours:.1f} giờ)"
+        except Exception:
+            pass
+
+        try:
+            hist = self.load_history()
+            ch_cd_map = hist.get("channel_cooldown_until") or {}
+            ch_cd = str(ch_cd_map.get(ch_folder) or "").strip()
+            if ch_cd:
+                ch_dt = datetime.strptime(ch_cd, "%Y-%m-%d %H:%M:%S")
+                if now_dt < ch_dt:
+                    rem_hours = (ch_dt - now_dt).total_seconds() / 3600.0
+                    return True, f"Circuit-Breaker kênh [{ch_folder}] đến {ch_cd} (còn {rem_hours:.1f} giờ)"
+        except Exception:
+            pass
+
+        return False, ""
+
     def run_session_on_page(
-        self, page: Any, ch_folder: str, video_count: int = 10
+        self, page: Any, ch_folder: str, video_count: int = 3
     ) -> List[Dict[str, Any]]:
         """
-        Chạy 1 phiên "Bộ lọc 24 giờ" cho kênh `ch_folder` trên `page` đang mở sẵn (mặc định 10 video/phiên).
+        Chạy 1 phiên "Bộ lọc 24 giờ" cho kênh `ch_folder` trên `page` đang mở sẵn (mặc định 3 video/phiên).
+        Tự động kiểm tra chế độ Xả Phạt 72h (`filter_24h_cooldown_until`) và Cầu Dao Tự Ngắt (`is_digg: 1`).
         """
         self.last_own_profile_stats = {}
+        in_cd, cd_reason = self.is_in_cooldown(ch_folder)
+        if in_cd:
+            logger.info(
+                f"[{ch_folder}] [Dòng 2 - Chế Độ Xả Phạt Tự Động] Tạm nghỉ Bộ lọc 24h ({cd_reason}) -> "
+                "Tự động mở lại ngay khi hết thời gian xả phạt!"
+            )
+            self.last_own_profile_stats = {"cooldown_active": True, "cooldown_reason": cd_reason}
+            return []
+
         target_urls = self._discover_target_videos(page, ch_folder, needed_count=video_count)
         if not target_urls:
             logger.warning(
@@ -2119,13 +2194,24 @@ class TikTok24hFilterEngine:
                 )
                 rec = self.interact_with_single_video(page, ch_folder, url)
                 results.append(rec)
+                if getattr(self, "_circuit_breaker_tripped", False):
+                    until_str = (datetime.now() + timedelta(hours=24)).strftime("%Y-%m-%d %H:%M:%S")
+                    hist = self.load_history()
+                    hist.setdefault("channel_cooldown_until", {})[ch_folder] = until_str
+                    self.save_history(hist)
+                    logger.warning(
+                        f"[{ch_folder}] [Circuit Breaker Anti-Shark] Phát hiện TikTok giới hạn thao tác (is_digg=1) -> "
+                        f"Ngắt phiên ngay lập tức và tạm nghỉ kênh [{ch_folder}] 24 giờ (đến {until_str})!"
+                    )
+                    break
                 if idx < min(len(target_urls), video_count):
-                    pause_s = random.uniform(2.5, 4.2)
+                    pause_s = random.uniform(3.5, 6.0)
                     logger.info(f"[{ch_folder}] [Bộ lọc 24h] Chuyển sang video kế tiếp sau {pause_s:.1f}s...")
                     time.sleep(pause_s)
             except Exception as exc:
                 logger.warning(f"[{ch_folder}] [Bộ lọc 24h] Lỗi khi tương tác video {url}: {exc}")
                 time.sleep(3.5)
 
-        self.last_own_profile_stats = self._capture_own_profile_stats(page, ch_folder)
+        if not getattr(self, "_circuit_breaker_tripped", False):
+            self.last_own_profile_stats = self._capture_own_profile_stats(page, ch_folder)
         return results
