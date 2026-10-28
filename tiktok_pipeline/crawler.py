@@ -2047,10 +2047,22 @@ class StoryAudioCrawler:
                     logger.info(f"[Voice Filter] Loại bỏ {vid}: không tìm thấy câu thoại nào để dịch.")
                     shutil.rmtree(cand_dir, ignore_errors=True)
                     return False, None
+                if detected_lang != "vi" and mean_logprob < -0.52 and ocr_coverage < 0.35:
+                    logger.info(
+                        f"[Voice Filter] -> LOẠI BỎ {vid} (phương ngữ nặng / âm thanh mờ khó nghe: logprob={mean_logprob:.2f}, ocr={ocr_coverage:.0%})."
+                    )
+                    shutil.rmtree(cand_dir, ignore_errors=True)
+                    return False, None
             else:
                 if seg_count < self.min_segments or speech_ratio < self.min_speech_ratio:
                     logger.info(
                         f"[Voice Filter] -> LOẠI BỎ {vid} (không đạt chuẩn mật độ câu thoại)."
+                    )
+                    shutil.rmtree(cand_dir, ignore_errors=True)
+                    return False, None
+                if detected_lang != "vi" and mean_logprob < -0.46 and ocr_coverage < 0.45:
+                    logger.info(
+                        f"[Voice Filter] -> LOẠI BỎ {vid} (phương ngữ địa phương nặng / không có sub cứng chuẩn: logprob={mean_logprob:.2f}, ocr={ocr_coverage:.0%})."
                     )
                     shutil.rmtree(cand_dir, ignore_errors=True)
                     return False, None
@@ -2176,8 +2188,8 @@ class StoryAudioCrawler:
                     reason = f"video TikTok tiếng Anh cũ trước 28/10 trong {ch_folder}"
                 elif ch_folder == "baby_AI" and plat == "douyin" and re.match(r"^2026102[0-7]_", fname) and sid not in valid_baby_ai_douyin_seeds:
                     reason = "video Douyin hài người lớn cũ không thuộc chủ đề Baby AI"
-                elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_155500":
-                    reason = "video lồng tiếng bản cũ trước khi nâng cấp Word-Timestamp Sync & Anti-Repeat OCR (15:55 28/10)"
+                elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_163800":
+                    reason = "video lồng tiếng bản cũ trước khi nâng cấp Word-Timestamp Sync & Anti-Repeat OCR (16:38 28/10)"
 
                 if not reason and sid:
                     for tr_dir in (

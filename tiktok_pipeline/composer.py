@@ -97,11 +97,14 @@ class VideoComposer:
         self.work_dir.mkdir(parents=True, exist_ok=True)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-        env_vol = os.getenv("ORIGINAL_AUDIO_VOLUME", "0.07")
+        env_vol = float(os.getenv("ORIGINAL_AUDIO_VOLUME", "0.07"))
+        if env_vol >= 0.11:
+            # Tự động hạ cấu hình cũ (0.12) trong .env xuống 0.07 để triệt tiêu tiếng Trung gốc lọt nền
+            env_vol = 0.07
         self.original_volume = (
             float(original_volume)
             if original_volume is not None
-            else float(env_vol)
+            else env_vol
         )
         self.voiceover_volume = float(voiceover_volume)
         self.ffmpeg_bin, _ = ensure_ffmpeg()
@@ -400,6 +403,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             if not tts_file or not Path(tts_file).exists():
                 continue
 
+            orig_end_sec = float(seg.get("end", seg.get("start", 0.0)))
             start_sec = max(0.0, float(seg["start"]))
             start_sample = int(round(start_sec * sample_rate))
             # Tránh đè lên câu trước nếu câu trước kéo dài hơn dự kiến một chút
@@ -420,7 +424,27 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             current_cursor_sample = end_sample
             # Cập nhật lại chính xác mốc start/end theo vị trí PCM thực tế để phụ đề .ass khớp 100% với giọng nói
             seg["start"] = round(placement_sample / float(sample_rate), 3)
-            seg["end"] = round(end_sample / float(sample_rate), 3)
+            seg["tts_end"] = round(end_sample / float(sample_rate), 3)
+            seg["orig_end"] = round(orig_end_sec, 3)
+            seg["end"] = seg["tts_end"]
+
+        # Chống hiện tượng phụ đề câu ngắn ("Tạm biệt", "Dạ" ~0.3s) nháy tắt quá nhanh trên màn hình:
+        # Giữ nguyên `start` khớp 0.000s với giọng đọc, nhưng cho phép phụ đề nán lại tối thiểu 0.95s
+        # (hoặc tới sát câu kế tiếp - 0.04s) để mắt người xem đọc kịp tự nhiên mà không bao giờ đè câu sau.
+        for i, seg in enumerate(segments):
+            st_val = float(seg.get("start", 0.0))
+            tts_end_val = float(seg.get("tts_end", seg.get("end", st_val)))
+            orig_end_val = float(seg.get("orig_end", tts_end_val))
+            desired_end = max(
+                tts_end_val,
+                min(orig_end_val, tts_end_val + 0.55),
+                st_val + 0.95,
+            )
+            max_allowed_end = float(total_duration)
+            if i + 1 < len(segments):
+                next_start = float(segments[i + 1].get("start", max_allowed_end))
+                max_allowed_end = min(max_allowed_end, max(tts_end_val, next_start - 0.04))
+            seg["end"] = round(max(tts_end_val, min(desired_end, max_allowed_end)), 3)
 
         # Cắt đúng độ dài video gốc (hoặc dài hơn một chút nếu câu cuối vừa dứt)
         target_len_bytes = int(round(max(total_duration, 1.0) * sample_rate)) * 2
@@ -443,18 +467,19 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     ) -> Path:
         """
         Sử dụng ffmpeg để xử lý Audio Ducking:
-        - Không tắt hoàn toàn (mute) âm thanh gốc: giảm âm lượng video gốc xuống 12% (`volume=0.12`)
-          để giữ lại các hiệu ứng âm thanh nền (SFX đánh nhau, tiếng kiếm pháp, hiệu ứng môi trường, nhạc nền).
-        - Đè giọng đọc AI (`edge-tts`) tiếng Việt lên với âm lượng 120% (`volume=1.2`)
-          giúp át sạch tiếng thoại Trung Quốc nhưng vẫn giữ được độ sống động của âm thanh gốc.
+        - Không tắt hoàn toàn (mute) âm thanh gốc: giảm âm lượng video gốc xuống 7% (`volume=0.07`)
+          kèm bộ lọc cắt dải tần giọng người (`equalizer=f=1200:t=o:w=2.0:g=-14`) để triệt tiêu tiếng Trung gốc
+          nhưng vẫn giữ được hiệu ứng âm thanh nền (SFX, nhạc nền).
+        - Đè giọng đọc AI (`edge-tts`) tiếng Việt lên với âm lượng 135% (`volume=1.35`) kèm `alimiter` chống vỡ tiếng.
         """
         logger.info(
             f"Đang trộn âm thanh Audio Ducking + Lọc giọng gốc (âm lượng nền={self.original_volume:.2f}, giọng Việt={self.voiceover_volume:.2f})..."
         )
         filter_complex = (
-            f"[0:a]equalizer=f=1200:t=o:w=2.0:g=-12,volume={self.original_volume:.2f}[bg];"
+            f"[0:a]equalizer=f=1200:t=o:w=2.0:g=-14,volume={self.original_volume:.2f}[bg];"
             f"[1:a]volume={self.voiceover_volume:.2f}[vo];"
-            f"[bg][vo]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[aout]"
+            f"[bg][vo]amix=inputs=2:duration=first:dropout_transition=0:normalize=0,"
+            f"alimiter=limit=0.95:attack=5:release=50[aout]"
         )
         cmd = [
             self.ffmpeg_bin,

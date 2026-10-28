@@ -506,11 +506,17 @@ class SubtitleTranslator:
             ("打光我的电脑", "打开我的电脑"),
             ("幼儿园要吃到了", "幼儿园快要迟到了"),
             ("幼儿园要迟到了", "去幼儿园快要迟到了"),
-            ("吃的满嘴都是", "你吃得满嘴都是"),
+            ("吃的满嘴都是", "看看你吃得满嘴都是"),
+            ("你吃得满嘴都是", "看看你吃得满嘴都是"),
             ("我一天天的光给你擦嘴了", "我一天天的只顾着给你擦嘴了"),
             ("小小人足哪有你这么能吃的小孩", "小小人族里哪有你这么能吃的小孩"),
             ("以后你要少吃一点腰", "以后你要少吃一点哟"),
             ("我都过不到你的脸", "我都够不到你的脸"),
+            ("你不让我给你擦，我不给你擦了", "你不让我给你擦，那我不给你擦脸了"),
+            ("我不跟你擦脸了", "那我不给你擦脸了"),
+            ("再拖拉就赶不上校轧啦", "再磨蹭就赶不上校车了"),
+            ("再拖拉就赶不上校车了", "再磨蹭就赶不上校车了"),
+            ("我要去上学", "妈妈我要去上学了"),
             ("妈妈不替，拿着水杯", "妈妈抱不动你，快拿着水杯"),
             ("妈妈不去", "妈妈抱不动你"),
             ("拿着水呗", "快拿着水杯"),
@@ -737,7 +743,12 @@ class SubtitleTranslator:
 
         # 5. Chuẩn hóa văn phong cho Kênh 2 (Hài / Đời sống / Gia đình / Baby AI)
         elif channel_key == "channel_2":
-            is_child_speaking = ("妈妈" in (orig_text or "")) or ("上学" in (orig_text or "")) or ("裤子" in (orig_text or ""))
+            is_child_speaking = (
+                ("妈妈" in (orig_text or ""))
+                or ("上学" in (orig_text or ""))
+                or ("裤子" in (orig_text or ""))
+                or ("老师" in (orig_text or ""))
+            )
             self_pronoun_cap = "Con" if is_child_speaking else "Mẹ"
             self_pronoun_low = "con" if is_child_speaking else "mẹ"
             comedy_replacements = [
@@ -746,12 +757,18 @@ class SubtitleTranslator:
                 (r"\banh bạn\b", "nhóc con"),
                 (r"\bÔi em yêu, em no chưa\b", "Ôi cục cưng ơi, con ăn no chưa"),
                 (r"\bem yêu\b", "cục cưng"),
+                (r"\bMiệng tôi đầy thức ăn\b", "Nhìn con ăn lem luốc đầy cả miệng kìa"),
+                (r"\btôi sắp trễ giờ học mẫu giáo\b", "sắp trễ giờ đi học mẫu giáo"),
+                (r"\btôi không cho tôi lau cho bạn\b", "con không cho mẹ lau thì mẹ không lau nữa"),
                 (r"\bTôi\b", self_pronoun_cap),
                 (r"\btôi\b", self_pronoun_low),
                 (r"\bMình\b", self_pronoun_cap),
                 (r"\bmình\b", self_pronoun_low),
                 (r"\bBạn\b", "Con"),
                 (r"\bbạn\b", "con"),
+                (r"\bMiệng Mẹ đầy thức ăn\b", "Nhìn con ăn lem luốc đầy cả miệng kìa"),
+                (r"\bMẹ sắp trễ giờ học mẫu giáo\b", "Con sắp trễ giờ đi học mẫu giáo rồi"),
+                (r"\bMẹ đang đi học\b", "Con phải đi học đây"),
                 (r"\bAnh kiệt sức vì phải bò lên người em\b", "Mẹ mệt đứt hơi vì ngày nào cũng phải leo trèo trên người con"),
                 (r"\bnó bị vặn rồi\b", "thôi xong rồi"),
             ]

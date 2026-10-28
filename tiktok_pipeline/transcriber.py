@@ -406,31 +406,42 @@ class AudioTranscriber:
             ffmpeg_bin, _ = ensure_ffmpeg()
             with tempfile.TemporaryDirectory() as tmp_dir:
                 img_paths: List[str] = []
-                for idx, seg in enumerate(segments):
+                seg_sample_indices: List[List[int]] = []
+                img_idx = 0
+                for seg in segments:
                     st = float(seg["start"])
                     en = float(seg["end"])
-                    mid_t = st + max(0.1, (en - st) * 0.50)
-                    jpg_path = f"{tmp_dir}/sub_{idx:04d}.jpg"
-                    subprocess.run(
-                        [
-                            ffmpeg_bin,
-                            "-y",
-                            "-v",
-                            "error",
-                            "-ss",
-                            f"{mid_t:.2f}",
-                            "-i",
-                            str(video_path),
-                            "-frames:v",
-                            "1",
-                            "-vf",
-                            "crop=iw*0.88:ih*0.28:iw*0.06:ih*0.64",
-                            jpg_path,
-                        ],
-                        check=False,
-                        timeout=8,
-                    )
-                    img_paths.append(jpg_path)
+                    dur = max(0.2, en - st)
+                    if dur >= 1.50:
+                        sample_times = [st + dur * 0.26, st + dur * 0.74]
+                    else:
+                        sample_times = [st + dur * 0.50]
+                    cur_idxs: List[int] = []
+                    for t_val in sample_times:
+                        jpg_path = f"{tmp_dir}/sub_{img_idx:04d}.jpg"
+                        img_idx += 1
+                        subprocess.run(
+                            [
+                                ffmpeg_bin,
+                                "-y",
+                                "-v",
+                                "error",
+                                "-ss",
+                                f"{t_val:.2f}",
+                                "-i",
+                                str(video_path),
+                                "-frames:v",
+                                "1",
+                                "-vf",
+                                "crop=iw*0.90:ih*0.36:iw*0.05:ih*0.56",
+                                jpg_path,
+                            ],
+                            check=False,
+                            timeout=8,
+                        )
+                        img_paths.append(jpg_path)
+                        cur_idxs.append(len(img_paths) - 1)
+                    seg_sample_indices.append(cur_idxs)
 
                 if not img_paths:
                     return segments, 0.0
@@ -470,55 +481,74 @@ for path in args {
 
                 ocr_raw_rows = res.stdout.splitlines()
 
-            # Tách từng dòng quan sát độc lập trên mỗi khung hình
-            candidates_per_seg: List[List[str]] = []
+            # Tách từng dòng quan sát độc lập trên mỗi khung hình và đếm tần suất xuất hiện theo từng segment
+            samples_per_seg: List[List[List[str]]] = []
             line_freq: Dict[str, int] = {}
-            for row_idx in range(len(segments)):
-                raw_row = ocr_raw_rows[row_idx] if row_idx < len(ocr_raw_rows) else ""
-                sub_lines: List[str] = []
-                for piece in raw_row.split("|||"):
-                    cleaned = self._clean_ocr_line(piece)
-                    if cleaned and cleaned not in sub_lines:
-                        sub_lines.append(cleaned)
-                candidates_per_seg.append(sub_lines)
-                for sl in sub_lines:
+            for cur_idxs in seg_sample_indices:
+                seg_samples: List[List[str]] = []
+                seen_in_seg = set()
+                for k_idx in cur_idxs:
+                    raw_row = ocr_raw_rows[k_idx] if k_idx < len(ocr_raw_rows) else ""
+                    sub_lines: List[str] = []
+                    for piece in raw_row.split("|||"):
+                        cleaned = self._clean_ocr_line(piece)
+                        if cleaned and cleaned not in sub_lines:
+                            sub_lines.append(cleaned)
+                            seen_in_seg.add(cleaned)
+                    seg_samples.append(sub_lines)
+                samples_per_seg.append(seg_samples)
+                for sl in seen_in_seg:
                     line_freq[sl] = line_freq.get(sl, 0) + 1
 
-            refined: List[Dict[str, Any]] = []
-            ocr_hits = 0
-            for idx, (seg, cand_lines) in enumerate(zip(segments, candidates_per_seg)):
-                w_text = (seg.get("text") or "").strip()
-                w_hanzi = "".join(re.findall(r"[\u4e00-\u9fff]", w_text))
-                w_len = len(w_hanzi)
-
-                best_ocr = ""
-                best_score = -1.0
-
-                for c_line in cand_lines:
-                    # Bỏ qua các dòng tiêu đề tĩnh treo cố định trên màn hình suốt >= 3 câu thoại
+            def _match_best_ocr_for_target(target_txt: str, candidate_pool: List[str]) -> str:
+                t_hanzi = "".join(re.findall(r"[\u4e00-\u9fff]", target_txt))
+                t_len = len(t_hanzi)
+                if t_len < 2:
+                    return ""
+                best_line = ""
+                best_sc = -1.0
+                min_allowed = max(2, int(t_len * 0.65) - 1)
+                max_allowed = max(t_len + 2, int(t_len * 1.25))
+                for c_line in candidate_pool:
                     if line_freq.get(c_line, 0) >= 3:
                         continue
                     c_hanzi = "".join(re.findall(r"[\u4e00-\u9fff]", c_line))
                     c_len = len(c_hanzi)
-                    if c_len < 2 or w_len < 2:
-                        continue
-                    # Ràng buộc độ dài chặt chẽ: dòng phụ đề OCR phải có số chữ Hán tương đương câu nói Whisper
-                    min_allowed = max(2, int(w_len * 0.65) - 1)
-                    max_allowed = max(w_len + 2, int(w_len * 1.25))
                     if not (min_allowed <= c_len <= max_allowed):
                         continue
-
-                    char_sim = difflib.SequenceMatcher(None, w_hanzi, c_hanzi).ratio()
-                    len_sim = 1.0 - (abs(c_len - w_len) / float(max(c_len, w_len, 1)))
-                    # Yêu cầu câu phụ đề phải có ít nhất 25% chữ Hán trùng với Whisper (hoặc trùng khít số chữ Hán và >= 1 chữ chung)
-                    common_chars = set(w_hanzi) & set(c_hanzi)
-                    if char_sim < 0.25 and not (c_len == w_len and len(common_chars) >= 1):
+                    char_sim = difflib.SequenceMatcher(None, t_hanzi, c_hanzi).ratio()
+                    len_sim = 1.0 - (abs(c_len - t_len) / float(max(c_len, t_len, 1)))
+                    common_chars = set(t_hanzi) & set(c_hanzi)
+                    if char_sim < 0.25 and not (c_len == t_len and len(common_chars) >= 1):
                         continue
+                    sc = char_sim * 0.7 + len_sim * 0.3
+                    if sc > best_sc:
+                        best_sc = sc
+                        best_line = c_line
+                return best_line
 
-                    score = char_sim * 0.7 + len_sim * 0.3
-                    if score > best_score:
-                        best_score = score
-                        best_ocr = c_line
+            refined: List[Dict[str, Any]] = []
+            ocr_hits = 0
+            for seg, seg_samples in zip(segments, samples_per_seg):
+                w_text = (seg.get("text") or "").strip()
+                flat_cands: List[str] = []
+                for s_list in seg_samples:
+                    for item in s_list:
+                        if item not in flat_cands:
+                            flat_cands.append(item)
+
+                # Thử khớp toàn câu trước
+                best_ocr = _match_best_ocr_for_target(w_text, flat_cands)
+
+                # Nếu câu Whisper gồm 2 mệnh đề (ngăn bởi dấu phẩy/khoảng trắng) và có 2 mẫu thời gian t1, t2:
+                # Khớp riêng từng mệnh đề với khung hình tương ứng để sửa lỗi đồng âm cho cả 2 vế
+                if not best_ocr and len(seg_samples) == 2:
+                    w_parts = [p.strip() for p in re.split(r"[，,。.!！?？\s]+", w_text) if len(re.findall(r"[\u4e00-\u9fff]", p)) >= 2]
+                    if len(w_parts) == 2:
+                        m1 = _match_best_ocr_for_target(w_parts[0], seg_samples[0]) or w_parts[0]
+                        m2 = _match_best_ocr_for_target(w_parts[1], seg_samples[1]) or w_parts[1]
+                        if (m1 != w_parts[0] or m2 != w_parts[1]) and m1 != m2:
+                            best_ocr = f"{m1}，{m2}"
 
                 if best_ocr:
                     ocr_hits += 1
@@ -602,7 +632,14 @@ for path in args {
             prev_clean = re.sub(r"[\s，,。.!！?？]+", "", prev_txt)
             cur_clean = re.sub(r"[\s，,。.!！?？]+", "", cur_txt)
 
-            # 1. Khử câu trùng lặp hoặc nói lắp ở 2 segment liên tiếp (ví dụ: '张女士' + '张女士' hoặc '我' + '我女儿丢了')
+            # 1. Nếu mảnh trước chỉ có <= 2 chữ bị ngắt khỏi câu sau (như '你是' + '不是故意的'), ghép thẳng vào đầu câu sau
+            if len(prev_clean) <= 2 and gap <= 2.6 and cur_clean.startswith(("不是", "不去", "不能", "不想", "不要", "还没", "怎么")):
+                prev["start"] = seg_copy["start"]
+                prev["end"] = seg_copy["end"]
+                prev["text"] = f"{prev_txt}{cur_txt}"
+                continue
+
+            # 2. Khử câu trùng lặp hoặc nói lắp ở 2 segment liên tiếp (ví dụ: '张女士' + '张女士' hoặc '我' + '我女儿丢了')
             if prev_clean and cur_clean and gap <= 2.2:
                 sim = difflib.SequenceMatcher(None, prev_clean, cur_clean).ratio()
                 is_sub_stutter = (
@@ -612,7 +649,6 @@ for path in args {
                     or (len(prev_clean) >= 4 and prev_clean in cur_clean)
                 )
                 if sim >= 0.72 or is_sub_stutter:
-                    # Giữ câu đầy đủ hơn và cập nhật mốc thời gian chuẩn
                     if len(cur_clean) > len(prev_clean) and len(prev_clean) <= 2:
                         prev["start"] = seg_copy["start"]
                     prev["end"] = seg_copy["end"]
@@ -624,10 +660,12 @@ for path in args {
                 prev_txt.endswith(sfx) for sfx in incomplete_endings_zh
             )
             should_merge = False
-            if gap <= 0.42 and comb_dur <= 4.3:
-                if prev_dur < 1.30 or cur_dur < 1.10 or ends_incomplete:
+            # Chỉ gộp khi câu bị cắt vụn (<= 3 chữ / < 0.85s) hoặc kết thúc bằng hư từ chưa trọn nghĩa (ends_incomplete)
+            # Tuyệt đối KHÔNG gộp 2 câu hoàn chỉnh (>= 4 chữ) của 2 nhân vật khác nhau!
+            if gap <= 0.38 and comb_dur <= 4.0:
+                if len(prev_clean) <= 3 or len(cur_clean) <= 3 or prev_dur < 0.85 or cur_dur < 0.80 or ends_incomplete:
                     should_merge = True
-            elif ends_incomplete and gap <= 0.60 and comb_dur <= 5.2:
+            elif ends_incomplete and gap <= 0.60 and comb_dur <= 5.0:
                 should_merge = True
 
             if should_merge:
