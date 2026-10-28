@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-28 20:14:53",
+    "timestamp": "2026-10-28 20:34:12",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261028_164849_tiktok_story_7664467357850488071.mp4",
-      "caption": "🥰 Nhật ký gia đình siêu lầy: Tôi đang ở nhà, bạn đang làm gì vậy?. \"Đó là ai, tôi không biết...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-      "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #xuhuongtiktok #tiktokvn",
+      "video_file": "20261026_231023_tiktok_story_7680421803159833877.mp4",
+      "caption": "🐉 Tưởng là phế vật dưới đáy tông môn ai ngờ ẩn giấu thực lực chấn động thiên địa — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-28 20:34:12",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261026_231023_tiktok_story_7680421803159833877.mp4",
+        "caption": "🐉 Tưởng là phế vật dưới đáy tông môn ai ngờ ẩn giấu thực lực chấn động thiên địa — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-28 20:14:53",
       "machine_arch": "x86_64",
@@ -2663,17 +2678,6 @@
             "follow_back_window_until": "2026-10-29 09:37:56"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-10-28 07:58:47",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261028_021030_douyin_story_7629803455813243043.mp4",
-        "error": "Page.goto: Navigation to \"https://www.tiktok.com/tiktokstudio/upload?from=webapp&tab=video\" is interrupted by another navigation to \"chrome-error://chromewebdata/\"\nCall log:\n  - navigating to \"https://www.tiktok.com/tiktokstudio/upload?from=webapp&tab=video\", waiting until \"domcontentloaded\"\n"
       }
     }
   ]
