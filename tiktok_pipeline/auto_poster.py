@@ -47,7 +47,7 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
     "headless": False,
 }
 
-# Script chống phát hiện trình duyệt tự động (Stealth Anti-Detect cho TikTok mssdk / secsdk)
+# Script dọn dẹp biến toàn cục Playwright (KHÔNG ghi đè Proxy lên console/prototype để giữ 100% [native code] cho webmssdk.js)
 STEALTH_INIT_SCRIPT = """
 (() => {
     const automationProps = [
@@ -59,29 +59,6 @@ STEALTH_INIT_SCRIPT = """
     for (const prop of automationProps) {
         try { delete window[prop]; } catch (e) {}
     }
-    // Chặn bẫy dò CDP Runtime.enable của ByteDance webmssdk.js (Error.stack / custom getter qua console.*)
-    try {
-        const hasTrapGetter = (arg) => {
-            if (!arg || (typeof arg !== 'object' && typeof arg !== 'function')) return false;
-            const dStack = Object.getOwnPropertyDescriptor(arg, 'stack');
-            const dId = Object.getOwnPropertyDescriptor(arg, 'id');
-            return Boolean((dStack && dStack.get) || (dId && dId.get) || arg instanceof Error);
-        };
-        for (const m of ['debug', 'dir', 'dirxml', 'table', 'trace', 'log']) {
-            const orig = console[m];
-            if (typeof orig !== 'function') continue;
-            Object.defineProperty(console, m, {
-                value: new Proxy(orig, {
-                    apply(target, thisArg, args) {
-                        if (args && args.some(hasTrapGetter)) return undefined;
-                        return Reflect.apply(target, thisArg, args);
-                    }
-                }),
-                configurable: true,
-                writable: true
-            });
-        }
-    } catch (e) {}
 })();
 """
 
@@ -1670,12 +1647,20 @@ class TikTokAutoPoster:
                 if do_warmup:
                     self._simulate_human_warmup(page, ch_folder)
 
-                # Bước 2: Truy cập TikTok Studio Upload đúng URL giao diện WebApp
-                page.goto(
-                    "https://www.tiktok.com/tiktokstudio/upload?from=webapp&tab=video",
-                    wait_until="domcontentloaded",
-                    timeout=60000,
-                )
+                # Bước 2: Truy cập TikTok Studio Upload đúng URL giao diện WebApp (có retry chống lỗi ngắt mạng tạm thời)
+                for _nav_attempt in range(3):
+                    try:
+                        page.goto(
+                            "https://www.tiktok.com/tiktokstudio/upload?from=webapp&tab=video",
+                            wait_until="domcontentloaded",
+                            timeout=60000,
+                        )
+                        if "chromewebdata" not in (page.url or "").lower():
+                            break
+                    except Exception as _nav_err:
+                        if _nav_attempt == 2:
+                            raise _nav_err
+                    time.sleep(3.0)
                 time.sleep(random.uniform(4.5, 7.0))
 
                 if "login" in page.url.lower():
@@ -2042,7 +2027,11 @@ class TikTokAutoPoster:
                         page=page,
                         event_type="filter24h",
                         ch_folder=ch_folder,
-                        details={"interacted_count": len(records), "records": records},
+                        details={
+                            "interacted_count": len(records),
+                            "own_profile_stats": getattr(self.filter_24h, "last_own_profile_stats", {}),
+                            "records": records,
+                        },
                     )
                 finally:
                     try:
