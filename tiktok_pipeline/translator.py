@@ -185,6 +185,7 @@ class SubtitleTranslator:
         )
 
         translated_segments: List[Dict[str, Any]] = []
+        full_context_text = " ".join((s.get("text") or "") for s in segments)
 
         for batch_start in range(0, len(segments), batch_size):
             batch = segments[batch_start : batch_start + batch_size]
@@ -206,6 +207,7 @@ class SubtitleTranslator:
                     start_sec=float(seg["start"]),
                     duration_sec=duration_sec,
                     channel_key=norm_channel,
+                    full_context_text=full_context_text,
                 )
                 polished_vi = self._deduplicate_vietnamese_clauses(polished_vi)
                 if not polished_vi:
@@ -397,15 +399,16 @@ class SubtitleTranslator:
     }
 
     @classmethod
-    def _clean_chinese_asr_homophones(cls, text: str) -> str:
+    def _clean_chinese_asr_homophones(cls, text: str, full_context_text: str = "") -> str:
         """
         Làm sạch lỗi đồng âm tiếng Trung từ ASR, đồng thời chuyển đổi trước tên riêng Hán Việt,
-        xưng hô và các thành ngữ khẩu ngữ sang dạng chuẩn để bộ dịch ngữ cảnh không bị dịch
-        ra Pinyin tiếng Anh (như Xiao Ji, Du Fangchun) hoặc dịch nghĩa đen vô nghĩa.
+        xưng hô, từ đa nghĩa theo ngữ cảnh toàn bài và các cấu trúc khẩu ngữ sang dạng chuẩn
+        để bộ dịch ngữ cảnh không bị dịch sai nghĩa đen hoặc lệch đại từ.
         """
         cleaned = (text or "").strip()
         if not cleaned:
             return cleaned
+        ctx = f"{full_context_text} {cleaned}"
         asr_fixes = [
             ("他最穷的那年,我起了分手", "他最穷的那年，我提了分手"),
             ("我起了分手", "我提了分手"),
@@ -536,11 +539,27 @@ class SubtitleTranslator:
             ("校车再等你了", "校车在等你了"),
             ("还贷了，今天肯定要迟到了", "糟了，今天上学肯定要迟到了"),
             ("完蛋了", "糟了"),
-            ("跟谁去加油的", "跟谁一起去加油站加油的"),
-            ("我去加个油你还怀疑我是吧", "我去加个汽油你居然还怀疑我是吧"),
         ]
         for wrong, right in asr_fixes:
             cleaned = cleaned.replace(wrong, right)
+
+        # Khử nhập nhằng từ đa nghĩa dựa trên ngữ cảnh toàn bộ video
+        if any(k in ctx for k in ("加油站", "加个油", "汽油", "柴油", "去加油")):
+            cleaned = re.sub(r"去加油(?!站)", "去加汽油", cleaned)
+            cleaned = re.sub(r"加个油", "加个汽油", cleaned)
+            cleaned = re.sub(r"加油([啊呀吧呢])", r"加汽油\1", cleaned)
+        if any(k in ctx for k in ("上学", "幼儿园", "迟到", "老师", "校车")):
+            cleaned = re.sub(r"校[轧再车]", "校车", cleaned)
+            cleaned = cleaned.replace("吃到", "迟到")
+
+        # Chuẩn hóa cấu trúc ngữ pháp khẩu ngữ tiếng Trung (口语) phổ biến sang câu rõ nghĩa để NMT không dịch sai qua cầu tiếng Anh
+        cleaned = re.sub(r"^什么叫(.+?)[啊呀呢吧？?]*$", r"怎么能说\1呢？", cleaned)
+        cleaned = re.sub(r"咋(了|啦)", "怎么了", cleaned)
+        cleaned = re.sub(r"你啥意思[啊呀呢]*", "你这话是什么意思", cleaned)
+        cleaned = re.sub(r"^谁[呀啊][？?]*$", "那是谁啊？", cleaned)
+        cleaned = re.sub(r"^我不认识[啊呀呢啦]*$", "我根本不认识那个人", cleaned)
+        cleaned = re.sub(r"你还怀疑我是吧", "你居然还怀疑我", cleaned)
+        cleaned = re.sub(r"^你等我[啊呀]*$", "你在那里等我一下", cleaned)
 
         cleaned = re.sub(r"\s+", " ", cleaned).strip()
         return cleaned
@@ -553,12 +572,17 @@ class SubtitleTranslator:
         để bộ dịch hiểu toàn bộ mạch câu chuyện liền mạch thay vì dịch rời rạc từng từ đơn lẻ.
         """
         sl = "zh-CN" if src_lang.startswith("zh") else src_lang
-        cleaned_lines = [
-            self._clean_chinese_asr_homophones(seg["text"].strip())
-            if sl == "zh-CN"
-            else seg["text"].strip()
-            for seg in batch
-        ]
+        full_ctx = " ".join((seg.get("text") or "") for seg in batch)
+        cleaned_lines: List[str] = []
+        for seg in batch:
+            raw_line = (seg.get("text") or "").strip()
+            if sl == "zh-CN":
+                line_c = self._clean_chinese_asr_homophones(raw_line, full_context_text=full_ctx)
+                if line_c and line_c[-1] not in "。！？!?":
+                    line_c += "？" if any(q in line_c for q in ("吗", "呢", "哪", "谁", "怎么", "什么", "是不是", "是吧")) else "。"
+                cleaned_lines.append(line_c)
+            else:
+                cleaned_lines.append(raw_line)
 
         # Ưu tiên dịch toàn bộ đoạn văn cách nhau bởi '\n' qua Google Contextual NMT
         try:
@@ -589,6 +613,7 @@ class SubtitleTranslator:
         start_sec: float,
         duration_sec: float,
         channel_key: str,
+        full_context_text: str = "",
     ) -> str:
         """
         Hậu kỳ biên tập kịch bản tiếng Việt (Script Polisher):
@@ -659,13 +684,19 @@ class SubtitleTranslator:
             (r"\btôi giống như\b", "thật sự là"),
             (r"\bnhư thể là\b", "dường như"),
             (r"\bđừng hiểu lầm tôi\b", "nói thật nhé"),
-            (r"\bcủa tôi\b", "của mình" if channel_key == "channel_2" else "của ta" if channel_key == "channel_4" else "của tôi"),
+            (r"\bcủa tôi\b", "của ta" if channel_key == "channel_4" else "của tôi"),
             (r"\bMột trong những điều, mặc dù, là\b", "Nhưng điều kỳ lạ nhất là"),
             (r"\btheo như tôi có thể nói\b", "nhìn đi nhìn lại"),
             (r"\s+", " "),
         ]
         for pat, rep in common_fixes:
             text = re.sub(pat, rep, text, flags=re.IGNORECASE)
+
+        # Khử tân ngữ ngôi thứ 3 ('anh ấy/cô ấy/người đó') bị dịch máy tự bịa ra khi câu gốc tiếng Trung không có 他/她/它
+        if not any(p in (orig_text or "") for p in ("他", "她", "它", "那个人")):
+            text = re.sub(r"\b(không biết|không quen)\s+(?:anh ấy|cô ấy|người đó|ông ấy|bà ấy)\b", r"\1", text, flags=re.IGNORECASE)
+        else:
+            text = re.sub(r"\b(không biết|không quen)\s+người đó\b", r"\1 nữa", text, flags=re.IGNORECASE)
 
         # 2. Chuẩn hóa văn phong & thuật ngữ Tiên Hiệp cho Kênh 4 (Tu Tiên / Huyền Huyễn)
         if channel_key == "channel_4":
@@ -756,51 +787,111 @@ class SubtitleTranslator:
             for pat, rep in cute_replacements:
                 text = re.sub(pat, rep, text)
 
-        # 5. Chuẩn hóa văn phong cho Kênh 2 (Hài / Đời sống / Gia đình / Baby AI)
+        # 5. Chuẩn hóa văn phong & Hệ thống Xưng hô Ngữ cảnh 2 bước (Two-Stage Pronoun Engine) cho Kênh 2 (Hài / Gia đình / Đời sống / Baby AI)
         elif channel_key == "channel_2":
-            is_child_speaking = any(
-                kw in (orig_text or "")
-                for kw in (
+            ctx_all = f"{full_context_text} {orig_text or ''}"
+            is_parent_child_video = any(
+                k in ctx_all
+                for k in (
                     "妈妈",
                     "爸爸",
+                    "宝宝",
+                    "孩子",
+                    "儿子",
+                    "女儿",
+                    "幼儿园",
                     "上学",
-                    "裤子",
+                    "校车",
                     "老师",
-                    "我到家了",
-                    "我不认识",
-                    "我刚才",
-                    "我去加",
-                    "什么叫我",
-                    "还在加油站",
+                    "擦嘴",
+                    "擦脸",
+                    "抱不动",
+                    "小花猫",
+                    "尿裤子",
+                    "奶粉",
                 )
             )
-            self_pronoun_cap = "Con" if is_child_speaking else "Mẹ"
-            self_pronoun_low = "con" if is_child_speaking else "mẹ"
-            comedy_replacements = [
+            is_couple_video = any(
+                k in ctx_all
+                for k in (
+                    "老公",
+                    "老婆",
+                    "加油站",
+                    "怀疑我",
+                    "跟谁在一起",
+                    "来接你",
+                    "结婚",
+                    "相亲",
+                    "男朋友",
+                    "女朋友",
+                    "私房钱",
+                )
+            )
+            orig_s = orig_text or ""
+            if is_parent_child_video:
+                parent_cap = "Bố" if ("爸爸" in ctx_all and "妈妈" not in ctx_all) else "Mẹ"
+                parent_low = parent_cap.lower()
+                is_child_turn = any(
+                    k in orig_s
+                    for k in ("妈妈", "爸爸", "我要去上学", "我去上学", "我不要", "我不去", "我没")
+                )
+                if is_child_turn:
+                    p1_cap, p1_low, p2_cap, p2_low = "Con", "con", parent_cap, parent_low
+                else:
+                    p1_cap, p1_low, p2_cap, p2_low = parent_cap, parent_low, "Con", "con"
+            elif is_couple_video:
+                is_questioner_turn = (
+                    any(k in orig_s for k in ("你在哪", "刚刚在哪", "刚刚是谁", "我是问你", "那你刚才", "跟谁", "在干嘛", "谁呀", "怎么了", "咋了"))
+                    and not any(k in orig_s for k in ("我到家", "我不认识", "我刚才", "我去加", "什么叫", "为什么说", "你还在", "我马上", "你在那里等我"))
+                )
+                if is_questioner_turn:
+                    p1_cap, p1_low, p2_cap, p2_low = "Anh", "anh", "Em", "em"
+                else:
+                    p1_cap, p1_low, p2_cap, p2_low = "Em", "em", "Anh", "anh"
+            else:
+                p1_cap, p1_low, p2_cap, p2_low = "Mình", "mình", "Cậu", "cậu"
+
+            comedy_phrase_fixes = [
                 (r"\bChúa ơi\b", "Trời đất ơi"),
                 (r"\bÔi chúa ơi\b", "Ối giời ơi"),
                 (r"\banh bạn\b", "nhóc con"),
                 (r"\bÔi em yêu, em no chưa\b", "Ôi cục cưng ơi, con ăn no chưa"),
-                (r"\bem yêu\b", "cục cưng"),
+                (r"\bem yêu\b", "cục cưng" if is_parent_child_video else "anh yêu"),
                 (r"\bMiệng tôi đầy thức ăn\b", "Nhìn con ăn lem luốc đầy cả miệng kìa"),
                 (r"\btôi sắp trễ giờ học mẫu giáo\b", "sắp trễ giờ đi học mẫu giáo"),
                 (r"\btôi không cho tôi lau cho bạn\b", "con không cho mẹ lau thì mẹ không lau nữa"),
-                (r"\bTôi\b", self_pronoun_cap),
-                (r"\btôi\b", self_pronoun_low),
-                (r"\bMình\b", self_pronoun_cap),
-                (r"\bmình\b", self_pronoun_low),
-                (r"\bBạn\b", "Con"),
-                (r"\bbạn\b", "con"),
-                (r"\bMiệng Mẹ đầy thức ăn\b", "Nhìn con ăn lem luốc đầy cả miệng kìa"),
-                (r"\bMẹ sắp trễ giờ học mẫu giáo\b", "Con sắp trễ giờ đi học mẫu giáo rồi"),
-                (r"\bMẹ đang đi học\b", "Con phải đi học đây"),
-                (r"\bCon vẫn còn nghi ngờ Con\b", "vậy mà vẫn còn nghi ngờ con"),
-                (r"\bcậu\b", "con"),
                 (r"\bAnh kiệt sức vì phải bò lên người em\b", "Mẹ mệt đứt hơi vì ngày nào cũng phải leo trèo trên người con"),
                 (r"\bnó bị vặn rồi\b", "thôi xong rồi"),
+                (r"\bTại sao (?:bạn|anh|em) (?:lại )?nói (?:rằng )?\b", "Sao lại nói là "),
+                (r"\bLàm sao (?:bạn|anh|em) (?:có thể )?(?:nói|biết) (?:rằng )?\b", "Sao lại hỏi "),
+                (r"\bTại sao lại nói (?:rằng )?\b", "Sao lại nói là "),
+                (r"\bÝ (?:bạn|anh|em) là gì khi nói\b", "Sao lại nói là"),
             ]
-            for pat, rep in comedy_replacements:
+            for pat, rep in comedy_phrase_fixes:
                 text = re.sub(pat, rep, text, flags=re.IGNORECASE)
+
+            # Thay thế đại từ qua Placeholder 2 bước để Ngôi 1 (Tôi/Mình/Tớ) và Ngôi 2 (Bạn/Cậu) không bao giờ đè lên nhau trong cùng 1 câu
+            pronoun_stage1 = [
+                (r"\bTôi\b", "__P1_CAP__"),
+                (r"\btôi\b", "__P1_LOW__"),
+                (r"\bMình\b", "__P1_CAP__"),
+                (r"\bmình\b", "__P1_LOW__"),
+                (r"\bTớ\b", "__P1_CAP__"),
+                (r"\btớ\b", "__P1_LOW__"),
+                (r"\bBạn\b", "__P2_CAP__"),
+                (r"\bbạn\b", "__P2_LOW__"),
+                (r"\bCậu\b", "__P2_CAP__"),
+                (r"\bcậu\b", "__P2_LOW__"),
+            ]
+            for pat, token in pronoun_stage1:
+                text = re.sub(pat, token, text)
+
+            text = (
+                text.replace("__P1_CAP__", p1_cap)
+                .replace("__P1_LOW__", p1_low)
+                .replace("__P2_CAP__", p2_cap)
+                .replace("__P2_LOW__", p2_low)
+            )
 
         # 6. Đảm bảo viết hoa chữ cái đầu câu, giữ trọn vẹn câu (không cắt cụt chữ giữa chừng)
         text = text.strip(" -–—")

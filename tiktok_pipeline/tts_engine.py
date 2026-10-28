@@ -102,8 +102,8 @@ class TTSEngine:
             # Bước 2: Căn chỉnh tốc độ (atempo) để khớp khít với khẩu hình câu gốc và tuyệt đối không tràn sang câu sau
             if base_duration > target_window and target_window > 0.25:
                 needed_factor = base_duration / target_window
-                # Nếu câu sau sát bên cạnh, ưu tiên đẩy tốc độ lên tới 1.60x để không làm trễ câu sau
-                max_atempo = 1.60 if base_duration > hard_max_window else 1.48
+                # Nếu câu sau sát bên cạnh, ưu tiên đẩy tốc độ lên tới 1.82x để đọc trọn vẹn chữ cuối mà không bị cắt cụt hay trễ câu sau
+                max_atempo = 1.82 if base_duration > hard_max_window else 1.50
                 residual_factor = min(max_atempo, needed_factor)
             elif base_duration < orig_duration * 0.68 and orig_duration >= 1.8:
                 # Nếu câu dịch hơi ngắn so với thời lượng nhân vật nói, đọc chậm lại nhẹ (0.90x) cho tự nhiên
@@ -112,11 +112,12 @@ class TTSEngine:
                 residual_factor = 1.0
 
             rate_str = self.base_rate
+            est_post_dur = base_duration / max(0.5, residual_factor)
             self._finalize_segment_audio(
                 trimmed_mp3,
                 final_wav,
                 residual_factor,
-                max_duration=hard_max_window if idx + 1 < len(segments) else None,
+                max_duration=(hard_max_window + 0.04) if (idx + 1 < len(segments) and est_post_dur > hard_max_window + 0.05) else None,
             )
             final_duration = get_media_duration(final_wav)
 

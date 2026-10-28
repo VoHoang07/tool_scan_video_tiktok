@@ -421,10 +421,17 @@ class AudioTranscriber:
           và có độ tương đồng cấu trúc/ký tự hợp lệ, tuyệt đối không đọc nhầm tờ rơi/biển báo trên hình.
         """
         try:
+            from .utils import get_media_duration
+
             ffmpeg_bin, _ = ensure_ffmpeg()
+            video_dur = max(
+                get_media_duration(video_path),
+                max((float(s["end"]) for s in segments), default=0.0),
+            )
             with tempfile.TemporaryDirectory() as tmp_dir:
                 img_paths: List[str] = []
                 seg_sample_indices: List[List[int]] = []
+                gap_probes: List[Tuple[float, float, float, int]] = []
                 img_idx = 0
                 for seg in segments:
                     st = float(seg["start"])
@@ -460,6 +467,46 @@ class AudioTranscriber:
                         img_paths.append(jpg_path)
                         cur_idxs.append(len(img_paths) - 1)
                     seg_sample_indices.append(cur_idxs)
+
+                # Quét bổ sung các khoảng trống thời gian >= 1.50s mà Whisper có thể bỏ sót do nhạc nền/tiếng ồn:
+                # Nếu trên màn hình xuất hiện phụ đề tiếng Trung hợp lệ trong khoảng trống, tự động phục hồi câu đó!
+                sorted_bounds = sorted((float(s["start"]), float(s["end"])) for s in segments)
+                gap_intervals: List[Tuple[float, float]] = []
+                cursor_t = 0.15
+                for b_st, b_en in sorted_bounds:
+                    if b_st - cursor_t >= 1.50:
+                        gap_intervals.append((cursor_t, b_st))
+                    cursor_t = max(cursor_t, b_en)
+                if (video_dur - 0.25) - cursor_t >= 1.50:
+                    gap_intervals.append((cursor_t, video_dur - 0.25))
+
+                for g_st, g_en in gap_intervals[:12]:
+                    t_probe = g_st + 0.45
+                    while t_probe <= g_en - 0.35 and len(gap_probes) < 24:
+                        jpg_path = f"{tmp_dir}/sub_{img_idx:04d}.jpg"
+                        img_idx += 1
+                        subprocess.run(
+                            [
+                                ffmpeg_bin,
+                                "-y",
+                                "-v",
+                                "error",
+                                "-ss",
+                                f"{t_probe:.2f}",
+                                "-i",
+                                str(video_path),
+                                "-frames:v",
+                                "1",
+                                "-vf",
+                                "crop=iw*0.90:ih*0.36:iw*0.05:ih*0.56",
+                                jpg_path,
+                            ],
+                            check=False,
+                            timeout=8,
+                        )
+                        img_paths.append(jpg_path)
+                        gap_probes.append((g_st, g_en, t_probe, len(img_paths) - 1))
+                        t_probe += 0.85
 
                 if not img_paths:
                     return segments, 0.0
@@ -602,6 +649,54 @@ for path in args {
                 else:
                     refined.append(dict(seg))
 
+            # Phục hồi các câu phụ đề xuất hiện trên màn hình trong các khoảng trống mà Whisper bỏ sót (Gap Recovery):
+            if gap_probes and ocr_hits >= 1:
+                existing_clean_set = {
+                    re.sub(r"[\s，,。.!！?？]+", "", s.get("text") or "")
+                    for s in refined
+                    if s.get("text")
+                }
+                recovered_gaps: List[Dict[str, Any]] = []
+                for g_st, g_en, t_probe, p_idx in gap_probes:
+                    raw_row = ocr_raw_rows[p_idx] if p_idx < len(ocr_raw_rows) else ""
+                    valid_gap_line = ""
+                    for piece in raw_row.split("|||"):
+                        cl = self._clean_ocr_line(piece)
+                        if not cl or line_freq.get(cl, 0) >= 3:
+                            continue
+                        cl_hanzi = "".join(re.findall(r"[\u4e00-\u9fff]", cl))
+                        if 2 <= len(cl_hanzi) <= 16 and cl_hanzi not in existing_clean_set:
+                            valid_gap_line = cl
+                            break
+                    if not valid_gap_line:
+                        continue
+                    if (
+                        recovered_gaps
+                        and recovered_gaps[-1]["text"] == valid_gap_line
+                        and abs(t_probe - recovered_gaps[-1]["end"]) <= 1.1
+                    ):
+                        recovered_gaps[-1]["end"] = round(min(g_en - 0.04, t_probe + 0.42), 3)
+                    else:
+                        rec_st = round(max(g_st + 0.04, t_probe - 0.35), 3)
+                        rec_en = round(min(g_en - 0.04, max(rec_st + 0.75, t_probe + 0.45)), 3)
+                        recovered_gaps.append(
+                            {
+                                "start": rec_st,
+                                "end": rec_en,
+                                "text": valid_gap_line,
+                                "language": "zh",
+                                "avg_logprob": -0.25,
+                                "ocr_matched": True,
+                                "ocr_recovered": True,
+                            }
+                        )
+                if recovered_gaps:
+                    logger.info(
+                        f"[Vision OCR Gap Recovery] Đã phục hồi {len(recovered_gaps)} câu phụ đề trên màn hình bị Whisper bỏ sót!"
+                    )
+                    refined.extend(recovered_gaps)
+                    refined.sort(key=lambda x: float(x["start"]))
+
             coverage = ocr_hits / len(segments) if segments else 0.0
             logger.info(
                 f"[Vision OCR Refiner] Đã đối chiếu & chuẩn hóa đồng âm cho {ocr_hits}/{len(segments)} câu ({coverage:.0%})."
@@ -712,10 +807,10 @@ for path in args {
                 prev_txt.endswith(sfx) for sfx in incomplete_endings_zh
             )
             should_merge = False
-            # Chỉ gộp khi câu trước bị cắt vụn (<= 3 chữ hoặc < 0.80s) hoặc kết thúc bằng hư từ chưa trọn nghĩa (ends_incomplete).
-            # Tuyệt đối KHÔNG gộp câu ngắn tiếp theo (như '咋了') vào đuôi một câu trước đã trọn vẹn (>= 4 chữ, >= 0.85s)!
+            # Chỉ gộp khi câu trước là mảnh vỡ 1 chữ (len == 1), hoặc quá ngắn (< 0.45s), hoặc kết thúc bằng hư từ chưa trọn nghĩa (ends_incomplete).
+            # Tuyệt đối KHÔNG gộp các câu cảm thán/hỏi ngắn độc lập ('咋了', '谁呀', '你等我', '我要去上学') vào câu của lượt thoại tiếp theo!
             if gap <= 0.35 and comb_dur <= 3.6:
-                if len(prev_clean) <= 3 or prev_dur < 0.80 or ends_incomplete:
+                if len(prev_clean) == 1 or prev_dur < 0.45 or ends_incomplete:
                     should_merge = True
             elif ends_incomplete and gap <= 0.60 and comb_dur <= 5.0:
                 should_merge = True
