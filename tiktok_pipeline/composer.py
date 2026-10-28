@@ -97,10 +97,10 @@ class VideoComposer:
         self.work_dir.mkdir(parents=True, exist_ok=True)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-        env_vol = float(os.getenv("ORIGINAL_AUDIO_VOLUME", "0.07"))
-        if env_vol >= 0.11:
-            # Tự động hạ cấu hình cũ (0.12) trong .env xuống 0.07 để triệt tiêu tiếng Trung gốc lọt nền
-            env_vol = 0.07
+        env_vol = float(os.getenv("ORIGINAL_AUDIO_VOLUME", "0.02"))
+        if env_vol >= 0.04:
+            # Tự động hạ cấu hình cũ (0.12 / 0.07) trong .env xuống 0.02 để triệt tiêu 100% tiếng Trung gốc lọt nền
+            env_vol = 0.02
         self.original_volume = (
             float(original_volume)
             if original_volume is not None
@@ -473,10 +473,12 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         - Đè giọng đọc AI (`edge-tts`) tiếng Việt lên với âm lượng 135% (`volume=1.35`) kèm `alimiter` chống vỡ tiếng.
         """
         logger.info(
-            f"Đang trộn âm thanh Audio Ducking + Lọc giọng gốc (âm lượng nền={self.original_volume:.2f}, giọng Việt={self.voiceover_volume:.2f})..."
+            f"Đang trộn âm thanh Audio Ducking + Lọc sạch dải tần giọng gốc (âm lượng nền={self.original_volume:.2f}, giọng Việt={self.voiceover_volume:.2f})..."
         )
         filter_complex = (
-            f"[0:a]equalizer=f=1200:t=o:w=2.0:g=-14,volume={self.original_volume:.2f}[bg];"
+            f"[0:a]highpass=f=60,equalizer=f=350:t=o:w=1.5:g=-22,"
+            f"equalizer=f=1200:t=o:w=2.2:g=-24,equalizer=f=3200:t=o:w=1.8:g=-22,"
+            f"volume={self.original_volume:.2f}[bg];"
             f"[1:a]volume={self.voiceover_volume:.2f}[vo];"
             f"[bg][vo]amix=inputs=2:duration=first:dropout_transition=0:normalize=0,"
             f"alimiter=limit=0.95:attack=5:release=50[aout]"
@@ -563,7 +565,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         detected_sub_h: Optional[int] = None,
     ) -> Tuple[int, int, int, int, int, int]:
         """Tính toán tọa độ (crop_x, crop_y, crop_w, crop_h) và bán kính làm mờ hợp lệ cho yuv420p."""
-        crop_w = max(64, (int(width * 0.94) // 2) * 2)
+        crop_w = max(64, (int(width * 0.78) // 2) * 2)
         raw_h = detected_sub_h if detected_sub_h is not None else int(height * 0.11)
         crop_h = max(40, min(height - 4, (int(raw_h * 1.12) // 2) * 2))
         crop_x = max(0, ((width - crop_w) // 2 // 2) * 2)
@@ -710,15 +712,15 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                     im_small.filter(ImageFilter.MinFilter(5)), dtype=np.int16
                 )
                 char_small = (
-                    (lmax > 162) & (lmin < 92) & ((lmax - lmin) > 90)
+                    (lmax > 195) & (lmin < 68) & ((lmax - lmin) > 130)
                 ).astype(np.uint8) * 255
 
                 col_density = (char_small > 0).sum(axis=0)
                 col_smooth = np.convolve(col_density, smooth_k, mode="same")
-                valid_cols = col_smooth > 1.4
+                valid_cols = col_smooth > 1.3
 
                 # Nếu khung hình hiện tại KHÔNG có chữ gốc xuất hiện -> giữ nguyên 100% khung hình gốc!
-                if int(np.sum(valid_cols)) < min_active_cols:
+                if int(np.sum(valid_cols)) < max(6, min_active_cols // 2):
                     enc_proc.stdin.write(raw_buf)
                     continue
 

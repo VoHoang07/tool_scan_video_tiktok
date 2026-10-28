@@ -211,18 +211,31 @@ class SubtitleTranslator:
                 if not polished_vi:
                     continue
 
-                # Khử trùng lặp câu dịch liên tiếp giữa segment i-1 và segment i để không bao giờ đọc lặp lại câu nói
+                # Khử trùng lặp câu dịch liên tiếp giữa segment i-1 và segment i để không bao giờ đọc lặp lại câu nói,
+                # NHƯNG giữ nguyên nếu 2 câu có thời lượng >= 0.80s và là màn đối đáp nhại lại ('刚刚在哪呢' -> '刚刚在哪', '我是问你刚才去哪了' -> '我刚才去哪了')
                 if translated_segments:
                     prev_seg = translated_segments[-1]
                     prev_vi = (prev_seg.get("translated_text") or "").strip()
+                    prev_dur = float(prev_seg["end"]) - float(prev_seg["start"])
                     gap_s = float(seg["start"]) - float(prev_seg["end"])
+                    prev_orig_clean = re.sub(r"[\s，,。.!！?？]+", "", prev_seg.get("text") or "")
+                    cur_orig_clean = re.sub(r"[\s，,。.!！?？]+", "", seg.get("text") or "")
                     if prev_vi and gap_s <= 2.2:
                         import difflib as _difflib
 
                         p_norm = re.sub(r"[\W_]+", " ", prev_vi.lower()).strip()
                         c_norm = re.sub(r"[\W_]+", " ", polished_vi.lower()).strip()
                         sim = _difflib.SequenceMatcher(None, p_norm, c_norm).ratio()
-                        if sim >= 0.78 or (len(c_norm) >= 8 and c_norm in p_norm) or (len(p_norm) >= 8 and p_norm in c_norm):
+                        is_echo_dialogue = (
+                            prev_dur >= 0.80
+                            and duration_sec >= 0.80
+                            and prev_orig_clean != cur_orig_clean
+                            and len(cur_orig_clean) >= 3
+                        )
+                        if is_echo_dialogue and (sim >= 0.78 or c_norm in p_norm):
+                            if p_norm == c_norm and not polished_vi.lower().endswith(("hả?", "á?", "sao?")):
+                                polished_vi = polished_vi.rstrip(".!? ") + " hả?"
+                        elif sim >= 0.88 or (not is_echo_dialogue and (sim >= 0.78 or (len(c_norm) >= 8 and c_norm in p_norm) or (len(p_norm) >= 8 and p_norm in c_norm))):
                             prev_seg["end"] = seg["end"]
                             if len(polished_vi) > len(prev_vi):
                                 prev_seg["translated_text"] = polished_vi
@@ -523,6 +536,8 @@ class SubtitleTranslator:
             ("校车再等你了", "校车在等你了"),
             ("还贷了，今天肯定要迟到了", "糟了，今天上学肯定要迟到了"),
             ("完蛋了", "糟了"),
+            ("跟谁去加油的", "跟谁一起去加油站加油的"),
+            ("我去加个油你还怀疑我是吧", "我去加个汽油你居然还怀疑我是吧"),
         ]
         for wrong, right in asr_fixes:
             cleaned = cleaned.replace(wrong, right)
@@ -743,11 +758,21 @@ class SubtitleTranslator:
 
         # 5. Chuẩn hóa văn phong cho Kênh 2 (Hài / Đời sống / Gia đình / Baby AI)
         elif channel_key == "channel_2":
-            is_child_speaking = (
-                ("妈妈" in (orig_text or ""))
-                or ("上学" in (orig_text or ""))
-                or ("裤子" in (orig_text or ""))
-                or ("老师" in (orig_text or ""))
+            is_child_speaking = any(
+                kw in (orig_text or "")
+                for kw in (
+                    "妈妈",
+                    "爸爸",
+                    "上学",
+                    "裤子",
+                    "老师",
+                    "我到家了",
+                    "我不认识",
+                    "我刚才",
+                    "我去加",
+                    "什么叫我",
+                    "还在加油站",
+                )
             )
             self_pronoun_cap = "Con" if is_child_speaking else "Mẹ"
             self_pronoun_low = "con" if is_child_speaking else "mẹ"
@@ -769,6 +794,8 @@ class SubtitleTranslator:
                 (r"\bMiệng Mẹ đầy thức ăn\b", "Nhìn con ăn lem luốc đầy cả miệng kìa"),
                 (r"\bMẹ sắp trễ giờ học mẫu giáo\b", "Con sắp trễ giờ đi học mẫu giáo rồi"),
                 (r"\bMẹ đang đi học\b", "Con phải đi học đây"),
+                (r"\bCon vẫn còn nghi ngờ Con\b", "vậy mà vẫn còn nghi ngờ con"),
+                (r"\bcậu\b", "con"),
                 (r"\bAnh kiệt sức vì phải bò lên người em\b", "Mẹ mệt đứt hơi vì ngày nào cũng phải leo trèo trên người con"),
                 (r"\bnó bị vặn rồi\b", "thôi xong rồi"),
             ]

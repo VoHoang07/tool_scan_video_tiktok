@@ -2188,8 +2188,8 @@ class StoryAudioCrawler:
                     reason = f"video TikTok tiếng Anh cũ trước 28/10 trong {ch_folder}"
                 elif ch_folder == "baby_AI" and plat == "douyin" and re.match(r"^2026102[0-7]_", fname) and sid not in valid_baby_ai_douyin_seeds:
                     reason = "video Douyin hài người lớn cũ không thuộc chủ đề Baby AI"
-                elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_163800":
-                    reason = "video lồng tiếng bản cũ trước khi nâng cấp Word-Timestamp Sync & Anti-Repeat OCR (16:38 28/10)"
+                elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_210000":
+                    reason = "video lồng tiếng bản cũ trước khi vá lỗi cắt đỉnh âm thanh & mất thoại VAD (21:00 28/10)"
 
                 if not reason and sid:
                     for tr_dir in (

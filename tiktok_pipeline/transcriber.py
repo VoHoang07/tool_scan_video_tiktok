@@ -105,17 +105,32 @@ class AudioTranscriber:
         inferred_video = video_path or (audio_path.parent / "raw_video.mp4")
         has_video = inferred_video.exists()
 
+        # Giải mã trực tiếp từ video gốc (nếu có) hoặc audio_path sang mảng float32 16kHz
+        # và chuẩn hóa biên độ đỉnh về 0.70 (-3.1 dBFS) để khử hoàn toàn hiện tượng cắt đỉnh (hard-clipping)
+        # làm mù bộ lọc Silero VAD trên các video TikTok/Douyin nén âm lượng lớn.
+        audio_input: Any = str(audio_path)
+        try:
+            import numpy as np
+            from faster_whisper.audio import decode_audio
+
+            src_media = str(inferred_video if has_video else audio_path)
+            wav_arr = decode_audio(src_media, sampling_rate=16000)
+            if wav_arr is not None and len(wav_arr) > 0:
+                peak_val = float(np.max(np.abs(wav_arr)))
+                if peak_val > 1e-4:
+                    wav_arr = (wav_arr / peak_val) * 0.70
+                audio_input = wav_arr.astype(np.float32)
+        except Exception as dec_err:
+            logger.debug(f"Chuẩn hóa sóng âm trực tiếp gặp lỗi nhẹ, dùng đường dẫn file: {dec_err}")
+
         logger.info(f"Đang nhận diện giọng nói từ: {audio_path} (auto-detect language, word_timestamps=True)...")
         segments_gen, info = self.model.transcribe(
-            str(audio_path),
+            audio_input,
             language=language,
             beam_size=5,
-            vad_filter=True,
-            vad_parameters=dict(min_silence_duration_ms=250, speech_pad_ms=120, threshold=0.35),
+            vad_filter=False,
             word_timestamps=True,
             condition_on_previous_text=False,
-            repetition_penalty=1.18,
-            no_repeat_ngram_size=3,
         )
 
         detected_lang = (info.language or "en").lower()
@@ -124,28 +139,31 @@ class AudioTranscriber:
             f"Ngôn ngữ phát hiện: '{detected_lang}' (độ tin cậy: {lang_prob:.2%})"
         )
 
-        whisper_seg_list = list(segments_gen)
+        whisper_seg_list = [
+            s for s in segments_gen
+            if (getattr(s, "text", "") or "").strip()
+            and not (
+                float(getattr(s, "no_speech_prob", 0.0) or 0.0) > 0.80
+                and float(getattr(s, "avg_logprob", -0.3) or -0.3) < -0.70
+            )
+            and float(getattr(s, "avg_logprob", -0.3) or -0.3) > -1.05
+        ]
         audio_dur_est = float(getattr(info, "duration", 0.0) or 0.0)
 
-        # Dự phòng: nếu Silero VAD cắt quá tay làm gộp cả bài thành <= 2 câu trên video dài >= 10s,
-        # chạy lại với vad_filter=False + word_timestamps=True để lấy đầy đủ từng câu theo đúng mốc từ.
-        if len(whisper_seg_list) <= 2 and audio_dur_est >= 10.0:
-            segs_no_vad, _ = self.model.transcribe(
-                str(audio_path),
+        # Dự phòng: nếu vad_filter=False trả về quá ít câu trên video dài, thử thêm với vad_filter=True (threshold=0.22)
+        if len(whisper_seg_list) <= 2 and audio_dur_est >= 8.0:
+            segs_vad, _ = self.model.transcribe(
+                audio_input,
                 language=detected_lang,
                 beam_size=5,
-                vad_filter=False,
+                vad_filter=True,
+                vad_parameters=dict(min_silence_duration_ms=260, speech_pad_ms=180, threshold=0.22),
                 word_timestamps=True,
                 condition_on_previous_text=False,
-                repetition_penalty=1.18,
-                no_repeat_ngram_size=3,
             )
-            no_vad_list = list(segs_no_vad)
-            if len(no_vad_list) > len(whisper_seg_list):
-                logger.info(
-                    f"[Word-Timestamp Recovery] Phục hồi {len(no_vad_list)} câu thoại chuẩn xác (thay vì {len(whisper_seg_list)} câu bị gộp do VAD)."
-                )
-                whisper_seg_list = no_vad_list
+            vad_list = list(segs_vad)
+            if len(vad_list) > len(whisper_seg_list):
+                whisper_seg_list = vad_list
 
         raw_segments: List[Dict[str, Any]] = []
         logprobs: List[float] = []
@@ -552,6 +570,25 @@ for path in args {
 
                 if best_ocr:
                     ocr_hits += 1
+                    # Nếu khung hình t1 dính đuôi phụ đề của câu ngay trước đó (ví dụ câu trước là '咋了', câu này là '咋了你啥意思啊'),
+                    # cắt bỏ phần tiền tố trùng lặp với câu trước để không bị đọc lặp 2 lần.
+                    if refined:
+                        prev_r_txt = re.sub(r"[\s，,。.!！?？]+", "", refined[-1].get("text") or "")
+                        best_clean = re.sub(r"[\s，,。.!！?？]+", "", best_ocr)
+                        if (
+                            2 <= len(prev_r_txt) <= 4
+                            and best_clean.startswith(prev_r_txt)
+                            and len(best_clean) >= len(prev_r_txt) + 3
+                            and (float(seg["start"]) - float(refined[-1]["end"])) <= 0.65
+                        ):
+                            trimmed = best_ocr.lstrip()
+                            if trimmed.startswith(refined[-1].get("text", "").strip()):
+                                trimmed = trimmed[len(refined[-1].get("text", "").strip()):].lstrip("，,。.!！?？ ")
+                            elif trimmed.startswith(prev_r_txt):
+                                trimmed = trimmed[len(prev_r_txt):].lstrip("，,。.!！?？ ")
+                            if len(re.findall(r"[\u4e00-\u9fff]", trimmed)) >= 2:
+                                best_ocr = trimmed
+
                     for interj in LEADING_SPOKEN_INTERJECTIONS:
                         if w_text.startswith(interj) and not best_ocr.startswith(interj):
                             if interj not in best_ocr[:4]:
@@ -559,6 +596,7 @@ for path in args {
                             break
                     new_seg = dict(seg)
                     new_seg["whisper_raw_text"] = w_text
+                    new_seg["ocr_matched"] = True
                     new_seg["text"] = self._deduplicate_internal_clauses(best_ocr)
                     refined.append(new_seg)
                 else:
@@ -640,15 +678,29 @@ for path in args {
                 continue
 
             # 2. Khử câu trùng lặp hoặc nói lắp ở 2 segment liên tiếp (ví dụ: '张女士' + '张女士' hoặc '我' + '我女儿丢了')
+            # Lưu ý: KHÔNG xóa câu đáp nhại lại của nhân vật thứ 2 (như '刚刚在哪呢' -> '刚刚在哪' hoặc '我是问你刚才去哪了' -> '我刚才去哪了')
+            # khi cả 2 câu đều là lời thoại độc lập có thời lượng >= 0.85s và nội dung không giống hệt nhau!
             if prev_clean and cur_clean and gap <= 2.2:
                 sim = difflib.SequenceMatcher(None, prev_clean, cur_clean).ratio()
-                is_sub_stutter = (
-                    (len(prev_clean) <= 4 and cur_clean.startswith(prev_clean))
-                    or (len(cur_clean) <= 4 and prev_clean.endswith(cur_clean))
-                    or (len(cur_clean) >= 4 and cur_clean in prev_clean)
-                    or (len(prev_clean) >= 4 and prev_clean in cur_clean)
+                both_distinct_utterances = (
+                    prev_dur >= 0.85
+                    and cur_dur >= 0.85
+                    and prev_clean != cur_clean
+                    and len(prev_clean) >= 4
+                    and len(cur_clean) >= 4
                 )
-                if sim >= 0.72 or is_sub_stutter:
+                is_sub_stutter = (
+                    (len(prev_clean) <= 3 and cur_clean.startswith(prev_clean))
+                    or (len(cur_clean) <= 2 and prev_clean.endswith(cur_clean))
+                    or (
+                        not both_distinct_utterances
+                        and (
+                            (len(cur_clean) >= 4 and cur_clean in prev_clean)
+                            or (len(prev_clean) >= 4 and prev_clean in cur_clean)
+                        )
+                    )
+                )
+                if sim >= 0.90 or is_sub_stutter or (not both_distinct_utterances and sim >= 0.76):
                     if len(cur_clean) > len(prev_clean) and len(prev_clean) <= 2:
                         prev["start"] = seg_copy["start"]
                     prev["end"] = seg_copy["end"]
@@ -660,10 +712,10 @@ for path in args {
                 prev_txt.endswith(sfx) for sfx in incomplete_endings_zh
             )
             should_merge = False
-            # Chỉ gộp khi câu bị cắt vụn (<= 3 chữ / < 0.85s) hoặc kết thúc bằng hư từ chưa trọn nghĩa (ends_incomplete)
-            # Tuyệt đối KHÔNG gộp 2 câu hoàn chỉnh (>= 4 chữ) của 2 nhân vật khác nhau!
-            if gap <= 0.38 and comb_dur <= 4.0:
-                if len(prev_clean) <= 3 or len(cur_clean) <= 3 or prev_dur < 0.85 or cur_dur < 0.80 or ends_incomplete:
+            # Chỉ gộp khi câu trước bị cắt vụn (<= 3 chữ hoặc < 0.80s) hoặc kết thúc bằng hư từ chưa trọn nghĩa (ends_incomplete).
+            # Tuyệt đối KHÔNG gộp câu ngắn tiếp theo (như '咋了') vào đuôi một câu trước đã trọn vẹn (>= 4 chữ, >= 0.85s)!
+            if gap <= 0.35 and comb_dur <= 3.6:
+                if len(prev_clean) <= 3 or prev_dur < 0.80 or ends_incomplete:
                     should_merge = True
             elif ends_incomplete and gap <= 0.60 and comb_dur <= 5.0:
                 should_merge = True

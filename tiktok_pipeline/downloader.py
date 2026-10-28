@@ -541,14 +541,18 @@ class VideoDownloader:
     def extract_audio(self, video_path: Path, audio_path: Path) -> Path:
         """
         Dùng ffmpeg trích xuất âm thanh từ `raw_video.mp4` ra file `audio.mp3`.
+        Sử dụng `pan=mono|c0=0.5*c0+0.5*c1,volume=0.75` để tránh hiện tượng cộng hưởng +3dB
+        gây cắt đỉnh (hard-clipping) sóng âm khiến Silero VAD của Whisper bỏ sót câu thoại.
         """
-        logger.info(f"Đang trích xuất âm thanh ra: {audio_path}")
+        logger.info(f"Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: {audio_path}")
         cmd = [
             self.ffmpeg_bin,
             "-y",
             "-i",
             str(video_path),
             "-vn",
+            "-af",
+            "pan=mono|c0=0.5*c0+0.5*c1,volume=0.75",
             "-acodec",
             "libmp3lame",
             "-ar",
