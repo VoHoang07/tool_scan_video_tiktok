@@ -13,6 +13,8 @@ from .utils import logger
 
 DIGG_UI_GUARD_SCRIPT = """
 (() => {
+    if (window.__ttStealthGuardApplied) return;
+    window.__ttStealthGuardApplied = true;
     const automationProps = [
         '__playwright', '__pw_manual', '__PW_inspect',
         'cdc_adoQpoasnfa76pfcZLmcfl_Array',
@@ -22,6 +24,44 @@ DIGG_UI_GUARD_SCRIPT = """
     for (const prop of automationProps) {
         try { delete window[prop]; } catch (e) {}
     }
+    try {
+        const nativeToString = Function.prototype.toString;
+        const spoofedFns = new WeakMap();
+        const wrappedToString = function() {
+            if (spoofedFns.has(this)) return spoofedFns.get(this);
+            return nativeToString.apply(this, arguments);
+        };
+        spoofedFns.set(wrappedToString, nativeToString.call(nativeToString));
+        Object.defineProperty(Function.prototype, 'toString', {
+            value: wrappedToString,
+            configurable: true,
+            writable: true
+        });
+
+        const hasTrapGetter = (arg) => {
+            if (!arg || (typeof arg !== 'object' && typeof arg !== 'function')) return false;
+            const dStack = Object.getOwnPropertyDescriptor(arg, 'stack');
+            const dId = Object.getOwnPropertyDescriptor(arg, 'id');
+            return Boolean((dStack && dStack.get) || (dId && dId.get) || arg instanceof Error);
+        };
+        for (const m of ['debug', 'dir', 'dirxml', 'table', 'trace', 'log']) {
+            const orig = console[m];
+            if (typeof orig !== 'function') continue;
+            const origStr = nativeToString.call(orig);
+            const safeFn = function() {
+                for (let i = 0; i < arguments.length; i++) {
+                    if (hasTrapGetter(arguments[i])) return undefined;
+                }
+                return orig.apply(this, arguments);
+            };
+            spoofedFns.set(safeFn, origStr);
+            Object.defineProperty(console, m, {
+                value: safeFn,
+                configurable: true,
+                writable: true
+            });
+        }
+    } catch (e) {}
 })();
 """
 
@@ -1508,28 +1548,84 @@ class TikTok24hFilterEngine:
         self, page: Any, ch_folder: str, creator_handle: str, video_url: str
     ) -> bool:
         """
-        Truy cập trực tiếp trang Hồ sơ của chủ kênh (`/@creator_handle`) ngay sau khi tương tác video:
-        - Kiểm tra trạng thái `userRelation` từ server (`__UNIVERSAL_DATA_FOR_REHYDRATION__`) và chữ trên nút
-          chữ nhật chính `[data-e2e="follow-button"]`.
-        - Nếu lượt Follow trên trang video bị TikTok âm thầm bỏ qua (nút trên hồ sơ vẫn hiện `Follow` / `Theo dõi`),
-          lập tức bấm nút `[data-e2e="follow-button"]` ngay tại trang hồ sơ (`from_page=user`, `from=19`) và chờ 3.3s
-          xác nhận nút chuyển sang `Đang Follow` / `Following` / `Bạn bè`.
+        Mở trang Hồ sơ của chủ kênh (`/@creator_handle`) bằng thao tác CLICK TRỰC TIẾP vào tên/avatar chủ kênh
+        ngay trên trang video (SPA Router Transition — giữ nguyên 100% phiên `webmssdk.js` & tránh hoàn toàn lỗi
+        HTTP 403 `ERR_HTTP_RESPONSE_CODE_FAILURE` của `page.goto`), sau đó bấm ĐÚNG 1 LẦN vào nút chữ nhật chính
+        `[data-e2e="follow-button"]` trên trang Hồ sơ và chờ 3.8s xác nhận nút chuyển sang `Đã follow` / `Đang Follow`.
         """
         if not creator_handle:
             return False
         clean_handle = creator_handle.lstrip("@").strip()
-        profile_url = f"https://www.tiktok.com/@{clean_handle}?lang=vi-VN"
         trace: Dict[str, Any] = getattr(self, "_last_like_debug", {}) or {}
         try:
-            page.goto(
-                profile_url,
-                referer=video_url,
-                wait_until="domcontentloaded",
-                timeout=35000,
+            # 1. Tìm link tên chủ kênh hoặc nửa trên avatar ngay trên trang video để chuyển trang SPA tự nhiên
+            author_pos = page.evaluate(
+                """(handle) => {
+                    const selectors = [
+                        '[data-e2e="video-author-uniqueid"]',
+                        '[data-e2e="browse-username"]',
+                        `a[href*="/@${handle}"]`,
+                        '[data-e2e="video-author-avatar"]'
+                    ];
+                    for (const sel of selectors) {
+                        const els = Array.from(document.querySelectorAll(sel));
+                        for (const el of els) {
+                            if (el.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
+                            const a = el.tagName.toLowerCase() === 'a' ? el : el.closest('a');
+                            if (a) {
+                                a.removeAttribute('target');
+                                const href = a.getAttribute('href') || '';
+                                if (href.includes('/video/')) continue;
+                            }
+                            const r = el.getBoundingClientRect();
+                            if (r.left > 240 && r.width > 16 && r.height > 12 && r.top > 20 && r.top < window.innerHeight - 15) {
+                                const cy = sel.includes('avatar') ? (r.top + r.height * 0.3) : (r.top + r.height / 2);
+                                return { x: r.left + r.width / 2, y: cy, sel };
+                            }
+                        }
+                    }
+                    return null;
+                }""",
+                clean_handle,
             )
-            time.sleep(random.uniform(2.4, 3.2))
+
+            navigated_spa = False
+            if author_pos:
+                self._os_click_viewport(page, float(author_pos["x"]), float(author_pos["y"]))
+                time.sleep(2.6)
+                # Kiểm tra nếu có tab phụ mở ra thì chuyển sang hoặc đóng tab phụ
+                if len(page.context.pages) > 1:
+                    extra_page = page.context.pages[-1]
+                    if extra_page != page and f"/@{clean_handle.lower()}" in (extra_page.url or "").lower():
+                        try:
+                            extra_page.close()
+                        except Exception:
+                            pass
+                if "/video/" not in (page.url or "") and f"/@{clean_handle.lower()}" in (page.url or "").lower():
+                    navigated_spa = True
+
+            if not navigated_spa:
+                # Kích hoạt trực tiếp sự kiện click React Router trên thẻ <a href="/@handle">
+                clicked_dom = page.evaluate(
+                    """(handle) => {
+                        const links = Array.from(document.querySelectorAll(`a[href*="/@${handle}"]`));
+                        for (const a of links) {
+                            const href = a.getAttribute('href') || '';
+                            if (href.includes('/video/')) continue;
+                            a.removeAttribute('target');
+                            a.click();
+                            return true;
+                        }
+                        return false;
+                    }""",
+                    clean_handle,
+                )
+                if clicked_dom:
+                    time.sleep(2.8)
+
             self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
+            # 2. Đọc trạng thái nút [data-e2e="follow-button"] trên trang Hồ sơ chủ kênh
             prof_state = page.evaluate(
                 """() => {
                     let relation = null;
@@ -1542,7 +1638,7 @@ class TikTok24hFilterEngine:
                         }
                     } catch (e) {}
                     const btn = document.querySelector('[data-e2e="follow-button"]');
-                    if (!btn) return { relation, btnText: null, x: null, y: null };
+                    if (!btn) return { relation, btnText: null, x: null, y: null, url: location.href };
                     const r = btn.getBoundingClientRect();
                     return {
                         relation,
@@ -1550,7 +1646,8 @@ class TikTok24hFilterEngine:
                         x: r.left + r.width / 2,
                         y: r.top + r.height / 2,
                         w: r.width,
-                        h: r.height
+                        h: r.height,
+                        url: location.href
                     };
                 }"""
             )
@@ -1561,10 +1658,10 @@ class TikTok24hFilterEngine:
             if not is_following_now and prof_state and prof_state.get("x") and float(prof_state.get("w") or 0) > 25:
                 bx, by = float(prof_state["x"]), float(prof_state["y"])
                 logger.info(
-                    f"[{ch_folder}] [Xác thực Follow Hồ Sơ] Nút trên trang @{clean_handle} đang là '{before_txt}' -> Bấm Follow trực tiếp trên trang Hồ sơ..."
+                    f"[{ch_folder}] [Xác thực Follow Hồ Sơ SPA] Nút trên trang @{clean_handle} đang là '{before_txt}' -> Bấm Follow trực tiếp trên trang Hồ sơ..."
                 )
                 self._os_click_viewport(page, bx, by)
-                time.sleep(3.35)
+                time.sleep(3.8)
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
             after_state = page.evaluate(
@@ -1577,6 +1674,8 @@ class TikTok24hFilterEngine:
             persisted = after_txt.lower() in already_labels or is_following_now
             trace["profile_follow_verify"] = {
                 "creator": f"@{clean_handle}",
+                "nav_method": "spa_click",
+                "profile_url": (prof_state or {}).get("url"),
                 "before_btn": before_txt,
                 "after_btn": after_txt,
                 "init_relation": (prof_state or {}).get("relation"),
@@ -1779,13 +1878,36 @@ class TikTok24hFilterEngine:
             except Exception:
                 pass
 
-        page.goto(
-            f"{video_url}?lang=vi-VN",
-            referer="https://www.tiktok.com/",
-            wait_until="domcontentloaded",
-            timeout=45000,
-        )
+        if not getattr(page, "_f24_init_script_attached", False):
+            try:
+                page.context.add_init_script(DIGG_UI_GUARD_SCRIPT)
+                setattr(page, "_f24_init_script_attached", True)
+            except Exception:
+                pass
+
+        for _nav_try in range(2):
+            try:
+                page.goto(
+                    f"{video_url}?lang=vi-VN",
+                    referer="https://www.tiktok.com/",
+                    wait_until="domcontentloaded",
+                    timeout=45000,
+                )
+                if "chromewebdata" not in (page.url or "").lower():
+                    break
+            except Exception as nav_exc:
+                if _nav_try == 1:
+                    raise nav_exc
+            logger.info(f"[{ch_folder}] [Bộ lọc 24h] Phục hồi kết nối qua trang chủ TikTok trước khi mở lại video...")
+            time.sleep(3.5)
+            try:
+                page.goto("https://www.tiktok.com/", wait_until="domcontentloaded", timeout=35000)
+                time.sleep(3.0)
+            except Exception:
+                pass
+
         try:
+            page.evaluate(DIGG_UI_GUARD_SCRIPT)
             self._last_like_debug["env_check"] = page.evaluate(
                 """() => {
                     let loggedInUniqueId = null;
@@ -1843,11 +1965,7 @@ class TikTok24hFilterEngine:
         favorited = self._step4_favorite_video(page, ch_folder)
         time.sleep(random.uniform(1.2, 1.8))
 
-        # 5. Bấm Follow trên video
-        followed = self._step5_follow_creator(page, ch_folder)
-        time.sleep(random.uniform(1.3, 2.0))
-
-        # 6. Để lại bình luận bằng nhịp gõ phím tự nhiên
+        # 5. Để lại bình luận bằng nhịp gõ phím tự nhiên trên trang video
         comment_text = self._step6_post_meaningful_comment(page, ch_folder, creator_handle)
 
         # Kiểm tra lại tim đỏ trên trang video trước khi chụp ảnh telemetry
@@ -1867,14 +1985,15 @@ class TikTok24hFilterEngine:
         except Exception:
             pass
 
-        # 7. Mở trang Hồ sơ của @creator_handle để xác thực & bấm nút Follow chữ nhật chính ([data-e2e="follow-button"])
+        # 6. Click trực tiếp vào tên/avatar chủ kênh trên trang video để chuyển SPA sang trang Hồ sơ @creator_handle
+        # và bấm ĐÚNG 1 LẦN nút Follow chữ nhật chính ([data-e2e="follow-button"])
         profile_followed = self._verify_and_follow_on_creator_profile(
             page=page,
             ch_folder=ch_folder,
             creator_handle=creator_handle,
             video_url=video_url,
         )
-        followed = bool(profile_followed or followed)
+        followed = bool(profile_followed)
 
         now_dt = datetime.now()
         record = {
@@ -1910,45 +2029,69 @@ class TikTok24hFilterEngine:
 
     def _capture_own_profile_stats(self, page: Any, ch_folder: str) -> Dict[str, Any]:
         """
-        Cuối phiên chạy, truy cập vào trang Hồ sơ của chính kênh đang chạy (`/@logged_in_unique_id`)
-        để đọc số lượng `Đang Follow` (`followingCount`), `Follower` (`followerCount`), `Thích` (`heartCount`)
-        thực tế trên máy chủ TikTok và lưu vào báo cáo telemetry.
+        Cuối phiên chạy, bấm trực tiếp vào nút 'Hồ sơ' (`[data-e2e="nav-profile"]`) trên thanh điều hướng bên trái
+        (SPA click tự nhiên, KHÔNG dùng `page.goto` để tránh lỗi HTTP 403) nhằm đọc số lượng `Đã follow`, `Follower`,
+        `Lượt thích` và danh sách tài khoản vừa follow của kênh đang chạy.
         """
-        own_uid = getattr(self, "_logged_in_unique_id", None)
-        if not own_uid:
-            return {}
         try:
-            page.goto(
-                f"https://www.tiktok.com/@{own_uid}?lang=vi-VN",
-                wait_until="domcontentloaded",
-                timeout=35000,
+            nav_pos = page.evaluate(
+                """() => {
+                    const navProf = document.querySelector('[data-e2e="nav-profile"]');
+                    if (navProf) {
+                        const a = navProf.tagName.toLowerCase() === 'a' ? navProf : navProf.closest('a');
+                        if (a) a.removeAttribute('target');
+                        const r = navProf.getBoundingClientRect();
+                        if (r.width > 16 && r.height > 14) {
+                            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                        }
+                    }
+                    const els = Array.from(document.querySelectorAll('a, span, div'));
+                    for (const el of els) {
+                        if (el.children.length > 3) continue;
+                        const txt = (el.innerText || el.textContent || '').trim();
+                        if (txt === 'Hồ sơ' || txt === 'Profile') {
+                            const r = el.getBoundingClientRect();
+                            if (r.left >= 0 && r.left < 240 && r.width > 16 && r.height > 12) {
+                                const a = el.closest('a');
+                                if (a) a.removeAttribute('target');
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
             )
-            time.sleep(2.8)
+            if nav_pos:
+                self._os_click_viewport(page, float(nav_pos["x"]), float(nav_pos["y"]))
+                time.sleep(3.8)
+            else:
+                return {}
+
             stats = page.evaluate(
                 """() => {
                     const getTxt = (sel) => {
                         const el = document.querySelector(sel);
                         return el ? (el.innerText || el.textContent || '').trim() : null;
                     };
-                    let rehydStats = null;
-                    try {
-                        const el = document.getElementById("__UNIVERSAL_DATA_FOR_REHYDRATION__");
-                        if (el) {
-                            const d = JSON.parse(el.textContent);
-                            const uInfo = (((d.__DEFAULT_SCOPE__ || {})["webapp.user-detail"] || {}).userInfo) || {};
-                            rehydStats = uInfo.stats || null;
+                    const sidebarAccounts = [];
+                    const links = Array.from(document.querySelectorAll('a[href^="/@"]'));
+                    for (const a of links) {
+                        const r = a.getBoundingClientRect();
+                        if (r.left >= 0 && r.left < 240 && r.top > 380 && r.width > 30) {
+                            const h = (a.getAttribute('href') || '').split('?')[0];
+                            if (h && !sidebarAccounts.includes(h)) sidebarAccounts.push(h);
                         }
-                    } catch (e) {}
+                    }
                     return {
                         uniqueId: location.pathname.replace(/^\\/@/, ''),
                         domFollowing: getTxt('[data-e2e="following-count"]'),
                         domFollowers: getTxt('[data-e2e="followers-count"]'),
                         domLikes: getTxt('[data-e2e="likes-count"]'),
-                        serverStats: rehydStats
+                        sidebarFollowing: sidebarAccounts.slice(0, 8)
                     };
                 }"""
             )
-            logger.info(f"[{ch_folder}] [Kiểm chứng Hồ sơ Kênh @{own_uid}] Thông số server sau phiên chạy: {stats}")
+            logger.info(f"[{ch_folder}] [Kiểm chứng Hồ sơ Kênh] Thông số server sau phiên chạy: {stats}")
             return stats or {}
         except Exception as exc:
             logger.debug(f"[{ch_folder}] Bỏ qua kiểm chứng hồ sơ kênh: {exc}")
@@ -1982,6 +2125,7 @@ class TikTok24hFilterEngine:
                     time.sleep(pause_s)
             except Exception as exc:
                 logger.warning(f"[{ch_folder}] [Bộ lọc 24h] Lỗi khi tương tác video {url}: {exc}")
+                time.sleep(3.5)
 
         self.last_own_profile_stats = self._capture_own_profile_stats(page, ch_folder)
         return results

@@ -50,6 +50,8 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
 # Script dọn dẹp biến toàn cục Playwright (KHÔNG ghi đè Proxy lên console/prototype để giữ 100% [native code] cho webmssdk.js)
 STEALTH_INIT_SCRIPT = """
 (() => {
+    if (window.__ttStealthGuardApplied) return;
+    window.__ttStealthGuardApplied = true;
     const automationProps = [
         '__playwright', '__pw_manual', '__PW_inspect',
         'cdc_adoQpoasnfa76pfcZLmcfl_Array',
@@ -59,6 +61,44 @@ STEALTH_INIT_SCRIPT = """
     for (const prop of automationProps) {
         try { delete window[prop]; } catch (e) {}
     }
+    try {
+        const nativeToString = Function.prototype.toString;
+        const spoofedFns = new WeakMap();
+        const wrappedToString = function() {
+            if (spoofedFns.has(this)) return spoofedFns.get(this);
+            return nativeToString.apply(this, arguments);
+        };
+        spoofedFns.set(wrappedToString, nativeToString.call(nativeToString));
+        Object.defineProperty(Function.prototype, 'toString', {
+            value: wrappedToString,
+            configurable: true,
+            writable: true
+        });
+
+        const hasTrapGetter = (arg) => {
+            if (!arg || (typeof arg !== 'object' && typeof arg !== 'function')) return false;
+            const dStack = Object.getOwnPropertyDescriptor(arg, 'stack');
+            const dId = Object.getOwnPropertyDescriptor(arg, 'id');
+            return Boolean((dStack && dStack.get) || (dId && dId.get) || arg instanceof Error);
+        };
+        for (const m of ['debug', 'dir', 'dirxml', 'table', 'trace', 'log']) {
+            const orig = console[m];
+            if (typeof orig !== 'function') continue;
+            const origStr = nativeToString.call(orig);
+            const safeFn = function() {
+                for (let i = 0; i < arguments.length; i++) {
+                    if (hasTrapGetter(arguments[i])) return undefined;
+                }
+                return orig.apply(this, arguments);
+            };
+            spoofedFns.set(safeFn, origStr);
+            Object.defineProperty(console, m, {
+                value: safeFn,
+                configurable: true,
+                writable: true
+            });
+        }
+    } catch (e) {}
 })();
 """
 
