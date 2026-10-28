@@ -207,6 +207,30 @@ class SubtitleTranslator:
                     duration_sec=duration_sec,
                     channel_key=norm_channel,
                 )
+                polished_vi = self._deduplicate_vietnamese_clauses(polished_vi)
+                if not polished_vi:
+                    continue
+
+                # Khử trùng lặp câu dịch liên tiếp giữa segment i-1 và segment i để không bao giờ đọc lặp lại câu nói
+                if translated_segments:
+                    prev_seg = translated_segments[-1]
+                    prev_vi = (prev_seg.get("translated_text") or "").strip()
+                    gap_s = float(seg["start"]) - float(prev_seg["end"])
+                    if prev_vi and gap_s <= 2.2:
+                        import difflib as _difflib
+
+                        p_norm = re.sub(r"[\W_]+", " ", prev_vi.lower()).strip()
+                        c_norm = re.sub(r"[\W_]+", " ", polished_vi.lower()).strip()
+                        sim = _difflib.SequenceMatcher(None, p_norm, c_norm).ratio()
+                        if sim >= 0.78 or (len(c_norm) >= 8 and c_norm in p_norm) or (len(p_norm) >= 8 and p_norm in c_norm):
+                            prev_seg["end"] = seg["end"]
+                            if len(polished_vi) > len(prev_vi):
+                                prev_seg["translated_text"] = polished_vi
+                            logger.info(
+                                f"[Anti-Repeat Sub/Voice] Đã gộp câu dịch trùng lặp tại {seg['start']:.2f}s: '{polished_vi}'"
+                            )
+                            continue
+
                 new_seg = dict(seg)
                 new_seg["language"] = src_lang
                 new_seg["translated_text"] = polished_vi
@@ -480,6 +504,19 @@ class SubtitleTranslator:
             ("我还有一鼠标", "我还有一个特别高级的鼠标"),
             ("这就是你说的那特别的鼠标，这哪是鼠标啊，对啊智能鼠标啊", "这哪里是鼠标啊？对啊，这是声控智能鼠标"),
             ("打光我的电脑", "打开我的电脑"),
+            ("幼儿园要吃到了", "幼儿园快要迟到了"),
+            ("幼儿园要迟到了", "去幼儿园快要迟到了"),
+            ("吃的满嘴都是", "你吃得满嘴都是"),
+            ("我一天天的光给你擦嘴了", "我一天天的只顾着给你擦嘴了"),
+            ("小小人足哪有你这么能吃的小孩", "小小人族里哪有你这么能吃的小孩"),
+            ("以后你要少吃一点腰", "以后你要少吃一点哟"),
+            ("我都过不到你的脸", "我都够不到你的脸"),
+            ("妈妈不替，拿着水杯", "妈妈抱不动你，快拿着水杯"),
+            ("妈妈不去", "妈妈抱不动你"),
+            ("拿着水呗", "快拿着水杯"),
+            ("校车再等你了", "校车在等你了"),
+            ("还贷了，今天肯定要迟到了", "糟了，今天上学肯定要迟到了"),
+            ("完蛋了", "糟了"),
         ]
         for wrong, right in asr_fixes:
             cleaned = cleaned.replace(wrong, right)
@@ -698,14 +735,25 @@ class SubtitleTranslator:
             for pat, rep in cute_replacements:
                 text = re.sub(pat, rep, text)
 
-        # 5. Chuẩn hóa văn phong cho Kênh 2 (Hài / Đời sống / Gia đình)
+        # 5. Chuẩn hóa văn phong cho Kênh 2 (Hài / Đời sống / Gia đình / Baby AI)
         elif channel_key == "channel_2":
+            is_child_speaking = ("妈妈" in (orig_text or "")) or ("上学" in (orig_text or "")) or ("裤子" in (orig_text or ""))
+            self_pronoun_cap = "Con" if is_child_speaking else "Mẹ"
+            self_pronoun_low = "con" if is_child_speaking else "mẹ"
             comedy_replacements = [
                 (r"\bChúa ơi\b", "Trời đất ơi"),
                 (r"\bÔi chúa ơi\b", "Ối giời ơi"),
-                (r"\banh bạn\b", "ông bạn"),
-                (r"\bTôi\b", "Mình"),
-                (r"\btôi\b", "mình"),
+                (r"\banh bạn\b", "nhóc con"),
+                (r"\bÔi em yêu, em no chưa\b", "Ôi cục cưng ơi, con ăn no chưa"),
+                (r"\bem yêu\b", "cục cưng"),
+                (r"\bTôi\b", self_pronoun_cap),
+                (r"\btôi\b", self_pronoun_low),
+                (r"\bMình\b", self_pronoun_cap),
+                (r"\bmình\b", self_pronoun_low),
+                (r"\bBạn\b", "Con"),
+                (r"\bbạn\b", "con"),
+                (r"\bAnh kiệt sức vì phải bò lên người em\b", "Mẹ mệt đứt hơi vì ngày nào cũng phải leo trèo trên người con"),
+                (r"\bnó bị vặn rồi\b", "thôi xong rồi"),
             ]
             for pat, rep in comedy_replacements:
                 text = re.sub(pat, rep, text, flags=re.IGNORECASE)
@@ -716,6 +764,50 @@ class SubtitleTranslator:
             text = text[0].upper() + text[1:]
 
         return text
+
+    @staticmethod
+    def _deduplicate_vietnamese_clauses(text: str) -> str:
+        """
+        Khử triệt để các từ/mệnh đề tiếng Việt bị lặp lại trong cùng một câu:
+        - Xóa các chú thích bối cảnh nằm trong ngoặc đơn `(...)` hoặc ngoặc vuông `[...]`.
+        - Rút gọn các từ cảm thán bị lặp nhiều lần liên tiếp ('Này này này này...' -> 'Này!').
+        - Nếu trong cùng 1 câu có 2 mệnh đề giống nhau cách bởi dấu phẩy/chấm ('A, A' -> 'A'), chỉ giữ 1 mệnh đề.
+        """
+        if not text:
+            return ""
+        import difflib as _difflib
+
+        cleaned = re.sub(r"\([^)]*\)|\[[^\]]*\]|（[^）]*）|【[^】]*】", " ", text)
+        # Rút gọn từ đơn bị lặp >= 3 lần liên tiếp (ví dụ: 'Này này này này' -> 'Này')
+        cleaned = re.sub(r"\b(\w+)(?:\s+\1){2,}\b", r"\1", cleaned, flags=re.IGNORECASE)
+        cleaned = re.sub(r"\s+", " ", cleaned).strip(" ,;.-–—")
+        if not cleaned:
+            return ""
+
+        clauses = [c.strip() for c in re.split(r"[,;]+|\.\s+", cleaned) if c.strip()]
+        if len(clauses) > 1:
+            unique_clauses: List[str] = []
+            for cl in clauses:
+                if not unique_clauses:
+                    unique_clauses.append(cl)
+                    continue
+                prev_cl = unique_clauses[-1]
+                p_low = re.sub(r"[\W_]+", " ", prev_cl.lower()).strip()
+                c_low = re.sub(r"[\W_]+", " ", cl.lower()).strip()
+                if not c_low:
+                    continue
+                sim = _difflib.SequenceMatcher(None, p_low, c_low).ratio()
+                if sim >= 0.76 or (len(c_low) >= 6 and (c_low in p_low or p_low in c_low)):
+                    if len(cl) > len(prev_cl):
+                        unique_clauses[-1] = cl
+                    continue
+                unique_clauses.append(cl)
+            cleaned = ", ".join(unique_clauses)
+
+        cleaned = cleaned.strip(" ,;-–—")
+        if cleaned:
+            cleaned = cleaned[0].upper() + cleaned[1:]
+        return cleaned
 
     def _call_openai_compatible(
         self,

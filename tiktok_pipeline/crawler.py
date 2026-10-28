@@ -2176,6 +2176,8 @@ class StoryAudioCrawler:
                     reason = f"video TikTok tiếng Anh cũ trước 28/10 trong {ch_folder}"
                 elif ch_folder == "baby_AI" and plat == "douyin" and re.match(r"^2026102[0-7]_", fname) and sid not in valid_baby_ai_douyin_seeds:
                     reason = "video Douyin hài người lớn cũ không thuộc chủ đề Baby AI"
+                elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_155500":
+                    reason = "video lồng tiếng bản cũ trước khi nâng cấp Word-Timestamp Sync & Anti-Repeat OCR (15:55 28/10)"
 
                 if not reason and sid:
                     for tr_dir in (
@@ -2196,6 +2198,19 @@ class StoryAudioCrawler:
                 if reason:
                     mp4.unlink(missing_ok=True)
                     purged.append(f"{ch_folder}/ready/{fname}")
+                    # Xóa luôn ID khỏi story_audio_history.json để hệ thống có thể lồng tiếng lại bằng thuật toán mới chuẩn khớp 100%
+                    if sid and self.history_path.exists():
+                        try:
+                            h_data = json.loads(self.history_path.read_text(encoding="utf-8"))
+                            v_ids = h_data.get("video_ids") or []
+                            if sid in v_ids:
+                                h_data["video_ids"] = [x for x in v_ids if x != sid]
+                                self.history_path.write_text(
+                                    json.dumps(h_data, ensure_ascii=False, indent=2),
+                                    encoding="utf-8",
+                                )
+                        except Exception:
+                            pass
                     logger.info(
                         f"[Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi {ch_folder}/ready/{fname} ({reason})."
                     )
@@ -2840,27 +2855,53 @@ class StoryAudioCrawler:
 def _hot_patch_live_crawler() -> None:
     """
     Khi `importlib.reload(_cr_mod)` chạy trên tiến trình 24/7 (máy Intel Mac hoặc Apple Silicon),
-    tự động cập nhật `StoryAudioCrawler`, `resolve_channel_profile`, `CHANNEL_PROFILES`
-    vào `sys.modules['__main__']` / `tiktok_pipeline.main` và vá trực tiếp class cũ đang chạy
-    trong RAM (giữ nguyên descriptor `@staticmethod` qua `__dict__`).
+    tự động reload luôn `transcriber`, `translator`, `tts_engine`, `composer` và cập nhật
+    `StoryAudioCrawler`, `AudioTranscriber`, `SubtitleTranslator`, `TTSEngine`, `VideoComposer`
+    vào `sys.modules['__main__']` / `tiktok_pipeline.main` và vá trực tiếp các class cũ đang chạy trong RAM.
     """
+    import importlib
     import sys
 
-    for mod_name in ("__main__", "tiktok_pipeline.main"):
+    reloaded_classes: Dict[str, Any] = {"StoryAudioCrawler": StoryAudioCrawler}
+    sub_specs = [
+        ("tiktok_pipeline.transcriber", "AudioTranscriber"),
+        ("tiktok_pipeline.translator", "SubtitleTranslator"),
+        ("tiktok_pipeline.tts_engine", "TTSEngine"),
+        ("tiktok_pipeline.composer", "VideoComposer"),
+    ]
+    for mod_path, cls_name in sub_specs:
+        try:
+            sub_mod = sys.modules.get(mod_path)
+            if sub_mod is not None:
+                importlib.reload(sub_mod)
+            else:
+                sub_mod = importlib.import_module(mod_path)
+            new_c = getattr(sub_mod, cls_name, None)
+            if new_c is not None:
+                reloaded_classes[cls_name] = new_c
+                globals()[cls_name] = new_c
+        except Exception:
+            pass
+
+    for mod_name in ("__main__", "tiktok_pipeline.main", "tiktok_pipeline.crawler"):
         mod = sys.modules.get(mod_name)
         if not mod:
             continue
-        old_cls = getattr(mod, "StoryAudioCrawler", None)
-        if old_cls is not None and old_cls is not StoryAudioCrawler:
-            for attr_name, attr_val in StoryAudioCrawler.__dict__.items():
-                if attr_name.startswith("__") and attr_name not in ("__init__",):
-                    continue
-                try:
-                    setattr(old_cls, attr_name, attr_val)
-                except Exception:
-                    pass
+        for cls_name, new_cls in reloaded_classes.items():
+            old_cls = getattr(mod, cls_name, None)
+            if old_cls is not None and old_cls is not new_cls:
+                for attr_name, attr_val in new_cls.__dict__.items():
+                    if attr_name.startswith("__") and attr_name not in ("__init__",):
+                        continue
+                    try:
+                        setattr(old_cls, attr_name, attr_val)
+                    except Exception:
+                        pass
+            try:
+                setattr(mod, cls_name, new_cls)
+            except Exception:
+                pass
         try:
-            setattr(mod, "StoryAudioCrawler", StoryAudioCrawler)
             setattr(mod, "resolve_channel_profile", resolve_channel_profile)
             setattr(mod, "KNOWN_VIETNAMESE_HANDLES", KNOWN_VIETNAMESE_HANDLES)
         except Exception:

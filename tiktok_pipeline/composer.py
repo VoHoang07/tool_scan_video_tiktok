@@ -90,14 +90,14 @@ class VideoComposer:
         work_dir: Path,
         output_dir: Path,
         original_volume: Optional[float] = None,
-        voiceover_volume: float = 1.2,
+        voiceover_volume: float = 1.35,
     ):
         self.work_dir = Path(work_dir)
         self.output_dir = Path(output_dir)
         self.work_dir.mkdir(parents=True, exist_ok=True)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-        env_vol = os.getenv("ORIGINAL_AUDIO_VOLUME", "0.12")
+        env_vol = os.getenv("ORIGINAL_AUDIO_VOLUME", "0.07")
         self.original_volume = (
             float(original_volume)
             if original_volume is not None
@@ -133,7 +133,12 @@ class VideoComposer:
         detected_sub_y = sub_band[0] if sub_band else None
         detected_sub_h = sub_band[1] if sub_band else None
 
-        # Bước 1: Xuất file phụ đề tiếng Việt (.srt và .ass)
+        # Bước 1: Lắp ghép các đoạn TTS tiếng Việt vào trục thời gian chuẩn (voiceover_track.wav) trước
+        # để khóa chính xác tuyệt đối đến từng mili-giây giữa giọng đọc và phụ đề hiển thị
+        voiceover_wav = self.work_dir / "voiceover_track.wav"
+        self.build_voiceover_timeline(segments, video_duration, voiceover_wav)
+
+        # Bước 2: Xuất file phụ đề tiếng Việt (.srt và .ass) khớp 100% với vị trí sample thực tế của giọng đọc
         srt_path = self.work_dir / "subtitles_vi.srt"
         ass_path = self.work_dir / "subtitles_vi.ass"
         self.generate_srt(segments, srt_path)
@@ -145,10 +150,6 @@ class VideoComposer:
             detected_sub_y=detected_sub_y,
             detected_sub_h=detected_sub_h,
         )
-
-        # Bước 2: Lắp ghép các đoạn TTS tiếng Việt vào trục thời gian chuẩn (voiceover_track.wav)
-        voiceover_wav = self.work_dir / "voiceover_track.wav"
-        self.build_voiceover_timeline(segments, video_duration, voiceover_wav)
 
         # Bước 3: Trộn âm thanh gốc (đã giảm âm lượng / ducking) với âm thanh lồng tiếng Việt
         dubbed_audio_aac = self.work_dir / "mixed_audio.m4a"
@@ -415,7 +416,11 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 timeline_buffer.extend(b"\x00" * (end_byte - len(timeline_buffer)))
 
             timeline_buffer[byte_offset:end_byte] = pcm_bytes
-            current_cursor_sample = placement_sample + (len(pcm_bytes) // 2)
+            end_sample = placement_sample + (len(pcm_bytes) // 2)
+            current_cursor_sample = end_sample
+            # Cập nhật lại chính xác mốc start/end theo vị trí PCM thực tế để phụ đề .ass khớp 100% với giọng nói
+            seg["start"] = round(placement_sample / float(sample_rate), 3)
+            seg["end"] = round(end_sample / float(sample_rate), 3)
 
         # Cắt đúng độ dài video gốc (hoặc dài hơn một chút nếu câu cuối vừa dứt)
         target_len_bytes = int(round(max(total_duration, 1.0) * sample_rate)) * 2
@@ -444,11 +449,11 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
           giúp át sạch tiếng thoại Trung Quốc nhưng vẫn giữ được độ sống động của âm thanh gốc.
         """
         logger.info(
-            f"Đang trộn âm thanh Audio Ducking (âm lượng gốc={self.original_volume:.2f}, giọng Việt={self.voiceover_volume:.1f})..."
+            f"Đang trộn âm thanh Audio Ducking + Lọc giọng gốc (âm lượng nền={self.original_volume:.2f}, giọng Việt={self.voiceover_volume:.2f})..."
         )
         filter_complex = (
-            f"[0:a]volume={self.original_volume:.2f}[bg];"
-            f"[1:a]volume={self.voiceover_volume:.1f}[vo];"
+            f"[0:a]equalizer=f=1200:t=o:w=2.0:g=-12,volume={self.original_volume:.2f}[bg];"
+            f"[1:a]volume={self.voiceover_volume:.2f}[vo];"
             f"[bg][vo]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[aout]"
         )
         cmd = [

@@ -71,17 +71,20 @@ class TTSEngine:
             orig_end = float(seg["end"])
             orig_duration = max(0.35, orig_end - orig_start)
 
-            # Đảm bảo câu sau không bao giờ bắt đầu đè lên câu trước đang đọc dở
-            effective_start = max(orig_start, cursor_sec + 0.05) if idx > 0 else orig_start
+            # Neo cứng mốc bắt đầu (Strict Timestamp Anchoring): đảm bảo không bị trôi dây chuyền (Domino Drift)
+            effective_start = max(orig_start, cursor_sec + 0.02) if idx > 0 else orig_start
 
-            # Khoảng thời gian tối đa cho phép trước khi câu tiếp theo bắt đầu
+            # Khoảng thời gian tối đa tuyệt đối trước khi câu tiếp theo bắt đầu (không bao giờ tràn qua next_orig_start)
             if idx + 1 < len(segments):
                 next_orig_start = float(segments[idx + 1]["start"])
-                available_window = max(
-                    orig_duration, next_orig_start - effective_start - 0.04
-                )
+                hard_max_window = max(0.35, next_orig_start - effective_start - 0.03)
+                # Chỉ cho phép ngân đuôi tối đa +0.22s vào khoảng nghỉ để giọng dứt đúng lúc nhân vật khép miệng
+                target_window = min(orig_duration + 0.22, hard_max_window)
             else:
-                available_window = orig_duration + 0.50
+                hard_max_window = orig_duration + 0.60
+                target_window = orig_duration + 0.25
+
+            target_window = max(0.35, target_window)
 
             raw_mp3 = self.tts_dir / f"seg_{idx:04d}_raw.mp3"
             trimmed_mp3 = self.tts_dir / f"seg_{idx:04d}_trimmed.mp3"
@@ -96,14 +99,25 @@ class TTSEngine:
                 base_duration = get_media_duration(raw_mp3)
                 trimmed_mp3 = raw_mp3
 
-            # Bước 2: Giữ tốc độ chuẩn tự nhiên (1.00x), giới hạn atempo tối đa 1.28x để giọng đọc không bị gấp gáp/méo tiếng
-            if base_duration > available_window and available_window > 0.25:
-                residual_factor = min(1.28, base_duration / available_window)
+            # Bước 2: Căn chỉnh tốc độ (atempo) để khớp khít với khẩu hình câu gốc và tuyệt đối không tràn sang câu sau
+            if base_duration > target_window and target_window > 0.25:
+                needed_factor = base_duration / target_window
+                # Nếu câu sau sát bên cạnh, ưu tiên đẩy tốc độ lên tới 1.60x để không làm trễ câu sau
+                max_atempo = 1.60 if base_duration > hard_max_window else 1.48
+                residual_factor = min(max_atempo, needed_factor)
+            elif base_duration < orig_duration * 0.68 and orig_duration >= 1.8:
+                # Nếu câu dịch hơi ngắn so với thời lượng nhân vật nói, đọc chậm lại nhẹ (0.90x) cho tự nhiên
+                residual_factor = max(0.90, base_duration / (orig_duration * 0.82))
             else:
                 residual_factor = 1.0
 
             rate_str = self.base_rate
-            self._finalize_segment_audio(trimmed_mp3, final_wav, residual_factor)
+            self._finalize_segment_audio(
+                trimmed_mp3,
+                final_wav,
+                residual_factor,
+                max_duration=hard_max_window if idx + 1 < len(segments) else None,
+            )
             final_duration = get_media_duration(final_wav)
 
             # Dọn file tạm
@@ -174,7 +188,7 @@ class TTSEngine:
         subprocess.run(cmd, capture_output=True, check=False)
 
     def _trim_silence(self, input_path: Path, output_path: Path) -> None:
-        """Cắt khoảng lặng thừa ở đầu và cuối file TTS do edge-tts sinh ra."""
+        """Cắt sạch khoảng lặng thừa ở đầu/cuối và rút gọn khoảng nghỉ giữa câu do edge-tts sinh ra."""
         cmd = [
             self.ffmpeg_bin,
             "-y",
@@ -182,9 +196,10 @@ class TTSEngine:
             str(input_path),
             "-af",
             (
-                "silenceremove=start_periods=1:start_duration=0.02:start_threshold=-45dB,"
+                "silenceremove=start_periods=1:start_duration=0.01:start_threshold=-38dB:"
+                "stop_periods=-1:stop_duration=0.12:stop_threshold=-42dB,"
                 "areverse,"
-                "silenceremove=start_periods=1:start_duration=0.02:start_threshold=-45dB,"
+                "silenceremove=start_periods=1:start_duration=0.01:start_threshold=-38dB,"
                 "areverse"
             ),
             str(output_path),
@@ -197,14 +212,22 @@ class TTSEngine:
             shutil.copyfile(str(input_path), str(output_path))
 
     def _finalize_segment_audio(
-        self, input_path: Path, output_wav: Path, atempo_factor: float = 1.0
+        self,
+        input_path: Path,
+        output_wav: Path,
+        atempo_factor: float = 1.0,
+        max_duration: Optional[float] = None,
     ) -> None:
-        """Chuẩn hóa định dạng WAV 44.1kHz mono và áp dụng atempo nếu cần."""
+        """Chuẩn hóa định dạng WAV 44.1kHz mono, áp dụng atempo và giới hạn biên thời lượng chống tràn câu."""
         filters = []
         if abs(atempo_factor - 1.0) > 0.02:
             # atempo của ffmpeg hỗ trợ khoảng [0.5, 2.0]
             clamped = max(0.5, min(2.0, atempo_factor))
             filters.append(f"atempo={clamped:.4f}")
+        if max_duration is not None and max_duration > 0.30:
+            fade_st = max(0.15, max_duration - 0.05)
+            filters.append(f"atrim=0:{max_duration:.3f}")
+            filters.append(f"afade=t=out:st={fade_st:.3f}:d=0.05")
         filters.append("aresample=44100")
 
         cmd = [
