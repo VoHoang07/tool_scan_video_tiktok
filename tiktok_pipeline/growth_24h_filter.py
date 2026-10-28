@@ -739,7 +739,6 @@ class TikTok24hFilterEngine:
             challenge_ids = [
                 ("1599780740982785", "tuongtaccheo"),
                 ("7205228809015164955", "moixaykenh"),
-                ("7352162388008763408", "moixaykenhtiktok"),
                 ("1679983099973633", "tuongtac_cheo"),
                 ("1611592400490497", "followcheo"),
                 ("1645709894507521", "flcheo"),
@@ -750,11 +749,15 @@ class TikTok24hFilterEngine:
             scored_items: List[Tuple[int, float, str]] = []
             seen_cand_vids: set[str] = set()
             seen_cand_creators: set[str] = set()
-            cursor_choices = [0, 20, 40]
+            cursor_choices = [0, 20, 40, 60]
             random.shuffle(cursor_choices)
 
-            for cursor_val in cursor_choices[:2]:
+            req_idx = 0
+            for cursor_val in cursor_choices[:3]:
                 for cid, label in challenge_ids:
+                    if req_idx > 0:
+                        time.sleep(1.25)
+                    req_idx += 1
                     logger.info(
                         f"[{ch_folder}] [Bộ lọc 24h] Đang quét video mới xây kênh 24h qua thẻ #{label} (cursor={cursor_val})..."
                     )
@@ -764,8 +767,22 @@ class TikTok24hFilterEngine:
                         impersonate="chrome",
                         timeout=10,
                     )
+                    js_data = {}
                     if r.status_code == 200 and r.text.strip():
-                        vids = (r.json().get("data") or {}).get("videos") or []
+                        js_data = r.json() or {}
+                        if js_data.get("code") == -1:
+                            # Chờ vượt giới hạn 1 req/s của tikwm rồi thử lại 1 lần
+                            time.sleep(1.6)
+                            r = creq.get(
+                                "https://www.tikwm.com/api/challenge/posts",
+                                params={"challenge_id": cid, "count": 20, "cursor": cursor_val},
+                                impersonate="chrome",
+                                timeout=10,
+                            )
+                            if r.status_code == 200 and r.text.strip():
+                                js_data = r.json() or {}
+                    if js_data.get("code") == 0:
+                        vids = (js_data.get("data") or {}).get("videos") or []
                         random.shuffle(vids)
                         for v in vids:
                             vid = str(v.get("video_id") or "")
@@ -793,7 +810,6 @@ class TikTok24hFilterEngine:
                             scored_items.append((bonus, jitter_score, w_url))
                     if len(scored_items) >= max(needed_count * 2, 16):
                         break
-                    time.sleep(0.25)
                 if len(scored_items) >= max(needed_count * 2, 16):
                     break
 
@@ -804,19 +820,17 @@ class TikTok24hFilterEngine:
         except Exception as exc:
             logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi quét Challenge 24h API: {exc}")
 
-        # 2. Chỉ dùng trang Search trên trình duyệt nếu API chưa đủ số lượng
-        if len(candidates) < needed_count:
-            queries = list(FILTER_24H_SEARCH_QUERIES)
-            random.shuffle(queries)
-            for query in queries[:1]:
-                encoded_q = urllib.parse.quote(query)
-                search_url = f"https://www.tiktok.com/search/video?q={encoded_q}&lang=vi-VN"
-                logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đang tìm video mới xây kênh với từ khóa: '{query}'...")
+        # 2. Chỉ dùng trang Tag trên trình duyệt nếu API chưa đủ số lượng (tránh /search/video gây HTTP 403)
+        if not candidates:
+            tag_slugs = ["tuongtaccheo", "moixaykenh", "followcheo", "xaykenhtiktok"]
+            random.shuffle(tag_slugs)
+            for tag_slug in tag_slugs[:1]:
+                tag_url = f"https://www.tiktok.com/tag/{tag_slug}?lang=vi-VN"
+                logger.info(f"[{ch_folder}] [Bộ lọc 24h] Đang tìm video mới xây kênh qua trang #{tag_slug}...")
                 try:
-                    page.goto(search_url, wait_until="domcontentloaded", timeout=45000)
-                    time.sleep(random.uniform(3.5, 5.5))
+                    page.goto(tag_url, referer="https://www.tiktok.com/", wait_until="domcontentloaded", timeout=45000)
+                    time.sleep(random.uniform(3.0, 4.5))
                     self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
-                    self._apply_24h_search_filter_on_page(page, ch_folder)
                     for _ in range(2):
                         self._human_move_mouse(page, random.uniform(420, 860), random.uniform(300, 620))
                         page.mouse.wheel(0, random.randint(450, 750))
@@ -839,7 +853,7 @@ class TikTok24hFilterEngine:
                         if clean_url not in candidates:
                             candidates.append(clean_url)
                 except Exception as exc:
-                    logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi quét trang search '{query}': {exc}")
+                    logger.debug(f"[{ch_folder}] [Bộ lọc 24h] Lỗi quét trang tag '#{tag_slug}': {exc}")
 
         return candidates[: max(needed_count, 1)]
 
@@ -1781,6 +1795,22 @@ class TikTok24hFilterEngine:
                             const d = JSON.parse(el.textContent);
                             const u = (((d.__DEFAULT_SCOPE__ || {})["webapp.app-context"] || {}).user) || {};
                             loggedInUniqueId = u.uniqueId || null;
+                        }
+                        if (!loggedInUniqueId) {
+                            const navProf = document.querySelector('[data-e2e="nav-profile"]');
+                            if (navProf && navProf.getAttribute('href')) {
+                                loggedInUniqueId = navProf.getAttribute('href').replace(/^\\/@/, '').split('?')[0];
+                            }
+                        }
+                        if (!loggedInUniqueId) {
+                            const links = Array.from(document.querySelectorAll('a[href^="/@"]'));
+                            for (const a of links) {
+                                const r = a.getBoundingClientRect();
+                                if (r.left >= 0 && r.left < 240 && r.width > 20) {
+                                    loggedInUniqueId = a.getAttribute('href').replace(/^\\/@/, '').split('?')[0];
+                                    break;
+                                }
+                            }
                         }
                     } catch (e) {}
                     return {

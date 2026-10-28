@@ -74,10 +74,10 @@
     "channel": "audio_dem_khuyen"
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "intel_filter24h_profile_verify_20261028_1112",
+    "trigger_id": "intel_filter24h_run_20261028_1145",
     "target_arch": "x86_64",
     "channel": "baby_AI",
-    "video_count": 3
+    "video_count": 5
   },
   "headless": false,
   "random_jitter_minutes": 9,
