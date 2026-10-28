@@ -1,92 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-28 11:15:01",
+    "timestamp": "2026-10-28 11:16:19",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
     "channel": "baby_AI",
     "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
     "details": {
-      "interacted_count": 1,
+      "interacted_count": 0,
       "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "baby_AI",
-          "video_id": "7699711445050723604",
-          "video_url": "https://www.tiktok.com/@hongnguyn7521/video/7699711445050723604",
-          "creator_handle": "@hongnguyn7521",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🌷",
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610281214276143CA70E63B304500D3\",\"now\":1793160867000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202610281214276143CA70E63B304500D3\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028121440453E6569D15097480055\",\"now\":1793160880000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028121440453E6569D15097480055\"},\"status_code\":0,\"status_msg\":\"\"}"
-              },
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028121454DBE698C2A3DB8C40C269\",\"now\":1793160894000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261028121454DBE698C2A3DB8C40C269\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 795.15625,
-              "y": 421,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "46"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 421,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "47"
-              },
-              "red": true,
-              "server_digg_ok": true
-            },
-            "profile_follow_verify": {
-              "creator": "@hongnguyn7521",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": 0,
-              "persisted": true
-            }
-          },
-          "interacted_at": "2026-10-28 11:14:57",
-          "follow_back_window_until": "2026-10-29 11:14:57"
-        }
-      ]
+      "records": []
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-28 11:16:19",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+      "details": {
+        "interacted_count": 0,
+        "own_profile_stats": {},
+        "records": []
+      }
+    },
     {
       "timestamp": "2026-10-28 11:15:01",
       "machine_arch": "x86_64",
@@ -6377,21 +6314,6 @@
         "video_file": "20261026_093256_tiktok_story_7700149454669843732.mp4",
         "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 70 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
         "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #vahmattraxanh #gocchiaSe #tamtrang #truyenaudio #viral",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-27 20:12:35",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261026_091546_tiktok_story_7697650250793651486.mp4",
-        "caption": "🤣 Did you know he's a black belt in karate? — Pha xử lý đi vào lòng đất của hai mẹ con! \"But I'd keep that dentist number for when I knock your teeth out...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-        "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #foryou",
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
