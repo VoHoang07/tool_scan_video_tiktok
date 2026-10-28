@@ -1,119 +1,107 @@
-# 🎬 TikTok & Douyin Multi-Channel Automated Pipeline
+# TikTok & Douyin Multi-Channel Video Localization Pipeline
 
-An end-to-end automated system for downloading, processing, localizing, and publishing short-form videos from TikTok and Douyin across **4 Specialized Channels**:
-
-- **Direct & Smart Extraction:** Automatically fetches all videos from your seed video list (`seed_video_urls`), full creator profiles (`seed_channels`), and related videos sharing the same niche, hashtags, or original audio.
-- **Language-Aware Processing:**
-  - **Existing Vietnamese Videos (`vi`):** Retains 100% of the original watermark-free video, original audio, and original caption/title (no script rewriting, no voiceover dubbing).
-  - **Chinese / Foreign Language Videos (`zh`, etc.):** Translates dialogue directly into Vietnamese, generates AI voiceover via `edge-tts`, ducks original audio down to **12% (`0.12`)** to preserve background music and sound effects (SFX), blurs hardcoded foreign subtitles, and burns in styled Vietnamese subtitles.
+An automated Python CLI pipeline for discovering, downloading, transcribing, translating, AI-dubbing, subtitle-rendering, and scheduling short-form videos from **Douyin** and **TikTok** into Vietnamese across **4 specialized channels**.
 
 ---
 
-## 1. Video Management Directory Structure (`Ready` vs. `Posted`)
+## Key Features
+
+- **Multi-Source Discovery & 24h Growth Filtering (`crawler.py`, `growth_24h_filter.py`, `downloader.py`)**
+  - Extracts watermark-free videos from seed URLs, full creator profiles, and niche hashtag/audio feeds using `yt-dlp` and `curl_cffi`.
+  - Tracks engagement velocity over 24-hour windows (`growth_24h_history.json`) to prioritize high-performing candidate videos.
+- **Language-Aware Localization Pipeline (`transcriber.py`, `translator.py`, `tts_engine.py`, `composer.py`)**
+  - **Speech-to-Text:** Runs local on-device transcription with timestamps using `faster-whisper`.
+  - **Context-Aware Translation:** Translates Chinese/foreign transcripts into natural Vietnamese storytelling scripts.
+  - **Neural Voiceover & Audio Ducking:** Synthesizes Vietnamese speech via `edge-tts` and mixes audio in `FFmpeg`, ducking original tracks to `12%` (`0.12`) to retain background music and sound effects.
+  - **Hardcoded Subtitle Blur & Styled Burn-in:** Blurs original foreign burned-in captions and renders styled Vietnamese subtitles (`ASS`/`SRT`).
+- **4-Channel Queue & Two-Way Inventory Sync (`main.py`, `output/danh_sach_video.csv`)**
+  - Manages `ready/` and `posted/` queues across 4 channels (`video_AI_hay`, `baby_AI`, `audio_dem_khuyen`, `tu_chan_gioi`).
+  - Two-way synchronization between `output/danh_sach_video.csv`, macOS Finder drag-and-drop, and browser file-upload dialogs.
+- **24/7 Autonomous Daemon & Browser Automation (`auto_poster.py`, `run_24_7.sh`)**
+  - Uses isolated persistent Playwright Chromium profiles (`browser_profiles/`) to publish videos on staggered daily schedules (`schedule_config.json`).
+  - Includes cross-machine synchronization (`sync_to_intel.sh`, `sync_git_push.sh`) and remote visual telemetry (`remote_telemetry/`).
+
+---
+
+## Architecture & Tech Stack
 
 ```text
-output/
-├── video_AI_hay/
-│   ├── ready/                 # READY-TO-POST videos for Channel 1 (AI Animation / Pets / AI Short Films)
-│   └── posted/                # POSTED videos for Channel 1
-├── baby_AI/
-│   ├── ready/                 # READY-TO-POST videos for Channel 2 (Lifestyle / Family Comedy)
-│   └── posted/                # POSTED videos for Channel 2
-├── audio_dem_khuyen/
-│   ├── ready/                 # READY-TO-POST videos for Channel 3 (Romance Audio Stories & Short Dramas)
-│   └── posted/                # POSTED videos for Channel 3
-├── tu_chan_gioi/
-│   ├── ready/                 # READY-TO-POST videos for Channel 4 (AI Cultivation / Xianxia / Fantasy)
-│   └── posted/                # POSTED videos for Channel 4
-└── danh_sach_video.csv        # Centralized tracking sheet (channel, filename, source_url, caption, hashtags, status, posted_at)
+tool_scan_video_tiktok/
+├── main.py                             # CLI entry point & daemon orchestrator
+├── tiktok_pipeline/
+│   ├── crawler.py                      # Seed URL, creator profile, and related video discovery
+│   ├── growth_24h_filter.py            # 24-hour engagement velocity evaluator
+│   ├── downloader.py                   # Watermark-free video & metadata extractor
+│   ├── transcriber.py                  # faster-whisper ASR speech-to-text engine
+│   ├── translator.py                   # Script translation & Vietnamese adaptation
+│   ├── tts_engine.py                   # Microsoft Edge neural TTS synthesis
+│   ├── composer.py                     # FFmpeg audio ducking, subtitle blur & burn-in
+│   ├── auto_poster.py                  # Playwright browser automation for scheduled posting
+│   └── macos_desktop_controller.py     # Native macOS UI & upload watcher integration
+├── schedule_config.json                # Multi-channel daily publishing schedule
+├── run_24_7.sh                         # Caffeinated 24/7 autonomous daemon runner
+├── setup_mac_intel.sh                  # Automated environment bootstrapper
+└── requirements.txt                    # Python dependencies
 ```
 
----
-
-## 2. Managing & Auto-Syncing `READY` and `POSTED` States
-
-The system supports **4 automated synchronization methods** across all 4 channels (`video_AI_hay`, `baby_AI`, `audio_dem_khuyen`, `tu_chan_gioi`):
-
-1. **Auto-Detection via macOS Browser File Upload Dialog:**
-   When you select a video inside `output/<channel_name>/ready/` from your browser's file upload dialog (Chrome, Safari, Brave, or Arc) to upload to TikTok, the background watcher (`--watch-sync`, `--status`, or `--continuous`) automatically detects the upload event, moves the video to `output/<channel_name>/posted/`, and updates `status=POSTED` in `output/danh_sach_video.csv`.
-
-2. **Manual Marking via File Path, Filename, or Video ID:**
-   ```bash
-   ./venv/bin/python main.py --mark-posted "/Users/vohoang/Documents/tool_scan_video_tiktok/output/audio_dem_khuyen/ready/20261022_232340_tiktok_story_7682055125342424341.mp4"
-
-   # Or simply pass the video ID:
-   ./venv/bin/python main.py --mark-posted 7682055125342424341
-   ```
-
-3. **Two-Way Sync via `output/danh_sach_video.csv` or Finder Drag-and-Drop:**
-   - **CSV to Finder:** Change the `status` column to `POSTED` (or `x`, `1`, `done`) in the CSV file $\rightarrow$ the system automatically moves the corresponding `.mp4` file from `ready/` to `posted/`.
-   - **Finder to CSV:** Drag and drop any `.mp4` file from `ready/` into `posted/` in macOS Finder $\rightarrow$ the system automatically updates its CSV status to `POSTED`.
-
-4. **Inventory Check & Background Sync Commands:**
-   ```bash
-   # Sync immediately and display the 4-channel inventory summary table
-   ./venv/bin/python main.py --status
-
-   # Run a background watcher that auto-moves videos to posted/ right after you select them for TikTok upload
-   ./venv/bin/python main.py --watch-sync
-   ```
+| Component | Technologies |
+|---|---|
+| **Core Language** | Python 3.10+, Bash |
+| **Video & Audio Processing** | FFmpeg (`static-ffmpeg`), Pillow |
+| **Speech Recognition (ASR)** | `faster-whisper` (CTranslate2) |
+| **Text-to-Speech (TTS)** | `edge-tts` |
+| **Scraping & Browser Automation** | `yt-dlp`, `playwright`, `curl_cffi`, `requests` |
 
 ---
 
-## 3. Crawling Commands by Channel or Direct URL
+## Getting Started
 
+### 1. Installation
 ```bash
-# Crawl by channel (automatically pulls from seed URLs -> full seed channels -> related videos)
+git clone https://github.com/VoHoang07/tool_scan_video_tiktok.git
+cd tool_scan_video_tiktok
+
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+playwright install chromium
+```
+*(On an Intel MacBook, run `./setup_mac_intel.sh` for one-step environment setup).*
+
+### 2. Configure Environment
+Copy `.env.example` to `.env` and configure your translation API keys and channel parameters:
+```bash
+cp .env.example .env
+```
+
+### 3. CLI Usage Examples
+
+**Crawl and localize videos by channel or direct URL:**
+```bash
+# Process up to 3 videos for Channel 1
 ./venv/bin/python main.py --channel 1 --limit 3
-./venv/bin/python main.py --channel 2 --limit 3
-./venv/bin/python main.py --channel 3 --limit 5
-./venv/bin/python main.py --channel 4 --limit 3
 
-# Feed a single TikTok/Douyin video URL or a full creator profile URL into a specific channel
-./venv/bin/python main.py --url "[https://www.tiktok.com/@tieutin2000/video/7682055125342424341](https://www.tiktok.com/@tieutin2000/video/7682055125342424341)" --channel 3
-./venv/bin/python main.py --url "[https://www.tiktok.com/@tieutin2000](https://www.tiktok.com/@tieutin2000)" --channel 3 --limit 5
+# Localize a specific TikTok/Douyin video URL into Channel 3
+./venv/bin/python main.py --url "https://www.tiktok.com/@creator/video/123456789" --channel 3
 ```
 
----
-
-## 4. 24/7 Unattended Mode on Intel / Apple Silicon MacBooks (Auto-Crawl & Scheduled Auto-Post)
-
-### Step 1: Setup on an Intel MacBook (`x86_64`)
-Copy the entire `tool_scan_video_tiktok` directory to your Intel MacBook, open Terminal in the project folder, and run:
-
+**Check inventory status & sync `ready/` vs `posted/` queues:**
 ```bash
-chmod +x setup_mac_intel.sh run_24_7.sh
-./setup_mac_intel.sh
+# Display 4-channel inventory table and reconcile CSV/Finder states
+./venv/bin/python main.py --status
+
+# Watch macOS browser upload dialogs and auto-move uploaded videos to posted/
+./venv/bin/python main.py --watch-sync
 ```
-*(This script automatically rebuilds a native Intel `x86_64` virtual environment and installs `ffmpeg`, `faster-whisper`, and `playwright`).*
 
-### Step 2: Log In to Your 4 TikTok Accounts (One-Time Setup)
-Each command below launches an isolated Chrome instance for the corresponding channel. Simply scan the QR code with your phone to log into TikTok and close the browser window (the session is saved persistently in `browser_profiles/<channel_name>/`):
-
+**Configure schedule & launch 24/7 autonomous mode:**
 ```bash
+# One-time QR login for each channel's isolated browser profile
 ./venv/bin/python main.py --login-channel video_AI_hay
-./venv/bin/python main.py --login-channel baby_AI
-./venv/bin/python main.py --login-channel audio_dem_khuyen
-./venv/bin/python main.py --login-channel tu_chan_gioi
-```
 
-### Step 3: Configure Daily Auto-Post Schedules
-Set your daily posting times using `--set-schedule` (the system automatically staggers each channel by 10 minutes so your Intel Mac never has to open 4 browser instances simultaneously), or edit `schedule_config.json` directly:
-
-```bash
-# Example: Schedule 3 posting slots per day at 08:00 AM, 12:30 PM, and 08:00 PM
+# Configure daily posting slots (staggered automatically across channels)
 ./venv/bin/python main.py --set-schedule "08:00,12:30,20:00"
 
-# Or test immediate auto-posting for 1 ready video on a specific channel:
-./venv/bin/python main.py --post-now video_AI_hay
-```
-
-### Step 4: Launch 24/7 Autonomous Mode (`./run_24_7.sh`)
-
-```bash
+# Start 24/7 continuous crawling and scheduled publishing daemon
 ./run_24_7.sh
 ```
-
-- **Anti-Sleep Protection:** Built-in `caffeinate -dimsu` integration prevents the Intel MacBook from sleeping even when the display turns off.
-- **Continuous Queue Replenishment:** Automatically rotates through all 4 channels to crawl, process, and maintain a buffer of **5 ready videos per channel** in `ready/`.
-- **Hands-Free Scheduled Publishing:** At each scheduled time in `schedule_config.json`, the system launches the channel's dedicated browser profile, grabs the next video from `ready/` along with its caption and hashtags from `output/danh_sach_video.csv`, publishes it to TikTok, and automatically moves the file to `posted/`.
