@@ -1,17 +1,223 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-28 11:16:19",
+    "timestamp": "2026-10-28 11:46:28",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
     "channel": "baby_AI",
     "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
     "details": {
-      "interacted_count": 0,
+      "interacted_count": 1,
       "own_profile_stats": {},
-      "records": []
+      "records": [
+        {
+          "channel": "baby_AI",
+          "video_id": "7701212095412456725",
+          "video_url": "https://www.tiktok.com/@heopeppa366/video/7701212095412456725",
+          "creator_handle": "@heopeppa366",
+          "watched_seconds": 15.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🌟",
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102812454222279E1B34089E164A59\",\"now\":1793162742000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102812454222279E1B34089E164A59\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028124546C1B903F0C722912BC6A3\",\"now\":1793162746000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028124546C1B903F0C722912BC6A3\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028124608537BE5F3AE692E2CFCFA\",\"now\":1793162768000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028124608537BE5F3AE692E2CFCFA\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028124611335FC373761682328D10\",\"now\":1793162772000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028124611335FC373761682328D10\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610281245585946EF05D93C9F2AB937\",\"now\":1793162758000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610281245585946EF05D93C9F2AB937\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610281246209CCE9ED83F2CE435B41F\",\"now\":1793162781000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610281246209CCE9ED83F2CE435B41F\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 421,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "72"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "73"
+              },
+              "red": true,
+              "server_digg_ok": false
+            },
+            "after_dblclick_33s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "72"
+              },
+              "red": false
+            },
+            "profile_follow_verify": {
+              "creator": "@heopeppa366",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "persisted": true
+            }
+          },
+          "interacted_at": "2026-10-28 11:46:23",
+          "follow_back_window_until": "2026-10-29 11:46:23"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-28 11:46:28",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "baby_AI",
+            "video_id": "7701212095412456725",
+            "video_url": "https://www.tiktok.com/@heopeppa366/video/7701212095412456725",
+            "creator_handle": "@heopeppa366",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🌟",
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102812454222279E1B34089E164A59\",\"now\":1793162742000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102812454222279E1B34089E164A59\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028124546C1B903F0C722912BC6A3\",\"now\":1793162746000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028124546C1B903F0C722912BC6A3\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028124608537BE5F3AE692E2CFCFA\",\"now\":1793162768000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028124608537BE5F3AE692E2CFCFA\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028124611335FC373761682328D10\",\"now\":1793162772000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028124611335FC373761682328D10\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610281245585946EF05D93C9F2AB937\",\"now\":1793162758000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610281245585946EF05D93C9F2AB937\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610281246209CCE9ED83F2CE435B41F\",\"now\":1793162781000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610281246209CCE9ED83F2CE435B41F\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "72"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "73"
+                },
+                "red": true,
+                "server_digg_ok": false
+              },
+              "after_dblclick_33s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "72"
+                },
+                "red": false
+              },
+              "profile_follow_verify": {
+                "creator": "@heopeppa366",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "persisted": true
+              }
+            },
+            "interacted_at": "2026-10-28 11:46:23",
+            "follow_back_window_until": "2026-10-29 11:46:23"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-10-28 11:16:19",
       "machine_arch": "x86_64",
@@ -6299,21 +6505,6 @@
         "video_file": "20261025_184357_tiktok_story_7682408323186150677.mp4",
         "caption": "⚔️ [Tu Chân Giới] [Đam Mỹ Audio] TÔI LÀ CẬU THIẾU GIA GIẢ ĐƯỢC NUÔNG CHIỀU TỪ BÉ. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
         "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #xuhuong #viral",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-27 20:20:13",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261026_093256_tiktok_story_7700149454669843732.mp4",
-        "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 70 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
-        "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #vahmattraxanh #gocchiaSe #tamtrang #truyenaudio #viral",
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
