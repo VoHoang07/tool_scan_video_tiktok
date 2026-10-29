@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-29 20:31:10",
+    "timestamp": "2026-10-29 20:38:11",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261027_202119_tiktok_story_7698906930793680148.mp4",
-      "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 142 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
-      "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #tiktokvn",
+      "video_file": "20261027_203809_tiktok_story_7689800524379458817.mp4",
+      "caption": "⚔️ [Tu Chân Giới] Tiểu sư muội 4 tuổi lại có song linh căn cực phẩm. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+      "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xuhuong #viral",
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-29 20:38:11",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261027_203809_tiktok_story_7689800524379458817.mp4",
+        "caption": "⚔️ [Tu Chân Giới] Tiểu sư muội 4 tuổi lại có song linh căn cực phẩm. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xuhuong #viral",
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-29 20:31:10",
       "machine_arch": "x86_64",
@@ -220,21 +235,6 @@
         "video_file": "20261028_022001_tiktok_story_7668708297821670663.mp4",
         "caption": "🥰 Nhật ký gia đình siêu lầy: Chỉ khi đó bạn mới có thể làm ông chủ và đàn ông mới có thể làm việc nhà.. Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
         "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #fyp",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-28 12:35:09",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261028_021030_douyin_story_7629803455813243043.mp4",
-        "caption": "🔥 Đừng rời mắt khỏi màn hình: (Thời gian của tôi dường như đã dừng lại vào năm 2001) Máy ảnh của Wen Jianzhao, thời gian của tôi dường như đ. \"Cô bé Mao: (Ôn không phải lần đầu tiên tôi bị lừa): Em là bạn của gia đình, em là người bạn đầu...\" Chi tiết cuối video thực sự quá đỉnh, mọi người nghĩ sao về cái kết này?",
-        "hashtags": "#aianimation #videoaihay #hoathinhai #meocute #chualanh #phimhoathinh #hoathinhhai #fyp",
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
