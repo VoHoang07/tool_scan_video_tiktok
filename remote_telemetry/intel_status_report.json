@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-29 23:13:34",
+    "timestamp": "2026-10-29 23:13:54",
     "machine_arch": "x86_64",
     "event_type": "upload",
     "channel": "baby_AI",
@@ -17,6 +17,23 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-29 23:13:54",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "action": "delete_bad_posts",
+        "match_keywords": [
+          "qqqqq",
+          "kẹo mút",
+          "kẹo cao su"
+        ],
+        "deleted_posts": [],
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-29 23:13:34",
       "machine_arch": "x86_64",
@@ -227,21 +244,6 @@
         "video_file": "20261028_164849_tiktok_story_7664467357850488071.mp4",
         "caption": "🥰 Nhật ký gia đình siêu lầy: Tôi đang ở nhà, bạn đang làm gì vậy?. \"Đó là ai, tôi không biết...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
         "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #xuhuongtiktok #tiktokvn",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-28 20:04:25",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261028_164237_tiktok_story_7698371375077018888.mp4",
-        "caption": "🐾 NGƯỜI HÀNG XÓM (P13) : Mỗi người cha đều có cách yêu thương con mình khác nhau 🥺 — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #xuhuongtiktok",
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
