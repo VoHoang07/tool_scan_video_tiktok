@@ -588,6 +588,17 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
         import subprocess
         import tempfile
 
+        for lf_name in ("index.lock", "HEAD.lock", "refs/heads/main.lock"):
+            lf_path = git_dir / lf_name
+            if lf_path.exists():
+                try:
+                    lf_path.unlink()
+                except Exception:
+                    pass
+        if (git_dir / "rebase-merge").exists() or (git_dir / "rebase-apply").exists():
+            shutil.rmtree(git_dir / "rebase-merge", ignore_errors=True)
+            shutil.rmtree(git_dir / "rebase-apply", ignore_errors=True)
+
         subprocess.run(
             ["git", "fetch", "origin", "main"],
             cwd=str(project_root),
@@ -635,7 +646,7 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
                 shutil.copy2(post_log_path, post_log_bak)
 
             subprocess.run(
-                ["git", "reset", "--hard", "origin/main"],
+                ["git", "checkout", "-f", "-B", "main", "origin/main"],
                 cwd=str(project_root),
                 capture_output=True,
                 text=True,
