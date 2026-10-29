@@ -153,6 +153,7 @@ class TikTokAutoPoster:
             os_click_fn=self._os_click_viewport,
         )
         self.ensure_schedule_config()
+        self._heal_git_repo_state()
         try:
             import os as _os
             import subprocess as _sp
@@ -2363,6 +2364,36 @@ class TikTokAutoPoster:
         logger.info(f"[{ch_folder}] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: {marked['filename']}")
         return marked
 
+    def _heal_git_repo_state(self) -> None:
+        """Dọn dẹp trạng thái kẹt rebase/index.lock nếu có xung đột đẩy telemetry đồng thời."""
+        import shutil as _shutil
+        import subprocess as _sp
+
+        try:
+            git_dir = self.project_root / ".git"
+            if not git_dir.exists():
+                return
+            has_stuck_rebase = (git_dir / "rebase-merge").exists() or (git_dir / "rebase-apply").exists()
+            for lock_f in ("index.lock", "HEAD.lock", "refs/heads/main.lock"):
+                lf = git_dir / lock_f
+                if lf.exists():
+                    try:
+                        lf.unlink(missing_ok=True)
+                    except Exception:
+                        pass
+            if has_stuck_rebase:
+                _shutil.rmtree(git_dir / "rebase-merge", ignore_errors=True)
+                _shutil.rmtree(git_dir / "rebase-apply", ignore_errors=True)
+                _sp.run(
+                    ["git", "checkout", "-f", "-B", "main", "origin/main"],
+                    cwd=str(self.project_root),
+                    capture_output=True,
+                    timeout=10,
+                    check=False,
+                )
+        except Exception:
+            pass
+
     def _save_and_push_telemetry(
         self,
         page: Any,
@@ -2375,7 +2406,9 @@ class TikTokAutoPoster:
         sau đó đẩy `git commit` & `git push` chạy ngầm (Async Background Thread) để đóng trình duyệt
         ngay tức khắc mà không bị treo chờ mạng GitHub.
         """
+        import fcntl as _fcntl
         import platform as _plat
+        import shutil as _shutil
         import subprocess
         import threading
 
@@ -2384,9 +2417,10 @@ class TikTokAutoPoster:
             telem_dir.mkdir(parents=True, exist_ok=True)
             img_name = f"latest_{event_type}_{ch_folder}.jpg"
             img_path = telem_dir / img_name
+            img_bytes: Optional[bytes] = None
             if page:
                 try:
-                    page.screenshot(path=str(img_path), type="jpeg", quality=60)
+                    img_bytes = page.screenshot(path=str(img_path), type="jpeg", quality=60)
                 except Exception:
                     pass
 
@@ -2417,16 +2451,55 @@ class TikTokAutoPoster:
             )
 
             proj_str = str(self.project_root)
+            git_lock_path = self.project_root / "workspace_temp" / ".tiktok_git_sync.lock"
+            git_lock_path.parent.mkdir(parents=True, exist_ok=True)
 
             def _async_git_push() -> None:
+                lock_f = None
                 try:
+                    lock_f = open(git_lock_path, "w", encoding="utf-8")
+                    _fcntl.flock(lock_f.fileno(), _fcntl.LOCK_EX)
+
+                    git_dir = self.project_root / ".git"
+                    for lf_name in ("index.lock", "HEAD.lock", "refs/heads/main.lock"):
+                        (git_dir / lf_name).unlink(missing_ok=True)
+                    if (git_dir / "rebase-merge").exists() or (git_dir / "rebase-apply").exists():
+                        _shutil.rmtree(git_dir / "rebase-merge", ignore_errors=True)
+                        _shutil.rmtree(git_dir / "rebase-apply", ignore_errors=True)
+
                     subprocess.run(
-                        ["git", "config", "pull.rebase", "true"],
+                        ["git", "fetch", "origin", "main"],
                         cwd=proj_str,
                         capture_output=True,
-                        timeout=5,
+                        timeout=20,
                         check=False,
                     )
+                    subprocess.run(
+                        ["git", "checkout", "-f", "-B", "main", "origin/main"],
+                        cwd=proj_str,
+                        capture_output=True,
+                        timeout=10,
+                        check=False,
+                    )
+
+                    # Ghi lại ảnh & report mới nhất sau khi đã đồng bộ HEAD với origin/main (không bao giờ xung đột rebase!)
+                    if img_bytes:
+                        img_path.write_bytes(img_bytes)
+                    cur_rep: Dict[str, Any] = {}
+                    if report_path.exists():
+                        try:
+                            cur_rep = json.loads(report_path.read_text(encoding="utf-8"))
+                        except Exception:
+                            cur_rep = {}
+                    cur_rep["latest_event"] = entry
+                    cur_hist = cur_rep.get("recent_events") or []
+                    cur_hist.insert(0, entry)
+                    cur_rep["recent_events"] = cur_hist[:15]
+                    report_path.write_text(
+                        json.dumps(cur_rep, ensure_ascii=False, indent=2),
+                        encoding="utf-8",
+                    )
+
                     subprocess.run(
                         ["git", "add", "remote_telemetry"],
                         cwd=proj_str,
@@ -2451,14 +2524,7 @@ class TikTokAutoPoster:
                         check=False,
                     )
                     subprocess.run(
-                        ["git", "pull", "--rebase", "--autostash", "origin", "main"],
-                        cwd=proj_str,
-                        capture_output=True,
-                        timeout=20,
-                        check=False,
-                    )
-                    subprocess.run(
-                        ["git", "push", "origin", "main"],
+                        ["git", "push", "origin", "HEAD:main"],
                         cwd=proj_str,
                         capture_output=True,
                         timeout=25,
@@ -2466,6 +2532,13 @@ class TikTokAutoPoster:
                     )
                 except Exception:
                     pass
+                finally:
+                    if lock_f is not None:
+                        try:
+                            _fcntl.flock(lock_f.fileno(), _fcntl.LOCK_UN)
+                            lock_f.close()
+                        except Exception:
+                            pass
 
             threading.Thread(target=_async_git_push, daemon=False).start()
             logger.info(
