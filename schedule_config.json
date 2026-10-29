@@ -54,18 +54,15 @@
     ]
   },
   "remote_trigger_post_now": {
-    "trigger_id": "replace_bad_baby_ai_20261029_2304",
+    "trigger_id": "delete_bad_baby_ai_posts_20261029_2312",
     "target_arch": "x86_64",
     "channel": "baby_AI",
-    "force": true,
+    "action": "delete_only",
     "delete_match_keywords": [
+      "qqqqq",
       "kẹo mút",
-      "kẹo cao su",
-      "7517545005440060728",
-      "ăn một mẹ",
-      "tưởng gì to tát"
-    ],
-    "delete_top_before_upload": true
+      "kẹo cao su"
+    ]
   },
   "remote_trigger_filter_24h": {
     "trigger_id": "activate_72h_cooldown_20261028_1348",

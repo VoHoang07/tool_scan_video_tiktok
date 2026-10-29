@@ -1442,9 +1442,9 @@ class TikTokAutoPoster:
         delete_top_if_no_match: bool = False,
     ) -> List[str]:
         """
-        Tại trang `https://www.tiktok.com/tiktokstudio/content`, tìm bài đăng khớp `match_keywords`
+        Tại trang `https://www.tiktok.com/tiktokstudio/content`, tìm tất cả bài đăng khớp `match_keywords`
         (hoặc bài mới nhất trên cùng nếu `delete_top_if_no_match=True`), bấm nút `...` ở cột `Hành động`
-        -> chọn `Xóa` (`Delete`) -> xác nhận `Xóa` trong hộp thoại modal.
+        -> chọn `Xóa` / `Xoá video` (`Delete`) -> xác nhận `Xóa` trong hộp thoại modal.
         """
         deleted_captions: List[str] = []
         try:
@@ -1457,169 +1457,194 @@ class TikTokAutoPoster:
                     wait_until="domcontentloaded",
                     timeout=45000,
                 )
-            time.sleep(random.uniform(5.0, 6.8))
+            time.sleep(random.uniform(5.2, 6.8))
             self._dismiss_all_studio_popovers(page, ch_folder)
 
-            rows_info = page.evaluate(
-                """() => {
-                    const privacyPrefixes = ['Mọi người', 'Chỉ mình', 'Bạn bè', 'Everyone', 'Only me', 'Private', 'Friends'];
-                    const allEls = Array.from(document.querySelectorAll('button, [role="button"], [role="combobox"], div, span, a'));
-                    const privacyBtns = [];
-                    for (const el of allEls) {
-                        if (el.children.length > 4) continue;
-                        const txt = (el.innerText || el.textContent || '').trim();
-                        if (!txt || txt.length > 26) continue;
-                        if (!privacyPrefixes.some(p => txt.startsWith(p) || txt === p)) continue;
-                        const r = el.getBoundingClientRect();
-                        if (r.width < 45 || r.width > 210 || r.height < 18 || r.height > 60 || r.top < 205) continue;
-                        const cy = r.top + r.height / 2;
-                        if (!privacyBtns.some(b => Math.abs(b.y - cy) < 28)) {
-                            privacyBtns.push({ y: cy, top: r.top });
-                        }
-                    }
-                    privacyBtns.sort((a, b) => a.top - b.top);
+            kw_lower = [k.strip().lower() for k in (match_keywords or []) if k.strip()]
 
-                    const rows = [];
-                    for (const pb of privacyBtns) {
-                        const rowY = pb.y;
-                        // Tìm caption ở nửa bên trái cùng hàng
-                        let bestCaption = '';
+            for pass_idx in range(3):
+                rows_info = page.evaluate(
+                    """() => {
+                        const norm = (s) => (s || '').normalize('NFC').trim();
+                        const privacyPrefixes = ['Mọi người', 'Chỉ mình', 'Bạn bè', 'Everyone', 'Only me', 'Private', 'Friends'];
+                        const allEls = Array.from(document.querySelectorAll('button, [role="button"], [role="combobox"], div, span, a, p'));
+                        const privacyBtns = [];
                         for (const el of allEls) {
+                            if (el.children.length > 4) continue;
+                            const txt = norm(el.innerText || el.textContent || '');
+                            if (!txt || txt.length > 26) continue;
+                            if (!privacyPrefixes.some(p => txt.startsWith(p) || txt === p)) continue;
                             const r = el.getBoundingClientRect();
-                            if (r.left < 110 || r.left > 480 || r.width < 60 || r.height < 14 || r.height > 90) continue;
+                            if (r.width < 45 || r.width > 210 || r.height < 18 || r.height > 60 || r.top < 205) continue;
                             const cy = r.top + r.height / 2;
-                            if (Math.abs(cy - rowY) > 45) continue;
-                            const t = (el.innerText || el.textContent || '').trim().replace(/\\s+/g, ' ');
-                            if (t.length > bestCaption.length && t.length <= 260) {
-                                bestCaption = t;
+                            if (!privacyBtns.some(b => Math.abs(b.y - cy) < 28)) {
+                                privacyBtns.push({ y: cy, top: r.top });
                             }
                         }
+                        privacyBtns.sort((a, b) => a.top - b.top);
 
-                        // Tìm nút '...' (nút hành động nằm ngoài cùng bên phải trên cùng hàng)
-                        const actionCandidates = [];
-                        const clickables = Array.from(document.querySelectorAll('button, [role="button"], svg, div[tabindex], span[ role="button"]'));
-                        for (const el of clickables) {
-                            const target = el.closest('button, [role="button"]') || el;
-                            const r = target.getBoundingClientRect();
-                            if (r.left < 950 || r.width < 16 || r.width > 64 || r.height < 16 || r.height > 64) continue;
-                            const cy = r.top + r.height / 2;
-                            if (Math.abs(cy - rowY) > 38) continue;
-                            actionCandidates.push({
-                                x: r.left + r.width / 2,
-                                y: cy,
-                                left: r.left,
-                                aria: target.getAttribute('aria-label') || target.getAttribute('data-e2e') || ''
-                            });
+                        const rows = [];
+                        for (const pb of privacyBtns) {
+                            const rowY = pb.y;
+                            // Gom toàn bộ text mô tả bài đăng ở nửa bên trái cùng hàng (r.left từ 110..680)
+                            const capParts = [];
+                            for (const el of allEls) {
+                                if (el.children.length > 3) continue;
+                                const r = el.getBoundingClientRect();
+                                if (r.left < 110 || r.left > 680 || r.width < 20 || r.height < 10 || r.height > 110) continue;
+                                const cy = r.top + r.height / 2;
+                                if (Math.abs(cy - rowY) > 48) continue;
+                                const t = norm(el.innerText || el.textContent || '').replace(/\\s+/g, ' ');
+                                if (t && !capParts.includes(t)) {
+                                    capParts.push(t);
+                                }
+                            }
+                            const bestCaption = capParts.join(' | ').slice(0, 300);
+
+                            // Tìm nút '...' (nút hành động nằm ngoài cùng bên phải trên cùng hàng, r.left > 1050)
+                            const actionCandidates = [];
+                            const clickables = Array.from(document.querySelectorAll('button, [role="button"], svg, div, span, a'));
+                            for (const el of clickables) {
+                                const r = el.getBoundingClientRect();
+                                if (r.left < 1050 || r.left > 1430 || r.width < 10 || r.width > 58 || r.height < 10 || r.height > 58) continue;
+                                const cy = r.top + r.height / 2;
+                                if (Math.abs(cy - rowY) > 36) continue;
+                                actionCandidates.push({
+                                    x: r.left + r.width / 2,
+                                    y: cy,
+                                    left: r.left
+                                });
+                            }
+                            actionCandidates.sort((a, b) => b.x - a.x);
+                            if (actionCandidates.length > 0) {
+                                rows.push({
+                                    rowY: rowY,
+                                    caption: bestCaption,
+                                    moreX: actionCandidates[0].x,
+                                    moreY: actionCandidates[0].y
+                                });
+                            }
                         }
-                        actionCandidates.sort((a, b) => b.left - a.left);
-                        if (actionCandidates.length > 0) {
-                            rows.push({
-                                rowY: rowY,
-                                caption: bestCaption,
-                                moreX: actionCandidates[0].x,
-                                moreY: actionCandidates[0].y,
-                                moreAria: actionCandidates[0].aria
-                            });
-                        }
-                    }
-                    return rows;
-                }"""
-            )
+                        return rows;
+                    }"""
+                )
 
-            logger.info(f"[{ch_folder}] Tìm thấy {len(rows_info or [])} hàng bài đăng trên tiktokstudio/content: {rows_info}")
-            if not rows_info:
-                return deleted_captions
-
-            kw_lower = [k.lower() for k in (match_keywords or []) if k.strip()]
-            target_row = None
-            for r in rows_info:
-                cap_low = (r.get("caption") or "").lower()
-                if kw_lower and any(k in cap_low for k in kw_lower):
-                    target_row = r
+                logger.info(
+                    f"[{ch_folder}] [Pass {pass_idx + 1}] Tìm thấy {len(rows_info or [])} hàng bài đăng trên tiktokstudio/content: {rows_info}"
+                )
+                if not rows_info:
                     break
-            if target_row is None and delete_top_if_no_match:
-                target_row = rows_info[0]
 
-            if not target_row:
-                logger.info(f"[{ch_folder}] Không có bài đăng nào khớp từ khóa cần xóa ({match_keywords}).")
-                return deleted_captions
+                target_row = None
+                for r in rows_info:
+                    cap_low = (r.get("caption") or "").lower()
+                    if kw_lower and any(k in cap_low for k in kw_lower):
+                        target_row = r
+                        break
+                if target_row is None and delete_top_if_no_match and pass_idx == 0:
+                    target_row = rows_info[0]
 
-            logger.info(
-                f"[{ch_folder}] Đang bấm nút '...' tại ({target_row['moreX']:.1f}, {target_row['moreY']:.1f}) "
-                f"để xóa bài đăng: '{target_row.get('caption')}'"
-            )
-            self._os_click_viewport(page, float(target_row["moreX"]), float(target_row["moreY"]))
-            time.sleep(1.3)
+                if not target_row:
+                    logger.info(f"[{ch_folder}] Không còn bài đăng nào khớp từ khóa cần xóa ({match_keywords}).")
+                    break
 
-            # Tìm nút 'Xóa' / 'Delete' trong menu vừa mở
-            del_option = page.evaluate(
-                """() => {
-                    const labels = ['xóa', 'xóa video', 'delete', 'delete video'];
-                    const els = Array.from(document.querySelectorAll('div, span, li, button, a, p'));
+                mx, my = float(target_row["moreX"]), float(target_row["moreY"])
+                logger.info(
+                    f"[{ch_folder}] Đang mở menu '...' tại ({mx:.1f}, {my:.1f}) để xóa bài: '{target_row.get('caption')}'"
+                )
+
+                find_del_js = """() => {
+                    const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
+                    const els = Array.from(document.querySelectorAll('div, span, li, button, a, p, [role="menuitem"]'));
                     const matches = [];
                     for (const el of els) {
-                        if (el.children.length > 3) continue;
-                        const txt = (el.innerText || el.textContent || '').trim().toLowerCase();
-                        if (!labels.includes(txt)) continue;
-                        const r = el.getBoundingClientRect();
-                        if (r.width < 20 || r.width > 260 || r.height < 14 || r.height > 70 || r.top < 100) continue;
-                        matches.push({
-                            text: txt,
-                            x: r.left + r.width / 2,
-                            y: r.top + r.height / 2,
-                            left: r.left
-                        });
-                    }
-                    matches.sort((a, b) => b.left - a.left);
-                    return matches[0] || null;
-                }"""
-            )
-
-            if not del_option:
-                # Thử click bằng DOM trực tiếp vào nút '...' rồi tìm lại
-                page.mouse.click(float(target_row["moreX"]), float(target_row["moreY"]))
-                time.sleep(1.2)
-                del_option = page.evaluate(
-                    """() => {
-                        const labels = ['xóa', 'xóa video', 'delete', 'delete video'];
-                        const els = Array.from(document.querySelectorAll('div, span, li, button, a, p'));
-                        const matches = [];
-                        for (const el of els) {
-                            if (el.children.length > 3) continue;
-                            const txt = (el.innerText || el.textContent || '').trim().toLowerCase();
-                            if (!labels.includes(txt)) continue;
+                        if (el.children.length > 4) continue;
+                        const txt = norm(el.innerText || el.textContent || '');
+                        if (!txt || txt.length > 28) continue;
+                        if (
+                            txt === 'xóa' || txt === 'xoá' ||
+                            txt === 'xóa video' || txt === 'xoá video' ||
+                            txt === 'xóa bài đăng' || txt === 'xoá bài đăng' ||
+                            txt === 'delete' || txt === 'delete video' || txt === 'delete post' ||
+                            ((txt.includes('xóa') || txt.includes('xoá') || txt.includes('delete')) && !txt.includes('tìm kiếm'))
+                        ) {
                             const r = el.getBoundingClientRect();
-                            if (r.width < 20 || r.width > 260 || r.height < 14 || r.height > 70 || r.top < 100) continue;
+                            if (r.width < 16 || r.width > 300 || r.height < 12 || r.height > 75 || r.top < 80) continue;
                             matches.push({
                                 text: txt,
                                 x: r.left + r.width / 2,
                                 y: r.top + r.height / 2,
-                                left: r.left
+                                left: r.left,
+                                childrenCount: el.children.length
                             });
                         }
-                        matches.sort((a, b) => b.left - a.left);
-                        return matches[0] || null;
-                    }"""
-                )
+                    }
+                    matches.sort((a, b) => (a.childrenCount - b.childrenCount) || (b.left - a.left));
+                    return matches[0] || null;
+                }"""
 
-            if del_option:
+                # Bước A: Di chuột hover vào nút '...' trước
+                self._human_move_mouse(page, mx, my)
+                page.mouse.move(mx, my)
+                time.sleep(1.1)
+                del_option = page.evaluate(find_del_js)
+
+                # Bước B: Nếu hover chưa mở menu, click vào nút '...'
+                if not del_option:
+                    self._os_click_viewport(page, mx, my)
+                    time.sleep(1.2)
+                    del_option = page.evaluate(find_del_js)
+
+                # Bước C: Nếu vẫn chưa mở, click bằng Playwright mouse & DOM dispatchEvent
+                if not del_option:
+                    page.mouse.click(mx, my)
+                    page.evaluate(
+                        """({x, y}) => {
+                            const el = document.elementFromPoint(x, y);
+                            if (el) {
+                                const btn = el.closest('button, [role="button"], div, span') || el;
+                                ['mouseover', 'mouseenter', 'pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click'].forEach(t => {
+                                    btn.dispatchEvent(new MouseEvent(t, { bubbles: true, cancelable: true, clientX: x, clientY: y }));
+                                });
+                            }
+                        }""",
+                        {"x": mx, "y": my},
+                    )
+                    time.sleep(1.3)
+                    del_option = page.evaluate(find_del_js)
+
+                if not del_option:
+                    logger.warning(f"[{ch_folder}] Không tìm thấy nút 'Xóa' trong menu tại ({mx:.1f}, {my:.1f}).")
+                    break
+
+                dx, dy = float(del_option["x"]), float(del_option["y"])
                 logger.info(
-                    f"[{ch_folder}] Đã thấy tùy chọn '{del_option['text']}' tại ({del_option['x']:.1f}, {del_option['y']:.1f}), đang bấm..."
+                    f"[{ch_folder}] Đã thấy tùy chọn '{del_option['text']}' tại ({dx:.1f}, {dy:.1f}), đang bấm..."
                 )
-                self._os_click_viewport(page, float(del_option["x"]), float(del_option["y"]))
-                time.sleep(1.6)
+                self._os_click_viewport(page, dx, dy)
+                page.mouse.click(dx, dy)
+                page.evaluate(
+                    """({x, y}) => {
+                        const el = document.elementFromPoint(x, y);
+                        if (el) el.click();
+                    }""",
+                    {"x": dx, "y": dy},
+                )
+                time.sleep(1.8)
 
                 # Xác nhận nút 'Xóa' / 'Delete' trong hộp thoại Modal
                 confirm_btn = page.evaluate(
                     """() => {
-                        const labels = ['xóa', 'delete', 'xác nhận', 'confirm'];
-                        const btns = Array.from(document.querySelectorAll('button, [role="button"]'));
+                        const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
+                        const labels = ['xóa', 'xoá', 'xóa video', 'xoá video', 'delete', 'xác nhận', 'confirm'];
+                        const btns = Array.from(document.querySelectorAll('button, [role="button"], div, span'));
                         const candidates = [];
                         for (const b of btns) {
-                            const txt = (b.innerText || b.textContent || '').trim().toLowerCase();
+                            if (b.children.length > 3) continue;
+                            const txt = norm(b.innerText || b.textContent || '');
                             if (!labels.includes(txt)) continue;
                             const r = b.getBoundingClientRect();
-                            if (r.width < 40 || r.width > 260 || r.height < 24 || r.height > 70 || r.top < 180) continue;
+                            if (r.width < 36 || r.width > 280 || r.height < 22 || r.height > 75 || r.top < 160) continue;
                             candidates.push({
                                 text: txt,
                                 x: r.left + r.width / 2,
@@ -1628,37 +1653,94 @@ class TikTokAutoPoster:
                             });
                         }
                         if (candidates.length > 0) {
-                            const clicked = candidates[candidates.length - 1];
-                            return clicked;
+                            return candidates[candidates.length - 1];
                         }
                         return null;
                     }"""
                 )
                 if confirm_btn:
+                    cx, cy = float(confirm_btn["x"]), float(confirm_btn["y"])
                     logger.info(
-                        f"[{ch_folder}] Đang bấm xác nhận XÓA ('{confirm_btn['text']}') trong modal tại ({confirm_btn['x']:.1f}, {confirm_btn['y']:.1f})..."
+                        f"[{ch_folder}] Đang bấm xác nhận XÓA ('{confirm_btn['text']}') trong modal tại ({cx:.1f}, {cy:.1f})..."
                     )
-                    self._os_click_viewport(page, float(confirm_btn["x"]), float(confirm_btn["y"]))
+                    self._os_click_viewport(page, cx, cy)
+                    page.mouse.click(cx, cy)
                     try:
                         page.evaluate(
-                            """() => {
-                                const labels = ['xóa', 'delete', 'xác nhận', 'confirm'];
-                                const btns = Array.from(document.querySelectorAll('button, [role="button"]'));
-                                for (const b of btns) {
-                                    const txt = (b.innerText || b.textContent || '').trim().toLowerCase();
-                                    if (labels.includes(txt)) b.click();
+                            """({x, y}) => {
+                                const el = document.elementFromPoint(x, y);
+                                if (el) {
+                                    const btn = el.closest('button, [role="button"]') || el;
+                                    btn.click();
                                 }
-                            }"""
+                            }""",
+                            {"x": cx, "y": cy},
                         )
                     except Exception:
                         pass
-                    time.sleep(3.8)
-                    deleted_captions.append(target_row.get("caption") or "top_post")
+                    time.sleep(4.2)
+                    deleted_captions.append(target_row.get("caption") or "deleted_post")
                     logger.info(f"[{ch_folder}] ĐÃ XÓA THÀNH CÔNG bài đăng lỗi: '{target_row.get('caption')}'!")
+                else:
+                    logger.warning(f"[{ch_folder}] Không thấy nút xác nhận Xóa trong modal.")
+                    page.keyboard.press("Escape")
+                    time.sleep(1.0)
+                    break
         except Exception as exc:
             logger.warning(f"[{ch_folder}] Lỗi khi xóa bài đăng tại tiktokstudio/content: {exc}")
 
         return deleted_captions
+
+    def delete_channel_posts_by_keywords(
+        self,
+        channel_arg: str,
+        match_keywords: List[str],
+        headless: bool = False,
+    ) -> List[str]:
+        """
+        Mở trực tiếp trang `https://www.tiktok.com/tiktokstudio/content` của kênh `channel_arg`,
+        xóa toàn bộ các bài đăng lỗi khớp `match_keywords` và đồng bộ ảnh chụp màn hình về `remote_telemetry/`.
+        """
+        from playwright.sync_api import sync_playwright
+
+        profile = resolve_channel_profile(channel_arg)
+        ch_folder = profile["folder_name"]
+        user_data_dir = self.profiles_root / ch_folder
+        if not user_data_dir.exists():
+            logger.warning(f"Kênh [{ch_folder}] chưa có profile đăng nhập tại {user_data_dir}.")
+            return []
+
+        deleted: List[str] = []
+        with sync_playwright() as p:
+            context = self._launch_stealth_chrome_context(
+                playwright_obj=p, user_data_dir=user_data_dir, headless=headless
+            )
+            try:
+                page = context.pages[0] if context.pages else context.new_page()
+                deleted = self._delete_post_in_content_page(
+                    page=page,
+                    ch_folder=ch_folder,
+                    match_keywords=match_keywords,
+                    delete_top_if_no_match=False,
+                )
+                self._save_and_push_telemetry(
+                    page=page,
+                    event_type="upload",
+                    ch_folder=ch_folder,
+                    details={
+                        "action": "delete_bad_posts",
+                        "match_keywords": match_keywords,
+                        "deleted_posts": deleted,
+                        "final_url": page.url,
+                    },
+                )
+                time.sleep(random.uniform(3.0, 5.0))
+            finally:
+                try:
+                    context.close()
+                except Exception:
+                    pass
+        return deleted
 
     def ensure_channel_posts_public(self, channel_arg: str, headless: bool = False) -> Dict[str, Any]:
         """
@@ -2559,16 +2641,25 @@ class TikTokAutoPoster:
                                 self.crawler.auto_sync_posted_videos()
                             except Exception:
                                 pass
-                            res = self.upload_one_channel_video(
-                                single_ch,
-                                headless=headless,
-                                force=bool(remote_post.get("force", True)),
-                                delete_match_keywords=remote_post.get("delete_match_keywords"),
-                                delete_top_before_upload=bool(remote_post.get("delete_top_before_upload", False)),
-                            )
-                            if res:
+                            if str(remote_post.get("action") or "").strip().lower() == "delete_only":
+                                del_res = self.delete_channel_posts_by_keywords(
+                                    single_ch,
+                                    match_keywords=remote_post.get("delete_match_keywords") or [],
+                                    headless=headless,
+                                )
                                 any_ok = True
-                                posted_results.append(res)
+                                posted_results.append({"channel": single_ch, "deleted_posts": del_res})
+                            else:
+                                res = self.upload_one_channel_video(
+                                    single_ch,
+                                    headless=headless,
+                                    force=bool(remote_post.get("force", True)),
+                                    delete_match_keywords=remote_post.get("delete_match_keywords"),
+                                    delete_top_before_upload=bool(remote_post.get("delete_top_before_upload", False)),
+                                )
+                                if res:
+                                    any_ok = True
+                                    posted_results.append(res)
                         except Exception as exc:
                             logger.error(
                                 f"[Dòng 1 - Đăng Video] Lỗi khi đăng ngay ({p_trig_id}) kênh [{single_ch}]: {exc}"
