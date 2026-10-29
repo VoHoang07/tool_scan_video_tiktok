@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-29 12:41:27",
+    "timestamp": "2026-10-29 12:53:40",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261028_213841_tiktok_story_7665657536728567047.mp4",
-      "caption": "🤣 Tôi sẽ ăn cây kẹo mút và làm một cây kẹo mút khác — Pha xử lý đi vào lòng đất của hai mẹ con! \"Sử dụng que bạn vừa cắt ra và dán nó lên kẹo cao su bong bóng...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #viral #foryou",
+      "video_file": "20261027_174517_tiktok_story_7701190176676121877.mp4",
+      "caption": "🌙 Thức đêm nghe truyện: Tập 146 - Góc khuất tình cảm và màn đáp trả cực gắt. Từng tình tiết đều khiến người nghe nổi da gà, đừng bỏ lỡ đoạn kết!",
+      "hashtags": "#truyenngan #audiodemkhuya #truyenaudio #vahmattraxanh #gocchiaSe #tamtrang #tiktokvn #xuhuong",
       "post_confirmed": true,
       "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-29 12:53:40",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261027_174517_tiktok_story_7701190176676121877.mp4",
+        "caption": "🌙 Thức đêm nghe truyện: Tập 146 - Góc khuất tình cảm và màn đáp trả cực gắt. Từng tình tiết đều khiến người nghe nổi da gà, đừng bỏ lỡ đoạn kết!",
+        "hashtags": "#truyenngan #audiodemkhuya #truyenaudio #vahmattraxanh #gocchiaSe #tamtrang #tiktokvn #xuhuong",
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-29 12:41:27",
       "machine_arch": "x86_64",
@@ -843,18 +858,6 @@
             "follow_back_window_until": "2026-10-29 11:46:23"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-10-28 11:16:19",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
-      "details": {
-        "interacted_count": 0,
-        "own_profile_stats": {},
-        "records": []
       }
     }
   ]
