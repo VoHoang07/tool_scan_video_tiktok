@@ -1487,21 +1487,23 @@ class TikTokAutoPoster:
 
                         const rows = [];
                         const svgs = Array.from(document.querySelectorAll('svg'));
+                        const textNodes = Array.from(document.querySelectorAll('*'));
                         for (const pb of privacyBtns) {
                             const rowY = pb.y;
-                            // Gom toàn bộ text mô tả bài đăng ở nửa bên trái cùng hàng (r.left từ 110..680)
+                            // Gom toàn bộ text mô tả + thời lượng + giờ đăng ở nửa bên trái cùng hàng (r.left từ 80..750)
                             const capParts = [];
-                            for (const el of allEls) {
+                            for (const el of textNodes) {
+                                if (el.children.length > 3) continue;
                                 const r = el.getBoundingClientRect();
-                                if (r.left < 110 || r.left > 680 || r.width < 15 || r.height < 10 || r.height > 120) continue;
+                                if (r.left < 80 || r.left > 750 || r.width < 12 || r.height < 8 || r.height > 120) continue;
                                 const cy = r.top + r.height / 2;
-                                if (Math.abs(cy - rowY) > 52) continue;
+                                if (Math.abs(cy - rowY) > 54) continue;
                                 const t = norm(el.innerText || el.textContent || '').replace(/\\s+/g, ' ');
-                                if (t && t.length <= 220 && !capParts.includes(t)) {
+                                if (t && t.length <= 240 && !capParts.includes(t)) {
                                     capParts.push(t);
                                 }
                             }
-                            const bestCaption = capParts.join(' | ').slice(0, 320);
+                            const bestCaption = capParts.join(' | ').slice(0, 420);
 
                             // Tìm chính xác icon SVG của nút '...' (nút thứ 4 ngoài cùng bên phải ở cột Hành động, r.left > 1050)
                             const actionCandidates = [];
@@ -1628,41 +1630,56 @@ class TikTokAutoPoster:
                 logger.info(
                     f"[{ch_folder}] Đã thấy tùy chọn '{del_option['text']}' tại ({dx:.1f}, {dy:.1f}), đang bấm..."
                 )
+                find_confirm_js = """() => {
+                    const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
+                    const labels = ['xóa', 'xoá', 'xóa video', 'xoá video', 'delete', 'xác nhận', 'confirm'];
+                    const btns = Array.from(document.querySelectorAll('button, [role="button"], div, span'));
+                    const candidates = [];
+                    for (const b of btns) {
+                        if (b.children.length > 3) continue;
+                        const txt = norm(b.innerText || b.textContent || '');
+                        if (!labels.includes(txt)) continue;
+                        const r = b.getBoundingClientRect();
+                        if (r.width < 36 || r.width > 280 || r.height < 22 || r.height > 75 || r.top < 160) continue;
+                        // Ưu tiên nút trong hộp thoại Modal ở giữa màn hình (r.left < 1050), không trùng menu '...' bên phải
+                        const isModalCenter = (r.left >= 250 && r.left <= 1050) ? 1 : 0;
+                        const isButtonTag = (b.tagName === 'BUTTON' || b.getAttribute('role') === 'button') ? 1 : 0;
+                        candidates.push({
+                            text: txt,
+                            x: r.left + r.width / 2,
+                            y: r.top + r.height / 2,
+                            left: r.left,
+                            top: r.top,
+                            isModalCenter: isModalCenter,
+                            isButtonTag: isButtonTag
+                        });
+                    }
+                    candidates.sort((a, b) => (b.isModalCenter - a.isModalCenter) || (b.isButtonTag - a.isButtonTag) || (b.top - a.top));
+                    return candidates.find(c => c.isModalCenter === 1) || null;
+                }"""
+
                 self._os_click_viewport(page, dx, dy)
                 time.sleep(1.8)
+                confirm_btn = page.evaluate(find_confirm_js)
+                if not confirm_btn:
+                    page.mouse.click(dx, dy)
+                    page.evaluate(
+                        """({x, y}) => {
+                            const el = document.elementFromPoint(x, y);
+                            if (el) el.click();
+                        }""",
+                        {"x": dx, "y": dy},
+                    )
+                    time.sleep(1.6)
+                    confirm_btn = page.evaluate(find_confirm_js)
 
-                # Xác nhận nút 'Xóa' / 'Delete' trong hộp thoại Modal
-                confirm_btn = page.evaluate(
-                    """() => {
-                        const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
-                        const labels = ['xóa', 'xoá', 'xóa video', 'xoá video', 'delete', 'xác nhận', 'confirm'];
-                        const btns = Array.from(document.querySelectorAll('button, [role="button"], div, span'));
-                        const candidates = [];
-                        for (const b of btns) {
-                            if (b.children.length > 3) continue;
-                            const txt = norm(b.innerText || b.textContent || '');
-                            if (!labels.includes(txt)) continue;
-                            const r = b.getBoundingClientRect();
-                            if (r.width < 36 || r.width > 280 || r.height < 22 || r.height > 75 || r.top < 160) continue;
-                            candidates.push({
-                                text: txt,
-                                x: r.left + r.width / 2,
-                                y: r.top + r.height / 2,
-                                top: r.top
-                            });
-                        }
-                        if (candidates.length > 0) {
-                            return candidates[candidates.length - 1];
-                        }
-                        return null;
-                    }"""
-                )
                 if confirm_btn:
                     cx, cy = float(confirm_btn["x"]), float(confirm_btn["y"])
                     logger.info(
                         f"[{ch_folder}] Đang bấm xác nhận XÓA ('{confirm_btn['text']}') trong modal tại ({cx:.1f}, {cy:.1f})..."
                     )
                     self._os_click_viewport(page, cx, cy)
+                    page.mouse.click(cx, cy)
                     try:
                         page.evaluate(
                             """({x, y}) => {
