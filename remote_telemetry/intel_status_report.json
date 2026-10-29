@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-29 12:58:51",
+    "timestamp": "2026-10-29 20:09:33",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261027_175319_tiktok_story_7690752235659185414.mp4",
-      "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Hành trình tu tiên vượt mọi đại kiếp bước lên đỉnh cao vạn giới. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #xuhuongtiktok",
+      "video_file": "20261028_212349_tiktok_story_7700060081739582721.mp4",
+      "caption": "🐾 Phần 2 | Hoa tỷ muội hòa ly, ta làm của hồi môn cho tỷ tỷ — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
+      "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #fyp",
       "post_confirmed": true,
       "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-29 20:09:33",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261028_212349_tiktok_story_7700060081739582721.mp4",
+        "caption": "🐾 Phần 2 | Hoa tỷ muội hòa ly, ta làm của hồi môn cho tỷ tỷ — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
+        "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #fyp",
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-29 12:58:51",
       "machine_arch": "x86_64",
@@ -661,107 +676,6 @@
             },
             "interacted_at": "2026-10-28 12:32:51",
             "follow_back_window_until": "2026-10-29 12:32:51"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-10-28 11:54:18",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7700434285186141447",
-            "video_url": "https://www.tiktok.com/@nguoimoixaykenh1234/video/7700434285186141447",
-            "creator_handle": "@nguoimoixaykenh1234",
-            "watched_seconds": 15.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "mình mới xây kênh, nhận follow chéo ạ 🥰",
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610281253354195BE3091D28F3B90C2\",\"now\":1793163215000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610281253354195BE3091D28F3B90C2\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261028125338CE1CDD97B29EC33CF2E5\",\"now\":1793163219000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261028125338CE1CDD97B29EC33CF2E5\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026102812540014544F66FCDF0D4D91A8\",\"now\":1793163240000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026102812540014544F66FCDF0D4D91A8\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610281254048BC1CE93A88E3328F815\",\"now\":1793163244000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202610281254048BC1CE93A88E3328F815\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202610281253514823C7AA8573FA1D34F5\",\"now\":1793163231000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202610281253514823C7AA8573FA1D34F5\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "tu_chan_gioi0"
-              },
-              "before": {
-                "x": 795.15625,
-                "y": 421,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "10"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 795.15625,
-                  "y": 421,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "11"
-                },
-                "red": true,
-                "server_digg_ok": false
-              },
-              "after_dblclick_33s": {
-                "state": {
-                  "x": 795.15625,
-                  "y": 421,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "10"
-                },
-                "red": false
-              },
-              "profile_follow_verify": {
-                "creator": "@nguoimoixaykenh1234",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": 0,
-                "persisted": false
-              }
-            },
-            "interacted_at": "2026-10-28 11:54:12",
-            "follow_back_window_until": "2026-10-29 11:54:12"
           }
         ]
       }
