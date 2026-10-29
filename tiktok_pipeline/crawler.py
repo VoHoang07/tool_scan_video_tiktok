@@ -108,6 +108,10 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "folder_name": "baby_AI",
         "description": "Em bé AI hài hước (AI萌娃 / 大头菠萝), Mầm non lém lỉnh & Gia đình vui nhộn (Trung - Việt view cao)",
         "seed_video_urls": [
+            "https://www.tiktok.com/@andy76243/video/7656305238692973832",  # #萌娃搞笑日常 #语出惊人的熊孩子 - 大胖：一天天的这些大人一点不省心 (779k views)
+            "https://www.tiktok.com/@andy76243/video/7663279320877616392",  # #萌娃搞笑 #语出惊人的熊孩子 - 小胖面试，“不同凡响” (640k views)
+            "https://www.tiktok.com/@andy76243/video/7656683365013179655",  # #语出惊人的熊孩子 - 老妈，你可长点心吧 (55k views)
+            "https://www.tiktok.com/@andy76243/video/7661486125428559112",  # #萌娃搞笑日常 #语出惊人的熊孩子 - 小胖啊！天天上当 (50k views)
             "https://www.douyin.com/video/7638714267462561417",  # #大头菠萝 #一人带娃日常 - 小孩怎么这么喜欢吃泡面呀
             "https://www.douyin.com/video/7634246231678587978",  # #大头菠萝 #一人带娃日常 - 巨婴宝宝上学又迟到了
             "https://www.douyin.com/video/7653148698738335945",  # #大头菠萝 - 巨婴宝宝的烤肠差一点被小老鼠偷走
@@ -254,6 +258,242 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "1707580528615437",  # #仙尊语录 / #AI修仙 / #无敌修仙
             "1588303515058184",  # #有声小说 / #修仙小说推文
         ],
+        "is_funnel_satellite": False,
+        "multi_platform_keywords": ["修仙动画 #shorts", "玄幻修真 #shorts", "hoat hinh tu tien 3d #shorts"],
+    },
+    "channel_5_home_gadgets": {
+        "channel_id": "5",
+        "profile_key": "channel_5_home_gadgets",
+        "folder_name": "meo_vat_gia_dinh",
+        "description": "Mẹo vặt nhà cửa, Đồ gia dụng thông minh & Tiện ích bếp siêu lượt mua (Phễu chủ lực #2)",
+        "is_funnel_satellite": True,
+        "seed_video_urls": [],
+        "seed_channels": [],
+        "douyin_keywords": [
+            "生活小妙招",
+            "居家好物",
+            "厨房神器",
+            "家务清洁妙招",
+            "收纳整理技巧",
+            "家庭实用小技巧",
+            "省钱妙招",
+        ],
+        "tiktok_keywords": [
+            "#meovatgiadinh",
+            "#dogiadungthongminh",
+            "#meovatcuocsong",
+            "#nhabepthongminh",
+            "#生活小妙招",
+            "#居家好物",
+        ],
+        "tiktok_challenge_ids": [
+            "1636211882466305",  # #meovatcuocsong
+            "1656561174880258",  # #meovatgiadinh
+            "1660484344061953",  # #dogiadungthongminh
+        ],
+        "douyin_challenge_ids": [
+            "1563911653590017",  # #生活小妙招
+            "1587096126305293",  # #居家好物
+            "1604684781228040",  # #厨房好物
+            "1598744281885704",  # #清洁小妙招
+        ],
+        "multi_platform_keywords": [
+            "生活小妙招 实用 #shorts",
+            "厨房清洁妙招 #shorts",
+            "mẹo vặt gia đình hay #shorts",
+        ],
+    },
+    "channel_6_health_wellness": {
+        "channel_id": "6",
+        "profile_key": "channel_6_health_wellness",
+        "folder_name": "suc_khoe_duong_sinh",
+        "description": "Sức khỏe chủ động, Mẹo dưỡng sinh & Thói quen sống khỏe (Phễu chủ lực #3)",
+        "is_funnel_satellite": True,
+        "seed_video_urls": [],
+        "seed_channels": [],
+        "douyin_keywords": [
+            "健康科普动画",
+            "养生小知识",
+            "中医养生科普",
+            "身体发出的求救信号",
+            "睡眠健康科普",
+            "护肝养胃小知识",
+        ],
+        "tiktok_keywords": [
+            "#suckhoechudong",
+            "#meosuckhoe",
+            "#duongsinh",
+            "#songkhoe",
+            "#健康科普",
+            "#养生小知识",
+        ],
+        "tiktok_challenge_ids": [
+            "1636570489140225",  # #suckhoe
+            "1662939543255041",  # #songkhoe
+        ],
+        "douyin_challenge_ids": [
+            "1581016448807950",  # #健康科普
+            "1565067847064578",  # #养生
+            "1642088663177227",  # #涨知识
+        ],
+        "multi_platform_keywords": [
+            "健康科普 动画 #shorts",
+            "养生小知识 #shorts",
+            "mẹo sức khỏe đời sống #shorts",
+        ],
+    },
+    "channel_7_women_eq": {
+        "channel_id": "7",
+        "profile_key": "channel_7_women_eq",
+        "folder_name": "phu_nu_khi_chat",
+        "description": "Tâm lý hôn nhân, Phụ nữ khí chất & EQ giao tiếp tinh tế (Phễu chủ lực #4)",
+        "is_funnel_satellite": True,
+        "seed_video_urls": [],
+        "seed_channels": [],
+        "douyin_keywords": [
+            "女性成长智慧",
+            "婚姻心理真相",
+            "高情商女人说话技巧",
+            "夫妻相处之道",
+            "清醒女性语录",
+            "情感心理沙盘",
+        ],
+        "tiktok_keywords": [
+            "#phunukhichat",
+            "#tamlyhonnhan",
+            "#phunuhienđai",
+            "#kynanggiaotiep",
+            "#女性智慧",
+            "#婚姻情感",
+        ],
+        "tiktok_challenge_ids": [
+            "1572618705886286",
+            "1638200962944004",
+        ],
+        "douyin_challenge_ids": [
+            "1572618705886286",  # #情感
+            "1638200962944004",  # #情感文案
+            "1626065775068173",  # #总有一句话戳心
+        ],
+        "multi_platform_keywords": [
+            "女性成长 婚姻智慧 #shorts",
+            "高情商女人 #shorts",
+            "tâm lý phụ nữ hôn nhân #shorts",
+        ],
+    },
+    "channel_8_business_mindset": {
+        "channel_id": "8",
+        "profile_key": "channel_8_business_mindset",
+        "folder_name": "bai_hoc_kinh_doanh",
+        "description": "Chuyện công sở, Tư duy kinh doanh & Bài học kiếm tiền đời thường",
+        "is_funnel_satellite": False,
+        "seed_video_urls": [],
+        "seed_channels": [],
+        "douyin_keywords": [
+            "商业思维故事",
+            "职场高情商动画",
+            "老板思维",
+            "做生意赚钱逻辑",
+            "白手起家故事",
+            "认知提升动画",
+        ],
+        "tiktok_keywords": [
+            "#baihockinhdoanh",
+            "#tuduykiemtien",
+            "#chuyencongso",
+            "#khoinghiep",
+            "#商业思维",
+            "#职场智慧",
+        ],
+        "tiktok_challenge_ids": [
+            "1638200962944004",
+        ],
+        "douyin_challenge_ids": [
+            "1626065775068173",
+            "1658420629774343",
+        ],
+        "multi_platform_keywords": [
+            "商业思维 赚钱故事 #shorts",
+            "职场智慧 动画 #shorts",
+            "bài học kinh doanh #shorts",
+        ],
+    },
+    "channel_9_smart_parenting": {
+        "channel_id": "9",
+        "profile_key": "channel_9_smart_parenting",
+        "folder_name": "nuoi_con_eq",
+        "description": "Nuôi dạy con thông minh, Phát triển EQ cho bé & Tâm lý mẹ và bé",
+        "is_funnel_satellite": False,
+        "seed_video_urls": [],
+        "seed_channels": [],
+        "douyin_keywords": [
+            "育儿动画科普",
+            "儿童情商教育",
+            "聪明妈妈带娃技巧",
+            "家庭教育故事",
+            "孩子坏习惯怎么引导",
+            "绘本故事育儿",
+        ],
+        "tiktok_keywords": [
+            "#nuoiconthongminh",
+            "#dayconeq",
+            "#mevabe",
+            "#giaoducsom",
+            "#育儿知识",
+            "#家庭教育",
+        ],
+        "tiktok_challenge_ids": [
+            "1639642543618055",
+            "1576122662289438",
+        ],
+        "douyin_challenge_ids": [
+            "1639642543618055",
+            "1576122662289438",
+            "1618466015647748",
+        ],
+        "multi_platform_keywords": [
+            "育儿知识 家庭教育 #shorts",
+            "儿童情商 动画 #shorts",
+            "nuôi dạy con thông minh #shorts",
+        ],
+    },
+    "channel_10_ancient_wisdom": {
+        "channel_id": "10",
+        "profile_key": "channel_10_ancient_wisdom",
+        "folder_name": "muu_luoc_nhan_sinh",
+        "description": "Cổ học tinh hoa, Mưu lược Tam Quốc & Triết lý đối nhân xử thế",
+        "is_funnel_satellite": False,
+        "seed_video_urls": [],
+        "seed_channels": [],
+        "douyin_keywords": [
+            "国学智慧动画",
+            "权谋故事解说",
+            "人性铁律语录",
+            "鬼谷子谋略",
+            "历史权谋短片",
+            "处世之道动画",
+        ],
+        "tiktok_keywords": [
+            "#muuluocnhansinh",
+            "#cohoctinhhoa",
+            "#trietlycuocsong",
+            "#dacnhantam",
+            "#国学智慧",
+            "#处世之道",
+        ],
+        "tiktok_challenge_ids": [
+            "1610102238337037",
+        ],
+        "douyin_challenge_ids": [
+            "1610102238337037",
+            "1626065775068173",
+            "1658420629774343",
+        ],
+        "multi_platform_keywords": [
+            "国学智慧 处世之道 #shorts",
+            "鬼谷子 谋略 #shorts",
+            "mưu lược nhân sinh #shorts",
+        ],
     },
 }
 
@@ -276,6 +516,30 @@ CHANNEL_ALIASES: Dict[str, str] = {
     "channel_4": "channel_4_ai_cultivation",
     "tu_chan_gioi": "channel_4_ai_cultivation",
     "channel_4_ai_cultivation": "channel_4_ai_cultivation",
+    "5": "channel_5_home_gadgets",
+    "channel_5": "channel_5_home_gadgets",
+    "meo_vat_gia_dinh": "channel_5_home_gadgets",
+    "channel_5_home_gadgets": "channel_5_home_gadgets",
+    "6": "channel_6_health_wellness",
+    "channel_6": "channel_6_health_wellness",
+    "suc_khoe_duong_sinh": "channel_6_health_wellness",
+    "channel_6_health_wellness": "channel_6_health_wellness",
+    "7": "channel_7_women_eq",
+    "channel_7": "channel_7_women_eq",
+    "phu_nu_khi_chat": "channel_7_women_eq",
+    "channel_7_women_eq": "channel_7_women_eq",
+    "8": "channel_8_business_mindset",
+    "channel_8": "channel_8_business_mindset",
+    "bai_hoc_kinh_doanh": "channel_8_business_mindset",
+    "channel_8_business_mindset": "channel_8_business_mindset",
+    "9": "channel_9_smart_parenting",
+    "channel_9": "channel_9_smart_parenting",
+    "nuoi_con_eq": "channel_9_smart_parenting",
+    "channel_9_smart_parenting": "channel_9_smart_parenting",
+    "10": "channel_10_ancient_wisdom",
+    "channel_10": "channel_10_ancient_wisdom",
+    "muu_luoc_nhan_sinh": "channel_10_ancient_wisdom",
+    "channel_10_ancient_wisdom": "channel_10_ancient_wisdom",
 }
 
 LEGACY_CHANNEL_FOLDER_MAP: Dict[str, str] = {
@@ -283,12 +547,24 @@ LEGACY_CHANNEL_FOLDER_MAP: Dict[str, str] = {
     "channel_2": "baby_AI",
     "channel_3": "audio_dem_khuyen",
     "channel_4": "tu_chan_gioi",
+    "channel_5": "meo_vat_gia_dinh",
+    "channel_6": "suc_khoe_duong_sinh",
+    "channel_7": "phu_nu_khi_chat",
+    "channel_8": "bai_hoc_kinh_doanh",
+    "channel_9": "nuoi_con_eq",
+    "channel_10": "muu_luoc_nhan_sinh",
     "video_ai_hay": "video_AI_hay",
     "video_AI_hay": "video_AI_hay",
     "baby_ai": "baby_AI",
     "baby_AI": "baby_AI",
     "audio_dem_khuyen": "audio_dem_khuyen",
     "tu_chan_gioi": "tu_chan_gioi",
+    "meo_vat_gia_dinh": "meo_vat_gia_dinh",
+    "suc_khoe_duong_sinh": "suc_khoe_duong_sinh",
+    "phu_nu_khi_chat": "phu_nu_khi_chat",
+    "bai_hoc_kinh_doanh": "bai_hoc_kinh_doanh",
+    "nuoi_con_eq": "nuoi_con_eq",
+    "muu_luoc_nhan_sinh": "muu_luoc_nhan_sinh",
 }
 
 # Danh sách chủ đề kể chuyện chuẩn trên Douyin & Challenge IDs tương ứng
@@ -791,6 +1067,8 @@ class StoryAudioCrawler:
         - Loại bỏ các video hài người lớn, vợ chồng, tắm gội (#淋浴), tình yêu đôi lứa không liên quan đến em bé.
         """
         combined = f"{title or ''} {music_title or ''}".lower()
+        if re.search(r"^\s*\d{15,20}", combined):
+            return False
         adult_offtopic_markers = (
             "淋浴",
             "爱夫",
@@ -802,6 +1080,10 @@ class StoryAudioCrawler:
             "夜店",
             "蹦迪",
             "美妆",
+            "吃糖果",
+            "糖果视频",
+            "棒棒糖",
+            "phngnhphng",
         )
         for bad in adult_offtopic_markers:
             if bad in combined:
@@ -1374,6 +1656,17 @@ class StoryAudioCrawler:
                 reverse=True,
             )
 
+        # 4. Mở rộng quét Đa Nền Tảng (YouTube Shorts / Facebook Reels / Bilibili) nếu bật MULTI_PLATFORM_CRAWL
+        multi_candidates: List[Dict[str, Any]] = []
+        multi_kws: List[str] = list(profile.get("multi_platform_keywords") or [])
+        if platform_override in (None, "youtube_shorts", "facebook_reels", "multi") and multi_kws:
+            if os.getenv("ENABLE_MULTI_PLATFORM_CRAWL", "1").strip() != "0":
+                multi_candidates = self._discover_multi_platform_shorts(
+                    keywords=multi_kws,
+                    genre_label=profile_key,
+                    max_candidates=max(6, max_candidates // 3),
+                )
+
         # Gộp danh sách theo thứ tự ưu tiên: Link mẫu -> Kênh mẫu -> Video liên quan view cao (khử trùng lặp video_id)
         merged: List[Dict[str, Any]] = []
         seen_vids = set()
@@ -1385,12 +1678,14 @@ class StoryAudioCrawler:
                 merged.append(cand)
 
         related_pool: List[Dict[str, Any]] = []
-        max_rel = max(len(douyin_candidates), len(tiktok_candidates))
+        max_rel = max(len(douyin_candidates), len(tiktok_candidates), len(multi_candidates))
         for i in range(max_rel):
             if i < len(douyin_candidates):
                 related_pool.append(douyin_candidates[i])
             if i < len(tiktok_candidates):
                 related_pool.append(tiktok_candidates[i])
+            if i < len(multi_candidates):
+                related_pool.append(multi_candidates[i])
 
         for cand in related_pool:
             vid = str(cand.get("video_id") or "")
@@ -1401,9 +1696,82 @@ class StoryAudioCrawler:
         logger.info(
             f"Kênh [{profile_key}]: Tìm thấy tổng cộng {len(merged)} ứng viên Trung/Việt view cao "
             f"(Link mẫu: {len(seed_candidates)}, Kênh mẫu: {len(channel_candidates)}, "
-            f"Liên quan Douyin: {len(douyin_candidates)}, Liên quan TikTok: {len(tiktok_candidates)})."
+            f"Douyin: {len(douyin_candidates)}, TikTok: {len(tiktok_candidates)}, Đa nền tảng Shorts/Reels: {len(multi_candidates)})."
         )
         return profile, merged[:max_candidates]
+
+    def _discover_multi_platform_shorts(
+        self,
+        keywords: List[str],
+        genre_label: str,
+        max_candidates: int = 12,
+    ) -> List[Dict[str, Any]]:
+        """
+        Quét video ngắn triệu view từ YouTube Shorts / Bilibili / Đa nền tảng qua yt-dlp search (`ytsearch:`),
+        chỉ lọc video dọc/ngắn (15s - 180s) có tiêu đề Tiếng Trung hoặc Tiếng Việt và lượt xem cao.
+        """
+        import yt_dlp
+
+        candidates: List[Dict[str, Any]] = []
+        seen_ids: Set[str] = set()
+        ydl_opts = {
+            "quiet": True,
+            "no_warnings": True,
+            "extract_flat": True,
+            "skip_download": True,
+            "socket_timeout": 10,
+        }
+        for kw in keywords[:3]:
+            if len(candidates) >= max_candidates:
+                break
+            query = f"ytsearch10:{kw}"
+            try:
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    info = ydl.extract_info(query, download=False)
+                entries = (info or {}).get("entries") or []
+                for entry in entries:
+                    if not isinstance(entry, dict):
+                        continue
+                    vid = str(entry.get("id") or "").strip()
+                    if not vid or vid in seen_ids or self.is_processed(vid):
+                        continue
+                    dur = float(entry.get("duration") or 0.0)
+                    if dur > 0 and not (self.min_duration <= dur <= min(self.max_duration, 180.0)):
+                        continue
+                    title = str(entry.get("title") or "").strip()
+                    if not title or not self.is_strictly_chinese_or_vietnamese_video(title=title, platform="youtube_shorts"):
+                        continue
+                    view_cnt = int(entry.get("view_count") or 0)
+                    if view_cnt > 0 and view_cnt < 25_000:
+                        continue
+                    seen_ids.add(vid)
+                    url = str(entry.get("url") or f"https://www.youtube.com/shorts/{vid}")
+                    if not url.startswith("http"):
+                        url = f"https://www.youtube.com/shorts/{vid}"
+                    candidates.append(
+                        {
+                            "platform": "youtube_shorts",
+                            "genre": genre_label,
+                            "video_id": vid,
+                            "sound_id": f"yt_sound_{vid}",
+                            "source_url": url,
+                            "duration": dur if dur > 0 else 45.0,
+                            "title": title,
+                            "music_title": "Original Audio",
+                            "is_original": True,
+                            "is_recent_30d": True,
+                            "is_vietnamese": has_vietnamese_diacritics(title),
+                            "play_count": max(view_cnt, 50_000),
+                            "digg_count": max(view_cnt // 25, 2_000),
+                            "share_count": max(view_cnt // 200, 100),
+                            "collect_count": max(view_cnt // 150, 150),
+                            "shares_and_saves": max(view_cnt // 80, 250),
+                            "engagement_score": max(view_cnt, 50_000) * 2,
+                        }
+                    )
+            except Exception as exc:
+                logger.debug(f"Multi-platform Shorts search skipped for '{kw}': {exc}")
+        return candidates[:max_candidates]
 
     def discover_candidates(
         self, platform: str, genre: str, max_candidates: int = 40
@@ -1977,6 +2345,7 @@ class StoryAudioCrawler:
             transcript_data = self.transcriber.transcribe(
                 audio_path=audio_path,
                 save_json_path=transcript_json,
+                video_path=raw_video_path,
             )
             transcript_data["original_title"] = dl_title
             detected_lang = (transcript_data.get("language") or "zh").lower().strip()
@@ -2180,14 +2549,16 @@ class StoryAudioCrawler:
                 s_url, cap = csv_meta_by_name.get(fname, ("", ""))
 
                 reason = ""
-                if "guangzhoujianglan_mx" in s_url.lower():
-                    reason = "kênh tiếng Tây Ban Nha (@guangzhoujianglan_mx)"
-                elif cap and english_sentence_re.search(cap):
-                    reason = "caption chứa lời thoại tiếng Anh nước ngoài"
+                if "guangzhoujianglan_mx" in s_url.lower() or "phngnhphng" in s_url.lower():
+                    reason = "kênh nước ngoài lệch chủ đề (@guangzhoujianglan_mx / @phngnhphng)"
+                elif cap and (english_sentence_re.search(cap) or "kẹo mút" in cap.lower() or "kẹo cao su" in cap.lower()):
+                    reason = "caption chứa lời thoại tiếng Anh nước ngoài hoặc video kẹo mút lệch chủ đề"
                 elif ch_folder in ("baby_AI", "video_AI_hay") and plat == "tiktok" and re.match(r"^2026102[0-7]_", fname):
                     reason = f"video TikTok tiếng Anh cũ trước 28/10 trong {ch_folder}"
                 elif ch_folder == "baby_AI" and plat == "douyin" and re.match(r"^2026102[0-7]_", fname) and sid not in valid_baby_ai_douyin_seeds:
                     reason = "video Douyin hài người lớn cũ không thuộc chủ đề Baby AI"
+                elif ch_folder == "baby_AI" and fname[:15] < "20261029_224000":
+                    reason = "video baby_AI bản cũ trước khi nâng cấp lồng tiếng khớp 1:1 (22:40 29/10)"
                 elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_210000":
                     reason = "video lồng tiếng bản cũ trước khi vá lỗi cắt đỉnh âm thanh & mất thoại VAD (21:00 28/10)"
 
@@ -2443,6 +2814,36 @@ class StoryAudioCrawler:
                     "Tình huống dở khóc dở cười của hai mẹ con khiến cả nhà bật cười",
                     "Pha xử lý đi vào lòng đất của em bé tinh nghịch trong gia đình",
                     "Khoảnh khắc đáng yêu và hài hước nhất trong ngày của bé",
+                ],
+                "meo_vat_gia_dinh": [
+                    "Mẹo vặt nhà cửa cực hay giúp dọn bếp sạch bong chỉ trong tích tắc",
+                    "Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê",
+                    "Bí quyết sắp xếp nhà cửa gọn gàng tiết kiệm thời gian cho cả gia đình",
+                ],
+                "suc_khoe_duong_sinh": [
+                    "Thói quen nhỏ mỗi ngày giúp cơ thể khỏe mạnh và ngủ ngon giấc hơn",
+                    "Tín hiệu cảnh báo sớm của cơ thể mà dân văn phòng tuyệt đối đừng chủ quan",
+                    "Bí quyết dưỡng sinh đơn giản tại nhà giúp tràn đầy năng lượng",
+                ],
+                "phu_nu_khi_chat": [
+                    "Phụ nữ thông minh luôn nắm vững nguyên tắc này để luôn được yêu thương",
+                    "Bài học tâm lý hôn nhân sâu sắc giúp giữ lửa hạnh phúc gia đình",
+                    "Bản lĩnh và khí chất của người phụ nữ hiện đại tự chủ",
+                ],
+                "bai_hoc_kinh_doanh": [
+                    "Tư duy nhạy bén tạo nên sự khác biệt giữa người làm chủ và số đông",
+                    "Bài học đắt giá nơi công sở và thương trường ai đi làm cũng nên biết",
+                    "Câu chuyện khởi nghiệp thực tế và cách nắm bắt cơ hội đổi đời",
+                ],
+                "nuoi_con_eq": [
+                    "Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ",
+                    "Thay vì quát mắng hãy áp dụng phương pháp dạy con tự lập cực hiệu quả này",
+                    "Bí quyết đồng hành cùng con trưởng thành mỗi ngày cho bố mẹ hiện đại",
+                ],
+                "muu_luoc_nhan_sinh": [
+                    "Trí tuệ cổ nhân và bài học nhìn người sâu sắc trong cuộc sống",
+                    "Quy luật đối nhân xử thế giúp bạn luôn vững vàng trước mọi sóng gió",
+                    "Mưu lược nhân sinh đúc kết từ ngàn xưa càng ngẫm càng thấm",
                 ],
             }
             topic_list = fallback_topics.get(ch_folder, fallback_topics["video_AI_hay"])
@@ -2853,10 +3254,11 @@ class StoryAudioCrawler:
             lines.append(
                 f"{ch['channel']:<18} | {ch['profile_key']:<26} | {ch['ready_count']:>17} | {ch['posted_count']:>17} | {ch['total_count']:>10}"
             )
+        total_ch_label = f"Toàn bộ {len(inv['channels'])} kênh TikTok"
         lines.extend(
             [
                 "-" * 100,
-                f"{'TỔNG KẾT':<18} | {'Toàn bộ 4 kênh TikTok':<26} | {inv['total_ready']:>17} | {inv['total_posted']:>17} | {inv['total_videos']:>10}",
+                f"{'TỔNG KẾT':<18} | {total_ch_label:<26} | {inv['total_ready']:>17} | {inv['total_posted']:>17} | {inv['total_videos']:>10}",
                 "=" * 100,
                 f"Master CSV: {inv['csv_path']}",
             ]

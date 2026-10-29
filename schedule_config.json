@@ -54,9 +54,18 @@
     ]
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_audio_dem_khuyen_20261026_0831",
+    "trigger_id": "replace_bad_baby_ai_20261029_2304",
     "target_arch": "x86_64",
-    "channel": "audio_dem_khuyen"
+    "channel": "baby_AI",
+    "force": true,
+    "delete_match_keywords": [
+      "kẹo mút",
+      "kẹo cao su",
+      "7517545005440060728",
+      "ăn một mẹ",
+      "tưởng gì to tát"
+    ],
+    "delete_top_before_upload": true
   },
   "remote_trigger_filter_24h": {
     "trigger_id": "activate_72h_cooldown_20261028_1348",

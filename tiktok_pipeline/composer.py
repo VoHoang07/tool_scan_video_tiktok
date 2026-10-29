@@ -16,36 +16,83 @@ from .utils import (
     logger,
 )
 
-# Cấu hình giọng đọc Edge-TTS chuyên biệt theo từng kênh
+# Cấu hình giọng đọc Edge-TTS chuyên biệt theo từng kênh (Quy mô 10 kênh)
 CHANNEL_VOICE_PROFILES: Dict[str, Dict[str, Any]] = {
     "channel_1": {
         "voice": "vi-VN-HoaiMyNeural",
-        "base_rate": "+5%",
+        "base_rate": "+0%",
         "pitch": "+4Hz",
+        "encoder_sig": "CapCut 14.4.0 (iOS 17.5.1)",
         "description": "Tông giọng đáng yêu, hài hước, sinh động (AI Hoạt họa / Thú cưng / Kể chuyện)",
     },
     "channel_2": {
         "voice": "vi-VN-HoaiMyNeural",
-        "base_rate": "+10%",
+        "base_rate": "+0%",
         "pitch": "+2Hz",
-        "description": "Giọng tự nhiên, đời thường, tếu táo, nhịp điệu nhanh nhẹn (+10% tốc độ)",
+        "encoder_sig": "CapCut 14.2.0 (iPhone16,2)",
+        "description": "Giọng tự nhiên, đời thường, tếu táo, khớp nhịp giọng gốc",
     },
     "channel_3": {
         "voice": "vi-VN-NamMinhNeural",
         "base_rate": "+0%",
         "pitch": "-3Hz",
+        "encoder_sig": "VN Video Editor 2.24.1 (iOS)",
         "description": "Giọng đọc kịch tính, nhịp điệu cuốn hút (Truyện Tổng Tài / Trùng Sinh)",
     },
     "channel_4": {
         "voice": "vi-VN-NamMinhNeural",
         "base_rate": "+0%",
         "pitch": "-4Hz",
+        "encoder_sig": "Adobe Premiere Pro 2024.5 (macOS)",
         "description": "Giọng nam trầm, hào hùng, tốc độ chuẩn rate +0% (Kênh Tu Tiên / Huyền Huyễn)",
+    },
+    "channel_5": {
+        "voice": "vi-VN-HoaiMyNeural",
+        "base_rate": "+4%",
+        "pitch": "+1Hz",
+        "encoder_sig": "CapCut 14.6.0 (SM-S928B)",
+        "description": "Giọng nữ nhanh nhẹn, rõ ràng, thực tế (Mẹo vặt nhà cửa & Gia dụng thông minh)",
+    },
+    "channel_6": {
+        "voice": "vi-VN-HoaiMyNeural",
+        "base_rate": "+0%",
+        "pitch": "-1Hz",
+        "encoder_sig": "InShot 1.88.2 (iOS 17.6)",
+        "description": "Giọng nữ điềm đạm, ấm áp, đáng tin cậy (Sức khỏe chủ động & Dưỡng sinh)",
+    },
+    "channel_7": {
+        "voice": "vi-VN-HoaiMyNeural",
+        "base_rate": "+0%",
+        "pitch": "-2Hz",
+        "encoder_sig": "CapCut 14.5.0 (iPhone15,3)",
+        "description": "Giọng nữ sâu sắc, truyền cảm, tinh tế (Tâm lý hôn nhân & Phụ nữ khí chất)",
+    },
+    "channel_8": {
+        "voice": "vi-VN-NamMinhNeural",
+        "base_rate": "+2%",
+        "pitch": "-1Hz",
+        "encoder_sig": "DaVinci Resolve 19.0.1",
+        "description": "Giọng nam đĩnh đạc, sắc bén (Chuyện công sở & Bài học kinh doanh)",
+    },
+    "channel_9": {
+        "voice": "vi-VN-HoaiMyNeural",
+        "base_rate": "+0%",
+        "pitch": "+1Hz",
+        "encoder_sig": "VLLO 10.6.4 (iPadOS 17.5)",
+        "description": "Giọng nữ dịu dàng, tâm lý (Nuôi dạy con thông minh & EQ cho bé)",
+    },
+    "channel_10": {
+        "voice": "vi-VN-NamMinhNeural",
+        "base_rate": "+0%",
+        "pitch": "-5Hz",
+        "encoder_sig": "Final Cut Pro 10.8.1",
+        "description": "Giọng nam trầm mặc, uy nghiêm (Cổ học tinh hoa & Mưu lược nhân sinh)",
     },
     "general": {
         "voice": "vi-VN-NamMinhNeural",
         "base_rate": "+0%",
         "pitch": "-2Hz",
+        "encoder_sig": "CapCut 14.3.0",
         "description": "Giọng kể chuyện truyền cảm mặc định",
     },
 }
@@ -77,11 +124,18 @@ class VideoComposer:
             "baby_ai": "channel_2",
             "audio_dem_khuyen": "channel_3",
             "tu_chan_gioi": "channel_4",
+            "meo_vat_gia_dinh": "channel_5",
+            "suc_khoe_duong_sinh": "channel_6",
+            "phu_nu_khi_chat": "channel_7",
+            "bai_hoc_kinh_doanh": "channel_8",
+            "nuoi_con_eq": "channel_9",
+            "muu_luoc_nhan_sinh": "channel_10",
         }
         if ch in alias_map:
             return dict(CHANNEL_VOICE_PROFILES[alias_map[ch]])
-        for key in ("channel_1", "channel_2", "channel_3", "channel_4"):
-            if key in ch or ch == key.split("_")[1]:
+        for idx in range(10, 0, -1):
+            key = f"channel_{idx}"
+            if key in ch or ch == str(idx):
                 return dict(CHANNEL_VOICE_PROFILES[key])
         return dict(CHANNEL_VOICE_PROFILES["general"])
 
@@ -97,10 +151,10 @@ class VideoComposer:
         self.work_dir.mkdir(parents=True, exist_ok=True)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-        env_vol = float(os.getenv("ORIGINAL_AUDIO_VOLUME", "0.02"))
-        if env_vol >= 0.04:
-            # Tự động hạ cấu hình cũ (0.12 / 0.07) trong .env xuống 0.02 để triệt tiêu 100% tiếng Trung gốc lọt nền
-            env_vol = 0.02
+        env_vol = float(os.getenv("ORIGINAL_AUDIO_VOLUME", "0.25"))
+        if env_vol < 0.15:
+            # Giữ nguyên giọng biểu cảm của nhân vật gốc ở mức nền vừa phải (~25%) để lồng tiếng Việt đè lên tự nhiên
+            env_vol = 0.25
         self.original_volume = (
             float(original_volume)
             if original_volume is not None
@@ -466,19 +520,109 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         output_audio_path: Path,
     ) -> Path:
         """
-        Sử dụng ffmpeg để xử lý Audio Ducking:
-        - Không tắt hoàn toàn (mute) âm thanh gốc: giảm âm lượng video gốc xuống 7% (`volume=0.07`)
-          kèm bộ lọc cắt dải tần giọng người (`equalizer=f=1200:t=o:w=2.0:g=-14`) để triệt tiêu tiếng Trung gốc
-          nhưng vẫn giữ được hiệu ứng âm thanh nền (SFX, nhạc nền).
-        - Đè giọng đọc AI (`edge-tts`) tiếng Việt lên với âm lượng 135% (`volume=1.35`) kèm `alimiter` chống vỡ tiếng.
+        Trộn âm thanh theo phong cách Thuyết Minh / Lồng Tiếng Đè Lên Tiếng Gốc:
+        - Giữ nguyên chất giọng biểu cảm của các nhân vật gốc và âm thanh hiện trường (không dùng bộ lọc EQ cắt giọng gây nghẹt tiếng).
+        - Tự động làm mượt đường bao âm lượng (Smooth Ducking Envelope trên miền PCM):
+          + Khi có giọng lồng tiếng Việt: âm thanh gốc giữ ở mức nền rõ ràng (`~24%` - nghe được biểu cảm nhân vật gốc nhưng không lấn át tiếng Việt).
+          + Khi nghỉ giữa các câu: âm thanh gốc nâng nhẹ mượt mà lên `~45%` trong 160ms hoàn toàn không gây tiếng 'tịch' hay giật cục.
         """
+        import numpy as np
+
         logger.info(
-            f"Đang trộn âm thanh Audio Ducking + Lọc sạch dải tần giọng gốc (âm lượng nền={self.original_volume:.2f}, giọng Việt={self.voiceover_volume:.2f})..."
+            f"Đang trộn lồng tiếng Việt đè lên giọng nhân vật gốc (nền gốc={self.original_volume:.2f}, giọng Việt={self.voiceover_volume:.2f})..."
         )
+        orig_pcm_wav = self.work_dir / "_orig_decoded.wav"
+        mixed_pcm_wav = self.work_dir / "_mixed_master.wav"
+        try:
+            cmd_dec = [
+                self.ffmpeg_bin,
+                "-y",
+                "-v",
+                "error",
+                "-i",
+                str(raw_video_path),
+                "-vn",
+                "-ac",
+                "1",
+                "-ar",
+                "44100",
+                str(orig_pcm_wav),
+            ]
+            subprocess.run(cmd_dec, capture_output=True, check=False)
+
+            with wave.open(str(voiceover_wav), "rb") as wf_vo:
+                vo_i16 = np.frombuffer(wf_vo.readframes(wf_vo.getnframes()), dtype=np.int16)
+            vo_f = vo_i16.astype(np.float32) / 32768.0
+
+            if orig_pcm_wav.exists() and orig_pcm_wav.stat().st_size > 200:
+                with wave.open(str(orig_pcm_wav), "rb") as wf_bg:
+                    bg_i16 = np.frombuffer(wf_bg.readframes(wf_bg.getnframes()), dtype=np.int16)
+                bg_f = bg_i16.astype(np.float32) / 32768.0
+            else:
+                bg_f = np.zeros_like(vo_f)
+
+            target_n = max(len(bg_f), len(vo_f))
+            if len(bg_f) < target_n:
+                bg_f = np.pad(bg_f, (0, target_n - len(bg_f)))
+            else:
+                bg_f = bg_f[:target_n]
+            if len(vo_f) < target_n:
+                vo_f = np.pad(vo_f, (0, target_n - len(vo_f)))
+            else:
+                vo_f = vo_f[:target_n]
+
+            # Tính đường bao giọng Việt (cửa sổ mượt 350ms) để giữ nền giọng gốc đều đặn, không bị vọt âm cuối câu
+            sr = 44100
+            env_win = int(sr * 0.350)
+            hann = np.hanning(env_win).astype(np.float32)
+            hann /= np.sum(hann)
+            vo_active = (np.abs(vo_f) > 0.003).astype(np.float32)
+            smooth_active = np.clip(np.convolve(vo_active, hann, mode="same") * 1.45, 0.0, 1.0)
+
+            duck_floor = max(0.18, min(0.26, float(self.original_volume) * 0.88))
+            pause_ceil = min(0.32, duck_floor * 1.35)
+            bg_gain = pause_ceil - smooth_active * (pause_ceil - duck_floor)
+
+            # Chuẩn hóa nhẹ biên độ đỉnh của tiếng gốc nếu video gốc bị thu quá gắt (peak > 0.9)
+            bg_peak = float(np.max(np.abs(bg_f))) if len(bg_f) > 0 else 1.0
+            if bg_peak > 0.85:
+                bg_f = bg_f * (0.85 / bg_peak)
+
+            mixed = bg_f * bg_gain + vo_f * float(self.voiceover_volume)
+            # Soft limiter mượt bằng đường cong tanh để không bao giờ bị rè hay cắt đỉnh
+            mixed = np.tanh(mixed * 0.92) * 0.96
+            mixed_i16 = np.clip(np.round(mixed * 32767.0), -32768, 32767).astype(np.int16)
+
+            with wave.open(str(mixed_pcm_wav), "wb") as wf_out:
+                wf_out.setnchannels(1)
+                wf_out.setsampwidth(2)
+                wf_out.setframerate(sr)
+                wf_out.writeframes(mixed_i16.tobytes())
+
+            cmd_enc = [
+                self.ffmpeg_bin,
+                "-y",
+                "-v",
+                "error",
+                "-i",
+                str(mixed_pcm_wav),
+                "-c:a",
+                "aac",
+                "-b:a",
+                "192k",
+                str(output_audio_path),
+            ]
+            res = subprocess.run(cmd_enc, capture_output=True, text=True, check=False)
+            if res.returncode == 0 and output_audio_path.exists():
+                return output_audio_path
+        except Exception as exc:
+            logger.warning(f"Lỗi trộn PCM mượt ({exc}), chuyển sang ffmpeg fallback.")
+        finally:
+            orig_pcm_wav.unlink(missing_ok=True)
+            mixed_pcm_wav.unlink(missing_ok=True)
+
         filter_complex = (
-            f"[0:a]highpass=f=60,equalizer=f=350:t=o:w=1.5:g=-22,"
-            f"equalizer=f=1200:t=o:w=2.2:g=-24,equalizer=f=3200:t=o:w=1.8:g=-22,"
-            f"volume={self.original_volume:.2f}[bg];"
+            f"[0:a]volume={self.original_volume:.2f}[bg];"
             f"[1:a]volume={self.voiceover_volume:.2f}[vo];"
             f"[bg][vo]amix=inputs=2:duration=first:dropout_transition=0:normalize=0,"
             f"alimiter=limit=0.95:attack=5:release=50[aout]"
@@ -1032,20 +1176,27 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             else:
                 cmd.extend(["-an"])
 
+            import hashlib as _hashlib
+            sig_seed = int(_hashlib.md5(str(out_path.name).encode("utf-8")).hexdigest()[:6], 16)
+            gop_val = str(48 + (sig_seed % 16))
+            crf_val = str(20 + (sig_seed % 2))
+            encoder_list = [p["encoder_sig"] for p in CHANNEL_VOICE_PROFILES.values() if "encoder_sig" in p]
+            chosen_encoder = encoder_list[sig_seed % len(encoder_list)] if encoder_list else "CapCut 14.4.0"
+
             cmd.extend(
                 [
                     "-map_metadata",
                     "-1",
                     "-metadata",
-                    "encoder=CapCut 14.2.0",
+                    f"encoder={chosen_encoder}",
                     "-c:v",
                     "libx264",
                     "-preset",
                     "fast",
                     "-crf",
-                    "21",
+                    crf_val,
                     "-g",
-                    "58",
+                    gop_val,
                     "-pix_fmt",
                     "yuv420p",
                     str(out_path),

@@ -156,7 +156,10 @@ def process_prepared_story(
         base_rate=voice_cfg["base_rate"],
         pitch=voice_cfg["pitch"],
     )
-    voiced_segments = tts_engine.synthesize_segments(translated_segments)
+    voiced_segments = tts_engine.synthesize_segments(
+        translated_segments,
+        video_path=raw_video_path,
+    )
 
     # Bước 5: Ghép âm thanh (ducking) & burn phụ đề bằng ffmpeg
     logger.info("=== [5/5] GHÉP ÂM THANH & ĐÓNG PHỤ ĐỀ LÊN VIDEO (FFMPEG) ===")
@@ -335,6 +338,7 @@ def run_pipeline(
         transcript_data = transcriber.transcribe(
             audio_path=audio_path,
             save_json_path=transcript_json,
+            video_path=raw_video_path,
         )
         transcript_data["original_title"] = dl_title
         detected_lang = (transcript_data.get("language") or "zh").lower().strip()

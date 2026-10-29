@@ -196,6 +196,16 @@ class AudioTranscriber:
         # Bước 3: Khử câu lặp/nói lắp và gộp các mệnh đề quá ngắn thành câu hoàn chỉnh tự nhiên
         segments = self._merge_short_clauses(raw_segments, detected_lang)
 
+        # Bước 4: Khóa chính xác mốc bắt đầu (start) và kết thúc (end) của từng câu thoại theo
+        # đường bao giọng nói gốc (Vocal Band 300Hz-3200Hz) + thời điểm xuất hiện/tắt phụ đề gốc (10fps OCR)
+        if segments:
+            segments = self._align_segments_with_ocr_and_vocal_bounds(
+                segments=segments,
+                audio_path=audio_path,
+                video_path=inferred_video if has_video else None,
+                detected_lang=detected_lang,
+            )
+
         logger.info(
             f"Đã bóc tách & chuẩn hóa thành công {len(segments)} câu thoại hoàn chỉnh "
             f"(mean_logprob={mean_logprob:.2f}, ocr_coverage={ocr_coverage:.0%})."
@@ -596,6 +606,41 @@ for path in args {
             ocr_hits = 0
             for seg, seg_samples in zip(segments, samples_per_seg):
                 w_text = (seg.get("text") or "").strip()
+                st_f = float(seg["start"])
+                en_f = float(seg["end"])
+                dur_f = en_f - st_f
+
+                # Nếu segment kéo dài >= 1.80s và tại 2 thời điểm (26% và 74%) xuất hiện 2 thẻ phụ đề độc lập khác nhau
+                # (ví dụ: 0.00s-1.75s '男人要洗碗' và 1.75s-3.42s '才能当老板'), tự động tách đôi thành 2 câu khớp đúng nhịp hình!
+                if len(seg_samples) == 2 and dur_f >= 1.80:
+                    cands_1 = [c for c in seg_samples[0] if line_freq.get(c, 0) < 3 and 2 <= len(re.findall(r"[\u4e00-\u9fff]", c)) <= 14]
+                    cands_2 = [c for c in seg_samples[1] if line_freq.get(c, 0) < 3 and 2 <= len(re.findall(r"[\u4e00-\u9fff]", c)) <= 14]
+                    if len(cands_1) == 1 and len(cands_2) == 1:
+                        s1_clean = re.sub(r"[\s，,。.!！?？]+", "", cands_1[0])
+                        s2_clean = re.sub(r"[\s，,。.!！?？]+", "", cands_2[0])
+                        if (
+                            s1_clean != s2_clean
+                            and s1_clean not in s2_clean
+                            and s2_clean not in s1_clean
+                            and (_match_best_ocr_for_target(w_text, cands_1) or _match_best_ocr_for_target(w_text, cands_2))
+                        ):
+                            mid_t = round(st_f + dur_f * 0.52, 2)
+                            seg_a = dict(seg)
+                            seg_a["start"] = round(st_f, 2)
+                            seg_a["end"] = mid_t
+                            seg_a["whisper_raw_text"] = w_text
+                            seg_a["ocr_matched"] = True
+                            seg_a["text"] = cands_1[0]
+                            seg_b = dict(seg)
+                            seg_b["start"] = round(mid_t + 0.04, 2)
+                            seg_b["end"] = round(en_f, 2)
+                            seg_b["whisper_raw_text"] = w_text
+                            seg_b["ocr_matched"] = True
+                            seg_b["text"] = cands_2[0]
+                            refined.extend([seg_a, seg_b])
+                            ocr_hits += 2
+                            continue
+
                 flat_cands: List[str] = []
                 for s_list in seg_samples:
                     for item in s_list:
@@ -824,3 +869,285 @@ for path in args {
                 merged.append(seg_copy)
 
         return merged
+
+    def _align_segments_with_ocr_and_vocal_bounds(
+        self,
+        segments: List[Dict[str, Any]],
+        audio_path: Path,
+        video_path: Optional[Path] = None,
+        detected_lang: str = "zh",
+    ) -> List[Dict[str, Any]]:
+        """
+        Khóa chính xác tuyệt đối mốc bắt đầu (`start`) và kết thúc (`end`) của từng câu thoại gốc:
+        1. Quét đường bao phụ đề gốc trên video ở tốc độ 10fps (0.10s/frame) để lấy đúng thời điểm từng câu thoại xuất hiện và biến mất.
+        2. Kết hợp đường bao năng lượng giọng nói gốc (Vocal Band 300Hz-3200Hz, khung 40ms) để cắt bỏ khoảng lặng đầu/cuối câu,
+           đảm bảo giọng gốc mở miệng ở giây nào thì `start` ở đúng giây đó, giọng gốc dứt câu ở giây nào thì `end` ở đúng giây đó.
+        """
+        import wave
+        import numpy as np
+
+        if not segments:
+            return segments
+
+        ffmpeg_bin, _ = ensure_ffmpeg()
+        aligned = [dict(s) for s in segments]
+
+        # 1. Tính đường bao RMS dải tần giọng nói (300Hz - 3200Hz) với bước nhảy 40ms
+        vocal_rms = None
+        step_sec = 0.04
+        total_audio_dur = max((float(s["end"]) for s in aligned), default=0.0)
+        vid_real_dur = 0.0
+        if video_path and video_path.exists():
+            from .utils import get_media_duration
+            vid_real_dur = get_media_duration(video_path)
+            if vid_real_dur > 0.5:
+                total_audio_dur = vid_real_dur - 0.15
+        try:
+            with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tf:
+                vocal_wav = Path(tf.name)
+            subprocess.run(
+                [
+                    ffmpeg_bin,
+                    "-y",
+                    "-v",
+                    "error",
+                    "-i",
+                    str(video_path if (video_path and video_path.exists()) else audio_path),
+                    "-vn",
+                    "-af",
+                    "highpass=f=300,lowpass=f=3200",
+                    "-ac",
+                    "1",
+                    "-ar",
+                    "16000",
+                    str(vocal_wav),
+                ],
+                check=False,
+                timeout=15,
+            )
+            if vocal_wav.exists() and vocal_wav.stat().st_size > 200:
+                with wave.open(str(vocal_wav), "rb") as wf:
+                    sr = wf.getframerate()
+                    pcm = np.frombuffer(wf.readframes(wf.getnframes()), dtype=np.int16).astype(np.float32) / 32768.0
+                pcm_dur = len(pcm) / float(sr)
+                total_audio_dur = (vid_real_dur - 0.15) if vid_real_dur > 0.5 else max(total_audio_dur, pcm_dur - 0.12)
+                win = max(1, int(sr * step_sec))
+                n_frames = len(pcm) // win
+                if n_frames > 0:
+                    frames = pcm[: n_frames * win].reshape((n_frames, win))
+                    vocal_rms = np.sqrt(np.mean(frames * frames, axis=1))
+            vocal_wav.unlink(missing_ok=True)
+        except Exception as exc:
+            logger.debug(f"Vocal RMS extraction skipped: {exc}")
+
+        # 2. Quét timeline phụ đề 10fps (hoặc 6fps cho video dài > 45s) bằng Apple Vision OCR nếu là video tiếng Trung
+        ocr_spans: List[Dict[str, Any]] = []
+        if video_path and video_path.exists() and detected_lang.startswith("zh") and total_audio_dur <= 120.0:
+            try:
+                fps = 10 if total_audio_dur <= 45.0 else 6
+                dt = 1.0 / float(fps)
+                with tempfile.TemporaryDirectory() as td:
+                    subprocess.run(
+                        [
+                            ffmpeg_bin,
+                            "-y",
+                            "-v",
+                            "error",
+                            "-i",
+                            str(video_path),
+                            "-vf",
+                            f"fps={fps},crop=iw*0.90:ih*0.32:iw*0.05:ih*0.58",
+                            f"{td}/f_%04d.jpg",
+                        ],
+                        check=False,
+                        timeout=20,
+                    )
+                    imgs = sorted(Path(td).glob("f_*.jpg"))
+                    if imgs:
+                        swift_script = """
+import Foundation
+import Vision
+import AppKit
+let args = Array(CommandLine.arguments.dropFirst())
+let req = VNRecognizeTextRequest()
+req.recognitionLevel = .accurate
+req.recognitionLanguages = ["zh-Hans"]
+req.usesLanguageCorrection = true
+for path in args {
+    guard let img = NSImage(contentsOfFile: path),
+          let cgImg = img.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
+        print("")
+        continue
+    }
+    let handler = VNImageRequestHandler(cgImage: cgImg, options: [:])
+    try? handler.perform([req])
+    let texts = (req.results ?? []).compactMap { $0.topCandidates(1).first?.string }
+    print(texts.joined(separator: " ||| "))
+}
+"""
+                        res = subprocess.run(
+                            ["swift", "-e", swift_script] + [str(p) for p in imgs],
+                            capture_output=True,
+                            text=True,
+                            check=False,
+                            timeout=35,
+                        )
+                        if res.returncode == 0:
+                            raw_lines = res.stdout.splitlines()
+                            frame_texts: List[str] = []
+                            freq_map: Dict[str, int] = {}
+                            for row in raw_lines:
+                                best_piece = ""
+                                for piece in row.split("|||"):
+                                    cl = self._clean_ocr_line(piece)
+                                    hanzi = "".join(re.findall(r"[\u4e00-\u9fff]", cl))
+                                    if 2 <= len(hanzi) <= 18:
+                                        best_piece = cl
+                                        break
+                                frame_texts.append(best_piece)
+                                if best_piece:
+                                    freq_map[best_piece] = freq_map.get(best_piece, 0) + 1
+
+                            max_static_frames = max(int(len(frame_texts) * 0.38), int(5.5 * fps))
+                            for f_idx, txt in enumerate(frame_texts):
+                                if not txt or freq_map.get(txt, 0) > max_static_frames:
+                                    continue
+                                t_cur = round(f_idx * dt, 3)
+                                h_cur = "".join(re.findall(r"[\u4e00-\u9fff]", txt))
+                                if ocr_spans:
+                                    prev_sp = ocr_spans[-1]
+                                    h_prev = "".join(re.findall(r"[\u4e00-\u9fff]", prev_sp["text"]))
+                                    sim = difflib.SequenceMatcher(None, h_prev, h_cur).ratio()
+                                    if (t_cur - prev_sp["end"]) <= (dt * 2.2) and (
+                                        h_cur == h_prev
+                                        or sim >= 0.72
+                                        or (len(h_cur) == len(h_prev) and len(set(h_cur) & set(h_prev)) >= max(2, len(h_cur) - 1))
+                                    ):
+                                        prev_sp["end"] = round(t_cur + dt, 3)
+                                        prev_sp["counts"][txt] = prev_sp["counts"].get(txt, 0) + 1
+                                        best_t = max(prev_sp["counts"].items(), key=lambda kv: (kv[1], len(re.findall(r"[\u4e00-\u9fff]", kv[0]))))[0]
+                                        prev_sp["text"] = best_t
+                                        continue
+                                ocr_spans.append(
+                                    {
+                                        "start": t_cur,
+                                        "end": round(t_cur + dt, 3),
+                                        "text": txt,
+                                        "counts": {txt: 1},
+                                    }
+                                )
+                            ocr_spans = [sp for sp in ocr_spans if (sp["end"] - sp["start"]) >= 0.30]
+            except Exception as exc:
+                logger.debug(f"10fps OCR boundary scan skipped: {exc}")
+
+        # 3. Khớp từng câu thoại với ocr_spans (và tự động phục hồi nếu có dòng ocr_span độc lập bị gộp/bỏ sót)
+        if ocr_spans and len(ocr_spans) >= len(aligned):
+            rebuilt_from_ocr: List[Dict[str, Any]] = []
+            for sp in ocr_spans:
+                sp_h = "".join(re.findall(r"[\u4e00-\u9fff]", sp["text"]))
+                if len(sp_h) < 2:
+                    continue
+                best_seg = None
+                best_sim = -1.0
+                for seg in aligned:
+                    seg_h = "".join(re.findall(r"[\u4e00-\u9fff]", seg.get("text") or ""))
+                    sim = difflib.SequenceMatcher(None, seg_h, sp_h).ratio()
+                    if abs(float(seg["start"]) - sp["start"]) <= 1.8 and sim > best_sim:
+                        best_sim = sim
+                        best_seg = seg
+                base_item = dict(best_seg) if (best_seg and best_sim >= 0.35) else {
+                    "start": sp["start"],
+                    "end": sp["end"],
+                    "text": sp["text"],
+                    "language": detected_lang,
+                    "avg_logprob": -0.25,
+                    "ocr_matched": True,
+                }
+                base_item["start"] = sp["start"]
+                base_item["end"] = sp["end"]
+                if not best_seg or best_sim < 0.65:
+                    base_item["text"] = sp["text"]
+                rebuilt_from_ocr.append(base_item)
+            if len(rebuilt_from_ocr) >= len(aligned):
+                aligned = rebuilt_from_ocr
+
+        used_span_idxs = set()
+        for i, seg in enumerate(aligned):
+            st = float(seg["start"])
+            en = float(seg["end"])
+            seg_hanzi = "".join(re.findall(r"[\u4e00-\u9fff]", seg.get("text") or ""))
+            matched_sp = None
+            best_score = -1.0
+            best_sp_idx = -1
+
+            if ocr_spans and len(seg_hanzi) >= 2:
+                for sp_idx, sp in enumerate(ocr_spans):
+                    if sp_idx in used_span_idxs:
+                        continue
+                    if sp["end"] < st - 1.2 or sp["start"] > en + 1.2:
+                        continue
+                    sp_hanzi = "".join(re.findall(r"[\u4e00-\u9fff]", sp["text"]))
+                    sim = difflib.SequenceMatcher(None, seg_hanzi, sp_hanzi).ratio()
+                    if sim >= 0.55 or (len(sp_hanzi) >= 3 and (sp_hanzi in seg_hanzi or seg_hanzi in sp_hanzi)):
+                        time_dist = abs(sp["start"] - st) + abs(sp["end"] - en)
+                        sc = sim * 2.0 - time_dist * 0.15
+                        if sc > best_score:
+                            best_score = sc
+                            matched_sp = sp
+                            best_sp_idx = sp_idx
+
+            if matched_sp is not None:
+                used_span_idxs.add(best_sp_idx)
+                new_st = float(matched_sp["start"])
+                new_en = float(matched_sp["end"])
+                # Tinh chỉnh biên đầu/cuối +-0.10s theo năng lượng giọng nói gốc (Vocal RMS)
+                if vocal_rms is not None and len(vocal_rms) > 0:
+                    i0 = max(0, int((new_st - 0.10) / step_sec))
+                    i1 = min(len(vocal_rms), int((new_en + 0.12) / step_sec))
+                    if i1 > i0:
+                        sub_rms = vocal_rms[i0:i1]
+                        thr = max(0.014, float(np.max(sub_rms)) * 0.22)
+                        act = np.where(sub_rms >= thr)[0]
+                        if len(act) > 0:
+                            v_st = (i0 + int(act[0])) * step_sec
+                            v_en = (i0 + int(act[-1]) + 1) * step_sec
+                            new_st = max(new_st - 0.08, min(new_st + 0.08, v_st))
+                            new_en = max(new_en - 0.08, min(new_en + 0.10, v_en))
+                seg["start"] = round(max(0.0, new_st), 3)
+                seg["end"] = round(min(total_audio_dur, max(seg["start"] + 0.40, new_en)), 3)
+                if i == len(aligned) - 1 and (seg["end"] - seg["start"]) < 1.35 and i > 0:
+                    prev_en = float(aligned[i - 1]["end"])
+                    if seg["start"] > prev_en + 0.06:
+                        seg["start"] = round(max(prev_en + 0.04, seg["end"] - 1.35), 3)
+            elif vocal_rms is not None and len(vocal_rms) > 0:
+                # Nếu không có sub hình ảnh, dùng trực tiếp năng lượng giọng nói gốc để cắt khoảng lặng thừa ở đầu/cuối câu
+                i0 = max(0, int(st / step_sec))
+                i1 = min(len(vocal_rms), int((en + 0.12) / step_sec))
+                if i1 > i0 + 2:
+                    sub_rms = vocal_rms[i0:i1]
+                    thr = max(0.014, float(np.max(sub_rms)) * 0.22)
+                    act = np.where(sub_rms >= thr)[0]
+                    if len(act) > 0:
+                        v_st = max(st, (i0 + int(act[0])) * step_sec - 0.02)
+                        v_en = min(en + 0.10, (i0 + int(act[-1]) + 1) * step_sec + 0.02)
+                        if v_en - v_st >= 0.38:
+                            seg["start"] = round(v_st, 3)
+                            seg["end"] = round(min(total_audio_dur, v_en), 3)
+
+        # Đảm bảo các câu được sắp xếp tăng dần theo thời gian và không bao giờ chồng lấn nhau
+        aligned.sort(key=lambda s: (float(s["start"]), float(s["end"])))
+        for i in range(len(aligned) - 1):
+            cur_st = float(aligned[i]["start"])
+            cur_en = float(aligned[i]["end"])
+            nxt_st = float(aligned[i + 1]["start"])
+            if cur_en > nxt_st:
+                if nxt_st >= cur_st + 0.35:
+                    aligned[i]["end"] = round(nxt_st, 3)
+                else:
+                    mid = round(max(cur_st + 0.35, (cur_en + nxt_st) / 2.0), 3)
+                    aligned[i]["end"] = mid
+                    aligned[i + 1]["start"] = mid
+                    if float(aligned[i + 1]["end"]) < mid + 0.35:
+                        aligned[i + 1]["end"] = round(min(total_audio_dur, mid + 0.45), 3)
+
+        return aligned

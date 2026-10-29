@@ -25,23 +25,35 @@ from .utils import logger
 
 DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
     "timezone": "Asia/Ho_Chi_Minh",
-    "default_post_times": ["08:00", "12:30", "20:00"],
+    "default_post_times": ["07:45", "12:15", "19:45"],
     "channel_post_times": {
-        "video_AI_hay": ["08:00", "12:30", "20:00"],
-        "baby_AI": ["08:10", "12:40", "20:10"],
-        "audio_dem_khuyen": ["08:20", "12:50", "20:20"],
-        "tu_chan_gioi": ["08:30", "13:00", "20:30"],
+        "video_AI_hay": ["07:25", "12:05", "19:20"],
+        "baby_AI": ["08:05", "12:42", "20:05"],
+        "audio_dem_khuyen": ["08:48", "13:25", "21:15"],
+        "tu_chan_gioi": ["09:18", "14:10", "20:42"],
+        "meo_vat_gia_dinh": ["07:10", "11:35", "18:50"],
+        "suc_khoe_duong_sinh": ["06:50", "11:55", "19:35"],
+        "phu_nu_khi_chat": ["08:28", "13:05", "20:25"],
+        "bai_hoc_kinh_doanh": ["07:38", "12:22", "21:00"],
+        "nuoi_con_eq": ["08:15", "12:52", "19:50"],
+        "muu_luoc_nhan_sinh": ["09:05", "13:45", "21:35"],
     },
     "filter_24h_enabled": True,
-    "filter_24h_runs_per_day": 7,
-    "filter_24h_videos_per_session": 10,
+    "filter_24h_runs_per_day": 2,
+    "filter_24h_videos_per_session": 6,
     "channel_filter_24h_times": {
-        "video_AI_hay": ["06:00", "09:30", "11:00", "14:00", "16:00", "18:00", "21:30"],
-        "baby_AI": ["06:15", "09:45", "11:15", "14:15", "16:15", "18:15", "21:45"],
-        "audio_dem_khuyen": ["06:30", "10:00", "11:30", "14:30", "16:30", "18:30", "22:00"],
-        "tu_chan_gioi": ["06:45", "10:15", "11:45", "14:45", "16:45", "18:45", "22:15"],
+        "video_AI_hay": ["09:40", "17:20"],
+        "baby_AI": ["10:15", "18:05"],
+        "audio_dem_khuyen": ["10:50", "18:40"],
+        "tu_chan_gioi": ["11:25", "19:10"],
+        "meo_vat_gia_dinh": ["09:15", "16:45"],
+        "suc_khoe_duong_sinh": ["09:55", "17:35"],
+        "phu_nu_khi_chat": ["10:35", "18:20"],
+        "bai_hoc_kinh_doanh": ["11:05", "18:55"],
+        "nuoi_con_eq": ["10:05", "17:50"],
+        "muu_luoc_nhan_sinh": ["11:40", "19:25"],
     },
-    "random_jitter_minutes": 9,
+    "random_jitter_minutes": 26,
     "warmup_before_upload": True,
     "use_macos_native_input": True,
     "headless": False,
@@ -268,12 +280,99 @@ class TikTokAutoPoster:
                 pass
 
     @staticmethod
+    def _get_or_create_channel_fingerprint(user_data_dir: Path) -> Dict[str, Any]:
+        """
+        Tạo và lưu trữ cấu hình Anti-Detect Fingerprint cố định riêng biệt cho từng kênh (`profile_fingerprint.json`)
+        nhằm cô lập hoàn toàn 10 kênh trên cùng 1 máy Mac (khác độ phân giải cửa sổ, số nhân CPU, RAM,
+        WebGL Renderer, hạt giống nhiễu Canvas/AudioContext và Proxy riêng).
+        """
+        import os
+
+        user_data_dir.mkdir(parents=True, exist_ok=True)
+        fp_file = user_data_dir / "profile_fingerprint.json"
+        ch_name = user_data_dir.name
+        seed_int = int(hashlib.md5(ch_name.encode("utf-8")).hexdigest()[:8], 16)
+
+        window_presets = [
+            (1366, 860, 20, 20),
+            (1440, 880, 36, 28),
+            (1512, 910, 48, 24),
+            (1480, 890, 28, 34),
+            (1400, 870, 42, 18),
+            (1536, 864, 16, 30),
+            (1420, 900, 32, 22),
+            (1460, 880, 24, 26),
+            (1390, 850, 38, 32),
+            (1500, 895, 30, 20),
+        ]
+        webgl_renderers = [
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)",
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M2 Pro, Unspecified Version)",
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)",
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Pro, Unspecified Version)",
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Pro, Unspecified Version)",
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M2 Max, Unspecified Version)",
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Max, Unspecified Version)",
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Max, Unspecified Version)",
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version)",
+            "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+        ]
+        cores_pool = [8, 10, 12, 14, 16]
+        mem_pool = [8, 16, 32]
+
+        idx = seed_int % len(window_presets)
+        w, h, px, py = window_presets[idx]
+        default_fp = {
+            "channel": ch_name,
+            "window_width": w,
+            "window_height": h,
+            "window_x": px,
+            "window_y": py,
+            "hardware_concurrency": cores_pool[seed_int % len(cores_pool)],
+            "device_memory": mem_pool[(seed_int // 3) % len(mem_pool)],
+            "webgl_renderer": webgl_renderers[idx],
+            "canvas_noise_r": ((seed_int % 5) + 1),
+            "canvas_noise_g": (((seed_int >> 4) % 5) + 1),
+            "proxy_server": "",
+        }
+
+        if fp_file.exists():
+            try:
+                loaded = json.loads(fp_file.read_text(encoding="utf-8"))
+                if isinstance(loaded, dict):
+                    default_fp.update(loaded)
+            except Exception:
+                pass
+
+        # Ưu tiên lấy Proxy riêng của kênh từ biến môi trường nếu có (ví dụ: TIKTOK_PROXY_baby_AI hoặc CHANNEL_2_PROXY)
+        env_proxy = (
+            os.getenv(f"TIKTOK_PROXY_{ch_name}")
+            or os.getenv(f"TIKTOK_PROXY_{ch_name.upper()}")
+            or default_fp.get("proxy_server")
+            or ""
+        ).strip()
+        default_fp["proxy_server"] = env_proxy
+
+        try:
+            fp_file.write_text(json.dumps(default_fp, ensure_ascii=False, indent=2), encoding="utf-8")
+        except Exception:
+            pass
+        return default_fp
+
+    @staticmethod
     def _launch_stealth_chrome_context(playwright_obj: Any, user_data_dir: Path, headless: bool = False) -> Any:
         """
-        Khởi chạy Google Chrome thật với cấu hình Anti-Detect (xóa `--enable-automation`,
-        bật WebGL/GPU tự nhiên, tiêm `STEALTH_INIT_SCRIPT`).
+        Khởi chạy Google Chrome thật với cấu hình Anti-Detect cô lập theo từng kênh:
+        - Đọc `profile_fingerprint.json` riêng của từng kênh (độ phân giải riêng, CPU/RAM riêng, WebGL/Canvas noise riêng).
+        - Tự động gắn Proxy riêng của kênh (nếu cấu hình) và chặn rò rỉ IP thật qua WebRTC.
         """
         TikTokAutoPoster._cleanup_stale_chrome_profile_locks(user_data_dir)
+        fp = TikTokAutoPoster._get_or_create_channel_fingerprint(user_data_dir)
+        win_w = int(fp.get("window_width", 1366))
+        win_h = int(fp.get("window_height", 860))
+        win_x = int(fp.get("window_x", 20))
+        win_y = int(fp.get("window_y", 20))
+
         launch_args = [
             "--disable-blink-features=AutomationControlled",
             "--disable-infobars",
@@ -283,8 +382,9 @@ class TikTokAutoPoster:
             "--enable-zero-copy",
             "--disable-renderer-backgrounding",
             "--disable-background-timer-throttling",
-            "--window-size=1366,860",
-            "--window-position=20,20",
+            "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+            f"--window-size={win_w},{win_h}",
+            f"--window-position={win_x},{win_y}",
             "--lang=vi-VN",
         ]
         ignore_args = [
@@ -302,30 +402,45 @@ class TikTokAutoPoster:
             "--disable-sync",
         ]
 
+        ctx_kwargs: Dict[str, Any] = {
+            "user_data_dir": str(user_data_dir),
+            "headless": headless,
+            "no_viewport": True,
+            "locale": "vi-VN",
+            "timezone_id": "Asia/Ho_Chi_Minh",
+            "args": launch_args,
+            "ignore_default_args": ignore_args,
+        }
+        proxy_srv = str(fp.get("proxy_server") or "").strip()
+        if proxy_srv:
+            ctx_kwargs["proxy"] = {"server": proxy_srv}
+
         try:
             context = playwright_obj.chromium.launch_persistent_context(
-                user_data_dir=str(user_data_dir),
                 channel="chrome",
-                headless=headless,
-                no_viewport=True,
-                locale="vi-VN",
-                timezone_id="Asia/Ho_Chi_Minh",
-                args=launch_args,
-                ignore_default_args=ignore_args,
+                **ctx_kwargs,
             )
         except Exception:
             TikTokAutoPoster._cleanup_stale_chrome_profile_locks(user_data_dir)
-            context = playwright_obj.chromium.launch_persistent_context(
-                user_data_dir=str(user_data_dir),
-                headless=headless,
-                no_viewport=True,
-                locale="vi-VN",
-                timezone_id="Asia/Ho_Chi_Minh",
-                args=launch_args,
-                ignore_default_args=ignore_args,
-            )
+            context = playwright_obj.chromium.launch_persistent_context(**ctx_kwargs)
 
-        context.add_init_script(STEALTH_INIT_SCRIPT)
+        hw_cores = int(fp.get("hardware_concurrency", 8))
+        dev_mem = int(fp.get("device_memory", 16))
+        webgl_rend = str(fp.get("webgl_renderer", "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)"))
+        per_channel_fp_script = f"""
+        (() => {{
+            try {{
+                Object.defineProperty(navigator, 'hardwareConcurrency', {{ get: () => {hw_cores}, configurable: true }});
+                Object.defineProperty(navigator, 'deviceMemory', {{ get: () => {dev_mem}, configurable: true }});
+                const origGetParam = WebGLRenderingContext.prototype.getParameter;
+                WebGLRenderingContext.prototype.getParameter = function(p) {{
+                    if (p === 37446) return {json.dumps(webgl_rend)};
+                    return origGetParam.apply(this, arguments);
+                }};
+            }} catch (e) {{}}
+        }})();
+        """
+        context.add_init_script(STEALTH_INIT_SCRIPT + "\n" + per_channel_fp_script)
         return context
 
     def _human_move_mouse(self, page: Any, target_x: float, target_y: float) -> None:
@@ -904,19 +1019,50 @@ class TikTokAutoPoster:
             logger.debug(f"Bỏ qua chỉnh switch {label_keywords}: {exc}")
         return False
 
-    def _configure_upload_settings_public(self, page: Any, ch_folder: str) -> None:
+    @staticmethod
+    def detect_video_aigc_disclosure_needed(
+        video_path: Path, caption: str = "", hashtags: str = "", ch_folder: str = ""
+    ) -> bool:
         """
-        Tự động cài đặt toàn bộ mục `Cài đặt` và `Kiểm tra` trên trang Upload của TikTok Studio
-        (đúng theo Ảnh chụp màn hình 3 & 4 của người dùng):
+        Tự động nhận diện từng video trước khi đăng (bất kể ở kênh nào) xem có cần BẬT nút
+        'Nội dung do AI tạo' (AIGC Disclosure) hay không:
+        - Nếu video thuộc diện mô phỏng nhân vật/bối cảnh AI rõ rệt (baby_AI, video_AI_hay, hoặc chứa
+          từ khóa/hashtag #babyai, #hoathinhai, #phimnganai, #aianimation, #aitutien, 'AI ') -> BẬT (True).
+        - Nếu là video mẹo vặt đời sống, sức khỏe, tâm lý, kinh doanh, truyện kể Audio không mô phỏng người thật AI -> TẮT (False).
+        """
+        combined = f"{ch_folder} {video_path.name} {caption} {hashtags}".lower()
+        ai_markers = (
+            "baby_ai",
+            "video_ai_hay",
+            "#babyai",
+            "#hoathinhai",
+            "#phimnganai",
+            "#aianimation",
+            "#aitutien",
+            "#khamphaai",
+            "câu chuyện ai",
+            "hoạt hình ai",
+            "em bé ai",
+            "ai 생성",
+            "aigc",
+        )
+        return any(m in combined for m in ai_markers)
+
+    def _configure_upload_settings_public(
+        self, page: Any, ch_folder: str, aigc_on: bool = False
+    ) -> None:
+        """
+        Tự động cài đặt toàn bộ mục `Cài đặt` và `Kiểm tra` trên trang Upload của TikTok Studio:
         1. `Thời điểm đăng`: Chọn `Bây giờ`.
         2. `Người có thể nhìn thấy bài đăng này`: Bắt buộc chọn `Mọi người` (Công khai).
         3. `Nội dung tải lên chất lượng cao`: BẬT (`ON`).
         4. `Cho phép người dùng`: Tích chọn `Bình luận`.
-        5. `Khai báo nội dung bài đăng` & `Nội dung do AI tạo`: TẮT (`OFF`).
-        6. `Kiểm tra bản quyền nhạc` & `Kiểm tra nội dung nhanh`: BẬT (`ON`).
+        5. `Khai báo nội dung bài đăng`: TẮT (`OFF`).
+        6. `Nội dung do AI tạo`: Tự động BẬT (`ON`) nếu `aigc_on=True` (video có AI), ngược lại TẮT (`OFF`).
+        7. `Kiểm tra bản quyền nhạc` & `Kiểm tra nội dung nhanh`: BẬT (`ON`).
         """
         logger.info(
-            f"[{ch_folder}] Đang tự động cấu hình mục Cài đặt & Quyền riêng tư = 'Mọi người' (Công khai) trên trang Upload..."
+            f"[{ch_folder}] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = {'BẬT' if aigc_on else 'TẮT'})..."
         )
         try:
             # Cuộn xuống phần Cài đặt trong khung form chính bên phải
@@ -1021,12 +1167,12 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
-            # 5. Khai báo nội dung bài đăng & Nội dung do AI tạo -> TẮT (OFF)
+            # 5. Khai báo nội dung bài đăng -> TẮT (OFF); Nội dung do AI tạo -> BẬT/TẮT tự động theo từng video (aigc_on)
             self._set_switch_near_label(
                 page, ["Khai báo nội dung bài đăng", "Disclose post content"], desired_on=False
             )
             self._set_switch_near_label(
-                page, ["Nội dung do AI tạo", "AI-generated content"], desired_on=False
+                page, ["Nội dung do AI tạo", "AI-generated content"], desired_on=bool(aigc_on)
             )
 
             # Cuộn xuống phần Kiểm tra & nút Đăng
@@ -1287,6 +1433,232 @@ class TikTokAutoPoster:
             logger.warning(f"[{ch_folder}] Lưu ý khi chuyển quyền riêng tư tại tiktokstudio/content: {exc}")
 
         return switched_count
+
+    def _delete_post_in_content_page(
+        self,
+        page: Any,
+        ch_folder: str,
+        match_keywords: Optional[List[str]] = None,
+        delete_top_if_no_match: bool = False,
+    ) -> List[str]:
+        """
+        Tại trang `https://www.tiktok.com/tiktokstudio/content`, tìm bài đăng khớp `match_keywords`
+        (hoặc bài mới nhất trên cùng nếu `delete_top_if_no_match=True`), bấm nút `...` ở cột `Hành động`
+        -> chọn `Xóa` (`Delete`) -> xác nhận `Xóa` trong hộp thoại modal.
+        """
+        deleted_captions: List[str] = []
+        try:
+            if "tiktokstudio/content" not in (page.url or ""):
+                logger.info(
+                    f"[{ch_folder}] Đang mở trang Quản lý Bài đăng (tiktok.com/tiktokstudio/content) để kiểm tra và xóa video lỗi..."
+                )
+                page.goto(
+                    "https://www.tiktok.com/tiktokstudio/content",
+                    wait_until="domcontentloaded",
+                    timeout=45000,
+                )
+            time.sleep(random.uniform(5.0, 6.8))
+            self._dismiss_all_studio_popovers(page, ch_folder)
+
+            rows_info = page.evaluate(
+                """() => {
+                    const privacyPrefixes = ['Mọi người', 'Chỉ mình', 'Bạn bè', 'Everyone', 'Only me', 'Private', 'Friends'];
+                    const allEls = Array.from(document.querySelectorAll('button, [role="button"], [role="combobox"], div, span, a'));
+                    const privacyBtns = [];
+                    for (const el of allEls) {
+                        if (el.children.length > 4) continue;
+                        const txt = (el.innerText || el.textContent || '').trim();
+                        if (!txt || txt.length > 26) continue;
+                        if (!privacyPrefixes.some(p => txt.startsWith(p) || txt === p)) continue;
+                        const r = el.getBoundingClientRect();
+                        if (r.width < 45 || r.width > 210 || r.height < 18 || r.height > 60 || r.top < 205) continue;
+                        const cy = r.top + r.height / 2;
+                        if (!privacyBtns.some(b => Math.abs(b.y - cy) < 28)) {
+                            privacyBtns.push({ y: cy, top: r.top });
+                        }
+                    }
+                    privacyBtns.sort((a, b) => a.top - b.top);
+
+                    const rows = [];
+                    for (const pb of privacyBtns) {
+                        const rowY = pb.y;
+                        // Tìm caption ở nửa bên trái cùng hàng
+                        let bestCaption = '';
+                        for (const el of allEls) {
+                            const r = el.getBoundingClientRect();
+                            if (r.left < 110 || r.left > 480 || r.width < 60 || r.height < 14 || r.height > 90) continue;
+                            const cy = r.top + r.height / 2;
+                            if (Math.abs(cy - rowY) > 45) continue;
+                            const t = (el.innerText || el.textContent || '').trim().replace(/\\s+/g, ' ');
+                            if (t.length > bestCaption.length && t.length <= 260) {
+                                bestCaption = t;
+                            }
+                        }
+
+                        // Tìm nút '...' (nút hành động nằm ngoài cùng bên phải trên cùng hàng)
+                        const actionCandidates = [];
+                        const clickables = Array.from(document.querySelectorAll('button, [role="button"], svg, div[tabindex], span[ role="button"]'));
+                        for (const el of clickables) {
+                            const target = el.closest('button, [role="button"]') || el;
+                            const r = target.getBoundingClientRect();
+                            if (r.left < 950 || r.width < 16 || r.width > 64 || r.height < 16 || r.height > 64) continue;
+                            const cy = r.top + r.height / 2;
+                            if (Math.abs(cy - rowY) > 38) continue;
+                            actionCandidates.push({
+                                x: r.left + r.width / 2,
+                                y: cy,
+                                left: r.left,
+                                aria: target.getAttribute('aria-label') || target.getAttribute('data-e2e') || ''
+                            });
+                        }
+                        actionCandidates.sort((a, b) => b.left - a.left);
+                        if (actionCandidates.length > 0) {
+                            rows.push({
+                                rowY: rowY,
+                                caption: bestCaption,
+                                moreX: actionCandidates[0].x,
+                                moreY: actionCandidates[0].y,
+                                moreAria: actionCandidates[0].aria
+                            });
+                        }
+                    }
+                    return rows;
+                }"""
+            )
+
+            logger.info(f"[{ch_folder}] Tìm thấy {len(rows_info or [])} hàng bài đăng trên tiktokstudio/content: {rows_info}")
+            if not rows_info:
+                return deleted_captions
+
+            kw_lower = [k.lower() for k in (match_keywords or []) if k.strip()]
+            target_row = None
+            for r in rows_info:
+                cap_low = (r.get("caption") or "").lower()
+                if kw_lower and any(k in cap_low for k in kw_lower):
+                    target_row = r
+                    break
+            if target_row is None and delete_top_if_no_match:
+                target_row = rows_info[0]
+
+            if not target_row:
+                logger.info(f"[{ch_folder}] Không có bài đăng nào khớp từ khóa cần xóa ({match_keywords}).")
+                return deleted_captions
+
+            logger.info(
+                f"[{ch_folder}] Đang bấm nút '...' tại ({target_row['moreX']:.1f}, {target_row['moreY']:.1f}) "
+                f"để xóa bài đăng: '{target_row.get('caption')}'"
+            )
+            self._os_click_viewport(page, float(target_row["moreX"]), float(target_row["moreY"]))
+            time.sleep(1.3)
+
+            # Tìm nút 'Xóa' / 'Delete' trong menu vừa mở
+            del_option = page.evaluate(
+                """() => {
+                    const labels = ['xóa', 'xóa video', 'delete', 'delete video'];
+                    const els = Array.from(document.querySelectorAll('div, span, li, button, a, p'));
+                    const matches = [];
+                    for (const el of els) {
+                        if (el.children.length > 3) continue;
+                        const txt = (el.innerText || el.textContent || '').trim().toLowerCase();
+                        if (!labels.includes(txt)) continue;
+                        const r = el.getBoundingClientRect();
+                        if (r.width < 20 || r.width > 260 || r.height < 14 || r.height > 70 || r.top < 100) continue;
+                        matches.push({
+                            text: txt,
+                            x: r.left + r.width / 2,
+                            y: r.top + r.height / 2,
+                            left: r.left
+                        });
+                    }
+                    matches.sort((a, b) => b.left - a.left);
+                    return matches[0] || null;
+                }"""
+            )
+
+            if not del_option:
+                # Thử click bằng DOM trực tiếp vào nút '...' rồi tìm lại
+                page.mouse.click(float(target_row["moreX"]), float(target_row["moreY"]))
+                time.sleep(1.2)
+                del_option = page.evaluate(
+                    """() => {
+                        const labels = ['xóa', 'xóa video', 'delete', 'delete video'];
+                        const els = Array.from(document.querySelectorAll('div, span, li, button, a, p'));
+                        const matches = [];
+                        for (const el of els) {
+                            if (el.children.length > 3) continue;
+                            const txt = (el.innerText || el.textContent || '').trim().toLowerCase();
+                            if (!labels.includes(txt)) continue;
+                            const r = el.getBoundingClientRect();
+                            if (r.width < 20 || r.width > 260 || r.height < 14 || r.height > 70 || r.top < 100) continue;
+                            matches.push({
+                                text: txt,
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2,
+                                left: r.left
+                            });
+                        }
+                        matches.sort((a, b) => b.left - a.left);
+                        return matches[0] || null;
+                    }"""
+                )
+
+            if del_option:
+                logger.info(
+                    f"[{ch_folder}] Đã thấy tùy chọn '{del_option['text']}' tại ({del_option['x']:.1f}, {del_option['y']:.1f}), đang bấm..."
+                )
+                self._os_click_viewport(page, float(del_option["x"]), float(del_option["y"]))
+                time.sleep(1.6)
+
+                # Xác nhận nút 'Xóa' / 'Delete' trong hộp thoại Modal
+                confirm_btn = page.evaluate(
+                    """() => {
+                        const labels = ['xóa', 'delete', 'xác nhận', 'confirm'];
+                        const btns = Array.from(document.querySelectorAll('button, [role="button"]'));
+                        const candidates = [];
+                        for (const b of btns) {
+                            const txt = (b.innerText || b.textContent || '').trim().toLowerCase();
+                            if (!labels.includes(txt)) continue;
+                            const r = b.getBoundingClientRect();
+                            if (r.width < 40 || r.width > 260 || r.height < 24 || r.height > 70 || r.top < 180) continue;
+                            candidates.push({
+                                text: txt,
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2,
+                                top: r.top
+                            });
+                        }
+                        if (candidates.length > 0) {
+                            const clicked = candidates[candidates.length - 1];
+                            return clicked;
+                        }
+                        return null;
+                    }"""
+                )
+                if confirm_btn:
+                    logger.info(
+                        f"[{ch_folder}] Đang bấm xác nhận XÓA ('{confirm_btn['text']}') trong modal tại ({confirm_btn['x']:.1f}, {confirm_btn['y']:.1f})..."
+                    )
+                    self._os_click_viewport(page, float(confirm_btn["x"]), float(confirm_btn["y"]))
+                    try:
+                        page.evaluate(
+                            """() => {
+                                const labels = ['xóa', 'delete', 'xác nhận', 'confirm'];
+                                const btns = Array.from(document.querySelectorAll('button, [role="button"]'));
+                                for (const b of btns) {
+                                    const txt = (b.innerText || b.textContent || '').trim().toLowerCase();
+                                    if (labels.includes(txt)) b.click();
+                                }
+                            }"""
+                        )
+                    except Exception:
+                        pass
+                    time.sleep(3.8)
+                    deleted_captions.append(target_row.get("caption") or "top_post")
+                    logger.info(f"[{ch_folder}] ĐÃ XÓA THÀNH CÔNG bài đăng lỗi: '{target_row.get('caption')}'!")
+        except Exception as exc:
+            logger.warning(f"[{ch_folder}] Lỗi khi xóa bài đăng tại tiktokstudio/content: {exc}")
+
+        return deleted_captions
 
     def ensure_channel_posts_public(self, channel_arg: str, headless: bool = False) -> Dict[str, Any]:
         """
@@ -1615,7 +1987,12 @@ class TikTokAutoPoster:
         return min_elapsed
 
     def upload_one_channel_video(
-        self, channel_arg: str, headless: bool = False, force: bool = False
+        self,
+        channel_arg: str,
+        headless: bool = False,
+        force: bool = False,
+        delete_match_keywords: Optional[List[str]] = None,
+        delete_top_before_upload: bool = False,
     ) -> Optional[Dict[str, Any]]:
         """
         Tự động đăng 1 video từ `output/<ten_kenh>/ready/` lên kênh TikTok tương ứng với đầy đủ 5 bước:
@@ -1687,6 +2064,15 @@ class TikTokAutoPoster:
                 if do_warmup:
                     self._simulate_human_warmup(page, ch_folder)
 
+                deleted_posts: List[str] = []
+                if delete_match_keywords or delete_top_before_upload:
+                    deleted_posts = self._delete_post_in_content_page(
+                        page=page,
+                        ch_folder=ch_folder,
+                        match_keywords=delete_match_keywords,
+                        delete_top_if_no_match=delete_top_before_upload,
+                    )
+
                 # Bước 2: Truy cập TikTok Studio Upload đúng URL giao diện WebApp (có retry chống lỗi ngắt mạng tạm thời)
                 for _nav_attempt in range(3):
                     try:
@@ -1750,9 +2136,15 @@ class TikTokAutoPoster:
                     video_stem=video_path.stem,
                 )
 
-                # Bước 6: Tự động cấu hình toàn bộ mục Cài đặt & Kiểm tra (Công khai = Mọi người, HD = ON, Bình luận = ON)
+                # Bước 6: Tự động nhận diện AIGC cho từng video và cấu hình toàn bộ mục Cài đặt & Kiểm tra
                 self._dismiss_all_studio_popovers(page, ch_folder)
-                self._configure_upload_settings_public(page, ch_folder)
+                need_aigc_label = self.detect_video_aigc_disclosure_needed(
+                    video_path=video_path,
+                    caption=caption,
+                    hashtags=hashtags,
+                    ch_folder=ch_folder,
+                )
+                self._configure_upload_settings_public(page, ch_folder, aigc_on=need_aigc_label)
                 self._dismiss_all_studio_popovers(page, ch_folder)
 
                 # Cuộn khung form xuống cuối trang tới đúng nút đỏ `Đăng` (post_video_button) và click
@@ -1861,6 +2253,7 @@ class TikTokAutoPoster:
                         "video_file": video_path.name,
                         "caption": caption,
                         "hashtags": hashtags,
+                        "deleted_posts": deleted_posts,
                         "post_confirmed": post_confirmed,
                         "switched_public_count": switched_public,
                         "final_url": page.url,
@@ -2162,7 +2555,17 @@ class TikTokAutoPoster:
                     for single_ch in target_channels:
                         lock_fh = self._acquire_browser_process_lock()
                         try:
-                            res = self.upload_one_channel_video(single_ch, headless=headless)
+                            try:
+                                self.crawler.auto_sync_posted_videos()
+                            except Exception:
+                                pass
+                            res = self.upload_one_channel_video(
+                                single_ch,
+                                headless=headless,
+                                force=bool(remote_post.get("force", True)),
+                                delete_match_keywords=remote_post.get("delete_match_keywords"),
+                                delete_top_before_upload=bool(remote_post.get("delete_top_before_upload", False)),
+                            )
                             if res:
                                 any_ok = True
                                 posted_results.append(res)
@@ -2358,6 +2761,17 @@ class TikTokAutoPoster:
 
         history = self._load_post_history()
         filter_results: Dict[str, Any] = {}
+
+        # 0a-bridge. Nếu có lệnh remote_trigger_post_now mới từ máy Silicon chưa xử lý, ưu tiên chạy ngay
+        remote_post_chk = cfg.get("remote_trigger_post_now")
+        if isinstance(remote_post_chk, dict) and remote_post_chk.get("trigger_id"):
+            p_tid = str(remote_post_chk["trigger_id"]).strip()
+            if p_tid and f"remote_post_{p_tid}" not in history:
+                try:
+                    self.check_and_run_stream1_upload_schedule()
+                    history = self._load_post_history()
+                except Exception:
+                    pass
 
         # 0b. Kiểm tra lệnh kích hoạt chạy thử Bộ lọc 24h từ xa (Remote Trigger)
         remote_trig = cfg.get("remote_trigger_filter_24h")

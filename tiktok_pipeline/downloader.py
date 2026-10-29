@@ -101,15 +101,27 @@ class VideoDownloader:
 
     @staticmethod
     def detect_platform(url: str) -> str:
-        """Xác định nền tảng từ URL ('douyin' hoặc 'tiktok')."""
+        """Xác định nền tảng từ URL ('douyin', 'tiktok', 'youtube_shorts', 'facebook_reels', 'instagram_reels', 'bilibili', 'xiaohongshu', 'zalo')."""
         host = urlparse(url).netloc.lower()
         if "douyin.com" in host or "iesdouyin.com" in host:
             return "douyin"
         if "tiktok.com" in host:
             return "tiktok"
+        if "youtube.com" in host or "youtu.be" in host:
+            return "youtube_shorts"
+        if "facebook.com" in host or "fb.watch" in host or "fb.gg" in host:
+            return "facebook_reels"
+        if "instagram.com" in host:
+            return "instagram_reels"
+        if "bilibili.com" in host or "b23.tv" in host:
+            return "bilibili"
+        if "xiaohongshu.com" in host or "xhslink.com" in host:
+            return "xiaohongshu"
+        if "zalo.me" in host or "zalo.vn" in host:
+            return "zalo"
         raise ValueError(
-            f"URL không thuộc TikTok hoặc Douyin ({host}). "
-            "Hỗ trợ: tiktok.com, vt.tiktok.com, vm.tiktok.com, douyin.com, v.douyin.com"
+            f"URL không thuộc nền tảng hỗ trợ ({host}). "
+            "Hỗ trợ: TikTok, Douyin, YouTube Shorts, Facebook Reels, Instagram Reels, Bilibili, Xiaohongshu, Zalo Video"
         )
 
     def resolve_short_url(self, url: str, platform: str) -> Tuple[str, Optional[str]]:
@@ -163,13 +175,15 @@ class VideoDownloader:
 
     @staticmethod
     def _extract_video_id(url: str) -> Optional[str]:
-        """Trích xuất ID video 19 chữ số từ URL TikTok hoặc Douyin."""
+        """Trích xuất ID video từ URL TikTok, Douyin, YouTube Shorts, Facebook Reels, Instagram, Bilibili, Zalo."""
+        import hashlib
+
         parsed = urlparse(url)
         qs = parse_qs(parsed.query)
-        for key in ("modal_id", "aweme_id", "item_ids", "share_item_id"):
+        for key in ("modal_id", "aweme_id", "item_ids", "share_item_id", "v"):
             if key in qs and qs[key]:
-                candidate = qs[key][0]
-                if candidate.isdigit():
+                candidate = qs[key][0].strip()
+                if candidate:
                     return candidate
 
         patterns = [
@@ -177,11 +191,18 @@ class VideoDownloader:
             r"/v/(\d{15,22})\.html",
             r"modal_id=(\d{15,22})",
             r"/(\d{18,20})(?:[/?#]|$)",
+            r"/shorts/([A-Za-z0-9_-]{8,16})",
+            r"youtu\.be/([A-Za-z0-9_-]{8,16})",
+            r"/(?:reel|reels|videos)/([A-Za-z0-9_-]{6,25})",
+            r"/(BV[A-Za-z0-9]{8,14})",
+            r"/explore/([A-Za-z0-9]{16,28})",
         ]
         for pattern in patterns:
             match = re.search(pattern, url)
             if match:
                 return match.group(1)
+        if url.startswith("http"):
+            return hashlib.md5(url.encode("utf-8")).hexdigest()[:16]
         return None
 
     def download(self, raw_url: str) -> Dict[str, Path]:

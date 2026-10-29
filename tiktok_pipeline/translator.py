@@ -51,6 +51,42 @@ CHANNEL_STYLE_GUIDES: Dict[str, Dict[str, str]] = {
             "Hóa Thần, Độ Kiếp, Thánh địa, Linh căn, Thần thông, Pháp bảo, đạo hữu, sư tôn, Ta - Ngươi - Hắn - Nàng."
         ),
     },
+    "channel_5": {
+        "name": "Kênh 5 - Mẹo Vặt Nhà Cửa & Đồ Gia Dụng Thông Minh (Channel 5)",
+        "guide": (
+            "- Dịch súc tích, rõ ràng, thực tế theo phong cách chia sẻ mẹo vặt nhà cửa và tiện ích gia đình đời sống."
+        ),
+    },
+    "channel_6": {
+        "name": "Kênh 6 - Sức Khỏe Chủ Động & Dưỡng Sinh Đời Sống (Channel 6)",
+        "guide": (
+            "- Dịch chuẩn xác, dễ hiểu, gần gũi về thói quen sinh hoạt lành mạnh và chăm sóc sức khỏe chủ động (tránh dùng từ cam kết y khoa tuyệt đối)."
+        ),
+    },
+    "channel_7": {
+        "name": "Kênh 7 - Tâm Lý Hôn Nhân & Phụ Nữ Khí Chất (Channel 7)",
+        "guide": (
+            "- Dịch sâu sắc, tinh tế, chạm cảm xúc phụ nữ hiện đại và tâm lý ứng xử vợ chồng, gia đình."
+        ),
+    },
+    "channel_8": {
+        "name": "Kênh 8 - Chuyện Công Sở & Tư Duy Kinh Doanh (Channel 8)",
+        "guide": (
+            "- Dịch sắc bén, thực tế, truyền cảm hứng về kỹ năng giao tiếp công sở, làm chủ công việc và tư duy kiếm tiền."
+        ),
+    },
+    "channel_9": {
+        "name": "Kênh 9 - Nuôi Dạy Con Thông Minh & EQ Cho Bé (Channel 9)",
+        "guide": (
+            "- Dịch ấm áp, tâm lý, gần gũi với các bậc phụ huynh và mẹ bỉm sữa về cách đồng hành cùng con."
+        ),
+    },
+    "channel_10": {
+        "name": "Kênh 10 - Cổ Học Tinh Hoa & Mưu Lược Nhân Sinh (Channel 10)",
+        "guide": (
+            "- Dịch đĩnh đạc, sâu sắc, giàu chất triết lý nhân sinh và bài học đối nhân xử thế cổ kim."
+        ),
+    },
     "general": {
         "name": "Dịch Trực Tiếp Chuẩn Xác",
         "guide": (
@@ -145,7 +181,56 @@ class SubtitleTranslator:
             k in val for k in ("修仙", "玄幻", "修真", "仙")
         ):
             return "channel_4"
+        if "channel_5" in val or val == "5" or "meo_vat_gia_dinh" in val or any(
+            k in val for k in ("妙招", "好物", "厨房", "收纳")
+        ):
+            return "channel_5"
+        if "channel_6" in val or val == "6" or "suc_khoe_duong_sinh" in val or any(
+            k in val for k in ("健康", "养生", "睡眠")
+        ):
+            return "channel_6"
+        if "channel_7" in val or val == "7" or "phu_nu_khi_chat" in val or any(
+            k in val for k in ("女性", "婚姻", "高情商女人")
+        ):
+            return "channel_7"
+        if "channel_8" in val or val == "8" or "bai_hoc_kinh_doanh" in val or any(
+            k in val for k in ("商业", "职场", "老板思维")
+        ):
+            return "channel_8"
+        if "channel_9" in val or val == "9" or "nuoi_con_eq" in val or any(
+            k in val for k in ("育儿", "儿童情商", "家庭教育")
+        ):
+            return "channel_9"
+        if "channel_10" in val or val == "10" or "muu_luoc_nhan_sinh" in val or any(
+            k in val for k in ("国学", "权谋", "鬼谷子", "处世")
+        ):
+            return "channel_10"
         return "general"
+
+    @staticmethod
+    def _apply_commercial_safeguard(text: str) -> str:
+        """
+        Bộ lọc Kiểm duyệt An toàn Thương mại TikTok Shop (Commercial Safe-Guard):
+        Tự động thay thế các cụm từ vi phạm chính sách TikTok Shop (cam kết tuyệt đối 100%,
+        tuyên bố y khoa trị dứt điểm, dẫn dụ giao dịch ngoài nền tảng Zalo/FB/WeChat/QR).
+        """
+        if not text:
+            return text
+        safe_rules = [
+            (r"\btrị dứt điểm\b", "hỗ trợ cải thiện"),
+            (r"\bchữa khỏi hoàn toàn\b", "hỗ trợ phục hồi"),
+            (r"\bcam kết 100%", "cực kỳ hiệu quả"),
+            (r"\bhiệu quả 100%", "hiệu quả rõ rệt"),
+            (r"\btuyệt đối 100%", "vô cùng ấn tượng"),
+            (r"\bsố 1 thế giới\b", "được ưa chuộng hàng đầu"),
+            (r"\brẻ nhất thị trường\b", "giá cực kỳ tiết kiệm"),
+            (r"\b(?:liên hệ|nhắn tin|kết bạn|inbox)\s*(?:zalo|facebook|fb|wechat|viber|telegram)\b", "xem ngay tại phần bình luận"),
+            (r"\b(?:quét mã|mã qr|wechat|douyin)\b", "theo dõi kênh"),
+        ]
+        out = text
+        for pat, rep in safe_rules:
+            out = re.sub(pat, rep, out, flags=re.IGNORECASE)
+        return out
 
     def translate_segments(
         self,
@@ -539,6 +624,11 @@ class SubtitleTranslator:
             ("校车再等你了", "校车在等你了"),
             ("还贷了，今天肯定要迟到了", "糟了，今天上学肯定要迟到了"),
             ("完蛋了", "糟了"),
+            ("我妈为你出去", "我妈问你出去怎么不带我"),
+            ("我妈问你出去不带我", "我妈问你出去怎么不带我"),
+            ("带你行不", "带你去行，不带妈妈"),
+            ("带他你傻呀", "不带妈妈？你傻呀爸"),
+            ("爸他不去谁买单", "爸，妈妈不去谁买单啊"),
         ]
         for wrong, right in asr_fixes:
             cleaned = cleaned.replace(wrong, right)
@@ -560,6 +650,8 @@ class SubtitleTranslator:
         cleaned = re.sub(r"^我不认识[啊呀呢啦]*$", "我根本不认识那个人", cleaned)
         cleaned = re.sub(r"你还怀疑我是吧", "你居然还怀疑我", cleaned)
         cleaned = re.sub(r"^你等我[啊呀]*$", "你在那里等我一下", cleaned)
+        # Khử đại từ hư chỉ '他' trong cấu trúc khẩu ngữ '挣他几个亿 / 赚他几个亿' để NMT không dịch nhầm thành 'cho anh ta'
+        cleaned = re.sub(r"(挣|赚|花|赢)他(几个|几百|几千|一个)", r"轻松\1\2", cleaned)
 
         cleaned = re.sub(r"\s+", " ", cleaned).strip()
         return cleaned
@@ -697,6 +789,24 @@ class SubtitleTranslator:
             text = re.sub(r"\b(không biết|không quen)\s+(?:anh ấy|cô ấy|người đó|ông ấy|bà ấy)\b", r"\1", text, flags=re.IGNORECASE)
         else:
             text = re.sub(r"\b(không biết|không quen)\s+người đó\b", r"\1 nữa", text, flags=re.IGNORECASE)
+
+        # Khử chủ ngữ ngôi thứ 2 ('Bạn/Cậu') bị dịch máy tự thêm vào đầu câu khi câu gốc tiếng Trung hoàn toàn không có '你/你们/咱'
+        if not any(p in (orig_text or "") for p in ("你", "您", "咱", "我")):
+            text = re.sub(r"^(?:Bạn|Cậu|Các bạn)\s+(sẽ|mới có thể|có thể)\b", r"\1", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Đàn ông thích rửa bát\.?$", "Đàn ông chăm đi rửa bát", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Sự giàu có (?:sẽ )?đến một cách tự nhiên\.?$", "Tài lộc tự khắc tìm về", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Đàn ông (?:có thể|biết) nấu ăn\.?$", "Đàn ông khéo biết nấu ăn", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Cuộc sống lãng mạn hơn\.?$", "Cuộc sống càng thêm lãng mạn", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Đàn ông làm việc nhà\.?$", "Đàn ông chăm làm việc nhà", text, flags=re.IGNORECASE)
+            text = re.sub(r"^(?:Sẽ )?trở nên giàu có trong tương lai\.?$", "Tương lai ắt hẳn phát tài", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Tương lai ắt phát tài\.?$", "Tương lai ắt hẳn phát tài", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Đàn ông (?:phải đáng tin cậy|sống đàng hoàng)\.?$", "Đàn ông sống phải đàng hoàng", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Chỉ khi đó (?:bạn|cậu) mới có thể làm ông chủ\.?$", "Có thế mới làm sếp lớn", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Chỉ khi đó (?:bạn|cậu) mới có thể\b", "Có thế mới", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Đàn ông (?:yêu|thương chiều) vợ\.?$", "Đàn ông biết thương chiều vợ", text, flags=re.IGNORECASE)
+            text = re.sub(r"^(?:Hãy lái|Cả đời lái) (?:chiếc )?Maybach(?: suốt đời)?\.?$", "Cả đời lái xe Maybach", text, flags=re.IGNORECASE)
+            text = re.sub(r"^Hãy lái (?:chiếc )?(.+?) suốt đời\.?$", r"Cả đời lái \1", text, flags=re.IGNORECASE)
+            text = re.sub(r"^(?:Dễ dàng )?kiếm (?:được )?hàng trăm triệu\.?$", "Kiếm ngon lành vài trăm tỷ", text, flags=re.IGNORECASE)
 
         # 2. Chuẩn hóa văn phong & thuật ngữ Tiên Hiệp cho Kênh 4 (Tu Tiên / Huyền Huyễn)
         if channel_key == "channel_4":
@@ -851,6 +961,42 @@ class SubtitleTranslator:
             else:
                 p1_cap, p1_low, p2_cap, p2_low = "Mình", "mình", "Cậu", "cậu"
 
+            orig_clean = re.sub(r"[\s，,。.!！?？]+", "", orig_s)
+            direct_family_dialogue = {
+                "你跟你爸说": "Con ra bảo bố con",
+                "能过就过": "Sống được thì sống",
+                "不能过就离": "Không sống được thì ly hôn!",
+                "爸我妈让你消消气": "Bố ơi, mẹ bảo bố bớt giận đi",
+                "一会给你做你最爱的红烧肉": "Tí mẹ nấu thịt kho tàu bố thích nhất",
+                "我不吃我自己出去吃": "Bố không ăn, bố tự ra ngoài ăn!",
+                "妈妈爸爸说最爱你了": "Mẹ ơi, bố bảo thương mẹ nhất nhà",
+                "一生一世都不离开你": "Cả đời này chẳng bao giờ rời xa mẹ",
+                "他真这么说呀": "Bố con nói thế thật hả?",
+                "还真这么说呀": "Bố con nói thế thật hả?",
+                "那可不": "Chứ còn gì nữa ạ!",
+                "他说晚上带咱出去吃呢": "Bố bảo tối dẫn mẹ con mình đi ăn ngoài đấy",
+                "你赶紧化个美美的妆": "Mẹ mau trang điểm thật xinh vào nhé",
+                "我妈为你出去": "Mẹ hỏi sao bố đi ăn mà không dẫn con?",
+                "我妈问你出去不带我": "Mẹ hỏi sao bố đi ăn mà không dẫn con?",
+                "我妈问你出去怎么不带我": "Mẹ hỏi sao bố đi ăn mà không dẫn con?",
+                "带你行不": "Dẫn con đi thôi, khỏi dẫn mẹ con",
+                "带你行不带他": "Dẫn con đi thôi, khỏi dẫn mẹ con",
+                "带他你傻呀": "Bố ngốc thế hả bố!",
+                "你傻呀爸": "Bố ngốc thế hả bố!",
+                "爸他不去谁买单": "Mẹ không đi thì ai trả tiền hả bố?",
+                "他不去谁买单": "Mẹ không đi thì ai trả tiền hả bố?",
+                "嘿嘿说的也是": "Hì hì, con nói cũng phải ha",
+                "说的也是": "Ừ nhỉ, con nói cũng phải ha",
+                "你跟他说": "Con vào bảo mẹ đi",
+                "我在门口等他": "Bố đứng ở cửa đợi mẹ nhé",
+                "嗯好嘞": "Dạ vâng ạ!",
+                "我的妈呀": "Ối giời đất ơi!",
+                "一天天的": "Ngày nào cũng thế này",
+                "这个家离开了我得散": "Cái nhà này thiếu con chắc tan đàn xẻ nghé!",
+            }
+            if orig_clean in direct_family_dialogue:
+                return direct_family_dialogue[orig_clean]
+
             comedy_phrase_fixes = [
                 (r"\bChúa ơi\b", "Trời đất ơi"),
                 (r"\bÔi chúa ơi\b", "Ối giời ơi"),
@@ -875,7 +1021,7 @@ class SubtitleTranslator:
                 (r"\bTôi\b", "__P1_CAP__"),
                 (r"\btôi\b", "__P1_LOW__"),
                 (r"\bMình\b", "__P1_CAP__"),
-                (r"\bmình\b", "__P1_LOW__"),
+                (r"(?<!một\s)(?<!chúng\s)(?<!tự\s)(?<!riêng\s)\bmình\b", "__P1_LOW__"),
                 (r"\bTớ\b", "__P1_CAP__"),
                 (r"\btớ\b", "__P1_LOW__"),
                 (r"\bBạn\b", "__P2_CAP__"),
@@ -893,7 +1039,8 @@ class SubtitleTranslator:
                 .replace("__P2_LOW__", p2_low)
             )
 
-        # 6. Đảm bảo viết hoa chữ cái đầu câu, giữ trọn vẹn câu (không cắt cụt chữ giữa chừng)
+        # 6. Áp dụng Bộ lọc An toàn Thương mại TikTok Shop & viết hoa chữ cái đầu câu
+        text = SubtitleTranslator._apply_commercial_safeguard(text)
         text = text.strip(" -–—")
         if text:
             text = text[0].upper() + text[1:]
@@ -1245,13 +1392,42 @@ class SubtitleTranslator:
                 f"🔥 Siêu phẩm Huyền Huyễn Tu Tiên: {core_topic}.{extra_summary} Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
                 f"🐉 {core_topic} — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ!{extra_summary} Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
             ],
+            "channel_5": [
+                f"💡 [Mẹo Vặt Gia Đình] {core_topic}.{extra_summary} Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+                f"🏠 Bảo bối dọn nhà thông minh: {core_topic}.{extra_summary} Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
+            ],
+            "channel_6": [
+                f"🌿 [Sức Khỏe Chủ Động] {core_topic}.{extra_summary} Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+                f"💪 Chăm sóc sức khỏe gia đình: {core_topic}.{extra_summary} Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
+            ],
+            "channel_7": [
+                f"✨ [Phụ Nữ Khí Chất] {core_topic}.{extra_summary} Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
+                f"🌹 Tâm lý Hôn nhân & Gia đình: {core_topic}.{extra_summary} Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
+            ],
+            "channel_8": [
+                f"💼 [Tư Duy Kiếm Tiền] {core_topic}.{extra_summary} Bài học thực chiến đắt giá trong công việc và cuộc sống mà không trường lớp nào dạy bạn. Bạn tâm đắc nhất câu nói nào?",
+                f"🚀 Chuyện Công Sở & Kinh Doanh: {core_topic}.{extra_summary} Khác biệt lớn nhất nằm ở cách nhìn nhận vấn đề. Lưu lại để ngẫm khi cần nhé!",
+            ],
+            "channel_9": [
+                f"👶 [Nuôi Con Thông Minh] {core_topic}.{extra_summary} Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
+                f"🤱 Đồng hành cùng con: {core_topic}.{extra_summary} Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
+            ],
+            "channel_10": [
+                f"📜 [Mưu Lược Nhân Sinh] {core_topic}.{extra_summary} Trí tuệ cổ nhân đúc kết ngàn năm, ứng dụng vào đời sống hiện đại vẫn chuẩn xác từng chữ! Ngẫm lại thấy đúng không mọi người?",
+                f"☯️ Cổ Học Tinh Hoa: {core_topic}.{extra_summary} Nhìn thấu lòng người để sống an nhiên và vững vàng hơn trước sóng gió. Lưu lại nghe mỗi tối nhé!",
+            ],
             "general": [
                 f"🎬 {core_topic}.{extra_summary} Xem hết video để không bỏ lỡ cái kết bất ngờ ở giây cuối cùng nhé!",
             ],
         }
 
         templates = script_templates.get(ch_key, script_templates["general"])
-        short_script = templates[seed_val % len(templates)]
+        short_script = self._apply_commercial_safeguard(templates[seed_val % len(templates)])
+
+        # Điều hướng mềm an toàn (Safe Funnel) cho 4 kênh vệ tinh chủ lực (Kênh 2, 5, 6, 7) nếu cấu hình MAIN_SHOP_HANDLE
+        main_shop_handle = (os.getenv("MAIN_SHOP_HANDLE") or "").strip().lstrip("@")
+        if main_shop_handle and ch_key in ("channel_2", "channel_5", "channel_6", "channel_7"):
+            short_script = f"{short_script} Ghé @{main_shop_handle} để xem thêm nhiều điều thú vị cho gia đình nhé!"
 
         # Kho Hashtag Hot Search TikTok Việt Nam phân tầng (Core Niche + Hot Search + Viral FYP)
         hot_search_pools = {
@@ -1310,6 +1486,90 @@ class SubtitleTranslator:
                     "#tomtathoathinh3d",
                     "#animehay",
                     "#phimhoathinh3d",
+                ],
+            },
+            "channel_5": {
+                "seed_kw": "meovatgiadinh",
+                "core": ["#meovatgiadinh", "#dogiadungthongminh", "#meovatcuocsong", "#nhabepthongminh"],
+                "hot_search": [
+                    "#donnhasach",
+                    "#meohaymoingay",
+                    "#giadungtienich",
+                    "#noitrothongminh",
+                    "#yeubep",
+                    "#decorphong",
+                    "#tienichgiadinh",
+                    "#savingtips",
+                ],
+            },
+            "channel_6": {
+                "seed_kw": "suckhoe",
+                "core": ["#suckhoechudong", "#meosuckhoe", "#duongsinh", "#songkhoe"],
+                "hot_search": [
+                    "#chamSocSucKhoe",
+                    "#suckhoegiadinh",
+                    "#ngungon",
+                    "#biquyetsongkhoe",
+                    "#kienthucsuckhoe",
+                    "#thaydoithoiquen",
+                    "#healthyvietnam",
+                    "#songlanhmanh",
+                ],
+            },
+            "channel_7": {
+                "seed_kw": "phunukhichat",
+                "core": ["#phunukhichat", "#tamlyhonnhan", "#phunuhienđai", "#giadinhhanhphuc"],
+                "hot_search": [
+                    "#phunuthongminh",
+                    "#kynanggiaotiep",
+                    "#yeubanthanhon",
+                    "#chuyenvochong",
+                    "#tamlyhoc",
+                    "#trietlytinhyeu",
+                    "#phunulamdep",
+                    "#chualanhtamhon",
+                ],
+            },
+            "channel_8": {
+                "seed_kw": "baihockinhdoanh",
+                "core": ["#baihockinhdoanh", "#tuduykiemtien", "#chuyencongso", "#ptbt"],
+                "hot_search": [
+                    "#tuduythanhcong",
+                    "#khoinghiep",
+                    "#kynangmem",
+                    "#baihocthanhcong",
+                    "#kinhdoanhonline",
+                    "#phattrienbanthan",
+                    "#nghethuatgiaotiep",
+                    "#tuduylamchu",
+                ],
+            },
+            "channel_9": {
+                "seed_kw": "nuoiconthongminh",
+                "core": ["#nuoiconthongminh", "#dayconeq", "#mevabe", "#giaoducsom"],
+                "hot_search": [
+                    "#chamconkhoahoc",
+                    "#tamlytreem",
+                    "#mebimsua",
+                    "#donghanhcungcon",
+                    "#daycontulap",
+                    "#nuoidaycon",
+                    "#kynanglamchame",
+                    "#giadinhnho",
+                ],
+            },
+            "channel_10": {
+                "seed_kw": "muuluocnhansinh",
+                "core": ["#muuluocnhansinh", "#cohoctinhhoa", "#trietlycuocsong", "#dacnhantam"],
+                "hot_search": [
+                    "#baihoccuocsong",
+                    "#doinhanxuthe",
+                    "#nghethuatnhinnguoi",
+                    "#suyngam",
+                    "#trietlynhansinh",
+                    "#tamquoc",
+                    "#lichsu",
+                    "#loikhuyen",
                 ],
             },
         }
