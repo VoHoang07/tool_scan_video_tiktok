@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-29 23:13:54",
+    "timestamp": "2026-10-29 23:47:43",
     "machine_arch": "x86_64",
     "event_type": "upload",
     "channel": "baby_AI",
@@ -13,10 +13,141 @@
         "kẹo cao su"
       ],
       "deleted_posts": [],
+      "delete_debug": [
+        {
+          "pass": 0,
+          "rows": [
+            {
+              "rowY": 249,
+              "caption": "00:37 | 29 tháng 10, 11:06 CH | Mọi người 10 1 0 | Mọi người",
+              "moreX": 1326,
+              "moreY": 249,
+              "actionCount": 4
+            },
+            {
+              "rowY": 349,
+              "caption": "01:31 | 29 tháng 10, 8:14 CH | Mọi người 52 0 0 | Mọi người",
+              "moreX": 1326,
+              "moreY": 349,
+              "actionCount": 4
+            },
+            {
+              "rowY": 449,
+              "caption": "01:48 | 29 tháng 10, 12:40 CH | Mọi người 312 6 0 | Mọi người",
+              "moreX": 1326,
+              "moreY": 449,
+              "actionCount": 4
+            },
+            {
+              "rowY": 549,
+              "caption": "00:42 | 29 tháng 10, 8:08 SA | Mọi người 194 5 0 | Mọi người",
+              "moreX": 1326,
+              "moreY": 549,
+              "actionCount": 4
+            },
+            {
+              "rowY": 649,
+              "caption": "00:27 | 28 tháng 10, 8:14 CH | Mọi người 409 4 0 | Mọi người",
+              "moreX": 1326,
+              "moreY": 649,
+              "actionCount": 4
+            },
+            {
+              "rowY": 749,
+              "caption": "00:18 | 28 tháng 10, 12:39 CH | Mọi người 390 9 0 | Mọi người",
+              "moreX": 1326,
+              "moreY": 749,
+              "actionCount": 4
+            },
+            {
+              "rowY": 849,
+              "caption": "01:23 | 27 tháng 10, 8:11 CH | Mọi người 10 1 0 | Mọi người",
+              "moreX": 1326,
+              "moreY": 849,
+              "actionCount": 4
+            }
+          ],
+          "msg": "no_matching_row"
+        }
+      ],
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-29 23:47:43",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "action": "delete_bad_posts",
+        "match_keywords": [
+          "qqqqq",
+          "kẹo mút",
+          "kẹo cao su"
+        ],
+        "deleted_posts": [],
+        "delete_debug": [
+          {
+            "pass": 0,
+            "rows": [
+              {
+                "rowY": 249,
+                "caption": "00:37 | 29 tháng 10, 11:06 CH | Mọi người 10 1 0 | Mọi người",
+                "moreX": 1326,
+                "moreY": 249,
+                "actionCount": 4
+              },
+              {
+                "rowY": 349,
+                "caption": "01:31 | 29 tháng 10, 8:14 CH | Mọi người 52 0 0 | Mọi người",
+                "moreX": 1326,
+                "moreY": 349,
+                "actionCount": 4
+              },
+              {
+                "rowY": 449,
+                "caption": "01:48 | 29 tháng 10, 12:40 CH | Mọi người 312 6 0 | Mọi người",
+                "moreX": 1326,
+                "moreY": 449,
+                "actionCount": 4
+              },
+              {
+                "rowY": 549,
+                "caption": "00:42 | 29 tháng 10, 8:08 SA | Mọi người 194 5 0 | Mọi người",
+                "moreX": 1326,
+                "moreY": 549,
+                "actionCount": 4
+              },
+              {
+                "rowY": 649,
+                "caption": "00:27 | 28 tháng 10, 8:14 CH | Mọi người 409 4 0 | Mọi người",
+                "moreX": 1326,
+                "moreY": 649,
+                "actionCount": 4
+              },
+              {
+                "rowY": 749,
+                "caption": "00:18 | 28 tháng 10, 12:39 CH | Mọi người 390 9 0 | Mọi người",
+                "moreX": 1326,
+                "moreY": 749,
+                "actionCount": 4
+              },
+              {
+                "rowY": 849,
+                "caption": "01:23 | 27 tháng 10, 8:11 CH | Mọi người 10 1 0 | Mọi người",
+                "moreX": 1326,
+                "moreY": 849,
+                "actionCount": 4
+              }
+            ],
+            "msg": "no_matching_row"
+          }
+        ],
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-29 23:13:54",
       "machine_arch": "x86_64",
@@ -231,21 +362,6 @@
         "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-28 20:14:53",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261028_164849_tiktok_story_7664467357850488071.mp4",
-        "caption": "🥰 Nhật ký gia đình siêu lầy: Tôi đang ở nhà, bạn đang làm gì vậy?. \"Đó là ai, tôi không biết...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #xuhuongtiktok #tiktokvn",
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
