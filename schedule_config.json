@@ -54,7 +54,7 @@
     ]
   },
   "remote_trigger_post_now": {
-    "trigger_id": "delete_bad_baby_ai_posts_20261029_2312",
+    "trigger_id": "delete_bad_baby_ai_posts_20261029_2318",
     "target_arch": "x86_64",
     "channel": "baby_AI",
     "action": "delete_only",

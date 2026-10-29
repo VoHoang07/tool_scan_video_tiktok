@@ -1461,8 +1461,9 @@ class TikTokAutoPoster:
             self._dismiss_all_studio_popovers(page, ch_folder)
 
             kw_lower = [k.strip().lower() for k in (match_keywords or []) if k.strip()]
+            self._last_delete_debug: List[Any] = []
 
-            for pass_idx in range(3):
+            for pass_idx in range(4):
                 rows_info = page.evaluate(
                     """() => {
                         const norm = (s) => (s || '').normalize('NFC').trim();
@@ -1484,44 +1485,46 @@ class TikTokAutoPoster:
                         privacyBtns.sort((a, b) => a.top - b.top);
 
                         const rows = [];
+                        const svgs = Array.from(document.querySelectorAll('svg'));
                         for (const pb of privacyBtns) {
                             const rowY = pb.y;
                             // Gom toàn bộ text mô tả bài đăng ở nửa bên trái cùng hàng (r.left từ 110..680)
                             const capParts = [];
                             for (const el of allEls) {
-                                if (el.children.length > 3) continue;
                                 const r = el.getBoundingClientRect();
-                                if (r.left < 110 || r.left > 680 || r.width < 20 || r.height < 10 || r.height > 110) continue;
+                                if (r.left < 110 || r.left > 680 || r.width < 15 || r.height < 10 || r.height > 120) continue;
                                 const cy = r.top + r.height / 2;
-                                if (Math.abs(cy - rowY) > 48) continue;
+                                if (Math.abs(cy - rowY) > 52) continue;
                                 const t = norm(el.innerText || el.textContent || '').replace(/\\s+/g, ' ');
-                                if (t && !capParts.includes(t)) {
+                                if (t && t.length <= 220 && !capParts.includes(t)) {
                                     capParts.push(t);
                                 }
                             }
-                            const bestCaption = capParts.join(' | ').slice(0, 300);
+                            const bestCaption = capParts.join(' | ').slice(0, 320);
 
-                            // Tìm nút '...' (nút hành động nằm ngoài cùng bên phải trên cùng hàng, r.left > 1050)
+                            // Tìm chính xác icon SVG của nút '...' (nút thứ 4 ngoài cùng bên phải ở cột Hành động, r.left > 1050)
                             const actionCandidates = [];
-                            const clickables = Array.from(document.querySelectorAll('button, [role="button"], svg, div, span, a'));
-                            for (const el of clickables) {
-                                const r = el.getBoundingClientRect();
-                                if (r.left < 1050 || r.left > 1430 || r.width < 10 || r.width > 58 || r.height < 10 || r.height > 58) continue;
+                            for (const svg of svgs) {
+                                const r = svg.getBoundingClientRect();
+                                if (r.left < 1050 || r.left > 1420 || r.width < 8 || r.width > 48 || r.height < 8 || r.height > 48) continue;
                                 const cy = r.top + r.height / 2;
                                 if (Math.abs(cy - rowY) > 36) continue;
+                                const btn = svg.closest('button, [role="button"]') || svg.parentElement || svg;
+                                const br = btn.getBoundingClientRect();
                                 actionCandidates.push({
-                                    x: r.left + r.width / 2,
-                                    y: cy,
-                                    left: r.left
+                                    x: br.left + br.width / 2,
+                                    y: br.top + br.height / 2,
+                                    left: br.left
                                 });
                             }
                             actionCandidates.sort((a, b) => b.x - a.x);
                             if (actionCandidates.length > 0) {
                                 rows.push({
-                                    rowY: rowY,
+                                    rowY: Math.round(rowY),
                                     caption: bestCaption,
-                                    moreX: actionCandidates[0].x,
-                                    moreY: actionCandidates[0].y
+                                    moreX: Math.round(actionCandidates[0].x * 10) / 10,
+                                    moreY: Math.round(actionCandidates[0].y * 10) / 10,
+                                    actionCount: actionCandidates.length
                                 });
                             }
                         }
@@ -1545,6 +1548,7 @@ class TikTokAutoPoster:
                     target_row = rows_info[0]
 
                 if not target_row:
+                    self._last_delete_debug.append({"pass": pass_idx, "rows": rows_info, "msg": "no_matching_row"})
                     logger.info(f"[{ch_folder}] Không còn bài đăng nào khớp từ khóa cần xóa ({match_keywords}).")
                     break
 
@@ -1555,12 +1559,18 @@ class TikTokAutoPoster:
 
                 find_del_js = """() => {
                     const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
-                    const els = Array.from(document.querySelectorAll('div, span, li, button, a, p, [role="menuitem"]'));
+                    const els = Array.from(document.querySelectorAll('*'));
                     const matches = [];
+                    const popupDump = [];
                     for (const el of els) {
                         if (el.children.length > 4) continue;
                         const txt = norm(el.innerText || el.textContent || '');
-                        if (!txt || txt.length > 28) continue;
+                        if (!txt || txt.length > 35) continue;
+                        const r = el.getBoundingClientRect();
+                        if (r.width < 12 || r.height < 10 || r.top < 80) continue;
+                        if (r.left > 950 && popupDump.length < 25) {
+                            popupDump.push({ t: txt, x: Math.round(r.left + r.width/2), y: Math.round(r.top + r.height/2) });
+                        }
                         if (
                             txt === 'xóa' || txt === 'xoá' ||
                             txt === 'xóa video' || txt === 'xoá video' ||
@@ -1568,50 +1578,46 @@ class TikTokAutoPoster:
                             txt === 'delete' || txt === 'delete video' || txt === 'delete post' ||
                             ((txt.includes('xóa') || txt.includes('xoá') || txt.includes('delete')) && !txt.includes('tìm kiếm'))
                         ) {
-                            const r = el.getBoundingClientRect();
-                            if (r.width < 16 || r.width > 300 || r.height < 12 || r.height > 75 || r.top < 80) continue;
-                            matches.push({
-                                text: txt,
-                                x: r.left + r.width / 2,
-                                y: r.top + r.height / 2,
-                                left: r.left,
-                                childrenCount: el.children.length
-                            });
+                            if (r.width <= 320 && r.height <= 80) {
+                                matches.push({
+                                    text: txt,
+                                    x: r.left + r.width / 2,
+                                    y: r.top + r.height / 2,
+                                    left: r.left,
+                                    childrenCount: el.children.length
+                                });
+                            }
                         }
                     }
                     matches.sort((a, b) => (a.childrenCount - b.childrenCount) || (b.left - a.left));
-                    return matches[0] || null;
+                    return { match: matches[0] || null, popupDump: popupDump };
                 }"""
 
-                # Bước A: Di chuột hover vào nút '...' trước
-                self._human_move_mouse(page, mx, my)
-                page.mouse.move(mx, my)
-                time.sleep(1.1)
-                del_option = page.evaluate(find_del_js)
+                # Bước A: Click 1 lần chuẩn xác bằng OS click vào đúng tâm icon SVG '...'
+                self._os_click_viewport(page, mx, my)
+                time.sleep(1.4)
+                res_del = page.evaluate(find_del_js)
+                del_option = res_del.get("match") if isinstance(res_del, dict) else None
 
-                # Bước B: Nếu hover chưa mở menu, click vào nút '...'
+                # Bước B: Nếu chưa mở menu, thử hover + Playwright mouse click 1 lần
                 if not del_option:
-                    self._os_click_viewport(page, mx, my)
-                    time.sleep(1.2)
-                    del_option = page.evaluate(find_del_js)
+                    page.mouse.move(mx, my)
+                    time.sleep(0.8)
+                    res_del = page.evaluate(find_del_js)
+                    del_option = res_del.get("match") if isinstance(res_del, dict) else None
 
-                # Bước C: Nếu vẫn chưa mở, click bằng Playwright mouse & DOM dispatchEvent
                 if not del_option:
                     page.mouse.click(mx, my)
-                    page.evaluate(
-                        """({x, y}) => {
-                            const el = document.elementFromPoint(x, y);
-                            if (el) {
-                                const btn = el.closest('button, [role="button"], div, span') || el;
-                                ['mouseover', 'mouseenter', 'pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click'].forEach(t => {
-                                    btn.dispatchEvent(new MouseEvent(t, { bubbles: true, cancelable: true, clientX: x, clientY: y }));
-                                });
-                            }
-                        }""",
-                        {"x": mx, "y": my},
-                    )
                     time.sleep(1.3)
-                    del_option = page.evaluate(find_del_js)
+                    res_del = page.evaluate(find_del_js)
+                    del_option = res_del.get("match") if isinstance(res_del, dict) else None
+
+                self._last_delete_debug.append({
+                    "pass": pass_idx,
+                    "target_row": target_row,
+                    "del_option": del_option,
+                    "popup_dump": res_del.get("popupDump") if isinstance(res_del, dict) else [],
+                })
 
                 if not del_option:
                     logger.warning(f"[{ch_folder}] Không tìm thấy nút 'Xóa' trong menu tại ({mx:.1f}, {my:.1f}).")
@@ -1622,14 +1628,6 @@ class TikTokAutoPoster:
                     f"[{ch_folder}] Đã thấy tùy chọn '{del_option['text']}' tại ({dx:.1f}, {dy:.1f}), đang bấm..."
                 )
                 self._os_click_viewport(page, dx, dy)
-                page.mouse.click(dx, dy)
-                page.evaluate(
-                    """({x, y}) => {
-                        const el = document.elementFromPoint(x, y);
-                        if (el) el.click();
-                    }""",
-                    {"x": dx, "y": dy},
-                )
                 time.sleep(1.8)
 
                 # Xác nhận nút 'Xóa' / 'Delete' trong hộp thoại Modal
@@ -1664,7 +1662,6 @@ class TikTokAutoPoster:
                         f"[{ch_folder}] Đang bấm xác nhận XÓA ('{confirm_btn['text']}') trong modal tại ({cx:.1f}, {cy:.1f})..."
                     )
                     self._os_click_viewport(page, cx, cy)
-                    page.mouse.click(cx, cy)
                     try:
                         page.evaluate(
                             """({x, y}) => {
@@ -1731,6 +1728,7 @@ class TikTokAutoPoster:
                         "action": "delete_bad_posts",
                         "match_keywords": match_keywords,
                         "deleted_posts": deleted,
+                        "delete_debug": getattr(self, "_last_delete_debug", []),
                         "final_url": page.url,
                     },
                 )
@@ -2633,10 +2631,14 @@ class TikTokAutoPoster:
                         f"[Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon ({p_trig_id}) -> "
                         f"Kênh {target_channels}!"
                     )
-                    any_ok = False
                     for single_ch in target_channels:
                         lock_fh = self._acquire_browser_process_lock()
                         try:
+                            history = self._load_post_history()
+                            if p_trig_key in history:
+                                break
+                            history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            self._save_post_history(history)
                             try:
                                 self.crawler.auto_sync_posted_videos()
                             except Exception:
@@ -2647,7 +2649,6 @@ class TikTokAutoPoster:
                                     match_keywords=remote_post.get("delete_match_keywords") or [],
                                     headless=headless,
                                 )
-                                any_ok = True
                                 posted_results.append({"channel": single_ch, "deleted_posts": del_res})
                             else:
                                 res = self.upload_one_channel_video(
@@ -2658,7 +2659,6 @@ class TikTokAutoPoster:
                                     delete_top_before_upload=bool(remote_post.get("delete_top_before_upload", False)),
                                 )
                                 if res:
-                                    any_ok = True
                                     posted_results.append(res)
                         except Exception as exc:
                             logger.error(
@@ -2666,10 +2666,6 @@ class TikTokAutoPoster:
                             )
                         finally:
                             self._release_browser_process_lock(lock_fh)
-                    if any_ok:
-                        history = self._load_post_history()
-                        history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                        self._save_post_history(history)
 
         for profile in CHANNEL_PROFILES.values():
             ch_folder = profile["folder_name"]
