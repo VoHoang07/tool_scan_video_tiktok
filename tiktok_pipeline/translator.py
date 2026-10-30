@@ -70,9 +70,9 @@ CHANNEL_STYLE_GUIDES: Dict[str, Dict[str, str]] = {
         ),
     },
     "channel_8": {
-        "name": "Kênh 8 - Chuyện Công Sở & Tư Duy Kinh Doanh (Channel 8)",
+        "name": "Kênh 8 - Ẩm Thực Đường Phố, Nấu Ăn Nhanh & Đồ Ăn Vặt (Channel 8)",
         "guide": (
-            "- Dịch sắc bén, thực tế, truyền cảm hứng về kỹ năng giao tiếp công sở, làm chủ công việc và tư duy kiếm tiền."
+            "- Dịch hào hứng, hấp dẫn, kích thích vị giác về các món ăn vặt, công thức nấu ăn nhanh và mẹo bếp núc."
         ),
     },
     "channel_9": {
@@ -82,9 +82,9 @@ CHANNEL_STYLE_GUIDES: Dict[str, Dict[str, str]] = {
         ),
     },
     "channel_10": {
-        "name": "Kênh 10 - Cổ Học Tinh Hoa & Mưu Lược Nhân Sinh (Channel 10)",
+        "name": "Kênh 10 - Mẹo Điện Thoại & Phụ Kiện Công Nghệ Tiện Ích (Channel 10)",
         "guide": (
-            "- Dịch đĩnh đạc, sâu sắc, giàu chất triết lý nhân sinh và bài học đối nhân xử thế cổ kim."
+            "- Dịch ngắn gọn, hiện đại, dễ hiểu về mẹo sử dụng điện thoại, phụ kiện thông minh và đồ công nghệ tiện lợi."
         ),
     },
     "general": {
@@ -193,16 +193,16 @@ class SubtitleTranslator:
             k in val for k in ("女性", "婚姻", "高情商女人")
         ):
             return "channel_7"
-        if "channel_8" in val or val == "8" or "bai_hoc_kinh_doanh" in val or any(
-            k in val for k in ("商业", "职场", "老板思维")
+        if "channel_8" in val or val == "8" or "an_vat_moi_ngay" in val or "bai_hoc_kinh_doanh" in val or any(
+            k in val for k in ("美食", "零食", "夜宵", "家常菜", "小吃")
         ):
             return "channel_8"
         if "channel_9" in val or val == "9" or "nuoi_con_eq" in val or any(
             k in val for k in ("育儿", "儿童情商", "家庭教育")
         ):
             return "channel_9"
-        if "channel_10" in val or val == "10" or "muu_luoc_nhan_sinh" in val or any(
-            k in val for k in ("国学", "权谋", "鬼谷子", "处世")
+        if "channel_10" in val or val == "10" or "phu_kien_tien_ich" in val or "muu_luoc_nhan_sinh" in val or any(
+            k in val for k in ("数码", "手机", "黑科技", "配件")
         ):
             return "channel_10"
         return "general"
@@ -1405,16 +1405,16 @@ class SubtitleTranslator:
                 f"🌹 Tâm lý Hôn nhân & Gia đình: {core_topic}.{extra_summary} Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
             ],
             "channel_8": [
-                f"💼 [Tư Duy Kiếm Tiền] {core_topic}.{extra_summary} Bài học thực chiến đắt giá trong công việc và cuộc sống mà không trường lớp nào dạy bạn. Bạn tâm đắc nhất câu nói nào?",
-                f"🚀 Chuyện Công Sở & Kinh Doanh: {core_topic}.{extra_summary} Khác biệt lớn nhất nằm ở cách nhìn nhận vấn đề. Lưu lại để ngẫm khi cần nhé!",
+                f"🤤 [Thiên Đường Ăn Vặt] {core_topic}.{extra_summary} Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
+                f"🍜 Món Ngon Dễ Làm Mỗi Ngày: {core_topic}.{extra_summary} Công thức siêu đơn giản mà hương vị đỉnh của chóp. Lưu lại vào bếp thử ngay nhé!",
             ],
             "channel_9": [
                 f"👶 [Nuôi Con Thông Minh] {core_topic}.{extra_summary} Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
                 f"🤱 Đồng hành cùng con: {core_topic}.{extra_summary} Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
             ],
             "channel_10": [
-                f"📜 [Mưu Lược Nhân Sinh] {core_topic}.{extra_summary} Trí tuệ cổ nhân đúc kết ngàn năm, ứng dụng vào đời sống hiện đại vẫn chuẩn xác từng chữ! Ngẫm lại thấy đúng không mọi người?",
-                f"☯️ Cổ Học Tinh Hoa: {core_topic}.{extra_summary} Nhìn thấu lòng người để sống an nhiên và vững vàng hơn trước sóng gió. Lưu lại nghe mỗi tối nhé!",
+                f"📱 [Mẹo Công Nghệ Hay] {core_topic}.{extra_summary} Món phụ kiện nhỏ gọn mà giải quyết được bao nhiêu phiền toái hàng ngày! Bạn đã thử tính năng cực tiện này chưa?",
+                f"⚡ Tiện Ích Điện Thoại Thông Minh: {core_topic}.{extra_summary} Nhỏ mà có võ, ai hay dùng điện thoại nhất định phải biết mẹo này. Lưu lại ngay nhé!",
             ],
             "general": [
                 f"🎬 {core_topic}.{extra_summary} Xem hết video để không bỏ lỡ cái kết bất ngờ ở giây cuối cùng nhé!",
@@ -1531,17 +1531,17 @@ class SubtitleTranslator:
                 ],
             },
             "channel_8": {
-                "seed_kw": "baihockinhdoanh",
-                "core": ["#baihockinhdoanh", "#tuduykiemtien", "#chuyencongso", "#ptbt"],
+                "seed_kw": "doanvat",
+                "core": ["#anvatmoingay", "#doanvat", "#monngondelam", "#amthuctiktok"],
                 "hot_search": [
-                    "#tuduythanhcong",
-                    "#khoinghiep",
-                    "#kynangmem",
-                    "#baihocthanhcong",
-                    "#kinhdoanhonline",
-                    "#phattrienbanthan",
-                    "#nghethuatgiaotiep",
-                    "#tuduylamchu",
+                    "#nauanngon",
+                    "#mukbangvietnam",
+                    "#anvatngon",
+                    "#congthucnauan",
+                    "#doanvatnoidia",
+                    "#yeubep",
+                    "#anchayngon",
+                    "#reviewdoan",
                 ],
             },
             "channel_9": {
@@ -1559,17 +1559,17 @@ class SubtitleTranslator:
                 ],
             },
             "channel_10": {
-                "seed_kw": "muuluocnhansinh",
-                "core": ["#muuluocnhansinh", "#cohoctinhhoa", "#trietlycuocsong", "#dacnhantam"],
+                "seed_kw": "phukiendienthoai",
+                "core": ["#phukientienich", "#phukiendienthoai", "#docongnghe", "#meodienthoai"],
                 "hot_search": [
-                    "#baihoccuocsong",
-                    "#doinhanxuthe",
-                    "#nghethuatnhinnguoi",
-                    "#suyngam",
-                    "#trietlynhansinh",
-                    "#tamquoc",
-                    "#lichsu",
-                    "#loikhuyen",
+                    "#congnghehay",
+                    "#decorbanlamviec",
+                    "#phukiengiare",
+                    "#meohaycongnghe",
+                    "#unboxcongnghe",
+                    "#capsacnhanh",
+                    "#tainghebluetooth",
+                    "#tienich",
                 ],
             },
         }

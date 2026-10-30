@@ -68,11 +68,11 @@ CHANNEL_VOICE_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Giọng nữ sâu sắc, truyền cảm, tinh tế (Tâm lý hôn nhân & Phụ nữ khí chất)",
     },
     "channel_8": {
-        "voice": "vi-VN-NamMinhNeural",
-        "base_rate": "+2%",
-        "pitch": "-1Hz",
-        "encoder_sig": "DaVinci Resolve 19.0.1",
-        "description": "Giọng nam đĩnh đạc, sắc bén (Chuyện công sở & Bài học kinh doanh)",
+        "voice": "vi-VN-HoaiMyNeural",
+        "base_rate": "+4%",
+        "pitch": "+2Hz",
+        "encoder_sig": "CapCut 14.7.0 (iOS 17.6)",
+        "description": "Giọng nữ hào hứng, tươi vui, kích thích vị giác (Ẩm thực & Đồ ăn vặt)",
     },
     "channel_9": {
         "voice": "vi-VN-HoaiMyNeural",
@@ -83,10 +83,10 @@ CHANNEL_VOICE_PROFILES: Dict[str, Dict[str, Any]] = {
     },
     "channel_10": {
         "voice": "vi-VN-NamMinhNeural",
-        "base_rate": "+0%",
-        "pitch": "-5Hz",
-        "encoder_sig": "Final Cut Pro 10.8.1",
-        "description": "Giọng nam trầm mặc, uy nghiêm (Cổ học tinh hoa & Mưu lược nhân sinh)",
+        "base_rate": "+4%",
+        "pitch": "+0Hz",
+        "encoder_sig": "VN Video Editor 2.26.0 (Android)",
+        "description": "Giọng nam trẻ trung, năng động, hiện đại (Mẹo điện thoại & Phụ kiện công nghệ)",
     },
     "general": {
         "voice": "vi-VN-NamMinhNeural",
@@ -127,8 +127,10 @@ class VideoComposer:
             "meo_vat_gia_dinh": "channel_5",
             "suc_khoe_duong_sinh": "channel_6",
             "phu_nu_khi_chat": "channel_7",
+            "an_vat_moi_ngay": "channel_8",
             "bai_hoc_kinh_doanh": "channel_8",
             "nuoi_con_eq": "channel_9",
+            "phu_kien_tien_ich": "channel_10",
             "muu_luoc_nhan_sinh": "channel_10",
         }
         if ch in alias_map:
