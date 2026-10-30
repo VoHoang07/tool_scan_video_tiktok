@@ -877,13 +877,23 @@ def run_continuous_mode(
                     pass
             time.sleep(1)
 
-    channel_sequence = ["1", "2", "3", "4"]
+    def _get_active_channel_sequence() -> List[str]:
+        try:
+            cfg = poster.ensure_schedule_config()
+            act = cfg.get("active_channels")
+            if isinstance(act, list) and act:
+                return [str(x).strip() for x in act if str(x).strip()]
+        except Exception:
+            pass
+        return ["1", "2", "3", "4"]
+
+    channel_sequence = _get_active_channel_sequence()
     cycle_count = 0
     total_produced = 0
     produced_videos: List[Dict[str, Any]] = []
 
     logger.info(
-        f"=== KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 4 KÊNH + AUTO POST SCHEDULER) | "
+        f"=== KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN {len(channel_sequence)} KÊNH + AUTO POST SCHEDULER) | "
         f"max_ready={max_ready} video/kênh | "
         f"sleep_between={f'{sleep_between}s' if sleep_between is not None else 'ngẫu nhiên 120s-300s (2-5 phút)'} ==="
     )
@@ -893,9 +903,10 @@ def run_continuous_mode(
             cycle_count += 1
             produced_in_cycle = 0
             pending_smart_sleep_from_channel: Optional[str] = None
+            channel_sequence = _get_active_channel_sequence()
             print("\n" + "=" * 94, flush=True)
             logger.info(
-                f"=== [CHU KỲ #{cycle_count}] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (KÊNH 1 -> 2 -> 3 -> 4) ==="
+                f"=== [CHU KỲ #{cycle_count}] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG ({len(channel_sequence)} KÊNH ĐANG BẬT: {channel_sequence}) ==="
             )
 
             # Kiểm tra cập nhật code tự động (Hot-Reload) & lịch đăng tự động ở đầu mỗi chu kỳ
@@ -1008,10 +1019,13 @@ def run_continuous_mode(
                 )
                 break
 
-            # Kiểm tra xem cả 4 kênh đã đầy kho chờ ready/ chưa
+            # Kiểm tra xem các kênh đang bật (active_channels) đã đầy kho chờ ready/ chưa
             inv = crawler.get_inventory_status()
+            active_folders = {resolve_channel_profile(c)["folder_name"] for c in channel_sequence}
             all_channels_full = all(
-                ch_stat["ready_count"] >= max_ready for ch_stat in inv["channels"]
+                ch_stat["ready_count"] >= max_ready
+                for ch_stat in inv["channels"]
+                if ch_stat.get("folder_name") in active_folders
             )
             if all_channels_full and produced_in_cycle == 0:
                 if max_cycles is not None:

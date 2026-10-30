@@ -1,6 +1,7 @@
 import csv
 import hashlib
 import json
+import os
 import random
 import re
 import time
@@ -596,7 +597,121 @@ class TikTokAutoPoster:
         }})();
         """
         context.add_init_script(STEALTH_INIT_SCRIPT + "\n" + per_channel_fp_script)
+        TikTokAutoPoster._restore_synced_channel_session_if_needed(context, user_data_dir)
         return context
+
+    @staticmethod
+    def _session_cipher_bytes(data: bytes) -> bytes:
+        """Mã hóa / giải mã đối xứng (SHA-256 stream XOR) dùng khóa nội bộ từ `.env` để đồng bộ phiên Silicon -> Intel."""
+        import hashlib
+
+        secret = os.environ.get("DOUYIN_COOKIES", "") + "::tiktok_channel_session_sync_v1"
+        seed = hashlib.sha256(secret.encode("utf-8")).digest()
+        out = bytearray(len(data))
+        block = b""
+        counter = 0
+        for idx, b in enumerate(data):
+            if idx % 32 == 0:
+                block = hashlib.sha256(seed + counter.to_bytes(8, "big")).digest()
+                counter += 1
+            out[idx] = b ^ block[idx % 32]
+        return bytes(out)
+
+    @staticmethod
+    def _save_synced_channel_session(ch_folder: str, state_dict: Dict[str, Any]) -> Optional[Path]:
+        """Lưu trạng thái đăng nhập (cookies + localStorage) đã mã hóa vào `remote_telemetry/sessions/<ch_folder>.bin`."""
+        import hashlib
+        import zlib
+
+        try:
+            cookies = state_dict.get("cookies") or []
+            has_tt_auth = any(
+                c.get("name") in ("sessionid", "sessionid_ss", "sid_tt", "uid_tt")
+                for c in cookies
+                if isinstance(c, dict)
+            )
+            if not cookies or not has_tt_auth:
+                return None
+            sess_dir = Path(__file__).resolve().parent.parent / "remote_telemetry" / "sessions"
+            sess_dir.mkdir(parents=True, exist_ok=True)
+            raw = json.dumps(state_dict, ensure_ascii=False).encode("utf-8")
+            compressed = zlib.compress(raw, level=9)
+            enc = TikTokAutoPoster._session_cipher_bytes(compressed)
+            out_path = sess_dir / f"{ch_folder}.bin"
+            out_path.write_bytes(enc)
+            # Đồng thời cập nhật dấu vết tại profile local để không tự ghi đè lại chính nó
+            local_prof = Path(__file__).resolve().parent.parent / "browser_profiles" / ch_folder
+            if local_prof.exists():
+                sig = hashlib.sha256(enc).hexdigest()[:24]
+                (local_prof / "_synced_session_hash.txt").write_text(sig, encoding="utf-8")
+            return out_path
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] Không thể lưu phiên đồng bộ: {exc}")
+            return None
+
+    @staticmethod
+    def _restore_synced_channel_session_if_needed(context: Any, user_data_dir: Path) -> bool:
+        """
+        Tự động nạp phiên đăng nhập TikTok (Cookies + LocalStorage) đã đồng bộ từ máy Silicon sang máy Intel
+        nếu `browser_profiles/<ten_kenh>` trên máy Intel chưa có phiên hoặc có bản cập nhật mới.
+        """
+        import hashlib
+        import zlib
+
+        try:
+            ch_folder = user_data_dir.name
+            sess_path = Path(__file__).resolve().parent.parent / "remote_telemetry" / "sessions" / f"{ch_folder}.bin"
+            if not sess_path.exists():
+                return False
+            enc = sess_path.read_bytes()
+            if not enc:
+                return False
+            sig = hashlib.sha256(enc).hexdigest()[:24]
+            stamp_file = user_data_dir / "_synced_session_hash.txt"
+            if stamp_file.exists():
+                try:
+                    if stamp_file.read_text(encoding="utf-8").strip() == sig:
+                        return False
+                except Exception:
+                    pass
+
+            compressed = TikTokAutoPoster._session_cipher_bytes(enc)
+            raw = zlib.decompress(compressed)
+            state_dict = json.loads(raw.decode("utf-8"))
+            cookies = state_dict.get("cookies") or []
+            if cookies:
+                context.add_cookies(cookies)
+            origins = state_dict.get("origins") or []
+            if origins:
+                ls_map = {
+                    o.get("origin"): o.get("localStorage") or []
+                    for o in origins
+                    if isinstance(o, dict) and o.get("origin") and o.get("localStorage")
+                }
+                if ls_map:
+                    ls_script = f"""
+                    (() => {{
+                        try {{
+                            const map = {json.dumps(ls_map, ensure_ascii=False)};
+                            const items = map[window.location.origin];
+                            if (Array.isArray(items)) {{
+                                for (const item of items) {{
+                                    if (item && item.name) {{
+                                        window.localStorage.setItem(item.name, item.value || '');
+                                    }}
+                                }}
+                            }}
+                        }} catch (e) {{}}
+                    }})();
+                    """
+                    context.add_init_script(ls_script)
+            user_data_dir.mkdir(parents=True, exist_ok=True)
+            stamp_file.write_text(sig, encoding="utf-8")
+            logger.info(f"[{ch_folder}] Đã tự động đồng bộ phiên đăng nhập TikTok ({len(cookies)} cookies) sang máy hiện tại!")
+            return True
+        except Exception as exc:
+            logger.debug(f"[{user_data_dir.name}] Không thể khôi phục phiên đồng bộ: {exc}")
+            return False
 
     def _human_move_mouse(self, page: Any, target_x: float, target_y: float) -> None:
         """
@@ -1955,47 +2070,108 @@ class TikTokAutoPoster:
 
     def login_channel_profile(self, channel_arg: str) -> Path:
         """
-        Mở trình duyệt Chrome Anti-Detect với Profile riêng của kênh (`browser_profiles/<ten_kenh>`)
-        để người dùng quét mã QR đăng nhập TikTok 1 lần duy nhất.
+        Mở trực tiếp Google Chrome nguyên bản (100% Native Chrome, KHÔNG gắn Playwright CDP Debugger Pipe,
+        KHÔNG có cờ AutomationControlled) với Profile riêng của kênh (`browser_profiles/<ten_kenh>`)
+        để tạo tài khoản / đăng nhập TikTok không bao giờ bị chặn `tiktok.com/login/download-app`.
         """
-        try:
-            from playwright.sync_api import sync_playwright
-        except ImportError as exc:
-            raise RuntimeError(
-                "Chưa cài đặt `playwright`. Vui lòng chạy: `./venv/bin/pip install playwright && ./venv/bin/playwright install chromium`"
-            ) from exc
+        import subprocess
 
         profile = resolve_channel_profile(channel_arg)
         ch_folder = profile["folder_name"]
         user_data_dir = self.profiles_root / ch_folder
         user_data_dir.mkdir(parents=True, exist_ok=True)
+        self._cleanup_stale_chrome_profile_locks(user_data_dir)
+        fp = self._get_or_create_channel_fingerprint(user_data_dir)
 
         logger.info(
-            f"=== ĐĂNG NHẬP KÊNH TIKTOK [{ch_folder}] (CHẾ ĐỘ ANTI-DETECT STEALTH) ===\n"
-            f"1. Trình duyệt Chrome sẽ mở trang TikTok Studio.\n"
-            f"2. Hãy đăng nhập tài khoản TikTok của kênh [{ch_folder}] (khuyên dùng Quét mã QR trên điện thoại).\n"
-            f"3. Sau khi đăng nhập thành công và thấy giao diện Upload của TikTok, hãy ĐÓNG cửa sổ trình duyệt để lưu phiên."
+            f"=== TẠO TÀI KHOẢN / ĐĂNG NHẬP TIKTOK [{ch_folder}] (100% NATIVE CHROME - KHÔNG GẮN CDP) ===\n"
+            f"1. Cửa sổ Chrome thật 100% (không có dòng cảnh báo vàng, không bị TikTok báo 'Tiếp tục trên ứng dụng').\n"
+            f"2. Hãy đăng nhập Gmail ở Tab 2 trước, sau đó ở Tab 1 bấm 'Tiếp tục với Google' (hoặc đăng ký bằng Email).\n"
+            f"3. Sau khi tạo tài khoản & sửa hồ sơ xong, hãy ĐÓNG cửa sổ Chrome này (Cmd+Q hoặc bấm nút đỏ X) để lưu phiên."
         )
 
-        with sync_playwright() as p:
-            context = self._launch_stealth_chrome_context(
-                playwright_obj=p, user_data_dir=user_data_dir, headless=False
-            )
-            page = context.pages[0] if context.pages else context.new_page()
-            page.goto("https://www.tiktok.com/tiktokstudio/upload?from=webapp&tab=video")
+        chrome_bin = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        win_w = int(fp.get("window_width", 1366))
+        win_h = int(fp.get("window_height", 860))
+        win_x = int(fp.get("window_x", 30))
+        win_y = int(fp.get("window_y", 30))
 
-            try:
-                while len(context.pages) > 0:
-                    time.sleep(1)
-            except Exception:
-                pass
-            finally:
+        cmd = [
+            chrome_bin,
+            f"--user-data-dir={user_data_dir}",
+            "--use-mock-keychain",
+            "--no-first-run",
+            "--no-default-browser-check",
+            f"--window-size={win_w},{win_h}",
+            f"--window-position={win_x},{win_y}",
+            "--lang=vi-VN",
+            "https://www.tiktok.com/login/qrcode",
+        ]
+        proxy_raw = str(fp.get("proxy_server") or "").strip()
+        if proxy_raw:
+            proxy_cfg = self._parse_playwright_proxy(proxy_raw)
+            if proxy_cfg and proxy_cfg.get("server"):
+                cmd.insert(-2, f"--proxy-server={proxy_cfg['server']}")
+
+        proc = subprocess.Popen(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        try:
+            saw_renderer = False
+            empty_ticks = 0
+            u_str = str(user_data_dir)
+            while proc.poll() is None:
+                time.sleep(1.5)
                 try:
-                    context.close()
+                    ps_out = subprocess.run(
+                        ["ps", "-axo", "command"],
+                        capture_output=True,
+                        text=True,
+                        timeout=4,
+                        check=False,
+                    ).stdout
+                    has_tab_renderer = False
+                    for line in ps_out.splitlines():
+                        if u_str in line and "--type=renderer" in line and "--extension-process" not in line:
+                            has_tab_renderer = True
+                            break
+                    if has_tab_renderer:
+                        saw_renderer = True
+                        empty_ticks = 0
+                    elif saw_renderer:
+                        empty_ticks += 1
+                        if empty_ticks >= 2:
+                            proc.terminate()
+                            break
                 except Exception:
                     pass
+            proc.wait(timeout=10)
+        except BaseException:
+            try:
+                proc.terminate()
+            except Exception:
+                pass
 
-        logger.info(f"Đã lưu phiên đăng nhập TikTok cho kênh [{ch_folder}] tại: {user_data_dir}")
+        # Sau khi đóng Native Chrome, trích xuất nhanh trạng thái phiên để đồng bộ sang máy Intel
+        try:
+            from playwright.sync_api import sync_playwright
+
+            self._cleanup_stale_chrome_profile_locks(user_data_dir)
+            with sync_playwright() as p:
+                ctx = self._launch_stealth_chrome_context(
+                    playwright_obj=p, user_data_dir=user_data_dir, headless=True
+                )
+                try:
+                    st = ctx.storage_state()
+                    if st and st.get("cookies"):
+                        self._save_synced_channel_session(ch_folder, st)
+                finally:
+                    try:
+                        ctx.close()
+                    except Exception:
+                        pass
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] Lỗi phụ khi xuất phiên đồng bộ sau khi đóng Chrome: {exc}")
+
+        logger.info(f"Đã lưu & mã hóa đồng bộ phiên đăng nhập TikTok cho kênh [{ch_folder}] tại: {user_data_dir}")
         return user_data_dir
 
     @staticmethod
@@ -2368,6 +2544,9 @@ class TikTokAutoPoster:
                 return None
 
         user_data_dir = self.profiles_root / ch_folder
+        synced_sess = self.project_root / "remote_telemetry" / "sessions" / f"{ch_folder}.bin"
+        if not user_data_dir.exists() and synced_sess.exists():
+            user_data_dir.mkdir(parents=True, exist_ok=True)
         if not user_data_dir.exists():
             logger.warning(
                 f"Kênh [{ch_folder}] chưa có phiên đăng nhập tại {user_data_dir}. "
