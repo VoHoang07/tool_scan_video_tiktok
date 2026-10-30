@@ -1,79 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-29 23:47:43",
+    "timestamp": "2026-10-30 08:07:12",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "action": "delete_bad_posts",
-      "match_keywords": [
-        "qqqqq",
-        "kẹo mút",
-        "kẹo cao su"
-      ],
+      "video_file": "20261028_215510_tiktok_story_7697267839144594709.mp4",
+      "caption": "🎬 Giá thuê tháng này sẽ tăng thêm 1.000. \"Tôi có thể giảm thêm hai trăm nữa được không...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+      "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #hoathinhhai #tiktokvn",
       "deleted_posts": [],
-      "delete_debug": [
-        {
-          "pass": 0,
-          "rows": [
-            {
-              "rowY": 249,
-              "caption": "00:37 | 29 tháng 10, 11:06 CH | Mọi người 10 1 0 | Mọi người",
-              "moreX": 1326,
-              "moreY": 249,
-              "actionCount": 4
-            },
-            {
-              "rowY": 349,
-              "caption": "01:31 | 29 tháng 10, 8:14 CH | Mọi người 52 0 0 | Mọi người",
-              "moreX": 1326,
-              "moreY": 349,
-              "actionCount": 4
-            },
-            {
-              "rowY": 449,
-              "caption": "01:48 | 29 tháng 10, 12:40 CH | Mọi người 312 6 0 | Mọi người",
-              "moreX": 1326,
-              "moreY": 449,
-              "actionCount": 4
-            },
-            {
-              "rowY": 549,
-              "caption": "00:42 | 29 tháng 10, 8:08 SA | Mọi người 194 5 0 | Mọi người",
-              "moreX": 1326,
-              "moreY": 549,
-              "actionCount": 4
-            },
-            {
-              "rowY": 649,
-              "caption": "00:27 | 28 tháng 10, 8:14 CH | Mọi người 409 4 0 | Mọi người",
-              "moreX": 1326,
-              "moreY": 649,
-              "actionCount": 4
-            },
-            {
-              "rowY": 749,
-              "caption": "00:18 | 28 tháng 10, 12:39 CH | Mọi người 390 9 0 | Mọi người",
-              "moreX": 1326,
-              "moreY": 749,
-              "actionCount": 4
-            },
-            {
-              "rowY": 849,
-              "caption": "01:23 | 27 tháng 10, 8:11 CH | Mọi người 10 1 0 | Mọi người",
-              "moreX": 1326,
-              "moreY": 849,
-              "actionCount": 4
-            }
-          ],
-          "msg": "no_matching_row"
-        }
-      ],
+      "post_confirmed": true,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-30 08:07:12",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261028_215510_tiktok_story_7697267839144594709.mp4",
+        "caption": "🎬 Giá thuê tháng này sẽ tăng thêm 1.000. \"Tôi có thể giảm thêm hai trăm nữa được không...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+        "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #hoathinhhai #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-29 23:47:43",
       "machine_arch": "x86_64",
@@ -347,21 +305,6 @@
         "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #xuhuong #viral",
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-28 20:34:12",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261026_231023_tiktok_story_7680421803159833877.mp4",
-        "caption": "🐉 Tưởng là phế vật dưới đáy tông môn ai ngờ ẩn giấu thực lực chấn động thiên địa — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
