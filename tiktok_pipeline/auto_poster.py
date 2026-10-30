@@ -76,6 +76,9 @@ STEALTH_INIT_SCRIPT = """
     try {
         const nativeToString = Function.prototype.toString;
         const spoofedFns = new WeakMap();
+        window.__ttRegisterNativeFn = (fn, origFn) => {
+            try { spoofedFns.set(fn, nativeToString.call(origFn)); } catch (e) {}
+        };
         const wrappedToString = function() {
             if (spoofedFns.has(this)) return spoofedFns.get(this);
             return nativeToString.apply(this, arguments);
@@ -333,22 +336,41 @@ class TikTokAutoPoster:
             "ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version)",
             "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
         ]
+        screen_presets = [
+            (1440, 900),
+            (1512, 982),
+            (1680, 1050),
+            (1728, 1117),
+            (1920, 1080),
+            (2560, 1440),
+            (1600, 900),
+            (1536, 960),
+            (1800, 1169),
+            (2048, 1152),
+        ]
         cores_pool = [8, 10, 12, 14, 16]
         mem_pool = [8, 16, 32]
 
         idx = seed_int % len(window_presets)
         w, h, px, py = window_presets[idx]
+        scr_w, scr_h = screen_presets[idx]
         default_fp = {
             "channel": ch_name,
+            "device_hash_salt": hashlib.sha256(f"tt_dev_{ch_name}".encode("utf-8")).hexdigest()[:16],
+            "screen_width": scr_w,
+            "screen_height": scr_h,
             "window_width": w,
             "window_height": h,
             "window_x": px,
             "window_y": py,
             "hardware_concurrency": cores_pool[seed_int % len(cores_pool)],
             "device_memory": mem_pool[(seed_int // 3) % len(mem_pool)],
+            "webgl_vendor": "Google Inc. (Apple)",
             "webgl_renderer": webgl_renderers[idx],
             "canvas_noise_r": ((seed_int % 5) + 1),
             "canvas_noise_g": (((seed_int >> 4) % 5) + 1),
+            "canvas_noise_b": (((seed_int >> 8) % 5) + 1),
+            "audio_noise_seed": round(((seed_int % 97) + 1) * 1e-7, 10),
             "proxy_server": "",
         }
 
@@ -360,10 +382,11 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
-        # Ưu tiên lấy Proxy riêng của kênh từ biến môi trường nếu có (ví dụ: TIKTOK_PROXY_baby_AI hoặc CHANNEL_2_PROXY)
+        # Ưu tiên lấy Proxy riêng của kênh từ biến môi trường nếu có (ví dụ: TIKTOK_PROXY_baby_AI hoặc TIKTOK_PROXY_ALL)
         env_proxy = (
             os.getenv(f"TIKTOK_PROXY_{ch_name}")
             or os.getenv(f"TIKTOK_PROXY_{ch_name.upper()}")
+            or os.getenv("TIKTOK_PROXY_DEFAULT")
             or default_fp.get("proxy_server")
             or ""
         ).strip()
@@ -376,10 +399,38 @@ class TikTokAutoPoster:
         return default_fp
 
     @staticmethod
+    def _parse_playwright_proxy(proxy_raw: str) -> Optional[Dict[str, str]]:
+        """Phân tách chuỗi Proxy (hỗ trợ `http://user:pass@ip:port`, `socks5://user:pass@ip:port`, `ip:port:user:pass`)."""
+        from urllib.parse import urlsplit
+
+        s = (proxy_raw or "").strip()
+        if not s:
+            return None
+        # Hỗ trợ định dạng phổ biến khi mua Proxy Việt Nam: ip:port:user:pass
+        if "://" not in s and s.count(":") == 3:
+            host, port, user, pw = s.split(":", 3)
+            return {
+                "server": f"http://{host}:{port}",
+                "username": user,
+                "password": pw,
+            }
+        if "://" not in s:
+            s = f"http://{s}"
+        parsed = urlsplit(s)
+        if not parsed.hostname or not parsed.port:
+            return {"server": s}
+        out: Dict[str, str] = {"server": f"{parsed.scheme}://{parsed.hostname}:{parsed.port}"}
+        if parsed.username:
+            out["username"] = parsed.username
+        if parsed.password:
+            out["password"] = parsed.password
+        return out
+
+    @staticmethod
     def _launch_stealth_chrome_context(playwright_obj: Any, user_data_dir: Path, headless: bool = False) -> Any:
         """
         Khởi chạy Google Chrome thật với cấu hình Anti-Detect cô lập theo từng kênh:
-        - Đọc `profile_fingerprint.json` riêng của từng kênh (độ phân giải riêng, CPU/RAM riêng, WebGL/Canvas noise riêng).
+        - Đọc `profile_fingerprint.json` riêng của từng kênh (Screen, Window, CPU/RAM, WebGL1/2, Canvas 2D, AudioContext, MediaDevices ID).
         - Tự động gắn Proxy riêng của kênh (nếu cấu hình) và chặn rò rỉ IP thật qua WebRTC.
         """
         TikTokAutoPoster._cleanup_stale_chrome_profile_locks(user_data_dir)
@@ -399,6 +450,7 @@ class TikTokAutoPoster:
             "--disable-renderer-backgrounding",
             "--disable-background-timer-throttling",
             "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+            "--enforce-webrtc-ip-permission-check",
             f"--window-size={win_w},{win_h}",
             f"--window-position={win_x},{win_y}",
             "--lang=vi-VN",
@@ -427,9 +479,9 @@ class TikTokAutoPoster:
             "args": launch_args,
             "ignore_default_args": ignore_args,
         }
-        proxy_srv = str(fp.get("proxy_server") or "").strip()
-        if proxy_srv:
-            ctx_kwargs["proxy"] = {"server": proxy_srv}
+        proxy_cfg = TikTokAutoPoster._parse_playwright_proxy(str(fp.get("proxy_server") or ""))
+        if proxy_cfg:
+            ctx_kwargs["proxy"] = proxy_cfg
 
         try:
             context = playwright_obj.chromium.launch_persistent_context(
@@ -442,17 +494,104 @@ class TikTokAutoPoster:
 
         hw_cores = int(fp.get("hardware_concurrency", 8))
         dev_mem = int(fp.get("device_memory", 16))
+        scr_w = int(fp.get("screen_width", 1440))
+        scr_h = int(fp.get("screen_height", 900))
+        webgl_vend = str(fp.get("webgl_vendor", "Google Inc. (Apple)"))
         webgl_rend = str(fp.get("webgl_renderer", "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)"))
+        noise_r = int(fp.get("canvas_noise_r", 1))
+        noise_g = int(fp.get("canvas_noise_g", 2))
+        noise_b = int(fp.get("canvas_noise_b", 1))
+        audio_seed = float(fp.get("audio_noise_seed", 1e-7))
+        dev_salt = str(fp.get("device_hash_salt", "a1b2c3d4e5f60718"))
+
         per_channel_fp_script = f"""
         (() => {{
             try {{
+                const reg = window.__ttRegisterNativeFn || (() => {{}});
                 Object.defineProperty(navigator, 'hardwareConcurrency', {{ get: () => {hw_cores}, configurable: true }});
                 Object.defineProperty(navigator, 'deviceMemory', {{ get: () => {dev_mem}, configurable: true }});
-                const origGetParam = WebGLRenderingContext.prototype.getParameter;
-                WebGLRenderingContext.prototype.getParameter = function(p) {{
-                    if (p === 37446) return {json.dumps(webgl_rend)};
-                    return origGetParam.apply(this, arguments);
+
+                // 1. Cô lập Screen Resolution theo từng kênh
+                if (window.screen) {{
+                    Object.defineProperty(window.screen, 'width', {{ get: () => {scr_w}, configurable: true }});
+                    Object.defineProperty(window.screen, 'height', {{ get: () => {scr_h}, configurable: true }});
+                    Object.defineProperty(window.screen, 'availWidth', {{ get: () => {scr_w}, configurable: true }});
+                    Object.defineProperty(window.screen, 'availHeight', {{ get: () => {scr_h - 28}, configurable: true }});
+                }}
+
+                // 2. Cô lập WebGL1 & WebGL2 GPU Renderer/Vendor
+                const patchWebGL = (proto) => {{
+                    if (!proto || !proto.getParameter) return;
+                    const origGetParam = proto.getParameter;
+                    const wrappedGetParam = function(p) {{
+                        if (p === 37445) return {json.dumps(webgl_vend)};
+                        if (p === 37446) return {json.dumps(webgl_rend)};
+                        return origGetParam.apply(this, arguments);
+                    }};
+                    reg(wrappedGetParam, origGetParam);
+                    Object.defineProperty(proto, 'getParameter', {{
+                        value: wrappedGetParam, configurable: true, writable: true
+                    }});
                 }};
+                if (typeof WebGLRenderingContext !== 'undefined') patchWebGL(WebGLRenderingContext.prototype);
+                if (typeof WebGL2RenderingContext !== 'undefined') patchWebGL(WebGL2RenderingContext.prototype);
+
+                // 3. Cô lập Canvas 2D Fingerprint (dịch vi điểm ảnh cố định riêng từng kênh)
+                if (typeof CanvasRenderingContext2D !== 'undefined' && CanvasRenderingContext2D.prototype.getImageData) {{
+                    const origGetImageData = CanvasRenderingContext2D.prototype.getImageData;
+                    const wrappedGetImageData = function() {{
+                        const imgData = origGetImageData.apply(this, arguments);
+                        if (imgData && imgData.data && imgData.data.length >= 40) {{
+                            imgData.data[0] = (imgData.data[0] + {noise_r}) & 255;
+                            imgData.data[1] = (imgData.data[1] + {noise_g}) & 255;
+                            imgData.data[2] = (imgData.data[2] + {noise_b}) & 255;
+                        }}
+                        return imgData;
+                    }};
+                    reg(wrappedGetImageData, origGetImageData);
+                    Object.defineProperty(CanvasRenderingContext2D.prototype, 'getImageData', {{
+                        value: wrappedGetImageData, configurable: true, writable: true
+                    }});
+                }}
+
+                // 4. Cô lập AudioContext / OfflineAudioContext Fingerprint
+                if (typeof AudioBuffer !== 'undefined' && AudioBuffer.prototype.getChannelData) {{
+                    const origGetChannelData = AudioBuffer.prototype.getChannelData;
+                    const wrappedGetChannelData = function() {{
+                        const data = origGetChannelData.apply(this, arguments);
+                        if (data && data.length > 10 && !data.__ttSalted) {{
+                            for (let i = 0; i < Math.min(data.length, 64); i += 7) {{
+                                data[i] = data[i] + {audio_seed};
+                            }}
+                            try {{ Object.defineProperty(data, '__ttSalted', {{ value: true, enumerable: false }}); }} catch (e) {{}}
+                        }}
+                        return data;
+                    }};
+                    reg(wrappedGetChannelData, origGetChannelData);
+                    Object.defineProperty(AudioBuffer.prototype, 'getChannelData', {{
+                        value: wrappedGetChannelData, configurable: true, writable: true
+                    }});
+                }}
+
+                // 5. Cô lập MediaDevices Hardware ID (Microphone/Camera deviceId & groupId)
+                if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {{
+                    const origEnum = navigator.mediaDevices.enumerateDevices.bind(navigator.mediaDevices);
+                    const rawEnum = MediaDevices.prototype.enumerateDevices;
+                    const salt = {json.dumps(dev_salt)};
+                    const wrappedEnum = function() {{
+                        return origEnum().then((list) => list.map((d, idx) => ({{
+                            deviceId: d.deviceId === 'default' ? 'default' : (salt + idx + (d.deviceId || '').slice(0, 48)),
+                            kind: d.kind,
+                            label: d.label,
+                            groupId: salt + 'g' + idx + (d.groupId || '').slice(0, 46),
+                            toJSON() {{ return this; }}
+                        }})));
+                    }};
+                    if (rawEnum) reg(wrappedEnum, rawEnum);
+                    Object.defineProperty(MediaDevices.prototype, 'enumerateDevices', {{
+                        value: wrappedEnum, configurable: true, writable: true
+                    }});
+                }}
             }} catch (e) {{}}
         }})();
         """
