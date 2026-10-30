@@ -1,5 +1,11 @@
 {
   "timezone": "Asia/Ho_Chi_Minh",
+  "active_channels": [
+    "video_AI_hay",
+    "baby_AI",
+    "audio_dem_khuyen",
+    "tu_chan_gioi"
+  ],
   "default_post_times": [
     "08:00",
     "12:30",
@@ -104,9 +110,9 @@
     ]
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_bongcuc_tieutin_audio_dem_khuyen_20261030_1404",
+    "trigger_id": "post_3_remaining_channels_20261030_1414",
     "target_arch": "x86_64",
-    "channel": "audio_dem_khuyen",
+    "channel": "video_AI_hay,baby_AI,tu_chan_gioi",
     "force": true
   },
   "remote_trigger_filter_24h": {

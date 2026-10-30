@@ -877,7 +877,7 @@ def run_continuous_mode(
                     pass
             time.sleep(1)
 
-    channel_sequence = [p["channel_id"] for p in CHANNEL_PROFILES.values()]
+    channel_sequence = ["1", "2", "3", "4"]
     cycle_count = 0
     total_produced = 0
     produced_videos: List[Dict[str, Any]] = []

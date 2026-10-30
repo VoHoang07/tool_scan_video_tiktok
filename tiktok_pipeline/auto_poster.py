@@ -2974,12 +2974,13 @@ class TikTokAutoPoster:
                         f"Kênh {target_channels}!"
                     )
                     for single_ch in target_channels:
+                        ch_trig_key = f"remote_post_{p_trig_id}_{single_ch}"
                         lock_fh = self._acquire_browser_process_lock()
                         try:
                             history = self._load_post_history()
-                            if p_trig_key in history:
-                                break
-                            history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            if ch_trig_key in history:
+                                continue
+                            history[ch_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                             self._save_post_history(history)
                             try:
                                 self.crawler.auto_sync_posted_videos()
@@ -3008,9 +3009,15 @@ class TikTokAutoPoster:
                             )
                         finally:
                             self._release_browser_process_lock(lock_fh)
+                    history = self._load_post_history()
+                    history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    self._save_post_history(history)
 
+        active_ch_set = set(cfg.get("active_channels") or ["video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"])
         for profile in CHANNEL_PROFILES.values():
             ch_folder = profile["folder_name"]
+            if ch_folder not in active_ch_set:
+                continue
             slots = ch_times_map.get(ch_folder) or default_times
             for slot in slots:
                 history = self._load_post_history()
@@ -3260,8 +3267,11 @@ class TikTokAutoPoster:
                 pass
 
         default_3_slots = ["09:30", "15:00", "21:00"]
+        active_ch_set = set(cfg.get("active_channels") or ["video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"])
         for profile in CHANNEL_PROFILES.values():
             ch_folder = profile["folder_name"]
+            if ch_folder not in active_ch_set:
+                continue
             now = datetime.now()
             today_str = now.strftime("%Y-%m-%d")
             now_minutes = now.hour * 60 + now.minute
