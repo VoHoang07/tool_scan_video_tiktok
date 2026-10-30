@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-30 13:43:22",
+    "timestamp": "2026-10-30 13:55:49",
     "machine_arch": "x86_64",
     "event_type": "upload",
     "channel": "audio_dem_khuyen",
     "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261029_082055_tiktok_story_7698739758792543508.mp4",
-      "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Biến cố bất ngờ lúc nửa đêm và sự thật chấn động phía sau cuộc hôn nhân. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
-      "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #ngontinh #trongsinh #tongtai #truyenaudio #foryou",
+      "video_file": "20261030_133747_douyin_story_7214839079408520452.mp4",
+      "caption": "🌙 Thức đêm nghe truyện: Tôi chia tay anh ấy khi anh ấy đang ở giai đoạn nghèo nhất.. \"Đường gia, sao trước đây ngươi không chết? Đến buổi họp lớp, cô học giỏi ngành kỹ thuật và đến ...\" Từng tình tiết đều khiến người nghe nổi da gà, đừng bỏ lỡ đoạn kết!",
+      "hashtags": "#truyenngan #audiodemkhuya #truyenaudio #truyenfull #dramatiktok #phimngantrungquoc #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-30 13:55:49",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261030_133747_douyin_story_7214839079408520452.mp4",
+        "caption": "🌙 Thức đêm nghe truyện: Tôi chia tay anh ấy khi anh ấy đang ở giai đoạn nghèo nhất.. \"Đường gia, sao trước đây ngươi không chết? Đến buổi họp lớp, cô học giỏi ngành kỹ thuật và đến ...\" Từng tình tiết đều khiến người nghe nổi da gà, đừng bỏ lỡ đoạn kết!",
+        "hashtags": "#truyenngan #audiodemkhuya #truyenaudio #truyenfull #dramatiktok #phimngantrungquoc #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-30 13:43:22",
       "machine_arch": "x86_64",
@@ -445,21 +461,6 @@
         "video_file": "20261027_202119_tiktok_story_7698906930793680148.mp4",
         "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 142 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
         "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #tiktokvn",
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-29 20:09:33",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261028_212349_tiktok_story_7700060081739582721.mp4",
-        "caption": "🐾 Phần 2 | Hoa tỷ muội hòa ly, ta làm của hồi môn cho tỷ tỷ — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #fyp",
         "post_confirmed": true,
         "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
