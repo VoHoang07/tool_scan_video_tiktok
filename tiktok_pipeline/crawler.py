@@ -1396,6 +1396,11 @@ class StoryAudioCrawler:
                     duration = float(video_obj.get("duration") or 60.0)
                     if not (self.min_duration <= duration <= self.max_duration):
                         continue
+                    # Chặn tuyệt đối audio 04:39 (277s-283s) bị kênh mẫu đăng lặp lại nhiều lần với nền ASMR khác nhau
+                    if 277.0 <= duration <= 283.0:
+                        continue
+                    if any(abs(duration - prev_d) <= 1.5 for prev_d in [float(c.get("duration") or 0) for c in candidates]):
+                        continue
 
                     desc = str(item.get("desc") or "")
                     music_obj = item.get("music") or {}

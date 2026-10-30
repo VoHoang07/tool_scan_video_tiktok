@@ -104,7 +104,7 @@
     ]
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_audio_dem_khuyen_20261030_1341",
+    "trigger_id": "post_unique_audio_dem_khuyen_20261030_1353",
     "target_arch": "x86_64",
     "channel": "audio_dem_khuyen",
     "force": true

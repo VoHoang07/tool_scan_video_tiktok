@@ -2017,6 +2017,63 @@ class TikTokAutoPoster:
         except Exception:
             return ""
 
+    @staticmethod
+    def _audio_story_fingerprint(file_path: Path) -> Tuple[float, str]:
+        """
+        Trích xuất thời lượng chính xác (giây) và vân tay năng lượng âm thanh (Audio Envelope Hash)
+        ở đoạn giữa video (t=25s..55s) để phát hiện 2 video khác hình nền ASMR nhưng dùng chung 1 file ghi âm truyện!
+        """
+        import array
+        import subprocess
+        from .utils import get_media_duration
+
+        dur = float(get_media_duration(file_path) or 0.0)
+        try:
+            start_sec = 25 if dur >= 60.0 else max(2, int(dur * 0.2))
+            proc = subprocess.run(
+                [
+                    "ffmpeg",
+                    "-nostdin",
+                    "-v",
+                    "error",
+                    "-ss",
+                    str(start_sec),
+                    "-t",
+                    "25",
+                    "-i",
+                    str(file_path),
+                    "-vn",
+                    "-ac",
+                    "1",
+                    "-ar",
+                    "1000",
+                    "-f",
+                    "s16le",
+                    "-",
+                ],
+                capture_output=True,
+                timeout=8,
+                check=False,
+            )
+            raw = proc.stdout
+            if not raw or len(raw) < 2000:
+                return dur, ""
+            samples = array.array("h", raw[: (len(raw) // 2) * 2])
+            bucket_size = 500  # 0.5s mỗi bucket ở 1000Hz
+            energies: List[int] = []
+            for i in range(0, len(samples) - bucket_size, bucket_size):
+                chunk = samples[i : i + bucket_size]
+                avg_abs = sum(abs(x) for x in chunk) // bucket_size
+                energies.append(avg_abs)
+            if len(energies) < 8:
+                return dur, ""
+            mean_e = max(1, sum(energies) // len(energies))
+            # Chuẩn hóa bit theo ngưỡng năng lượng trung bình (bất biến với thay đổi âm lượng hoặc pitch nhẹ)
+            bits = "".join("1" if e >= mean_e else "0" for e in energies[:40])
+            return dur, bits
+        except Exception:
+            return dur, ""
+
     def _record_uploaded_video_in_registry(
         self, ch_folder: str, video_path: Path, caption: str = ""
     ) -> None:
@@ -2093,11 +2150,22 @@ class TikTokAutoPoster:
 
         posted_ids, posted_filenames = self.crawler._collect_all_known_posted_story_ids_and_files()
         posted_fingerprints: set[str] = set()
+        posted_durations: List[float] = []
+        posted_audio_bits: List[str] = []
+        if ch_folder == "audio_dem_khuyen":
+            # Chặn cứng bản ghi âm 04:39 (279.0s - 280.9s) đã đăng trên kênh audio_dem_khuyen
+            posted_durations.extend([279.0, 279.73, 280.77])
+
         for p_mp4 in posted_dir.glob("*.mp4"):
             if p_mp4.is_file():
                 fp = self._quick_video_fingerprint(p_mp4)
                 if fp:
                     posted_fingerprints.add(fp)
+                p_dur, p_bits = self._audio_story_fingerprint(p_mp4)
+                if p_dur > 0:
+                    posted_durations.append(p_dur)
+                if p_bits:
+                    posted_audio_bits.append(p_bits)
 
         reg_path = self.project_root / "uploaded_videos_registry.json"
         if reg_path.exists():
@@ -2114,13 +2182,33 @@ class TikTokAutoPoster:
             m_cand = re.search(r"(?:tiktok|douyin)_story_(\d+)", cand.stem, re.IGNORECASE)
             cand_id = m_cand.group(1) if m_cand else ""
             cand_fp = self._quick_video_fingerprint(cand)
+            cand_dur, cand_bits = self._audio_story_fingerprint(cand)
+
+            is_dup_audio = False
+            if ch_folder == "audio_dem_khuyen" and cand_dur > 0:
+                if 277.0 <= cand_dur <= 283.0 or any(abs(cand_dur - pd) <= 1.2 for pd in posted_durations):
+                    is_dup_audio = True
+            if not is_dup_audio and cand_bits and posted_audio_bits:
+                for p_b in posted_audio_bits:
+                    if len(cand_bits) == len(p_b):
+                        same_cnt = sum(1 for a, b in zip(cand_bits, p_b) if a == b)
+                        if same_cnt / len(cand_bits) >= 0.88:
+                            is_dup_audio = True
+                            break
 
             if (
                 cand.name in posted_filenames
                 or (cand_id and cand_id in posted_ids)
                 or (cand_fp and cand_fp in posted_fingerprints)
+                or is_dup_audio
             ):
                 dest_dup = posted_dir / cand.name
+                if is_dup_audio:
+                    cand.unlink(missing_ok=True)
+                    logger.info(
+                        f"[{ch_folder}] [Anti-Duplicate Audio Guard] Đã xóa video trùng nội dung âm thanh {cand.name} (thời lượng={cand_dur:.1f}s) khỏi ready/."
+                    )
+                    continue
                 has_same_sid = bool(cand_id and any(cand_id in p.name for p in posted_dir.glob("*.mp4")))
                 if has_same_sid and not dest_dup.exists():
                     cand.unlink(missing_ok=True)
@@ -2289,6 +2377,17 @@ class TikTokAutoPoster:
             return None
 
         next_item = self._get_next_ready_video_for_channel(ch_folder)
+        if not next_item and force:
+            logger.info(
+                f"[{ch_folder}] Kho ready/ đã lọc hết các bản trùng nội dung -> Đang tự động cào ngay 1 video truyện mới hoàn toàn cho [{ch_folder}]..."
+            )
+            try:
+                from .main import run_crawl_story_mode
+
+                run_crawl_story_mode(channel=ch_folder, limit=1)
+                next_item = self._get_next_ready_video_for_channel(ch_folder)
+            except Exception as cr_exc:
+                logger.warning(f"[{ch_folder}] Lỗi phụ khi cào bổ sung khẩn cấp: {cr_exc}")
         if not next_item:
             logger.info(f"Kênh [{ch_folder}] hiện không có video nào trong ready/ để đăng.")
             return None
