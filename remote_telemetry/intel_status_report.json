@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-30 08:18:33",
+    "timestamp": "2026-10-30 08:30:30",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261029_231045_tiktok_story_7663279320877616392.mp4",
-      "caption": "😂 Xin chào, tôi đến đây để thử hương vị. Xin chào, tôi đến đây để kiểm tra. Mì của bạn đâu?. \"Ồ, cuộc phỏng vấn thật thú vị. Họ của bạn là gì...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #foryou #fyp",
+      "video_file": "20261028_125251_tiktok_story_7698192203855809812.mp4",
+      "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 141 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
+      "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-30 08:30:30",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261028_125251_tiktok_story_7698192203855809812.mp4",
+        "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 141 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
+        "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-30 08:18:33",
       "machine_arch": "x86_64",
@@ -289,21 +305,6 @@
         "video_file": "20261027_085324_tiktok_story_7678489140266126612.mp4",
         "caption": "⚔️ [Tu Chân Giới] [Đam Mỹ Audio] SAU KHI MẤT TRÍ NHỚ, TÔI ĐỔI SANG MỘT ANH BẠN TRAI KHÁC. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
         "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #viral #foryou",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-29 08:20:17",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261027_084447_tiktok_story_7699307811645410580.mp4",
-        "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Biến cố bất ngờ lúc nửa đêm và sự thật chấn động phía sau cuộc hôn nhân. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
-        "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #ngontinh #trongsinh #tongtai #truyenaudio #foryou",
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
