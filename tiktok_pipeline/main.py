@@ -444,7 +444,7 @@ def run_crawl_story_mode(
     crawler = StoryAudioCrawler(
         project_root=project_root,
         min_duration=15.0,
-        max_duration=300.0,
+        max_duration=900.0,
         min_segments=2,
         min_speech_ratio=0.25,
         min_likes=5000,
@@ -734,7 +734,7 @@ def run_continuous_mode(
     crawler = StoryAudioCrawler(
         project_root=project_root,
         min_duration=15.0,
-        max_duration=300.0,
+        max_duration=900.0,
         min_segments=2,
         min_speech_ratio=0.25,
         min_likes=5000,
@@ -784,7 +784,7 @@ def run_continuous_mode(
                 crawler = _cr_mod.StoryAudioCrawler(
                     project_root=project_root,
                     min_duration=15.0,
-                    max_duration=300.0,
+                    max_duration=900.0,
                     min_segments=2,
                     min_speech_ratio=0.25,
                     min_likes=5000,

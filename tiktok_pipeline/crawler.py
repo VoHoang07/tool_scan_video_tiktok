@@ -171,48 +171,42 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "channel_id": "3",
         "profile_key": "channel_3_novel_drama",
         "folder_name": "audio_dem_khuyen",
-        "description": "Truyện Audio Ngôn tình, Trùng sinh, Tổng tài & Đoản kịch (Trung - Việt view cao)",
+        "description": "Truyện Audio Đêm Khuya Việt Nam (Nền ASMR/Chữa lành + Giọng kể chuyện cuốn hút chuẩn motip Bông Cúc / Tiểu Tín)",
         "seed_video_urls": [
-            "https://www.tiktok.com/@tieutin2000/video/7682055125342424341",
-            "https://www.tiktok.com/@bongcucaudio04/video/7698263475457592596",
-            "https://www.tiktok.com/@gamukbangaudio/video/7670439173538549012",
-            "https://www.tiktok.com/@soo.bin.0/video/7693321057758973185",
+            "https://www.tiktok.com/@bongcucaudio04/video/7698263475457592596",  # Bông cúc số 10 (2.0M views)
+            "https://www.tiktok.com/@tieutin2000/video/7699432430851116309",  # Zin Audio Số 125 (752K views)
+            "https://www.tiktok.com/@tieutin2000/video/7696730565881515282",  # Zin Audio Số 117 (725K views)
+            "https://www.tiktok.com/@tieutin2000/video/7692989950672768263",  # Zin Audio Số 106 (526K views)
+            "https://www.tiktok.com/@tieutin2000/video/7695990805097401618",  # Zin Audio Số 114 (437K views)
+            "https://www.tiktok.com/@tieutin2000/video/7700410390563327253",  # Zin Audio Số 127 (377K views)
+            "https://www.tiktok.com/@tieutin2000/video/7698594900329221397",  # Zin Audio Số 122 (225K views)
+            "https://www.tiktok.com/@bongcucaudio04/video/7697778349690670357",  # Bông cúc số 119 (17.9K views)
+            "https://www.tiktok.com/@bongcucaudio04/video/7700057407061331220",  # Bông cúc số 144 (16.7K views)
+            "https://www.tiktok.com/@bongcucaudio04/video/7700149454669843732",  # Bông cúc số 70 (14.1K views)
+            "https://www.tiktok.com/@bongcucaudio04/video/7693489202012425493",  # Bông cúc số 132 (12.5K views)
+            "https://www.tiktok.com/@bongcucaudio04/video/7700254944028364052",  # Bông cúc số 110 (8.3K views)
+            "https://www.tiktok.com/@bongcucaudio04/video/7697638039421455637",  # Bông cúc số 137 (7.5K views)
+            "https://www.tiktok.com/@bongcucaudio04/video/7700764387950300436",  # Bông cúc số 145 (6.8K views)
         ],
         "seed_channels": [
-            "tieutin2000",
             "bongcucaudio04",
+            "tieutin2000",
             "gamukbangaudio",
             "soo.bin.0",
         ],
-        "douyin_keywords": [
-            "小说推文",
-            "重生文",
-            "霸总短",
-            "反转爽文",
-            "有声书高能片段",
-        ],
+        "douyin_keywords": [],
         "tiktok_keywords": [
             "#truyenaudio",
             "#kechuyendemkhuya",
-            "#ngontinh",
-            "#trongsinh",
-            "#tongtai",
-            "#小说推文",
+            "#truyenaudiofull",
+            "#zinaudio",
         ],
         "tiktok_challenge_ids": [
             "1663304971287554",  # #truyenaudio (26.2B views VN)
             "1660070617826305",  # #kechuyendemkhuya (1.11B views VN)
-            "1600998155267078",  # #ngontinh (30.1B views VN)
-            "1692021200044033",  # #小说推文 (530M views CN)
         ],
-        "douyin_challenge_ids": [
-            "1597005944409102",  # #小说推文
-            "1765126573358095",  # #好看又过瘾的小说推荐
-            "1636581556231175",  # #宝藏小说 / #反转爽文
-            "1597091696349188",  # #虐文 / #霸总短
-            "1588303515058184",  # #有声小说 / #有声书高能片段
-            "1593525576614915",  # #小说推荐 / #重生文
-        ],
+        "douyin_challenge_ids": [],
+        "multi_platform_keywords": [],
     },
     "channel_4_ai_cultivation": {
         "channel_id": "4",
@@ -845,6 +839,15 @@ class StoryAudioCrawler:
             "7682055125342424341",
             "7670439173538549012",
             "7699354713556323590",
+            "7699307811645410580",  # Bản trùng Bông cúc số 143
+            "7698192203855809812",  # Bông cúc số 141 (đã đăng lúc 08:30 SA đạt 3,005 views)
+            "7698309790610640148",  # Bản trùng Bông cúc số 141
+            "7701981706227698964",  # Bản trùng Bông cúc số 141
+            "7698906930793680148",  # Bông cúc số 142 (đã đăng)
+            "7698739758792543508",  # Bản trùng Bông cúc số 142
+            "7701190176676121877",  # Bông cúc số 146 (đã đăng)
+            "7701531433168358677",  # Bản trùng Bông cúc số 146
+            "7214839079408520452",  # Video Douyin lệch motip đã xóa
             "7650380932804906261",
             "7683492499272273173",
             "7698299779394080050",
@@ -1394,15 +1397,19 @@ class StoryAudioCrawler:
                         continue
 
                     duration = float(video_obj.get("duration") or 60.0)
-                    if not (self.min_duration <= duration <= self.max_duration):
-                        continue
-                    # Chặn tuyệt đối audio 04:39 (277s-283s) bị kênh mẫu đăng lặp lại nhiều lần với nền ASMR khác nhau
-                    if 277.0 <= duration <= 283.0:
-                        continue
-                    if any(abs(duration - prev_d) <= 1.5 for prev_d in [float(c.get("duration") or 0) for c in candidates]):
+                    if not (self.min_duration <= duration <= max(self.max_duration, 900.0)):
                         continue
 
                     desc = str(item.get("desc") or "")
+                    # Khử trùng lặp theo số tập (ví dụ "Bông cúc số 141", "Zin Audio Số 120") khi kênh nguồn đăng 1 tập nhiều lần
+                    ep_match = re.search(r"(?:bông cúc|zin audio|tập|số)\s*(\d+)", desc.lower())
+                    ep_key = f"{handle_lower}_ep_{ep_match.group(1)}" if ep_match else ""
+                    if ep_key:
+                        # Chặn các tập Bông Cúc đã từng đăng trên kênh audio_dem_khuyen (141, 142, 143, 146)
+                        if handle_lower == "bongcucaudio04" and ep_match.group(1) in ("141", "142", "143", "146"):
+                            continue
+                        if any(c.get("episode_key") == ep_key for c in candidates):
+                            continue
                     music_obj = item.get("music") or {}
                     music_title = str(music_obj.get("title") or "original sound")
 
@@ -1431,6 +1438,7 @@ class StoryAudioCrawler:
                             "genre": genre_label,
                             "video_id": vid,
                             "sound_id": sound_id,
+                            "episode_key": ep_key,
                             "source_url": f"https://www.tiktok.com/@{handle}/video/{vid}",
                             "duration": duration,
                             "title": desc,
@@ -1450,7 +1458,7 @@ class StoryAudioCrawler:
                     )
 
                 last_ctime = item_list[-1].get("createTime")
-                if not data.get("hasMore") or not last_ctime:
+                if not last_ctime or len(item_list) < 5:
                     break
                 cursor = str(int(last_ctime) * 1000)
             except Exception as exc:
@@ -2307,10 +2315,10 @@ class StoryAudioCrawler:
                 candidate.get("is_seed") or candidate.get("is_channel_video")
             )
 
-            if not (self.min_duration <= actual_duration <= max(self.max_duration, 360.0)):
+            if not (self.min_duration <= actual_duration <= max(self.max_duration, 900.0)):
                 logger.info(
                     f"[Voice Filter] Loại bỏ {vid}: thời lượng thực tế {actual_duration:.1f}s "
-                    f"nằm ngoài khoảng [{self.min_duration:.0f}s, {max(self.max_duration, 360.0):.0f}s]."
+                    f"nằm ngoài khoảng [{self.min_duration:.0f}s, {max(self.max_duration, 900.0):.0f}s]."
                 )
                 shutil.rmtree(cand_dir, ignore_errors=True)
                 return False, None

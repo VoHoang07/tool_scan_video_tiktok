@@ -2150,20 +2150,14 @@ class TikTokAutoPoster:
 
         posted_ids, posted_filenames = self.crawler._collect_all_known_posted_story_ids_and_files()
         posted_fingerprints: set[str] = set()
-        posted_durations: List[float] = []
         posted_audio_bits: List[str] = []
-        if ch_folder == "audio_dem_khuyen":
-            # Chặn cứng bản ghi âm 04:39 (279.0s - 280.9s) đã đăng trên kênh audio_dem_khuyen
-            posted_durations.extend([279.0, 279.73, 280.77])
 
         for p_mp4 in posted_dir.glob("*.mp4"):
             if p_mp4.is_file():
                 fp = self._quick_video_fingerprint(p_mp4)
                 if fp:
                     posted_fingerprints.add(fp)
-                p_dur, p_bits = self._audio_story_fingerprint(p_mp4)
-                if p_dur > 0:
-                    posted_durations.append(p_dur)
+                _, p_bits = self._audio_story_fingerprint(p_mp4)
                 if p_bits:
                     posted_audio_bits.append(p_bits)
 
@@ -2179,16 +2173,21 @@ class TikTokAutoPoster:
 
         target_video: Optional[Path] = None
         for cand in sorted(f for f in ready_dir.glob("*.mp4") if f.is_file()):
+            # Kênh audio_dem_khuyen chỉ đăng chuẩn motip Truyện Audio TikTok Việt Nam (nền ASMR/chữa lành + giọng kể chuyện), loại bỏ video Douyin lệch motip
+            if ch_folder == "audio_dem_khuyen" and "douyin_story_" in cand.name.lower():
+                cand.unlink(missing_ok=True)
+                logger.info(
+                    f"[{ch_folder}] [Motif Guard] Đã xóa video Douyin lệch motip ({cand.name}) khỏi ready/ để chỉ giữ chuẩn Truyện Audio TikTok Việt Nam."
+                )
+                continue
+
             m_cand = re.search(r"(?:tiktok|douyin)_story_(\d+)", cand.stem, re.IGNORECASE)
             cand_id = m_cand.group(1) if m_cand else ""
             cand_fp = self._quick_video_fingerprint(cand)
             cand_dur, cand_bits = self._audio_story_fingerprint(cand)
 
             is_dup_audio = False
-            if ch_folder == "audio_dem_khuyen" and cand_dur > 0:
-                if 277.0 <= cand_dur <= 283.0 or any(abs(cand_dur - pd) <= 1.2 for pd in posted_durations):
-                    is_dup_audio = True
-            if not is_dup_audio and cand_bits and posted_audio_bits:
+            if cand_bits and posted_audio_bits:
                 for p_b in posted_audio_bits:
                     if len(cand_bits) == len(p_b):
                         same_cnt = sum(1 for a, b in zip(cand_bits, p_b) if a == b)
