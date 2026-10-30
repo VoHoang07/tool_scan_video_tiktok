@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-30 20:06:27",
+    "timestamp": "2026-10-30 20:44:03",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261029_232245_tiktok_story_7661486125428559112.mp4",
-      "caption": "🥰 Nhật ký gia đình siêu lầy: to béo. \"Hóa ra tất cả đều là tiền đã hết hạn...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
+      "video_file": "20261028_204128_tiktok_story_7688705812809960725.mp4",
+      "caption": "🐉 3 Tuổi Đã Làm Nhiếp Chính Vương, Nhưng Chỉ Muốn Nghỉ Hưu — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+      "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-30 20:44:03",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261028_204128_tiktok_story_7688705812809960725.mp4",
+        "caption": "🐉 3 Tuổi Đã Làm Nhiếp Chính Vương, Nhưng Chỉ Muốn Nghỉ Hưu — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+        "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-30 20:06:27",
       "machine_arch": "x86_64",
@@ -446,23 +462,6 @@
             "msg": "no_matching_row"
           }
         ],
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-29 23:13:54",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "action": "delete_bad_posts",
-        "match_keywords": [
-          "qqqqq",
-          "kẹo mút",
-          "kẹo cao su"
-        ],
-        "deleted_posts": [],
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
