@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-30 08:07:12",
+    "timestamp": "2026-10-30 08:18:33",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261028_215510_tiktok_story_7697267839144594709.mp4",
-      "caption": "🎬 Giá thuê tháng này sẽ tăng thêm 1.000. \"Tôi có thể giảm thêm hai trăm nữa được không...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-      "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #hoathinhhai #tiktokvn",
+      "video_file": "20261029_231045_tiktok_story_7663279320877616392.mp4",
+      "caption": "😂 Xin chào, tôi đến đây để thử hương vị. Xin chào, tôi đến đây để kiểm tra. Mì của bạn đâu?. \"Ồ, cuộc phỏng vấn thật thú vị. Họ của bạn là gì...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-30 08:18:33",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261029_231045_tiktok_story_7663279320877616392.mp4",
+        "caption": "😂 Xin chào, tôi đến đây để thử hương vị. Xin chào, tôi đến đây để kiểm tra. Mì của bạn đâu?. \"Ồ, cuộc phỏng vấn thật thú vị. Họ của bạn là gì...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-30 08:07:12",
       "machine_arch": "x86_64",
@@ -288,21 +304,6 @@
         "video_file": "20261027_084447_tiktok_story_7699307811645410580.mp4",
         "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Biến cố bất ngờ lúc nửa đêm và sự thật chấn động phía sau cuộc hôn nhân. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
         "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #ngontinh #trongsinh #tongtai #truyenaudio #foryou",
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-29 08:08:56",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261028_211711_tiktok_story_7668157404000931079.mp4",
-        "caption": "🥰 Nhật ký gia đình siêu lầy: Bạn nghĩ nuôi con lâu hay nuôi con lâu thì tốt hơn?. \"Con nuôi của bạn không phải của bạn, chúng đều là của người khác. Ý anh là gì...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #xuhuong #viral",
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
