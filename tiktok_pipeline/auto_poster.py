@@ -383,9 +383,21 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
-        # Ưu tiên lấy Proxy riêng của kênh từ biến môi trường nếu có (ví dụ: TIKTOK_PROXY_baby_AI hoặc TIKTOK_PROXY_ALL)
+        cfg_proxy = ""
+        try:
+            sched_path = Path(__file__).resolve().parent.parent / "schedule_config.json"
+            if sched_path.exists():
+                sched_data = json.loads(sched_path.read_text(encoding="utf-8"))
+                ch_proxies = sched_data.get("channel_proxies") or {}
+                if isinstance(ch_proxies, dict):
+                    cfg_proxy = str(ch_proxies.get(ch_name) or "").strip()
+        except Exception:
+            pass
+
+        # Ưu tiên lấy Proxy riêng của kênh từ schedule_config.json hoặc biến môi trường (TIKTOK_PROXY_<ten_kenh>)
         env_proxy = (
-            os.getenv(f"TIKTOK_PROXY_{ch_name}")
+            cfg_proxy
+            or os.getenv(f"TIKTOK_PROXY_{ch_name}")
             or os.getenv(f"TIKTOK_PROXY_{ch_name.upper()}")
             or os.getenv("TIKTOK_PROXY_DEFAULT")
             or default_fp.get("proxy_server")

@@ -118,6 +118,18 @@
       "19:25"
     ]
   },
+  "channel_proxies": {
+    "video_AI_hay": "",
+    "baby_AI": "",
+    "audio_dem_khuyen": "",
+    "tu_chan_gioi": "",
+    "meo_vat_gia_dinh": "",
+    "suc_khoe_duong_sinh": "",
+    "phu_nu_khi_chat": "",
+    "an_vat_moi_ngay": "",
+    "nuoi_con_eq": "",
+    "phu_kien_tien_ich": ""
+  },
   "remote_trigger_post_now": {
     "trigger_id": "post_3_remaining_channels_20261030_1414",
     "target_arch": "x86_64",
