@@ -3446,7 +3446,11 @@ class TikTokAutoPoster:
                 pass
 
         default_3_slots = ["09:30", "15:00", "21:00"]
-        active_ch_set = set(cfg.get("active_channels") or ["video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"])
+        active_ch_set = set(
+            cfg.get("active_filter_24h_channels")
+            or cfg.get("active_channels")
+            or ["video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"]
+        )
         for profile in CHANNEL_PROFILES.values():
             ch_folder = profile["folder_name"]
             if ch_folder not in active_ch_set:

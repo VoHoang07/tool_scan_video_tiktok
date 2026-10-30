@@ -4,6 +4,12 @@
     "video_AI_hay",
     "baby_AI",
     "audio_dem_khuyen",
+    "tu_chan_gioi"
+  ],
+  "active_filter_24h_channels": [
+    "video_AI_hay",
+    "baby_AI",
+    "audio_dem_khuyen",
     "tu_chan_gioi",
     "suc_khoe_duong_sinh",
     "phu_nu_khi_chat",
