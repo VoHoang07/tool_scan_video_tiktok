@@ -104,19 +104,10 @@
     ]
   },
   "remote_trigger_post_now": {
-    "trigger_id": "delete_bad_baby_ai_posts_20261030_1007",
+    "trigger_id": "post_now_audio_dem_khuyen_20261030_1341",
     "target_arch": "x86_64",
-    "channel": "baby_AI",
-    "action": "delete_only",
-    "delete_match_keywords": [
-      "29 tháng 10, 8:14 ch",
-      "29 tháng 10, 12:40 ch",
-      "01:31 | 29 tháng 10",
-      "01:48 | 29 tháng 10",
-      "qqqqq",
-      "kẹo mút",
-      "kẹo cao su"
-    ]
+    "channel": "audio_dem_khuyen",
+    "force": true
   },
   "remote_trigger_filter_24h": {
     "trigger_id": "activate_72h_cooldown_20261028_1348",
