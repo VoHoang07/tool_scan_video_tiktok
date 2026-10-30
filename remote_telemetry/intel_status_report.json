@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-30 19:28:26",
+    "timestamp": "2026-10-30 20:06:27",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261029_080232_douyin_story_7686077455564988992.mp4",
-      "caption": "🎬 Thế giới hoạt hình AI kỳ ảo với tình tiết bất ngờ ở giây cuối cùng. \"Ồ...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-      "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #hoathinhhai #xuhuongtiktok",
+      "video_file": "20261029_232245_tiktok_story_7661486125428559112.mp4",
+      "caption": "🥰 Nhật ký gia đình siêu lầy: to béo. \"Hóa ra tất cả đều là tiền đã hết hạn...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-30 20:06:27",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261029_232245_tiktok_story_7661486125428559112.mp4",
+        "caption": "🥰 Nhật ký gia đình siêu lầy: to béo. \"Hóa ra tất cả đều là tiền đã hết hạn...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-30 19:28:26",
       "machine_arch": "x86_64",
@@ -435,23 +451,6 @@
     },
     {
       "timestamp": "2026-10-29 23:13:54",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "action": "delete_bad_posts",
-        "match_keywords": [
-          "qqqqq",
-          "kẹo mút",
-          "kẹo cao su"
-        ],
-        "deleted_posts": [],
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-29 23:13:34",
       "machine_arch": "x86_64",
       "event_type": "upload",
       "channel": "baby_AI",
