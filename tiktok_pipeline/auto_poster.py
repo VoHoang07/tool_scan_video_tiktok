@@ -41,7 +41,7 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
     },
     "filter_24h_enabled": True,
     "filter_24h_runs_per_day": 2,
-    "filter_24h_videos_per_session": 6,
+    "filter_24h_videos_per_session": 3,
     "channel_filter_24h_times": {
         "video_AI_hay": ["09:40", "17:20"],
         "baby_AI": ["10:15", "18:05"],
@@ -3369,7 +3369,7 @@ class TikTokAutoPoster:
 
         cfg = self.ensure_schedule_config()
         filter_enabled = bool(cfg.get("filter_24h_enabled", True))
-        filter_count = int(cfg.get("filter_24h_videos_per_session", 10))
+        filter_count = max(1, min(int(cfg.get("filter_24h_videos_per_session", 3)), 3))
         filter_times_map: Dict[str, List[str]] = cfg.get("channel_filter_24h_times") or {}
         max_jitter = int(cfg.get("random_jitter_minutes", 9))
         headless = bool(cfg.get("headless", False))
@@ -3472,28 +3472,44 @@ class TikTokAutoPoster:
                 f_jitter = self._compute_daily_jitter_minutes(today_str, f"f24_{ch_folder}", f_slot, max_jitter)
                 eff_f_min = max(0, min(23 * 60 + 59, fh * 60 + fm + f_jitter))
 
-                # Cửa sổ kích hoạt 90 phút để cả 4 kênh nối tiếp nhau chạy đủ 10 video/kênh trong mỗi lượt
-                if 0 <= (now_minutes - eff_f_min) <= 90:
+                # Cửa sổ kích hoạt 120 phút kèm giãn cách IP tối thiểu 15 phút giữa 2 kênh liên tiếp trên cùng máy
+                if 0 <= (now_minutes - eff_f_min) <= 120:
+                    last_any_ts = str(history.get("last_any_filter24h_ts") or "").strip()
+                    if last_any_ts:
+                        try:
+                            last_dt = datetime.strptime(last_any_ts, "%Y-%m-%d %H:%M:%S")
+                            gap_min = (now - last_dt).total_seconds() / 60.0
+                            if 0 <= gap_min < 15.0:
+                                continue
+                        except Exception:
+                            pass
+
                     lock_fh = self._acquire_browser_process_lock()
                     try:
                         history = self._load_post_history()
                         if f_key in history:
                             continue
-                        history[f_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        now_claim_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        history[f_key] = now_claim_str
+                        history["last_any_filter24h_ts"] = now_claim_str
                         self._save_post_history(history)
                         eff_hh, eff_mm = eff_f_min // 60, eff_f_min % 60
                         logger.info(
                             f"[Dòng 2 - Bộ lọc 24h (Lần {round_idx}/{len(f_slots)} trong ngày)] "
-                            f"Mở kênh [{ch_folder}] lúc {eff_hh:02d}:{eff_mm:02d} (khung {f_slot}) -> Chạy {filter_count} video!"
+                            f"Mở kênh [{ch_folder}] lúc {eff_hh:02d}:{eff_mm:02d} (khung {f_slot}) -> Chạy tối đa {filter_count} video (max 1 Follow)!"
                         )
                         res = self.run_24h_filter_for_channel(
                             ch_folder, video_count=filter_count, headless=headless
                         )
                         filter_results[f_key] = res
+                        history = self._load_post_history()
+                        history["last_any_filter24h_ts"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        self._save_post_history(history)
                         logger.info(
                             f"[Dòng 2 - Bộ lọc 24h] Đã hoàn tất phiên [{ch_folder}] (khung {f_slot}) -> "
-                            "Đang chờ tới khung giờ kế tiếp theo lịch 7 lần/ngày..."
+                            "Nghỉ giãn cách IP tối thiểu 15 phút trước khi mở kênh kế tiếp..."
                         )
+                        return filter_results
                     except Exception as exc:
                         logger.error(
                             f"[Dòng 2 - Bộ lọc 24h] Lỗi chạy kênh [{ch_folder}] khung {f_slot}: {exc}"

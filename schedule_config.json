@@ -75,7 +75,7 @@
   "filter_24h_enabled": true,
   "filter_24h_cooldown_until": "2026-10-31 13:45:00",
   "filter_24h_runs_per_day": 2,
-  "filter_24h_videos_per_session": 6,
+  "filter_24h_videos_per_session": 3,
   "channel_filter_24h_times": {
     "video_AI_hay": [
       "09:40",

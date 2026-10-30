@@ -68,116 +68,50 @@ DIGG_UI_GUARD_SCRIPT = """
 
 def _hot_patch_live_auto_poster_stealth() -> None:
     """
-    Cập nhật trực tiếp `_launch_stealth_chrome_context` trên mọi class/instance `TikTokAutoPoster`
-    đang chạy trong bộ nhớ tiến trình Daemon trên máy Intel để bật `--disable-blink-features=AutomationControlled`
-    và tiêm `DIGG_UI_GUARD_SCRIPT` ngay khi khởi tạo trình duyệt.
+    Đồng bộ các phương thức mới nhất từ `tiktok_pipeline.auto_poster.TikTokAutoPoster`
+    (bao gồm `_launch_stealth_chrome_context` có cô lập vân tay phần cứng riêng từng kênh
+    và đồng bộ phiên đăng nhập Silicon -> Intel) sang mọi instance đang sống trong tiến trình Daemon.
     """
     try:
         import gc
-
-        def _clean_launch_stealth_chrome_context(playwright_obj: Any, user_data_dir: Path, headless: bool = False) -> Any:
-            import subprocess
-
-            try:
-                subprocess.run(
-                    ["pkill", "-9", "-f", str(user_data_dir)],
-                    capture_output=True,
-                    timeout=5,
-                    check=False,
-                )
-                time.sleep(0.6)
-            except Exception:
-                pass
-            for lock_name in ("SingletonLock", "SingletonSocket", "SingletonCookie"):
-                try:
-                    lock_file = Path(user_data_dir) / lock_name
-                    if lock_file.exists() or lock_file.is_symlink():
-                        lock_file.unlink()
-                except Exception:
-                    pass
-
-            launch_args = [
-                "--disable-blink-features=AutomationControlled",
-                "--disable-infobars",
-                "--no-first-run",
-                "--no-default-browser-check",
-                "--enable-gpu-rasterization",
-                "--enable-zero-copy",
-                "--disable-renderer-backgrounding",
-                "--disable-background-timer-throttling",
-                "--window-size=1366,860",
-                "--window-position=20,20",
-                "--lang=vi-VN",
-            ]
-            ignore_args = [
-                "--enable-automation",
-                "--no-sandbox",
-                "--disable-field-trial-config",
-                "--force-color-profile=srgb",
-                "--metrics-recording-only",
-                "--disable-background-networking",
-                "--disable-component-update",
-                "--disable-default-apps",
-                "--allow-pre-commit-input",
-                "--export-tagged-pdf",
-                "--no-service-autorun",
-                "--disable-sync",
-            ]
-            try:
-                ctx = playwright_obj.chromium.launch_persistent_context(
-                    user_data_dir=str(user_data_dir),
-                    channel="chrome",
-                    headless=headless,
-                    no_viewport=True,
-                    locale="vi-VN",
-                    timezone_id="Asia/Ho_Chi_Minh",
-                    args=launch_args,
-                    ignore_default_args=ignore_args,
-                )
-            except Exception:
-                ctx = playwright_obj.chromium.launch_persistent_context(
-                    user_data_dir=str(user_data_dir),
-                    headless=headless,
-                    no_viewport=True,
-                    locale="vi-VN",
-                    timezone_id="Asia/Ho_Chi_Minh",
-                    args=launch_args,
-                    ignore_default_args=ignore_args,
-                )
-            ctx.add_init_script(DIGG_UI_GUARD_SCRIPT)
-            return ctx
-
         import importlib
         import tiktok_pipeline.auto_poster as _ap_mod
+
         try:
             importlib.reload(_ap_mod)
         except Exception:
             pass
         fresh_cls = getattr(_ap_mod, "TikTokAutoPoster", None)
+        if fresh_cls is None:
+            return
 
         for obj in gc.get_objects():
             try:
                 cls = obj if isinstance(obj, type) else type(obj)
-                if getattr(cls, "__name__", "") == "TikTokAutoPoster":
-                    setattr(cls, "_launch_stealth_chrome_context", staticmethod(_clean_launch_stealth_chrome_context))
-                    if fresh_cls is not None and cls is not fresh_cls:
-                        for attr_name in (
-                            "_human_move_mouse",
-                            "_os_click_viewport",
-                            "_save_and_push_telemetry",
-                            "_acquire_browser_process_lock",
-                            "_release_browser_process_lock",
-                            "_was_channel_uploaded_recently",
-                            "_is_stream1_upload_process_running",
-                            "_auto_revive_stream1_upload_if_dead",
-                            "upload_one_channel_video",
-                            "run_24h_filter_for_channel",
-                            "check_and_run_stream1_upload_schedule",
-                            "check_and_run_stream2_filter24h_schedule",
-                            "check_and_run_scheduled_posts",
-                        ):
-                            if hasattr(fresh_cls, attr_name):
-                                setattr(cls, attr_name, getattr(fresh_cls, attr_name))
+                if getattr(cls, "__name__", "") == "TikTokAutoPoster" and cls is not fresh_cls:
+                    for attr_name in (
+                        "_get_or_create_channel_fingerprint",
+                        "_parse_playwright_proxy",
+                        "_session_cipher_bytes",
+                        "_save_synced_channel_session",
+                        "_restore_synced_channel_session_if_needed",
+                        "_launch_stealth_chrome_context",
+                        "_human_move_mouse",
+                        "_os_click_viewport",
+                        "_save_and_push_telemetry",
+                        "_acquire_browser_process_lock",
+                        "_release_browser_process_lock",
+                        "_was_channel_uploaded_recently",
+                        "_is_stream1_upload_process_running",
+                        "_auto_revive_stream1_upload_if_dead",
+                        "upload_one_channel_video",
+                        "run_24h_filter_for_channel",
+                        "check_and_run_stream1_upload_schedule",
+                        "check_and_run_stream2_filter24h_schedule",
+                        "check_and_run_scheduled_posts",
+                    ):
+                        if hasattr(fresh_cls, attr_name):
+                            setattr(cls, attr_name, getattr(fresh_cls, attr_name))
             except Exception:
                 pass
     except Exception:
@@ -1666,14 +1600,16 @@ class TikTok24hFilterEngine:
             before_txt = str((prof_state or {}).get("btnText") or "").strip()
             already_labels = {"đang follow", "following", "bạn bè", "friends", "đã follow"}
             is_following_now = before_txt.lower() in already_labels or (prof_state or {}).get("relation") in (1, 2)
+            clicked_follow_btn = False
 
             if not is_following_now and prof_state and prof_state.get("x") and float(prof_state.get("w") or 0) > 25:
                 bx, by = float(prof_state["x"]), float(prof_state["y"])
                 logger.info(
                     f"[{ch_folder}] [Xác thực Follow Hồ Sơ SPA] Nút trên trang @{clean_handle} đang là '{before_txt}' -> Bấm Follow trực tiếp trên trang Hồ sơ..."
                 )
+                clicked_follow_btn = True
                 self._os_click_viewport(page, bx, by)
-                time.sleep(3.8)
+                time.sleep(random.uniform(4.2, 5.8))
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
             after_state = page.evaluate(
@@ -1684,6 +1620,25 @@ class TikTok24hFilterEngine:
             )
             after_txt = str(after_state or "").strip()
             persisted = after_txt.lower() in already_labels or is_following_now
+
+            follow_api_blocked = False
+            for f_resp in trace.get("follow_responses") or []:
+                body_str = str(f_resp.get("body") or "")
+                if '"status_code":0' not in body_str.replace(" ", "") and '"status_code"' in body_str:
+                    follow_api_blocked = True
+                    break
+
+            if (clicked_follow_btn and not persisted) or follow_api_blocked:
+                self._circuit_breaker_tripped = True
+                logger.warning(
+                    f"[{ch_folder}] [Follow Circuit-Breaker Anti-Shark] Nút Follow trên @{clean_handle} không giữ trạng thái "
+                    f"(Trước='{before_txt}' -> Sau='{after_txt}', api_blocked={follow_api_blocked}) -> "
+                    "Kích hoạt Cầu Dao Tự Ngắt 24h ngay lập tức để chống chặn Follow!"
+                )
+            elif clicked_follow_btn and persisted:
+                # Nán lại trang hồ sơ chủ kênh thêm vài giây như người thật đang xem kênh
+                time.sleep(random.uniform(3.0, 5.2))
+
             trace["profile_follow_verify"] = {
                 "creator": f"@{clean_handle}",
                 "nav_method": "spa_click",
@@ -1692,6 +1647,7 @@ class TikTok24hFilterEngine:
                 "after_btn": after_txt,
                 "init_relation": (prof_state or {}).get("relation"),
                 "persisted": persisted,
+                "follow_api_blocked": follow_api_blocked,
             }
             self._last_like_debug = trace
             logger.info(
@@ -1981,11 +1937,24 @@ class TikTok24hFilterEngine:
                 f"[{ch_folder}] [Circuit Breaker Anti-Shark] Bỏ qua toàn bộ thao tác phụ trên video @{creator_handle} để bảo vệ tài khoản!"
             )
         else:
-            # Ngẫu nhiên hóa hành vi (Partial Randomized Actions) để phá vỡ hoàn toàn mẫu Bot Macro 5 bước 100%:
+            # Ngẫu nhiên hóa hành vi (Partial Randomized Actions) + Giới hạn cứng tối đa 1 lượt Follow/phiên:
+            session_follows_done = int(getattr(self, "_session_follows_done", 0))
+            follows_24h = self._count_recent_channel_follows(ch_folder, hours=24.0)
+            established_channels = {"video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"}
+            max_daily_follows = 3 if ch_folder in established_channels else 2
+
             do_copy = random.random() < 0.35
             do_fav = random.random() < 0.45
-            do_comment = random.random() < 0.65
-            do_follow = random.random() < 0.75
+            do_comment = random.random() < 0.55
+            if session_follows_done >= 1 or follows_24h >= max_daily_follows:
+                do_follow = False
+                logger.info(
+                    f"[{ch_folder}] [Anti-Follow-Block Quota] Đã đủ định mức Follow an toàn "
+                    f"(trong phiên={session_follows_done}/1, trong 24h={follows_24h}/{max_daily_follows}) -> "
+                    "Video này chỉ Xem 100% + Tim/Lưu/Bình luận, KHÔNG bấm Follow!"
+                )
+            else:
+                do_follow = random.random() < 0.65
 
             # 3. Sao chép liên kết video (xác suất ~35%)
             if do_copy:
@@ -1997,7 +1966,7 @@ class TikTok24hFilterEngine:
                 favorited = self._step4_favorite_video(page, ch_folder)
                 time.sleep(random.uniform(1.2, 1.8))
 
-            # 5. Để lại bình luận khen tự nhiên theo nội dung (xác suất ~65%)
+            # 5. Để lại bình luận khen tự nhiên theo nội dung (xác suất ~55%)
             if do_comment:
                 comment_text = self._step6_post_meaningful_comment(page, ch_folder, creator_handle)
                 time.sleep(random.uniform(0.8, 1.4))
@@ -2014,7 +1983,7 @@ class TikTok24hFilterEngine:
             except Exception:
                 pass
 
-            # 6. Chuyển SPA sang trang Hồ sơ @creator_handle và bấm ĐÚNG 1 LẦN nút Follow (xác suất ~75%)
+            # 6. Chuyển SPA sang trang Hồ sơ @creator_handle và bấm ĐÚNG 1 LẦN nút Follow (tối đa 1 lần/phiên)
             if do_follow:
                 profile_followed = self._verify_and_follow_on_creator_profile(
                     page=page,
@@ -2023,6 +1992,8 @@ class TikTok24hFilterEngine:
                     video_url=video_url,
                 )
                 followed = bool(profile_followed)
+                if followed:
+                    self._session_follows_done = session_follows_done + 1
 
         now_dt = datetime.now()
         record = {
@@ -2127,6 +2098,31 @@ class TikTok24hFilterEngine:
             logger.debug(f"[{ch_folder}] Bỏ qua kiểm chứng hồ sơ kênh: {exc}")
             return {}
 
+    def _count_recent_channel_follows(self, ch_folder: str, hours: float = 24.0) -> int:
+        """Đếm số lượt Follow thành công của kênh `ch_folder` trong vòng `hours` giờ gần nhất."""
+        cutoff = datetime.now() - timedelta(hours=hours)
+        cnt = 0
+        try:
+            hist = self.load_history()
+            for item in hist.get("interactions") or []:
+                if not isinstance(item, dict) or item.get("channel") != ch_folder:
+                    continue
+                steps = item.get("steps_completed") or {}
+                if not steps.get("5_followed_creator"):
+                    continue
+                ts_str = str(item.get("interacted_at") or "").strip()
+                if not ts_str:
+                    continue
+                try:
+                    dt = datetime.strptime(ts_str, "%Y-%m-%d %H:%M:%S")
+                    if dt >= cutoff:
+                        cnt += 1
+                except Exception:
+                    pass
+        except Exception:
+            pass
+        return cnt
+
     def is_in_cooldown(self, ch_folder: str) -> Tuple[bool, str]:
         """
         Kiểm tra xem Dòng 2 (`filter24h`) đang trong thời gian Xả Phạt Tự Động 72h (`filter_24h_cooldown_until`
@@ -2166,10 +2162,13 @@ class TikTok24hFilterEngine:
         self, page: Any, ch_folder: str, video_count: int = 3
     ) -> List[Dict[str, Any]]:
         """
-        Chạy 1 phiên "Bộ lọc 24 giờ" cho kênh `ch_folder` trên `page` đang mở sẵn (mặc định 3 video/phiên).
-        Tự động kiểm tra chế độ Xả Phạt 72h (`filter_24h_cooldown_until`) và Cầu Dao Tự Ngắt (`is_digg: 1`).
+        Chạy 1 phiên "Bộ lọc 24 giờ" cho kênh `ch_folder` trên `page` đang mở sẵn (tối đa 3 video/phiên,
+        tối đa 1 lượt Follow/phiên). Tự động kiểm tra chế độ Xả Phạt 72h (`filter_24h_cooldown_until`)
+        và Cầu Dao Tự Ngắt (`is_digg: 1` hoặc Follow bị từ chối).
         """
         self.last_own_profile_stats = {}
+        self._session_follows_done = 0
+        effective_count = max(1, min(int(video_count or 3), 3))
         in_cd, cd_reason = self.is_in_cooldown(ch_folder)
         if in_cd:
             logger.info(
@@ -2179,7 +2178,7 @@ class TikTok24hFilterEngine:
             self.last_own_profile_stats = {"cooldown_active": True, "cooldown_reason": cd_reason}
             return []
 
-        target_urls = self._discover_target_videos(page, ch_folder, needed_count=video_count)
+        target_urls = self._discover_target_videos(page, ch_folder, needed_count=effective_count)
         if not target_urls:
             logger.warning(
                 f"[{ch_folder}] [Bộ lọc 24h] Chưa tìm thấy video mục tiêu mới trong phiên này."
@@ -2187,10 +2186,10 @@ class TikTok24hFilterEngine:
             return []
 
         results: List[Dict[str, Any]] = []
-        for idx, url in enumerate(target_urls[:video_count], start=1):
+        for idx, url in enumerate(target_urls[:effective_count], start=1):
             try:
                 logger.info(
-                    f"[{ch_folder}] [Bộ lọc 24h] Đang tương tác video #{idx}/{min(len(target_urls), video_count)}: {url}"
+                    f"[{ch_folder}] [Bộ lọc 24h] Đang tương tác video #{idx}/{min(len(target_urls), effective_count)}: {url}"
                 )
                 rec = self.interact_with_single_video(page, ch_folder, url)
                 results.append(rec)
@@ -2200,13 +2199,13 @@ class TikTok24hFilterEngine:
                     hist.setdefault("channel_cooldown_until", {})[ch_folder] = until_str
                     self.save_history(hist)
                     logger.warning(
-                        f"[{ch_folder}] [Circuit Breaker Anti-Shark] Phát hiện TikTok giới hạn thao tác (is_digg=1) -> "
+                        f"[{ch_folder}] [Circuit Breaker Anti-Shark] Phát hiện TikTok giới hạn thao tác (Like/Follow) -> "
                         f"Ngắt phiên ngay lập tức và tạm nghỉ kênh [{ch_folder}] 24 giờ (đến {until_str})!"
                     )
                     break
-                if idx < min(len(target_urls), video_count):
-                    pause_s = random.uniform(3.5, 6.0)
-                    logger.info(f"[{ch_folder}] [Bộ lọc 24h] Chuyển sang video kế tiếp sau {pause_s:.1f}s...")
+                if idx < min(len(target_urls), effective_count):
+                    pause_s = random.uniform(8.0, 14.0)
+                    logger.info(f"[{ch_folder}] [Bộ lọc 24h] Nghỉ giãn cách tự nhiên {pause_s:.1f}s trước khi sang video kế tiếp...")
                     time.sleep(pause_s)
             except Exception as exc:
                 logger.warning(f"[{ch_folder}] [Bộ lọc 24h] Lỗi khi tương tác video {url}: {exc}")
