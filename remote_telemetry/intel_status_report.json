@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-30 13:55:49",
+    "timestamp": "2026-10-30 14:08:47",
     "machine_arch": "x86_64",
     "event_type": "upload",
     "channel": "audio_dem_khuyen",
     "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261030_133747_douyin_story_7214839079408520452.mp4",
-      "caption": "🌙 Thức đêm nghe truyện: Tôi chia tay anh ấy khi anh ấy đang ở giai đoạn nghèo nhất.. \"Đường gia, sao trước đây ngươi không chết? Đến buổi họp lớp, cô học giỏi ngành kỹ thuật và đến ...\" Từng tình tiết đều khiến người nghe nổi da gà, đừng bỏ lỡ đoạn kết!",
-      "hashtags": "#truyenngan #audiodemkhuya #truyenaudio #truyenfull #dramatiktok #phimngantrungquoc #tiktokvn #xuhuong",
+      "video_file": "20261030_140559_tiktok_story_7696730565881515282.mp4",
+      "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 117 - Biến cố bất ngờ và sự thật phía sau. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
+      "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-30 14:08:47",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261030_140559_tiktok_story_7696730565881515282.mp4",
+        "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 117 - Biến cố bất ngờ và sự thật phía sau. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
+        "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-30 13:55:49",
       "machine_arch": "x86_64",
@@ -448,21 +464,6 @@
         "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xuhuong #viral",
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-29 20:31:10",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261027_202119_tiktok_story_7698906930793680148.mp4",
-        "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 142 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
-        "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #tiktokvn",
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
