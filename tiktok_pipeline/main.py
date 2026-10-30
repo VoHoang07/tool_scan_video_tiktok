@@ -877,7 +877,7 @@ def run_continuous_mode(
                     pass
             time.sleep(1)
 
-    channel_sequence = ["1", "2", "3", "4"]
+    channel_sequence = [p["channel_id"] for p in CHANNEL_PROFILES.values()]
     cycle_count = 0
     total_produced = 0
     produced_videos: List[Dict[str, Any]] = []
@@ -1341,7 +1341,7 @@ def main() -> None:
             poster = TikTokAutoPoster(project_root=project_root)
             target_ch = args.post_now.strip()
             if target_ch.lower() == "all":
-                for ch_num in ("1", "2", "3", "4"):
+                for ch_num in [p["channel_id"] for p in CHANNEL_PROFILES.values()]:
                     poster.upload_one_channel_video(ch_num)
             else:
                 poster.upload_one_channel_video(target_ch)
@@ -1465,7 +1465,7 @@ def main() -> None:
         if args.channel and not args.url:
             ch_arg = args.channel.strip().lower()
             if ch_arg == "all":
-                target_channels = ["1", "2", "3", "4"]
+                target_channels = [p["channel_id"] for p in CHANNEL_PROFILES.values()]
             elif "," in ch_arg:
                 target_channels = [c.strip() for c in ch_arg.split(",") if c.strip()]
             else:

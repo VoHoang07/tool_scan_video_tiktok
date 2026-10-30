@@ -173,7 +173,7 @@ class TikTokAutoPoster:
             pass
 
     def ensure_schedule_config(self) -> Dict[str, Any]:
-        """Tạo hoặc đọc file cấu hình khung giờ đăng `schedule_config.json`."""
+        """Tạo hoặc đọc file cấu hình khung giờ đăng `schedule_config.json` (tự động bổ sung đủ 10 kênh nếu thiếu)."""
         if not self.schedule_config_path.exists():
             self.schedule_config_path.write_text(
                 json.dumps(DEFAULT_SCHEDULE_CONFIG, ensure_ascii=False, indent=2),
@@ -182,9 +182,24 @@ class TikTokAutoPoster:
             return dict(DEFAULT_SCHEDULE_CONFIG)
         try:
             cfg = json.loads(self.schedule_config_path.read_text(encoding="utf-8"))
+            changed = False
             for k, v in DEFAULT_SCHEDULE_CONFIG.items():
                 if k not in cfg:
                     cfg[k] = v
+                    changed = True
+                elif k in ("channel_post_times", "channel_filter_24h_times") and isinstance(v, dict) and isinstance(cfg.get(k), dict):
+                    for ch_k, ch_v in v.items():
+                        if ch_k not in cfg[k]:
+                            cfg[k][ch_k] = ch_v
+                            changed = True
+            if changed:
+                try:
+                    self.schedule_config_path.write_text(
+                        json.dumps(cfg, ensure_ascii=False, indent=2),
+                        encoding="utf-8",
+                    )
+                except Exception:
+                    pass
             return cfg
         except Exception:
             return dict(DEFAULT_SCHEDULE_CONFIG)

@@ -7,54 +7,104 @@
   ],
   "channel_post_times": {
     "video_AI_hay": [
-      "08:00",
-      "12:30",
-      "20:00"
+      "07:25",
+      "12:05",
+      "19:20"
     ],
     "baby_AI": [
-      "08:10",
-      "12:40",
-      "20:10"
+      "08:05",
+      "12:42",
+      "20:05"
     ],
     "audio_dem_khuyen": [
-      "08:20",
-      "12:50",
-      "20:20"
+      "08:48",
+      "13:25",
+      "21:15"
     ],
     "tu_chan_gioi": [
-      "08:30",
-      "13:00",
-      "20:30"
+      "09:18",
+      "14:10",
+      "20:42"
+    ],
+    "meo_vat_gia_dinh": [
+      "07:10",
+      "11:35",
+      "18:50"
+    ],
+    "suc_khoe_duong_sinh": [
+      "06:50",
+      "11:55",
+      "19:35"
+    ],
+    "phu_nu_khi_chat": [
+      "08:28",
+      "13:05",
+      "20:25"
+    ],
+    "bai_hoc_kinh_doanh": [
+      "07:38",
+      "12:22",
+      "21:00"
+    ],
+    "nuoi_con_eq": [
+      "08:15",
+      "12:52",
+      "19:50"
+    ],
+    "muu_luoc_nhan_sinh": [
+      "09:05",
+      "13:45",
+      "21:35"
     ]
   },
   "filter_24h_enabled": true,
   "filter_24h_cooldown_until": "2026-10-31 13:45:00",
-  "filter_24h_runs_per_day": 3,
-  "filter_24h_videos_per_session": 3,
+  "filter_24h_runs_per_day": 2,
+  "filter_24h_videos_per_session": 6,
   "channel_filter_24h_times": {
     "video_AI_hay": [
-      "09:30",
-      "15:00",
-      "21:00"
+      "09:40",
+      "17:20"
     ],
     "baby_AI": [
-      "10:00",
-      "15:30",
-      "21:30"
+      "10:15",
+      "18:05"
     ],
     "audio_dem_khuyen": [
-      "10:30",
-      "16:00",
-      "22:00"
+      "10:50",
+      "18:40"
     ],
     "tu_chan_gioi": [
-      "11:00",
-      "16:30",
-      "22:30"
+      "11:25",
+      "19:10"
+    ],
+    "meo_vat_gia_dinh": [
+      "09:15",
+      "16:45"
+    ],
+    "suc_khoe_duong_sinh": [
+      "09:55",
+      "17:35"
+    ],
+    "phu_nu_khi_chat": [
+      "10:35",
+      "18:20"
+    ],
+    "bai_hoc_kinh_doanh": [
+      "11:05",
+      "18:55"
+    ],
+    "nuoi_con_eq": [
+      "10:05",
+      "17:50"
+    ],
+    "muu_luoc_nhan_sinh": [
+      "11:40",
+      "19:25"
     ]
   },
   "remote_trigger_post_now": {
-    "trigger_id": "delete_bad_baby_ai_posts_20261029_2356",
+    "trigger_id": "delete_bad_baby_ai_posts_20261030_1007",
     "target_arch": "x86_64",
     "channel": "baby_AI",
     "action": "delete_only",
