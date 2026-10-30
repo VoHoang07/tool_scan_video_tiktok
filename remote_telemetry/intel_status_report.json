@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-30 14:24:00",
+    "timestamp": "2026-10-30 19:28:26",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261028_203926_tiktok_story_7685359044369894677.mp4",
-      "caption": "🐉 Tưởng là phế vật dưới đáy tông môn ai ngờ ẩn giấu thực lực chấn động thiên địa — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
+      "video_file": "20261029_080232_douyin_story_7686077455564988992.mp4",
+      "caption": "🎬 Thế giới hoạt hình AI kỳ ảo với tình tiết bất ngờ ở giây cuối cùng. \"Ồ...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+      "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #hoathinhhai #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-30 19:28:26",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261029_080232_douyin_story_7686077455564988992.mp4",
+        "caption": "🎬 Thế giới hoạt hình AI kỳ ảo với tình tiết bất ngờ ở giây cuối cùng. \"Ồ...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+        "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #hoathinhhai #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-30 14:24:00",
       "machine_arch": "x86_64",
@@ -436,23 +452,6 @@
     },
     {
       "timestamp": "2026-10-29 23:13:34",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "action": "delete_bad_posts",
-        "match_keywords": [
-          "qqqqq",
-          "kẹo mút",
-          "kẹo cao su"
-        ],
-        "deleted_posts": [],
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-29 23:13:16",
       "machine_arch": "x86_64",
       "event_type": "upload",
       "channel": "baby_AI",
