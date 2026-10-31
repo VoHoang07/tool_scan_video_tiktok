@@ -625,6 +625,19 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
         ).stdout.strip()
 
         if local_sha and remote_sha and local_sha != remote_sha:
+            # Có code mới từ Silicon
+            commit_msg = subprocess.run(
+                ["git", "log", "origin/main", "-1", "--format=%s"],
+                cwd=str(project_root),
+                capture_output=True,
+                text=True,
+                timeout=10,
+                check=False,
+            ).stdout.strip()
+            logger.info(
+                f"[Auto-Git-Sync] 🔄 Phát hiện code mới! ({local_sha[:7]} -> {remote_sha[:7]}) "
+                f"| {commit_msg}"
+            )
             pid = os.getpid()
             tmp_dir = Path(tempfile.gettempdir())
             hist_path = project_root / "story_audio_history.json"
