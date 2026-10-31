@@ -1452,6 +1452,7 @@ def main() -> None:
                         snap = _get_codebase_mtime_snapshot(project_root)
                     except Exception:
                         pass
+                poster.check_and_run_warmup_browse()
                 poster.check_and_run_stream2_filter24h_schedule()
                 f24_tick += 1
                 if f24_tick % 10 == 0:
