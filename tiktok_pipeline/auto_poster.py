@@ -3532,12 +3532,11 @@ class TikTokAutoPoster:
         return filter_results
 
     def warmup_browse_channel(self, ch_folder: str, browse_seconds: int = 150) -> None:
-        """Lướt FYP TikTok tự nhiên để TikTok nhận diện account thật (chạy trên Intel)."""
+        """Lướt FYP TikTok tự nhiên bằng CoreGraphics CGEvent (chuột/bàn phím cấp OS) để TikTok nhận diện account thật."""
         user_data_dir = self.profiles_root / ch_folder
         if not user_data_dir.exists():
             user_data_dir.mkdir(parents=True, exist_ok=True)
 
-        # Auto-restore session from Silicon if needed
         lock_fh = self._acquire_browser_process_lock()
         if lock_fh is None:
             logger.info(f"[Warmup] [{ch_folder}] Browser lock busy, skip")
@@ -3546,7 +3545,7 @@ class TikTokAutoPoster:
         try:
             from playwright.sync_api import sync_playwright
 
-            logger.info(f"[Warmup] [{ch_folder}] Bắt đầu lướt FYP {browse_seconds}s...")
+            logger.info(f"[Warmup] [{ch_folder}] Bắt đầu lướt FYP {browse_seconds}s (CoreGraphics CGEvent)...")
             with sync_playwright() as p:
                 context = self._launch_stealth_chrome_context(
                     playwright_obj=p, user_data_dir=user_data_dir, headless=False
@@ -3558,24 +3557,44 @@ class TikTokAutoPoster:
                     page.goto("https://www.tiktok.com/foryou", wait_until="domcontentloaded", timeout=30000)
                     time.sleep(random.uniform(3, 5))
 
+                    # Di chuột vào giữa trang để focus
+                    self._human_move_mouse(page, random.uniform(400, 800), random.uniform(300, 500))
+                    time.sleep(random.uniform(0.5, 1.0))
+
                     start = time.time()
                     scroll_count = 0
                     while time.time() - start < browse_seconds:
                         watch_time = random.uniform(5, 15)
                         time.sleep(watch_time)
 
-                        # 5% xác suất like
+                        # Di chuột ngẫu nhiên trong viewport (giả lập người xem)
+                        if random.random() < 0.3:
+                            self._human_move_mouse(
+                                page,
+                                random.uniform(300, 900),
+                                random.uniform(200, 600),
+                            )
+                            time.sleep(random.uniform(0.3, 0.8))
+
+                        # 5% xác suất like bằng CoreGraphics click
                         if random.random() < 0.05:
                             try:
                                 like_btn = page.locator('[data-e2e="like-icon"]').first
                                 if like_btn.is_visible(timeout=1000):
-                                    like_btn.click()
-                                    logger.info(f"  [{ch_folder}] ❤️ Liked video #{scroll_count + 1}")
-                                    time.sleep(random.uniform(0.5, 1.5))
+                                    box = like_btn.bounding_box()
+                                    if box:
+                                        self._os_click_viewport(
+                                            page,
+                                            box["x"] + box["width"] / 2,
+                                            box["y"] + box["height"] / 2,
+                                        )
+                                        logger.info(f"  [{ch_folder}] ❤️ Liked video #{scroll_count + 1}")
+                                        time.sleep(random.uniform(0.5, 1.5))
                             except Exception:
                                 pass
 
-                        page.keyboard.press("ArrowDown")
+                        # Scroll xuống video tiếp = ArrowDown qua OS keyboard (CoreGraphics CGEvent)
+                        self.desktop.key_press_os("arrow-down")
                         scroll_count += 1
                         time.sleep(random.uniform(0.8, 2.0))
 
