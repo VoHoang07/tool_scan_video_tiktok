@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-31 13:28:20",
+    "timestamp": "2026-10-31 19:20:08",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261030_150131_tiktok_story_7697778349690670357.mp4",
-      "caption": "📖 Góc Kể Chuyện: Tập 119 - Góc khuất tình cảm và màn đáp trả cực gắt. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
-      "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #ngontinh #trongsinh #tongtai #viral #foryou",
+      "video_file": "20261030_082301_tiktok_story_7697471240776240400.mp4",
+      "caption": "✨ Câu chuyện AI cực cuốn: Tuyết Nhi, nhanh mang Tề Xuyên nấu cho Diệp Dã đi.. \"Nếu chúng ta tích lũy cơ sở ở Triệu Khẩu và Lư Sơn, cha tôi sẽ không thể nói về chuyện đó được ...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+      "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-31 19:20:08",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261030_082301_tiktok_story_7697471240776240400.mp4",
+        "caption": "✨ Câu chuyện AI cực cuốn: Tuyết Nhi, nhanh mang Tề Xuyên nấu cho Diệp Dã đi.. \"Nếu chúng ta tích lũy cơ sở ở Triệu Khẩu và Lư Sơn, cha tôi sẽ không thể nói về chuyện đó được ...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+        "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-31 13:28:20",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 13:55:49",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261030_133747_douyin_story_7214839079408520452.mp4",
-        "caption": "🌙 Thức đêm nghe truyện: Tôi chia tay anh ấy khi anh ấy đang ở giai đoạn nghèo nhất.. \"Đường gia, sao trước đây ngươi không chết? Đến buổi họp lớp, cô học giỏi ngành kỹ thuật và đến ...\" Từng tình tiết đều khiến người nghe nổi da gà, đừng bỏ lỡ đoạn kết!",
-        "hashtags": "#truyenngan #audiodemkhuya #truyenaudio #truyenfull #dramatiktok #phimngantrungquoc #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
