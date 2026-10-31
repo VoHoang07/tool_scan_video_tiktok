@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-31 07:25:03",
+    "timestamp": "2026-10-31 08:06:13",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261029_124147_tiktok_story_7683967426475609351.mp4",
-      "caption": "🐾 Mẹ ơi mẹ đừng đuổi con — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Hãy nhìn xem cái lỗ da heo của tôi đang hoạt động thế nào...\" Theo bạn tập tiếp theo sẽ ra sao?",
-      "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #xuhuong",
+      "video_file": "20261029_234930_tiktok_story_7656683365013179655.mp4",
+      "caption": "🤣 Tôi muốn ly hôn với bố bạn — Pha xử lý đi vào lòng đất của hai mẹ con! \"Cuối cùng tôi đã có thể sống sót cho đến bây giờ, vì vậy tôi có thể dành không gian cho người k...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+      "hashtags": "#embehaihuoc #chamcon #babyai #embecute #tinhhuonghaihuoc #haihuocmoingay #giadinhhaihuoc #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-31 08:06:13",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261029_234930_tiktok_story_7656683365013179655.mp4",
+        "caption": "🤣 Tôi muốn ly hôn với bố bạn — Pha xử lý đi vào lòng đất của hai mẹ con! \"Cuối cùng tôi đã có thể sống sót cho đến bây giờ, vì vậy tôi có thể dành không gian cho người k...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+        "hashtags": "#embehaihuoc #chamcon #babyai #embecute #tinhhuonghaihuoc #haihuocmoingay #giadinhhaihuoc #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-31 07:25:03",
       "machine_arch": "x86_64",
@@ -385,22 +401,6 @@
         "video_file": "20261028_125251_tiktok_story_7698192203855809812.mp4",
         "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 141 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
         "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 08:18:33",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261029_231045_tiktok_story_7663279320877616392.mp4",
-        "caption": "😂 Xin chào, tôi đến đây để thử hương vị. Xin chào, tôi đến đây để kiểm tra. Mì của bạn đâu?. \"Ồ, cuộc phỏng vấn thật thú vị. Họ của bạn là gì...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-        "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #foryou #fyp",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
