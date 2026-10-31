@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-31 09:24:00",
+    "timestamp": "2026-10-31 12:13:13",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261029_130248_tiktok_story_7686087505615195412.mp4",
-      "caption": "⚔️ [Tu Chân Giới] Phàm nhân nghịch thiên cải mệnh thức tỉnh huyết mạch thượng cổ tại Tu Chân Giới. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #viral",
+      "video_file": "20261029_124324_tiktok_story_7695359399006620934.mp4",
+      "caption": "🐾 Dừng lại, đừng chạy — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"À, vậy bạn không tổ chức sinh nhật cho mình à...\" Theo bạn tập tiếp theo sẽ ra sao?",
+      "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-31 12:13:13",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261029_124324_tiktok_story_7695359399006620934.mp4",
+        "caption": "🐾 Dừng lại, đừng chạy — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"À, vậy bạn không tổ chức sinh nhật cho mình à...\" Theo bạn tập tiếp theo sẽ ra sao?",
+        "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-31 09:24:00",
       "machine_arch": "x86_64",
@@ -237,173 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 10:07:43",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "action": "delete_bad_posts",
-        "match_keywords": [
-          "29 tháng 10, 8:14 ch",
-          "29 tháng 10, 12:40 ch",
-          "01:31 | 29 tháng 10",
-          "01:48 | 29 tháng 10",
-          "qqqqq",
-          "kẹo mút",
-          "kẹo cao su"
-        ],
-        "deleted_posts": [],
-        "delete_debug": [
-          {
-            "pass": 0,
-            "target_row": {
-              "rowY": 449,
-              "caption": "01:31 | 29 tháng 10, 8:14 CH | Mọi người 301 6 0 | Mọi người",
-              "moreX": 1326,
-              "moreY": 449,
-              "actionCount": 4
-            },
-            "del_option": {
-              "text": "xóa",
-              "x": 1214.50390625,
-              "y": 567,
-              "left": 1202,
-              "childrenCount": 0
-            },
-            "popup_dump": [
-              {
-                "t": "bình luận",
-                "x": 1042,
-                "y": 171
-              },
-              {
-                "t": "bình luận",
-                "x": 1042,
-                "y": 171
-              },
-              {
-                "t": "bình luận",
-                "x": 1042,
-                "y": 171
-              },
-              {
-                "t": "bình luận",
-                "x": 1042,
-                "y": 171
-              },
-              {
-                "t": "bình luận",
-                "x": 1033,
-                "y": 171
-              },
-              {
-                "t": "hành động",
-                "x": 1263,
-                "y": 171
-              },
-              {
-                "t": "hành động",
-                "x": 1190,
-                "y": 171
-              },
-              {
-                "t": "hành động",
-                "x": 1190,
-                "y": 171
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 249
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 249
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 349
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 349
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 449
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 449
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 549
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 549
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 649
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 649
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 749
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 749
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 849
-              },
-              {
-                "t": "0",
-                "x": 1042,
-                "y": 849
-              },
-              {
-                "t": "ghim lên đầu\ntải về\nxóa",
-                "x": 1253,
-                "y": 533
-              },
-              {
-                "t": "ghim lên đầu\ntải về\nxóa",
-                "x": 1253,
-                "y": 533
-              },
-              {
-                "t": "ghim lên đầu\ntải về\nxóa",
-                "x": 1253,
-                "y": 533
-              }
-            ]
-          }
-        ],
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
