@@ -3590,35 +3590,87 @@ class TikTokAutoPoster:
             self._release_browser_process_lock(lock_fh)
 
     def check_and_run_warmup_browse(self) -> None:
-        """Kiểm tra remote trigger warmup browse và chạy lần lượt cho các kênh mới."""
+        """
+        Tự động lướt FYP cho 1 kênh mỗi lần gọi, chọn kênh lâu nhất chưa lướt.
+        - Mỗi kênh tối đa 4 lần/ngày, cách nhau tối thiểu 3 giờ
+        - Cách kênh trước tối thiểu 10 phút (tránh fingerprint collision)
+        - Chỉ chạy trên máy Intel (x86_64)
+        """
+        if platform.machine() != "x86_64":
+            return
+
         cfg = self._load_schedule_config()
-        trig = cfg.get("remote_trigger_warmup_browse")
-        if not trig or not isinstance(trig, dict):
+        all_filter_channels = cfg.get("active_filter_24h_channels", [])
+        if not all_filter_channels:
             return
 
-        target_arch = trig.get("target_arch", "")
-        if target_arch and target_arch != platform.machine():
+        browse_seconds = int(cfg.get("warmup_browse_seconds", 150))
+
+        # Đọc lịch sử lướt từ file JSON
+        history_file = self.profiles_root / ".warmup_browse_history.json"
+        history: Dict[str, Any] = {}
+        if history_file.exists():
+            try:
+                history = json.loads(history_file.read_text(encoding="utf-8"))
+            except Exception:
+                history = {}
+
+        now = datetime.now()
+        now_str = now.strftime("%Y-%m-%d %H:%M:%S")
+        today_str = now.strftime("%Y-%m-%d")
+
+        # Kiểm tra gap 10 phút với kênh cuối cùng đã lướt
+        last_any_ts_str = history.get("_last_any_warmup_ts", "")
+        if last_any_ts_str:
+            try:
+                last_any_ts = datetime.strptime(last_any_ts_str, "%Y-%m-%d %H:%M:%S")
+                if (now - last_any_ts).total_seconds() < 600:
+                    return
+            except Exception:
+                pass
+
+        # Tìm kênh phù hợp: chưa lướt hôm nay >= 4 lần, cách lần cuối >= 3 giờ
+        best_ch = None
+        best_last_ts = datetime.min
+        for ch in all_filter_channels:
+            ch_data = history.get(ch, {})
+            today_count = ch_data.get(f"count_{today_str}", 0)
+            if today_count >= 4:
+                continue
+            last_ts_str = ch_data.get("last_ts", "")
+            if last_ts_str:
+                try:
+                    last_ts = datetime.strptime(last_ts_str, "%Y-%m-%d %H:%M:%S")
+                    if (now - last_ts).total_seconds() < 10800:  # 3 giờ
+                        continue
+                    if best_ch is None or last_ts < best_last_ts:
+                        best_ch = ch
+                        best_last_ts = last_ts
+                except Exception:
+                    best_ch = ch
+                    best_last_ts = datetime.min
+            else:
+                # Chưa lướt bao giờ → ưu tiên cao nhất
+                if best_ch is None or best_last_ts > datetime.min:
+                    best_ch = ch
+                    best_last_ts = datetime.min
+
+        if not best_ch:
             return
 
-        trig_id = trig.get("trigger_id", "")
-        done_file = self.profiles_root / ".warmup_done_trigger.txt"
-        if done_file.exists() and done_file.read_text(encoding="utf-8").strip() == trig_id:
-            return
+        logger.info(f"[Warmup Auto] Chọn kênh [{best_ch}] để lướt FYP ({browse_seconds}s)")
+        self.warmup_browse_channel(best_ch, browse_seconds=browse_seconds)
 
-        channels = trig.get("channels", [])
-        browse_seconds = int(trig.get("browse_seconds", 150))
-        gap_seconds = int(trig.get("gap_seconds", 30))
-
-        logger.info(f"[Warmup] Remote Trigger ({trig_id}): {len(channels)} kênh, {browse_seconds}s/kênh")
-        for i, ch in enumerate(channels):
-            self.warmup_browse_channel(ch, browse_seconds=browse_seconds)
-            if i < len(channels) - 1:
-                gap = gap_seconds + random.uniform(-5, 10)
-                logger.info(f"[Warmup] Nghỉ {gap:.0f}s...")
-                time.sleep(gap)
-
-        done_file.write_text(trig_id, encoding="utf-8")
-        logger.info(f"[Warmup] ✅ Hoàn tất tất cả {len(channels)} kênh!")
+        # Cập nhật lịch sử
+        ch_data = history.get(best_ch, {})
+        ch_data["last_ts"] = now_str
+        ch_data[f"count_{today_str}"] = ch_data.get(f"count_{today_str}", 0) + 1
+        history[best_ch] = ch_data
+        history["_last_any_warmup_ts"] = now_str
+        try:
+            history_file.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8")
+        except Exception:
+            pass
 
     def check_and_run_scheduled_posts(self) -> List[Dict[str, Any]]:
         """
