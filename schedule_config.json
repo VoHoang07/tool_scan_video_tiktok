@@ -13,7 +13,9 @@
     "tu_chan_gioi",
     "suc_khoe_duong_sinh",
     "phu_nu_khi_chat",
-    "an_vat_moi_ngay"
+    "an_vat_moi_ngay",
+    "nuoi_con_eq",
+    "phu_kien_tien_ich"
   ],
   "default_post_times": [
     "08:00",
