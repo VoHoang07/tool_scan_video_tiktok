@@ -815,6 +815,7 @@ def run_continuous_mode(
             return
         try:
             _reload_poster_if_updated()
+            poster.check_and_run_warmup_browse()
             poster.check_and_run_stream2_filter24h_schedule()
         except Exception as sched_exc:
             logger.debug(f"[Dòng 2 - Filter 24h Scheduler] Bỏ qua lỗi phụ: {sched_exc}")

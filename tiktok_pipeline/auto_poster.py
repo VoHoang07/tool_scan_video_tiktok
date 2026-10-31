@@ -3530,6 +3530,96 @@ class TikTokAutoPoster:
 
         return filter_results
 
+    def warmup_browse_channel(self, ch_folder: str, browse_seconds: int = 150) -> None:
+        """Lướt FYP TikTok tự nhiên để TikTok nhận diện account thật (chạy trên Intel)."""
+        user_data_dir = self.profiles_root / ch_folder
+        if not user_data_dir.exists():
+            user_data_dir.mkdir(parents=True, exist_ok=True)
+
+        # Auto-restore session from Silicon if needed
+        lock_fh = self._acquire_browser_process_lock()
+        if lock_fh is None:
+            logger.info(f"[Warmup] [{ch_folder}] Browser lock busy, skip")
+            return
+
+        try:
+            from playwright.sync_api import sync_playwright
+
+            logger.info(f"[Warmup] [{ch_folder}] Bắt đầu lướt FYP {browse_seconds}s...")
+            with sync_playwright() as p:
+                context = self._launch_stealth_chrome_context(
+                    playwright_obj=p, user_data_dir=user_data_dir, headless=True
+                )
+                try:
+                    page = context.pages[0] if context.pages else context.new_page()
+                    self._restore_synced_channel_session_if_needed(context, user_data_dir)
+
+                    page.goto("https://www.tiktok.com/foryou", wait_until="domcontentloaded", timeout=30000)
+                    time.sleep(random.uniform(3, 5))
+
+                    start = time.time()
+                    scroll_count = 0
+                    while time.time() - start < browse_seconds:
+                        watch_time = random.uniform(5, 15)
+                        time.sleep(watch_time)
+
+                        # 5% xác suất like
+                        if random.random() < 0.05:
+                            try:
+                                like_btn = page.locator('[data-e2e="like-icon"]').first
+                                if like_btn.is_visible(timeout=1000):
+                                    like_btn.click()
+                                    logger.info(f"  [{ch_folder}] ❤️ Liked video #{scroll_count + 1}")
+                                    time.sleep(random.uniform(0.5, 1.5))
+                            except Exception:
+                                pass
+
+                        page.keyboard.press("ArrowDown")
+                        scroll_count += 1
+                        time.sleep(random.uniform(0.8, 2.0))
+
+                    logger.info(f"[Warmup] [{ch_folder}] ✅ Xong! {scroll_count} video trong {time.time() - start:.0f}s")
+                finally:
+                    try:
+                        context.close()
+                    except Exception:
+                        pass
+        except Exception as exc:
+            logger.error(f"[Warmup] [{ch_folder}] Lỗi: {exc}")
+        finally:
+            self._release_browser_process_lock(lock_fh)
+
+    def check_and_run_warmup_browse(self) -> None:
+        """Kiểm tra remote trigger warmup browse và chạy lần lượt cho các kênh mới."""
+        cfg = self._load_schedule_config()
+        trig = cfg.get("remote_trigger_warmup_browse")
+        if not trig or not isinstance(trig, dict):
+            return
+
+        target_arch = trig.get("target_arch", "")
+        if target_arch and target_arch != platform.machine():
+            return
+
+        trig_id = trig.get("trigger_id", "")
+        done_file = self.profiles_root / ".warmup_done_trigger.txt"
+        if done_file.exists() and done_file.read_text(encoding="utf-8").strip() == trig_id:
+            return
+
+        channels = trig.get("channels", [])
+        browse_seconds = int(trig.get("browse_seconds", 150))
+        gap_seconds = int(trig.get("gap_seconds", 30))
+
+        logger.info(f"[Warmup] Remote Trigger ({trig_id}): {len(channels)} kênh, {browse_seconds}s/kênh")
+        for i, ch in enumerate(channels):
+            self.warmup_browse_channel(ch, browse_seconds=browse_seconds)
+            if i < len(channels) - 1:
+                gap = gap_seconds + random.uniform(-5, 10)
+                logger.info(f"[Warmup] Nghỉ {gap:.0f}s...")
+                time.sleep(gap)
+
+        done_file.write_text(trig_id, encoding="utf-8")
+        logger.info(f"[Warmup] ✅ Hoàn tất tất cả {len(channels)} kênh!")
+
     def check_and_run_scheduled_posts(self) -> List[Dict[str, Any]]:
         """
         Điều phối cả 2 dòng hoạt động:
