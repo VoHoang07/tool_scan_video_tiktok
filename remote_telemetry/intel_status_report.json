@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-31 12:13:13",
+    "timestamp": "2026-10-31 12:51:56",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261029_124324_tiktok_story_7695359399006620934.mp4",
-      "caption": "🐾 Dừng lại, đừng chạy — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"À, vậy bạn không tổ chức sinh nhật cho mình à...\" Theo bạn tập tiếp theo sẽ ra sao?",
-      "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #xuhuongtiktok",
+      "video_file": "20261030_000330_tiktok_story_7632736494406438162.mp4",
+      "caption": "🥰 Nhật ký gia đình siêu lầy: Bà ơi, bà không tốt đâu. \"Không phải chúng ta đang trốn tránh...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+      "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #xuhuongtiktok #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-31 12:51:56",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261030_000330_tiktok_story_7632736494406438162.mp4",
+        "caption": "🥰 Nhật ký gia đình siêu lầy: Bà ơi, bà không tốt đâu. \"Không phải chúng ta đang trốn tránh...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+        "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-31 12:13:13",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261029_082055_tiktok_story_7698739758792543508.mp4",
         "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Biến cố bất ngờ lúc nửa đêm và sự thật chấn động phía sau cuộc hôn nhân. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
         "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #ngontinh #trongsinh #tongtai #truyenaudio #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 13:25:25",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261028_203053_tiktok_story_7698309790610640148.mp4",
-        "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 141 - Góc khuất tình cảm và màn đáp trả cực gắt. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
-        "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #tiktokvn",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
