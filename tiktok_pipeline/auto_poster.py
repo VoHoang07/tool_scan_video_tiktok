@@ -3600,7 +3600,7 @@ class TikTokAutoPoster:
         if platform.machine() != "x86_64":
             return
 
-        cfg = self._load_schedule_config()
+        cfg = self.ensure_schedule_config()
         all_filter_channels = cfg.get("active_filter_24h_channels", [])
         if not all_filter_channels:
             return
