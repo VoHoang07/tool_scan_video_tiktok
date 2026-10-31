@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-31 08:58:46",
+    "timestamp": "2026-10-31 09:24:00",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261030_145710_tiktok_story_7695990805097401618.mp4",
-      "caption": "🔥 Cốt truyện cuốn từ giây đầu tiên: Tập 114 - Biến cố bất ngờ và sự thật phía sau. Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
-      "hashtags": "#kechuyendemkhuya #truyenngan #audiodemkhuya #truyenfull #dramatiktok #phimngantrungquoc #truyenaudio #xh",
+      "video_file": "20261029_130248_tiktok_story_7686087505615195412.mp4",
+      "caption": "⚔️ [Tu Chân Giới] Phàm nhân nghịch thiên cải mệnh thức tỉnh huyết mạch thượng cổ tại Tu Chân Giới. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-31 09:24:00",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261029_130248_tiktok_story_7686087505615195412.mp4",
+        "caption": "⚔️ [Tu Chân Giới] Phàm nhân nghịch thiên cải mệnh thức tỉnh huyết mạch thượng cổ tại Tu Chân Giới. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-31 08:58:46",
       "machine_arch": "x86_64",
@@ -388,22 +404,6 @@
             ]
           }
         ],
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 08:40:39",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261028_130403_tiktok_story_7684980163959950612.mp4",
-        "caption": "⚔️ [Tu Chân Giới] Vì cứu em gái, anh trai phải giả làm thiên kim nhà họ Chu. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-        "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
