@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-30 21:16:23",
+    "timestamp": "2026-10-31 07:25:03",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261030_144554_tiktok_story_7692989950672768263.mp4",
-      "caption": "🎧 [Truyện Đêm Khuya] Tập 106 - Biến cố bất ngờ và sự thật phía sau. Một câu chuyện đầy kịch tính với cú quay xe cực gắt ở phút cuối. Nếu ở trong hoàn cảnh của nhân vật chính, bạn sẽ chọn tha thứ hay trả đũa?",
-      "hashtags": "#audiodemkhuya #truyenaudio #kechuyendemkhuya #vahmattraxanh #gocchiaSe #tamtrang #xuhuong #viral",
+      "video_file": "20261029_124147_tiktok_story_7683967426475609351.mp4",
+      "caption": "🐾 Mẹ ơi mẹ đừng đuổi con — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Hãy nhìn xem cái lỗ da heo của tôi đang hoạt động thế nào...\" Theo bạn tập tiếp theo sẽ ra sao?",
+      "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-10-31 07:25:03",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261029_124147_tiktok_story_7683967426475609351.mp4",
+        "caption": "🐾 Mẹ ơi mẹ đừng đuổi con — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Hãy nhìn xem cái lỗ da heo của tôi đang hoạt động thế nào...\" Theo bạn tập tiếp theo sẽ ra sao?",
+        "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-30 21:16:23",
       "machine_arch": "x86_64",
@@ -388,22 +404,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 08:07:12",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261028_215510_tiktok_story_7697267839144594709.mp4",
-        "caption": "🎬 Giá thuê tháng này sẽ tăng thêm 1.000. \"Tôi có thể giảm thêm hai trăm nữa được không...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-        "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #hoathinhhai #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
