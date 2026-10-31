@@ -73,7 +73,7 @@
     ]
   },
   "filter_24h_enabled": true,
-  "filter_24h_cooldown_until": "2026-10-31 13:45:00",
+  "filter_24h_cooldown_until": "",
   "filter_24h_runs_per_day": 2,
   "filter_24h_videos_per_session": 3,
   "channel_filter_24h_times": {
@@ -137,10 +137,10 @@
     "force": true
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "activate_72h_cooldown_20261028_1348",
+    "trigger_id": "reopen_stream2_20261031_2005",
     "target_arch": "x86_64",
-    "channel": "baby_AI",
-    "video_count": 1
+    "channel": "video_AI_hay",
+    "video_count": 3
   },
   "headless": false,
   "random_jitter_minutes": 9,
