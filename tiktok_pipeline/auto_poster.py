@@ -3549,7 +3549,7 @@ class TikTokAutoPoster:
             logger.info(f"[Warmup] [{ch_folder}] Bắt đầu lướt FYP {browse_seconds}s...")
             with sync_playwright() as p:
                 context = self._launch_stealth_chrome_context(
-                    playwright_obj=p, user_data_dir=user_data_dir, headless=True
+                    playwright_obj=p, user_data_dir=user_data_dir, headless=False
                 )
                 try:
                     page = context.pages[0] if context.pages else context.new_page()
