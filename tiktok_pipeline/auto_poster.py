@@ -439,8 +439,7 @@ class TikTokAutoPoster:
             out["password"] = parsed.password
         return out
 
-    @staticmethod
-    def _launch_stealth_chrome_context(playwright_obj: Any, user_data_dir: Path, headless: bool = False) -> Any:
+    def _launch_stealth_chrome_context(self, playwright_obj: Any, user_data_dir: Path, headless: bool = False) -> Any:
         """
         Khởi chạy Google Chrome thật với cấu hình Anti-Detect cô lập theo từng kênh:
         - Đọc `profile_fingerprint.json` riêng của từng kênh (Screen, Window, CPU/RAM, WebGL1/2, Canvas 2D, AudioContext, MediaDevices ID).
