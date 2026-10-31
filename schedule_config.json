@@ -150,9 +150,13 @@
   "warmup_before_upload": true,
   "use_macos_native_input": true,
   "remote_trigger_warmup_browse": {
-    "trigger_id": "warmup_6ch_20261101_0010",
+    "trigger_id": "warmup_10ch_20261101_0012",
     "target_arch": "x86_64",
     "channels": [
+      "video_AI_hay",
+      "baby_AI",
+      "audio_dem_khuyen",
+      "tu_chan_gioi",
       "meo_vat_gia_dinh",
       "suc_khoe_duong_sinh",
       "phu_nu_khi_chat",
@@ -161,6 +165,6 @@
       "phu_kien_tien_ich"
     ],
     "browse_seconds": 150,
-    "gap_seconds": 30
+    "gap_seconds": 600
   }
 }
