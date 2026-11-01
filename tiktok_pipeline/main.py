@@ -993,6 +993,7 @@ def run_continuous_mode(
 
     def _check_hot_reload() -> None:
         if scheduler_lock.locked():
+            _auto_git_pull_if_available(project_root)
             return
         _reload_poster_if_updated()
 

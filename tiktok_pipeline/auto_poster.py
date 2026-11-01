@@ -274,18 +274,54 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
-    def _acquire_browser_process_lock(self) -> Any:
+    def _acquire_browser_process_lock(self, max_wait_seconds: int = 360) -> Any:
         """
         Khóa đồng bộ liên tiến trình (`fcntl.flock`) để khi chạy 2 cửa sổ Terminal độc lập
         (`--stream-upload` và `--stream-filter24h`), 2 dòng hoạt động tuần tự nhường Chrome & chuột OS cho nhau.
+        Có tích hợp bộ giám sát (Watchdog Timeout): nếu khóa bị treo quá `max_wait_seconds` (mặc định 6 phút)
+        do một tiến trình Chrome bị đơ mạng, tự động giải phóng Chrome treo để không làm kẹt Dòng 1 / Dòng 2.
         """
         import fcntl
 
         lock_path = self.project_root / "workspace_temp" / ".tiktok_browser_session.lock"
         lock_path.parent.mkdir(parents=True, exist_ok=True)
-        fh = open(lock_path, "w", encoding="utf-8")
-        fcntl.flock(fh.fileno(), fcntl.LOCK_EX)
-        return fh
+        fh = open(lock_path, "a+", encoding="utf-8")
+        start_wait = time.time()
+        while True:
+            try:
+                fcntl.flock(fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                try:
+                    fh.seek(0)
+                    fh.truncate()
+                    fh.write(f"pid={os.getpid()} ts={int(time.time())}\n")
+                    fh.flush()
+                except Exception:
+                    pass
+                return fh
+            except BlockingIOError:
+                elapsed = time.time() - start_wait
+                if elapsed >= max_wait_seconds:
+                    logger.warning(
+                        f"[Browser Lock Watchdog] Khóa trình duyệt bị giữ quá {int(elapsed)}s — "
+                        "tự động giải phóng tiến trình Chrome for Testing bị treo!"
+                    )
+                    try:
+                        subprocess.run(
+                            ["pkill", "-9", "-f", "Google Chrome for Testing"],
+                            capture_output=True,
+                            timeout=5,
+                            check=False,
+                        )
+                        time.sleep(1.5)
+                        fcntl.flock(fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                        return fh
+                    except Exception:
+                        try:
+                            fh.close()
+                        except Exception:
+                            pass
+                        return None
+                time.sleep(1.0)
 
     def _release_browser_process_lock(self, fh: Any = None) -> None:
         import fcntl
@@ -3817,10 +3853,22 @@ class TikTokAutoPoster:
         if not user_data_dir.exists():
             user_data_dir.mkdir(parents=True, exist_ok=True)
 
-        lock_fh = self._acquire_browser_process_lock()
+        lock_fh = self._acquire_browser_process_lock(max_wait_seconds=240)
         if lock_fh is None:
             logger.info(f"[Warmup FYP] [{ch_folder}] Trình duyệt đang bận ở phiên khác, bỏ qua lượt này.")
             return
+
+        import threading
+
+        def _force_kill_hung_warmup() -> None:
+            logger.warning(
+                f"[Warmup Watchdog] [{ch_folder}] Phiên lướt FYP vượt quá thời gian cho phép ({browse_seconds + 90}s) — tự động đóng Chrome treo!"
+            )
+            self._cleanup_stale_chrome_locks(user_data_dir)
+
+        watchdog_timer = threading.Timer(float(browse_seconds + 90), _force_kill_hung_warmup)
+        watchdog_timer.daemon = True
+        watchdog_timer.start()
 
         try:
             from playwright.sync_api import sync_playwright
@@ -3895,6 +3943,11 @@ class TikTokAutoPoster:
         except Exception as exc:
             logger.error(f"[Warmup FYP] [{ch_folder}] Lỗi: {exc}")
         finally:
+            try:
+                watchdog_timer.cancel()
+            except Exception:
+                pass
+            self._Release_cleanup_warmup = self._cleanup_stale_chrome_locks(user_data_dir)
             self._release_browser_process_lock(lock_fh)
 
     def check_and_run_warmup_browse(self) -> None:
