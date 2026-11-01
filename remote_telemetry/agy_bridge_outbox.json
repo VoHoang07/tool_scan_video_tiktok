@@ -1,31 +1,32 @@
 {
-  "updated_at": "2026-11-01 23:25:01",
+  "updated_at": "2026-11-01 23:26:02",
   "latest_result": {
-    "cmd_id": "heartbeat_1793550300",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-01 23:25:00",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_evolve_c984e770a337",
+    "action": "auto_self_evolve_fix",
+    "executed_at": "2026-11-01 23:26:02",
+    "ai_fix_report": {
+      "error_hash": "c984e770a337",
+      "log_file": "stream2_filter24h.log",
+      "error_line": "AttributeError: 'TikTokAutoPoster' object has no attribute '_cleanup_stale_chrome_locks'",
+      "agy_exit_code": 0,
+      "agy_fix_summary": "",
+      "timestamp": "2026-11-01 23:26:02"
+    },
     "system_health": {
-      "timestamp": "2026-11-01 23:25:01",
+      "timestamp": "2026-11-01 23:26:02",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 19.0,
+      "lock_file_age_seconds": 80.2,
       "processes": [
-        "52776 05-05:49:49 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "97625       00:20 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "97627       00:20 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669       09:26 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-05:50:50 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "97625       01:21 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "97627       01:21 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669       10:27 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[23:22:22] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (20d2a94 -> c99e0ff) | AGY-Bridge [outbox] heartbeat_1793550117 at 2026-11-01 23:21:58",
-        "[23:22:22] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[23:22:23] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[23:22:53] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
-        "[23:22:54] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (c99e0ff -> 722e66b) | AGY-Bridge [outbox] heartbeat_1793550142 at 2026-11-01 23:22:23",
         "[23:22:54] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
         "[23:23:24] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
         "[23:23:25] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (722e66b -> 4db1a46) | AGY-Bridge [outbox] heartbeat_1793550174 at 2026-11-01 23:22:54",
@@ -40,7 +41,12 @@
         "[23:24:29] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
         "[23:24:59] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
         "[23:25:01] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (b74e79f -> 395ae4d) | AGY-Bridge [outbox] heartbeat_1793550282 at 2026-11-01 23:24:43",
-        "[23:25:01] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!"
+        "[23:25:01] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[23:25:01] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[23:25:31] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
+        "[23:25:32] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (395ae4d -> b4ca6c8) | AGY-Bridge [outbox] heartbeat_1793550300 at 2026-11-01 23:25:01",
+        "[23:25:32] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[23:25:33] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
       ],
       "lock_file_content": "pid=97625 ts=1793550282"
     }
