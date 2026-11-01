@@ -3506,6 +3506,12 @@ class TikTokAutoPoster:
         except Exception:
             pass
 
+        # Đảm bảo cả những tiến trình Dòng 2 khởi chạy từ bản main.py cũ vẫn tự động lướt FYP nuôi kênh
+        try:
+            self.check_and_run_warmup_browse()
+        except Exception as wb_exc:
+            logger.debug(f"[Dòng 2 - Warmup FYP] Bỏ qua lỗi phụ: {wb_exc}")
+
         cfg = self.ensure_schedule_config()
         filter_enabled = bool(cfg.get("filter_24h_enabled", True))
         filter_count = max(1, min(int(cfg.get("filter_24h_videos_per_session", 3)), 3))
@@ -3868,6 +3874,19 @@ class TikTokAutoPoster:
                     logger.info(
                         f"[Warmup FYP] [{ch_folder}] ✅ Hoàn tất lướt {scroll_count} video trong {time.time() - start:.0f}s!"
                     )
+                    try:
+                        self._save_and_push_telemetry(
+                            page=page,
+                            event_type="warmup_fyp",
+                            ch_folder=ch_folder,
+                            details={
+                                "scrolled_videos": scroll_count,
+                                "elapsed_seconds": round(time.time() - start, 1),
+                                "final_url": page.url,
+                            },
+                        )
+                    except Exception:
+                        pass
                 finally:
                     try:
                         context.close()

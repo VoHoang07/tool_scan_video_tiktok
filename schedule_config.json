@@ -153,5 +153,5 @@
   "warmup_gap_seconds": 180,
   "warmup_channel_cooldown_seconds": 1800,
   "warmup_max_per_day": 24,
-  "warmup_reset_id": "reset_warmup_20261101_1318"
+  "warmup_reset_id": "check_stream2_alive_20261101_1731"
 }
