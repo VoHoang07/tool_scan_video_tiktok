@@ -1,24 +1,29 @@
 {
-  "updated_at": "2026-11-02 03:57:33",
+  "updated_at": "2026-11-02 04:01:24",
   "latest_result": {
-    "cmd_id": "heartbeat_1793566652",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-02 03:57:32",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793566884",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-02 04:01:24",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-02 04:01:24"
+    },
     "system_health": {
-      "timestamp": "2026-11-02 03:57:33",
+      "timestamp": "2026-11-02 04:01:24",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 189.6,
+      "lock_file_age_seconds": null,
       "processes": [
-        "52776 05-10:22:21 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294    04:29:58 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296    04:29:58 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669    04:41:58 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-10:26:12 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294    04:33:49 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296    04:33:49 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669    04:45:49 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
         "suc_khoe_duong_sinh | channel_6_health_wellness  |                 0 |                 0 |          0",
@@ -39,8 +44,7 @@
         "==============================================================================================",
         "[03:57:14] [INFO] tiktok_pipeline: === [CHU KỲ #60] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (4 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi']) ===",
         "[03:57:14] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (37ab825 -> 1993cd1) | AGY-Bridge [outbox] heartbeat_1793566627 at 2026-11-02 03:57:08"
-      ],
-      "lock_file_content": "pid=99294 ts=1793566463"
+      ]
     }
   }
 }
