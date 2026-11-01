@@ -1,18 +1,13 @@
 {
-  "updated_at": "2026-11-02 00:20:20",
+  "updated_at": "2026-11-02 00:22:14",
   "latest_result": {
-    "cmd_id": "auto_heal_1793553620",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-02 00:20:20",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-02 00:20:20"
-    },
+    "cmd_id": "heartbeat_1793553733",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-02 00:22:13",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-02 00:20:20",
+      "timestamp": "2026-11-02 00:22:14",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -20,16 +15,12 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "52776 05-06:45:08 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294       52:45 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296       52:45 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669    01:04:45 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-06:47:02 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294       54:39 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296       54:39 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669    01:06:39 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[00:16:11] [INFO] tiktok_pipeline: TTS #57 [130.16s-130.89s | gốc=0.80s]: rate=+38%, atempo=1.28x -> 0.73s",
-        "[00:16:21] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (b1f9ca8 -> 18c297a) | Auto-Telemetry [warmup_fyp] audio_dem_khuyen at 2026-11-02 00:16:03",
-        "[00:16:28] [INFO] tiktok_pipeline: TTS #58 [130.96s-133.01s | gốc=2.12s]: rate=+33%, atempo=0.94x -> 2.05s",
-        "[00:16:36] [INFO] tiktok_pipeline: TTS #59 [133.08s-133.77s | gốc=0.76s]: rate=+38%, atempo=1.49x -> 0.69s",
         "[00:16:39] [INFO] tiktok_pipeline: TTS #60 [133.84s-134.89s | gốc=1.08s]: rate=+0%, atempo=0.93x -> 1.05s",
         "[00:17:08] [INFO] tiktok_pipeline: TTS #61 [135.10s-136.04s | gốc=0.96s]: rate=-13%, atempo=1.00x -> 0.94s",
         "[00:17:10] [INFO] tiktok_pipeline: TTS #62 [136.38s-137.22s | gốc=0.90s]: rate=+0%, atempo=1.05x -> 0.84s",
@@ -45,7 +36,11 @@
         "[00:19:28] [INFO] tiktok_pipeline: TTS #72 [157.44s-158.07s | gốc=0.66s]: rate=+38%, atempo=1.05x -> 0.63s",
         "[00:19:50] [INFO] tiktok_pipeline: TTS #73 [159.66s-160.93s | gốc=1.34s]: rate=+38%, atempo=1.15x -> 1.27s",
         "[00:20:03] [INFO] tiktok_pipeline: TTS #74 [161.00s-161.35s | gốc=0.35s]: rate=+38%, atempo=1.12x -> 0.35s",
-        "[00:20:11] [INFO] tiktok_pipeline: TTS #75 [161.70s-162.17s | gốc=0.50s]: rate=-10%, atempo=0.98x -> 0.47s"
+        "[00:20:11] [INFO] tiktok_pipeline: TTS #75 [161.70s-162.17s | gốc=0.50s]: rate=-10%, atempo=0.98x -> 0.47s",
+        "[00:20:47] [INFO] tiktok_pipeline: TTS #76 [162.76s-164.09s | gốc=1.34s]: rate=+38%, atempo=1.01x -> 1.33s",
+        "[00:20:58] [INFO] tiktok_pipeline: TTS #77 [164.54s-165.20s | gốc=0.72s]: rate=+38%, atempo=1.53x -> 0.66s",
+        "[00:21:20] [INFO] tiktok_pipeline: TTS #78 [165.26s-166.21s | gốc=1.10s]: rate=-42%, atempo=0.55x -> 0.95s",
+        "[00:21:43] [INFO] tiktok_pipeline: TTS #79 [166.36s-167.01s | gốc=0.72s]: rate=+25%, atempo=0.95x -> 0.65s"
       ]
     }
   }
