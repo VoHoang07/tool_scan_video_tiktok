@@ -1,75 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-01 09:22:20",
+    "timestamp": "2026-11-01 09:30:51",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+    "event_type": "upload",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "meo_vat_gia_dinh",
-          "video_id": "7701725867734519060",
-          "video_url": "https://www.tiktok.com/@ngoc.trinh7736/video/7701725867734519060",
-          "creator_handle": "@ngoc.trinh7736",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": true,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 811.2734375,
-              "y": 430.9921875,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "34"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 811.2734375,
-                "y": 430.9921875,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "34"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@ngoc.trinh7736",
-              "nav_method": "spa_click",
-              "profile_url": "https://www.tiktok.com/@ngoc.trinh7736?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Follow",
-              "init_relation": null,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-01 09:22:20",
-          "follow_back_window_until": "2026-11-02 09:22:20"
-        }
-      ]
+      "video_file": "20261030_145221_tiktok_story_7689059278321241350.mp4",
+      "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Hành trình tu tiên vượt mọi đại kiếp bước lên đỉnh cao vạn giới. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 09:30:51",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261030_145221_tiktok_story_7689059278321241350.mp4",
+        "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Hành trình tu tiên vượt mọi đại kiếp bước lên đỉnh cao vạn giới. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-01 09:22:20",
       "machine_arch": "x86_64",
@@ -342,22 +304,6 @@
         "video_file": "20261029_124147_tiktok_story_7683967426475609351.mp4",
         "caption": "🐾 Mẹ ơi mẹ đừng đuổi con — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Hãy nhìn xem cái lỗ da heo của tôi đang hoạt động thế nào...\" Theo bạn tập tiếp theo sẽ ra sao?",
         "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 21:16:23",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261030_144554_tiktok_story_7692989950672768263.mp4",
-        "caption": "🎧 [Truyện Đêm Khuya] Tập 106 - Biến cố bất ngờ và sự thật phía sau. Một câu chuyện đầy kịch tính với cú quay xe cực gắt ở phút cuối. Nếu ở trong hoàn cảnh của nhân vật chính, bạn sẽ chọn tha thứ hay trả đũa?",
-        "hashtags": "#audiodemkhuya #truyenaudio #kechuyendemkhuya #vahmattraxanh #gocchiaSe #tamtrang #xuhuong #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
