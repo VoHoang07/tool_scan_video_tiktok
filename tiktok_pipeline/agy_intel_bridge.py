@@ -344,6 +344,133 @@ def _save_last_executed_cmd_id(cmd_id: str) -> None:
     )
 
 
+def _ensure_both_streams_alive() -> Optional[Dict[str, Any]]:
+    """Tự động kiểm tra và khởi động lại Dòng 1 (`--stream-upload`) hoặc Dòng 2 (`--stream-filter24h`) nếu bị tắt trên Mac Intel."""
+    if platform.machine() != "x86_64":
+        return None
+    health = _collect_system_health()
+    restarted: List[str] = []
+    py_bin = str(PROJECT_ROOT / "venv" / "bin" / "python")
+    if not Path(py_bin).exists():
+        py_bin = sys.executable
+
+    log_dir = PROJECT_ROOT / "logs"
+    log_dir.mkdir(parents=True, exist_ok=True)
+
+    if not health.get("stream1_running"):
+        fh1 = open(log_dir / "daemon_24_7.log", "a", encoding="utf-8")
+        subprocess.Popen(
+            ["caffeinate", "-dimsu", py_bin, "main.py", "--stream-upload", "--max-ready", "5"],
+            cwd=str(PROJECT_ROOT),
+            stdout=fh1,
+            stderr=fh1,
+            start_new_session=True,
+        )
+        restarted.append("stream1_upload")
+
+    if not health.get("stream2_running"):
+        fh2 = open(log_dir / "stream2_filter24h.log", "a", encoding="utf-8")
+        subprocess.Popen(
+            ["caffeinate", "-dimsu", py_bin, "-m", "tiktok_pipeline.main", "--stream-filter24h"],
+            cwd=str(PROJECT_ROOT),
+            stdout=fh2,
+            stderr=fh2,
+            start_new_session=True,
+        )
+        restarted.append("stream2_filter24h")
+
+    if restarted:
+        return {"restarted_streams": restarted, "timestamp": _now_str()}
+    return None
+
+
+def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str, Any]]:
+    """
+    Quét `logs/daemon_24_7.log` và `logs/stream2_filter24h.log` tìm lỗi `Traceback` hoặc `[ERROR]` mới.
+    Nếu phát hiện lỗi mới chưa từng sửa (và cách lần gọi AI trước >= 15 phút), tự động gọi `agy -p`
+    ngay trên máy Intel để phân tích nguyên nhân, tự sửa code/trạng thái và đẩy bản vá lên GitHub.
+    """
+    if platform.machine() != "x86_64" or (time.time() - last_ai_heal_ts < 900):
+        return None
+
+    import hashlib
+
+    healed_db_path = PROJECT_ROOT / "workspace_temp" / ".agy_healed_error_hashes.json"
+    healed_hashes: List[str] = []
+    if healed_db_path.exists():
+        try:
+            healed_hashes = list(json.loads(healed_db_path.read_text(encoding="utf-8")))
+        except Exception:
+            healed_hashes = []
+
+    for log_name in ("daemon_24_7.log", "stream2_filter24h.log"):
+        log_path = PROJECT_ROOT / "logs" / log_name
+        if not log_path.exists():
+            continue
+        try:
+            tail_txt = subprocess.run(
+                ["tail", "-n", "120", str(log_path)],
+                capture_output=True,
+                text=True,
+                timeout=5,
+                check=False,
+            ).stdout or ""
+            if "Traceback (most recent call last):" not in tail_txt and "[ERROR]" not in tail_txt:
+                continue
+            err_lines = [
+                ln.strip()
+                for ln in tail_txt.splitlines()
+                if ("Error:" in ln or "Exception:" in ln or "[ERROR]" in ln)
+            ]
+            if not err_lines:
+                continue
+            latest_err = err_lines[-1]
+            # Chuẩn hóa chữ ký lỗi (bỏ timestamp đầu dòng)
+            sig_clean = latest_err[-140:]
+            err_hash = hashlib.md5(sig_clean.encode("utf-8")).hexdigest()[:12]
+            if err_hash in healed_hashes:
+                continue
+
+            healed_hashes.append(err_hash)
+            healed_db_path.parent.mkdir(parents=True, exist_ok=True)
+            healed_db_path.write_text(json.dumps(healed_hashes[-100:], indent=2), encoding="utf-8")
+
+            prompt = (
+                f"Phát hiện lỗi mới trong `{log_name}` trên máy Mac Intel:\n"
+                f"```\n{tail_txt[-1800:]}\n```\n"
+                "Hãy kiểm tra nguyên nhân gốc rễ, tự động sửa lỗi (nếu là lỗi code hoặc trạng thái kẹt), "
+                "kiểm tra cú pháp bằng py_compile, commit & push lên origin/main nếu có sửa file .py, "
+                "và tóm tắt ngắn gọn cách đã xử lý."
+            )
+            agy_bin = _find_agy_bin()
+            proc = subprocess.run(
+                [
+                    agy_bin,
+                    "-p",
+                    prompt,
+                    "--dangerously-skip-permissions",
+                    "--print-timeout",
+                    "240s",
+                ],
+                cwd=str(PROJECT_ROOT),
+                capture_output=True,
+                text=True,
+                timeout=260,
+                check=False,
+            )
+            return {
+                "error_hash": err_hash,
+                "log_file": log_name,
+                "error_line": latest_err,
+                "agy_exit_code": proc.returncode,
+                "agy_fix_summary": (proc.stdout or "")[-4000:],
+                "timestamp": _now_str(),
+            }
+        except Exception:
+            continue
+    return None
+
+
 def run_bridge_daemon(poll_seconds: int = 20) -> None:
     """Vòng lặp Daemon độc lập trên máy Mac Intel: nhận lệnh từ GitHub, tự chữa lỗi khóa treo & gọi AGY CLI."""
     print(
@@ -351,10 +478,52 @@ def run_bridge_daemon(poll_seconds: int = 20) -> None:
         flush=True,
     )
     last_heartbeat_push = 0.0
+    last_ai_heal_ts = 0.0
 
     while True:
         try:
-            # 1. Tự động kiểm tra khóa trình duyệt bị treo quá 7 phút (420s) để tự giải cứu tại chỗ
+            # 1a. Tự động đảm bảo cả Dòng 1 và Dòng 2 luôn sống trên Mac Intel
+            restart_info = _ensure_both_streams_alive()
+            if restart_info:
+                print(
+                    f"[{_now_str()}] [AGY Bridge Watchdog] Đã tự động bật lại dòng bị tắt: {restart_info['restarted_streams']}",
+                    flush=True,
+                )
+                _git_sync_and_push_outbox(
+                    {
+                        "updated_at": _now_str(),
+                        "latest_result": {
+                            "cmd_id": f"auto_restart_{int(time.time())}",
+                            "action": "auto_restart_dead_streams",
+                            "executed_at": _now_str(),
+                            "restart_info": restart_info,
+                            "system_health": _collect_system_health(),
+                        },
+                    }
+                )
+
+            # 1b. Tự động phát hiện lỗi mới trong log và gọi AGY CLI tự sửa (Self-Evolving)
+            ai_fix_report = _auto_self_evolve_on_log_errors(last_ai_heal_ts)
+            if ai_fix_report:
+                last_ai_heal_ts = time.time()
+                print(
+                    f"[{_now_str()}] [AGY Self-Evolving] Đã tự động dùng AGY CLI phân tích & sửa lỗi mới ({ai_fix_report['error_hash']})!",
+                    flush=True,
+                )
+                _git_sync_and_push_outbox(
+                    {
+                        "updated_at": _now_str(),
+                        "latest_result": {
+                            "cmd_id": f"auto_evolve_{ai_fix_report['error_hash']}",
+                            "action": "auto_self_evolve_fix",
+                            "executed_at": _now_str(),
+                            "ai_fix_report": ai_fix_report,
+                            "system_health": _collect_system_health(),
+                        },
+                    }
+                )
+
+            # 1c. Tự động kiểm tra khóa trình duyệt bị treo quá 7 phút (420s) để tự giải cứu tại chỗ
             lock_file = PROJECT_ROOT / "workspace_temp" / ".tiktok_browser_session.lock"
             if lock_file.exists():
                 try:
