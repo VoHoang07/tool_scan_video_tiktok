@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-01 07:28:14",
+    "timestamp": "2026-11-01 08:04:41",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261030_142634_douyin_story_7638184065786631546.mp4",
-      "caption": "✨ Câu chuyện AI cực cuốn: Lắc khóa. \"Sao lưu một chút...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
-      "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #viral",
+      "video_file": "20261030_085107_tiktok_story_7597740771093138718.mp4",
+      "caption": "🤣 Điều này đòi hỏi bạn phải đẩy nó ra. — Pha xử lý đi vào lòng đất của hai mẹ con! \"Bạn nhìn lên xem thế nào...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+      "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #fyp #xh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 08:04:41",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261030_085107_tiktok_story_7597740771093138718.mp4",
+        "caption": "🤣 Điều này đòi hỏi bạn phải đẩy nó ra. — Pha xử lý đi vào lòng đất của hai mẹ con! \"Bạn nhìn lên xem thế nào...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+        "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #fyp #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-01 07:28:14",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 19:28:26",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261029_080232_douyin_story_7686077455564988992.mp4",
-        "caption": "🎬 Thế giới hoạt hình AI kỳ ảo với tình tiết bất ngờ ở giây cuối cùng. \"Ồ...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-        "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #hoathinhhai #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
