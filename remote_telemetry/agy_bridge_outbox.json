@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-02 00:29:52",
+  "updated_at": "2026-11-02 00:39:25",
   "latest_result": {
-    "cmd_id": "auto_heal_1793554192",
+    "cmd_id": "auto_heal_1793554765",
     "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-02 00:29:52",
+    "executed_at": "2026-11-02 00:39:25",
     "unstick_report": {
       "killed_chrome_for_testing": false,
       "removed_locks": [
         "workspace_temp/.tiktok_browser_session.lock"
       ],
-      "timestamp": "2026-11-02 00:29:52"
+      "timestamp": "2026-11-02 00:39:25"
     },
     "system_health": {
-      "timestamp": "2026-11-02 00:29:52",
+      "timestamp": "2026-11-02 00:39:25",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -20,32 +20,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "52776 05-06:54:40 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294    01:02:17 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296    01:02:17 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669    01:14:17 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-07:04:13 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294    01:11:50 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296    01:11:50 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669    01:23:50 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[00:24:56] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[00:25:02] [INFO] tiktok_pipeline: TTS #89 [180.92s-181.80s | gốc=0.90s]: rate=-11%, atempo=1.00x -> 0.88s",
-        "[00:25:19] [INFO] tiktok_pipeline: TTS #90 [183.74s-184.59s | gốc=0.88s]: rate=+38%, atempo=0.94x -> 0.85s",
-        "[00:25:27] [INFO] tiktok_pipeline: TTS #91 [186.54s-187.43s | gốc=0.96s]: rate=+38%, atempo=1.46x -> 0.89s",
-        "[00:25:36] [INFO] tiktok_pipeline: TTS #92 [187.50s-188.60s | gốc=1.16s]: rate=+38%, atempo=1.51x -> 1.10s",
-        "[00:25:59] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (752b90d -> 1eb33fd) | Auto-Telemetry [warmup_fyp] tu_chan_gioi at 2026-11-02 00:25:39",
-        "[00:26:13] [INFO] tiktok_pipeline: TTS #93 [188.66s-189.51s | gốc=0.86s]: rate=+38%, atempo=1.70x -> 0.85s",
-        "[00:26:41] [INFO] tiktok_pipeline: TTS #94 [189.78s-190.35s | gốc=0.62s]: rate=+38%, atempo=1.62x -> 0.57s",
-        "[00:26:57] [INFO] tiktok_pipeline: TTS #95 [190.40s-192.24s | gốc=1.86s]: rate=+38%, atempo=1.35x -> 1.84s",
-        "[00:27:05] [INFO] tiktok_pipeline: TTS #96 [192.34s-193.48s | gốc=1.20s]: rate=+38%, atempo=1.57x -> 1.14s",
-        "[00:27:18] [INFO] tiktok_pipeline: TTS #97 [193.54s-194.82s | gốc=1.34s]: rate=+38%, atempo=1.73x -> 1.28s",
-        "[00:27:35] [INFO] tiktok_pipeline: TTS #98 [194.88s-197.29s | gốc=2.50s]: rate=-34%, atempo=0.99x -> 2.41s",
-        "[00:28:07] [INFO] tiktok_pipeline: TTS #99 [197.38s-198.31s | gốc=0.98s]: rate=+38%, atempo=1.24x -> 0.93s",
-        "[00:28:19] [INFO] tiktok_pipeline: TTS #100 [198.36s-199.32s | gốc=1.02s]: rate=+38%, atempo=1.32x -> 0.96s",
-        "[00:28:38] [INFO] tiktok_pipeline: TTS #101 [199.38s-200.44s | gốc=1.14s]: rate=+38%, atempo=0.94x -> 1.06s",
-        "[00:28:58] [INFO] tiktok_pipeline: TTS #102 [200.52s-202.41s | gốc=1.92s]: rate=-21%, atempo=0.99x -> 1.89s",
-        "[00:29:13] [INFO] tiktok_pipeline: TTS #103 [205.58s-206.35s | gốc=0.84s]: rate=+38%, atempo=1.02x -> 0.77s",
-        "[00:29:17] [INFO] tiktok_pipeline: TTS #104 [206.42s-207.07s | gốc=0.68s]: rate=-42%, atempo=0.87x -> 0.65s",
         "[00:29:46] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Ta cần phải hét lên' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[00:29:51] [INFO] tiktok_pipeline: TTS #105 [209.34s-210.20s | gốc=0.92s]: rate=-42%, atempo=1.90x -> 0.86s"
+        "[00:29:51] [INFO] tiktok_pipeline: TTS #105 [209.34s-210.20s | gốc=0.92s]: rate=-42%, atempo=1.90x -> 0.86s",
+        "[00:29:58] [INFO] tiktok_pipeline: TTS #106 [210.26s-210.79s | gốc=0.56s]: rate=+25%, atempo=0.95x -> 0.53s",
+        "[00:30:17] [INFO] tiktok_pipeline: TTS #107 [211.70s-213.38s | gốc=1.70s]: rate=-30%, atempo=0.98x -> 1.68s",
+        "[00:30:26] [INFO] tiktok_pipeline: TTS #108 [213.92s-215.11s | gốc=1.22s]: rate=+38%, atempo=0.98x -> 1.19s",
+        "[00:30:35] [INFO] tiktok_pipeline: TTS #109 [215.54s-216.55s | gốc=1.04s]: rate=+38%, atempo=1.40x -> 1.01s",
+        "[00:30:49] [INFO] tiktok_pipeline: TTS #110 [218.58s-219.36s | gốc=0.80s]: rate=+38%, atempo=1.13x -> 0.78s",
+        "[00:30:58] [INFO] tiktok_pipeline: TTS #111 [219.38s-220.63s | gốc=0.66s]: rate=+12%, atempo=0.92x -> 1.25s",
+        "[00:30:58] [INFO] tiktok_pipeline: === [5/5] GHÉP ÂM THANH & ĐÓNG PHỤ ĐỀ LÊN VIDEO (FFMPEG) ===",
+        "[00:30:58] [INFO] tiktok_pipeline: Thông số video gốc: 720x1280, thời lượng: 222.77s",
+        "[00:31:00] [INFO] tiktok_pipeline: Đã phát hiện vị trí sub gốc cần làm mờ: tâm Y=826px (64.5%), chiều cao=124px (peak_score=2972.1)",
+        "[00:31:00] [INFO] tiktok_pipeline: Đã tạo trục âm thanh lồng tiếng Việt: /Users/hoangvo/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7372254906020859148/voiceover_track.wav",
+        "[00:31:00] [INFO] tiktok_pipeline: Đang trộn lồng tiếng Việt đè lên giọng nhân vật gốc (nền gốc=0.25, giọng Việt=1.35)...",
+        "[00:31:17] [INFO] tiktok_pipeline: Đang xóa tinh tế nét chữ sub gốc theo từng khung hình tại dải Y=[756..894]...",
+        "[00:32:07] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[00:32:07] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[00:32:07] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[00:32:39] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (1eb33fd -> aaa991d) | AGY-Bridge [outbox] auto_heal_1793554192 at 2026-11-02 00:29:52",
+        "[00:32:40] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[00:38:35] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc..."
       ]
     }
   }
