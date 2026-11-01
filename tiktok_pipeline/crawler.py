@@ -2583,8 +2583,8 @@ class StoryAudioCrawler:
                     reason = "video baby_AI bản cũ trước khi nâng cấp lồng tiếng khớp 1:1 (22:40 29/10)"
                 elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_210000":
                     reason = "video lồng tiếng bản cũ trước khi vá lỗi cắt đỉnh âm thanh & mất thoại VAD (21:00 28/10)"
-                elif ch_folder == "audio_dem_khuyen" and "bongcuc_s" not in fname.lower():
-                    reason = "video 1 phần lẻ cũ trước khi nâng cấp cắt Full nhiều phần từ YouTube @bongcucaudio"
+                elif ch_folder == "audio_dem_khuyen" and "bongcuc_v2_s" not in fname.lower():
+                    reason = "video audio_dem_khuyen bản cũ trước khi nâng cấp cắt Full nhiều phần + 6 Lớp Bộ Lọc Chống Phát Hiện TikTok (bongcuc_v2)"
 
                 if not reason and sid:
                     for tr_dir in (
@@ -2753,7 +2753,7 @@ class StoryAudioCrawler:
             )
 
             ep_part = parse_bongcuc_ep_and_part(stem)
-            if ep_part and ("bongcuc_s" in stem.lower() or "9900" in stem):
+            if ep_part and ("bongcuc_" in stem.lower() or "9900" in stem):
                 ep_num, part_num = ep_part
                 ep_info = next(
                     (e for e in BONGCUC_EPISODES_CATALOG if int(e["ep_num"]) == ep_num),
@@ -3384,6 +3384,13 @@ def _hot_patch_live_crawler() -> None:
 
     # Hot-patch luôn hàm `run_crawl_story_mode` trong tiến trình `main.py` đang chạy 24/7 trên máy Intel
     try:
+        import importlib
+        from . import bongcuc_splitter as _bc_live_mod
+
+        importlib.reload(_bc_live_mod)
+    except Exception:
+        pass
+    try:
         for target_m_name in ("__main__", "tiktok_pipeline.main"):
             t_mod = sys.modules.get(target_m_name)
             if t_mod is None or not hasattr(t_mod, "run_crawl_story_mode"):
@@ -3417,9 +3424,7 @@ def _hot_patch_live_crawler() -> None:
                             cr.auto_sync_posted_videos()
                             splitter = BongCucYouTubeSplitter(project_root=proj_root)
                             p_ids, _ = cr._collect_all_known_posted_story_ids_and_files()
-                            k_ids = set(p_ids) | set(
-                                str(x) for x in (cr.history.get("video_ids") or [])
-                            )
+                            k_ids = set(p_ids)
                             r_eps = set()
                             for sub in ("ready", "posted"):
                                 s_dir = out_root / "audio_dem_khuyen" / sub

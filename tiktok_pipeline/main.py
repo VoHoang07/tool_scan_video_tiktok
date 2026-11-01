@@ -470,9 +470,7 @@ def run_crawl_story_mode(
             crawler.auto_sync_posted_videos()
             splitter = BongCucYouTubeSplitter(project_root=project_root)
             posted_ids, _ = crawler._collect_all_known_posted_story_ids_and_files()
-            known_ids = set(posted_ids) | set(
-                str(x) for x in (crawler.history.get("video_ids") or [])
-            )
+            known_ids = set(posted_ids)
             ready_ep_nums = set()
             for sub in ("ready", "posted"):
                 sub_dir = base_output_dir / channel_folder / sub
