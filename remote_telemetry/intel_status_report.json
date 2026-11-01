@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-01 08:04:41",
+    "timestamp": "2026-11-01 08:56:24",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261030_085107_tiktok_story_7597740771093138718.mp4",
-      "caption": "🤣 Điều này đòi hỏi bạn phải đẩy nó ra. — Pha xử lý đi vào lòng đất của hai mẹ con! \"Bạn nhìn lên xem thế nào...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #fyp #xh",
+      "video_file": "20261030_212556_tiktok_story_7697638039421455637.mp4",
+      "caption": "📖 Góc Kể Chuyện: Góc khuất tình cảm và màn đáp trả cực gắt khiến trà xanh không kịp trở tay. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+      "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 08:56:24",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261030_212556_tiktok_story_7697638039421455637.mp4",
+        "caption": "📖 Góc Kể Chuyện: Góc khuất tình cảm và màn đáp trả cực gắt khiến trà xanh không kịp trở tay. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+        "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-01 08:04:41",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261028_204128_tiktok_story_7688705812809960725.mp4",
         "caption": "🐉 3 Tuổi Đã Làm Nhiếp Chính Vương, Nhưng Chỉ Muốn Nghỉ Hưu — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
         "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 20:06:27",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261029_232245_tiktok_story_7661486125428559112.mp4",
-        "caption": "🥰 Nhật ký gia đình siêu lầy: to béo. \"Hóa ra tất cả đều là tiền đã hết hạn...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
