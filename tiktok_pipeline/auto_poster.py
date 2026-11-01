@@ -3864,7 +3864,7 @@ class TikTokAutoPoster:
             logger.warning(
                 f"[Warmup Watchdog] [{ch_folder}] Phiên lướt FYP vượt quá thời gian cho phép ({browse_seconds + 90}s) — tự động đóng Chrome treo!"
             )
-            self._cleanup_stale_chrome_locks(user_data_dir)
+            self._cleanup_stale_chrome_profile_locks(user_data_dir)
 
         watchdog_timer = threading.Timer(float(browse_seconds + 90), _force_kill_hung_warmup)
         watchdog_timer.daemon = True
@@ -3947,7 +3947,10 @@ class TikTokAutoPoster:
                 watchdog_timer.cancel()
             except Exception:
                 pass
-            self._Release_cleanup_warmup = self._cleanup_stale_chrome_locks(user_data_dir)
+            try:
+                self._cleanup_stale_chrome_profile_locks(user_data_dir)
+            except Exception:
+                pass
             self._release_browser_process_lock(lock_fh)
 
     def check_and_run_warmup_browse(self) -> None:
