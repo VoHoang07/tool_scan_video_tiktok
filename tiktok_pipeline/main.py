@@ -452,16 +452,109 @@ def run_crawl_story_mode(
     )
 
     if channel:
-        profile, candidates = crawler.discover_for_channel(
-            channel_arg=channel,
-            platform_override=platform,
-            max_candidates=max(30, limit * 12),
-        )
+        profile = resolve_channel_profile(channel)
         channel_folder = profile["folder_name"]
         profile_key = profile["profile_key"]
         target_output_dir = base_output_dir / channel_folder / "ready"
         target_output_dir.mkdir(parents=True, exist_ok=True)
         effective_genre = profile_key
+
+        # Kênh 3 (audio_dem_khuyen): Cắt tự động các phần còn lại từ kênh YouTube gốc @bongcucaudio
+        # với thời lượng đều nhau (~280s sau khi tua 1.42x) và sắp xếp SO LE / XEN KẼ giữa các tập truyện
+        if channel_folder == "audio_dem_khuyen":
+            from .bongcuc_splitter import (
+                BongCucYouTubeSplitter,
+                parse_bongcuc_ep_and_part,
+            )
+
+            crawler.auto_sync_posted_videos()
+            splitter = BongCucYouTubeSplitter(project_root=project_root)
+            posted_ids, _ = crawler._collect_all_known_posted_story_ids_and_files()
+            known_ids = set(posted_ids) | set(
+                str(x) for x in (crawler.history.get("video_ids") or [])
+            )
+            ready_ep_nums = set()
+            for sub in ("ready", "posted"):
+                sub_dir = base_output_dir / channel_folder / sub
+                if sub_dir.exists():
+                    for mp4 in sub_dir.glob("*.mp4"):
+                        m_sid = re.search(
+                            r"(?:tiktok|douyin)_story_(\d+)", mp4.stem, re.IGNORECASE
+                        )
+                        if m_sid:
+                            known_ids.add(m_sid.group(1))
+                        ep_p = parse_bongcuc_ep_and_part(mp4.name)
+                        if ep_p and sub == "ready":
+                            ready_ep_nums.add(ep_p[0])
+
+            queue = splitter.build_interleaved_queue(known_ids)
+            logger.info(
+                f"=== [Bông Cúc YouTube Splitter -> output/{channel_folder}/ready/] "
+                f"Hàng đợi xen kẽ còn {len(queue)} phần | Cần xuất: {limit} phần (Tập đang có trong ready/: {sorted(ready_ep_nums)}) ==="
+            )
+
+            # Ưu tiên chọn tập chưa có mặt trong ready/ để 5 video chờ đăng luôn thuộc 5 tập truyện khác nhau (so le 100%)
+            preferred_specs = [p for p in queue if int(p["ep_num"]) not in ready_ep_nums]
+            fallback_specs = [p for p in queue if int(p["ep_num"]) in ready_ep_nums]
+            ordered_specs = preferred_specs + fallback_specs
+
+            completed_bongcuc: List[Dict[str, Any]] = []
+            used_eps_in_batch = set(ready_ep_nums)
+            for part_spec in ordered_specs:
+                if len(completed_bongcuc) >= limit:
+                    break
+                ep_no = int(part_spec["ep_num"])
+                if ep_no in used_eps_in_batch and any(
+                    int(x["ep_num"]) not in used_eps_in_batch for x in ordered_specs
+                ):
+                    continue
+                try:
+                    start_t = time.time()
+                    summary = splitter.render_single_part(
+                        part_spec=part_spec,
+                        target_ready_dir=target_output_dir,
+                        seq_offset_seconds=len(completed_bongcuc) * 2,
+                    )
+                    summary["elapsed_seconds"] = round(time.time() - start_t, 2)
+                    StoryAudioCrawler.clear_macl_xattr(Path(summary["final_video"]))
+                    crawler.save_to_history(
+                        video_id=summary["video_id"],
+                        sound_id=summary["sound_id"],
+                        platform="tiktok",
+                        genre=effective_genre,
+                        source_url=summary["source_url"],
+                        output_filename=summary["filename"],
+                        channel=channel_folder,
+                    )
+                    crawler.append_to_master_csv(
+                        filename=summary["filename"],
+                        source_url=summary["source_url"],
+                        caption=summary["caption"],
+                        hashtags=summary["hashtags"],
+                        status="READY",
+                        channel=channel_folder,
+                        posted_at="",
+                    )
+                    completed_bongcuc.append(summary)
+                    used_eps_in_batch.add(ep_no)
+                    known_ids.add(str(summary["video_id"]))
+                    logger.info(
+                        f"==> [Bông Cúc So Le] Đã hoàn thành {len(completed_bongcuc)}/{limit} phần cho [{channel_folder}]: "
+                        f"Số {part_spec['ep_num']} - Phần {part_spec['part_num']}/{part_spec['total_parts']} ({summary['final_video']})"
+                    )
+                except Exception as bc_exc:
+                    logger.error(
+                        f"[BongCucSplitter] Lỗi khi cắt Số {part_spec.get('ep_num')} Phần {part_spec.get('part_num')}: {bc_exc}",
+                        exc_info=True,
+                    )
+                    continue
+            return completed_bongcuc
+
+        profile, candidates = crawler.discover_for_channel(
+            channel_arg=channel,
+            platform_override=platform,
+            max_candidates=max(30, limit * 12),
+        )
         logger.info(
             f"=== BẮT ĐẦU CÀO KÊNH [{profile_key} -> output/{channel_folder}/ready/ | Số lượng cần lấy: {limit}] ==="
         )
@@ -815,11 +908,13 @@ def run_continuous_mode(
             initial_code_snapshot = cur_snap
             try:
                 import importlib
+                from . import bongcuc_splitter as _bc_mod
                 from . import crawler as _cr_mod
                 from . import translator as _tr_mod
                 from . import growth_24h_filter as _g24_mod
                 from . import auto_poster as _ap_mod
 
+                importlib.reload(_bc_mod)
                 importlib.reload(_cr_mod)
                 importlib.reload(_tr_mod)
                 importlib.reload(_g24_mod)

@@ -2360,6 +2360,7 @@ class TikTokAutoPoster:
                 pass
 
         target_video: Optional[Path] = None
+        valid_candidates: List[Path] = []
         for cand in sorted(f for f in ready_dir.glob("*.mp4") if f.is_file()):
             # Kênh audio_dem_khuyen chỉ đăng chuẩn motip Truyện Audio TikTok Việt Nam (nền ASMR/chữa lành + giọng kể chuyện), loại bỏ video Douyin lệch motip
             if ch_folder == "audio_dem_khuyen" and "douyin_story_" in cand.name.lower():
@@ -2411,8 +2412,100 @@ class TikTokAutoPoster:
                     )
                 continue
 
-            target_video = cand
-            break
+            valid_candidates.append(cand)
+            if ch_folder != "audio_dem_khuyen":
+                break
+
+        if valid_candidates:
+            if ch_folder == "audio_dem_khuyen":
+                try:
+                    from .bongcuc_splitter import parse_bongcuc_ep_and_part
+
+                    # Tìm tập (ep_num) của video vừa đăng gần nhất trên kênh audio_dem_khuyen để KHÔNG đăng 2 phần cùng tập liên tiếp
+                    last_ep_num: Optional[int] = None
+                    if reg_path.exists():
+                        try:
+                            reg_d = json.loads(reg_path.read_text(encoding="utf-8"))
+                            for h_item in reg_d.get("history") or []:
+                                if isinstance(h_item, dict) and h_item.get("channel") == "audio_dem_khuyen":
+                                    ep_p = parse_bongcuc_ep_and_part(
+                                        f"{h_item.get('filename', '')} {h_item.get('story_id', '')} {h_item.get('caption', '')}"
+                                    )
+                                    if ep_p:
+                                        last_ep_num = ep_p[0]
+                                        break
+                        except Exception:
+                            pass
+
+                    if last_ep_num is None:
+                        rep_p = self.project_root / "remote_telemetry" / "intel_status_report.json"
+                        if rep_p.exists():
+                            try:
+                                rep_d = json.loads(rep_p.read_text(encoding="utf-8"))
+                                for ev in rep_d.get("recent_events") or []:
+                                    if (
+                                        isinstance(ev, dict)
+                                        and ev.get("event_type") == "upload"
+                                        and ev.get("channel") == "audio_dem_khuyen"
+                                    ):
+                                        det = ev.get("details") or {}
+                                        ep_p = parse_bongcuc_ep_and_part(
+                                            f"{det.get('video_file', '')} {det.get('caption', '')}"
+                                        )
+                                        if ep_p:
+                                            last_ep_num = ep_p[0]
+                                            break
+                            except Exception:
+                                pass
+
+                    if last_ep_num is None:
+                        posted_mp4s = sorted(
+                            (p for p in posted_dir.glob("*.mp4") if p.is_file()),
+                            key=lambda f: f.stat().st_mtime,
+                            reverse=True,
+                        )
+                        for p_f in posted_mp4s:
+                            ep_p = parse_bongcuc_ep_and_part(p_f.name)
+                            if ep_p:
+                                last_ep_num = ep_p[0]
+                                break
+
+                    # Với mỗi tập trong ready/, chỉ giữ phần nhỏ nhất tiếp theo (không bao giờ đăng Phần 3 trước Phần 2 của cùng tập)
+                    lowest_part_by_ep: Dict[int, Tuple[int, Path]] = {}
+                    non_bongcuc_cands: List[Path] = []
+                    for c_file in valid_candidates:
+                        ep_p = parse_bongcuc_ep_and_part(c_file.name)
+                        if ep_p:
+                            ep_no, pt_no = ep_p
+                            if ep_no not in lowest_part_by_ep or pt_no < lowest_part_by_ep[ep_no][0]:
+                                lowest_part_by_ep[ep_no] = (pt_no, c_file)
+                        else:
+                            non_bongcuc_cands.append(c_file)
+
+                    ep_cands = sorted(
+                        lowest_part_by_ep.items(),
+                        key=lambda kv: (kv[1][0], kv[1][1].name),
+                    )
+                    # Ưu tiên tuyệt đối tập KHÁC với tập vừa đăng liền trước (So le / Xen kẽ)
+                    diff_ep_cands = [
+                        kv[1][1] for kv in ep_cands if last_ep_num is None or kv[0] != last_ep_num
+                    ]
+                    if diff_ep_cands:
+                        target_video = diff_ep_cands[0]
+                        sel_ep = parse_bongcuc_ep_and_part(target_video.name)
+                        logger.info(
+                            f"[{ch_folder}] [Interleaved Guard] Chọn đăng SO LE: Bông Cúc Số {sel_ep[0]} Phần {sel_ep[1]} "
+                            f"(khác với tập vừa đăng trước đó: Số {last_ep_num})"
+                        )
+                    elif non_bongcuc_cands:
+                        target_video = non_bongcuc_cands[0]
+                    elif ep_cands:
+                        target_video = ep_cands[0][1][1]
+                except Exception as int_exc:
+                    logger.debug(f"[{ch_folder}] Bỏ qua lỗi phụ Interleaved Guard: {int_exc}")
+                    target_video = valid_candidates[0]
+            else:
+                target_video = valid_candidates[0]
 
         if not target_video:
             return None

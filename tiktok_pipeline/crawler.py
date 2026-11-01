@@ -2583,6 +2583,8 @@ class StoryAudioCrawler:
                     reason = "video baby_AI bản cũ trước khi nâng cấp lồng tiếng khớp 1:1 (22:40 29/10)"
                 elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_210000":
                     reason = "video lồng tiếng bản cũ trước khi vá lỗi cắt đỉnh âm thanh & mất thoại VAD (21:00 28/10)"
+                elif ch_folder == "audio_dem_khuyen" and "bongcuc_s" not in fname.lower():
+                    reason = "video 1 phần lẻ cũ trước khi nâng cấp cắt Full nhiều phần từ YouTube @bongcucaudio"
 
                 if not reason and sid:
                     for tr_dir in (
@@ -2743,6 +2745,42 @@ class StoryAudioCrawler:
         Tuyệt đối không bao giờ trả về tên file hay dãy số ID.
         """
         stem = Path(filename_or_stem).stem
+        try:
+            from .bongcuc_splitter import (
+                BONGCUC_EPISODES_CATALOG,
+                BongCucYouTubeSplitter,
+                parse_bongcuc_ep_and_part,
+            )
+
+            ep_part = parse_bongcuc_ep_and_part(stem)
+            if ep_part and ("bongcuc_s" in stem.lower() or "9900" in stem):
+                ep_num, part_num = ep_part
+                ep_info = next(
+                    (e for e in BONGCUC_EPISODES_CATALOG if int(e["ep_num"]) == ep_num),
+                    None,
+                )
+                if ep_info:
+                    splitter = BongCucYouTubeSplitter(project_root=self.project_root)
+                    plan = splitter.compute_episode_parts_plan(ep_info)
+                    part_spec = next(
+                        (p for p in plan if int(p["part_num"]) == part_num),
+                        None,
+                    )
+                    if not part_spec:
+                        part_spec = {
+                            "ep_num": ep_num,
+                            "part_num": part_num,
+                            "total_parts": max(part_num, 6),
+                            "is_final_part": False,
+                            "yt_id": ep_info["yt_id"],
+                            "source_url": f"https://www.youtube.com/watch?v={ep_info['yt_id']}",
+                            "title": ep_info["title"],
+                        }
+                    cap, tags = splitter.build_part_caption_and_hashtags(part_spec)
+                    return cap, tags, str(part_spec["source_url"])
+        except Exception:
+            pass
+
         m = re.search(r"(tiktok|douyin)_story_(\d+)", stem, re.IGNORECASE)
         platform = (m.group(1).lower() if m else "tiktok")
         video_id = (m.group(2) if m else "")
@@ -3300,6 +3338,7 @@ def _hot_patch_live_crawler() -> None:
 
     reloaded_classes: Dict[str, Any] = {"StoryAudioCrawler": StoryAudioCrawler}
     sub_specs = [
+        ("tiktok_pipeline.bongcuc_splitter", "BongCucYouTubeSplitter"),
         ("tiktok_pipeline.transcriber", "AudioTranscriber"),
         ("tiktok_pipeline.translator", "SubtitleTranslator"),
         ("tiktok_pipeline.tts_engine", "TTSEngine"),
@@ -3342,6 +3381,111 @@ def _hot_patch_live_crawler() -> None:
             setattr(mod, "KNOWN_VIETNAMESE_HANDLES", KNOWN_VIETNAMESE_HANDLES)
         except Exception:
             pass
+
+    # Hot-patch luôn hàm `run_crawl_story_mode` trong tiến trình `main.py` đang chạy 24/7 trên máy Intel
+    try:
+        for target_m_name in ("__main__", "tiktok_pipeline.main"):
+            t_mod = sys.modules.get(target_m_name)
+            if t_mod is None or not hasattr(t_mod, "run_crawl_story_mode"):
+                continue
+            orig_fn = getattr(t_mod, "_orig_run_crawl_story_mode", None) or getattr(
+                t_mod, "run_crawl_story_mode"
+            )
+            setattr(t_mod, "_orig_run_crawl_story_mode", orig_fn)
+
+            def _patched_run_crawl_story_mode(
+                *args: Any, _orig: Any = orig_fn, **kwargs: Any
+            ) -> Any:
+                ch_arg = kwargs.get("channel")
+                if ch_arg is None and len(args) >= 4:
+                    ch_arg = args[3]
+                if ch_arg:
+                    try:
+                        prof = resolve_channel_profile(str(ch_arg))
+                        if prof.get("folder_name") == "audio_dem_khuyen":
+                            from .bongcuc_splitter import (
+                                BongCucYouTubeSplitter,
+                                parse_bongcuc_ep_and_part,
+                            )
+
+                            lim = int(kwargs.get("limit") or (args[2] if len(args) >= 3 else 1))
+                            proj_root = Path(__file__).resolve().parent.parent
+                            out_root = Path(kwargs.get("output_dir") or (proj_root / "output"))
+                            ready_dir = out_root / "audio_dem_khuyen" / "ready"
+                            ready_dir.mkdir(parents=True, exist_ok=True)
+                            cr = StoryAudioCrawler(project_root=proj_root)
+                            cr.auto_sync_posted_videos()
+                            splitter = BongCucYouTubeSplitter(project_root=proj_root)
+                            p_ids, _ = cr._collect_all_known_posted_story_ids_and_files()
+                            k_ids = set(p_ids) | set(
+                                str(x) for x in (cr.history.get("video_ids") or [])
+                            )
+                            r_eps = set()
+                            for sub in ("ready", "posted"):
+                                s_dir = out_root / "audio_dem_khuyen" / sub
+                                if s_dir.exists():
+                                    for mp4 in s_dir.glob("*.mp4"):
+                                        m_s = re.search(
+                                            r"(?:tiktok|douyin)_story_(\d+)",
+                                            mp4.stem,
+                                            re.IGNORECASE,
+                                        )
+                                        if m_s:
+                                            k_ids.add(m_s.group(1))
+                                        ep_p = parse_bongcuc_ep_and_part(mp4.name)
+                                        if ep_p and sub == "ready":
+                                            r_eps.add(ep_p[0])
+                            q = splitter.build_interleaved_queue(k_ids)
+                            pref = [p for p in q if int(p["ep_num"]) not in r_eps]
+                            fall = [p for p in q if int(p["ep_num"]) in r_eps]
+                            ord_specs = pref + fall
+                            done_list = []
+                            used_eps = set(r_eps)
+                            for p_spec in ord_specs:
+                                if len(done_list) >= lim:
+                                    break
+                                ep_n = int(p_spec["ep_num"])
+                                if ep_n in used_eps and any(
+                                    int(x["ep_num"]) not in used_eps for x in ord_specs
+                                ):
+                                    continue
+                                st_t = time.time()
+                                summ = splitter.render_single_part(
+                                    part_spec=p_spec,
+                                    target_ready_dir=ready_dir,
+                                    seq_offset_seconds=len(done_list) * 2,
+                                )
+                                summ["elapsed_seconds"] = round(time.time() - st_t, 2)
+                                StoryAudioCrawler.clear_macl_xattr(Path(summ["final_video"]))
+                                cr.save_to_history(
+                                    video_id=summ["video_id"],
+                                    sound_id=summ["sound_id"],
+                                    platform="tiktok",
+                                    genre="channel_3_novel_drama",
+                                    source_url=summ["source_url"],
+                                    output_filename=summ["filename"],
+                                    channel="audio_dem_khuyen",
+                                )
+                                cr.append_to_master_csv(
+                                    filename=summ["filename"],
+                                    source_url=summ["source_url"],
+                                    caption=summ["caption"],
+                                    hashtags=summ["hashtags"],
+                                    status="READY",
+                                    channel="audio_dem_khuyen",
+                                    posted_at="",
+                                )
+                                done_list.append(summ)
+                                used_eps.add(ep_n)
+                                k_ids.add(str(summ["video_id"]))
+                            return done_list
+                    except Exception as patch_exc:
+                        logger.error(f"[Hot-Patch BongCuc] Lỗi khi cắt Bông Cúc: {patch_exc}")
+                return _orig(*args, **kwargs)
+
+            setattr(t_mod, "run_crawl_story_mode", _patched_run_crawl_story_mode)
+    except Exception:
+        pass
 
 
 _hot_patch_live_crawler()
