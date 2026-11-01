@@ -1,52 +1,52 @@
 {
-  "updated_at": "2026-11-01 23:27:35",
+  "updated_at": "2026-11-01 23:31:42",
   "latest_result": {
-    "cmd_id": "auto_restart_1793550455",
-    "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-01 23:27:35",
-    "restart_info": {
-      "restarted_streams": [
-        "stream2_filter24h"
+    "cmd_id": "auto_heal_1793550702",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-01 23:31:42",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
       ],
-      "timestamp": "2026-11-01 23:27:35"
+      "timestamp": "2026-11-01 23:31:42"
     },
     "system_health": {
-      "timestamp": "2026-11-01 23:27:35",
+      "timestamp": "2026-11-01 23:31:42",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 172.9,
+      "lock_file_age_seconds": null,
       "processes": [
-        "52776 05-05:52:23 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294       00:00 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296       00:00 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669       12:00 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-05:56:30 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294       04:07 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296       04:07 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669       16:07 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[23:23:25] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (722e66b -> 4db1a46) | AGY-Bridge [outbox] heartbeat_1793550174 at 2026-11-01 23:22:54",
-        "[23:23:26] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[23:23:56] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
-        "[23:23:57] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (4db1a46 -> 29ffe27) | AGY-Bridge [outbox] heartbeat_1793550205 at 2026-11-01 23:23:26",
-        "[23:23:57] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[23:23:57] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[23:24:28] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
-        "[23:24:29] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (29ffe27 -> b74e79f) | AGY-Bridge [outbox] heartbeat_1793550237 at 2026-11-01 23:23:58",
-        "[23:24:29] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[23:24:29] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[23:24:59] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
-        "[23:25:01] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (b74e79f -> 395ae4d) | AGY-Bridge [outbox] heartbeat_1793550282 at 2026-11-01 23:24:43",
-        "[23:25:01] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[23:25:01] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[23:25:31] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
-        "[23:25:32] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (395ae4d -> b4ca6c8) | AGY-Bridge [outbox] heartbeat_1793550300 at 2026-11-01 23:25:01",
-        "[23:25:32] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[23:25:33] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[23:26:04] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (de16d23 -> 91614cd) | fix(warmup): use _cleanup_stale_chrome_profile_locks and guard stream2 loop against exceptions",
-        "[23:26:04] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (de16d23 -> 91614cd)!"
-      ],
-      "lock_file_content": "pid=97625 ts=1793550282"
+        "[23:31:17] [INFO] tiktok_pipeline: [23.98s - 25.78s] 体检用的是卖项链的钱  ==>  Số tiền bán chiếc vòng cổ được dùng để khám sức khỏe",
+        "[23:31:17] [INFO] tiktok_pipeline: [25.78s - 27.06s] 我帝一财也空了  ==>  Hoàng đế của mẹ đã mất hết của cải",
+        "[23:31:17] [INFO] tiktok_pipeline: [27.06s - 27.82s] 气也受了  ==>  Mẹ cũng tức giận",
+        "[23:31:17] [INFO] tiktok_pipeline: [27.82s - 29.22s] 到底靠上你啥了  ==>  Con dựa vào cái quái gì thế?",
+        "[23:31:17] [INFO] tiktok_pipeline: [32.50s - 33.74s] 自己都没活明白  ==>  Bản thân mẹ thậm chí còn không hiểu nó",
+        "[23:31:17] [INFO] tiktok_pipeline: [33.74s - 35.02s] 还想着以后呢  ==>  Vẫn nghĩ về tương lai?",
+        "[23:31:17] [INFO] tiktok_pipeline: [36.06s - 38.02s] 真是不知天高地厚  ==>  Mẹ thực sự không biết độ cao của thế giới",
+        "[23:31:17] [INFO] tiktok_pipeline: Caption đã dịch: 😂 Mẹ phải sinh con trai. \"Đó không phải là chiếc xe mẹ đã lái khi họ khám sức khỏe vào tháng trước sao...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "[23:31:17] [INFO] tiktok_pipeline: Hashtags: #giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #viral #foryou",
+        "[23:31:17] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
+        "[23:31:17] [INFO] tiktok_pipeline: Cấu hình giọng kênh [baby_AI]: Giọng tự nhiên, đời thường, tếu táo, khớp nhịp giọng gốc (voice=vi-VN-HoaiMyNeural, rate=+0%, pitch=+2Hz)",
+        "[23:31:17] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +0%, Độ trầm/cao: +2Hz) cho 20 câu thoại...",
+        "[23:31:18] [INFO] tiktok_pipeline: TTS #00 [00.86s-01.47s | gốc=0.68s]: rate=+38%, atempo=1.59x -> 0.61s",
+        "[23:31:20] [INFO] tiktok_pipeline: TTS #01 [01.54s-02.77s | gốc=1.24s]: rate=+38%, atempo=1.49x -> 1.23s",
+        "[23:31:21] [INFO] tiktok_pipeline: TTS #02 [04.70s-06.67s | gốc=2.00s]: rate=+38%, atempo=0.98x -> 1.97s",
+        "[23:31:23] [INFO] tiktok_pipeline: TTS #03 [07.06s-07.70s | gốc=0.70s]: rate=-42%, atempo=0.56x -> 0.64s",
+        "[23:31:24] [INFO] tiktok_pipeline: TTS #04 [08.38s-10.07s | gốc=1.74s]: rate=+38%, atempo=1.77x -> 1.69s",
+        "[23:31:26] [INFO] tiktok_pipeline: TTS #05 [10.12s-11.83s | gốc=1.74s]: rate=+38%, atempo=1.09x -> 1.71s",
+        "[23:31:28] [INFO] tiktok_pipeline: TTS #06 [13.78s-15.04s | gốc=1.32s]: rate=+38%, atempo=1.23x -> 1.26s",
+        "[23:31:29] [INFO] tiktok_pipeline: TTS #07 [15.10s-16.39s | gốc=1.32s]: rate=+38%, atempo=1.37x -> 1.29s"
+      ]
     }
   }
 }
