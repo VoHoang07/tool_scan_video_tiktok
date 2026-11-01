@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-01 22:40:43",
+    "timestamp": "2026-11-01 22:45:40",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261031_081813_tiktok_story_7552470440078249227.mp4",
-      "caption": "😂 Sau vài ngày ở Đài Loan,. \"Bạn có thể giúp tôi tháo cái này ra trước được không...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #tiktokvn #xuhuong",
+      "video_file": "20261101_222144_tiktok_story_990014102_bongcuc_v2_s141_p2.mp4",
+      "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 141 (Phần 2/6): Đại Tiểu Thư Thật Và Kẻ Mạo Danh. Vừa xem tô màu thư giãn vừa nghe tiếp câu chuyện đêm nay nhé!",
+      "hashtags": "#bongcucso141 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 22:45:40",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261101_222144_tiktok_story_990014102_bongcuc_v2_s141_p2.mp4",
+        "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 141 (Phần 2/6): Đại Tiểu Thư Thật Và Kẻ Mạo Danh. Vừa xem tô màu thư giãn vừa nghe tiếp câu chuyện đêm nay nhé!",
+        "hashtags": "#bongcucso141 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-01 22:40:43",
       "machine_arch": "x86_64",
@@ -628,22 +644,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-31 20:10:21",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261030_001209_douyin_story_7254524593694608651.mp4",
-        "caption": "🥰 Nhật ký gia đình siêu lầy: Hai ngày tuổi. \"Chẳng lẽ mình bị Hắc Tử Ô Xương lừa gạt...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #foryou #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
