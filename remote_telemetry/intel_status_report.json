@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-10-31 20:50:18",
+    "timestamp": "2026-11-01 07:28:14",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261030_090325_tiktok_story_7684611088683519253.mp4",
-      "caption": "🐉 Tưởng là phế vật dưới đáy tông môn ai ngờ ẩn giấu thực lực chấn động thiên địa — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
+      "video_file": "20261030_142634_douyin_story_7638184065786631546.mp4",
+      "caption": "✨ Câu chuyện AI cực cuốn: Lắc khóa. \"Sao lưu một chút...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+      "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 07:28:14",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261030_142634_douyin_story_7638184065786631546.mp4",
+        "caption": "✨ Câu chuyện AI cực cuốn: Lắc khóa. \"Sao lưu một chút...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+        "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-10-31 20:50:18",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 14:24:00",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261028_203926_tiktok_story_7685359044369894677.mp4",
-        "caption": "🐉 Tưởng là phế vật dưới đáy tông môn ai ngờ ẩn giấu thực lực chấn động thiên địa — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
