@@ -2544,6 +2544,31 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
+        # --- KÍCH HOẠT SKILL DÒNG 1: KIỂM TRA & CƯỠNG CHẾ 6 LỚP BỘ LỌC CHỐNG PHÁT HIỆN TIKTOK TRƯỚC KHI ĐĂNG ---
+        try:
+            from .stream1_antidetect_skill import Stream1SixLayerAntiDetectSkill
+
+            skill_6layer = Stream1SixLayerAntiDetectSkill(project_root=self.project_root)
+            passed_6l, target_video, caption, hashtags, rep_6l = (
+                skill_6layer.verify_and_enforce_before_upload(
+                    video_path=target_video,
+                    channel_folder=ch_folder,
+                    caption=caption,
+                    hashtags=hashtags,
+                    last_posted_bongcuc_ep=locals().get("last_ep_num"),
+                )
+            )
+            self._last_6layer_report = rep_6l
+            if not passed_6l:
+                logger.warning(
+                    f"[{ch_folder}] [Skill 6 Lớp Anti-Detect] Video {target_video.name} không vượt qua kiểm tra 6 lớp -> Bỏ qua và chọn ứng viên kế tiếp..."
+                )
+                if target_video.exists():
+                    target_video.unlink(missing_ok=True)
+                return self._get_next_ready_video_for_channel(channel_arg)
+        except Exception as sk_exc:
+            logger.debug(f"[{ch_folder}] Bỏ qua lỗi phụ trong Skill 6 Lớp: {sk_exc}")
+
         return target_video, caption, hashtags
 
     def _was_channel_uploaded_recently(

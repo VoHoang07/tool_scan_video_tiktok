@@ -3386,8 +3386,10 @@ def _hot_patch_live_crawler() -> None:
     try:
         import importlib
         from . import bongcuc_splitter as _bc_live_mod
+        from . import stream1_antidetect_skill as _s1_live_mod
 
         importlib.reload(_bc_live_mod)
+        importlib.reload(_s1_live_mod)
     except Exception:
         pass
     try:

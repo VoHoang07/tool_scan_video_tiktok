@@ -907,12 +907,14 @@ def run_continuous_mode(
             try:
                 import importlib
                 from . import bongcuc_splitter as _bc_mod
+                from . import stream1_antidetect_skill as _s1_skill_mod
                 from . import crawler as _cr_mod
                 from . import translator as _tr_mod
                 from . import growth_24h_filter as _g24_mod
                 from . import auto_poster as _ap_mod
 
                 importlib.reload(_bc_mod)
+                importlib.reload(_s1_skill_mod)
                 importlib.reload(_cr_mod)
                 importlib.reload(_tr_mod)
                 importlib.reload(_g24_mod)
