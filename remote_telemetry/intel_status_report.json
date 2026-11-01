@@ -1,21 +1,145 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-01 08:56:24",
+    "timestamp": "2026-11-01 09:22:20",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "filter24h",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261030_212556_tiktok_story_7697638039421455637.mp4",
-      "caption": "📖 Góc Kể Chuyện: Góc khuất tình cảm và màn đáp trả cực gắt khiến trà xanh không kịp trở tay. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
-      "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #xuhuong #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "meo_vat_gia_dinh",
+          "video_id": "7701725867734519060",
+          "video_url": "https://www.tiktok.com/@ngoc.trinh7736/video/7701725867734519060",
+          "creator_handle": "@ngoc.trinh7736",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": false,
+            "5_followed_creator": false,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": true,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 811.2734375,
+              "y": 430.9921875,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "34"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 811.2734375,
+                "y": 430.9921875,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "34"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": false
+            },
+            "profile_follow_verify": {
+              "creator": "@ngoc.trinh7736",
+              "nav_method": "spa_click",
+              "profile_url": "https://www.tiktok.com/@ngoc.trinh7736?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Follow",
+              "init_relation": null,
+              "persisted": false,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-01 09:22:20",
+          "follow_back_window_until": "2026-11-02 09:22:20"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 09:22:20",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "meo_vat_gia_dinh",
+            "video_id": "7701725867734519060",
+            "video_url": "https://www.tiktok.com/@ngoc.trinh7736/video/7701725867734519060",
+            "creator_handle": "@ngoc.trinh7736",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": true,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 811.2734375,
+                "y": 430.9921875,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "34"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 811.2734375,
+                  "y": 430.9921875,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "34"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": false
+              },
+              "profile_follow_verify": {
+                "creator": "@ngoc.trinh7736",
+                "nav_method": "spa_click",
+                "profile_url": "https://www.tiktok.com/@ngoc.trinh7736?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Follow",
+                "init_relation": null,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-01 09:22:20",
+            "follow_back_window_until": "2026-11-02 09:22:20"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-01 08:56:24",
       "machine_arch": "x86_64",
@@ -234,22 +358,6 @@
         "video_file": "20261030_144554_tiktok_story_7692989950672768263.mp4",
         "caption": "🎧 [Truyện Đêm Khuya] Tập 106 - Biến cố bất ngờ và sự thật phía sau. Một câu chuyện đầy kịch tính với cú quay xe cực gắt ở phút cuối. Nếu ở trong hoàn cảnh của nhân vật chính, bạn sẽ chọn tha thứ hay trả đũa?",
         "hashtags": "#audiodemkhuya #truyenaudio #kechuyendemkhuya #vahmattraxanh #gocchiaSe #tamtrang #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-30 20:44:03",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261028_204128_tiktok_story_7688705812809960725.mp4",
-        "caption": "🐉 3 Tuổi Đã Làm Nhiếp Chính Vương, Nhưng Chỉ Muốn Nghỉ Hưu — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-        "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuong #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
