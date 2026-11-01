@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 03:17:37",
+    "timestamp": "2026-11-02 03:37:16",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "elapsed_seconds": 152.8,
+      "scrolled_videos": 12,
+      "elapsed_seconds": 150.8,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 03:37:16",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 150.8,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 03:17:37",
       "machine_arch": "x86_64",
@@ -182,22 +194,6 @@
         "video_file": "20261101_222144_tiktok_story_990014102_bongcuc_v2_s141_p2.mp4",
         "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 141 (Phần 2/6): Đại Tiểu Thư Thật Và Kẻ Mạo Danh. Vừa xem tô màu thư giãn vừa nghe tiếp câu chuyện đêm nay nhé!",
         "hashtags": "#bongcucso141 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-01 22:40:43",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261031_081813_tiktok_story_7552470440078249227.mp4",
-        "caption": "😂 Sau vài ngày ở Đài Loan,. \"Bạn có thể giúp tôi tháo cái này ra trước được không...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-        "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #tiktokvn #xuhuong",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
