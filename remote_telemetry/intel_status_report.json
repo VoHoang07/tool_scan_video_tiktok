@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-01 22:52:57",
+    "timestamp": "2026-11-01 22:55:58",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261031_093050_tiktok_story_7687947200969657620.mp4",
-      "caption": "🐉 Bé Gái 5 Tuổi Là Thiên Tài, Nhưng Chỉ Mê Thịt Kho Của Mẹ — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #xuhuong #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 13,
+      "elapsed_seconds": 158.3,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 22:55:58",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "elapsed_seconds": 158.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-01 22:52:57",
       "machine_arch": "x86_64",
@@ -625,22 +633,6 @@
         "video_file": "20261030_085107_tiktok_story_7597740771093138718.mp4",
         "caption": "🤣 Điều này đòi hỏi bạn phải đẩy nó ra. — Pha xử lý đi vào lòng đất của hai mẹ con! \"Bạn nhìn lên xem thế nào...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
         "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-01 07:28:14",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261030_142634_douyin_story_7638184065786631546.mp4",
-        "caption": "✨ Câu chuyện AI cực cuốn: Lắc khóa. \"Sao lưu một chút...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
-        "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
