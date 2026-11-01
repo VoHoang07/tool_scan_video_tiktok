@@ -655,8 +655,22 @@ class BongCucYouTubeSplitter:
             )
             return th
 
-        _draw_centered(235, line1, font_header, (255, 230, 65, 255))
-        _draw_centered(312, line2, font_part, (255, 255, 255, 255))
+        # Đa dạng hóa bảng màu tiêu đề & dịch chuyển tọa độ Y nhẹ (±12px) theo từng phần
+        # để chống thuật toán TikTok quét "Template tĩnh lặp lại hàng loạt (Anti-Template Spam)"
+        theme_palettes = [
+            ((255, 230, 65, 255), (255, 255, 255, 255)),   # Vàng hoàng kim & Trắng
+            ((255, 195, 85, 255), (240, 250, 255, 255)),   # Cam hổ phách & Trắng băng
+            ((125, 245, 215, 255), (255, 245, 210, 255)),  # Xanh ngọc bích & Kem ấm
+            ((255, 175, 210, 255), (255, 255, 255, 255)),  # Hồng ánh đào & Trắng
+            ((255, 245, 130, 255), (225, 245, 255, 255)),  # Vàng ánh trăng & Xanh nhạt
+            ((165, 225, 255, 255), (255, 235, 145, 255)),  # Xanh thiên thanh & Vàng kem
+        ]
+        t_seed = ep_num * 19 + part_num * 37
+        header_color, part_color = theme_palettes[t_seed % len(theme_palettes)]
+        y_jitter = ((t_seed % 9) - 4) * 3  # -12px .. +12px
+
+        _draw_centered(235 + y_jitter, line1, font_header, header_color)
+        _draw_centered(312 + y_jitter, line2, font_part, part_color)
 
         # Tự động ngắt dòng tiêu đề truyện ở phía dưới
         words = title.strip().split()
@@ -673,7 +687,7 @@ class BongCucYouTubeSplitter:
         if cur_line:
             sub_lines.append(cur_line)
 
-        y_sub = 1505
+        y_sub = 1505 - y_jitter
         for sl in sub_lines[:2]:
             h_used = _draw_centered(y_sub, sl, font_sub, (255, 255, 255, 255))
             y_sub += h_used + 14
@@ -684,7 +698,7 @@ class BongCucYouTubeSplitter:
 
     @staticmethod
     def build_part_caption_and_hashtags(part_spec: Dict[str, Any]) -> Tuple[str, str]:
-        """Tạo Caption và Hashtag chuẩn (đã qua Bộ lọc 5 Commercial Safe-Guard) cho từng phần của Bông Cúc Trắng trên kênh `audio_dem_khuyen`."""
+        """Tạo Caption và Hashtag đa dạng (12 mẫu câu + xoay vòng tổ hợp Hashtag) cho từng phần của Bông Cúc Trắng trên kênh `audio_dem_khuyen`."""
         ep_num = int(part_spec["ep_num"])
         part_num = int(part_spec["part_num"])
         total_parts = int(part_spec["total_parts"])
@@ -708,18 +722,46 @@ class BongCucYouTubeSplitter:
             f"🎧 [Truyện Đêm Khuya] Bông Cúc Số {ep_num} ({part_label}) — {title}. Từng tình tiết đều cuốn không rời tai, bạn nghĩ sao về diễn biến phần này?",
             f"🔥 Bông Cúc Số {ep_num} [{part_label}]: {title}. Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng! Cùng nghe tiếp nhé!",
             f"🌙 Thức đêm nghe truyện: Bông Cúc Số {ep_num} ({part_label}) - {title}. Đừng bỏ lỡ những tình tiết gay cấn nhất trong phần này nhé!",
+            f"✨ Bông Cúc Trắng Số {ep_num} [{part_label}]: {title}. Càng nghe càng thấm, câu chuyện bước sang nút thắt bất ngờ nhất!",
+            f"🎙️ [Góc Kể Truyện] Bông Cúc Số {ep_num} ({part_label}): {title}. Vừa xem tô màu thư giãn vừa nghe tiếp câu chuyện đêm nay nhé!",
+            f"💫 Bông Cúc Số {ep_num} — {part_label}: {title}. Một quyết định thay đổi tất cả, liệu cái kết có xứng đáng?",
+            f"🍂 Đêm khuya nghe truyện Bông Cúc Số {ep_num} [{part_label}]: {title}. Ai đang hóng phần tiếp theo thì vào nghe ngay nhé!",
+            f"📌 Bông Cúc Số {ep_num} ({part_label}) | {title}. Sự thật dần hé lộ, nghe đến phút cuối để không bỏ sót chi tiết nào!",
+            f"🌌 [Audio Truyện Ngắn] Bông Cúc Số {ep_num} [{part_label}]: {title}. Nghe xong phần này nhớ để lại cảm nhận của bạn nhé!",
+            f"🕯️ Bông Cúc Trắng Số {ep_num} ({part_label}) — {title}. Những góc khuất dần được phơi bày qua từng lời kể!",
+            f"🎶 Vừa xem vẽ tranh vừa nghe Bông Cúc Số {ep_num} [{part_label}]: {title}. Tập này cuốn từ đầu đến cuối!",
         ]
-        caption = hooks[(ep_num + part_num) % len(hooks)]
+        seed_idx = ep_num * 7 + part_num * 13
+        caption = hooks[seed_idx % len(hooks)]
         try:
             from .translator import SubtitleTranslator
 
             caption = SubtitleTranslator._apply_commercial_safeguard(caption)
         except Exception:
             pass
-        hashtags = (
-            f"#bongcucso{ep_num} #bongcucaudio #audiodemkhuya #truyenaudio "
-            "#kechuyendemkhuya #truyenngan #dramatiktok #xuhuong"
-        )
+
+        rotating_tags = [
+            "#audiodemkhuya",
+            "#truyenaudio",
+            "#kechuyendemkhuya",
+            "#truyenngan",
+            "#dramatiktok",
+            "#xuhuong",
+            "#truyentamly",
+            "#nghetruyendemkhuya",
+            "#bongcuctrang",
+            "#tomaukechuyen",
+            "#gocnhinkhuya",
+            "#chuyengiadinh",
+            "#truyenhaymoingay",
+            "#fyp",
+        ]
+        picked_tags = [f"#bongcucso{ep_num}", "#bongcucaudio"]
+        for offset in range(6):
+            tag_cand = rotating_tags[(seed_idx + offset * 3) % len(rotating_tags)]
+            if tag_cand not in picked_tags:
+                picked_tags.append(tag_cand)
+        hashtags = " ".join(picked_tags)
         return caption, hashtags
 
     def render_single_part(
