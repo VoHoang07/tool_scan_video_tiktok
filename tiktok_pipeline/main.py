@@ -561,10 +561,18 @@ def _compute_smart_sleep_seconds(sleep_between: Optional[int] = None) -> int:
     return random.randint(low, high)
 
 
+_PROCESS_LAST_GIT_SHA: Optional[str] = None
+
+
 def _get_codebase_mtime_snapshot(project_root: Path) -> Dict[str, float]:
-    """Lấy bản chụp thời gian sửa đổi (mtime) của tất cả file .py để tự động Hot-Reload khi sửa code."""
+    """Lấy bản chụp thời gian sửa đổi (mtime) của tất cả file .py và schedule_config.json để tự động Hot-Reload."""
     snapshot: Dict[str, float] = {}
-    for py_file in sorted(project_root.glob("*.py")) + sorted((project_root / "tiktok_pipeline").glob("*.py")):
+    files = (
+        sorted(project_root.glob("*.py"))
+        + sorted((project_root / "tiktok_pipeline").glob("*.py"))
+        + [project_root / "schedule_config.json"]
+    )
+    for py_file in files:
         try:
             if py_file.is_file():
                 snapshot[str(py_file.relative_to(project_root))] = round(py_file.stat().st_mtime, 2)
@@ -580,6 +588,7 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
     (bảo toàn `story_audio_history.json` và `output/danh_sach_video.csv` của máy Intel,
     không bao giờ bị kẹt lỗi merge conflict hay thiếu git user.email).
     """
+    global _PROCESS_LAST_GIT_SHA
     git_dir = project_root / ".git"
     if not git_dir.exists():
         return False
@@ -623,6 +632,9 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
             timeout=10,
             check=False,
         ).stdout.strip()
+
+        if _PROCESS_LAST_GIT_SHA is None and local_sha:
+            _PROCESS_LAST_GIT_SHA = local_sha
 
         if local_sha and remote_sha and local_sha != remote_sha:
             # Có code mới từ Silicon
@@ -693,8 +705,26 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
                     shutil.copy2(post_log_bak, post_log_path)
                 post_log_bak.unlink(missing_ok=True)
 
+            _PROCESS_LAST_GIT_SHA = remote_sha
             logger.info(
                 f"[Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub ({local_sha[:7]} -> {remote_sha[:7]})!"
+            )
+            return True
+
+        # Nếu cửa sổ kia đã pull trước làm HEAD trên đĩa đổi sang remote_sha, cửa sổ này vẫn hiện log đồng bộ
+        if remote_sha and _PROCESS_LAST_GIT_SHA and remote_sha != _PROCESS_LAST_GIT_SHA:
+            old_sha = _PROCESS_LAST_GIT_SHA
+            _PROCESS_LAST_GIT_SHA = remote_sha
+            commit_msg = subprocess.run(
+                ["git", "log", "origin/main", "-1", "--format=%s"],
+                cwd=str(project_root),
+                capture_output=True,
+                text=True,
+                timeout=10,
+                check=False,
+            ).stdout.strip()
+            logger.info(
+                f"[Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub ({old_sha[:7]} -> {remote_sha[:7]}) | {commit_msg}"
             )
             return True
     except Exception as exc:
@@ -1463,6 +1493,9 @@ def main() -> None:
                         importlib.reload(_ap_mod)
                         poster = _ap_mod.TikTokAutoPoster(project_root=project_root)
                         snap = _get_codebase_mtime_snapshot(project_root)
+                        logger.info(
+                            "[Hot-Reload In-Place] Đã nạp nóng code mới cho Dòng 2 (Bộ lọc 24h & Lướt FYP Nuôi Kênh)!"
+                        )
                     except Exception:
                         pass
                 poster.check_and_run_warmup_browse()
@@ -1470,7 +1503,7 @@ def main() -> None:
                 f24_tick += 1
                 if f24_tick % 10 == 0:
                     logger.info(
-                        "[Dòng 2 - Bộ lọc 24h] Đang hoạt động ổn định — canh khung giờ chạy tiếp theo (7 lần/ngày)..."
+                        "[Dòng 2 - Bộ lọc 24h & Lướt FYP] Đang hoạt động ổn định — xoay vòng lướt FYP & canh lịch Bộ lọc 24h..."
                     )
                 time.sleep(30)
             return

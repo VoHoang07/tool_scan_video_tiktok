@@ -109,6 +109,10 @@ def _hot_patch_live_auto_poster_stealth() -> None:
                         "check_and_run_stream1_upload_schedule",
                         "check_and_run_stream2_filter24h_schedule",
                         "check_and_run_scheduled_posts",
+                        "_focus_and_play_tiktok_video",
+                        "_scroll_to_next_fyp_video",
+                        "warmup_browse_channel",
+                        "check_and_run_warmup_browse",
                     ):
                         if hasattr(fresh_cls, attr_name):
                             setattr(cls, attr_name, getattr(fresh_cls, attr_name))
@@ -844,21 +848,39 @@ class TikTok24hFilterEngine:
         đồng thời di chuyển chuột phần cứng macOS theo đường cong Bezier để TikTok tính 100% view thật.
         """
         try:
-            duration = float(
-                page.evaluate(
-                    """() => {
-                        const v = document.querySelector('video');
-                        if (v) {
-                            try { v.muted = false; v.play().catch(() => {}); } catch (e) {}
-                            if (v.duration && isFinite(v.duration) && v.duration > 2) {
-                                return v.duration;
-                            }
+            page.keyboard.press("Escape")
+        except Exception:
+            pass
+
+        try:
+            vid_info = page.evaluate(
+                """() => {
+                    try {
+                        if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                            document.activeElement.blur();
                         }
-                        return 24.0;
-                    }"""
-                )
-                or 24.0
+                    } catch (e) {}
+                    const v = document.querySelector('video');
+                    if (v) {
+                        const r = v.getBoundingClientRect();
+                        try { v.muted = false; v.play().catch(() => {}); } catch (e) {}
+                        const dur = (v.duration && isFinite(v.duration) && v.duration > 2) ? v.duration : 24.0;
+                        return {
+                            duration: dur,
+                            paused: Boolean(v.paused),
+                            x: r.width > 100 ? (r.left + r.width * 0.45) : 520,
+                            y: r.height > 100 ? (r.top + r.height * 0.48) : 450
+                        };
+                    }
+                    return { duration: 24.0, paused: false, x: 520, y: 450 };
+                }"""
             )
+            duration = float((vid_info or {}).get("duration") or 24.0)
+            if (vid_info or {}).get("paused"):
+                vx = float((vid_info or {}).get("x") or 520.0)
+                vy = float((vid_info or {}).get("y") or 450.0)
+                self._os_click_viewport(page, vx, vy)
+                time.sleep(0.35)
         except Exception:
             duration = 24.0
 

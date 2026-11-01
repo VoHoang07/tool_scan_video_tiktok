@@ -3531,90 +3531,233 @@ class TikTokAutoPoster:
 
         return filter_results
 
+    def _focus_and_play_tiktok_video(self, page: Any, ch_folder: str) -> Tuple[float, float]:
+        """
+        Đóng thanh tìm kiếm/địa chỉ của Chrome (nếu đang mở) và click trực tiếp vào giữa màn hình video
+        để kích hoạt phát video thật sự trên TikTok. Trả về tọa độ tâm video (vid_x, vid_y).
+        """
+        vid_x, vid_y = 560.0, 450.0
+        try:
+            self.desktop.activate_chrome()
+        except Exception:
+            pass
+        try:
+            page.bring_to_front()
+        except Exception:
+            pass
+
+        # 1. Đóng dropdown thanh địa chỉ / ô tìm kiếm bằng phím Escape và blur mọi thẻ input
+        try:
+            page.keyboard.press("Escape")
+        except Exception:
+            pass
+
+        try:
+            info = page.evaluate(
+                """() => {
+                    try {
+                        if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                            document.activeElement.blur();
+                        }
+                    } catch (e) {}
+                    const v = document.querySelector('video');
+                    if (!v) return null;
+                    const r = v.getBoundingClientRect();
+                    if (r.width < 100 || r.height < 100) return null;
+                    return {
+                        x: r.left + r.width * 0.45,
+                        y: r.top + r.height * 0.48,
+                        paused: Boolean(v.paused)
+                    };
+                }"""
+            )
+            if isinstance(info, dict) and info.get("x") and info.get("y"):
+                vid_x = float(info["x"])
+                vid_y = float(info["y"])
+        except Exception:
+            pass
+
+        # 2. Click chuột thật (CoreGraphics CGEvent) vào giữa màn hình video để đóng hẳn thanh tìm kiếm Chrome & lấy focus
+        try:
+            self._os_click_viewport(page, vid_x, vid_y)
+            time.sleep(0.45)
+        except Exception:
+            try:
+                page.mouse.click(vid_x, vid_y)
+                time.sleep(0.45)
+            except Exception:
+                pass
+
+        # 3. Kiểm tra nếu cú click vừa rồi làm tạm dừng video (paused=true) thì click/play lại ngay để video chạy 100%
+        try:
+            still_paused = page.evaluate(
+                """() => {
+                    const v = document.querySelector('video');
+                    if (!v) return false;
+                    try {
+                        v.muted = false;
+                        v.volume = 0.5;
+                    } catch (e) {}
+                    if (v.paused) {
+                        try { v.play().catch(() => {}); } catch (e) {}
+                    }
+                    return Boolean(v.paused);
+                }"""
+            )
+            if still_paused:
+                self._os_click_viewport(page, vid_x, vid_y)
+                time.sleep(0.35)
+                page.evaluate(
+                    """() => {
+                        const v = document.querySelector('video');
+                        if (v && v.paused) {
+                            try { v.play().catch(() => {}); } catch (e) {}
+                        }
+                    }"""
+                )
+        except Exception:
+            pass
+
+        return vid_x, vid_y
+
+    def _scroll_to_next_fyp_video(self, page: Any, vid_x: float, vid_y: float) -> None:
+        """
+        Chuyển sang video tiếp theo trên trang Đề xuất (FYP) TikTok một cách mượt mà và chắc chắn 100%:
+        - Đảm bảo không bị kẹt focus ở ô Tìm kiếm.
+        - Đưa chuột vào giữa màn hình video và cuộn con lăn chuột kết hợp phím ArrowDown.
+        - Đảm bảo video mới tự động phát ngay khi lướt tới.
+        """
+        try:
+            page.evaluate(
+                """() => {
+                    if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                        document.activeElement.blur();
+                    }
+                }"""
+            )
+        except Exception:
+            pass
+
+        # Đưa chuột vào vùng màn hình video rồi cuộn xuống + bấm ArrowDown
+        try:
+            jitter_x = vid_x + random.uniform(-35, 35)
+            jitter_y = vid_y + random.uniform(-35, 35)
+            self._human_move_mouse(page, jitter_x, jitter_y)
+            time.sleep(0.15)
+            page.mouse.wheel(0, random.randint(650, 850))
+            time.sleep(0.25)
+            page.keyboard.press("ArrowDown")
+        except Exception:
+            try:
+                self.desktop.key_press_os("arrow-down")
+            except Exception:
+                pass
+
+        time.sleep(random.uniform(1.0, 1.6))
+
+        # Đảm bảo video mới đang chạy (không bị paused)
+        try:
+            is_paused = page.evaluate(
+                """() => {
+                    const videos = Array.from(document.querySelectorAll('video'));
+                    for (const v of videos) {
+                        const r = v.getBoundingClientRect();
+                        if (r.height > 150 && r.top >= -50 && r.top < window.innerHeight * 0.7) {
+                            if (v.paused) {
+                                try { v.play().catch(() => {}); } catch (e) {}
+                            }
+                            return Boolean(v.paused);
+                        }
+                    }
+                    return false;
+                }"""
+            )
+            if is_paused:
+                self._os_click_viewport(page, vid_x, vid_y)
+                time.sleep(0.3)
+        except Exception:
+            pass
+
     def warmup_browse_channel(self, ch_folder: str, browse_seconds: int = 150) -> None:
-        """Lướt FYP TikTok tự nhiên bằng CoreGraphics CGEvent (chuột/bàn phím cấp OS) để TikTok nhận diện account thật."""
+        """Lướt FYP TikTok tự nhiên bằng CoreGraphics CGEvent (click màn hình chạy video + cuộn mượt) để TikTok nhận diện account thật."""
         user_data_dir = self.profiles_root / ch_folder
         if not user_data_dir.exists():
             user_data_dir.mkdir(parents=True, exist_ok=True)
 
         lock_fh = self._acquire_browser_process_lock()
         if lock_fh is None:
-            logger.info(f"[Warmup] [{ch_folder}] Browser lock busy, skip")
+            logger.info(f"[Warmup FYP] [{ch_folder}] Trình duyệt đang bận ở phiên khác, bỏ qua lượt này.")
             return
 
         try:
             from playwright.sync_api import sync_playwright
 
-            logger.info(f"[Warmup] [{ch_folder}] Bắt đầu lướt FYP {browse_seconds}s (CoreGraphics CGEvent)...")
+            logger.info(
+                f"=== [DÒNG 2 - LƯỚT FYP NUÔI KÊNH] MỞ KÊNH [{ch_folder}] LƯỚT VIDEO ĐỀ XUẤT ({browse_seconds}s) ==="
+            )
             with sync_playwright() as p:
                 context = self._launch_stealth_chrome_context(
                     playwright_obj=p, user_data_dir=user_data_dir, headless=False
                 )
                 try:
                     page = context.pages[0] if context.pages else context.new_page()
-                    self._restore_synced_channel_session_if_needed(context, user_data_dir)
 
-                    page.goto("https://www.tiktok.com/foryou", wait_until="domcontentloaded", timeout=30000)
-                    time.sleep(random.uniform(3, 5))
+                    page.goto("https://www.tiktok.com/foryou?lang=vi-VN", wait_until="domcontentloaded", timeout=35000)
+                    time.sleep(random.uniform(3.5, 5.0))
 
-                    # Di chuột vào giữa trang để focus
-                    self._human_move_mouse(page, random.uniform(400, 800), random.uniform(300, 500))
-                    time.sleep(random.uniform(0.5, 1.0))
+                    try:
+                        self.filter_24h.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+                    except Exception:
+                        pass
+
+                    # Click vào giữa màn hình để tắt thanh tìm kiếm Chrome và cho video chạy ngay
+                    vid_x, vid_y = self._focus_and_play_tiktok_video(page, ch_folder)
+                    logger.info(
+                        f"[Warmup FYP] [{ch_folder}] Đã click vào màn hình ({vid_x:.0f}, {vid_y:.0f}) kích hoạt chạy video & bắt đầu lướt..."
+                    )
 
                     start = time.time()
                     scroll_count = 0
                     while time.time() - start < browse_seconds:
-                        watch_time = random.uniform(5, 15)
+                        watch_time = random.uniform(7.0, 15.0)
+                        logger.info(
+                            f"[Warmup FYP] [{ch_folder}] ▶️ Đang xem video #{scroll_count + 1} ({watch_time:.1f}s)..."
+                        )
                         time.sleep(watch_time)
 
-                        # Di chuột ngẫu nhiên trong viewport (giả lập người xem)
-                        if random.random() < 0.3:
+                        # Di chuột nhẹ trong màn hình video (giả lập người xem thật)
+                        if random.random() < 0.35:
                             self._human_move_mouse(
                                 page,
-                                random.uniform(300, 900),
-                                random.uniform(200, 600),
+                                vid_x + random.uniform(-80, 80),
+                                vid_y + random.uniform(-80, 80),
                             )
-                            time.sleep(random.uniform(0.3, 0.8))
+                            time.sleep(random.uniform(0.3, 0.7))
 
-                        # 5% xác suất like bằng CoreGraphics click
-                        if random.random() < 0.05:
-                            try:
-                                like_btn = page.locator('[data-e2e="like-icon"]').first
-                                if like_btn.is_visible(timeout=1000):
-                                    box = like_btn.bounding_box()
-                                    if box:
-                                        self._os_click_viewport(
-                                            page,
-                                            box["x"] + box["width"] / 2,
-                                            box["y"] + box["height"] / 2,
-                                        )
-                                        logger.info(f"  [{ch_folder}] ❤️ Liked video #{scroll_count + 1}")
-                                        time.sleep(random.uniform(0.5, 1.5))
-                            except Exception:
-                                pass
-
-                        # Scroll xuống video tiếp = ArrowDown qua OS keyboard (CoreGraphics CGEvent)
-                        self.desktop.key_press_os("arrow-down")
+                        # Lướt sang video kế tiếp & đảm bảo video mới chạy ngay
+                        self._scroll_to_next_fyp_video(page, vid_x, vid_y)
                         scroll_count += 1
-                        time.sleep(random.uniform(0.8, 2.0))
 
-                    logger.info(f"[Warmup] [{ch_folder}] ✅ Xong! {scroll_count} video trong {time.time() - start:.0f}s")
+                    logger.info(
+                        f"[Warmup FYP] [{ch_folder}] ✅ Hoàn tất lướt {scroll_count} video trong {time.time() - start:.0f}s!"
+                    )
                 finally:
                     try:
                         context.close()
                     except Exception:
                         pass
         except Exception as exc:
-            logger.error(f"[Warmup] [{ch_folder}] Lỗi: {exc}")
+            logger.error(f"[Warmup FYP] [{ch_folder}] Lỗi: {exc}")
         finally:
             self._release_browser_process_lock(lock_fh)
 
     def check_and_run_warmup_browse(self) -> None:
         """
-        Tự động lướt FYP cho 1 kênh mỗi lần gọi, chọn kênh lâu nhất chưa lướt.
-        - Mỗi kênh tối đa 4 lần/ngày, cách nhau tối thiểu 3 giờ
-        - Cách kênh trước tối thiểu 10 phút (tránh fingerprint collision)
-        - Chỉ chạy trên máy Intel (x86_64)
+        Tự động mở các kênh lướt FYP bất cứ khi nào Dòng 2 đang rảnh:
+        - Chọn kênh lâu nhất chưa lướt (xoay vòng đều cả 10 kênh suốt cả ngày)
+        - Giãn cách giữa 2 kênh liên tiếp: `warmup_gap_seconds` (mặc định 180s = 3 phút)
+        - Giãn cách tối thiểu cùng 1 kênh: `warmup_channel_cooldown_seconds` (mặc định 1800s = 30 phút)
+        - Hỗ trợ `warmup_reset_id` trong `schedule_config.json` để kích hoạt mở kênh lướt ngay lập tức từ xa.
         """
         if platform.machine() != "x86_64":
             return
@@ -3625,6 +3768,9 @@ class TikTokAutoPoster:
             return
 
         browse_seconds = int(cfg.get("warmup_browse_seconds", 150))
+        gap_between_channels = int(cfg.get("warmup_gap_seconds", 180))
+        per_channel_cooldown = int(cfg.get("warmup_channel_cooldown_seconds", 1800))
+        max_per_day = int(cfg.get("warmup_max_per_day", 24))
 
         # Đọc lịch sử lướt từ file JSON
         history_file = self.profiles_root / ".warmup_browse_history.json"
@@ -3639,58 +3785,86 @@ class TikTokAutoPoster:
         now_str = now.strftime("%Y-%m-%d %H:%M:%S")
         today_str = now.strftime("%Y-%m-%d")
 
-        # Kiểm tra gap 10 phút với kênh cuối cùng đã lướt
-        last_any_ts_str = history.get("_last_any_warmup_ts", "")
-        if last_any_ts_str:
+        # Kiểm tra lệnh kích hoạt lướt ngay lập tức từ máy Silicon (warmup_reset_id)
+        reset_id = str(cfg.get("warmup_reset_id") or "").strip()
+        force_immediate = False
+        if reset_id and history.get("_last_reset_id") != reset_id:
+            logger.info(
+                f"[Warmup FYP] Nhận lệnh kích hoạt lướt video ngay lập tức từ Silicon ({reset_id}) -> Mở kênh tiếp theo ngay!"
+            )
+            history["_last_reset_id"] = reset_id
+            history.pop("_last_any_warmup_ts", None)
+            for ch in all_filter_channels:
+                if isinstance(history.get(ch), dict):
+                    history[ch].pop(f"count_{today_str}", None)
+            force_immediate = True
             try:
-                last_any_ts = datetime.strptime(last_any_ts_str, "%Y-%m-%d %H:%M:%S")
-                if (now - last_any_ts).total_seconds() < 600:
-                    return
+                history_file.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8")
             except Exception:
                 pass
 
-        # Tìm kênh phù hợp: chưa lướt hôm nay >= 4 lần, cách lần cuối >= 3 giờ
+        # Kiểm tra gap giữa 2 kênh liên tiếp
+        if not force_immediate:
+            last_any_ts_str = history.get("_last_any_warmup_ts", "")
+            if last_any_ts_str:
+                try:
+                    last_any_ts = datetime.strptime(last_any_ts_str, "%Y-%m-%d %H:%M:%S")
+                    elapsed_any = (now - last_any_ts).total_seconds()
+                    if 0 <= elapsed_any < gap_between_channels:
+                        return
+                except Exception:
+                    pass
+
+        # Tìm kênh phù hợp: ưu tiên kênh chưa lướt hoặc lướt cách đây lâu nhất
         best_ch = None
-        best_last_ts = datetime.min
+        best_last_ts = datetime.max
         for ch in all_filter_channels:
             ch_data = history.get(ch, {})
-            today_count = ch_data.get(f"count_{today_str}", 0)
-            if today_count >= 4:
+            if not isinstance(ch_data, dict):
+                ch_data = {}
+            today_count = int(ch_data.get(f"count_{today_str}", 0))
+            if not force_immediate and today_count >= max_per_day:
                 continue
-            last_ts_str = ch_data.get("last_ts", "")
+            last_ts_str = str(ch_data.get("last_ts") or "").strip()
             if last_ts_str:
                 try:
                     last_ts = datetime.strptime(last_ts_str, "%Y-%m-%d %H:%M:%S")
-                    if (now - last_ts).total_seconds() < 10800:  # 3 giờ
+                    if not force_immediate and (now - last_ts).total_seconds() < per_channel_cooldown:
                         continue
-                    if best_ch is None or last_ts < best_last_ts:
+                    if last_ts < best_last_ts:
                         best_ch = ch
                         best_last_ts = last_ts
                 except Exception:
-                    best_ch = ch
-                    best_last_ts = datetime.min
+                    if best_ch is None:
+                        best_ch = ch
+                        best_last_ts = datetime.min
             else:
-                # Chưa lướt bao giờ → ưu tiên cao nhất
-                if best_ch is None or best_last_ts > datetime.min:
-                    best_ch = ch
-                    best_last_ts = datetime.min
+                best_ch = ch
+                best_last_ts = datetime.min
+                break
 
         if not best_ch:
             return
 
-        logger.info(f"[Warmup Auto] Chọn kênh [{best_ch}] để lướt FYP ({browse_seconds}s)")
+        logger.info(f"[Warmup Auto] Chọn kênh [{best_ch}] để mở TikTok lướt FYP ({browse_seconds}s)...")
         self.warmup_browse_channel(best_ch, browse_seconds=browse_seconds)
 
-        # Cập nhật lịch sử
+        # Cập nhật lịch sử sau khi lướt xong
+        finish_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         ch_data = history.get(best_ch, {})
-        ch_data["last_ts"] = now_str
-        ch_data[f"count_{today_str}"] = ch_data.get(f"count_{today_str}", 0) + 1
+        if not isinstance(ch_data, dict):
+            ch_data = {}
+        ch_data["last_ts"] = finish_str
+        ch_data[f"count_{today_str}"] = int(ch_data.get(f"count_{today_str}", 0)) + 1
         history[best_ch] = ch_data
-        history["_last_any_warmup_ts"] = now_str
+        history["_last_any_warmup_ts"] = finish_str
         try:
             history_file.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8")
         except Exception:
             pass
+        logger.info(
+            f"[Warmup Auto] Đã hoàn tất lướt kênh [{best_ch}] -> Nghỉ {gap_between_channels // 60} phút trước khi mở kênh kế tiếp..."
+        )
 
     def check_and_run_scheduled_posts(self) -> List[Dict[str, Any]]:
         """

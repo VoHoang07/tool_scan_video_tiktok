@@ -149,5 +149,9 @@
   "random_jitter_minutes": 9,
   "warmup_before_upload": true,
   "use_macos_native_input": true,
-  "warmup_browse_seconds": 150
+  "warmup_browse_seconds": 150,
+  "warmup_gap_seconds": 180,
+  "warmup_channel_cooldown_seconds": 1800,
+  "warmup_max_per_day": 24,
+  "warmup_reset_id": "reset_warmup_20261101_1318"
 }
