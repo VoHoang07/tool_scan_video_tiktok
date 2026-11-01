@@ -1,0 +1,119 @@
+{
+  "updated_at": "2026-11-01 23:11:42",
+  "latest_result": {
+    "cmd_id": "cmd_20261101_201712_check_and_heal",
+    "action": "check_and_heal",
+    "executed_at": "2026-11-01 23:07:38",
+    "machine_arch": "x86_64",
+    "hostname": "Hoangs-MBP.fpt",
+    "status": "SUCCESS",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-01 23:07:38"
+    },
+    "agy_exit_code": 0,
+    "agy_response": "### Báo cáo Trạng thái Hệ thống trên Mac Intel (`x86_64`)\n\n#### 1. Xử lý Khóa Trình duyệt (`Browser Locks` & `SingletonLock`)\n- **Khóa phiên trình duyệt ([`.tiktok_browser_session.lock`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/workspace_temp/.tiktok_browser_session.lock))**: Đã tự động giải phóng khóa bị treo trước đó (`866s`) thông qua [`agy_intel_bridge.py`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py).\n- **Khóa Chrome Profile (`browser_profiles/*/Singleton*`)**: Đã kiểm tra toàn bộ các thư mục trong `browser_profiles/`. Hiện **không còn bất kỳ `SingletonLock` / `SingletonSocket` / `SingletonCookie` nào bị treo**.\n\n---\n\n#### 2. Trạng thái Dòng 1 (`--stream-upload`) và Dòng 2 (`--stream-filter24h`)\n- **Dòng 1 (`--stream-upload`) — ĐANG HOẠT ĐỘNG ỔN ĐỊNH**:\n  - Tiến trình Worker 24/7 (`PID 30534`, quản lý bởi [`run_24_7.sh`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/run_24_7.sh) dưới `caffeinate -dimsu`) và tiến trình nền (`PID 52776`) đang hoạt động.\n  - Vừa hoàn tất lấp đầy kho `video_AI_hay/ready` (`5/5` video) lúc `23:08:03` và đồng bộ [`danh_sach_video.csv`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv).\n  - Các khung giờ đăng tối nay trong [`posted_schedule_history.json`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/posted_schedule_history.json) đều đã hoàn tất xác nhận đăng (`post_confirmed: true`):\n    - `video_AI_hay` (khung `19:20` -> hoàn tất `22:24:42`)\n    - `baby_AI` (khung `20:05` -> hoàn tất `22:40:57`)\n    - `audio_dem_khuyen` (khung `21:15` -> hoàn tất `22:45:52`)\n    - `tu_chan_gioi` (khung `20:42` -> hoàn tất `22:53:10`)\n- **Dòng 2 (`--stream-filter24h`) — ĐANG HOẠT ĐỘNG ỔN ĐỊNH**:\n  - Vừa hoàn tất phiên `warmup_fyp` trên kênh `an_vat_moi_ngay` lúc `23:10:28` (lướt 12 video, `160.6s`, ghi nhận trong [`intel_status_report.json`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/remote_telemetry/intel_status_report.json)).\n  - Tiến trình daemon Dòng 2 (`PID 94753` / `94755` với `caffeinate -dimsu`) đang chạy ngầm liên tục và ghi log vào [`logs/stream2_filter24h.log`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/logs/stream2_filter24h.log).\n- **Cầu nối từ xa (`agy_intel_bridge.py --daemon`)**: Đang chạy ngầm (`PID 94053`, chu kỳ `poll=20s`).\n\n---\n\n#### 3. Trạng thái Kho Video (`output/*/ready` & `posted`)\n| Kênh | Kho chờ (`ready/`) | Đã đăng (`posted/`) |\n| :--- | :---: | :---: |\n| **`video_AI_hay`** | `5 / 5` | `21` |\n| **`baby_AI`** | `4 / 5` | `21` |\n| **`tu_chan_gioi`** | `4 / 5` | `20` |\n| **`audio_dem_khuyen`** | `1 / 5` | `25` |\n",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "system_health": {
+      "timestamp": "2026-11-01 23:11:42",
+      "machine_arch": "x86_64",
+      "hostname": "Hoangs-MBP.fpt",
+      "stream1_running": true,
+      "stream2_running": true,
+      "chrome_testing_count": 0,
+      "lock_file_age_seconds": null,
+      "processes": [
+        "52776 05-05:36:30 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "94753       00:31 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "94755       00:31 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "30517    22:30:01 bash -c \\012    trap \"echo \\\"\\\"; echo \\\"[$(date \\\"+%Y-%m-%d %H:%M:%S\\\")] Đã nhận lệnh dừng từ người dùng (Ctrl+C).\\\"; kill 0 2>/dev/null; exit 130\" INT TERM\\012\\012    sync_from_github() {\\012        if [ -d .git ]; then\\012            git fetch origin main >/dev/null 2>&1 || true\\012            LOCAL_SHA=\"$(git rev-parse HEAD 2>/dev/null || true)\"\\012            REMOTE_SHA=\"$(git rev-parse origin/main 2>/dev/null || true)\"\\012            if [ -n \"$LOCAL_SHA\" ] && [ -n \"$REMOTE_SHA\" ] && [ \"$LOCAL_SHA\" != \"$REMOTE_SHA\" ]; then\\012                echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] [Auto-Git-Sync] Phát hiện bản cập nhật mới trên GitHub (${LOCAL_SHA:0:7} -> ${REMOTE_SHA:0:7}), đang đồng bộ...\" | tee -a logs/daemon_24_7.log\\012                cp -f story_audio_history.json /tmp/tiktok_story_audio_history.bak.json 2>/dev/null || true\\012                cp -f output/danh_sach_video.csv /tmp/tiktok_danh_sach_video.bak.csv 2>/dev/null || true\\012                git reset --hard origin/main >/dev/null 2>&1 || true\\012                cp -f /tmp/tiktok_story_audio_history.bak.json story_audio_history.json 2>/dev/null || true\\012                cp -f /tmp/tiktok_danh_sach_video.bak.csv output/danh_sach_video.csv 2>/dev/null || true\\012            fi\\012        fi\\012    }\\012\\012    while true; do\\012        sync_from_github\\012        echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Đang chạy Worker 24/7...\" | tee -a logs/daemon_24_7.log\\012        ./venv/bin/python main.py --stream-upload --max-ready \"5\" 2>&1 | tee -a logs/daemon_24_7.log\\012        EXIT_CODE=${PIPESTATUS[0]}\\012        if [ \"$EXIT_CODE\" -eq 42 ]; then\\012            echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] [Hot-Reload] Đã nhận bản cập nhật mới từ máy Silicon! Khởi động lại ngay sau 2 giây...\" | tee -a logs/daemon_24_7.log\\012            sleep 2\\012            continue\\012        fi\\012        if [ \"$EXIT_CODE\" -eq 130 ] || [ \"$EXIT_CODE\" -eq 143 ]; then\\012            echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Đã nhận lệnh dừng từ người dùng (Ctrl+C).\" | tee -a logs/daemon_24_7.log\\012            break\\012        fi\\012        echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Tiến trình tạm ngắt (mã $EXIT_CODE), tự động khởi động lại sau 30 giây...\" | tee -a logs/daemon_24_7.log\\012        sleep 30\\012    done\\012",
+        "30518    22:30:01 caffeinate -dimsu bash -c \\012    trap \"echo \\\"\\\"; echo \\\"[$(date \\\"+%Y-%m-%d %H:%M:%S\\\")] Đã nhận lệnh dừng từ người dùng (Ctrl+C).\\\"; kill 0 2>/dev/null; exit 130\" INT TERM\\012\\012    sync_from_github() {\\012        if [ -d .git ]; then\\012            git fetch origin main >/dev/null 2>&1 || true\\012            LOCAL_SHA=\"$(git rev-parse HEAD 2>/dev/null || true)\"\\012            REMOTE_SHA=\"$(git rev-parse origin/main 2>/dev/null || true)\"\\012            if [ -n \"$LOCAL_SHA\" ] && [ -n \"$REMOTE_SHA\" ] && [ \"$LOCAL_SHA\" != \"$REMOTE_SHA\" ]; then\\012                echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] [Auto-Git-Sync] Phát hiện bản cập nhật mới trên GitHub (${LOCAL_SHA:0:7} -> ${REMOTE_SHA:0:7}), đang đồng bộ...\" | tee -a logs/daemon_24_7.log\\012                cp -f story_audio_history.json /tmp/tiktok_story_audio_history.bak.json 2>/dev/null || true\\012                cp -f output/danh_sach_video.csv /tmp/tiktok_danh_sach_video.bak.csv 2>/dev/null || true\\012                git reset --hard origin/main >/dev/null 2>&1 || true\\012                cp -f /tmp/tiktok_story_audio_history.bak.json story_audio_history.json 2>/dev/null || true\\012                cp -f /tmp/tiktok_danh_sach_video.bak.csv output/danh_sach_video.csv 2>/dev/null || true\\012            fi\\012        fi\\012    }\\012\\012    while true; do\\012        sync_from_github\\012        echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Đang chạy Worker 24/7...\" | tee -a logs/daemon_24_7.log\\012        ./venv/bin/python main.py --stream-upload --max-ready \"5\" 2>&1 | tee -a logs/daemon_24_7.log\\012        EXIT_CODE=${PIPESTATUS[0]}\\012        if [ \"$EXIT_CODE\" -eq 42 ]; then\\012            echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] [Hot-Reload] Đã nhận bản cập nhật mới từ máy Silicon! Khởi động lại ngay sau 2 giây...\" | tee -a logs/daemon_24_7.log\\012            sleep 2\\012            continue\\012        fi\\012        if [ \"$EXIT_CODE\" -eq 130 ] || [ \"$EXIT_CODE\" -eq 143 ]; then\\012            echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Đã nhận lệnh dừng từ người dùng (Ctrl+C).\" | tee -a logs/daemon_24_7.log\\012            break\\012        fi\\012        echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Tiến trình tạm ngắt (mã $EXIT_CODE), tự động khởi động lại sau 30 giây...\" | tee -a logs/daemon_24_7.log\\012        sleep 30\\012    done\\012",
+        "30534    22:30:00 ./venv/bin/python main.py --stream-upload --max-ready 5"
+      ],
+      "recent_daemon_log_tail": [
+        "[22:58:36] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Bạn đã không cứu mình trước' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[22:58:43] [INFO] tiktok_pipeline: TTS #35 [59.62s-61.09s | gốc=1.54s]: rate=-42%, atempo=1.75x -> 1.47s",
+        "[22:58:51] [INFO] tiktok_pipeline: TTS #36 [61.16s-62.55s | gốc=1.42s]: rate=+38%, atempo=0.99x -> 1.39s",
+        "[22:59:07] [INFO] tiktok_pipeline: TTS #37 [62.90s-64.27s | gốc=1.44s]: rate=+38%, atempo=0.98x -> 1.37s",
+        "[22:59:26] [INFO] tiktok_pipeline: TTS #38 [64.34s-65.63s | gốc=1.32s]: rate=+37%, atempo=0.94x -> 1.29s",
+        "[23:00:08] [INFO] tiktok_pipeline: TTS #39 [65.94s-66.33s | gốc=0.40s]: rate=+38%, atempo=1.59x -> 0.39s",
+        "[23:00:25] [INFO] tiktok_pipeline: TTS #40 [66.82s-67.31s | gốc=0.52s]: rate=+38%, atempo=1.27x -> 0.49s",
+        "[23:00:40] [INFO] tiktok_pipeline: TTS #41 [69.76s-71.41s | gốc=1.66s]: rate=+38%, atempo=1.08x -> 1.65s",
+        "[23:00:57] [INFO] tiktok_pipeline: TTS #42 [71.62s-72.48s | gốc=0.88s]: rate=+38%, atempo=1.45x -> 0.86s",
+        "[23:01:04] [INFO] tiktok_pipeline: TTS #43 [72.78s-74.23s | gốc=1.48s]: rate=+38%, atempo=1.04x -> 1.45s",
+        "[23:01:09] [INFO] tiktok_pipeline: TTS #44 [77.02s-78.20s | gốc=1.24s]: rate=+0%, atempo=1.00x -> 1.18s",
+        "[23:01:33] [INFO] tiktok_pipeline: TTS #45 [78.26s-79.03s | gốc=0.80s]: rate=+38%, atempo=0.99x -> 0.77s",
+        "[23:01:55] [INFO] tiktok_pipeline: TTS #46 [79.34s-79.89s | gốc=0.58s]: rate=+38%, atempo=1.14x -> 0.55s",
+        "[23:02:35] [INFO] tiktok_pipeline: TTS #47 [80.42s-82.23s | gốc=1.88s]: rate=+38%, atempo=0.98x -> 1.81s",
+        "[23:03:17] [INFO] tiktok_pipeline: TTS #48 [82.30s-83.87s | gốc=1.60s]: rate=-12%, atempo=1.00x -> 1.57s",
+        "[23:03:26] [INFO] tiktok_pipeline: TTS #49 [84.14s-84.64s | gốc=0.56s]: rate=+38%, atempo=1.90x -> 0.50s",
+        "[23:03:46] [INFO] tiktok_pipeline: TTS #50 [84.70s-86.23s | gốc=1.56s]: rate=+38%, atempo=1.26x -> 1.53s",
+        "[23:04:22] [INFO] tiktok_pipeline: TTS #51 [86.54s-87.71s | gốc=1.20s]: rate=+38%, atempo=1.18x -> 1.17s",
+        "[23:06:35] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[23:06:36] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh."
+      ]
+    }
+  },
+  "history": [
+    {
+      "cmd_id": "cmd_20261101_201712_check_and_heal",
+      "action": "check_and_heal",
+      "executed_at": "2026-11-01 23:07:38",
+      "machine_arch": "x86_64",
+      "hostname": "Hoangs-MBP.fpt",
+      "status": "SUCCESS",
+      "unstick_report": {
+        "killed_chrome_for_testing": false,
+        "removed_locks": [
+          "workspace_temp/.tiktok_browser_session.lock"
+        ],
+        "timestamp": "2026-11-01 23:07:38"
+      },
+      "agy_exit_code": 0,
+      "agy_response": "### Báo cáo Trạng thái Hệ thống trên Mac Intel (`x86_64`)\n\n#### 1. Xử lý Khóa Trình duyệt (`Browser Locks` & `SingletonLock`)\n- **Khóa phiên trình duyệt ([`.tiktok_browser_session.lock`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/workspace_temp/.tiktok_browser_session.lock))**: Đã tự động giải phóng khóa bị treo trước đó (`866s`) thông qua [`agy_intel_bridge.py`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py).\n- **Khóa Chrome Profile (`browser_profiles/*/Singleton*`)**: Đã kiểm tra toàn bộ các thư mục trong `browser_profiles/`. Hiện **không còn bất kỳ `SingletonLock` / `SingletonSocket` / `SingletonCookie` nào bị treo**.\n\n---\n\n#### 2. Trạng thái Dòng 1 (`--stream-upload`) và Dòng 2 (`--stream-filter24h`)\n- **Dòng 1 (`--stream-upload`) — ĐANG HOẠT ĐỘNG ỔN ĐỊNH**:\n  - Tiến trình Worker 24/7 (`PID 30534`, quản lý bởi [`run_24_7.sh`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/run_24_7.sh) dưới `caffeinate -dimsu`) và tiến trình nền (`PID 52776`) đang hoạt động.\n  - Vừa hoàn tất lấp đầy kho `video_AI_hay/ready` (`5/5` video) lúc `23:08:03` và đồng bộ [`danh_sach_video.csv`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv).\n  - Các khung giờ đăng tối nay trong [`posted_schedule_history.json`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/posted_schedule_history.json) đều đã hoàn tất xác nhận đăng (`post_confirmed: true`):\n    - `video_AI_hay` (khung `19:20` -> hoàn tất `22:24:42`)\n    - `baby_AI` (khung `20:05` -> hoàn tất `22:40:57`)\n    - `audio_dem_khuyen` (khung `21:15` -> hoàn tất `22:45:52`)\n    - `tu_chan_gioi` (khung `20:42` -> hoàn tất `22:53:10`)\n- **Dòng 2 (`--stream-filter24h`) — ĐANG HOẠT ĐỘNG ỔN ĐỊNH**:\n  - Vừa hoàn tất phiên `warmup_fyp` trên kênh `an_vat_moi_ngay` lúc `23:10:28` (lướt 12 video, `160.6s`, ghi nhận trong [`intel_status_report.json`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/remote_telemetry/intel_status_report.json)).\n  - Tiến trình daemon Dòng 2 (`PID 94753` / `94755` với `caffeinate -dimsu`) đang chạy ngầm liên tục và ghi log vào [`logs/stream2_filter24h.log`](file:///Users/hoangvo/Documents/tool_scan_video_tiktok/logs/stream2_filter24h.log).\n- **Cầu nối từ xa (`agy_intel_bridge.py --daemon`)**: Đang chạy ngầm (`PID 94053`, chu kỳ `poll=20s`).\n\n---\n\n#### 3. Trạng thái Kho Video (`output/*/ready` & `posted`)\n| Kênh | Kho chờ (`ready/`) | Đã đăng (`posted/`) |\n| :--- | :---: | :---: |\n| **`video_AI_hay`** | `5 / 5` | `21` |\n| **`baby_AI`** | `4 / 5` | `21` |\n| **`tu_chan_gioi`** | `4 / 5` | `20` |\n| **`audio_dem_khuyen`** | `1 / 5` | `25` |\n",
+      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+      "system_health": {
+        "timestamp": "2026-11-01 23:11:42",
+        "machine_arch": "x86_64",
+        "hostname": "Hoangs-MBP.fpt",
+        "stream1_running": true,
+        "stream2_running": true,
+        "chrome_testing_count": 0,
+        "lock_file_age_seconds": null,
+        "processes": [
+          "52776 05-05:36:30 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+          "94753       00:31 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "94755       00:31 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "30517    22:30:01 bash -c \\012    trap \"echo \\\"\\\"; echo \\\"[$(date \\\"+%Y-%m-%d %H:%M:%S\\\")] Đã nhận lệnh dừng từ người dùng (Ctrl+C).\\\"; kill 0 2>/dev/null; exit 130\" INT TERM\\012\\012    sync_from_github() {\\012        if [ -d .git ]; then\\012            git fetch origin main >/dev/null 2>&1 || true\\012            LOCAL_SHA=\"$(git rev-parse HEAD 2>/dev/null || true)\"\\012            REMOTE_SHA=\"$(git rev-parse origin/main 2>/dev/null || true)\"\\012            if [ -n \"$LOCAL_SHA\" ] && [ -n \"$REMOTE_SHA\" ] && [ \"$LOCAL_SHA\" != \"$REMOTE_SHA\" ]; then\\012                echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] [Auto-Git-Sync] Phát hiện bản cập nhật mới trên GitHub (${LOCAL_SHA:0:7} -> ${REMOTE_SHA:0:7}), đang đồng bộ...\" | tee -a logs/daemon_24_7.log\\012                cp -f story_audio_history.json /tmp/tiktok_story_audio_history.bak.json 2>/dev/null || true\\012                cp -f output/danh_sach_video.csv /tmp/tiktok_danh_sach_video.bak.csv 2>/dev/null || true\\012                git reset --hard origin/main >/dev/null 2>&1 || true\\012                cp -f /tmp/tiktok_story_audio_history.bak.json story_audio_history.json 2>/dev/null || true\\012                cp -f /tmp/tiktok_danh_sach_video.bak.csv output/danh_sach_video.csv 2>/dev/null || true\\012            fi\\012        fi\\012    }\\012\\012    while true; do\\012        sync_from_github\\012        echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Đang chạy Worker 24/7...\" | tee -a logs/daemon_24_7.log\\012        ./venv/bin/python main.py --stream-upload --max-ready \"5\" 2>&1 | tee -a logs/daemon_24_7.log\\012        EXIT_CODE=${PIPESTATUS[0]}\\012        if [ \"$EXIT_CODE\" -eq 42 ]; then\\012            echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] [Hot-Reload] Đã nhận bản cập nhật mới từ máy Silicon! Khởi động lại ngay sau 2 giây...\" | tee -a logs/daemon_24_7.log\\012            sleep 2\\012            continue\\012        fi\\012        if [ \"$EXIT_CODE\" -eq 130 ] || [ \"$EXIT_CODE\" -eq 143 ]; then\\012            echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Đã nhận lệnh dừng từ người dùng (Ctrl+C).\" | tee -a logs/daemon_24_7.log\\012            break\\012        fi\\012        echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Tiến trình tạm ngắt (mã $EXIT_CODE), tự động khởi động lại sau 30 giây...\" | tee -a logs/daemon_24_7.log\\012        sleep 30\\012    done\\012",
+          "30518    22:30:01 caffeinate -dimsu bash -c \\012    trap \"echo \\\"\\\"; echo \\\"[$(date \\\"+%Y-%m-%d %H:%M:%S\\\")] Đã nhận lệnh dừng từ người dùng (Ctrl+C).\\\"; kill 0 2>/dev/null; exit 130\" INT TERM\\012\\012    sync_from_github() {\\012        if [ -d .git ]; then\\012            git fetch origin main >/dev/null 2>&1 || true\\012            LOCAL_SHA=\"$(git rev-parse HEAD 2>/dev/null || true)\"\\012            REMOTE_SHA=\"$(git rev-parse origin/main 2>/dev/null || true)\"\\012            if [ -n \"$LOCAL_SHA\" ] && [ -n \"$REMOTE_SHA\" ] && [ \"$LOCAL_SHA\" != \"$REMOTE_SHA\" ]; then\\012                echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] [Auto-Git-Sync] Phát hiện bản cập nhật mới trên GitHub (${LOCAL_SHA:0:7} -> ${REMOTE_SHA:0:7}), đang đồng bộ...\" | tee -a logs/daemon_24_7.log\\012                cp -f story_audio_history.json /tmp/tiktok_story_audio_history.bak.json 2>/dev/null || true\\012                cp -f output/danh_sach_video.csv /tmp/tiktok_danh_sach_video.bak.csv 2>/dev/null || true\\012                git reset --hard origin/main >/dev/null 2>&1 || true\\012                cp -f /tmp/tiktok_story_audio_history.bak.json story_audio_history.json 2>/dev/null || true\\012                cp -f /tmp/tiktok_danh_sach_video.bak.csv output/danh_sach_video.csv 2>/dev/null || true\\012            fi\\012        fi\\012    }\\012\\012    while true; do\\012        sync_from_github\\012        echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Đang chạy Worker 24/7...\" | tee -a logs/daemon_24_7.log\\012        ./venv/bin/python main.py --stream-upload --max-ready \"5\" 2>&1 | tee -a logs/daemon_24_7.log\\012        EXIT_CODE=${PIPESTATUS[0]}\\012        if [ \"$EXIT_CODE\" -eq 42 ]; then\\012            echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] [Hot-Reload] Đã nhận bản cập nhật mới từ máy Silicon! Khởi động lại ngay sau 2 giây...\" | tee -a logs/daemon_24_7.log\\012            sleep 2\\012            continue\\012        fi\\012        if [ \"$EXIT_CODE\" -eq 130 ] || [ \"$EXIT_CODE\" -eq 143 ]; then\\012            echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Đã nhận lệnh dừng từ người dùng (Ctrl+C).\" | tee -a logs/daemon_24_7.log\\012            break\\012        fi\\012        echo \"[$(date \"+%Y-%m-%d %H:%M:%S\")] Tiến trình tạm ngắt (mã $EXIT_CODE), tự động khởi động lại sau 30 giây...\" | tee -a logs/daemon_24_7.log\\012        sleep 30\\012    done\\012",
+          "30534    22:30:00 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        ],
+        "recent_daemon_log_tail": [
+          "[22:58:36] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Bạn đã không cứu mình trước' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+          "[22:58:43] [INFO] tiktok_pipeline: TTS #35 [59.62s-61.09s | gốc=1.54s]: rate=-42%, atempo=1.75x -> 1.47s",
+          "[22:58:51] [INFO] tiktok_pipeline: TTS #36 [61.16s-62.55s | gốc=1.42s]: rate=+38%, atempo=0.99x -> 1.39s",
+          "[22:59:07] [INFO] tiktok_pipeline: TTS #37 [62.90s-64.27s | gốc=1.44s]: rate=+38%, atempo=0.98x -> 1.37s",
+          "[22:59:26] [INFO] tiktok_pipeline: TTS #38 [64.34s-65.63s | gốc=1.32s]: rate=+37%, atempo=0.94x -> 1.29s",
+          "[23:00:08] [INFO] tiktok_pipeline: TTS #39 [65.94s-66.33s | gốc=0.40s]: rate=+38%, atempo=1.59x -> 0.39s",
+          "[23:00:25] [INFO] tiktok_pipeline: TTS #40 [66.82s-67.31s | gốc=0.52s]: rate=+38%, atempo=1.27x -> 0.49s",
+          "[23:00:40] [INFO] tiktok_pipeline: TTS #41 [69.76s-71.41s | gốc=1.66s]: rate=+38%, atempo=1.08x -> 1.65s",
+          "[23:00:57] [INFO] tiktok_pipeline: TTS #42 [71.62s-72.48s | gốc=0.88s]: rate=+38%, atempo=1.45x -> 0.86s",
+          "[23:01:04] [INFO] tiktok_pipeline: TTS #43 [72.78s-74.23s | gốc=1.48s]: rate=+38%, atempo=1.04x -> 1.45s",
+          "[23:01:09] [INFO] tiktok_pipeline: TTS #44 [77.02s-78.20s | gốc=1.24s]: rate=+0%, atempo=1.00x -> 1.18s",
+          "[23:01:33] [INFO] tiktok_pipeline: TTS #45 [78.26s-79.03s | gốc=0.80s]: rate=+38%, atempo=0.99x -> 0.77s",
+          "[23:01:55] [INFO] tiktok_pipeline: TTS #46 [79.34s-79.89s | gốc=0.58s]: rate=+38%, atempo=1.14x -> 0.55s",
+          "[23:02:35] [INFO] tiktok_pipeline: TTS #47 [80.42s-82.23s | gốc=1.88s]: rate=+38%, atempo=0.98x -> 1.81s",
+          "[23:03:17] [INFO] tiktok_pipeline: TTS #48 [82.30s-83.87s | gốc=1.60s]: rate=-12%, atempo=1.00x -> 1.57s",
+          "[23:03:26] [INFO] tiktok_pipeline: TTS #49 [84.14s-84.64s | gốc=0.56s]: rate=+38%, atempo=1.90x -> 0.50s",
+          "[23:03:46] [INFO] tiktok_pipeline: TTS #50 [84.70s-86.23s | gốc=1.56s]: rate=+38%, atempo=1.26x -> 1.53s",
+          "[23:04:22] [INFO] tiktok_pipeline: TTS #51 [86.54s-87.71s | gốc=1.20s]: rate=+38%, atempo=1.18x -> 1.17s",
+          "[23:06:35] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+          "[23:06:36] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh."
+        ]
+      }
+    }
+  ]
+}
