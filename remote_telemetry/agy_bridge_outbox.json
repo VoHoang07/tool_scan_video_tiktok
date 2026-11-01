@@ -1,32 +1,26 @@
 {
-  "updated_at": "2026-11-02 00:52:53",
+  "updated_at": "2026-11-02 00:54:54",
   "latest_result": {
-    "cmd_id": "heartbeat_1793555572",
+    "cmd_id": "heartbeat_1793555693",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-02 00:52:52",
+    "executed_at": "2026-11-02 00:54:53",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-02 00:52:53",
+      "timestamp": "2026-11-02 00:54:54",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 82.1,
       "processes": [
-        "52776 05-07:17:41 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294    01:25:18 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296    01:25:18 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669    01:37:18 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-07:19:42 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294    01:27:19 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296    01:27:19 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669    01:39:19 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "nuoi_con_eq        | channel_9_smart_parenting  |                 0 |                 0 |          0",
-        "phu_kien_tien_ich  | channel_10_tech_gadgets    |                 0 |                 0 |          0",
-        "----------------------------------------------------------------------------------------------------",
-        "TỔNG KẾT           | Toàn bộ 10 kênh TikTok     |                21 |                87 |        108",
-        "====================================================================================================",
-        "Master CSV: /Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
         "[00:51:16] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
         "[00:51:16] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
         "==============================================================================================",
@@ -38,8 +32,15 @@
         "[00:52:20] [INFO] tiktok_pipeline: Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
         "[00:52:21] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (092365e -> b2daf38) | AGY-Bridge [outbox] heartbeat_1793555535 at 2026-11-02 00:52:15",
         "[00:52:21] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (092365e -> b2daf38)!",
-        "[00:52:21] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!"
-      ]
+        "[00:52:21] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[00:53:23] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[00:53:23] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[00:53:24] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[00:53:55] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (b2daf38 -> 26a8c09) | AGY-Bridge [outbox] heartbeat_1793555572 at 2026-11-02 00:52:53",
+        "[00:53:56] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[00:54:27] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!"
+      ],
+      "lock_file_content": "pid=99294 ts=1793555612"
     }
   }
 }
