@@ -1,30 +1,26 @@
 {
-  "updated_at": "2026-11-01 23:23:58",
+  "updated_at": "2026-11-01 23:24:29",
   "latest_result": {
-    "cmd_id": "heartbeat_1793550237",
+    "cmd_id": "heartbeat_1793550269",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-01 23:23:57",
+    "executed_at": "2026-11-01 23:24:29",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-01 23:23:58",
+      "timestamp": "2026-11-01 23:24:29",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 123.5,
+      "lock_file_age_seconds": 155.2,
       "processes": [
-        "52776 05-05:48:46 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "95678       08:23 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95679       08:23 caffeinate ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669       08:23 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-05:49:17 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "95678       08:54 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95679       08:54 caffeinate ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669       08:54 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[23:21:55] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[Buffer Guard] Kênh video_AI_hay (video_AI_hay - channel_1_ai_animation) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[23:21:55] [INFO] tiktok_pipeline: Kênh video_AI_hay (video_AI_hay - channel_1_ai_animation) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[23:21:55] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
         "[23:21:56] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (c42da66 -> 20d2a94) | Auto-Telemetry [warmup_fyp] an_vat_moi_ngay at 2026-11-01 23:21:31",
         "[23:21:56] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (c42da66 -> 20d2a94)!",
         "[23:22:21] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
@@ -40,7 +36,11 @@
         "[23:23:56] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
         "[23:23:57] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (4db1a46 -> 29ffe27) | AGY-Bridge [outbox] heartbeat_1793550205 at 2026-11-01 23:23:26",
         "[23:23:57] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[23:23:57] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
+        "[23:23:57] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[23:24:28] [INFO] tiktok_pipeline: [AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!",
+        "[23:24:29] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (29ffe27 -> b74e79f) | AGY-Bridge [outbox] heartbeat_1793550237 at 2026-11-01 23:23:58",
+        "[23:24:29] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[23:24:29] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
       ],
       "lock_file_content": "pid=95678 ts=1793550114"
     }
