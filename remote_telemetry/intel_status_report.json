@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-01 23:48:52",
+    "timestamp": "2026-11-01 23:58:19",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
     "details": {
       "scrolled_videos": 12,
-      "elapsed_seconds": 157.9,
+      "elapsed_seconds": 151.9,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 23:58:19",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 151.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-01 23:48:52",
       "machine_arch": "x86_64",
@@ -555,22 +567,6 @@
             "follow_back_window_until": "2026-11-02 10:02:57"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-01 09:30:51",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261030_145221_tiktok_story_7689059278321241350.mp4",
-        "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Hành trình tu tiên vượt mọi đại kiếp bước lên đỉnh cao vạn giới. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
