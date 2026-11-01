@@ -51,6 +51,10 @@ caffeinate -dimsu bash -c '
 
     while true; do
         sync_from_github
+        if [ -f tiktok_pipeline/agy_intel_bridge.py ]; then
+            pgrep -f "agy_intel_bridge.py --daemon" >/dev/null 2>&1 || \
+                nohup ./venv/bin/python tiktok_pipeline/agy_intel_bridge.py --daemon --poll 20 >> logs/agy_intel_bridge.log 2>&1 &
+        fi
         echo "[$(date "+%Y-%m-%d %H:%M:%S")] Đang chạy Worker 24/7..." | tee -a logs/daemon_24_7.log
         ./venv/bin/python main.py --stream-upload --max-ready "'"$MAX_READY"'" 2>&1 | tee -a logs/daemon_24_7.log
         EXIT_CODE=${PIPESTATUS[0]}

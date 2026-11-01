@@ -672,6 +672,45 @@ def _get_codebase_mtime_snapshot(project_root: Path) -> Dict[str, float]:
     return snapshot
 
 
+def _ensure_agy_intel_bridge_daemon(project_root: Path) -> None:
+    """
+    Trên máy Mac Intel (`x86_64`), tự động khởi chạy ngầm tiến trình độc lập `agy_intel_bridge.py --daemon`
+    (`start_new_session=True`) nếu chưa chạy. Nhờ tách rời khỏi Dòng 1 & Dòng 2, tiến trình này luôn
+    nhận được lệnh từ `remote_telemetry/agy_bridge_inbox.json` và tự động giải cứu khi Chrome bị treo.
+    """
+    import platform
+    import subprocess
+
+    if platform.machine() != "x86_64":
+        return
+    bridge_script = project_root / "tiktok_pipeline" / "agy_intel_bridge.py"
+    if not bridge_script.exists():
+        return
+    try:
+        ps_check = subprocess.run(
+            ["pgrep", "-f", "agy_intel_bridge.py --daemon"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            check=False,
+        )
+        if ps_check.returncode == 0 and ps_check.stdout.strip():
+            return
+        log_dir = project_root / "logs"
+        log_dir.mkdir(parents=True, exist_ok=True)
+        log_fh = open(log_dir / "agy_intel_bridge.log", "a", encoding="utf-8")
+        subprocess.Popen(
+            [sys.executable, str(bridge_script), "--daemon", "--poll", "20"],
+            cwd=str(project_root),
+            stdout=log_fh,
+            stderr=log_fh,
+            start_new_session=True,
+        )
+        logger.info("[AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!")
+    except Exception:
+        pass
+
+
 def _auto_git_pull_if_available(project_root: Path) -> bool:
     """
     Nếu thư mục dự án đã kết nối Git Remote (GitHub), tự động kéo code/cấu hình mới nhất
@@ -683,6 +722,7 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
     git_dir = project_root / ".git"
     if not git_dir.exists():
         return False
+    _ensure_agy_intel_bridge_daemon(project_root)
     try:
         import shutil
         import subprocess
