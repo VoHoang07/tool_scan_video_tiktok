@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-11-01 23:24:29",
+  "updated_at": "2026-11-01 23:24:43",
   "latest_result": {
-    "cmd_id": "heartbeat_1793550269",
+    "cmd_id": "heartbeat_1793550282",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-01 23:24:29",
+    "executed_at": "2026-11-01 23:24:42",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-01 23:24:29",
+      "timestamp": "2026-11-01 23:24:43",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 155.2,
+      "lock_file_age_seconds": 0.7,
       "processes": [
-        "52776 05-05:49:17 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "95678       08:54 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95679       08:54 caffeinate ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669       08:54 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-05:49:31 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "97625       00:02 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "97627       00:02 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669       09:08 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
         "[23:21:56] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (c42da66 -> 20d2a94) | Auto-Telemetry [warmup_fyp] an_vat_moi_ngay at 2026-11-01 23:21:31",
@@ -42,7 +42,7 @@
         "[23:24:29] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
         "[23:24:29] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
       ],
-      "lock_file_content": "pid=95678 ts=1793550114"
+      "lock_file_content": "pid=97625 ts=1793550282"
     }
   }
 }
