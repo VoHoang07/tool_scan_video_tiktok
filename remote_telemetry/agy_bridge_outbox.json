@@ -1,52 +1,47 @@
 {
-  "updated_at": "2026-11-01 23:31:42",
+  "updated_at": "2026-11-01 23:51:56",
   "latest_result": {
-    "cmd_id": "auto_heal_1793550702",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-01 23:31:42",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-01 23:31:42"
-    },
+    "cmd_id": "heartbeat_1793551916",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-01 23:51:56",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-01 23:31:42",
+      "timestamp": "2026-11-01 23:51:56",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 351.8,
       "processes": [
-        "52776 05-05:56:30 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294       04:07 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296       04:07 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669       16:07 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-06:16:44 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294       24:21 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296       24:21 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669       36:21 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[23:31:17] [INFO] tiktok_pipeline: [23.98s - 25.78s] 体检用的是卖项链的钱  ==>  Số tiền bán chiếc vòng cổ được dùng để khám sức khỏe",
-        "[23:31:17] [INFO] tiktok_pipeline: [25.78s - 27.06s] 我帝一财也空了  ==>  Hoàng đế của mẹ đã mất hết của cải",
-        "[23:31:17] [INFO] tiktok_pipeline: [27.06s - 27.82s] 气也受了  ==>  Mẹ cũng tức giận",
-        "[23:31:17] [INFO] tiktok_pipeline: [27.82s - 29.22s] 到底靠上你啥了  ==>  Con dựa vào cái quái gì thế?",
-        "[23:31:17] [INFO] tiktok_pipeline: [32.50s - 33.74s] 自己都没活明白  ==>  Bản thân mẹ thậm chí còn không hiểu nó",
-        "[23:31:17] [INFO] tiktok_pipeline: [33.74s - 35.02s] 还想着以后呢  ==>  Vẫn nghĩ về tương lai?",
-        "[23:31:17] [INFO] tiktok_pipeline: [36.06s - 38.02s] 真是不知天高地厚  ==>  Mẹ thực sự không biết độ cao của thế giới",
-        "[23:31:17] [INFO] tiktok_pipeline: Caption đã dịch: 😂 Mẹ phải sinh con trai. \"Đó không phải là chiếc xe mẹ đã lái khi họ khám sức khỏe vào tháng trước sao...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-        "[23:31:17] [INFO] tiktok_pipeline: Hashtags: #giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #viral #foryou",
-        "[23:31:17] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
-        "[23:31:17] [INFO] tiktok_pipeline: Cấu hình giọng kênh [baby_AI]: Giọng tự nhiên, đời thường, tếu táo, khớp nhịp giọng gốc (voice=vi-VN-HoaiMyNeural, rate=+0%, pitch=+2Hz)",
-        "[23:31:17] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +0%, Độ trầm/cao: +2Hz) cho 20 câu thoại...",
-        "[23:31:18] [INFO] tiktok_pipeline: TTS #00 [00.86s-01.47s | gốc=0.68s]: rate=+38%, atempo=1.59x -> 0.61s",
-        "[23:31:20] [INFO] tiktok_pipeline: TTS #01 [01.54s-02.77s | gốc=1.24s]: rate=+38%, atempo=1.49x -> 1.23s",
-        "[23:31:21] [INFO] tiktok_pipeline: TTS #02 [04.70s-06.67s | gốc=2.00s]: rate=+38%, atempo=0.98x -> 1.97s",
-        "[23:31:23] [INFO] tiktok_pipeline: TTS #03 [07.06s-07.70s | gốc=0.70s]: rate=-42%, atempo=0.56x -> 0.64s",
-        "[23:31:24] [INFO] tiktok_pipeline: TTS #04 [08.38s-10.07s | gốc=1.74s]: rate=+38%, atempo=1.77x -> 1.69s",
-        "[23:31:26] [INFO] tiktok_pipeline: TTS #05 [10.12s-11.83s | gốc=1.74s]: rate=+38%, atempo=1.09x -> 1.71s",
-        "[23:31:28] [INFO] tiktok_pipeline: TTS #06 [13.78s-15.04s | gốc=1.32s]: rate=+38%, atempo=1.23x -> 1.26s",
-        "[23:31:29] [INFO] tiktok_pipeline: TTS #07 [15.10s-16.39s | gốc=1.32s]: rate=+38%, atempo=1.37x -> 1.29s"
-      ]
+        "[download]  95.2% of  112.01MiB at    6.18MiB/s ETA 00:00",
+        "[download]  95.2% of  112.01MiB at    7.23MiB/s ETA 00:00",
+        "[download]  95.2% of  112.01MiB at    9.91MiB/s ETA 00:00",
+        "[download]  95.4% of  112.01MiB at   14.55MiB/s ETA 00:00",
+        "[download]  95.6% of  112.01MiB at   22.32MiB/s ETA 00:00",
+        "[download]  96.0% of  112.01MiB at   29.64MiB/s ETA 00:00",
+        "[download]  96.9% of  112.01MiB at   25.29MiB/s ETA 00:00",
+        "[download]  98.7% of  112.01MiB at   34.14MiB/s ETA 00:00",
+        "[download] 100.0% of  112.01MiB at   36.94MiB/s ETA 00:00",
+        "[download] 100% of  112.01MiB in 00:00:02 at 41.69MiB/s  ",
+        "[23:43:57] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong YouTube 2lzzVdKb4sQ (117.5 MB, thời lượng=3059.6s).",
+        "[23:43:57] [INFO] tiktok_pipeline: [BongCucSplitter] Đang cắt & áp dụng 6 Lớp Bộ Lọc Anti-Detection (1.429x, pitch=1.019x, hflip+grain, GOP=61): Bông Cúc Số 143 [Phần 2/8] (388.0s -> 769.7s gốc)...",
+        "[23:45:07] [INFO] tiktok_pipeline: [BongCucSplitter] Hoàn tất xuất bản (Chuẩn 6 Bộ Lọc): 20261101_234357_tiktok_story_990014302_bongcuc_v2_s143_p2.mp4 (thời lượng=267.1s, size=64.9MB)",
+        "[23:45:07] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[23:45:07] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=audio_dem_khuyen, file=audio_dem_khuyen/ready/20261101_234357_tiktok_story_990014302_bongcuc_v2_s143_p2.mp4, status=READY)",
+        "[23:45:07] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh audio_dem_khuyen (audio_dem_khuyen)! Kho chờ ready/ hiện tại: 3/5",
+        "[23:45:09] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh audio_dem_khuyen (audio_dem_khuyen): Nghỉ an toàn 213s (~3.5 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
+        "[23:47:20] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[23:48:57] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (208fbd0 -> 4ccdcee) | Auto-Telemetry [warmup_fyp] phu_kien_tien_ich at 2026-11-01 23:48:52"
+      ],
+      "lock_file_content": "pid=99294 ts=1793551565"
     }
   }
 }
