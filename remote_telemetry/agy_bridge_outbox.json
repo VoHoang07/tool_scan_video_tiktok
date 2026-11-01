@@ -1,31 +1,26 @@
 {
-  "updated_at": "2026-11-02 00:22:43",
+  "updated_at": "2026-11-02 00:23:16",
   "latest_result": {
-    "cmd_id": "heartbeat_1793553763",
+    "cmd_id": "heartbeat_1793553795",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-02 00:22:43",
+    "executed_at": "2026-11-02 00:23:15",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-02 00:22:43",
+      "timestamp": "2026-11-02 00:23:16",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 23.5,
       "processes": [
-        "52776 05-06:47:31 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294       55:08 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296       55:08 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669    01:07:08 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-06:48:04 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294       55:41 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296       55:41 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669    01:07:41 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[00:17:10] [INFO] tiktok_pipeline: TTS #62 [136.38s-137.22s | gốc=0.90s]: rate=+0%, atempo=1.05x -> 0.84s",
-        "[00:17:16] [INFO] tiktok_pipeline: TTS #63 [137.28s-138.17s | gốc=0.92s]: rate=-40%, atempo=0.97x -> 0.89s",
-        "[00:17:27] [INFO] tiktok_pipeline: TTS #64 [139.54s-140.43s | gốc=0.92s]: rate=+36%, atempo=0.94x -> 0.89s",
-        "[00:17:39] [INFO] tiktok_pipeline: TTS #65 [141.04s-141.75s | gốc=0.74s]: rate=+38%, atempo=1.22x -> 0.71s",
-        "[00:18:02] [INFO] tiktok_pipeline: TTS #66 [142.48s-143.27s | gốc=0.86s]: rate=+38%, atempo=1.79x -> 0.79s",
         "[00:18:17] [INFO] tiktok_pipeline: TTS #67 [143.34s-144.89s | gốc=1.61s]: rate=-18%, atempo=1.00x -> 1.55s",
         "[00:18:32] [INFO] tiktok_pipeline: TTS #68 [144.95s-146.44s | gốc=1.51s]: rate=+38%, atempo=1.03x -> 1.49s",
         "[00:18:54] [INFO] tiktok_pipeline: TTS #69 [146.96s-148.46s | gốc=1.50s]: rate=-16%, atempo=1.01x -> 1.50s",
@@ -40,8 +35,14 @@
         "[00:21:20] [INFO] tiktok_pipeline: TTS #78 [165.26s-166.21s | gốc=1.10s]: rate=-42%, atempo=0.55x -> 0.95s",
         "[00:21:43] [INFO] tiktok_pipeline: TTS #79 [166.36s-167.01s | gốc=0.72s]: rate=+25%, atempo=0.95x -> 0.65s",
         "[00:22:36] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Đừng nói về ai?' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[00:22:36] [INFO] tiktok_pipeline: TTS #80 [167.08s-167.75s | gốc=1.38s]: rate=-29%, atempo=0.55x -> 0.67s"
-      ]
+        "[00:22:36] [INFO] tiktok_pipeline: TTS #80 [167.08s-167.75s | gốc=1.38s]: rate=-29%, atempo=0.55x -> 0.67s",
+        "[00:22:46] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[00:22:46] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[00:22:47] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[00:22:51] [INFO] tiktok_pipeline: TTS #81 [168.46s-169.25s | gốc=0.84s]: rate=+38%, atempo=1.69x -> 0.79s",
+        "[00:23:02] [INFO] tiktok_pipeline: TTS #82 [169.30s-170.11s | gốc=0.82s]: rate=+38%, atempo=1.47x -> 0.81s"
+      ],
+      "lock_file_content": "pid=99294 ts=1793553772"
     }
   }
 }
