@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-01 23:21:31",
+    "timestamp": "2026-11-01 23:48:52",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "elapsed_seconds": 153.7,
+      "scrolled_videos": 12,
+      "elapsed_seconds": 157.9,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 23:48:52",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 157.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-01 23:21:31",
       "machine_arch": "x86_64",
@@ -559,76 +571,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-01 09:22:20",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "meo_vat_gia_dinh",
-            "video_id": "7701725867734519060",
-            "video_url": "https://www.tiktok.com/@ngoc.trinh7736/video/7701725867734519060",
-            "creator_handle": "@ngoc.trinh7736",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 811.2734375,
-                "y": 430.9921875,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "34"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 811.2734375,
-                  "y": 430.9921875,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "34"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@ngoc.trinh7736",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@ngoc.trinh7736?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Follow",
-                "init_relation": null,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-01 09:22:20",
-            "follow_back_window_until": "2026-11-02 09:22:20"
-          }
-        ]
       }
     }
   ]
