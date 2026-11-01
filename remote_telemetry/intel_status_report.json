@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 03:37:16",
+    "timestamp": "2026-11-02 04:06:59",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 150.8,
+      "scrolled_videos": 10,
+      "elapsed_seconds": 151.8,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 04:06:59",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "elapsed_seconds": 151.8,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 03:37:16",
       "machine_arch": "x86_64",
@@ -178,22 +190,6 @@
         "video_file": "20261031_093050_tiktok_story_7687947200969657620.mp4",
         "caption": "🐉 Bé Gái 5 Tuổi Là Thiên Tài, Nhưng Chỉ Mê Thịt Kho Của Mẹ — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
         "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-01 22:45:40",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261101_222144_tiktok_story_990014102_bongcuc_v2_s141_p2.mp4",
-        "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 141 (Phần 2/6): Đại Tiểu Thư Thật Và Kẻ Mạo Danh. Vừa xem tô màu thư giãn vừa nghe tiếp câu chuyện đêm nay nhé!",
-        "hashtags": "#bongcucso141 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
