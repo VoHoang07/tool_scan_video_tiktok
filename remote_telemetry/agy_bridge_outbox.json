@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-02 06:55:39",
+  "updated_at": "2026-11-02 06:55:44",
   "latest_result": {
-    "cmd_id": "heartbeat_1793577338",
+    "cmd_id": "heartbeat_1793577343",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-02 06:55:38",
+    "executed_at": "2026-11-02 06:55:43",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-02 06:55:39",
+      "timestamp": "2026-11-02 06:55:44",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -15,12 +15,12 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "52776 05-13:20:27 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294    07:28:04 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296    07:28:04 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "71111       22:41 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "71112       22:41 caffeinate ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669    07:40:04 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-13:20:32 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294    07:28:09 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296    07:28:09 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "71111       22:46 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "71112       22:46 caffeinate ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669    07:40:09 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
         "----------------------------------------------------------------------------------------------------",
