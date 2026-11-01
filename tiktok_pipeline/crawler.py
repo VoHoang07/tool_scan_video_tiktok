@@ -3488,6 +3488,8 @@ def _hot_patch_live_crawler() -> None:
                             return done_list
                     except Exception as patch_exc:
                         logger.error(f"[Hot-Patch BongCuc] Lỗi khi cắt Bông Cúc: {patch_exc}")
+                        if str(ch_arg).strip().lower() in ("3", "channel_3", "audio_dem_khuyen", "channel_3_novel_drama"):
+                            return []
                 return _orig(*args, **kwargs)
 
             setattr(t_mod, "run_crawl_story_mode", _patched_run_crawl_story_mode)

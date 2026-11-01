@@ -27,6 +27,9 @@ BONGCUC_TARGET_PART_SECONDS = 280.0
 # Lùi lại 2.8 giây (388.0s) để Phần 2 nối tiếp mượt mà không bị mất chữ cuối câu của Phần 1
 BONGCUC_PART1_END_YOUTUBE_SECONDS = 388.0
 
+# Ngưỡng báo trước khi kho video từ @bongcucaudio sắp cạn (15 phần ~ trước 5 ngày đăng bài)
+BONGCUC_LOW_QUEUE_WARNING_THRESHOLD = 15
+
 # Danh sách các tập "Bông Cúc Trắng" đã chiếu Phần 1 trên kênh TikTok `audio_dem_khuyen`
 # Được xếp theo thứ tự ưu tiên xen kẽ (so le) để không bao giờ đăng 2 phần của cùng 1 tập liên tiếp
 BONGCUC_EPISODES_CATALOG: List[Dict[str, Any]] = [
@@ -197,15 +200,100 @@ class BongCucYouTubeSplitter:
         self.cache_dir = self.project_root / "workspace_temp" / "bongcuc_yt_cache"
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.meta_cache_path = self.cache_dir / "episodes_duration_cache.json"
+        self.catalog_path = self.project_root / "data" / "bongcuc_full_catalog.json"
+        self.alert_path = self.project_root / "BONGCUC_INVENTORY_ALERT.json"
         self.ffmpeg_bin, _ = ensure_ffmpeg()
 
-    def _load_duration_cache(self) -> Dict[str, float]:
-        if self.meta_cache_path.exists():
+    def get_full_catalog(self) -> List[Dict[str, Any]]:
+        """
+        Đọc toàn bộ danh mục 148+ tập truyện từ kênh YouTube gốc `https://www.youtube.com/@bongcucaudio`
+        (`data/bongcuc_full_catalog.json`), ưu tiên 12 tập đã đăng Phần 1 lên đầu rồi đến toàn bộ các tập
+        từ mới nhất về Số 01.
+        """
+        if self.catalog_path.exists():
             try:
-                return json.loads(self.meta_cache_path.read_text(encoding="utf-8"))
+                data = json.loads(self.catalog_path.read_text(encoding="utf-8"))
+                if isinstance(data, list) and len(data) >= len(BONGCUC_EPISODES_CATALOG):
+                    return data
             except Exception:
                 pass
-        return {
+        return list(BONGCUC_EPISODES_CATALOG)
+
+    def sync_new_episodes_from_youtube(self) -> int:
+        """
+        Tự động quét kênh YouTube `https://www.youtube.com/@bongcucaudio/videos` để cập nhật thêm
+        các tập mới đăng (ví dụ: Số 149, 150...) vào `data/bongcuc_full_catalog.json`.
+        Trả về số lượng tập mới phát hiện được.
+        """
+        try:
+            import yt_dlp
+
+            current_cat = self.get_full_catalog()
+            known_yt_ids = {str(item.get("yt_id")) for item in current_cat}
+            part1_posted_eps = {141, 142, 143, 144, 146, 137, 119, 145, 138, 110, 70, 10}
+
+            with yt_dlp.YoutubeDL(
+                {"quiet": True, "no_warnings": True, "extract_flat": "in_playlist"}
+            ) as ydl:
+                info = ydl.extract_info(BONGCUC_YOUTUBE_CHANNEL_URL, download=False)
+                entries = (info or {}).get("entries") or []
+
+            added = 0
+            for e in entries:
+                vid_id = str(e.get("id") or "").strip()
+                raw_title = str(e.get("title") or "").strip()
+                if not vid_id or not raw_title or vid_id in known_yt_ids:
+                    continue
+                m = re.search(r"SỐ\s*(\d+)", raw_title, re.IGNORECASE)
+                ep_num = int(m.group(1)) if m else 0
+                if ep_num <= 0:
+                    continue
+                parts = [
+                    p.strip()
+                    for p in re.split(r"\s+II\s+|\s+\|\|\s+|\s+\|\s+", raw_title)
+                    if p.strip()
+                ]
+                clean_title = parts[1] if len(parts) >= 2 else raw_title
+                clean_title = re.sub(
+                    r"(?i)\b(tô màu|truyện audio full|truyện audio|truyện tận thế)\b",
+                    "",
+                    clean_title,
+                ).strip(" -|I")
+                current_cat.append(
+                    {
+                        "ep_num": ep_num,
+                        "yt_id": vid_id,
+                        "title": clean_title or raw_title,
+                        "raw_title": raw_title,
+                        "part1_posted": ep_num in part1_posted_eps,
+                    }
+                )
+                known_yt_ids.add(vid_id)
+                added += 1
+
+            if added > 0:
+                priority_order = [141, 142, 143, 144, 146, 137, 119, 145, 138, 110, 70, 10]
+                prio_map = {ep: idx for idx, ep in enumerate(priority_order)}
+                current_cat.sort(
+                    key=lambda x: (
+                        0 if int(x.get("ep_num", 0)) in prio_map else 1,
+                        prio_map.get(int(x.get("ep_num", 0)), -int(x.get("ep_num", 0))),
+                    )
+                )
+                self.catalog_path.parent.mkdir(parents=True, exist_ok=True)
+                self.catalog_path.write_text(
+                    json.dumps(current_cat, ensure_ascii=False, indent=2), encoding="utf-8"
+                )
+                logger.info(
+                    f"[BongCucSplitter] Đã đồng bộ thêm {added} tập mới từ YouTube @bongcucaudio (Tổng cộng: {len(current_cat)} tập)."
+                )
+            return added
+        except Exception as exc:
+            logger.debug(f"[BongCucSplitter] Không thể quét tập mới từ YouTube: {exc}")
+            return 0
+
+    def _load_duration_cache(self) -> Dict[str, float]:
+        defaults = {
             "i_pJ8eZCEt0": 2217.5,
             "aD5x_Ek_VSY": 2489.4,
             "2lzzVdKb4sQ": 3060.0,
@@ -216,6 +304,8 @@ class BongCucYouTubeSplitter:
             "e9oSX2s0ARs": 3110.0,
             "wS9sTH05PKM": 6661.0,
             "2cmcDDxu_YY": 6425.0,
+            "8Nhl2wfWKL8": 6798.0,
+            "DoVFGuEeB1k": 5122.0,
             "_0AnBPq_Ed0": 6502.0,
             "-34FiriZdcc": 1998.0,
             "SjFTZVaDrBs": 4069.0,
@@ -223,7 +313,21 @@ class BongCucYouTubeSplitter:
             "iA7bNl_uOKU": 2056.0,
             "I88dSuVY6-4": 3124.0,
             "ljx9MSi2tbA": 3694.0,
+            "KTwmqKf6YCE": 6422.0,
+            "X7xc_AG99NI": 4320.0,
+            "Fjf5HPbuuCU": 3150.0,
+            "f5FIbKC8Nkw": 14419.0,
+            "ABe8CPAveU0": 3096.0,
+            "u7if63bVGDQ": 3014.0,
         }
+        if self.meta_cache_path.exists():
+            try:
+                loaded = json.loads(self.meta_cache_path.read_text(encoding="utf-8"))
+                if isinstance(loaded, dict):
+                    return {**defaults, **loaded}
+            except Exception:
+                pass
+        return defaults
 
     def _save_duration_cache(self, data: Dict[str, float]) -> None:
         try:
@@ -233,7 +337,7 @@ class BongCucYouTubeSplitter:
         except Exception:
             pass
 
-    def get_youtube_video_duration(self, yt_id: str) -> float:
+    def get_youtube_video_duration(self, yt_id: str, allow_network: bool = True) -> float:
         """Lấy thời lượng gốc (giây) của video YouTube từ cache hoặc qua yt-dlp."""
         dur_cache = self._load_duration_cache()
         if yt_id in dur_cache and dur_cache[yt_id] > 60:
@@ -246,6 +350,9 @@ class BongCucYouTubeSplitter:
                 dur_cache[yt_id] = float(dur)
                 self._save_duration_cache(dur_cache)
                 return float(dur)
+
+        if not allow_network:
+            return 3200.0
 
         try:
             import yt_dlp
@@ -267,9 +374,11 @@ class BongCucYouTubeSplitter:
                     return dur
         except Exception as exc:
             logger.debug(f"[BongCucSplitter] Không lấy được duration cho {yt_id}: {exc}")
-        return 2400.0
+        return 3200.0
 
-    def compute_episode_parts_plan(self, ep_info: Dict[str, Any]) -> List[Dict[str, Any]]:
+    def compute_episode_parts_plan(
+        self, ep_info: Dict[str, Any], allow_network: bool = False
+    ) -> List[Dict[str, Any]]:
         """
         Tính toán danh sách các phần có thời lượng ĐỀU NHAU cho một tập Bông Cúc:
         - Nếu `part1_posted == True`: Phần 1 (0 -> 390.8s) đã đăng trên TikTok -> Cắt từ `388.0s` đến hết video
@@ -281,7 +390,7 @@ class BongCucYouTubeSplitter:
         title = str(ep_info["title"])
         part1_posted = bool(ep_info.get("part1_posted", False))
 
-        total_dur = self.get_youtube_video_duration(yt_id)
+        total_dur = self.get_youtube_video_duration(yt_id, allow_network=allow_network)
         target_orig_chunk = BONGCUC_TARGET_PART_SECONDS * BONGCUC_SPEED_FACTOR  # ~397.6s
 
         if part1_posted:
@@ -329,34 +438,121 @@ class BongCucYouTubeSplitter:
             )
         return parts_plan
 
+    def check_and_alert_low_inventory(
+        self, remaining_parts: int, remaining_episodes: int
+    ) -> Dict[str, Any]:
+        """
+        Kiểm tra số lượng phần truyện còn lại của kênh `@bongcucaudio` và BÁO TRƯỚC cho người dùng
+        khi sắp hết video (`remaining_parts <= BONGCUC_LOW_QUEUE_WARNING_THRESHOLD` hoặc `== 0`).
+        """
+        est_days = round(remaining_parts / 3.0, 1)
+        is_exhausted = remaining_parts == 0
+        is_low = remaining_parts <= BONGCUC_LOW_QUEUE_WARNING_THRESHOLD
+
+        status_payload = {
+            "channel": "audio_dem_khuyen",
+            "exclusive_source": BONGCUC_YOUTUBE_CHANNEL_URL,
+            "remaining_parts": remaining_parts,
+            "remaining_episodes": remaining_episodes,
+            "estimated_days_left_at_3_posts_per_day": est_days,
+            "status": "EXHAUSTED" if is_exhausted else ("LOW_WARNING" if is_low else "HEALTHY"),
+            "updated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+        }
+        try:
+            self.alert_path.write_text(
+                json.dumps(status_payload, ensure_ascii=False, indent=2), encoding="utf-8"
+            )
+        except Exception:
+            pass
+
+        if is_low:
+            # Quét thử YouTube @bongcucaudio xem có tập mới đăng không
+            newly_added = self.sync_new_episodes_from_youtube()
+            if is_exhausted and newly_added == 0:
+                alert_msg = (
+                    "🚨 [BÁO TRƯỚC HẾT VIDEO @bongcucaudio] Kênh audio_dem_khuyen ĐÃ CẮT & ĐĂNG HẾT 100% "
+                    "các tập trên kênh YouTube @bongcucaudio! Hệ thống tạm dừng đăng kênh audio_dem_khuyen (tuyệt đối không lấy nguồn ngoài) và chờ tập mới."
+                )
+            else:
+                alert_msg = (
+                    f"⚠️ [BÁO TRƯỚC SẮP HẾT VIDEO @bongcucaudio] Kho nguồn của kênh audio_dem_khuyen chỉ còn "
+                    f"{remaining_parts} phần ({remaining_episodes} tập ~ đủ đăng {est_days} ngày)! "
+                    f"Vui lòng chuẩn bị nguồn tiếp theo hoặc chờ @bongcucaudio ra tập mới."
+                )
+            print("\n" + "!" * 96, flush=True)
+            print(alert_msg, flush=True)
+            print("!" * 96 + "\n", flush=True)
+            logger.warning(alert_msg)
+
+            # Hiển thị thông báo macOS trên màn hình để người dùng biết trước
+            try:
+                subprocess.run(
+                    [
+                        "osascript",
+                        "-e",
+                        f'display notification "{alert_msg}" with title "⚠️ Báo Trước Kênh audio_dem_khuyen (@bongcucaudio)"',
+                    ],
+                    capture_output=True,
+                    timeout=5,
+                    check=False,
+                )
+            except Exception:
+                pass
+        return status_payload
+
     def build_interleaved_queue(
         self, known_posted_or_ready_ids: Set[str]
     ) -> List[Dict[str, Any]]:
         """
-        Xây dựng hàng đợi các phần truyện Bông Cúc theo thứ tự **SO LE / XEN KẼ (Round-Robin Wave)**:
-        - Lượt 1: Phần 2 của tất cả các tập đã chiếu Phần 1 (141 P2 -> 142 P2 -> 143 P2 -> 144 P2 -> 146 P2 -> 137 P2 -> 119 P2 -> 145 P2 -> 138 P2 -> 110 P2 -> 148 P1 -> 147 P1...)
-        - Lượt 2: Phần 3 của các tập đó (141 P3 -> 142 P3 -> 143 P3 -> 144 P3...)
-        - Lượt 3: Phần 4 của các tập đó...
+        Xây dựng hàng đợi độc quyền 100% từ kênh YouTube `@bongcucaudio` (148+ tập truyện)
+        theo thứ tự **SO LE / XEN KẼ THEO CỤM (Wave-Batched Round-Robin)**:
+        - Cụm 1 (Ưu tiên số 1): Toàn bộ 12 tập đã chiếu Phần 1 trên kênh (`141, 142, 143, 144, 146, 137, 119, 145, 138, 110, 70, 10`)
+          -> Xoay vòng so le: `Phần 2` của cả 12 tập -> `Phần 3` của cả 12 tập -> ... -> `Phần Cuối`.
+        - Cụm 2, 3, ... (Toàn bộ 136+ tập còn lại từ Số 148 lùi về Số 01):
+          -> Chia thành từng cụm 10 tập, trong mỗi cụm xoay vòng so le `Phần 1` -> `Phần 2` -> ... -> `Phần Cuối`.
         Đảm bảo:
-        1. Không bao giờ có 2 phần của cùng 1 tập đứng cạnh nhau.
-        2. Trong mỗi tập, luôn chỉ đưa phần kế tiếp nhỏ nhất chưa đăng vào hàng đợi (không bao giờ nhảy cóc Phần 3 trước Phần 2).
+        1. Chỉ lấy duy nhất nguồn từ YouTube `@bongcucaudio`.
+        2. Không bao giờ có 2 phần của cùng 1 tập đứng cạnh nhau.
+        3. Tự động kiểm tra và báo trước cho người dùng khi số phần còn lại sắp hết.
         """
-        per_episode_pending: List[List[Dict[str, Any]]] = []
-        for ep_info in BONGCUC_EPISODES_CATALOG:
-            plan = self.compute_episode_parts_plan(ep_info)
-            pending_for_ep = [
-                p for p in plan if str(p["story_id"]) not in known_posted_or_ready_ids
-            ]
-            if pending_for_ep:
-                per_episode_pending.append(pending_for_ep)
+        catalog = self.get_full_catalog()
+        part1_group = [ep for ep in catalog if bool(ep.get("part1_posted"))]
+        full_eps_group = [ep for ep in catalog if not bool(ep.get("part1_posted"))]
+
+        batches: List[List[Dict[str, Any]]] = []
+        if part1_group:
+            batches.append(part1_group)
+        batch_size = 10
+        for i in range(0, len(full_eps_group), batch_size):
+            batches.append(full_eps_group[i : i + batch_size])
 
         interleaved: List[Dict[str, Any]] = []
-        max_wave = max((len(lst) for lst in per_episode_pending), default=0)
-        for wave_idx in range(max_wave):
-            for ep_list in per_episode_pending:
-                if wave_idx < len(ep_list):
-                    interleaved.append(ep_list[wave_idx])
+        remaining_eps_count = 0
+        fetched_online_count = 0
 
+        for batch in batches:
+            per_episode_pending: List[List[Dict[str, Any]]] = []
+            for ep_info in batch:
+                allow_net = fetched_online_count < 14
+                plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
+                pending_for_ep = [
+                    p for p in plan if str(p["story_id"]) not in known_posted_or_ready_ids
+                ]
+                if pending_for_ep:
+                    per_episode_pending.append(pending_for_ep)
+                    remaining_eps_count += 1
+                    fetched_online_count += 1
+
+            max_wave = max((len(lst) for lst in per_episode_pending), default=0)
+            for wave_idx in range(max_wave):
+                for ep_list in per_episode_pending:
+                    if wave_idx < len(ep_list):
+                        interleaved.append(ep_list[wave_idx])
+
+        self.check_and_alert_low_inventory(
+            remaining_parts=len(interleaved),
+            remaining_episodes=remaining_eps_count,
+        )
         return interleaved
 
     def ensure_youtube_full_video(self, yt_id: str) -> Path:

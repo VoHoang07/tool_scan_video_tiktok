@@ -2471,16 +2471,16 @@ class TikTokAutoPoster:
                                 break
 
                     # Với mỗi tập trong ready/, chỉ giữ phần nhỏ nhất tiếp theo (không bao giờ đăng Phần 3 trước Phần 2 của cùng tập)
+                    # KHÓA ĐỘC QUYỀN 100% NGUỒN @bongcucaudio: Xóa ngay mọi file không thuộc bongcuc_v2
                     lowest_part_by_ep: Dict[int, Tuple[int, Path]] = {}
-                    non_bongcuc_cands: List[Path] = []
                     for c_file in valid_candidates:
                         ep_p = parse_bongcuc_ep_and_part(c_file.name)
-                        if ep_p:
+                        if ep_p and "bongcuc_v2_s" in c_file.name.lower():
                             ep_no, pt_no = ep_p
                             if ep_no not in lowest_part_by_ep or pt_no < lowest_part_by_ep[ep_no][0]:
                                 lowest_part_by_ep[ep_no] = (pt_no, c_file)
                         else:
-                            non_bongcuc_cands.append(c_file)
+                            c_file.unlink(missing_ok=True)
 
                     ep_cands = sorted(
                         lowest_part_by_ep.items(),
@@ -2494,20 +2494,29 @@ class TikTokAutoPoster:
                         target_video = diff_ep_cands[0]
                         sel_ep = parse_bongcuc_ep_and_part(target_video.name)
                         logger.info(
-                            f"[{ch_folder}] [Interleaved Guard] Chọn đăng SO LE: Bông Cúc Số {sel_ep[0]} Phần {sel_ep[1]} "
+                            f"[{ch_folder}] [Interleaved Guard] Chọn đăng SO LE (Độc quyền @bongcucaudio): Bông Cúc Số {sel_ep[0]} Phần {sel_ep[1]} "
                             f"(khác với tập vừa đăng trước đó: Số {last_ep_num})"
                         )
-                    elif non_bongcuc_cands:
-                        target_video = non_bongcuc_cands[0]
                     elif ep_cands:
                         target_video = ep_cands[0][1][1]
+                    else:
+                        target_video = None
                 except Exception as int_exc:
                     logger.debug(f"[{ch_folder}] Bỏ qua lỗi phụ Interleaved Guard: {int_exc}")
-                    target_video = valid_candidates[0]
+                    target_video = None
             else:
                 target_video = valid_candidates[0]
 
         if not target_video:
+            if ch_folder == "audio_dem_khuyen":
+                try:
+                    from .bongcuc_splitter import BongCucYouTubeSplitter
+
+                    BongCucYouTubeSplitter(project_root=self.project_root).build_interleaved_queue(
+                        posted_ids
+                    )
+                except Exception:
+                    pass
             return None
 
         caption = ""
