@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-11-01 23:51:56",
+  "updated_at": "2026-11-01 23:52:00",
   "latest_result": {
-    "cmd_id": "heartbeat_1793551916",
+    "cmd_id": "heartbeat_1793551920",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-01 23:51:56",
+    "executed_at": "2026-11-01 23:52:00",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-01 23:51:56",
+      "timestamp": "2026-11-01 23:52:00",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 351.8,
+      "lock_file_age_seconds": 355.7,
       "processes": [
-        "52776 05-06:16:44 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294       24:21 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296       24:21 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669       36:21 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-06:16:48 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294       24:25 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296       24:25 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669       36:25 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
         "[download]  95.2% of  112.01MiB at    6.18MiB/s ETA 00:00",
