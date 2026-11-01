@@ -1,13 +1,18 @@
 {
-  "updated_at": "2026-11-01 23:54:32",
+  "updated_at": "2026-11-02 00:20:20",
   "latest_result": {
-    "cmd_id": "heartbeat_1793552071",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-01 23:54:31",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793553620",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-02 00:20:20",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-02 00:20:20"
+    },
     "system_health": {
-      "timestamp": "2026-11-01 23:54:32",
+      "timestamp": "2026-11-02 00:20:20",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -15,31 +20,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "52776 05-06:19:20 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294       26:57 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296       26:57 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669       38:57 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-06:45:08 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294       52:45 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296       52:45 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669    01:04:45 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[download]  95.2% of  112.01MiB at    6.18MiB/s ETA 00:00",
-        "[download]  95.2% of  112.01MiB at    7.23MiB/s ETA 00:00",
-        "[download]  95.2% of  112.01MiB at    9.91MiB/s ETA 00:00",
-        "[download]  95.4% of  112.01MiB at   14.55MiB/s ETA 00:00",
-        "[download]  95.6% of  112.01MiB at   22.32MiB/s ETA 00:00",
-        "[download]  96.0% of  112.01MiB at   29.64MiB/s ETA 00:00",
-        "[download]  96.9% of  112.01MiB at   25.29MiB/s ETA 00:00",
-        "[download]  98.7% of  112.01MiB at   34.14MiB/s ETA 00:00",
-        "[download] 100.0% of  112.01MiB at   36.94MiB/s ETA 00:00",
-        "[download] 100% of  112.01MiB in 00:00:02 at 41.69MiB/s  ",
-        "[23:43:57] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong YouTube 2lzzVdKb4sQ (117.5 MB, thời lượng=3059.6s).",
-        "[23:43:57] [INFO] tiktok_pipeline: [BongCucSplitter] Đang cắt & áp dụng 6 Lớp Bộ Lọc Anti-Detection (1.429x, pitch=1.019x, hflip+grain, GOP=61): Bông Cúc Số 143 [Phần 2/8] (388.0s -> 769.7s gốc)...",
-        "[23:45:07] [INFO] tiktok_pipeline: [BongCucSplitter] Hoàn tất xuất bản (Chuẩn 6 Bộ Lọc): 20261101_234357_tiktok_story_990014302_bongcuc_v2_s143_p2.mp4 (thời lượng=267.1s, size=64.9MB)",
-        "[23:45:07] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[23:45:07] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=audio_dem_khuyen, file=audio_dem_khuyen/ready/20261101_234357_tiktok_story_990014302_bongcuc_v2_s143_p2.mp4, status=READY)",
-        "[23:45:07] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh audio_dem_khuyen (audio_dem_khuyen)! Kho chờ ready/ hiện tại: 3/5",
-        "[23:45:09] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh audio_dem_khuyen (audio_dem_khuyen): Nghỉ an toàn 213s (~3.5 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
-        "[23:47:20] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[23:48:57] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (208fbd0 -> 4ccdcee) | Auto-Telemetry [warmup_fyp] phu_kien_tien_ich at 2026-11-01 23:48:52"
+        "[00:16:11] [INFO] tiktok_pipeline: TTS #57 [130.16s-130.89s | gốc=0.80s]: rate=+38%, atempo=1.28x -> 0.73s",
+        "[00:16:21] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (b1f9ca8 -> 18c297a) | Auto-Telemetry [warmup_fyp] audio_dem_khuyen at 2026-11-02 00:16:03",
+        "[00:16:28] [INFO] tiktok_pipeline: TTS #58 [130.96s-133.01s | gốc=2.12s]: rate=+33%, atempo=0.94x -> 2.05s",
+        "[00:16:36] [INFO] tiktok_pipeline: TTS #59 [133.08s-133.77s | gốc=0.76s]: rate=+38%, atempo=1.49x -> 0.69s",
+        "[00:16:39] [INFO] tiktok_pipeline: TTS #60 [133.84s-134.89s | gốc=1.08s]: rate=+0%, atempo=0.93x -> 1.05s",
+        "[00:17:08] [INFO] tiktok_pipeline: TTS #61 [135.10s-136.04s | gốc=0.96s]: rate=-13%, atempo=1.00x -> 0.94s",
+        "[00:17:10] [INFO] tiktok_pipeline: TTS #62 [136.38s-137.22s | gốc=0.90s]: rate=+0%, atempo=1.05x -> 0.84s",
+        "[00:17:16] [INFO] tiktok_pipeline: TTS #63 [137.28s-138.17s | gốc=0.92s]: rate=-40%, atempo=0.97x -> 0.89s",
+        "[00:17:27] [INFO] tiktok_pipeline: TTS #64 [139.54s-140.43s | gốc=0.92s]: rate=+36%, atempo=0.94x -> 0.89s",
+        "[00:17:39] [INFO] tiktok_pipeline: TTS #65 [141.04s-141.75s | gốc=0.74s]: rate=+38%, atempo=1.22x -> 0.71s",
+        "[00:18:02] [INFO] tiktok_pipeline: TTS #66 [142.48s-143.27s | gốc=0.86s]: rate=+38%, atempo=1.79x -> 0.79s",
+        "[00:18:17] [INFO] tiktok_pipeline: TTS #67 [143.34s-144.89s | gốc=1.61s]: rate=-18%, atempo=1.00x -> 1.55s",
+        "[00:18:32] [INFO] tiktok_pipeline: TTS #68 [144.95s-146.44s | gốc=1.51s]: rate=+38%, atempo=1.03x -> 1.49s",
+        "[00:18:54] [INFO] tiktok_pipeline: TTS #69 [146.96s-148.46s | gốc=1.50s]: rate=-16%, atempo=1.01x -> 1.50s",
+        "[00:19:07] [INFO] tiktok_pipeline: TTS #70 [154.40s-155.73s | gốc=1.40s]: rate=+13%, atempo=0.95x -> 1.33s",
+        "[00:19:18] [INFO] tiktok_pipeline: TTS #71 [155.80s-157.40s | gốc=1.64s]: rate=+0%, atempo=1.01x -> 1.60s",
+        "[00:19:28] [INFO] tiktok_pipeline: TTS #72 [157.44s-158.07s | gốc=0.66s]: rate=+38%, atempo=1.05x -> 0.63s",
+        "[00:19:50] [INFO] tiktok_pipeline: TTS #73 [159.66s-160.93s | gốc=1.34s]: rate=+38%, atempo=1.15x -> 1.27s",
+        "[00:20:03] [INFO] tiktok_pipeline: TTS #74 [161.00s-161.35s | gốc=0.35s]: rate=+38%, atempo=1.12x -> 0.35s",
+        "[00:20:11] [INFO] tiktok_pipeline: TTS #75 [161.70s-162.17s | gốc=0.50s]: rate=-10%, atempo=0.98x -> 0.47s"
       ]
     }
   }
