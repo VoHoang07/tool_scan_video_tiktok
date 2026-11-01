@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-11-02 05:57:49",
+  "updated_at": "2026-11-02 05:58:21",
   "latest_result": {
-    "cmd_id": "heartbeat_1793573869",
+    "cmd_id": "heartbeat_1793573900",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-02 05:57:49",
+    "executed_at": "2026-11-02 05:58:20",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-02 05:57:49",
+      "timestamp": "2026-11-02 05:58:20",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 292.0,
+      "lock_file_age_seconds": 323.3,
       "processes": [
-        "52776 05-12:22:37 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294    06:30:14 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296    06:30:14 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669    06:42:14 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-12:23:09 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294    06:30:46 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296    06:30:46 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669    06:42:46 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
         "suc_khoe_duong_sinh | channel_6_health_wellness  |                 0 |                 0 |          0",
