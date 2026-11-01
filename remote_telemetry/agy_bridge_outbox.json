@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-11-01 23:52:00",
+  "updated_at": "2026-11-01 23:54:32",
   "latest_result": {
-    "cmd_id": "heartbeat_1793551920",
+    "cmd_id": "heartbeat_1793552071",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-01 23:52:00",
+    "executed_at": "2026-11-01 23:54:31",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-01 23:52:00",
+      "timestamp": "2026-11-01 23:54:32",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 355.7,
+      "lock_file_age_seconds": null,
       "processes": [
-        "52776 05-06:16:48 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294       24:25 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296       24:25 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669       36:25 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 05-06:19:20 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294       26:57 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296       26:57 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669       38:57 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
         "[download]  95.2% of  112.01MiB at    6.18MiB/s ETA 00:00",
@@ -40,8 +40,7 @@
         "[23:45:09] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh audio_dem_khuyen (audio_dem_khuyen): Nghỉ an toàn 213s (~3.5 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
         "[23:47:20] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
         "[23:48:57] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (208fbd0 -> 4ccdcee) | Auto-Telemetry [warmup_fyp] phu_kien_tien_ich at 2026-11-01 23:48:52"
-      ],
-      "lock_file_content": "pid=99294 ts=1793551565"
+      ]
     }
   }
 }
