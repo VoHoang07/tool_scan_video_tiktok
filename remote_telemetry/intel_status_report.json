@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-01 13:35:52",
+    "timestamp": "2026-11-01 22:24:15",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261031_132852_tiktok_story_7697500395819650310.mp4",
-      "caption": "📖 Góc Kể Chuyện: Lòng người khó đoán chỉ đến khi biến cố ập tới mới biết ai thật lòng. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
-      "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #vahmattraxanh #gocchiaSe #tamtrang #xh #xuhuongtiktok",
+      "video_file": "20261031_074140_tiktok_story_7693908916241042695.mp4",
+      "caption": "🐾 NGƯỜI HÀNG XÓM ( P7 ) - Nếu trong hoàn cảnh của Phong, bạn sẽ làm gì ?! ——————- KHOÁ HỌC LÀM VIDEO AI ONLINE 1 KÈM 1 TỪ CON SỐ 0 INBOX CHÚ XƠN NHA ❤️ — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
+      "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-01 22:24:15",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261031_074140_tiktok_story_7693908916241042695.mp4",
+        "caption": "🐾 NGƯỜI HÀNG XÓM ( P7 ) - Nếu trong hoàn cảnh của Phong, bạn sẽ làm gì ?! ——————- KHOÁ HỌC LÀM VIDEO AI ONLINE 1 KÈM 1 TỪ CON SỐ 0 INBOX CHÚ XƠN NHA ❤️ — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
+        "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-01 13:35:52",
       "machine_arch": "x86_64",
@@ -628,22 +644,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-10-31 13:28:20",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261030_150131_tiktok_story_7697778349690670357.mp4",
-        "caption": "📖 Góc Kể Chuyện: Tập 119 - Góc khuất tình cảm và màn đáp trả cực gắt. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
-        "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #ngontinh #trongsinh #tongtai #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
