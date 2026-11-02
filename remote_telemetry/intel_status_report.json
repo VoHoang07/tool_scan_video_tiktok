@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 13:33:11",
+    "timestamp": "2026-11-02 13:36:47",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "event_type": "upload",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 153.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261101_234357_tiktok_story_990014302_bongcuc_v2_s143_p2.mp4",
+      "caption": "🍂 Đêm khuya nghe truyện Bông Cúc Số 143 [Phần 2/8]: Tôi Là Bạn Gái Hờ Của Thiếu Gia Bảy Năm. Ai đang hóng phần tiếp theo thì vào nghe ngay nhé!",
+      "hashtags": "#bongcucso143 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 13:36:47",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261101_234357_tiktok_story_990014302_bongcuc_v2_s143_p2.mp4",
+        "caption": "🍂 Đêm khuya nghe truyện Bông Cúc Số 143 [Phần 2/8]: Tôi Là Bạn Gái Hờ Của Thiếu Gia Bảy Năm. Ai đang hóng phần tiếp theo thì vào nghe ngay nhé!",
+        "hashtags": "#bongcucso143 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-02 13:33:11",
       "machine_arch": "x86_64",
@@ -181,18 +201,6 @@
       "details": {
         "scrolled_videos": 13,
         "elapsed_seconds": 161.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 12:31:15",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 155.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
