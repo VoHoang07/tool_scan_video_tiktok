@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 20:38:04",
+    "timestamp": "2026-11-02 20:40:39",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "event_type": "upload",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 156.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261031_210120_tiktok_story_7688314097850404116.mp4",
+      "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Xuyên Không Thành Lục Hoàng Tử Bất Khả Chiến Bại. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+      "hashtags": "#tuchangioi #tutien #huyenhuyen #hoathinh3dtrungquoc #aitutien #tiennghich #foryou #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 0,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 20:40:39",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261031_210120_tiktok_story_7688314097850404116.mp4",
+        "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Xuyên Không Thành Lục Hoàng Tử Bất Khả Chiến Bại. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "hashtags": "#tuchangioi #tutien #huyenhuyen #hoathinh3dtrungquoc #aitutien #tiennghich #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-02 20:38:04",
       "machine_arch": "x86_64",
@@ -181,18 +201,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 156.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 19:32:37",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 158.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
