@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 20:43:55",
+    "timestamp": "2026-11-02 21:20:53",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "event_type": "upload",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "elapsed_seconds": 150.3,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261101_235842_tiktok_story_990014402_bongcuc_v2_s144_p2.mp4",
+      "caption": "🔥 Bông Cúc Số 144 [Phần 2/7]: Tôi Ghét Nhất Những Lời Xin Lỗi Muộn Màng. Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng! Cùng nghe tiếp nhé!",
+      "hashtags": "#bongcucso144 #bongcucaudio #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya #gocnhinkhuya #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 0,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 21:20:53",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261101_235842_tiktok_story_990014402_bongcuc_v2_s144_p2.mp4",
+        "caption": "🔥 Bông Cúc Số 144 [Phần 2/7]: Tôi Ghét Nhất Những Lời Xin Lỗi Muộn Màng. Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng! Cùng nghe tiếp nhé!",
+        "hashtags": "#bongcucso144 #bongcucaudio #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya #gocnhinkhuya #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-02 20:43:55",
       "machine_arch": "x86_64",
@@ -185,18 +205,6 @@
       "details": {
         "scrolled_videos": 11,
         "elapsed_seconds": 154.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 19:41:12",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 150.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
