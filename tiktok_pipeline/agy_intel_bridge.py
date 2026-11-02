@@ -471,24 +471,101 @@ def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str
     return None
 
 
+def _deduplicate_stream_processes() -> List[str]:
+    """Đảm bảo trên máy Mac Intel chỉ có tối đa 1 tiến trình Dòng 1 và 1 tiến trình Dòng 2 (tránh chạy trùng lặp)."""
+    killed: List[str] = []
+    if platform.machine() != "x86_64":
+        return killed
+    try:
+        ps_res = subprocess.run(
+            ["ps", "-Ao", "pid,command"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            check=False,
+        )
+        s1_pids: List[int] = []
+        s2_pids: List[int] = []
+        for line in (ps_res.stdout or "").splitlines():
+            parts = line.strip().split(None, 1)
+            if len(parts) < 2 or not parts[0].isdigit():
+                continue
+            pid = int(parts[0])
+            cmd = parts[1]
+            if "grep" in cmd or "caffeinate" in cmd:
+                continue
+            if "--stream-upload" in cmd and "python" in cmd.lower():
+                s1_pids.append(pid)
+            elif "--stream-filter24h" in cmd and "python" in cmd.lower():
+                s2_pids.append(pid)
+
+        # Giữ lại tiến trình mới nhất (PID cuối danh sách), tắt các bản chạy trùng cũ
+        for dup_pid in s1_pids[:-1]:
+            try:
+                os.kill(dup_pid, 9)
+                killed.append(f"stream1_dup_pid={dup_pid}")
+            except Exception:
+                pass
+        for dup_pid in s2_pids[:-1]:
+            try:
+                os.kill(dup_pid, 9)
+                killed.append(f"stream2_dup_pid={dup_pid}")
+            except Exception:
+                pass
+    except Exception:
+        pass
+    return killed
+
+
+def _broadcast_to_open_terminals(msg: str) -> None:
+    """In thông báo trực tiếp lên các cửa sổ Terminal đang mở trên Mac Intel để người dùng nhìn thấy ngay."""
+    try:
+        for tty_path in sorted(Path("/dev").glob("ttys00*")):
+            try:
+                with open(tty_path, "w", encoding="utf-8", errors="ignore") as tty_fh:
+                    tty_fh.write(f"\n{msg}\n")
+            except Exception:
+                pass
+    except Exception:
+        pass
+
+
 def run_bridge_daemon(poll_seconds: int = 20) -> None:
     """Vòng lặp Daemon độc lập trên máy Mac Intel: nhận lệnh từ GitHub, tự chữa lỗi khóa treo & gọi AGY CLI."""
+    import fcntl
+
+    daemon_lock_path = PROJECT_ROOT / "workspace_temp" / ".agy_intel_bridge_daemon.lock"
+    daemon_lock_path.parent.mkdir(parents=True, exist_ok=True)
+    daemon_lock_fh = open(daemon_lock_path, "a+", encoding="utf-8")
+    try:
+        fcntl.flock(daemon_lock_fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        daemon_lock_fh.seek(0)
+        daemon_lock_fh.truncate()
+        daemon_lock_fh.write(f"pid={os.getpid()} started={_now_str()}\n")
+        daemon_lock_fh.flush()
+    except BlockingIOError:
+        # Đã có 1 tiến trình AGY Bridge Daemon đang giữ khóa -> thoát ngay để không chạy trùng
+        sys.exit(0)
+
     print(
-        f"[{_now_str()}] === KHỞI ĐỘNG AGY INTEL BRIDGE DAEMON (arch={platform.machine()}, poll={poll_seconds}s) ===",
+        f"[{_now_str()}] === KHỞI ĐỘNG AGY INTEL BRIDGE DAEMON SINGLETON (pid={os.getpid()}, arch={platform.machine()}, poll={poll_seconds}s) ===",
         flush=True,
     )
-    last_heartbeat_push = 0.0
+    last_heartbeat_push = time.time()
     last_ai_heal_ts = 0.0
 
     while True:
         try:
+            _deduplicate_stream_processes()
             # 1a. Tự động đảm bảo cả Dòng 1 và Dòng 2 luôn sống trên Mac Intel
             restart_info = _ensure_both_streams_alive()
             if restart_info:
-                print(
-                    f"[{_now_str()}] [AGY Bridge Watchdog] Đã tự động bật lại dòng bị tắt: {restart_info['restarted_streams']}",
-                    flush=True,
+                banner = (
+                    f"[{_now_str()}] [AGY Bridge Watchdog] ✅ Đã tự động bật lại dòng bị tắt: "
+                    f"{restart_info['restarted_streams']} (xem log tại logs/stream2_filter24h.log)"
                 )
+                print(banner, flush=True)
+                _broadcast_to_open_terminals(banner)
                 _git_sync_and_push_outbox(
                     {
                         "updated_at": _now_str(),
@@ -506,10 +583,12 @@ def run_bridge_daemon(poll_seconds: int = 20) -> None:
             ai_fix_report = _auto_self_evolve_on_log_errors(last_ai_heal_ts)
             if ai_fix_report:
                 last_ai_heal_ts = time.time()
-                print(
-                    f"[{_now_str()}] [AGY Self-Evolving] Đã tự động dùng AGY CLI phân tích & sửa lỗi mới ({ai_fix_report['error_hash']})!",
-                    flush=True,
+                banner = (
+                    f"[{_now_str()}] [AGY Self-Evolving] ✅ Đã tự động dùng AGY CLI phân tích & vá lỗi mới "
+                    f"({ai_fix_report['error_hash']}: {ai_fix_report.get('error_line', '')[:80]})!"
                 )
+                print(banner, flush=True)
+                _broadcast_to_open_terminals(banner)
                 _git_sync_and_push_outbox(
                     {
                         "updated_at": _now_str(),

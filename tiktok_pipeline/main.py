@@ -674,10 +674,10 @@ def _get_codebase_mtime_snapshot(project_root: Path) -> Dict[str, float]:
 
 def _ensure_agy_intel_bridge_daemon(project_root: Path) -> None:
     """
-    Trên máy Mac Intel (`x86_64`), tự động khởi chạy ngầm tiến trình độc lập `agy_intel_bridge.py --daemon`
-    (`start_new_session=True`) nếu chưa chạy. Nhờ tách rời khỏi Dòng 1 & Dòng 2, tiến trình này luôn
-    nhận được lệnh từ `remote_telemetry/agy_bridge_inbox.json` và tự động giải cứu khi Chrome bị treo.
+    Trên máy Mac Intel (`x86_64`), tự động khởi chạy ngầm duy nhất 1 tiến trình độc lập `agy_intel_bridge.py --daemon`
+    (`start_new_session=True`) kiểm tra bằng khóa `fcntl.flock` (`.agy_intel_bridge_daemon.lock`).
     """
+    import fcntl
     import platform
     import subprocess
 
@@ -687,15 +687,17 @@ def _ensure_agy_intel_bridge_daemon(project_root: Path) -> None:
     if not bridge_script.exists():
         return
     try:
-        ps_check = subprocess.run(
-            ["pgrep", "-f", "agy_intel_bridge.py --daemon"],
-            capture_output=True,
-            text=True,
-            timeout=5,
-            check=False,
-        )
-        if ps_check.returncode == 0 and ps_check.stdout.strip():
+        lock_path = project_root / "workspace_temp" / ".agy_intel_bridge_daemon.lock"
+        lock_path.parent.mkdir(parents=True, exist_ok=True)
+        probe_fh = open(lock_path, "a+", encoding="utf-8")
+        try:
+            fcntl.flock(probe_fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            fcntl.flock(probe_fh.fileno(), fcntl.LOCK_UN)
+        except BlockingIOError:
+            probe_fh.close()
             return
+        probe_fh.close()
+
         log_dir = project_root / "logs"
         log_dir.mkdir(parents=True, exist_ok=True)
         log_fh = open(log_dir / "agy_intel_bridge.log", "a", encoding="utf-8")
@@ -706,7 +708,7 @@ def _ensure_agy_intel_bridge_daemon(project_root: Path) -> None:
             stderr=log_fh,
             start_new_session=True,
         )
-        logger.info("[AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (poll=20s)!")
+        logger.info("[AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (Singleton, poll=20s)!")
     except Exception:
         pass
 

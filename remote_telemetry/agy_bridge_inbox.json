@@ -1,10 +1,10 @@
 {
-  "cmd_id": "cmd_20261101_201712_check_and_heal",
-  "created_at": "2026-11-01 20:17:12",
+  "cmd_id": "cmd_20261102_080344_shell",
+  "created_at": "2026-11-02 08:03:44",
   "from_machine": "arm64",
   "target_arch": "x86_64",
-  "action": "check_and_heal",
-  "agy_prompt": "Kiểm tra trạng thái Dòng 1 (--stream-upload) và Dòng 2 (--stream-filter24h) trên máy Mac Intel, giải phóng các khóa trình duyệt bị treo và báo cáo trạng thái hệ thống.",
-  "shell_command": "",
+  "action": "shell",
+  "agy_prompt": "",
+  "shell_command": "pkill -f 'agy_intel_bridge.py --daemon' || true",
   "timeout_seconds": 240
 }
