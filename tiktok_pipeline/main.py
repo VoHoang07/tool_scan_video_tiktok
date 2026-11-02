@@ -1062,12 +1062,12 @@ def run_continuous_mode(
     def _get_active_channel_sequence() -> List[str]:
         try:
             cfg = poster.ensure_schedule_config()
-            act = cfg.get("active_channels")
-            if isinstance(act, list) and act:
-                return [str(x).strip() for x in act if str(x).strip()]
+            crawl_list = cfg.get("crawl_buffer_channels") or cfg.get("active_channels")
+            if isinstance(crawl_list, list) and crawl_list:
+                return [str(x).strip() for x in crawl_list if str(x).strip()]
         except Exception:
             pass
-        return ["1", "2", "3", "4"]
+        return ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
     channel_sequence = _get_active_channel_sequence()
     cycle_count = 0

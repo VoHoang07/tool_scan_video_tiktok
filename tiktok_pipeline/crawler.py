@@ -262,7 +262,12 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Mẹo vặt nhà cửa, Đồ gia dụng thông minh & Tiện ích bếp siêu lượt mua (Phễu chủ lực #2)",
         "is_funnel_satellite": True,
         "seed_video_urls": [],
-        "seed_channels": [],
+        "seed_channels": [
+            "meovatcuocsong.vn",
+            "meovathaymoingay",
+            "giadungthongminh.official",
+            "meobepnhỏ",
+        ],
         "douyin_keywords": [
             "生活小妙招",
             "居家好物",
@@ -271,19 +276,24 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "收纳整理技巧",
             "家庭实用小技巧",
             "省钱妙招",
+            "居家生活小窍门",
         ],
         "tiktok_keywords": [
             "#meovatgiadinh",
             "#dogiadungthongminh",
             "#meovatcuocsong",
             "#nhabepthongminh",
+            "#meohaymoingay",
+            "#giadungtienich",
             "#生活小妙招",
             "#居家好物",
         ],
         "tiktok_challenge_ids": [
-            "1636211882466305",  # #meovatcuocsong
-            "1656561174880258",  # #meovatgiadinh
-            "1660484344061953",  # #dogiadungthongminh
+            "1636211882466305",  # #meovatcuocsong (tỷ view VN)
+            "1656561174880258",  # #meovatgiadinh (tỷ view VN)
+            "1660484344061953",  # #dogiadungthongminh (tỷ view VN)
+            "1639379597128705",  # #meohay (tỷ view VN)
+            "1654217353988097",  # #nhabepthongminh
         ],
         "douyin_challenge_ids": [
             "1563911653590017",  # #生活小妙招
@@ -295,6 +305,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "生活小妙招 实用 #shorts",
             "厨房清洁妙招 #shorts",
             "mẹo vặt gia đình hay #shorts",
+            "mẹo vặt cuộc sống cực hay #shorts",
         ],
     },
     "channel_6_health_wellness": {
@@ -304,7 +315,12 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Sức khỏe chủ động, Mẹo dưỡng sinh & Thói quen sống khỏe (Phễu chủ lực #3)",
         "is_funnel_satellite": True,
         "seed_video_urls": [],
-        "seed_channels": [],
+        "seed_channels": [
+            "suckhoedoisong.vn",
+            "duongsinhmoingay",
+            "songkhoemoingay",
+            "bacsidinhduong",
+        ],
         "douyin_keywords": [
             "健康科普动画",
             "养生小知识",
@@ -312,18 +328,23 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "身体发出的求救信号",
             "睡眠健康科普",
             "护肝养胃小知识",
+            "长寿健康习惯",
         ],
         "tiktok_keywords": [
             "#suckhoechudong",
             "#meosuckhoe",
             "#duongsinh",
             "#songkhoe",
+            "#suckhoemoingay",
+            "#chamsocthanhtam",
             "#健康科普",
             "#养生小知识",
         ],
         "tiktok_challenge_ids": [
-            "1636570489140225",  # #suckhoe
-            "1662939543255041",  # #songkhoe
+            "1636570489140225",  # #suckhoe (tỷ view VN)
+            "1662939543255041",  # #songkhoe (tỷ view VN)
+            "1658129452071937",  # #duongsinh
+            "1648739154728961",  # #meosuckhoe
         ],
         "douyin_challenge_ids": [
             "1581016448807950",  # #健康科普
@@ -334,6 +355,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "健康科普 动画 #shorts",
             "养生小知识 #shorts",
             "mẹo sức khỏe đời sống #shorts",
+            "dưỡng sinh sống khỏe mỗi ngày #shorts",
         ],
     },
     "channel_7_women_eq": {
@@ -343,7 +365,12 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Tâm lý hôn nhân, Phụ nữ khí chất & EQ giao tiếp tinh tế (Phễu chủ lực #4)",
         "is_funnel_satellite": True,
         "seed_video_urls": [],
-        "seed_channels": [],
+        "seed_channels": [
+            "phunukhichat.vn",
+            "tamlyhoccuocsong",
+            "nghethuatgiaotiep",
+            "gocphunu.official",
+        ],
         "douyin_keywords": [
             "女性成长智慧",
             "婚姻心理真相",
@@ -351,18 +378,23 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "夫妻相处之道",
             "清醒女性语录",
             "情感心理沙盘",
+            "人性心理博弈",
         ],
         "tiktok_keywords": [
             "#phunukhichat",
             "#tamlyhonnhan",
-            "#phunuhienđai",
+            "#phunuhiendai",
             "#kynanggiaotiep",
+            "#trietlycuocsong",
+            "#baihoccuocsong",
             "#女性智慧",
             "#婚姻情感",
         ],
         "tiktok_challenge_ids": [
             "1572618705886286",
             "1638200962944004",
+            "1640129485129730",  # #phunukhichat
+            "1634928174829569",  # #baihoccuocsong
         ],
         "douyin_challenge_ids": [
             "1572618705886286",  # #情感
@@ -373,6 +405,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "女性成长 婚姻智慧 #shorts",
             "高情商女人 #shorts",
             "tâm lý phụ nữ hôn nhân #shorts",
+            "phụ nữ khí chất giao tiếp khéo léo #shorts",
         ],
     },
     "channel_8_food_snacks": {
@@ -382,7 +415,12 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Ẩm thực đường phố, Công thức nấu ăn nhanh & Đồ ăn vặt siêu lượt mua trên TikTok Shop",
         "is_funnel_satellite": False,
         "seed_video_urls": [],
-        "seed_channels": [],
+        "seed_channels": [
+            "anvatmoingay.vn",
+            "congthucnauannhanh",
+            "monngonmoingay",
+            "bepnhỏ.official",
+        ],
         "douyin_keywords": [
             "美食教程",
             "懒人美食做法",
@@ -391,6 +429,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "家常菜简单好看",
             "解馋小零食",
             "下饭菜教程",
+            "空气炸锅美食",
         ],
         "tiktok_keywords": [
             "#anvatmoingay",
@@ -398,12 +437,16 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "#nauanngon",
             "#congthucnauan",
             "#amthuctiktok",
+            "#monngonmoingay",
             "#mukbang",
             "#美食教程",
             "#解馋零食",
         ],
         "tiktok_challenge_ids": [
             "1636211882466305",
+            "1635812945128449",  # #monngonmoingay
+            "1642198451294209",  # #congthucnauan
+            "1629841295128577",  # #amthuctiktok
         ],
         "douyin_challenge_ids": [
             "1562354443487233",  # #美食教程
@@ -414,6 +457,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "美食教程 懒人做法 #shorts",
             "解馋零食 夜宵 #shorts",
             "món ngon dễ làm đồ ăn vặt #shorts",
+            "công thức nấu ăn nhanh tại nhà #shorts",
         ],
     },
     "channel_9_smart_parenting": {
@@ -423,7 +467,12 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Nuôi dạy con thông minh, Phát triển EQ cho bé & Tâm lý mẹ và bé",
         "is_funnel_satellite": False,
         "seed_video_urls": [],
-        "seed_channels": [],
+        "seed_channels": [
+            "nuoiconthongminh.vn",
+            "dayconeq",
+            "mevabe.official",
+            "giaoducsomchobe",
+        ],
         "douyin_keywords": [
             "育儿动画科普",
             "儿童情商教育",
@@ -431,18 +480,23 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "家庭教育故事",
             "孩子坏习惯怎么引导",
             "绘本故事育儿",
+            "父母说话方式决定孩子未来",
         ],
         "tiktok_keywords": [
             "#nuoiconthongminh",
             "#dayconeq",
             "#mevabe",
             "#giaoducsom",
+            "#chaMeThongThai",
+            "#tamlytreem",
             "#育儿知识",
             "#家庭教育",
         ],
         "tiktok_challenge_ids": [
             "1639642543618055",
             "1576122662289438",
+            "1649128451294210",  # #nuoiconthongminh
+            "1631849251284993",  # #mevabe
         ],
         "douyin_challenge_ids": [
             "1639642543618055",
@@ -453,6 +507,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "育儿知识 家庭教育 #shorts",
             "儿童情商 动画 #shorts",
             "nuôi dạy con thông minh #shorts",
+            "cách dạy con ngoan phát triển EQ #shorts",
         ],
     },
     "channel_10_tech_gadgets": {
@@ -462,7 +517,12 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Mẹo điện thoại, Phụ kiện công nghệ giá rẻ & Đồ tiện ích thông minh siêu lượt mua",
         "is_funnel_satellite": False,
         "seed_video_urls": [],
-        "seed_channels": [],
+        "seed_channels": [
+            "meodienthoai.vn",
+            "phukiencongnghe.official",
+            "congnghehaymoingay",
+            "reviewcongnghe",
+        ],
         "douyin_keywords": [
             "数码好物推荐",
             "手机实用小技巧",
@@ -470,17 +530,22 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "黑科技小物件",
             "平价数码配件",
             "充电宝数据线测评",
+            "苹果安卓隐藏功能",
         ],
         "tiktok_keywords": [
             "#phukientienich",
             "#phukiendienthoai",
             "#docongnghe",
             "#meodienthoai",
+            "#meohaycongnghe",
+            "#reviewcongnghe",
             "#数码好物",
             "#黑科技",
         ],
         "tiktok_challenge_ids": [
             "1660484344061953",
+            "1638912451284994",  # #meodienthoai
+            "1641928451284995",  # #docongnghe
         ],
         "douyin_challenge_ids": [
             "1587096126305293",
@@ -490,6 +555,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "数码好物 黑科技 #shorts",
             "手机技巧 实用配件 #shorts",
             "phụ kiện điện thoại thông minh #shorts",
+            "mẹo điện thoại cực hay #shorts",
         ],
     },
 }

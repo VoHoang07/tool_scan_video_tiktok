@@ -6,6 +6,18 @@
     "audio_dem_khuyen",
     "tu_chan_gioi"
   ],
+  "crawl_buffer_channels": [
+    "video_AI_hay",
+    "baby_AI",
+    "audio_dem_khuyen",
+    "tu_chan_gioi",
+    "meo_vat_gia_dinh",
+    "suc_khoe_duong_sinh",
+    "phu_nu_khi_chat",
+    "an_vat_moi_ngay",
+    "nuoi_con_eq",
+    "phu_kien_tien_ich"
+  ],
   "active_filter_24h_channels": [
     "video_AI_hay",
     "baby_AI",
