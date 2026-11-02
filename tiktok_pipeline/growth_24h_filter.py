@@ -1603,7 +1603,7 @@ class TikTok24hFilterEngine:
 
             self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
-            # 2. Đọc trạng thái nút [data-e2e="follow-button"] trên trang Hồ sơ chủ kênh
+            # 2. Đọc trạng thái nút [data-e2e="follow-button"] hiển thị thật trên Header trang Hồ sơ chủ kênh
             prof_state = page.evaluate(
                 """() => {
                     let relation = null;
@@ -1615,24 +1615,32 @@ class TikTok24hFilterEngine:
                             if (uInfo.user) relation = uInfo.user.relation;
                         }
                     } catch (e) {}
-                    const btn = document.querySelector('[data-e2e="follow-button"]');
-                    if (!btn) return { relation, btnText: null, x: null, y: null, url: location.href };
-                    const r = btn.getBoundingClientRect();
-                    return {
-                        relation,
-                        btnText: (btn.innerText || btn.textContent || '').trim(),
-                        x: r.left + r.width / 2,
-                        y: r.top + r.height / 2,
-                        w: r.width,
-                        h: r.height,
-                        url: location.href
-                    };
+                    const btns = Array.from(document.querySelectorAll('[data-e2e="follow-button"]'));
+                    for (const btn of btns) {
+                        if (btn.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
+                        const r = btn.getBoundingClientRect();
+                        const style = window.getComputedStyle(btn);
+                        if (style.display === 'none' || style.visibility === 'hidden' || parseFloat(style.opacity || '1') < 0.1) continue;
+                        if (r.left > 220 && r.top > 60 && r.top < 520 && r.width > 40 && r.height > 20) {
+                            return {
+                                relation,
+                                btnText: (btn.innerText || btn.textContent || '').trim(),
+                                x: r.left + r.width / 2,
+                                y: r.top + r.height / 2,
+                                w: r.width,
+                                h: r.height,
+                                url: location.href
+                            };
+                        }
+                    }
+                    return { relation, btnText: null, x: null, y: null, url: location.href };
                 }"""
             )
             before_txt = str((prof_state or {}).get("btnText") or "").strip()
-            already_labels = {"đang follow", "following", "bạn bè", "friends", "đã follow"}
+            already_labels = {"đang follow", "following", "bạn bè", "friends", "đã follow", "tin nhắn", "message"}
             is_following_now = before_txt.lower() in already_labels or (prof_state or {}).get("relation") in (1, 2)
             clicked_follow_btn = False
+            before_f_cnt = len(trace.get("follow_responses") or [])
 
             if not is_following_now and prof_state and prof_state.get("x") and float(prof_state.get("w") or 0) > 25:
                 bx, by = float(prof_state["x"]), float(prof_state["y"])
@@ -1641,17 +1649,53 @@ class TikTok24hFilterEngine:
                 )
                 clicked_follow_btn = True
                 self._os_click_viewport(page, bx, by)
-                time.sleep(random.uniform(4.2, 5.8))
+                time.sleep(2.2)
+                # Nếu cú click OS chưa kích hoạt request /commit/follow/user, gọi thêm click() trực tiếp trên nút Follow hiển thị
+                if len(trace.get("follow_responses") or []) <= before_f_cnt:
+                    try:
+                        page.evaluate(
+                            """() => {
+                                const btns = Array.from(document.querySelectorAll('[data-e2e="follow-button"]'));
+                                for (const btn of btns) {
+                                    if (btn.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
+                                    const r = btn.getBoundingClientRect();
+                                    if (r.left > 220 && r.top > 60 && r.top < 520 && r.width > 40 && r.height > 20) {
+                                        const txt = (btn.innerText || btn.textContent || '').trim().toLowerCase();
+                                        if (txt === 'follow' || txt === 'theo dõi') {
+                                            btn.click();
+                                            return true;
+                                        }
+                                    }
+                                }
+                                return false;
+                            }"""
+                        )
+                    except Exception:
+                        pass
+                time.sleep(random.uniform(2.5, 3.8))
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
             after_state = page.evaluate(
                 """() => {
-                    const btn = document.querySelector('[data-e2e="follow-button"]');
-                    return btn ? (btn.innerText || btn.textContent || '').trim() : '';
+                    const btns = Array.from(document.querySelectorAll('[data-e2e="follow-button"]'));
+                    for (const btn of btns) {
+                        if (btn.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
+                        const r = btn.getBoundingClientRect();
+                        if (r.left > 220 && r.top > 60 && r.top < 520 && r.width > 30 && r.height > 20) {
+                            return (btn.innerText || btn.textContent || '').trim();
+                        }
+                    }
+                    return '';
                 }"""
             )
             after_txt = str(after_state or "").strip()
-            persisted = after_txt.lower() in already_labels or is_following_now
+            new_f_resps = (trace.get("follow_responses") or [])[before_f_cnt:]
+            server_follow_ok = any(
+                ('"follow_status":1' in str(r.get("body") or "").replace(" ", "") or '"follow_status":2' in str(r.get("body") or "").replace(" ", ""))
+                and '"status_code":0' in str(r.get("body") or "").replace(" ", "")
+                for r in new_f_resps
+            )
+            persisted = after_txt.lower() in already_labels or is_following_now or server_follow_ok
 
             follow_api_blocked = False
             for f_resp in trace.get("follow_responses") or []:

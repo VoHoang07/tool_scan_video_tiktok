@@ -386,9 +386,13 @@ def _ensure_both_streams_alive() -> Optional[Dict[str, Any]]:
 
 def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str, Any]]:
     """
-    Quét `logs/daemon_24_7.log` và `logs/stream2_filter24h.log` tìm lỗi `Traceback` hoặc `[ERROR]` mới.
-    Nếu phát hiện lỗi mới chưa từng sửa (và cách lần gọi AI trước >= 15 phút), tự động gọi `agy -p`
-    ngay trên máy Intel để phân tích nguyên nhân, tự sửa code/trạng thái và đẩy bản vá lên GitHub.
+    Cơ chế Tự Tiến Hóa Kép (Dual Self-Evolving Engine):
+    1. Quét `logs/daemon_24_7.log` và `logs/stream2_filter24h.log` tìm lỗi `Traceback` hoặc `[ERROR]` mới.
+    2. Kiểm toán đầu ra thực tế (KPI / Silent Logic Auditor) trong `remote_telemetry/intel_status_report.json`:
+       - Nếu phiên `filter24h` kết thúc mà không Follow được ai (`5_followed_creator: false` trên mọi video khi không bị `is_digg=1` hay `follow_api_blocked`),
+         hoặc điều hướng nhầm sang `/photo/` thay vì trang Hồ sơ `/@creator`.
+       - Nếu phiên `warmup_fyp` kết thúc mà `scrolled_videos < 2`.
+       -> Tự động gọi `agy -p` ngay trên máy Intel để phân tích JSON telemetry + code, tự vá lỗi và đẩy lên GitHub.
     """
     if platform.machine() != "x86_64" or (time.time() - last_ai_heal_ts < 900):
         return None
@@ -403,6 +407,79 @@ def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str
         except Exception:
             healed_hashes = []
 
+    # TẦNG 1: Kiểm toán KPI / Silent Logic Bug từ remote_telemetry/intel_status_report.json
+    telem_path = PROJECT_ROOT / "remote_telemetry" / "intel_status_report.json"
+    if telem_path.exists():
+        try:
+            telem_data = json.loads(telem_path.read_text(encoding="utf-8"))
+            latest_ev = telem_data.get("latest_event") or {}
+            ev_type = str(latest_ev.get("event_type") or "")
+            ev_ts = str(latest_ev.get("timestamp") or "")
+            ev_ch = str(latest_ev.get("channel") or "")
+            det = latest_ev.get("details") or {}
+            anomaly_desc = ""
+
+            if ev_type == "filter24h" and ev_ch in ("video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"):
+                recs = det.get("records") or []
+                any_followed = any(
+                    bool((r.get("steps_completed") or {}).get("5_followed_creator"))
+                    for r in recs
+                )
+                any_cb = any(bool(r.get("circuit_breaker_tripped")) for r in recs)
+                if recs and not any_followed and not any_cb:
+                    anomaly_desc = (
+                        f"Silent KPI Bug: Phiên filter24h của kênh [{ev_ch}] lúc {ev_ts} đã tương tác {len(recs)} video "
+                        f"nhưng 5_followed_creator=False trên tất cả video (không bị circuit_breaker)."
+                    )
+            elif ev_type == "warmup_fyp":
+                if int(det.get("scrolled_videos") or 0) < 2:
+                    anomaly_desc = (
+                        f"Silent KPI Bug: Phiên warmup_fyp của kênh [{ev_ch}] lúc {ev_ts} chỉ lướt được "
+                        f"{det.get('scrolled_videos')} video (< 2 video)."
+                    )
+
+            if anomaly_desc:
+                anom_hash = hashlib.md5(f"{ev_type}:{ev_ch}:{ev_ts}".encode("utf-8")).hexdigest()[:12]
+                if anom_hash not in healed_hashes:
+                    healed_hashes.append(anom_hash)
+                    healed_db_path.parent.mkdir(parents=True, exist_ok=True)
+                    healed_db_path.write_text(json.dumps(healed_hashes[-100:], indent=2), encoding="utf-8")
+                    ev_json_str = json.dumps(latest_ev, ensure_ascii=False, indent=2)[-2400:]
+                    prompt = (
+                        f"Phát hiện lỗi nghiệp vụ ngầm (Silent KPI Anomaly) trong `remote_telemetry/intel_status_report.json`:\n"
+                        f"{anomaly_desc}\n```json\n{ev_json_str}\n```\n"
+                        "Hãy đọc `tiktok_pipeline/growth_24h_filter.py` và `tiktok_pipeline/auto_poster.py`, "
+                        "tìm nguyên nhân vì sao thao tác Follow/Lướt không đạt KPI, tự động sửa code, "
+                        "kiểm tra py_compile, commit & push lên origin/main."
+                    )
+                    agy_bin = _find_agy_bin()
+                    proc = subprocess.run(
+                        [
+                            agy_bin,
+                            "-p",
+                            prompt,
+                            "--dangerously-skip-permissions",
+                            "--print-timeout",
+                            "240s",
+                        ],
+                        cwd=str(PROJECT_ROOT),
+                        capture_output=True,
+                        text=True,
+                        timeout=260,
+                        check=False,
+                    )
+                    return {
+                        "error_hash": anom_hash,
+                        "log_file": "remote_telemetry/intel_status_report.json",
+                        "error_line": anomaly_desc,
+                        "agy_exit_code": proc.returncode,
+                        "agy_fix_summary": (proc.stdout or "")[-4000:],
+                        "timestamp": _now_str(),
+                    }
+        except Exception:
+            pass
+
+    # TẦNG 2: Quét lỗi Traceback / [ERROR] trong logs/daemon_24_7.log và logs/stream2_filter24h.log
     for log_name in ("daemon_24_7.log", "stream2_filter24h.log"):
         log_path = PROJECT_ROOT / "logs" / log_name
         if not log_path.exists():
