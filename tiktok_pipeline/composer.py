@@ -88,6 +88,13 @@ CHANNEL_VOICE_PROFILES: Dict[str, Dict[str, Any]] = {
         "encoder_sig": "VN Video Editor 2.26.0 (Android)",
         "description": "Giọng nam trẻ trung, năng động, hiện đại (Mẹo điện thoại & Phụ kiện công nghệ)",
     },
+    "channel_11": {
+        "voice": "vi-VN-HoaiMyNeural",
+        "base_rate": "+4%",
+        "pitch": "+3Hz",
+        "encoder_sig": "CapCut 14.8.0 (iPhone16,1)",
+        "description": "Giọng nữ lém lỉnh, hài hước, vui nhộn (Thú cưng hài hước & Chó mèo lém lỉnh - FB Reels & YT Shorts)",
+    },
     "general": {
         "voice": "vi-VN-NamMinhNeural",
         "base_rate": "+0%",
@@ -132,10 +139,11 @@ class VideoComposer:
             "nuoi_con_eq": "channel_9",
             "phu_kien_tien_ich": "channel_10",
             "muu_luoc_nhan_sinh": "channel_10",
+            "thu_cung_vui_nhon": "channel_11",
         }
         if ch in alias_map:
             return dict(CHANNEL_VOICE_PROFILES[alias_map[ch]])
-        for idx in range(10, 0, -1):
+        for idx in range(11, 0, -1):
             key = f"channel_{idx}"
             if key in ch or ch == str(idx):
                 return dict(CHANNEL_VOICE_PROFILES[key])

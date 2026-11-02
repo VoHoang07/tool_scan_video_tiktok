@@ -950,6 +950,7 @@ def run_continuous_mode(
                 import importlib
                 from . import bongcuc_splitter as _bc_mod
                 from . import stream1_antidetect_skill as _s1_skill_mod
+                from . import master_switch_controller as _ms_mod
                 from . import crawler as _cr_mod
                 from . import translator as _tr_mod
                 from . import growth_24h_filter as _g24_mod
@@ -957,6 +958,7 @@ def run_continuous_mode(
 
                 importlib.reload(_bc_mod)
                 importlib.reload(_s1_skill_mod)
+                importlib.reload(_ms_mod)
                 importlib.reload(_cr_mod)
                 importlib.reload(_tr_mod)
                 importlib.reload(_g24_mod)
@@ -1093,7 +1095,27 @@ def run_continuous_mode(
 
             # Kiểm tra cập nhật code tự động (Hot-Reload) & lịch đăng tự động ở đầu mỗi chu kỳ
             _check_hot_reload()
+            from .master_switch_controller import MasterSwitchController
+
+            ms_ctrl = MasterSwitchController(project_root=project_root)
+            if not ms_ctrl.is_master_enabled():
+                logger.info(
+                    "[Master Switch] Khóa Master (`master_switch`) đang TẮT trong schedule_config.json -> Tạm nghỉ 60s..."
+                )
+                _interruptible_sleep(60, reason="Khóa Master đang TẮT")
+                continue
+
+            if ms_ctrl.is_clear_enabled():
+                ms_ctrl.run_switch_4_clear()
+
             _run_scheduler_safe()
+
+            if not ms_ctrl.is_factory_enabled():
+                logger.info(
+                    "[Switch 1 - Factory] Công tắc 1 (`switch_1_factory`) đang TẮT -> Bỏ qua cào video, chỉ canh giờ đăng bài..."
+                )
+                _interruptible_sleep(60, reason="Switch 1 Factory đang TẮT")
+                continue
 
             for ch_id in channel_sequence:
                 if stop_requested:

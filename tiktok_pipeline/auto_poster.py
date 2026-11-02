@@ -3303,6 +3303,12 @@ class TikTokAutoPoster:
         Giữ nguyên 100% khung giờ đăng bài mỗi ngày của 4 kênh trong `schedule_config.json`
         (`channel_post_times`) và lệnh kích hoạt đăng ngay từ xa (`remote_trigger_post_now`).
         """
+        from .master_switch_controller import MasterSwitchController
+
+        ms_ctrl = MasterSwitchController(project_root=self.project_root)
+        if not ms_ctrl.is_upload_enabled("tiktok"):
+            return []
+
         cfg = self.ensure_schedule_config()
         ch_times_map: Dict[str, List[str]] = cfg.get("channel_post_times") or {}
         default_times: List[str] = cfg.get("default_post_times") or ["08:00", "12:30", "20:00"]
@@ -3427,6 +3433,13 @@ class TikTokAutoPoster:
                             history[slot_key] = done_ts
                             history[f"last_upload_ts_{ch_folder}"] = done_ts
                             self._save_post_history(history)
+                            try:
+                                v_name = Path(str(res.get("moved_to") or res.get("filename") or "")).name
+                                if v_name:
+                                    ms_ctrl.mark_platform_uploaded(ch_folder, v_name, "tiktok")
+                                ms_ctrl.run_switch_4_clear()
+                            except Exception:
+                                pass
                             posted_results.append(res)
                         else:
                             # Nếu kho ready/ trống chưa có video để đăng, trả lại slot_key để thử lại khi có video mới
@@ -3544,6 +3557,12 @@ class TikTokAutoPoster:
         mỗi kênh tương tác `filter_24h_videos_per_session` (mặc định 10 video).
         Nếu Cửa sổ 1 (`--stream-upload`) bị dừng khi vắng nhà, tự động hồi sinh Cửa sổ 1 từ xa.
         """
+        from .master_switch_controller import MasterSwitchController
+
+        ms_ctrl = MasterSwitchController(project_root=self.project_root)
+        if not ms_ctrl.is_interact_enabled("tiktok"):
+            return {}
+
         try:
             self._auto_revive_stream1_upload_if_dead()
         except Exception:
@@ -3971,6 +3990,11 @@ class TikTokAutoPoster:
         - Hỗ trợ `warmup_reset_id` trong `schedule_config.json` để kích hoạt mở kênh lướt ngay lập tức từ xa.
         """
         if platform.machine() != "x86_64":
+            return
+
+        from .master_switch_controller import MasterSwitchController
+
+        if not MasterSwitchController(project_root=self.project_root).is_interact_enabled("tiktok"):
             return
 
         cfg = self.ensure_schedule_config()

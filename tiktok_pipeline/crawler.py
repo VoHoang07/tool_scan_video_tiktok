@@ -570,6 +570,55 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "mẹo điện thoại cực hay #shorts",
         ],
     },
+    "channel_11_pet_comedy": {
+        "channel_id": "11",
+        "profile_key": "channel_11_pet_comedy",
+        "folder_name": "thu_cung_vui_nhon",
+        "description": "Thú cưng hài hước & Chó mèo lém lỉnh đời thật triệu view (Kênh số 3 trên Facebook Reels & YouTube Shorts)",
+        "is_funnel_satellite": False,
+        "seed_video_urls": [],
+        "seed_channels": [
+            "thucunghaihuoc.vn",
+            "meohaihuoc.official",
+            "chomeodangyeu",
+            "bosslay.official",
+        ],
+        "douyin_keywords": [
+            "萌宠搞笑日常",
+            "猫咪搞笑视频",
+            "狗狗成精了",
+            "宠物配音搞笑",
+            "猫咪迷惑行为",
+            "搞笑宠物合集",
+            "会说话的猫狗",
+        ],
+        "tiktok_keywords": [
+            "#thucunghaihuoc",
+            "#meohaihuoc",
+            "#chomeodangyeu",
+            "#bosslay",
+            "#thucungcute",
+            "#萌宠搞笑",
+            "#猫咪搞笑",
+        ],
+        "tiktok_challenge_ids": [
+            "1674607865397325",  # #萌宠出道计划
+            "1562727459956738",  # #猫咪
+            "1634934865901569",
+        ],
+        "douyin_challenge_ids": [
+            "1674607865397325",  # #萌宠出道计划
+            "1562727459956738",  # #猫咪
+            "1558052884817921",  # #萌宠
+            "1589012345678901",
+        ],
+        "multi_platform_keywords": [
+            "萌宠搞笑 猫咪 #shorts",
+            "狗狗搞笑日常 #shorts",
+            "thú cưng hài hước chó mèo #shorts",
+            "mèo hài hước đáng yêu #shorts",
+        ],
+    },
 }
 
 CHANNEL_ALIASES: Dict[str, str] = {
@@ -619,6 +668,10 @@ CHANNEL_ALIASES: Dict[str, str] = {
     "muu_luoc_nhan_sinh": "channel_10_tech_gadgets",
     "channel_10_tech_gadgets": "channel_10_tech_gadgets",
     "channel_10_ancient_wisdom": "channel_10_tech_gadgets",
+    "11": "channel_11_pet_comedy",
+    "channel_11": "channel_11_pet_comedy",
+    "thu_cung_vui_nhon": "channel_11_pet_comedy",
+    "channel_11_pet_comedy": "channel_11_pet_comedy",
 }
 
 LEGACY_CHANNEL_FOLDER_MAP: Dict[str, str] = {
@@ -632,6 +685,7 @@ LEGACY_CHANNEL_FOLDER_MAP: Dict[str, str] = {
     "channel_8": "an_vat_moi_ngay",
     "channel_9": "nuoi_con_eq",
     "channel_10": "phu_kien_tien_ich",
+    "channel_11": "thu_cung_vui_nhon",
     "video_ai_hay": "video_AI_hay",
     "video_AI_hay": "video_AI_hay",
     "baby_ai": "baby_AI",
@@ -646,6 +700,7 @@ LEGACY_CHANNEL_FOLDER_MAP: Dict[str, str] = {
     "nuoi_con_eq": "nuoi_con_eq",
     "phu_kien_tien_ich": "phu_kien_tien_ich",
     "muu_luoc_nhan_sinh": "phu_kien_tien_ich",
+    "thu_cung_vui_nhon": "thu_cung_vui_nhon",
 }
 
 # Danh sách chủ đề kể chuyện chuẩn trên Douyin & Challenge IDs tương ứng
@@ -2225,7 +2280,8 @@ class StoryAudioCrawler:
                         continue
 
                     duration = float(v.get("duration") or 0.0)
-                    if not (self.min_duration <= duration <= self.max_duration):
+                    max_allowed_dur = 85.0 if channel_profile_key != "channel_3_novel_drama" else self.max_duration
+                    if not (self.min_duration <= duration <= max_allowed_dur):
                         continue
 
                     music_info = v.get("music_info") or {}
@@ -2378,7 +2434,8 @@ class StoryAudioCrawler:
 
                     video_obj = item.get("video") or {}
                     duration = float(video_obj.get("duration") or 0.0) / 1000.0
-                    if not (self.min_duration <= duration <= self.max_duration):
+                    max_allowed_dur = 85.0 if genre_label != "channel_3_novel_drama" else self.max_duration
+                    if not (self.min_duration <= duration <= max_allowed_dur):
                         continue
 
                     raw_desc = str(item.get("desc") or "")
@@ -2999,6 +3056,12 @@ class StoryAudioCrawler:
                         )
 
         self._upgrade_master_csv_schema()
+        try:
+            from .master_switch_controller import MasterSwitchController
+
+            MasterSwitchController(project_root=self.project_root).run_switch_4_clear()
+        except Exception as clr_exc:
+            logger.debug(f"[Switch 4 Clear] Bỏ qua lỗi phụ khi dọn posted/: {clr_exc}")
         return auto_moved
 
     @staticmethod
@@ -3196,6 +3259,11 @@ class StoryAudioCrawler:
                     "Bảo bối công nghệ nhỏ gọn giá hạt dẻ nhưng giải quyết bao nhiêu bất tiện",
                     "Tiện ích bàn làm việc thông minh mà ai dùng điện thoại cũng nên biết",
                 ],
+                "thu_cung_vui_nhon": [
+                    "Pha xử lý đi vào lòng đất của hoàng thượng mèo khiến con sen dở khóc dở cười",
+                    "Khoảnh khắc lém lỉnh siêu hài hước của boss cưng trong nhà xem mà cười xỉu",
+                    "Khi chó mèo thông minh diễn sâu không kém gì diễn viên chuyên nghiệp",
+                ],
             }
             topic_list = fallback_topics.get(ch_folder, fallback_topics["video_AI_hay"])
             idx = int(video_id[-4:]) % len(topic_list) if (video_id and video_id[-4:].isdigit()) else 0
@@ -3308,8 +3376,14 @@ class StoryAudioCrawler:
                         st = "READY"
                         pat = ""
                         needs_rewrite = True
+                elif st == "POSTED":
+                    # Giữ lại lịch sử POSTED trong CSV kể cả khi file .mp4 trong posted/ đã được Switch 4 Clear dọn dẹp để giải phóng ổ cứng
+                    new_fn = f"{ch}/posted/{basename}"
+                    if fn != new_fn:
+                        fn = new_fn
+                        needs_rewrite = True
                 else:
-                    # File không còn tồn tại trong cả ready/ lẫn posted/ -> loại bỏ dòng rác khỏi CSV
+                    # File READY không còn tồn tại trong cả ready/ lẫn posted/ -> loại bỏ dòng rác khỏi CSV
                     needs_rewrite = True
                     continue
             elif len(parts) == 2 and parts[0] in LEGACY_CHANNEL_FOLDER_MAP:

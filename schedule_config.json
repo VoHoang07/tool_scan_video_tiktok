@@ -1,5 +1,32 @@
 {
   "timezone": "Asia/Ho_Chi_Minh",
+  "system_switches": {
+    "master_switch": true,
+    "switch_1_factory": {
+      "enabled": true,
+      "max_ready_per_niche": 5,
+      "short_video_duration_range": [
+        15,
+        85
+      ]
+    },
+    "switch_2_upload": {
+      "tiktok": true,
+      "fb_reels": false,
+      "yt_shorts": false,
+      "batch_single_chrome_session": true
+    },
+    "switch_3_interact": {
+      "tiktok": true,
+      "fb_reels": false,
+      "yt_shorts": false
+    },
+    "switch_4_clear": {
+      "enabled": true,
+      "keep_top_posted_per_channel": 8,
+      "clear_workspace_temp_older_than_hours": 2.0
+    }
+  },
   "active_channels": [
     "video_AI_hay",
     "baby_AI",
@@ -16,7 +43,8 @@
     "phu_nu_khi_chat",
     "an_vat_moi_ngay",
     "nuoi_con_eq",
-    "phu_kien_tien_ich"
+    "phu_kien_tien_ich",
+    "thu_cung_vui_nhon"
   ],
   "active_filter_24h_channels": [
     "video_AI_hay",
