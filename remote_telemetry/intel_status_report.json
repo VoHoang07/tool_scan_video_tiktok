@@ -1,70 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 10:21:17",
+    "timestamp": "2026-11-02 10:24:11",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "nuoi_con_eq",
-          "video_id": "7703090917443489031",
-          "video_url": "https://www.tiktok.com/@cherry.pham101/video/7703090917443489031",
-          "creator_handle": "@cherry.pham101",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": true,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611021121124B2F515BC697F79D4FA0\",\"now\":1793589672000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611021121124B2F515BC697F79D4FA0\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 882.21875,
-              "y": 471,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "7"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 882.21875,
-                "y": 471,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "8"
-              },
-              "red": true,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            }
-          },
-          "interacted_at": "2026-11-02 10:21:16",
-          "follow_back_window_until": "2026-11-03 10:21:16"
-        }
-      ]
+      "scrolled_videos": 13,
+      "elapsed_seconds": 164.7,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 10:24:11",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "elapsed_seconds": 164.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 10:21:17",
       "machine_arch": "x86_64",
@@ -461,18 +420,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 08:54:16",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "elapsed_seconds": 152.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
