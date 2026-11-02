@@ -286,7 +286,16 @@ class VideoDownloader:
     ) -> str:
         """Tải video bằng thư viện yt-dlp với User-Agent và headers phù hợp."""
         user_agent = DESKTOP_UA
-        referer = "https://www.douyin.com/" if platform == "douyin" else "https://www.tiktok.com/"
+        referer_map = {
+            "douyin": "https://www.douyin.com/",
+            "tiktok": "https://www.tiktok.com/",
+            "facebook_reels": "https://www.facebook.com/",
+            "instagram_reels": "https://www.instagram.com/",
+            "youtube_shorts": "https://www.youtube.com/",
+            "bilibili": "https://www.bilibili.com/",
+            "xiaohongshu": "https://www.xiaohongshu.com/",
+        }
+        referer = referer_map.get(platform, "https://www.tiktok.com/")
 
         temp_template = str(self.work_dir / "ytdlp_raw.%(ext)s")
         ydl_opts = {
@@ -301,9 +310,9 @@ class VideoDownloader:
                 "User-Agent": user_agent,
                 "Referer": referer,
                 "Accept": "*/*",
-                "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,vi;q=0.6",
+                "Accept-Language": "vi-VN,vi;q=0.9,zh-CN,zh;q=0.8,en-US;q=0.7",
             },
-            " retries": 3,
+            "retries": 3,
             "fragment_retries": 3,
         }
 
@@ -314,10 +323,17 @@ class VideoDownloader:
             cookie_header = "; ".join(f"{k}={v}" for k, v in guest_cookies.items())
             ydl_opts["http_headers"]["Cookie"] = cookie_header
 
-        logger.info(f"Đang tải video bằng yt-dlp từ: {url}")
+        logger.info(f"Đang tải video bằng yt-dlp từ [{platform}]: {url}")
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info = ydl.extract_info(url, download=True)
-            title = info.get("title") or info.get("id") or "video"
+            title = str(info.get("title") or info.get("description") or info.get("id") or "video").strip()
+            # Làm sạch tiền tố thống kê của Facebook Reels ("58K views · 613 reactions | ...")
+            title = re.sub(
+                r"^[\d.,KkMmBb]+\s*(?:views|lượt xem)\s*·\s*[\d.,KkMmBb]+\s*(?:reactions|lượt thích|cảm xúc)\s*\|\s*",
+                "",
+                title,
+                flags=re.IGNORECASE,
+            ).strip()
 
         # Tìm file vừa tải về và chuyển thành raw_video.mp4
         candidates = list(self.work_dir.glob("ytdlp_raw.*"))

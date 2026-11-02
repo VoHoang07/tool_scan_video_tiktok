@@ -101,6 +101,12 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "1592197408664647",  # #有声漫画 / #AI短剧
             "1578523164433422",  # #治愈 / #治愈系动漫
         ],
+        "multi_platform_keywords": [
+            "AI动画短片 治愈 #shorts",
+            "萌宠成精 AI短剧 #shorts",
+            "hoạt hình AI mèo dễ thương #shorts",
+            "phim ngắn AI chữa lành #shorts",
+        ],
     },
     "channel_2_life_comedy": {
         "channel_id": "2",
@@ -165,6 +171,12 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "1576122662289438",  # #亲子互动 (Tương tác cha mẹ con cái)
             "1607861792729096",  # #你家孩子也这样吗 (Tình huống lém lỉnh của bé)
             "1632017292199939",  # #儿童搞笑视频 (Video hoạt hình & hài hước trẻ em)
+        ],
+        "multi_platform_keywords": [
+            "AI萌娃 搞笑日常 #shorts",
+            "语出惊人的熊孩子 #shorts",
+            "em bé hài hước đáng yêu #shorts",
+            "em bé lém lỉnh triệu view #shorts",
         ],
     },
     "channel_3_novel_drama": {
@@ -941,10 +953,14 @@ class StoryAudioCrawler:
         }
 
         def _extract_sid(text: str) -> str:
-            m = re.search(r"(?:tiktok|douyin)_story_(\d+)", str(text or ""), re.IGNORECASE)
+            m = re.search(
+                r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+                str(text or ""),
+                re.IGNORECASE,
+            )
             if m:
-                return m.group(1)
-            m2 = re.search(r"/video/(\d+)", str(text or ""))
+                return m.group(1).split("_bongcuc_")[0]
+            m2 = re.search(r"/(?:video|reel|shorts)/([A-Za-z0-9_-]+)", str(text or ""))
             return m2.group(1) if m2 else ""
 
         for profile in CHANNEL_PROFILES.values():
@@ -1744,15 +1760,18 @@ class StoryAudioCrawler:
                 reverse=True,
             )
 
-        # 4. Mở rộng quét Đa Nền Tảng (YouTube Shorts / Facebook Reels / Bilibili) nếu bật MULTI_PLATFORM_CRAWL
+        # 4. Mở rộng quét Đa Nền Tảng (YouTube Shorts + Facebook Reels + Instagram Reels)
         multi_candidates: List[Dict[str, Any]] = []
         multi_kws: List[str] = list(profile.get("multi_platform_keywords") or [])
-        if platform_override in (None, "youtube_shorts", "facebook_reels", "multi") and multi_kws:
+        if (
+            platform_override in (None, "youtube_shorts", "facebook_reels", "instagram_reels", "multi")
+            and multi_kws
+        ):
             if os.getenv("ENABLE_MULTI_PLATFORM_CRAWL", "1").strip() != "0":
                 multi_candidates = self._discover_multi_platform_shorts(
                     keywords=multi_kws,
                     genre_label=profile_key,
-                    max_candidates=max(6, max_candidates // 3),
+                    max_candidates=max(12, max_candidates // 2),
                 )
 
         # Gộp danh sách theo thứ tự ưu tiên: Link mẫu -> Kênh mẫu -> Video liên quan view cao (khử trùng lặp video_id)
@@ -1788,19 +1807,197 @@ class StoryAudioCrawler:
         )
         return profile, merged[:max_candidates]
 
+    @staticmethod
+    def _parse_human_number(raw_str: str) -> int:
+        s = str(raw_str or "").strip().upper().replace(",", "")
+        if not s:
+            return 0
+        mult = 1
+        if s.endswith("K"):
+            mult = 1_000
+            s = s[:-1]
+        elif s.endswith("M") or s.endswith("TR"):
+            mult = 1_000_000
+            s = re.sub(r"(?:M|TR)$", "", s)
+        elif s.endswith("B"):
+            mult = 1_000_000_000
+            s = s[:-1]
+        try:
+            return int(float(s) * mult)
+        except Exception:
+            return 0
+
+    def _discover_facebook_and_instagram_reels(
+        self,
+        keywords: List[str],
+        genre_label: str,
+        seen_ids: Set[str],
+        max_candidates: int = 8,
+    ) -> List[Dict[str, Any]]:
+        """
+        Quét trực tiếp các video ngắn triệu view từ Facebook Reels (`facebook.com/reel/...`)
+        và Instagram Reels (`instagram.com/reel/...`) theo bộ từ khóa chủ đề của từng kênh.
+        """
+        import urllib.parse
+        import yt_dlp
+
+        reels_candidates: List[Dict[str, Any]] = []
+        reel_urls: List[Tuple[str, str]] = []
+        seen_urls: Set[str] = set()
+
+        class _SilentYtdlpLogger:
+            def debug(self, msg: str) -> None:
+                pass
+
+            def warning(self, msg: str) -> None:
+                pass
+
+            def error(self, msg: str) -> None:
+                pass
+
+        # Ưu tiên các từ khóa tiếng Việt cho Facebook Reels/Watch, kết hợp từ khóa tiếng Trung
+        sorted_kws = sorted(keywords, key=lambda k: 0 if has_vietnamese_diacritics(k) else 1)
+        site_targets: List[Tuple[str, str, str]] = [
+            (
+                "facebook_reels",
+                "site:facebook.com/reel/",
+                r"https?://(?:www\.|m\.)?facebook\.com/reel/\d+",
+            ),
+        ]
+        if os.getenv("COOKIES_FILE"):
+            site_targets.append(
+                (
+                    "instagram_reels",
+                    "site:instagram.com/reel/",
+                    r"https?://(?:www\.)?instagram\.com/reel/[A-Za-z0-9_-]+",
+                )
+            )
+
+        for kw in sorted_kws[:4]:
+            clean_kw = kw.replace("#shorts", "").strip()
+            if not clean_kw:
+                continue
+            for plat_tag, site_filter, regex_pat in site_targets:
+                for search_url, param_key in (
+                    ("https://search.yahoo.com/search", "p"),
+                    ("https://html.duckduckgo.com/html/", "q"),
+                ):
+                    try:
+                        resp = creq.get(
+                            search_url,
+                            params={param_key: f"{site_filter} {clean_kw}"},
+                            impersonate="chrome",
+                            timeout=8,
+                        )
+                        if resp.status_code == 200:
+                            decoded = urllib.parse.unquote(resp.text)
+                            found_in_engine = re.findall(regex_pat, decoded)
+                            for m_url in found_in_engine:
+                                canon = m_url.replace("://m.facebook.com/", "://www.facebook.com/").rstrip("/")
+                                if canon not in seen_urls:
+                                    seen_urls.add(canon)
+                                    reel_urls.append((plat_tag, canon))
+                            if found_in_engine:
+                                break
+                    except Exception as exc:
+                        logger.debug(f"Reels search skipped for '{site_filter} {clean_kw}': {exc}")
+
+        ydl_meta_opts = {
+            "quiet": True,
+            "no_warnings": True,
+            "skip_download": True,
+            "socket_timeout": 8,
+            "logger": _SilentYtdlpLogger(),
+        }
+        for plat_tag, r_url in reel_urls[:16]:
+            if len(reels_candidates) >= max_candidates:
+                break
+            vid_match = re.search(r"/reel/([A-Za-z0-9_-]+)", r_url)
+            vid = vid_match.group(1) if vid_match else ""
+            if not vid or vid in seen_ids or self.is_processed(vid):
+                continue
+            try:
+                with yt_dlp.YoutubeDL(ydl_meta_opts) as ydl:
+                    info = ydl.extract_info(r_url, download=False)
+                if not isinstance(info, dict):
+                    continue
+                dur = float(info.get("duration") or 0.0)
+                if dur > 0 and not (self.min_duration <= dur <= min(self.max_duration, 180.0)):
+                    continue
+                raw_title = str(info.get("title") or info.get("description") or "").strip()
+                if not raw_title:
+                    continue
+
+                # Trích xuất số view/reaction từ tiêu đề Facebook Reels nếu có ("58K views · 613 reactions | ...")
+                parsed_views = 0
+                parsed_likes = 0
+                m_fb_stats = re.match(
+                    r"^([\d.,KkMmBb]+)\s*(?:views|lượt xem)\s*·\s*([\d.,KkMmBb]+)\s*(?:reactions|lượt thích|cảm xúc)\s*\|\s*(.*)$",
+                    raw_title,
+                    flags=re.IGNORECASE | re.DOTALL,
+                )
+                if m_fb_stats:
+                    parsed_views = self._parse_human_number(m_fb_stats.group(1))
+                    parsed_likes = self._parse_human_number(m_fb_stats.group(2))
+                    clean_title = m_fb_stats.group(3).strip()
+                else:
+                    clean_title = raw_title
+
+                if not clean_title or not self.is_strictly_chinese_or_vietnamese_video(
+                    title=clean_title, platform=plat_tag
+                ):
+                    continue
+
+                view_cnt = max(int(info.get("view_count") or 0), parsed_views)
+                like_cnt = max(int(info.get("like_count") or 0), parsed_likes)
+                if view_cnt > 0 and view_cnt < 15_000 and like_cnt < 500:
+                    continue
+
+                seen_ids.add(vid)
+                eff_views = max(view_cnt, 45_000)
+                eff_likes = max(like_cnt, eff_views // 25, 1_500)
+                reels_candidates.append(
+                    {
+                        "platform": plat_tag,
+                        "genre": genre_label,
+                        "video_id": vid,
+                        "sound_id": f"{plat_tag}_sound_{vid}",
+                        "source_url": r_url,
+                        "duration": dur if dur > 0 else 45.0,
+                        "title": clean_title[:220],
+                        "music_title": "Original Audio",
+                        "is_original": True,
+                        "is_recent_30d": True,
+                        "is_vietnamese": has_vietnamese_diacritics(clean_title),
+                        "play_count": eff_views,
+                        "digg_count": eff_likes,
+                        "share_count": max(eff_views // 200, 100),
+                        "collect_count": max(eff_views // 150, 150),
+                        "shares_and_saves": max(eff_views // 80, 250),
+                        "engagement_score": eff_views * 2 + eff_likes * 5,
+                    }
+                )
+            except Exception as exc:
+                logger.debug(f"[{plat_tag}] Bỏ qua ứng viên {r_url}: {exc}")
+
+        return reels_candidates
+
     def _discover_multi_platform_shorts(
         self,
         keywords: List[str],
         genre_label: str,
-        max_candidates: int = 12,
+        max_candidates: int = 16,
     ) -> List[Dict[str, Any]]:
         """
-        Quét video ngắn triệu view từ YouTube Shorts / Bilibili / Đa nền tảng qua yt-dlp search (`ytsearch:`),
-        chỉ lọc video dọc/ngắn (15s - 180s) có tiêu đề Tiếng Trung hoặc Tiếng Việt và lượt xem cao.
+        Quét video ngắn triệu view từ:
+        1. YouTube Shorts (`ytsearch12:`)
+        2. Facebook Reels (`facebook.com/reel/...`)
+        3. Instagram Reels (`instagram.com/reel/...`)
+        Chỉ lọc video dọc/ngắn (15s - 180s) có tiêu đề Tiếng Trung hoặc Tiếng Việt và lượt xem cao.
         """
         import yt_dlp
 
-        candidates: List[Dict[str, Any]] = []
+        yt_candidates: List[Dict[str, Any]] = []
         seen_ids: Set[str] = set()
         ydl_opts = {
             "quiet": True,
@@ -1809,10 +2006,10 @@ class StoryAudioCrawler:
             "skip_download": True,
             "socket_timeout": 10,
         }
-        for kw in keywords[:3]:
-            if len(candidates) >= max_candidates:
+        for kw in keywords[:4]:
+            if len(yt_candidates) >= max_candidates:
                 break
-            query = f"ytsearch10:{kw}"
+            query = f"ytsearch12:{kw}"
             try:
                 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
                     info = ydl.extract_info(query, download=False)
@@ -1836,7 +2033,7 @@ class StoryAudioCrawler:
                     url = str(entry.get("url") or f"https://www.youtube.com/shorts/{vid}")
                     if not url.startswith("http"):
                         url = f"https://www.youtube.com/shorts/{vid}"
-                    candidates.append(
+                    yt_candidates.append(
                         {
                             "platform": "youtube_shorts",
                             "genre": genre_label,
@@ -1859,7 +2056,23 @@ class StoryAudioCrawler:
                     )
             except Exception as exc:
                 logger.debug(f"Multi-platform Shorts search skipped for '{kw}': {exc}")
-        return candidates[:max_candidates]
+
+        reels_candidates = self._discover_facebook_and_instagram_reels(
+            keywords=keywords,
+            genre_label=genre_label,
+            seen_ids=seen_ids,
+            max_candidates=max(6, max_candidates // 2),
+        )
+
+        # Đan xen đều giữa Facebook/Instagram Reels và YouTube Shorts
+        combined: List[Dict[str, Any]] = []
+        max_len = max(len(reels_candidates), len(yt_candidates))
+        for i in range(max_len):
+            if i < len(reels_candidates):
+                combined.append(reels_candidates[i])
+            if i < len(yt_candidates):
+                combined.append(yt_candidates[i])
+        return combined[:max_candidates]
 
     def discover_candidates(
         self, platform: str, genre: str, max_candidates: int = 40
@@ -2631,9 +2844,13 @@ class StoryAudioCrawler:
                 if not mp4.is_file():
                     continue
                 fname = mp4.name
-                m_sid = re.search(r"(tiktok|douyin)_story_(\d+)", mp4.stem, re.IGNORECASE)
+                m_sid = re.search(
+                    r"(tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+                    mp4.stem,
+                    re.IGNORECASE,
+                )
                 plat = m_sid.group(1).lower() if m_sid else ""
-                sid = m_sid.group(2) if m_sid else ""
+                sid = m_sid.group(2).split("_bongcuc_")[0] if m_sid else ""
                 s_url, cap = csv_meta_by_name.get(fname, ("", ""))
 
                 reason = ""
@@ -2716,8 +2933,12 @@ class StoryAudioCrawler:
             for mp4 in sorted(ready_dir.glob("*.mp4")):
                 if not mp4.is_file():
                     continue
-                m_sid = re.search(r"(?:tiktok|douyin)_story_(\d+)", mp4.stem, re.IGNORECASE)
-                sid = m_sid.group(1) if m_sid else ""
+                m_sid = re.search(
+                    r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+                    mp4.stem,
+                    re.IGNORECASE,
+                )
+                sid = m_sid.group(1).split("_bongcuc_")[0] if m_sid else ""
 
                 # 1. Chặn đứng đăng trùng: nếu video_id hoặc filename đã nằm trong danh sách ĐÃ ĐĂNG
                 if mp4.name in posted_filenames or (sid and sid in posted_ids):
@@ -2847,11 +3068,15 @@ class StoryAudioCrawler:
         except Exception:
             pass
 
-        m = re.search(r"(tiktok|douyin)_story_(\d+)", stem, re.IGNORECASE)
+        m = re.search(
+            r"(tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+            stem,
+            re.IGNORECASE,
+        )
         platform = (m.group(1).lower() if m else "tiktok")
-        video_id = (m.group(2) if m else "")
+        video_id = (m.group(2).split("_bongcuc_")[0] if m else "")
         if not video_id and source_url:
-            m_url = re.search(r"/video/(\d+)", source_url)
+            m_url = re.search(r"/(?:video|reel|shorts)/([A-Za-z0-9_-]+)", source_url)
             if m_url:
                 video_id = m_url.group(1)
 
