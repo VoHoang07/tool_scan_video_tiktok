@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 21:20:53",
+    "timestamp": "2026-11-02 21:26:27",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261101_235842_tiktok_story_990014402_bongcuc_v2_s144_p2.mp4",
-      "caption": "🔥 Bông Cúc Số 144 [Phần 2/7]: Tôi Ghét Nhất Những Lời Xin Lỗi Muộn Màng. Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng! Cùng nghe tiếp nhé!",
-      "hashtags": "#bongcucso144 #bongcucaudio #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya #gocnhinkhuya #fyp",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "elapsed_seconds": 151.6,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 21:26:27",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "elapsed_seconds": 151.6,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 21:20:53",
       "machine_arch": "x86_64",
@@ -193,18 +201,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 155.3,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 19:43:58",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "elapsed_seconds": 154.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
