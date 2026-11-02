@@ -328,6 +328,13 @@ class TikTokAutoPoster:
 
         if fh is not None:
             try:
+                fh.seek(0)
+                fh.truncate()
+                fh.write("idle\n")
+                fh.flush()
+            except Exception:
+                pass
+            try:
                 fcntl.flock(fh.fileno(), fcntl.LOCK_UN)
             except Exception:
                 pass
@@ -3847,7 +3854,7 @@ class TikTokAutoPoster:
         except Exception:
             pass
 
-    def warmup_browse_channel(self, ch_folder: str, browse_seconds: int = 150) -> None:
+    def warmup_browse_channel(self, ch_folder: str, browse_seconds: int = 150) -> bool:
         """Lướt FYP TikTok tự nhiên bằng CoreGraphics CGEvent (click màn hình chạy video + cuộn mượt) để TikTok nhận diện account thật."""
         user_data_dir = self.profiles_root / ch_folder
         if not user_data_dir.exists():
@@ -3856,7 +3863,7 @@ class TikTokAutoPoster:
         lock_fh = self._acquire_browser_process_lock(max_wait_seconds=240)
         if lock_fh is None:
             logger.info(f"[Warmup FYP] [{ch_folder}] Trình duyệt đang bận ở phiên khác, bỏ qua lượt này.")
-            return
+            return False
 
         import threading
 
@@ -3935,6 +3942,7 @@ class TikTokAutoPoster:
                         )
                     except Exception:
                         pass
+                    return scroll_count > 0
                 finally:
                     try:
                         context.close()
@@ -3942,6 +3950,7 @@ class TikTokAutoPoster:
                         pass
         except Exception as exc:
             logger.error(f"[Warmup FYP] [{ch_folder}] Lỗi: {exc}")
+            return False
         finally:
             try:
                 watchdog_timer.cancel()
@@ -4049,9 +4058,14 @@ class TikTokAutoPoster:
             return
 
         logger.info(f"[Warmup Auto] Chọn kênh [{best_ch}] để mở TikTok lướt FYP ({browse_seconds}s)...")
-        self.warmup_browse_channel(best_ch, browse_seconds=browse_seconds)
+        completed = self.warmup_browse_channel(best_ch, browse_seconds=browse_seconds)
+        if not completed:
+            logger.warning(
+                f"[Warmup Auto] Phiên lướt kênh [{best_ch}] chưa hoàn tất trọn vẹn -> Giữ nguyên vị trí ưu tiên để lướt bù ở lượt kế tiếp!"
+            )
+            return
 
-        # Cập nhật lịch sử sau khi lướt xong
+        # Cập nhật lịch sử sau khi lướt xong trọn vẹn
         finish_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         ch_data = history.get(best_ch, {})
         if not isinstance(ch_data, dict):

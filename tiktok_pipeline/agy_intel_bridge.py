@@ -602,28 +602,46 @@ def run_bridge_daemon(poll_seconds: int = 20) -> None:
                     }
                 )
 
-            # 1c. Tự động kiểm tra khóa trình duyệt bị treo quá 7 phút (420s) để tự giải cứu tại chỗ
+            # 1c. Tự động kiểm tra khóa trình duyệt bị giữ thực sự (`fcntl.flock`) quá 7 phút (420s) để tự giải cứu tại chỗ
             lock_file = PROJECT_ROOT / "workspace_temp" / ".tiktok_browser_session.lock"
             if lock_file.exists():
                 try:
-                    lock_age = time.time() - lock_file.stat().st_mtime
-                    if lock_age > 420:
-                        print(
-                            f"[{_now_str()}] [AGY Bridge Auto-Healer] Phát hiện khóa trình duyệt treo {int(lock_age)}s -> Tự động giải phóng Chrome!",
-                            flush=True,
-                        )
-                        heal_report = _unstick_chrome_and_locks()
-                        outbox = {
-                            "updated_at": _now_str(),
-                            "latest_result": {
-                                "cmd_id": f"auto_heal_{int(time.time())}",
-                                "action": "auto_heal_stuck_browser_lock",
-                                "executed_at": _now_str(),
-                                "unstick_report": heal_report,
-                                "system_health": _collect_system_health(),
-                            },
-                        }
-                        _git_sync_and_push_outbox(outbox)
+                    probe_fh = open(lock_file, "a+", encoding="utf-8")
+                    is_actively_locked = False
+                    try:
+                        fcntl.flock(probe_fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                        fcntl.flock(probe_fh.fileno(), fcntl.LOCK_UN)
+                    except BlockingIOError:
+                        is_actively_locked = True
+                    finally:
+                        probe_fh.close()
+
+                    if is_actively_locked:
+                        content_txt = lock_file.read_text(encoding="utf-8", errors="ignore").strip()
+                        lock_age = time.time() - lock_file.stat().st_mtime
+                        if "ts=" in content_txt:
+                            try:
+                                ts_val = int(content_txt.split("ts=")[1].split()[0])
+                                lock_age = time.time() - ts_val
+                            except Exception:
+                                pass
+                        if lock_age > 420:
+                            print(
+                                f"[{_now_str()}] [AGY Bridge Auto-Healer] Phát hiện khóa trình duyệt bị giữ treo {int(lock_age)}s -> Tự động giải phóng Chrome!",
+                                flush=True,
+                            )
+                            heal_report = _unstick_chrome_and_locks()
+                            outbox = {
+                                "updated_at": _now_str(),
+                                "latest_result": {
+                                    "cmd_id": f"auto_heal_{int(time.time())}",
+                                    "action": "auto_heal_stuck_browser_lock",
+                                    "executed_at": _now_str(),
+                                    "unstick_report": heal_report,
+                                    "system_health": _collect_system_health(),
+                                },
+                            }
+                            _git_sync_and_push_outbox(outbox)
                 except Exception:
                     pass
 
