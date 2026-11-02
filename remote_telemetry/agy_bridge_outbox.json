@@ -1,32 +1,33 @@
 {
-  "updated_at": "2026-11-02 22:47:45",
+  "updated_at": "2026-11-02 22:52:41",
   "latest_result": {
-    "cmd_id": "heartbeat_1793634464",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-02 22:47:44",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793634761",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-02 22:52:41",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-02 22:52:41"
+    },
     "system_health": {
-      "timestamp": "2026-11-02 22:47:45",
+      "timestamp": "2026-11-02 22:52:41",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 130.8,
+      "lock_file_age_seconds": null,
       "processes": [
-        "52776 06-05:12:33 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
-        "99294    23:20:10 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296    23:20:10 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "71111    16:14:47 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "71112    16:14:47 caffeinate ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "95669    23:32:10 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "52776 06-05:17:29 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload",
+        "99294    23:25:06 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296    23:25:06 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "71111    16:19:43 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "71112    16:19:43 caffeinate ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "95669    23:37:06 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "KÊNH               | CHỦ ĐỀ NGÁCH (PROFILE)     |  READY (CHỜ ĐĂNG) |  POSTED (ĐÃ ĐĂNG) |  TỔNG CỘNG",
-        "----------------------------------------------------------------------------------------------------",
-        "video_AI_hay       | channel_1_ai_animation     |                 5 |                 8 |         13",
-        "baby_AI            | channel_2_life_comedy      |                 5 |                 8 |         13",
         "audio_dem_khuyen   | channel_3_novel_drama      |                 5 |                 8 |         13",
         "tu_chan_gioi       | channel_4_ai_cultivation   |                 5 |                 8 |         13",
         "meo_vat_gia_dinh   | channel_5_home_gadgets     |                 0 |                 0 |          0",
@@ -40,10 +41,13 @@
         "TỔNG KẾT           | Toàn bộ 11 kênh TikTok     |                20 |                32 |         52",
         "====================================================================================================",
         "Master CSV: /Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
-        "[22:47:19] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
-        "[22:47:19] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
-      ],
-      "lock_file_content": "pid=99294 ts=1793634334"
+        "[22:51:26] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
+        "[22:51:26] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
+        "[22:51:57] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (09e271d -> ca23bb7) | Auto-Telemetry [filter24h] audio_dem_khuyen at 2026-11-02 22:51:38",
+        "[22:52:19] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[22:52:20] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[22:52:26] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/hoangvo/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh."
+      ]
     }
   }
 }
