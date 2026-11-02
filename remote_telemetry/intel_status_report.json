@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 13:04:19",
+    "timestamp": "2026-11-02 13:07:14",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
     "channel": "nuoi_con_eq",
     "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
       "scrolled_videos": 12,
-      "elapsed_seconds": 157.0,
+      "elapsed_seconds": 163.7,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 13:07:14",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 163.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 13:04:19",
       "machine_arch": "x86_64",
@@ -239,18 +251,6 @@
             "follow_back_window_until": "2026-11-03 12:05:25"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-02 12:04:49",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 155.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
