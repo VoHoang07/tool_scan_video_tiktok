@@ -1,128 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 10:39:15",
+    "timestamp": "2026-11-02 10:52:00",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "interacted_count": 2,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "baby_AI",
-          "video_id": "7703129510035852564",
-          "video_url": "https://www.tiktok.com/@taphoatina1991/video/7703129510035852564",
-          "creator_handle": "@taphoatina1991",
-          "watched_seconds": 15.5,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261102113805269D8F74011D4B9CF422\",\"now\":1793590685000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261102113805269D8F74011D4B9CF422\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 833.40625,
-              "y": 461,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "50"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 833.40625,
-                "y": 461,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "51"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            }
-          },
-          "interacted_at": "2026-11-02 10:38:13",
-          "follow_back_window_until": "2026-11-03 10:38:13"
-        },
-        {
-          "channel": "baby_AI",
-          "video_id": "7703051608149462273",
-          "video_url": "https://www.tiktok.com/@toandao025/video/7703051608149462273",
-          "creator_handle": "@toandao025",
-          "watched_seconds": 26.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": true,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261102113855B459504151F8A5BA5CFE\",\"now\":1793590736000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261102113855B459504151F8A5BA5CFE\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "before": {
-              "x": 833.40625,
-              "y": 409,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "109"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 833.40625,
-                "y": 409,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "110"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@toandao025",
-              "nav_method": "spa_click",
-              "profile_url": "https://www.tiktok.com/@toandao025/photo/7701496192504450311?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Follow",
-              "init_relation": null,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-02 10:39:15",
-          "follow_back_window_until": "2026-11-03 10:39:15"
-        }
-      ]
+      "scrolled_videos": 12,
+      "elapsed_seconds": 150.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 10:52:00",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 150.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 10:39:15",
       "machine_arch": "x86_64",
@@ -625,18 +526,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 153.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 09:16:18",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "elapsed_seconds": 153.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
