@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 13:36:47",
+    "timestamp": "2026-11-02 13:39:40",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "video_file": "20261101_234357_tiktok_story_990014302_bongcuc_v2_s143_p2.mp4",
-      "caption": "🍂 Đêm khuya nghe truyện Bông Cúc Số 143 [Phần 2/8]: Tôi Là Bạn Gái Hờ Của Thiếu Gia Bảy Năm. Ai đang hóng phần tiếp theo thì vào nghe ngay nhé!",
-      "hashtags": "#bongcucso143 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "elapsed_seconds": 150.7,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 13:39:40",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "elapsed_seconds": 150.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 13:36:47",
       "machine_arch": "x86_64",
@@ -189,18 +197,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 155.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 12:37:27",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 13,
-        "elapsed_seconds": 161.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
