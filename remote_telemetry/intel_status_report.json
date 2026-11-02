@@ -1,17 +1,369 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 19:24:58",
+    "timestamp": "2026-11-02 19:27:43",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+    "event_type": "filter24h",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 157.1,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "interacted_count": 3,
+      "own_profile_stats": {
+        "uniqueId": "tu_chan_gioi0",
+        "domFollowing": "25",
+        "domFollowers": "14",
+        "domLikes": "112",
+        "sidebarFollowing": [
+          "/@tu_chan_gioi0",
+          "/@empiictehotle",
+          "/@shwksoowoo",
+          "/@suusii7878",
+          "/@chillgirl7949",
+          "/@minh.trit0696"
+        ]
+      },
+      "records": [
+        {
+          "channel": "tu_chan_gioi",
+          "video_id": "7703417172323847444",
+          "video_url": "https://www.tiktok.com/@chautejzd7a/video/7703417172323847444",
+          "creator_handle": "@chautejzd7a",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": false,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611022025318E2C2BC54518B8A4FF7B\",\"now\":1793622331000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202611022025318E2C2BC54518B8A4FF7B\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 872,
+              "y": 456,
+              "ariaPressed": false,
+              "svgColor": "rgba(255, 255, 255, .9)",
+              "likeCount": "23"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 872,
+                "y": 456,
+                "ariaPressed": true,
+                "svgColor": "rgba(255, 59, 92, 1)",
+                "likeCount": "24"
+              },
+              "red": true,
+              "server_digg_ok": true,
+              "server_digg_rejected": false
+            }
+          },
+          "interacted_at": "2026-11-02 19:25:49",
+          "follow_back_window_until": "2026-11-03 19:25:49"
+        },
+        {
+          "channel": "tu_chan_gioi",
+          "video_id": "7633345596576910610",
+          "video_url": "https://www.tiktok.com/@quatrungbebong01/video/7633345596576910610",
+          "creator_handle": "@quatrungbebong01",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": false,
+            "4_added_favorite": false,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Video hay và ý nghĩa quá bạn ơi, chúc kênh ngày càng phát triển nhé ❤️",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611022026278A3CADE23AB8D0E01EA0\",\"now\":1793622387000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202611022026278A3CADE23AB8D0E01EA0\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 872,
+              "y": 404,
+              "ariaPressed": false,
+              "svgColor": "rgba(255, 255, 255, .9)",
+              "likeCount": "62"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 872,
+                "y": 404,
+                "ariaPressed": true,
+                "svgColor": "rgba(255, 59, 92, 1)",
+                "likeCount": "63"
+              },
+              "red": true,
+              "server_digg_ok": true,
+              "server_digg_rejected": false
+            }
+          },
+          "interacted_at": "2026-11-02 19:26:40",
+          "follow_back_window_until": "2026-11-03 19:26:40"
+        },
+        {
+          "channel": "tu_chan_gioi",
+          "video_id": "7613212215558114568",
+          "video_url": "https://www.tiktok.com/@shop_giadung10/video/7613212215558114568",
+          "creator_handle": "@shop_giadung10",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": false,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110220272198B43812197FFBAD192B\",\"now\":1793622441000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"2026110220272198B43812197FFBAD192B\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 872,
+              "y": 404,
+              "ariaPressed": false,
+              "svgColor": "rgba(255, 255, 255, .9)",
+              "likeCount": "305"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 872,
+                "y": 404,
+                "ariaPressed": true,
+                "svgColor": "rgba(255, 59, 92, 1)",
+                "likeCount": "306"
+              },
+              "red": true,
+              "server_digg_ok": true,
+              "server_digg_rejected": false
+            }
+          },
+          "interacted_at": "2026-11-02 19:27:39",
+          "follow_back_window_until": "2026-11-03 19:27:39"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 19:27:43",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "tu_chan_gioi0",
+          "domFollowing": "25",
+          "domFollowers": "14",
+          "domLikes": "112",
+          "sidebarFollowing": [
+            "/@tu_chan_gioi0",
+            "/@empiictehotle",
+            "/@shwksoowoo",
+            "/@suusii7878",
+            "/@chillgirl7949",
+            "/@minh.trit0696"
+          ]
+        },
+        "records": [
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7703417172323847444",
+            "video_url": "https://www.tiktok.com/@chautejzd7a/video/7703417172323847444",
+            "creator_handle": "@chautejzd7a",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611022025318E2C2BC54518B8A4FF7B\",\"now\":1793622331000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202611022025318E2C2BC54518B8A4FF7B\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 872,
+                "y": 456,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "23"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 872,
+                  "y": 456,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(255, 59, 92, 1)",
+                  "likeCount": "24"
+                },
+                "red": true,
+                "server_digg_ok": true,
+                "server_digg_rejected": false
+              }
+            },
+            "interacted_at": "2026-11-02 19:25:49",
+            "follow_back_window_until": "2026-11-03 19:25:49"
+          },
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7633345596576910610",
+            "video_url": "https://www.tiktok.com/@quatrungbebong01/video/7633345596576910610",
+            "creator_handle": "@quatrungbebong01",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": false,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Video hay và ý nghĩa quá bạn ơi, chúc kênh ngày càng phát triển nhé ❤️",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611022026278A3CADE23AB8D0E01EA0\",\"now\":1793622387000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202611022026278A3CADE23AB8D0E01EA0\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 872,
+                "y": 404,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "62"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 872,
+                  "y": 404,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(255, 59, 92, 1)",
+                  "likeCount": "63"
+                },
+                "red": true,
+                "server_digg_ok": true,
+                "server_digg_rejected": false
+              }
+            },
+            "interacted_at": "2026-11-02 19:26:40",
+            "follow_back_window_until": "2026-11-03 19:26:40"
+          },
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7613212215558114568",
+            "video_url": "https://www.tiktok.com/@shop_giadung10/video/7613212215558114568",
+            "creator_handle": "@shop_giadung10",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110220272198B43812197FFBAD192B\",\"now\":1793622441000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"2026110220272198B43812197FFBAD192B\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 872,
+                "y": 404,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "305"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 872,
+                  "y": 404,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(255, 59, 92, 1)",
+                  "likeCount": "306"
+                },
+                "red": true,
+                "server_digg_ok": true,
+                "server_digg_rejected": false
+              }
+            },
+            "interacted_at": "2026-11-02 19:27:39",
+            "follow_back_window_until": "2026-11-03 19:27:39"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-02 19:24:58",
       "machine_arch": "x86_64",
@@ -177,18 +529,6 @@
       "details": {
         "scrolled_videos": 13,
         "elapsed_seconds": 164.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 18:18:01",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 160.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
