@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 20:06:06",
+    "timestamp": "2026-11-02 20:17:52",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261101_081340_tiktok_story_7633372395427941652.mp4",
-      "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xh #xuhuongtiktok",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 12,
+      "elapsed_seconds": 159.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 20:17:52",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 159.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 20:06:06",
       "machine_arch": "x86_64",
@@ -359,18 +367,6 @@
       "details": {
         "scrolled_videos": 11,
         "elapsed_seconds": 157.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 19:10:16",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 150.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
