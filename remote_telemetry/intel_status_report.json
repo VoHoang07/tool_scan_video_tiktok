@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 10:24:11",
+    "timestamp": "2026-11-02 10:31:40",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "elapsed_seconds": 164.7,
+      "scrolled_videos": 12,
+      "elapsed_seconds": 155.4,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 10:31:40",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 155.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 10:24:11",
       "machine_arch": "x86_64",
@@ -404,22 +416,6 @@
         "scrolled_videos": 12,
         "elapsed_seconds": 152.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 08:58:33",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261101_222322_tiktok_story_990014202_bongcuc_v2_s142_p2.mp4",
-        "caption": "📖 Bông Cúc Số 142 [Phần 2/6]: Người Lạ Năm Xưa Cuối Cùng Đã Trở Lại. Diễn biến tiếp theo cực kỳ kịch tính, nghe hết để xem màn đáp trả phía sau nhé!",
-        "hashtags": "#bongcucso142 #bongcucaudio #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya #gocnhinkhuya #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
