@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-02 08:15:59",
+    "timestamp": "2026-11-02 08:18:57",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261031_130747_douyin_story_7599812377127850560.mp4",
-      "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! \"Bạn có bao nhiêu điện thoại di động ở nhà với mức giá đó...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xuhuong #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 12,
+      "elapsed_seconds": 155.3,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-02 08:18:57",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 155.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-02 08:15:59",
       "machine_arch": "x86_64",
@@ -185,18 +193,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 165.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 05:16:19",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "elapsed_seconds": 158.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
