@@ -3197,6 +3197,12 @@ class TikTokAutoPoster:
 
         if channel_arg.strip().lower() == "all":
             target_channels = [p["folder_name"] for p in CHANNEL_PROFILES.values()]
+        elif "," in channel_arg:
+            target_channels = [
+                resolve_channel_profile(c.strip())["folder_name"]
+                for c in channel_arg.split(",")
+                if c.strip()
+            ]
         else:
             target_channels = [resolve_channel_profile(channel_arg)["folder_name"]]
 
@@ -3568,12 +3574,6 @@ class TikTokAutoPoster:
         except Exception:
             pass
 
-        # Đảm bảo cả những tiến trình Dòng 2 khởi chạy từ bản main.py cũ vẫn tự động lướt FYP nuôi kênh
-        try:
-            self.check_and_run_warmup_browse()
-        except Exception as wb_exc:
-            logger.debug(f"[Dòng 2 - Warmup FYP] Bỏ qua lỗi phụ: {wb_exc}")
-
         cfg = self.ensure_schedule_config()
         filter_enabled = bool(cfg.get("filter_24h_enabled", True))
         filter_count = max(1, min(int(cfg.get("filter_24h_videos_per_session", 3)), 3))
@@ -3879,7 +3879,7 @@ class TikTokAutoPoster:
         if not user_data_dir.exists():
             user_data_dir.mkdir(parents=True, exist_ok=True)
 
-        lock_fh = self._acquire_browser_process_lock(max_wait_seconds=240)
+        lock_fh = self._acquire_browser_process_lock(max_wait_seconds=5)
         if lock_fh is None:
             logger.info(f"[Warmup FYP] [{ch_folder}] Trình duyệt đang bận ở phiên khác, bỏ qua lượt này.")
             return False
@@ -4081,9 +4081,29 @@ class TikTokAutoPoster:
         if not best_ch:
             return
 
+        prev_any_ts = history.get("_last_any_warmup_ts", "")
+        history["_last_any_warmup_ts"] = now_str
+        try:
+            history_file.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8")
+        except Exception:
+            pass
+
         logger.info(f"[Warmup Auto] Chọn kênh [{best_ch}] để mở TikTok lướt FYP ({browse_seconds}s)...")
         completed = self.warmup_browse_channel(best_ch, browse_seconds=browse_seconds)
+        if history_file.exists():
+            try:
+                history = json.loads(history_file.read_text(encoding="utf-8"))
+            except Exception:
+                pass
         if not completed:
+            if prev_any_ts:
+                history["_last_any_warmup_ts"] = prev_any_ts
+            else:
+                history.pop("_last_any_warmup_ts", None)
+            try:
+                history_file.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8")
+            except Exception:
+                pass
             logger.warning(
                 f"[Warmup Auto] Phiên lướt kênh [{best_ch}] chưa hoàn tất trọn vẹn -> Giữ nguyên vị trí ưu tiên để lướt bù ở lượt kế tiếp!"
             )

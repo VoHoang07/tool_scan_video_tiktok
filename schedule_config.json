@@ -180,9 +180,9 @@
     "force": true
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "reopen_stream2_20261031_2005",
+    "trigger_id": "verify_follow_fix_20261102_2242",
     "target_arch": "x86_64",
-    "channel": "video_AI_hay",
+    "channel": "video_AI_hay,baby_AI,audio_dem_khuyen,tu_chan_gioi",
     "video_count": 3
   },
   "headless": false,

@@ -1527,23 +1527,30 @@ class TikTok24hFilterEngine:
         trace: Dict[str, Any] = getattr(self, "_last_like_debug", {}) or {}
         try:
             # 1. Tìm link tên chủ kênh hoặc nửa trên avatar ngay trên trang video để chuyển trang SPA tự nhiên
+            # Tuyệt đối loại bỏ các link bài đăng gợi ý chứa '/video/' hoặc '/photo/'
             author_pos = page.evaluate(
                 """(handle) => {
+                    const isPureProfileHref = (href) => {
+                        if (!href) return false;
+                        const clean = href.split('?')[0].split('#')[0].replace(/\\/+$/, '').toLowerCase();
+                        if (clean.includes('/video/') || clean.includes('/photo/')) return false;
+                        return clean === `/@${handle.toLowerCase()}` || clean.endsWith(`/@${handle.toLowerCase()}`);
+                    };
                     const selectors = [
                         '[data-e2e="video-author-uniqueid"]',
                         '[data-e2e="browse-username"]',
-                        `a[href*="/@${handle}"]`,
-                        '[data-e2e="video-author-avatar"]'
+                        '[data-e2e="video-author-avatar"]',
+                        `a[href*="/@${handle}"]`
                     ];
                     for (const sel of selectors) {
                         const els = Array.from(document.querySelectorAll(sel));
                         for (const el of els) {
-                            if (el.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
+                            if (el.closest('nav, aside, [data-e2e="nav-bar"], [data-e2e="recommend-list-item-container"]')) continue;
                             const a = el.tagName.toLowerCase() === 'a' ? el : el.closest('a');
                             if (a) {
                                 a.removeAttribute('target');
                                 const href = a.getAttribute('href') || '';
-                                if (href.includes('/video/')) continue;
+                                if (!isPureProfileHref(href)) continue;
                             }
                             const r = el.getBoundingClientRect();
                             if (r.left > 240 && r.width > 16 && r.height > 12 && r.top > 20 && r.top < window.innerHeight - 15) {
@@ -1569,20 +1576,23 @@ class TikTok24hFilterEngine:
                             extra_page.close()
                         except Exception:
                             pass
-                if "/video/" not in (page.url or "") and f"/@{clean_handle.lower()}" in (page.url or "").lower():
+                cur_u = (page.url or "").lower()
+                if "/video/" not in cur_u and "/photo/" not in cur_u and f"/@{clean_handle.lower()}" in cur_u:
                     navigated_spa = True
 
             if not navigated_spa:
-                # Kích hoạt trực tiếp sự kiện click React Router trên thẻ <a href="/@handle">
+                # Kích hoạt trực tiếp sự kiện click React Router trên thẻ <a href="/@handle"> thuần (không chứa /video/ hay /photo/)
                 clicked_dom = page.evaluate(
                     """(handle) => {
                         const links = Array.from(document.querySelectorAll(`a[href*="/@${handle}"]`));
                         for (const a of links) {
-                            const href = a.getAttribute('href') || '';
-                            if (href.includes('/video/')) continue;
-                            a.removeAttribute('target');
-                            a.click();
-                            return true;
+                            const href = (a.getAttribute('href') || '').split('?')[0].split('#')[0].replace(/\\/+$/, '');
+                            if (href.includes('/video/') || href.includes('/photo/')) continue;
+                            if (href.toLowerCase() === `/@${handle.toLowerCase()}` || href.toLowerCase().endsWith(`/@${handle.toLowerCase()}`)) {
+                                a.removeAttribute('target');
+                                a.click();
+                                return true;
+                            }
                         }
                         return false;
                     }""",
@@ -1645,15 +1655,18 @@ class TikTok24hFilterEngine:
 
             follow_api_blocked = False
             for f_resp in trace.get("follow_responses") or []:
-                body_str = str(f_resp.get("body") or "")
-                if '"status_code":0' not in body_str.replace(" ", "") and '"status_code"' in body_str:
+                body_str = str(f_resp.get("body") or "").replace(" ", "")
+                if (
+                    ('"status_code":0' not in body_str and '"status_code"' in body_str)
+                    or '"follow_status":0' in body_str
+                ):
                     follow_api_blocked = True
                     break
 
-            if (clicked_follow_btn and not persisted) or follow_api_blocked:
+            if follow_api_blocked:
                 self._circuit_breaker_tripped = True
                 logger.warning(
-                    f"[{ch_folder}] [Follow Circuit-Breaker Anti-Shark] Nút Follow trên @{clean_handle} không giữ trạng thái "
+                    f"[{ch_folder}] [Follow Circuit-Breaker Anti-Shark] API Follow trên @{clean_handle} trả về lỗi giới hạn "
                     f"(Trước='{before_txt}' -> Sau='{after_txt}', api_blocked={follow_api_blocked}) -> "
                     "Kích hoạt Cầu Dao Tự Ngắt 24h ngay lập tức để chống chặn Follow!"
                 )
@@ -1976,7 +1989,8 @@ class TikTok24hFilterEngine:
                     "Video này chỉ Xem 100% + Tim/Lưu/Bình luận, KHÔNG bấm Follow!"
                 )
             else:
-                do_follow = random.random() < 0.65
+                # Luôn thực hiện 1 lượt Follow chắc chắn mỗi phiên (thay vì random < 0.65 có thể trượt cả 3 video)
+                do_follow = True
 
             # 3. Sao chép liên kết video (xác suất ~35%)
             if do_copy:
@@ -2169,6 +2183,13 @@ class TikTok24hFilterEngine:
         try:
             hist = self.load_history()
             ch_cd_map = hist.get("channel_cooldown_until") or {}
+            # Tự động xóa các mốc cooldown giả (trước bản vá lỗi /photo/ lúc 22:45 ngày 02/11/2026) cho 4 kênh chính
+            if ch_folder in ("video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"):
+                old_cd = str(ch_cd_map.get(ch_folder) or "").strip()
+                if old_cd and old_cd <= "2026-11-03 13:00:00":
+                    ch_cd_map.pop(ch_folder, None)
+                    hist["channel_cooldown_until"] = ch_cd_map
+                    self.save_history(hist)
             ch_cd = str(ch_cd_map.get(ch_folder) or "").strip()
             if ch_cd:
                 ch_dt = datetime.strptime(ch_cd, "%Y-%m-%d %H:%M:%S")
