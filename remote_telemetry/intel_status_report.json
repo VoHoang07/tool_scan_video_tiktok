@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 00:38:33",
+    "timestamp": "2026-11-03 00:44:20",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
       "scrolled_videos": 12,
-      "elapsed_seconds": 154.2,
+      "elapsed_seconds": 153.7,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 00:44:20",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 153.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-03 00:38:33",
       "machine_arch": "x86_64",
@@ -763,71 +775,6 @@
             },
             "interacted_at": "2026-11-02 22:48:56",
             "follow_back_window_until": "2026-11-03 22:48:56"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-02 22:46:15",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7703542002377428242",
-            "video_url": "https://www.tiktok.com/@followtimc/video/7703542002377428242",
-            "creator_handle": "@followtimc",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611022346109EC0221056CDCEC1E8F3\",\"now\":1793634370000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611022346109EC0221056CDCEC1E8F3\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 795.15625,
-                "y": 421,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "10"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 795.15625,
-                  "y": 421,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "11"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              }
-            },
-            "interacted_at": "2026-11-02 22:46:15",
-            "follow_back_window_until": "2026-11-03 22:46:15"
           }
         ]
       }
