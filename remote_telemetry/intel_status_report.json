@@ -1,17 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 13:30:23",
+    "timestamp": "2026-11-03 13:33:30",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "event_type": "upload_error",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "elapsed_seconds": 162.7,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261103_101448_tiktok_story_990003901_bongcuc_v3_s39_p1_bg_daylight.mp4",
+      "error": "[Errno 2] No such file or directory: '/Users/hoangvo/Documents/tool_scan_video_tiktok/output/audio_dem_khuyen/ready/20261103_101448_tiktok_story_990003901_bongcuc_v3_s39_p1_bg_daylight.mp4'"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 13:33:30",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261103_101448_tiktok_story_990003901_bongcuc_v3_s39_p1_bg_daylight.mp4",
+        "error": "[Errno 2] No such file or directory: '/Users/hoangvo/Documents/tool_scan_video_tiktok/output/audio_dem_khuyen/ready/20261103_101448_tiktok_story_990003901_bongcuc_v3_s39_p1_bg_daylight.mp4'"
+      }
+    },
     {
       "timestamp": "2026-11-03 13:30:23",
       "machine_arch": "x86_64",
@@ -309,18 +319,6 @@
             "follow_back_window_until": "2026-11-04 11:53:36"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-03 11:51:56",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 13,
-        "elapsed_seconds": 163.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
