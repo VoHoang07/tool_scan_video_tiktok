@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 13:18:19",
+    "timestamp": "2026-11-03 13:24:21",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
       "scrolled_videos": 12,
-      "elapsed_seconds": 152.7,
+      "elapsed_seconds": 164.2,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 13:24:21",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 164.2,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-03 13:18:19",
       "machine_arch": "x86_64",
@@ -309,211 +321,6 @@
         "scrolled_videos": 12,
         "elapsed_seconds": 154.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-03 11:35:29",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "tu_chan_gioi0",
-          "domFollowing": "25",
-          "domFollowers": "14",
-          "domLikes": "116",
-          "sidebarFollowing": [
-            "/@tu_chan_gioi0",
-            "/@empiictehotle",
-            "/@shwksoowoo",
-            "/@suusii7878",
-            "/@chillgirl7949",
-            "/@minh.trit0696"
-          ]
-        },
-        "records": [
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7703548493306006805",
-            "video_url": "https://www.tiktok.com/@ktw.008/video/7703548493306006805",
-            "creator_handle": "@ktw.008",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": true,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103123327D0C7B273BB34C02038CE\",\"now\":1793680407000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261103123327D0C7B273BB34C02038CE\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103123339D9EB2481E7D22302966B\",\"now\":1793680420000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261103123339D9EB2481E7D22302966B\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103123341CA2587C53FD7AEF9AACA\",\"now\":1793680422000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261103123341CA2587C53FD7AEF9AACA\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 939.5,
-                "y": 404,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "20"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 939.5,
-                  "y": 404,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "21"
-                },
-                "red": true,
-                "server_digg_ok": true,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@ktw.008",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@ktw.008?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": null,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-03 11:33:48",
-            "follow_back_window_until": "2026-11-04 11:33:48"
-          },
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7702990861444877588",
-            "video_url": "https://www.tiktok.com/@trongminh1211/video/7702990861444877588",
-            "creator_handle": "@trongminh1211",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611031234276765CA120DC18EF6D97B\",\"now\":1793680467000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202611031234276765CA120DC18EF6D97B\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 404,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "173"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 404,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "174"
-                },
-                "red": true,
-                "server_digg_ok": true,
-                "server_digg_rejected": false
-              }
-            },
-            "interacted_at": "2026-11-03 11:34:41",
-            "follow_back_window_until": "2026-11-04 11:34:41"
-          },
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7702817772207656213",
-            "video_url": "https://www.tiktok.com/@thaothoitrang247/video/7702817772207656213",
-            "creator_handle": "@thaothoitrang247",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103123520BEAEB7B68AD72318FF36\",\"now\":1793680520000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261103123520BEAEB7B68AD72318FF36\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "5"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 456,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "6"
-                },
-                "red": true,
-                "server_digg_ok": true,
-                "server_digg_rejected": false
-              }
-            },
-            "interacted_at": "2026-11-03 11:35:25",
-            "follow_back_window_until": "2026-11-04 11:35:25"
-          }
-        ]
       }
     }
   ]
