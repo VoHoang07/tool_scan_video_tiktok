@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 22:31:15",
+    "timestamp": "2026-11-03 22:33:52",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261101_075453_tiktok_story_7699288031840308500.mp4",
-      "caption": "🔥 Đừng rời mắt khỏi màn hình: Canh Bạc Cuộc Đời - Tập cuối. Chi tiết cuối video thực sự quá đỉnh, mọi người nghĩ sao về cái kết này?",
-      "hashtags": "#aianimation #videoaihay #hoathinhai #tomtatphim #thucungthanhtinh #hoathinh3d #hoathinhhai #tiktokvn",
+      "video_file": "20261102_082833_douyin_story_7229243919555480887.mp4",
+      "caption": "🥰 Nhật ký gia đình siêu lầy: Khoảnh khắc đáng yêu và hài hước nhất trong ngày của bé. Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 22:33:52",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261102_082833_douyin_story_7229243919555480887.mp4",
+        "caption": "🥰 Nhật ký gia đình siêu lầy: Khoảnh khắc đáng yêu và hài hước nhất trong ngày của bé. Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+        "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-03 22:31:15",
       "machine_arch": "x86_64",
@@ -586,18 +602,6 @@
             "follow_back_window_until": "2026-11-04 18:00:12"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-03 17:58:25",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 156.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
