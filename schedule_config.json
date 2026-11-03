@@ -1,9 +1,9 @@
 {
   "timezone": "Asia/Ho_Chi_Minh",
   "system_switches": {
-    "master_switch": false,
+    "master_switch": true,
     "switch_1_factory": {
-      "enabled": true,
+      "enabled": false,
       "max_ready_per_niche": 5,
       "short_video_duration_range": [
         15,
@@ -17,7 +17,7 @@
       "batch_single_chrome_session": true
     },
     "switch_3_interact": {
-      "tiktok": true,
+      "tiktok": false,
       "fb_reels": false,
       "yt_shorts": false
     },
@@ -177,10 +177,12 @@
     "phu_kien_tien_ich": ""
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_3_remaining_channels_20261030_1414",
+    "trigger_id": "post_7_channels_then_pause_20261103_2228",
     "target_arch": "x86_64",
-    "channel": "video_AI_hay,baby_AI,tu_chan_gioi",
-    "force": true
+    "channel": "video_AI_hay,baby_AI,audio_dem_khuyen,tu_chan_gioi,suc_khoe_duong_sinh,phu_nu_khi_chat,an_vat_moi_ngay",
+    "force": true,
+    "skip_warmup": true,
+    "auto_pause_master_after": true
   },
   "remote_trigger_filter_24h": {
     "trigger_id": "follow_6_new_channels_20261103_1035",

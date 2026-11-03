@@ -802,24 +802,62 @@ class TikTokAutoPoster:
     def _dismiss_all_studio_popovers(self, page: Any, ch_folder: str) -> int:
         """
         Tự động phát hiện và bấm đóng tất cả hộp thoại hướng dẫn / giới thiệu tính năng mới của TikTok Studio
-        (ví dụ: 'Bổ sung tính năng chỉnh sửa mới' -> nút đỏ 'Đã hiểu', 'Got it', 'OK', 'Đóng', 'Bỏ qua', 'Tiếp theo').
+        (ví dụ: 'Bật kiểm tra nội dung tự động?' -> nút 'Bật'/'Hủy', 'Bổ sung tính năng chỉnh sửa mới' -> nút đỏ 'Đã hiểu', 'Got it', 'OK', 'Đóng').
         """
         dismissed = 0
-        for _ in range(4):
+        for _ in range(5):
             try:
                 btn_pos = page.evaluate(
                     """() => {
+                        // 0. Ưu tiên xử lý hộp thoại TUXModal-overlay ('Bật kiểm tra nội dung tự động?' trên kênh mới)
+                        const modals = Array.from(document.querySelectorAll('.TUXModal-overlay, [data-floating-ui-portal], [role="dialog"]'));
+                        for (const m of modals) {
+                            const mTxt = (m.innerText || '').trim();
+                            if (!mTxt || mTxt.includes('Xóa video này') || mTxt.includes('Delete this video')) continue;
+                            const mBtns = Array.from(m.querySelectorAll('button, [role="button"]'));
+                            const prefOrder = ['Bật', 'Turn on', 'Đã hiểu', 'Got it', 'OK', 'Hủy', 'Cancel', 'Đóng', 'Close'];
+                            for (const pLabel of prefOrder) {
+                                for (const b of mBtns) {
+                                    const bTxt = (b.innerText || b.textContent || '').trim();
+                                    if (bTxt === pLabel) {
+                                        const r = b.getBoundingClientRect();
+                                        if (r.width > 20 && r.height > 14) {
+                                            try { b.click(); } catch (e) {}
+                                            return {
+                                                label: 'Modal:' + bTxt,
+                                                x: r.left + r.width / 2,
+                                                y: r.top + r.height / 2
+                                            };
+                                        }
+                                    }
+                                }
+                            }
+                            for (const b of mBtns) {
+                                const r = b.getBoundingClientRect();
+                                if (r.width >= 16 && r.height >= 16 && r.top > 40) {
+                                    try { b.click(); } catch (e) {}
+                                    return {
+                                        label: 'ModalClose',
+                                        x: r.left + r.width / 2,
+                                        y: r.top + r.height / 2
+                                    };
+                                }
+                            }
+                        }
+
                         const targetLabels = [
                             'Đã hiểu', 'Got it', 'Tôi đã hiểu', 'Bỏ qua', 'Skip',
-                            'Để sau', 'Not now', 'Đóng', 'Close', 'OK', 'Tiếp theo', 'Hoàn tất'
+                            'Để sau', 'Not now', 'Đóng', 'Close', 'OK', 'Tiếp theo', 'Hoàn tất',
+                            'Bật', 'Turn on'
                         ];
                         const hintKeywords = [
                             'Bổ sung tính năng', 'tính năng chỉnh sửa mới', 'chuyên nghiệp và cuốn hút',
-                            'Hướng dẫn', 'Mẹo', 'Tính năng mới'
+                            'Hướng dẫn', 'Mẹo', 'Tính năng mới',
+                            'Bật kiểm tra nội dung tự động', 'Kiểm tra bản quyền nhạc', 'Kiểm tra nội dung nhanh'
                         ];
                         const allEls = Array.from(document.querySelectorAll('button, div[role="button"], span, div'));
 
-                        // 1. Ưu tiên tìm nút 'Đã hiểu' / 'Got it' (click trực tiếp bằng JS + trả về tọa độ)
+                        // 1. Ưu tiên tìm nút 'Đã hiểu' / 'Got it' / 'Bật' (click trực tiếp bằng JS + trả về tọa độ)
                         for (const el of allEls) {
                             if (el.children.length > 2) continue;
                             const txt = (el.innerText || el.textContent || '').trim();
@@ -837,10 +875,10 @@ class TikTokAutoPoster:
                             }
                         }
 
-                        // 2. Nếu có thẻ chứa 'Bổ sung tính năng chỉnh sửa mới', tìm mọi nút bên trong nó
+                        // 2. Nếu có thẻ chứa 'Bổ sung tính năng chỉnh sửa mới' hoặc 'Bật kiểm tra nội dung tự động', tìm mọi nút bên trong nó
                         for (const container of Array.from(document.querySelectorAll('div, section, aside'))) {
                             const cTxt = (container.innerText || '').trim();
-                            if (cTxt.length > 350 || !hintKeywords.some(k => cTxt.includes(k))) continue;
+                            if (cTxt.length > 900 || !hintKeywords.some(k => cTxt.includes(k))) continue;
                             const btns = Array.from(container.querySelectorAll('button, [role="button"]'));
                             for (const b of btns) {
                                 const r = b.getBoundingClientRect();
@@ -1092,11 +1130,17 @@ class TikTokAutoPoster:
         for attempt in range(6):
             self._dismiss_all_studio_popovers(page, ch_folder)
             try:
-                caption_box.click(click_count=3)
+                caption_box.click(click_count=3, timeout=3500)
                 time.sleep(0.15)
                 page.keyboard.press("Backspace")
             except Exception:
-                caption_box.click()
+                self._dismiss_all_studio_popovers(page, ch_folder)
+                try:
+                    page.keyboard.press("Escape")
+                    time.sleep(0.2)
+                    caption_box.click(force=True, timeout=3500)
+                except Exception:
+                    self._move_caret_to_end_of_editor(page, ensure_trailing_space=False)
             time.sleep(0.15)
             page.keyboard.press("Meta+A")
             time.sleep(0.1)
@@ -2785,6 +2829,7 @@ class TikTokAutoPoster:
         force: bool = False,
         delete_match_keywords: Optional[List[str]] = None,
         delete_top_before_upload: bool = False,
+        skip_warmup: bool = False,
     ) -> Optional[Dict[str, Any]]:
         """
         Tự động đăng 1 video từ `output/<ten_kenh>/ready/` lên kênh TikTok tương ứng với đầy đủ 5 bước:
@@ -2849,7 +2894,7 @@ class TikTokAutoPoster:
 
         video_path, caption, hashtags = next_item
         cfg = self.ensure_schedule_config()
-        do_warmup = bool(cfg.get("warmup_before_upload", True))
+        do_warmup = bool(cfg.get("warmup_before_upload", True)) and not skip_warmup
 
         logger.info(
             f"=== BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [{ch_folder}] ===\n"
@@ -2902,6 +2947,10 @@ class TikTokAutoPoster:
                     )
 
                 # Bước 3: Chọn file video đưa vào input[type="file"]
+                if not video_path.exists():
+                    retry_item = self._get_next_ready_video_for_channel(ch_folder)
+                    if retry_item:
+                        video_path, caption, hashtags = retry_item
                 file_input = page.locator('input[type="file"]').first
                 file_input.wait_for(state="attached", timeout=30000)
                 file_input.set_input_files(str(video_path))
@@ -3473,6 +3522,7 @@ class TikTokAutoPoster:
                                     force=bool(remote_post.get("force", True)),
                                     delete_match_keywords=remote_post.get("delete_match_keywords"),
                                     delete_top_before_upload=bool(remote_post.get("delete_top_before_upload", False)),
+                                    skip_warmup=bool(remote_post.get("skip_warmup", False)),
                                 )
                                 if res:
                                     posted_results.append(res)
@@ -3485,6 +3535,55 @@ class TikTokAutoPoster:
                     history = self._load_post_history()
                     history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                     self._save_post_history(history)
+                    if bool(remote_post.get("auto_pause_master_after", False)):
+                        try:
+                            cfg_after = self.ensure_schedule_config()
+                            sw_after = cfg_after.setdefault("system_switches", {})
+                            sw_after["master_switch"] = False
+                            if isinstance(sw_after.get("switch_1_factory"), dict):
+                                sw_after["switch_1_factory"]["enabled"] = True
+                            if isinstance(sw_after.get("switch_3_interact"), dict):
+                                sw_after["switch_3_interact"]["tiktok"] = True
+                            self.schedule_config_path.write_text(
+                                json.dumps(cfg_after, ensure_ascii=False, indent=2),
+                                encoding="utf-8",
+                            )
+                            logger.info(
+                                f"[Auto-Pause After Batch Upload] Đã hoàn tất đăng video cho {len(target_channels)} kênh ({target_channels}) -> "
+                                "Tự động đóng lại Khóa Tổng (`master_switch: false`) theo yêu cầu!"
+                            )
+                            try:
+                                import subprocess as _sp
+
+                                _sp.run(
+                                    ["git", "add", "schedule_config.json"],
+                                    cwd=str(self.project_root),
+                                    timeout=15,
+                                    check=False,
+                                )
+                                _sp.run(
+                                    ["git", "commit", "-m", "chore(auto-pause): lock master_switch=false after completing 7-channel upload batch"],
+                                    cwd=str(self.project_root),
+                                    timeout=15,
+                                    check=False,
+                                )
+                                _sp.run(
+                                    ["git", "pull", "--rebase", "--autostash", "origin", "main"],
+                                    cwd=str(self.project_root),
+                                    timeout=30,
+                                    check=False,
+                                )
+                                _sp.run(
+                                    ["git", "push", "origin", "main"],
+                                    cwd=str(self.project_root),
+                                    timeout=30,
+                                    check=False,
+                                )
+                            except Exception:
+                                pass
+                        except Exception as pause_exc:
+                            logger.error(f"Lỗi khi tự động khóa lại master_switch: {pause_exc}")
+                        return posted_results
 
         active_ch_set = set(cfg.get("active_channels") or ["video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"])
         for profile in CHANNEL_PROFILES.values():
