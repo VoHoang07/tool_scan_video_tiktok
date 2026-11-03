@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 09:12:40",
+    "timestamp": "2026-11-03 09:16:02",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261101_081415_tiktok_story_7633061533374827797.mp4",
-      "caption": "😂 Tình huống dở khóc dở cười của hai mẹ con khiến cả nhà bật cười. Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #tiktokvn #xuhuong",
+      "video_file": "20261102_000409_tiktok_story_990014602_bongcuc_v2_s146_p2.mp4",
+      "caption": "✨ Bông Cúc Trắng Số 146 [Phần 2/8]: Vừa Sinh Đôi, Tôi Đã Bị Chồng Nghi Ngoại Tình. Càng nghe càng thấm, câu chuyện bước sang nút thắt bất ngờ nhất!",
+      "hashtags": "#bongcucso146 #bongcucaudio #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya #gocnhinkhuya #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 09:16:02",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261102_000409_tiktok_story_990014602_bongcuc_v2_s146_p2.mp4",
+        "caption": "✨ Bông Cúc Trắng Số 146 [Phần 2/8]: Vừa Sinh Đôi, Tôi Đã Bị Chồng Nghi Ngoại Tình. Càng nghe càng thấm, câu chuyện bước sang nút thắt bất ngờ nhất!",
+        "hashtags": "#bongcucso146 #bongcucaudio #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya #gocnhinkhuya #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-03 09:12:40",
       "machine_arch": "x86_64",
@@ -185,18 +201,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 157.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 23:22:03",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 155.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
