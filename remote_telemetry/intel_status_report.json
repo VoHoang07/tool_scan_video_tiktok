@@ -1,16 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 12:02:46",
+    "timestamp": "2026-11-03 12:17:07",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_error_suc_khoe_duong_sinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261103_104703_youtube_shorts_story_ZWJfOStWq8M.mp4",
-      "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.public-DraftEditor-content[contenteditable=\\\"true\\\"], div[contenteditable=\\\"true\\\"][role=\\\"textbox\\\"], div[contenteditable=\\\"true\\\"]\").first\n    - locator resolved to <div role=\"combobox\" spellcheck=\"false\" aria-expanded=\"false\" contenteditable=\"true\" aria-autocomplete=\"list\" class=\"notranslate public-DraftEditor-content\">…</div>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 100ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  13 × retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n"
+      "scrolled_videos": 12,
+      "elapsed_seconds": 152.5,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 12:17:07",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 152.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-03 12:02:46",
       "machine_arch": "x86_64",
@@ -990,146 +1003,6 @@
             },
             "interacted_at": "2026-11-03 10:54:28",
             "follow_back_window_until": "2026-11-04 10:54:28"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-03 10:52:51",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
-      "details": {
-        "interacted_count": 2,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "meo_vat_gia_dinh",
-            "video_id": "7703602410110848264",
-            "video_url": "https://www.tiktok.com/@tp.xy.knh4974/video/7703602410110848264",
-            "creator_handle": "@tp.xy.knh4974",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": true,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110311514990F91B0C87D6551655B1\",\"now\":1793677909000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110311514990F91B0C87D6551655B1\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103115157C61DB99FCEFAFA09C196\",\"now\":1793677917000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261103115157C61DB99FCEFAFA09C196\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103115159F4D3EC76E197672CAEFE\",\"now\":1793677919000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261103115159F4D3EC76E197672CAEFE\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 838.0078125,
-                "y": 430.9921875,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "38"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 838.0078125,
-                  "y": 430.9921875,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "39"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@tp.xy.knh4974",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@tp.xy.knh4974?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": null,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-03 10:52:05",
-            "follow_back_window_until": "2026-11-04 10:52:05"
-          },
-          {
-            "channel": "meo_vat_gia_dinh",
-            "video_id": "7703163550360980757",
-            "video_url": "https://www.tiktok.com/@antien2106/video/7703163550360980757",
-            "creator_handle": "@antien2106",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611031152462C359F954B702C31F713\",\"now\":1793677966000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611031152462C359F954B702C31F713\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 793.5,
-                "y": 457.328125,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "71"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 793.5,
-                  "y": 457.328125,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "71"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              }
-            },
-            "interacted_at": "2026-11-03 10:52:51",
-            "follow_back_window_until": "2026-11-04 10:52:51"
           }
         ]
       }
