@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 12:43:51",
+    "timestamp": "2026-11-03 12:53:54",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261101_232255_tiktok_story_7670306567077629205.mp4",
-      "caption": "😂 Tình huống dở khóc dở cười của hai mẹ con khiến cả nhà bật cười. Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #tiktokvn #xuhuong",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "elapsed_seconds": 151.4,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 12:53:54",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "elapsed_seconds": 151.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-03 12:43:51",
       "machine_arch": "x86_64",
@@ -559,18 +567,6 @@
             "follow_back_window_until": "2026-11-04 11:16:39"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-03 11:14:33",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 13,
-        "elapsed_seconds": 162.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
