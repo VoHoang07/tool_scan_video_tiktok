@@ -1,7 +1,7 @@
 {
   "timezone": "Asia/Ho_Chi_Minh",
   "system_switches": {
-    "master_switch": false,
+    "master_switch": true,
     "switch_1_factory": {
       "enabled": true,
       "max_ready_per_niche": 5,
@@ -182,7 +182,7 @@
     "channel": "video_AI_hay,baby_AI,audio_dem_khuyen,tu_chan_gioi,suc_khoe_duong_sinh,phu_nu_khi_chat,an_vat_moi_ngay",
     "force": true,
     "skip_warmup": true,
-    "auto_pause_master_after": true
+    "auto_pause_master_after": false
   },
   "remote_trigger_filter_24h": {
     "trigger_id": "follow_6_new_channels_20261103_1035",
