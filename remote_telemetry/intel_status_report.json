@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 13:44:05",
+    "timestamp": "2026-11-03 13:55:45",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
     "details": {
       "scrolled_videos": 12,
-      "elapsed_seconds": 158.0,
+      "elapsed_seconds": 154.5,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 13:55:45",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 154.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-03 13:44:05",
       "machine_arch": "x86_64",
@@ -181,17 +193,6 @@
         "scrolled_videos": 12,
         "elapsed_seconds": 152.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-03 12:02:46",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_error_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261103_104703_youtube_shorts_story_ZWJfOStWq8M.mp4",
-        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.public-DraftEditor-content[contenteditable=\\\"true\\\"], div[contenteditable=\\\"true\\\"][role=\\\"textbox\\\"], div[contenteditable=\\\"true\\\"]\").first\n    - locator resolved to <div role=\"combobox\" spellcheck=\"false\" aria-expanded=\"false\" contenteditable=\"true\" aria-autocomplete=\"list\" class=\"notranslate public-DraftEditor-content\">…</div>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 100ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  13 × retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"jsx-1661904819 item-desc\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r7i:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n"
       }
     }
   ]
