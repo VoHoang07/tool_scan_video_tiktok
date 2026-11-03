@@ -2011,30 +2011,42 @@ class TikTok24hFilterEngine:
         profile_followed = False
         followed = False
 
-        if getattr(self, "_circuit_breaker_tripped", False):
-            logger.warning(
-                f"[{ch_folder}] [Circuit Breaker Anti-Shark] Bỏ qua toàn bộ thao tác phụ trên video @{creator_handle} để bảo vệ tài khoản!"
+        session_follows_done = int(getattr(self, "_session_follows_done", 0))
+        follows_24h = self._count_recent_channel_follows(ch_folder, hours=24.0)
+        established_channels = {"video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"}
+        max_daily_follows = 3 if ch_folder in established_channels else 2
+
+        if session_follows_done >= 1 or follows_24h >= max_daily_follows:
+            do_follow = False
+            logger.info(
+                f"[{ch_folder}] [Anti-Follow-Block Quota] Đã đủ định mức Follow an toàn "
+                f"(trong phiên={session_follows_done}/1, trong 24h={follows_24h}/{max_daily_follows}) -> "
+                "Video này chỉ Xem 100% + Tim/Lưu/Bình luận, KHÔNG bấm Follow!"
             )
         else:
-            # Ngẫu nhiên hóa hành vi (Partial Randomized Actions) + Giới hạn cứng tối đa 1 lượt Follow/phiên:
-            session_follows_done = int(getattr(self, "_session_follows_done", 0))
-            follows_24h = self._count_recent_channel_follows(ch_folder, hours=24.0)
-            established_channels = {"video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"}
-            max_daily_follows = 3 if ch_folder in established_channels else 2
+            # Luôn thực hiện 1 lượt Follow chắc chắn mỗi phiên (thay vì random < 0.65 có thể trượt cả 3 video)
+            do_follow = True
 
+        if getattr(self, "_circuit_breaker_tripped", False):
+            logger.warning(
+                f"[{ch_folder}] [Circuit Breaker Anti-Shark] Bỏ qua Copy/Lưu/Bình luận trên video @{creator_handle}, "
+                "nhưng VẪN thử thực hiện 1 lượt Follow trên trang cá nhân (vì endpoint Follow tách biệt với Like)!"
+            )
+            if do_follow:
+                profile_followed = self._verify_and_follow_on_creator_profile(
+                    page=page,
+                    ch_folder=ch_folder,
+                    creator_handle=creator_handle,
+                    video_url=video_url,
+                )
+                followed = bool(profile_followed)
+                if followed:
+                    self._session_follows_done = session_follows_done + 1
+                    self._circuit_breaker_tripped = False
+        else:
             do_copy = random.random() < 0.35
             do_fav = random.random() < 0.45
             do_comment = random.random() < 0.55
-            if session_follows_done >= 1 or follows_24h >= max_daily_follows:
-                do_follow = False
-                logger.info(
-                    f"[{ch_folder}] [Anti-Follow-Block Quota] Đã đủ định mức Follow an toàn "
-                    f"(trong phiên={session_follows_done}/1, trong 24h={follows_24h}/{max_daily_follows}) -> "
-                    "Video này chỉ Xem 100% + Tim/Lưu/Bình luận, KHÔNG bấm Follow!"
-                )
-            else:
-                # Luôn thực hiện 1 lượt Follow chắc chắn mỗi phiên (thay vì random < 0.65 có thể trượt cả 3 video)
-                do_follow = True
 
             # 3. Sao chép liên kết video (xác suất ~35%)
             if do_copy:
@@ -2227,13 +2239,12 @@ class TikTok24hFilterEngine:
         try:
             hist = self.load_history()
             ch_cd_map = hist.get("channel_cooldown_until") or {}
-            # Tự động xóa các mốc cooldown giả (trước bản vá lỗi /photo/ lúc 22:45 ngày 02/11/2026) cho 4 kênh chính
-            if ch_folder in ("video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"):
-                old_cd = str(ch_cd_map.get(ch_folder) or "").strip()
-                if old_cd and old_cd <= "2026-11-03 13:00:00":
-                    ch_cd_map.pop(ch_folder, None)
-                    hist["channel_cooldown_until"] = ch_cd_map
-                    self.save_history(hist)
+            # Tự động xóa toàn bộ các mốc cooldown giả trước ngày 04/11/2026 cho TẤT CẢ 10 kênh (bao gồm 6 kênh mới)
+            old_cd = str(ch_cd_map.get(ch_folder) or "").strip()
+            if old_cd and old_cd <= "2026-11-04 00:00:00":
+                ch_cd_map.pop(ch_folder, None)
+                hist["channel_cooldown_until"] = ch_cd_map
+                self.save_history(hist)
             ch_cd = str(ch_cd_map.get(ch_folder) or "").strip()
             if ch_cd:
                 ch_dt = datetime.strptime(ch_cd, "%Y-%m-%d %H:%M:%S")
@@ -2281,13 +2292,13 @@ class TikTok24hFilterEngine:
                 rec = self.interact_with_single_video(page, ch_folder, url)
                 results.append(rec)
                 if getattr(self, "_circuit_breaker_tripped", False):
-                    until_str = (datetime.now() + timedelta(hours=24)).strftime("%Y-%m-%d %H:%M:%S")
+                    until_str = (datetime.now() + timedelta(hours=4)).strftime("%Y-%m-%d %H:%M:%S")
                     hist = self.load_history()
                     hist.setdefault("channel_cooldown_until", {})[ch_folder] = until_str
                     self.save_history(hist)
                     logger.warning(
-                        f"[{ch_folder}] [Circuit Breaker Anti-Shark] Phát hiện TikTok giới hạn thao tác (Like/Follow) -> "
-                        f"Ngắt phiên ngay lập tức và tạm nghỉ kênh [{ch_folder}] 24 giờ (đến {until_str})!"
+                        f"[{ch_folder}] [Circuit Breaker Anti-Shark] Phát hiện TikTok giới hạn thao tác (cả Like & Follow) -> "
+                        f"Ngắt phiên ngay lập tức và tạm nghỉ kênh [{ch_folder}] 4 giờ (đến {until_str})!"
                     )
                     break
                 if idx < min(len(target_urls), effective_count):

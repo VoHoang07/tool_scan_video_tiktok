@@ -3757,6 +3757,12 @@ class TikTokAutoPoster:
             ch_folder = profile["folder_name"]
             if ch_folder not in active_ch_set:
                 continue
+            try:
+                in_cd, _ = self.filter_24h.is_in_cooldown(ch_folder)
+                if in_cd:
+                    continue
+            except Exception:
+                pass
             now = datetime.now()
             today_str = now.strftime("%Y-%m-%d")
             now_minutes = now.hour * 60 + now.minute

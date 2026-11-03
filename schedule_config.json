@@ -31,7 +31,10 @@
     "video_AI_hay",
     "baby_AI",
     "audio_dem_khuyen",
-    "tu_chan_gioi"
+    "tu_chan_gioi",
+    "suc_khoe_duong_sinh",
+    "phu_nu_khi_chat",
+    "an_vat_moi_ngay"
   ],
   "crawl_buffer_channels": [
     "video_AI_hay",
@@ -180,10 +183,10 @@
     "force": true
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "verify_follow_fix_20261102_2242",
+    "trigger_id": "follow_6_new_channels_20261103_1035",
     "target_arch": "x86_64",
-    "channel": "video_AI_hay,baby_AI,audio_dem_khuyen,tu_chan_gioi",
-    "video_count": 3
+    "channel": "phu_nu_khi_chat,suc_khoe_duong_sinh,an_vat_moi_ngay,meo_vat_gia_dinh,nuoi_con_eq,phu_kien_tien_ich",
+    "video_count": 2
   },
   "headless": false,
   "random_jitter_minutes": 9,
