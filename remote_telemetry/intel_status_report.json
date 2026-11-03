@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 00:56:19",
+    "timestamp": "2026-11-03 09:06:20",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "elapsed_seconds": 165.0,
+      "scrolled_videos": 11,
+      "elapsed_seconds": 29206.9,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 09:06:20",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "elapsed_seconds": 29206.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-03 00:56:19",
       "machine_arch": "x86_64",
@@ -178,208 +190,6 @@
         "scrolled_videos": 12,
         "elapsed_seconds": 153.7,
         "final_url": "https://www.tiktok.com/@anvatmoingay.k08?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 22:54:24",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "hin.ky71",
-          "domFollowing": "456",
-          "domFollowers": "479",
-          "domLikes": "470",
-          "sidebarFollowing": [
-            "/@tu_chan_gioi0",
-            "/@empiictehotle",
-            "/@shwksoowoo",
-            "/@suusii7878",
-            "/@chillgirl7949",
-            "/@minh.trit0696"
-          ]
-        },
-        "records": [
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7703191859669028104",
-            "video_url": "https://www.tiktok.com/@uc.c.1k.follow/video/7703191859669028104",
-            "creator_handle": "@uc.c.1k.follow",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611022352134B5FF95A928534204AB2\",\"now\":1793634734000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202611022352134B5FF95A928534204AB2\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "267"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 456,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "268"
-                },
-                "red": true,
-                "server_digg_ok": true,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@uc.c.1k.follow",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@uc.c.1k.follow?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Follow",
-                "init_relation": null,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-02 22:52:30",
-            "follow_back_window_until": "2026-11-03 22:52:30"
-          },
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7703171411174624542",
-            "video_url": "https://www.tiktok.com/@mapscafe.cuchi/video/7703171411174624542",
-            "creator_handle": "@mapscafe.cuchi",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "44"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 456,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "44"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@mapscafe.cuchi",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@mapscafe.cuchi?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Follow",
-                "init_relation": null,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-02 22:53:32",
-            "follow_back_window_until": "2026-11-03 22:53:32"
-          },
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7703027219605785874",
-            "video_url": "https://www.tiktok.com/@hin.ky71/video/7703027219605785874",
-            "creator_handle": "@hin.ky71",
-            "watched_seconds": 15.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "38"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 456,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "38"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@hin.ky71",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@hin.ky71?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Follow",
-                "init_relation": null,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-02 22:54:20",
-            "follow_back_window_until": "2026-11-03 22:54:20"
-          }
-        ]
       }
     }
   ]
