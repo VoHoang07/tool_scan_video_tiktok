@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 22:33:52",
+    "timestamp": "2026-11-03 22:38:44",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261102_082833_douyin_story_7229243919555480887.mp4",
-      "caption": "🥰 Nhật ký gia đình siêu lầy: Khoảnh khắc đáng yêu và hài hước nhất trong ngày của bé. Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #tiktokvn #xuhuong",
+      "video_file": "20261103_223518_tiktok_story_990003901_bongcuc_v3_s39_p1_bg_mukbang.mp4",
+      "caption": "📖 Góc Kể Chuyện: Góc khuất tình cảm và màn đáp trả cực gắt khiến trà xanh không kịp trở tay. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+      "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 22:38:44",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261103_223518_tiktok_story_990003901_bongcuc_v3_s39_p1_bg_mukbang.mp4",
+        "caption": "📖 Góc Kể Chuyện: Góc khuất tình cảm và màn đáp trả cực gắt khiến trà xanh không kịp trở tay. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+        "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-03 22:33:52",
       "machine_arch": "x86_64",
@@ -462,146 +478,6 @@
         "scrolled_videos": 13,
         "elapsed_seconds": 161.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-03 18:00:13",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
-      "details": {
-        "interacted_count": 2,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "nuoi_con_eq",
-            "video_id": "7703720521074117908",
-            "video_url": "https://www.tiktok.com/@nguynhlinh402/video/7703720521074117908",
-            "creator_handle": "@nguynhlinh402",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": true,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611031859088EE7F35E7C03FA0FB551\",\"now\":1793703548000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611031859088EE7F35E7C03FA0FB551\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611031859168A3981CE9217B80EB86F\",\"now\":1793703557000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611031859168A3981CE9217B80EB86F\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103185918CEC798199383A70F41D1\",\"now\":1793703559000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261103185918CEC798199383A70F41D1\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 1031,
-                "y": 267.4921875,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "941"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 1031,
-                  "y": 267.4921875,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "942"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@nguynhlinh402",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@nguynhlinh402?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": null,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-03 17:59:25",
-            "follow_back_window_until": "2026-11-04 17:59:25"
-          },
-          {
-            "channel": "nuoi_con_eq",
-            "video_id": "7703527565171952917",
-            "video_url": "https://www.tiktok.com/@trng.kiu.chu079/video/7703527565171952917",
-            "creator_handle": "@trng.kiu.chu079",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103190010C2A5DEC8FB81390F8DEF\",\"now\":1793703610000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261103190010C2A5DEC8FB81390F8DEF\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 882.21875,
-                "y": 471,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "21"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 882.21875,
-                  "y": 471,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "22"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              }
-            },
-            "interacted_at": "2026-11-03 18:00:12",
-            "follow_back_window_until": "2026-11-04 18:00:12"
-          }
-        ]
       }
     }
   ]
