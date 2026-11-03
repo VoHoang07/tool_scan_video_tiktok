@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-03 21:35:05",
+  "updated_at": "2026-11-03 22:05:11",
   "latest_result": {
-    "cmd_id": "heartbeat_1793716504",
+    "cmd_id": "heartbeat_1793718311",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-03 21:35:04",
+    "executed_at": "2026-11-03 22:05:11",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-03 21:35:05",
+      "timestamp": "2026-11-03 22:05:11",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -15,14 +15,12 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "37963    02:08:16 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "37965    02:08:16 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "99294 01-22:07:30 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296 01-22:07:30 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "37963    02:38:22 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "37965    02:38:22 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "99294 01-22:37:36 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296 01-22:37:36 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[20:05:19] [INFO] tiktok_pipeline: TTS #20 [46.66s-47.11s | gốc=0.48s]: rate=+17%, atempo=0.96x -> 0.45s",
-        "[20:05:27] [INFO] tiktok_pipeline: TTS #21 [47.42s-47.91s | gốc=0.52s]: rate=+29%, atempo=0.95x -> 0.49s",
         "[20:05:48] [INFO] tiktok_pipeline: TTS #22 [48.26s-51.43s | gốc=3.20s]: rate=+38%, atempo=1.06x -> 3.17s",
         "[20:06:10] [INFO] tiktok_pipeline: TTS #23 [54.62s-55.08s | gốc=0.52s]: rate=+38%, atempo=1.90x -> 0.46s",
         "[20:06:20] [INFO] tiktok_pipeline: TTS #24 [55.14s-56.71s | gốc=1.64s]: rate=-42%, atempo=0.55x -> 1.57s",
@@ -40,7 +38,9 @@
         "[21:05:22] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (e086421 -> 1e12c56) | AGY-Bridge [outbox] heartbeat_1793714700 at 2026-11-03 21:05:00",
         "[21:05:22] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (e086421 -> 1e12c56)!",
         "[21:05:22] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[21:05:23] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
+        "[21:05:23] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[21:35:31] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (1e12c56 -> 72e8fd3) | AGY-Bridge [outbox] heartbeat_1793716504 at 2026-11-03 21:35:05",
+        "[21:35:32] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
       ]
     }
   }
