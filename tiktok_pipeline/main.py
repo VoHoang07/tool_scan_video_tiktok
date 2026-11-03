@@ -1123,6 +1123,10 @@ def run_continuous_mode(
 
                 # Kiểm tra Hot-Reload & lịch đăng ngay trước mỗi kênh để phản hồi tức thì
                 _check_hot_reload()
+                ms_loop = MasterSwitchController(project_root=project_root)
+                if not ms_loop.is_master_enabled() or not ms_loop.is_factory_enabled():
+                    logger.info("[Master Switch] Phát hiện Khóa Master/Factory vừa TẮT -> Dừng ngay chu kỳ cào hiện tại!")
+                    break
                 _run_scheduler_safe()
 
                 try:

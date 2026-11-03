@@ -1,10 +1,10 @@
 {
-  "cmd_id": "cmd_20261102_080344_shell",
-  "created_at": "2026-11-02 08:03:44",
+  "cmd_id": "cmd_20261103_193200_pause_intel",
+  "created_at": "2026-11-03 19:32:00",
   "from_machine": "arm64",
   "target_arch": "x86_64",
   "action": "shell",
   "agy_prompt": "",
-  "shell_command": "pkill -f 'agy_intel_bridge.py --daemon' || true",
-  "timeout_seconds": 240
+  "shell_command": "pkill -f 'Google Chrome for Testing' || true; pkill -f 'ffmpeg' || true; pkill -f 'yt-dlp' || true; echo 'PAUSED_ALL_ACTIVE_WORKERS'",
+  "timeout_seconds": 60
 }

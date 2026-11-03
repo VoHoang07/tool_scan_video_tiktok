@@ -1,7 +1,7 @@
 {
   "timezone": "Asia/Ho_Chi_Minh",
   "system_switches": {
-    "master_switch": true,
+    "master_switch": false,
     "switch_1_factory": {
       "enabled": true,
       "max_ready_per_niche": 5,

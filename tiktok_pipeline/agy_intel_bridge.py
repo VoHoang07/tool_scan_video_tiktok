@@ -396,6 +396,13 @@ def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str
     """
     if platform.machine() != "x86_64" or (time.time() - last_ai_heal_ts < 900):
         return None
+    try:
+        from .master_switch_controller import MasterSwitchController
+
+        if not MasterSwitchController(project_root=PROJECT_ROOT).is_master_enabled():
+            return None
+    except Exception:
+        pass
 
     import hashlib
 

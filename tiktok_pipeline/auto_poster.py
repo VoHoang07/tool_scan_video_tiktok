@@ -3304,6 +3304,11 @@ class TikTokAutoPoster:
         summary: Dict[str, Any] = {}
         for ch_folder in target_channels:
             try:
+                from .master_switch_controller import MasterSwitchController
+
+                if not MasterSwitchController(project_root=self.project_root).is_interact_enabled("tiktok"):
+                    logger.info("[Master Switch] Khóa Master/Tương tác vừa TẮT -> Dừng mở trình duyệt các kênh kế tiếp!")
+                    break
                 import importlib
                 from . import growth_24h_filter as _g24_mod
 
