@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 09:06:20",
+    "timestamp": "2026-11-03 09:12:40",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+    "event_type": "upload",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "elapsed_seconds": 29206.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261101_081415_tiktok_story_7633061533374827797.mp4",
+      "caption": "😂 Tình huống dở khóc dở cười của hai mẹ con khiến cả nhà bật cười. Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #tiktokvn #xuhuong",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 09:12:40",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261101_081415_tiktok_story_7633061533374827797.mp4",
+        "caption": "😂 Tình huống dở khóc dở cười của hai mẹ con khiến cả nhà bật cười. Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-03 09:06:20",
       "machine_arch": "x86_64",
@@ -178,18 +198,6 @@
         "scrolled_videos": 12,
         "elapsed_seconds": 155.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-02 22:55:49",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 153.7,
-        "final_url": "https://www.tiktok.com/@anvatmoingay.k08?lang=vi-VN"
       }
     }
   ]
