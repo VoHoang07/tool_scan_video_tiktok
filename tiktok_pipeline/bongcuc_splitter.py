@@ -30,6 +30,93 @@ BONGCUC_PART1_END_YOUTUBE_SECONDS = 388.0
 # Ngưỡng báo trước khi kho video từ @bongcucaudio sắp cạn (15 phần ~ trước 5 ngày đăng bài)
 BONGCUC_LOW_QUEUE_WARNING_THRESHOLD = 15
 
+# Kho video nền (Background Visual Pool) thay thế hình nền tô màu cũ theo khung giờ Ngày / Đêm:
+# - Ban đêm (18:00 - 04:59, khung 21:15): Ghép nền Mukbang đồ ăn đêm hấp dẫn (tắt 100% tiếng gốc của clip Mukbang).
+# - Ban ngày (05:00 - 17:59, khung 08:48 & 13:25): Ghép nền Nghệ thuật làm bánh kem / Gốm sứ / Cắt cát 3D tươi sáng.
+BONGCUC_NIGHT_MUKBANG_POOL: List[Dict[str, Any]] = [
+    {
+        "yt_id": "07Q8NHoZjdc",
+        "title": "Crunchy Seasoned Spicy Chicken and Jajang Ramyeon Mukbang ASMR",
+        "duration": 524.0,
+    },
+    {
+        "yt_id": "4evvxooEV5s",
+        "title": "Hot Cheetos Sausage Cheese Sticks Fire Noodles Mukbang ASMR",
+        "duration": 773.0,
+    },
+    {
+        "yt_id": "EuySE6259wQ",
+        "title": "Spicy Chicken Tteokbokki Cheese Kimchi Gimbap Mukbang ASMR",
+        "duration": 1027.0,
+    },
+    {
+        "yt_id": "s85cKxJIpo0",
+        "title": "Fire Noodle Hot Dog Gimbap Tteokbokki Mukbang ASMR",
+        "duration": 1017.0,
+    },
+    {
+        "yt_id": "gM4EIfGaFCQ",
+        "title": "Giant Fresh Seafood Korean Mukbang ASMR",
+        "duration": 311.0,
+    },
+]
+
+BONGCUC_DAY_AESTHETIC_POOL: List[Dict[str, Any]] = [
+    {
+        "yt_id": "HHtuYQxJMUQ",
+        "title": "Colorful Cake Decorating Art Compilation",
+        "duration": 634.0,
+    },
+    {
+        "yt_id": "XRXMMA4YZp0",
+        "title": "Amazing Cake Decorating Satisfying Compilation",
+        "duration": 702.0,
+    },
+    {
+        "yt_id": "7cJGE6cUoao",
+        "title": "Relaxing Pottery Art Ceramic Masterpieces",
+        "duration": 646.0,
+    },
+    {
+        "yt_id": "AOcUIKXAPWw",
+        "title": "Colorful Kinetic Sand Slicing & Flowing Satisfying Art",
+        "duration": 630.0,
+    },
+    {
+        "yt_id": "rF6awqlStl4",
+        "title": "Satisfying & Relaxing 3D Art Compilation",
+        "duration": 543.0,
+    },
+    {
+        "yt_id": "1Gic5nYiAjM",
+        "title": "Artisan Pottery Wheel Bowl Turning ASMR",
+        "duration": 817.0,
+    },
+]
+
+
+def get_target_bg_mode_for_hour(hour: Optional[int] = None) -> str:
+    """
+    Xác định chế độ hình nền (`night_mukbang` hoặc `day_aesthetic`) theo khung giờ trong ngày:
+    - Ban đêm (`18:00` -> `04:59`, bao gồm khung đăng tối `21:15`): `night_mukbang` (Mukbang đồ ăn đêm).
+    - Ban ngày (`05:00` -> `17:59`, bao gồm khung sáng `08:48` & trưa `13:25`): `day_aesthetic` (Bánh kem / Gốm / 3D Satisfying).
+    """
+    if hour is None:
+        hour = datetime.now().hour
+    if hour >= 18 or hour < 5:
+        return "night_mukbang"
+    return "day_aesthetic"
+
+
+def parse_bongcuc_bg_mode(filename_or_stem: str) -> Optional[str]:
+    """Trích xuất chế độ background (`night_mukbang` hoặc `day_aesthetic`) từ tên file video đã xuất."""
+    lower = str(filename_or_stem or "").lower()
+    if "_bg_mukbang" in lower:
+        return "night_mukbang"
+    if "_bg_daylight" in lower:
+        return "day_aesthetic"
+    return None
+
 # Danh sách các tập "Bông Cúc Trắng" đã chiếu Phần 1 trên kênh TikTok `audio_dem_khuyen`
 # Được xếp theo thứ tự ưu tiên xen kẽ (so le) để không bao giờ đăng 2 phần của cùng 1 tập liên tiếp
 BONGCUC_EPISODES_CATALOG: List[Dict[str, Any]] = [
@@ -389,8 +476,13 @@ class BongCucYouTubeSplitter:
         yt_id = str(ep_info["yt_id"])
         title = str(ep_info["title"])
         part1_posted = bool(ep_info.get("part1_posted", False))
+        view_count = int(ep_info.get("view_count") or 0)
 
-        total_dur = self.get_youtube_video_duration(yt_id, allow_network=allow_network)
+        cat_dur = float(ep_info.get("duration") or 0.0)
+        if cat_dur > 60.0:
+            total_dur = cat_dur
+        else:
+            total_dur = self.get_youtube_video_duration(yt_id, allow_network=allow_network)
         target_orig_chunk = BONGCUC_TARGET_PART_SECONDS * BONGCUC_SPEED_FACTOR  # ~397.6s
 
         if part1_posted:
@@ -427,6 +519,7 @@ class BongCucYouTubeSplitter:
                     "total_parts": total_parts,
                     "is_final_part": part_num == total_parts,
                     "yt_id": yt_id,
+                    "view_count": view_count,
                     "source_url": f"https://www.youtube.com/watch?v={yt_id}&t={int(seg_start)}s",
                     "title": title,
                     "story_id": story_id,
@@ -505,55 +598,192 @@ class BongCucYouTubeSplitter:
     ) -> List[Dict[str, Any]]:
         """
         Xây dựng hàng đợi độc quyền 100% từ kênh YouTube `@bongcucaudio` (148+ tập truyện)
-        theo thứ tự **SO LE / XEN KẼ THEO CỤM (Wave-Batched Round-Robin)**:
-        - Cụm 1 (Ưu tiên số 1): Toàn bộ 12 tập đã chiếu Phần 1 trên kênh (`141, 142, 143, 144, 146, 137, 119, 145, 138, 110, 70, 10`)
-          -> Xoay vòng so le: `Phần 2` của cả 12 tập -> `Phần 3` của cả 12 tập -> ... -> `Phần Cuối`.
-        - Cụm 2, 3, ... (Toàn bộ 136+ tập còn lại từ Số 148 lùi về Số 01):
-          -> Chia thành từng cụm 10 tập, trong mỗi cụm xoay vòng so le `Phần 1` -> `Phần 2` -> ... -> `Phần Cuối`.
-        Đảm bảo:
-        1. Chỉ lấy duy nhất nguồn từ YouTube `@bongcucaudio`.
-        2. Không bao giờ có 2 phần của cùng 1 tập đứng cạnh nhau.
-        3. Tự động kiểm tra và báo trước cho người dùng khi số phần còn lại sắp hết.
+        theo chiến lược **ĐAN XEN 1:1 GIỮA [TẬP MỚI VIEW CAO (PHẦN 1)] <-> [PHẦN TIẾP THEO (PHẦN 2+)]**:
+        - Nhánh A (`fresh_part1_specs`): Các tập mới chưa từng đăng `Phần 1` (`part1_posted == False`),
+          được sắp xếp theo **`view_count` thực tế trên YouTube giảm dần** (Số 20: 161,231 views,
+          Số 39: 112,208 views, Số 23: 103,146 views, Số 45: 102,834 views, Số 60: 102,409 views...)
+          để kéo tệp người xem mới từ FYP TikTok.
+        - Nhánh B (`continuation_specs`): Các `Phần 2, 3...` của những tập đã chiếu `Phần 1`
+          (sắp xếp ưu tiên view cao + xoay vòng theo đợt `Wave` để không trùng tập liên tiếp).
+        - Đan xen 1:1: `[Tập Mới View Cao - Phần 1]` -> `[Tập Đang Chiếu - Phần 2+]` -> `[Tập Mới View Cao - Phần 1]`...
         """
         catalog = self.get_full_catalog()
-        part1_group = [ep for ep in catalog if bool(ep.get("part1_posted"))]
-        full_eps_group = [ep for ep in catalog if not bool(ep.get("part1_posted"))]
 
-        batches: List[List[Dict[str, Any]]] = []
-        if part1_group:
-            batches.append(part1_group)
-        batch_size = 10
-        for i in range(0, len(full_eps_group), batch_size):
-            batches.append(full_eps_group[i : i + batch_size])
+        # Phân loại các tập đã chiếu Phần 1 (trong lịch sử hoặc trong known_posted_or_ready_ids) và các tập mới chưa chiếu Phần 1
+        active_cont_eps: List[Dict[str, Any]] = []
+        brand_new_eps: List[Dict[str, Any]] = []
+        for ep in catalog:
+            ep_num = int(ep.get("ep_num") or 0)
+            p1_sid = make_bongcuc_story_id(ep_num, 1)
+            if bool(ep.get("part1_posted")) or p1_sid in known_posted_or_ready_ids:
+                active_cont_eps.append(ep)
+            else:
+                brand_new_eps.append(ep)
 
-        interleaved: List[Dict[str, Any]] = []
+        # Sắp xếp tập mới ưu tiên các tập có độ dài chuẩn TikTok (4 - 13 phần, <= 5400s) + lượt view YouTube cao nhất (>100k view: Số 39, 45, 60, 35, 21, 120...)
+        brand_new_eps.sort(
+            key=lambda x: (
+                1 if 600 <= float(x.get("duration") or 3200) <= 5400 else 0,
+                int(x.get("view_count") or 0),
+                int(x.get("ep_num") or 0),
+            ),
+            reverse=True,
+        )
+        # Sắp xếp tập đang chiếu dở theo độ dài chuẩn + lượt view giảm dần (Số 10: 472k view, Số 119: 245k view, Số 141: 40k view...)
+        active_cont_eps.sort(
+            key=lambda x: (
+                1 if 600 <= float(x.get("duration") or 3200) <= 5400 else 0,
+                int(x.get("view_count") or 0),
+                int(x.get("ep_num") or 0),
+            ),
+            reverse=True,
+        )
+
+        fresh_part1_specs: List[Dict[str, Any]] = []
+        new_eps_followup_lists: List[List[Dict[str, Any]]] = []
+        cont_per_ep_lists: List[List[Dict[str, Any]]] = []
+
         remaining_eps_count = 0
         fetched_online_count = 0
 
-        for batch in batches:
-            per_episode_pending: List[List[Dict[str, Any]]] = []
-            for ep_info in batch:
-                allow_net = fetched_online_count < 14
-                plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
-                pending_for_ep = [
-                    p for p in plan if str(p["story_id"]) not in known_posted_or_ready_ids
-                ]
-                if pending_for_ep:
-                    per_episode_pending.append(pending_for_ep)
-                    remaining_eps_count += 1
-                    fetched_online_count += 1
+        for ep_info in active_cont_eps:
+            allow_net = fetched_online_count < 8 and not ep_info.get("duration")
+            plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
+            if allow_net:
+                fetched_online_count += 1
+            pending = [p for p in plan if str(p["story_id"]) not in known_posted_or_ready_ids]
+            if pending:
+                cont_per_ep_lists.append(pending)
+                remaining_eps_count += 1
 
-            max_wave = max((len(lst) for lst in per_episode_pending), default=0)
-            for wave_idx in range(max_wave):
-                for ep_list in per_episode_pending:
-                    if wave_idx < len(ep_list):
-                        interleaved.append(ep_list[wave_idx])
+        for ep_info in brand_new_eps:
+            allow_net = fetched_online_count < 14 and not ep_info.get("duration")
+            plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
+            if allow_net:
+                fetched_online_count += 1
+            pending = [p for p in plan if str(p["story_id"]) not in known_posted_or_ready_ids]
+            if not pending:
+                continue
+            remaining_eps_count += 1
+            if int(pending[0]["part_num"]) == 1:
+                fresh_part1_specs.append(pending[0])
+                if len(pending) > 1:
+                    new_eps_followup_lists.append(pending[1:])
+            else:
+                cont_per_ep_lists.append(pending)
+
+        # Trải phẳng danh sách Phần 2+ theo từng đợt (Wave) để không bao giờ có 2 phần cùng tập đứng gần nhau
+        continuation_specs: List[Dict[str, Any]] = []
+        max_cont_wave = max((len(lst) for lst in cont_per_ep_lists), default=0)
+        for w_idx in range(max_cont_wave):
+            for ep_list in cont_per_ep_lists:
+                if w_idx < len(ep_list):
+                    continuation_specs.append(ep_list[w_idx])
+
+        # Nối thêm các phần 2+ của những tập mới (theo từng cụm 10 tập) vào sau
+        batch_size = 10
+        for b_start in range(0, len(new_eps_followup_lists), batch_size):
+            sub_lists = new_eps_followup_lists[b_start : b_start + batch_size]
+            max_w = max((len(lst) for lst in sub_lists), default=0)
+            for w_idx in range(max_w):
+                for ep_list in sub_lists:
+                    if w_idx < len(ep_list):
+                        continuation_specs.append(ep_list[w_idx])
+
+        # Đan xen 1:1 giữa [Tập Mới View Cao - Phần 1] và [Phần Tiếp Theo - Phần 2+]
+        # Đồng thời gán xoay vòng bg_mode ("day_aesthetic" / "night_mukbang") cho từng nhóm
+        interleaved: List[Dict[str, Any]] = []
+        max_len = max(len(fresh_part1_specs), len(continuation_specs))
+        for idx in range(max_len):
+            bg_choice = "day_aesthetic" if (idx % 2 == 0) else "night_mukbang"
+            if idx < len(fresh_part1_specs):
+                p1_item = dict(fresh_part1_specs[idx])
+                p1_item["bg_mode"] = bg_choice
+                interleaved.append(p1_item)
+            if idx < len(continuation_specs):
+                c_item = dict(continuation_specs[idx])
+                c_item["bg_mode"] = bg_choice
+                interleaved.append(c_item)
 
         self.check_and_alert_low_inventory(
             remaining_parts=len(interleaved),
             remaining_episodes=remaining_eps_count,
         )
         return interleaved
+
+    def ensure_background_video(
+        self, bg_mode: str = "day_aesthetic", seed_val: int = 0
+    ) -> Tuple[Path, float]:
+        """
+        Đảm bảo có sẵn video nền (Background Visual) theo chế độ khung giờ:
+        - `night_mukbang` (Khung giờ ban đêm 18:00 - 04:59): Video Mukbang đồ ăn đêm hấp dẫn.
+        - `day_aesthetic` (Khung giờ ban ngày 05:00 - 17:59): Video Nghệ thuật làm bánh kem / Gốm sứ / Cắt cát 3D tươi sáng.
+        Trả về `(bg_video_path, bg_start_sec)` với điểm bắt đầu `bg_start_sec` dịch chuyển thông minh
+        để mỗi tập truyện hiển thị một món ăn / tác phẩm nghệ thuật hoàn toàn khác nhau.
+        """
+        eff_mode = "night_mukbang" if bg_mode == "night_mukbang" else "day_aesthetic"
+        pool = (
+            BONGCUC_NIGHT_MUKBANG_POOL
+            if eff_mode == "night_mukbang"
+            else BONGCUC_DAY_AESTHETIC_POOL
+        )
+        bg_dir = self.project_root / "workspace_temp" / "bongcuc_bg_pool" / eff_mode
+        bg_dir.mkdir(parents=True, exist_ok=True)
+
+        import yt_dlp
+
+        ordered_indices = [(seed_val + i) % len(pool) for i in range(len(pool))]
+        chosen_mp4: Optional[Path] = None
+        for idx in ordered_indices:
+            cand_spec = pool[idx]
+            yt_id = str(cand_spec["yt_id"])
+            target_mp4 = bg_dir / f"bg_{yt_id}.mp4"
+            if target_mp4.exists() and target_mp4.stat().st_size > 2_000_000:
+                chosen_mp4 = target_mp4
+                break
+            tmp_out = bg_dir / f"bg_{yt_id}.part.mp4"
+            tmp_out.unlink(missing_ok=True)
+            url = f"https://www.youtube.com/watch?v={yt_id}"
+            try:
+                logger.info(
+                    f"[BongCucSplitter] Đang tải video Background [{eff_mode}] từ YouTube ({url} - {cand_spec.get('title')})..."
+                )
+                ydl_opts = {
+                    "format": "18/best[ext=mp4]/best",
+                    "outtmpl": str(tmp_out),
+                    "quiet": True,
+                    "no_warnings": True,
+                    "Retries": 2,
+                    "extractor_args": {"youtube": {"player_client": ["android", "web"]}},
+                }
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    ydl.download([url])
+                if tmp_out.exists() and tmp_out.stat().st_size > 2_000_000:
+                    shutil.move(str(tmp_out), str(target_mp4))
+                    chosen_mp4 = target_mp4
+                    logger.info(
+                        f"[BongCucSplitter] Đã tải xong Background [{eff_mode}] {yt_id} ({target_mp4.stat().st_size / 1e6:.1f} MB)."
+                    )
+                    break
+            except Exception as dl_exc:
+                logger.warning(
+                    f"[BongCucSplitter] Thử video Background tiếp theo trong pool [{eff_mode}] do lỗi tải {yt_id}: {dl_exc}"
+                )
+                tmp_out.unlink(missing_ok=True)
+
+        if chosen_mp4 is None:
+            existing = sorted(
+                p for p in bg_dir.glob("bg_*.mp4") if p.is_file() and p.stat().st_size > 2_000_000
+            )
+            if existing:
+                chosen_mp4 = existing[seed_val % len(existing)]
+            else:
+                raise RuntimeError(f"Không thể tải bất kỳ video Background nào cho chế độ {eff_mode}")
+
+        bg_dur = get_media_duration(chosen_mp4) or 600.0
+        max_offset = max(15, int(bg_dur - 260))
+        bg_start_sec = float(8 + ((seed_val * 53) % max_offset)) if bg_dur > 300 else 5.0
+        return chosen_mp4, round(bg_start_sec, 1)
 
     def ensure_youtube_full_video(self, yt_id: str) -> Path:
         """
@@ -704,6 +934,7 @@ class BongCucYouTubeSplitter:
         total_parts = int(part_spec["total_parts"])
         title = str(part_spec["title"]).strip()
         is_final = bool(part_spec.get("is_final_part"))
+        bg_mode = str(part_spec.get("bg_mode") or "day_aesthetic")
 
         try:
             from .translator import SubtitleTranslator
@@ -717,19 +948,24 @@ class BongCucYouTubeSplitter:
             if is_final
             else f"Phần {part_num}/{total_parts}"
         )
+        vibe_phrase = (
+            "Vừa xem Mukbang đêm khuya vừa nghe"
+            if bg_mode == "night_mukbang"
+            else "Vừa xem clip thư giãn vừa nghe"
+        )
         hooks = [
-            f"📖 Bông Cúc Số {ep_num} [{part_label}]: {title}. Diễn biến tiếp theo cực kỳ kịch tính, nghe hết để xem màn đáp trả phía sau nhé!",
-            f"🎧 [Truyện Đêm Khuya] Bông Cúc Số {ep_num} ({part_label}) — {title}. Từng tình tiết đều cuốn không rời tai, bạn nghĩ sao về diễn biến phần này?",
-            f"🔥 Bông Cúc Số {ep_num} [{part_label}]: {title}. Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng! Cùng nghe tiếp nhé!",
+            f"📖 Bông Cúc Số {ep_num} [{part_label}]: {title}. Diễn biến cực kỳ kịch tính, nghe hết để xem màn đáp trả phía sau nhé!",
+            f"🎧 [Truyện Đêm Khuya] Bông Cúc Số {ep_num} ({part_label}) — {title}. Từng tình tiết đều cuốn không rời tai, bạn nghĩ sao về phần này?",
+            f"🔥 Bông Cúc Số {ep_num} [{part_label}]: {title}. Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng! Cùng nghe nhé!",
             f"🌙 Thức đêm nghe truyện: Bông Cúc Số {ep_num} ({part_label}) - {title}. Đừng bỏ lỡ những tình tiết gay cấn nhất trong phần này nhé!",
             f"✨ Bông Cúc Trắng Số {ep_num} [{part_label}]: {title}. Càng nghe càng thấm, câu chuyện bước sang nút thắt bất ngờ nhất!",
-            f"🎙️ [Góc Kể Truyện] Bông Cúc Số {ep_num} ({part_label}): {title}. Vừa xem tô màu thư giãn vừa nghe tiếp câu chuyện đêm nay nhé!",
+            f"🎙️ [Góc Kể Truyện] Bông Cúc Số {ep_num} ({part_label}): {title}. {vibe_phrase} câu chuyện cuốn hút này nhé!",
             f"💫 Bông Cúc Số {ep_num} — {part_label}: {title}. Một quyết định thay đổi tất cả, liệu cái kết có xứng đáng?",
-            f"🍂 Đêm khuya nghe truyện Bông Cúc Số {ep_num} [{part_label}]: {title}. Ai đang hóng phần tiếp theo thì vào nghe ngay nhé!",
+            f"🍂 Nghe truyện Bông Cúc Số {ep_num} [{part_label}]: {title}. Ai đang hóng câu chuyện này thì vào nghe ngay nhé!",
             f"📌 Bông Cúc Số {ep_num} ({part_label}) | {title}. Sự thật dần hé lộ, nghe đến phút cuối để không bỏ sót chi tiết nào!",
             f"🌌 [Audio Truyện Ngắn] Bông Cúc Số {ep_num} [{part_label}]: {title}. Nghe xong phần này nhớ để lại cảm nhận của bạn nhé!",
             f"🕯️ Bông Cúc Trắng Số {ep_num} ({part_label}) — {title}. Những góc khuất dần được phơi bày qua từng lời kể!",
-            f"🎶 Vừa xem vẽ tranh vừa nghe Bông Cúc Số {ep_num} [{part_label}]: {title}. Tập này cuốn từ đầu đến cuối!",
+            f"🎶 {vibe_phrase} Bông Cúc Số {ep_num} [{part_label}]: {title}. Tập này cuốn từ đầu đến cuối!",
         ]
         seed_idx = ep_num * 7 + part_num * 13
         caption = hooks[seed_idx % len(hooks)]
@@ -750,7 +986,7 @@ class BongCucYouTubeSplitter:
             "#truyentamly",
             "#nghetruyendemkhuya",
             "#bongcuctrang",
-            "#tomaukechuyen",
+            "#mukbang" if bg_mode == "night_mukbang" else "#satisfying",
             "#gocnhinkhuya",
             "#chuyengiadinh",
             "#truyenhaymoingay",
@@ -769,11 +1005,13 @@ class BongCucYouTubeSplitter:
         part_spec: Dict[str, Any],
         target_ready_dir: Path,
         seq_offset_seconds: int = 0,
+        bg_mode: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
-        Cắt, tua `~1.42x`, đóng khung dọc `1080x1920` và áp dụng ĐẦY ĐỦ 6 BỘ LỌC CHỐNG PHÁT HIỆN TIKTOK
-        (Visual Anti-pHash/vHash + AudioPrint Evasion + Device Metadata Signature + Commercial Safe-Guard)
-        cho 1 phần từ video YouTube `@bongcucaudio`, xuất trực tiếp vào `output/audio_dem_khuyen/ready/`.
+        Cắt âm thanh từ `@bongcucaudio` (tua `~1.42x`), THAY THẾ HOÀN TOÀN BACKGROUND HÌNH ẢNH PHÍA SAU AUDIO:
+        - Khung giờ BAN ĐÊM (`night_mukbang`): Ghép nền video Mukbang đồ ăn đêm hấp dẫn (tắt 100% tiếng của video Mukbang).
+        - Khung giờ BAN NGÀY (`day_aesthetic`): Ghép nền video Nghệ thuật làm bánh kem / Gốm sứ / 3D Satisfying tươi sáng.
+        Áp dụng đầy đủ 6 Lớp Bộ Lọc Chống Phát Hiện TikTok và xuất trực tiếp vào `output/audio_dem_khuyen/ready/`.
         """
         ep_num = int(part_spec["ep_num"])
         part_num = int(part_spec["part_num"])
@@ -784,6 +1022,15 @@ class BongCucYouTubeSplitter:
         start_sec = float(part_spec["start_sec"])
         orig_dur = float(part_spec["orig_duration"])
 
+        eff_bg_mode = (
+            bg_mode
+            or str(part_spec.get("bg_mode") or "").strip()
+            or get_target_bg_mode_for_hour()
+        )
+        if eff_bg_mode not in ("night_mukbang", "day_aesthetic"):
+            eff_bg_mode = get_target_bg_mode_for_hour()
+        bg_short = "mukbang" if eff_bg_mode == "night_mukbang" else "daylight"
+
         try:
             from .translator import SubtitleTranslator
 
@@ -791,8 +1038,13 @@ class BongCucYouTubeSplitter:
         except Exception:
             pass
 
+        seed_val = ep_num * 31 + part_num * 17
         full_mp4 = self.ensure_youtube_full_video(yt_id)
-        overlay_png = self.cache_dir / f"ov_v2_s{ep_num}_p{part_num}of{total_parts}.png"
+        bg_mp4, bg_start_sec = self.ensure_background_video(
+            bg_mode=eff_bg_mode, seed_val=seed_val
+        )
+
+        overlay_png = self.cache_dir / f"ov_v3_s{ep_num}_p{part_num}of{total_parts}.png"
         self._render_part_overlay_png(
             overlay_path=overlay_png,
             ep_num=ep_num,
@@ -805,16 +1057,18 @@ class BongCucYouTubeSplitter:
         ts_val = datetime.fromtimestamp(time.time() + seq_offset_seconds).strftime(
             "%Y%m%d_%H%M%S"
         )
-        out_name = f"{ts_val}_tiktok_story_{story_id}_bongcuc_v2_s{ep_num}_p{part_num}.mp4"
+        out_name = (
+            f"{ts_val}_tiktok_story_{story_id}_bongcuc_v3_s{ep_num}_p{part_num}_bg_{bg_short}.mp4"
+        )
         out_path = target_ready_dir / out_name
-        tmp_render = self.cache_dir / f"rendering_{story_id}.mp4"
+        tmp_render = self.cache_dir / f"rendering_{story_id}_{bg_short}.mp4"
         tmp_render.unlink(missing_ok=True)
 
         # --- BỘ LỌC 1 & 2: Biến thiên vi mô (Deterministic Per-Part Jitter) chống trùng lặp cấu trúc ---
-        seed_val = ep_num * 31 + part_num * 17
         speed_factor = round(1.412 + (seed_val % 25) * 0.001, 3)  # 1.412x .. 1.436x (quanh 1.42x)
-        crop_x_ratio = round(0.206 + (seed_val % 9) * 0.001, 3)   # 0.206 .. 0.214 (cắt sạch chữ dọc bên trái)
-        crop_y_ratio = round(0.126 + ((seed_val // 3) % 9) * 0.001, 3)  # 0.126 .. 0.134 (cắt sạch viền trên/dưới)
+        bg_speed = round(1.12 + (seed_val % 11) * 0.01, 2)       # 1.12x .. 1.22x cho video nền sinh động
+        target_out_dur = max(30.0, round(orig_dur / speed_factor, 2))
+        crop_y_shift = round(0.08 + (seed_val % 7) * 0.005, 3)    # Cắt bỏ viền trên/dưới của clip nền
 
         # Dịch cao độ vi mô (+1.6% .. +2.1%) kết hợp bù tốc độ chính xác để phá vỡ 100% AudioPrint YouTube/TikTok
         pitch_factor = round(1.016 + (seed_val % 6) * 0.001, 4)
@@ -826,18 +1080,19 @@ class BongCucYouTubeSplitter:
         audio_br = "192k" if (seed_val % 2 == 0) else "160k"
         creation_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000000Z")
 
-        # Lật ngang (`hflip`) phần tranh tô màu `[fg]` TRƯỚC khi đóng khung và chèn tiêu đề Tiếng Việt `[1:v]`
-        # -> Phá vỡ hoàn toàn mã băm hình ảnh pHash/vHash so với YouTube mà chữ Tiếng Việt vẫn thuận chiều 100%!
+        # Input [0]: Video @bongcucaudio (CHỈ LẤY AUDIO [0:a], bỏ hoàn toàn hình tô màu cũ [0:v])
+        # Input [1]: Video Background Mukbang / Daytime Aesthetic (CHỈ LẤY HÌNH [1:v], tắt 100% tiếng [1:a])
+        # Input [2]: Lớp phủ tiêu đề PNG trong suốt 1080x1920 [2:v]
         filter_complex = (
-            f"[0:v]setpts=PTS/{speed_factor},fps=24,split=2[bg][fg];"
+            f"[1:v]setpts=PTS/{bg_speed},fps=24,trim=duration={target_out_dur:.2f},setpts=PTS-STARTPTS,split=2[bg][fg];"
             "[bg]scale=270:480:force_original_aspect_ratio=increase,crop=270:480,hflip,"
-            "boxblur=9:2,eq=brightness=-0.18:saturation=0.86:contrast=1.04,scale=1080:1920[bg_out];"
-            f"[fg]crop=ih*0.80:ih*0.74:iw*{crop_x_ratio}:ih*{crop_y_ratio},hflip,"
-            "eq=contrast=1.04:brightness=0.008:saturation=1.06:gamma=1.02,"
-            "unsharp=3:3:0.55:3:3:0.0,vignette=PI/7,scale=968:-2,"
-            "pad=w=iw+12:h=ih+12:x=6:y=6:color=white@0.22[fg_out];"
+            "boxblur=10:2,eq=brightness=-0.16:saturation=0.90:contrast=1.04,scale=1080:1920[bg_out];"
+            f"[fg]crop=ih*1.04:ih*0.82:(iw-ih*1.04)/2:ih*{crop_y_shift},hflip,"
+            "eq=contrast=1.05:brightness=0.01:saturation=1.08:gamma=1.02,"
+            "unsharp=3:3:0.55:3:3:0.0,vignette=PI/7,scale=972:980:force_original_aspect_ratio=increase,crop=972:980,"
+            "pad=w=iw+12:h=ih+12:x=6:y=6:color=white@0.24[fg_out];"
             "[bg_out][fg_out]overlay=(W-w)/2:(H-h)/2,noise=alls=3:allf=t+u[v1];"
-            "[v1][1:v]overlay=0:0[vout];"
+            "[v1][2:v]overlay=0:0[vout];"
             f"[0:a]highpass=f=55,lowpass=f=13500,"
             f"asetrate=44100*{pitch_factor},aresample=44100,atempo={atempo_comp},"
             "equalizer=f=140:t=q:w=1.2:g=1.5,equalizer=f=3200:t=q:w=1.5:g=-1.0,equalizer=f=5800:t=q:w=1.4:g=1.3,"
@@ -855,8 +1110,16 @@ class BongCucYouTubeSplitter:
             f"{orig_dur:.2f}",
             "-i",
             str(full_mp4),
+            "-stream_loop",
+            "-1",
+            "-ss",
+            f"{bg_start_sec:.1f}",
+            "-i",
+            str(bg_mp4),
             "-i",
             str(overlay_png),
+            "-t",
+            f"{target_out_dur:.2f}",
             "-map_metadata",
             "-1",
             "-map_chapters",
@@ -907,10 +1170,11 @@ class BongCucYouTubeSplitter:
         ]
 
         logger.info(
-            f"[BongCucSplitter] Đang cắt & áp dụng 6 Lớp Bộ Lọc Anti-Detection ({speed_factor}x, pitch={pitch_factor}x, hflip+grain, GOP={gop_val}): "
-            f"Bông Cúc Số {ep_num} [Phần {part_num}/{total_parts}] ({start_sec:.1f}s -> {start_sec + orig_dur:.1f}s gốc)..."
+            f"[BongCucSplitter] Đang cắt & ghép Background [{eff_bg_mode} -> {bg_mp4.name} @{bg_start_sec:.0f}s] "
+            f"({speed_factor}x, pitch={pitch_factor}x, GOP={gop_val}): "
+            f"Bông Cúc Số {ep_num} [Phần {part_num}/{total_parts} | views={part_spec.get('view_count', 0):,}]..."
         )
-        res = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=300)
+        res = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=360)
         if res.returncode != 0 or not tmp_render.exists() or tmp_render.stat().st_size < 500_000:
             raise RuntimeError(
                 f"Lỗi ffmpeg khi cắt Bông Cúc Số {ep_num} Phần {part_num}: {res.stderr[-400:]}"
@@ -918,10 +1182,12 @@ class BongCucYouTubeSplitter:
 
         shutil.move(str(tmp_render), str(out_path))
         actual_out_dur = get_media_duration(out_path) or part_spec["tiktok_duration"]
-        caption, hashtags = self.build_part_caption_and_hashtags(part_spec)
+        spec_with_bg = dict(part_spec)
+        spec_with_bg["bg_mode"] = eff_bg_mode
+        caption, hashtags = self.build_part_caption_and_hashtags(spec_with_bg)
 
         logger.info(
-            f"[BongCucSplitter] Hoàn tất xuất bản (Chuẩn 6 Bộ Lọc): {out_path.name} "
+            f"[BongCucSplitter] Hoàn tất xuất bản (v3 Background {eff_bg_mode} + 6 Bộ Lọc): {out_path.name} "
             f"(thời lượng={actual_out_dur:.1f}s, size={out_path.stat().st_size / 1e6:.1f}MB)"
         )
         return {
@@ -945,4 +1211,6 @@ class BongCucYouTubeSplitter:
             "ep_num": ep_num,
             "part_num": part_num,
             "total_parts": total_parts,
+            "bg_mode": eff_bg_mode,
+            "view_count": int(part_spec.get("view_count") or 0),
         }

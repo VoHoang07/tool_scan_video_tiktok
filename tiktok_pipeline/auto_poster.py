@@ -2459,13 +2459,20 @@ class TikTokAutoPoster:
             if ch_folder != "audio_dem_khuyen":
                 break
 
-        if valid_candidates:
+        if valid_candidates or ch_folder == "audio_dem_khuyen":
             if ch_folder == "audio_dem_khuyen":
                 try:
-                    from .bongcuc_splitter import parse_bongcuc_ep_and_part
+                    from .bongcuc_splitter import (
+                        BongCucYouTubeSplitter,
+                        get_target_bg_mode_for_hour,
+                        parse_bongcuc_bg_mode,
+                        parse_bongcuc_ep_and_part,
+                    )
 
-                    # Tìm tập (ep_num) của video vừa đăng gần nhất trên kênh audio_dem_khuyen để KHÔNG đăng 2 phần cùng tập liên tiếp
+                    # Tìm tập (ep_num) và phần (part_num) vừa đăng gần nhất trên kênh audio_dem_khuyen
+                    # để ĐAN XEN 1:1 giữa [Tập Mới View Cao - Phần 1] <-> [Phần Tiếp Theo - Phần 2+]
                     last_ep_num: Optional[int] = None
+                    last_part_num: Optional[int] = None
                     if reg_path.exists():
                         try:
                             reg_d = json.loads(reg_path.read_text(encoding="utf-8"))
@@ -2475,7 +2482,7 @@ class TikTokAutoPoster:
                                         f"{h_item.get('filename', '')} {h_item.get('story_id', '')} {h_item.get('caption', '')}"
                                     )
                                     if ep_p:
-                                        last_ep_num = ep_p[0]
+                                        last_ep_num, last_part_num = ep_p
                                         break
                         except Exception:
                             pass
@@ -2496,7 +2503,7 @@ class TikTokAutoPoster:
                                             f"{det.get('video_file', '')} {det.get('caption', '')}"
                                         )
                                         if ep_p:
-                                            last_ep_num = ep_p[0]
+                                            last_ep_num, last_part_num = ep_p
                                             break
                             except Exception:
                                 pass
@@ -2510,42 +2517,130 @@ class TikTokAutoPoster:
                         for p_f in posted_mp4s:
                             ep_p = parse_bongcuc_ep_and_part(p_f.name)
                             if ep_p:
-                                last_ep_num = ep_p[0]
+                                last_ep_num, last_part_num = ep_p
                                 break
 
-                    # Với mỗi tập trong ready/, chỉ giữ phần nhỏ nhất tiếp theo (không bao giờ đăng Phần 3 trước Phần 2 của cùng tập)
-                    # KHÓA ĐỘC QUYỀN 100% NGUỒN @bongcucaudio: Xóa ngay mọi file không thuộc bongcuc_v2
-                    lowest_part_by_ep: Dict[int, Tuple[int, Path]] = {}
+                    # Nếu bài đăng gần nhất là Phần >= 2 (hoặc chưa rõ) -> Bài tiếp theo BẮT BUỘC ưu tiên Phần 1 của tập mới View Cao!
+                    # Nếu bài đăng gần nhất là Phần 1 -> Bài tiếp theo ưu tiên Phần >= 2 của tập đang chiếu!
+                    want_part1 = last_part_num is None or int(last_part_num) >= 2
+                    target_bg_mode = get_target_bg_mode_for_hour()
+
+                    # KHÓA ĐỘC QUYỀN 100% NGUỒN @bongcucaudio v3 (Nền Mukbang Ban Đêm / Nghệ Thuật Ban Ngày):
+                    # Xóa ngay mọi file bản cũ (bongcuc_v2 hình tô màu) trong ready/
+                    lowest_part_by_ep: Dict[int, Tuple[int, Path, Optional[str]]] = {}
                     for c_file in valid_candidates:
                         ep_p = parse_bongcuc_ep_and_part(c_file.name)
-                        if ep_p and "bongcuc_v2_s" in c_file.name.lower():
+                        if ep_p and "bongcuc_v3_s" in c_file.name.lower():
                             ep_no, pt_no = ep_p
-                            if ep_no not in lowest_part_by_ep or pt_no < lowest_part_by_ep[ep_no][0]:
-                                lowest_part_by_ep[ep_no] = (pt_no, c_file)
+                            bg_m = parse_bongcuc_bg_mode(c_file.name)
+                            if (
+                                ep_no not in lowest_part_by_ep
+                                or pt_no < lowest_part_by_ep[ep_no][0]
+                                or (
+                                    pt_no == lowest_part_by_ep[ep_no][0]
+                                    and bg_m == target_bg_mode
+                                )
+                            ):
+                                lowest_part_by_ep[ep_no] = (pt_no, c_file, bg_m)
                         else:
                             c_file.unlink(missing_ok=True)
 
-                    ep_cands = sorted(
-                        lowest_part_by_ep.items(),
-                        key=lambda kv: (kv[1][0], kv[1][1].name),
-                    )
-                    # Ưu tiên tuyệt đối tập KHÁC với tập vừa đăng liền trước (So le / Xen kẽ)
-                    diff_ep_cands = [
-                        kv[1][1] for kv in ep_cands if last_ep_num is None or kv[0] != last_ep_num
-                    ]
-                    if diff_ep_cands:
-                        target_video = diff_ep_cands[0]
-                        sel_ep = parse_bongcuc_ep_and_part(target_video.name)
-                        logger.info(
-                            f"[{ch_folder}] [Interleaved Guard] Chọn đăng SO LE (Độc quyền @bongcucaudio): Bông Cúc Số {sel_ep[0]} Phần {sel_ep[1]} "
-                            f"(khác với tập vừa đăng trước đó: Số {last_ep_num})"
-                        )
-                    elif ep_cands:
-                        target_video = ep_cands[0][1][1]
+                    splitter = BongCucYouTubeSplitter(project_root=self.project_root)
+                    cat_views = {
+                        int(e.get("ep_num") or 0): int(e.get("view_count") or 0)
+                        for e in splitter.get_full_catalog()
+                    }
+
+                    # Xếp hạng ứng viên trong ready/:
+                    # 1. Khớp đúng chế độ Background theo khung giờ (Ban đêm: night_mukbang | Ban ngày: day_aesthetic)
+                    # 2. Khớp đúng luân phiên 1:1 (Phần 1 Tập Mới View Cao <-> Phần 2+ Tiếp Theo)
+                    # 3. Khác tập vừa đăng liền trước
+                    # 4. Ưu tiên tập có lượt view YouTube cao nhất
+                    exact_bg_and_part_cands: List[Tuple[int, Path]] = []
+                    exact_bg_only_cands: List[Tuple[int, Path]] = []
+                    for ep_no, (pt_no, c_file, bg_m) in lowest_part_by_ep.items():
+                        if last_ep_num is not None and ep_no == last_ep_num:
+                            continue
+                        is_p1 = pt_no == 1
+                        v_cnt = cat_views.get(ep_no, 0)
+                        if bg_m == target_bg_mode and is_p1 == want_part1:
+                            exact_bg_and_part_cands.append((v_cnt, c_file))
+                        elif bg_m == target_bg_mode:
+                            exact_bg_only_cands.append((v_cnt, c_file))
+
+                    exact_bg_and_part_cands.sort(key=lambda x: x[0], reverse=True)
+                    exact_bg_only_cands.sort(key=lambda x: x[0], reverse=True)
+
+                    if exact_bg_and_part_cands:
+                        target_video = exact_bg_and_part_cands[0][1]
                     else:
-                        target_video = None
+                        # Tự động cắt ngay 1 video đúng chuẩn (want_part1 + target_bg_mode) từ hàng đợi View Cao
+                        queue = splitter.build_interleaved_queue(posted_ids)
+                        desired_specs = [
+                            p
+                            for p in queue
+                            if (int(p["part_num"]) == 1) == want_part1
+                            and (last_ep_num is None or int(p["ep_num"]) != last_ep_num)
+                        ]
+                        if not desired_specs:
+                            desired_specs = [
+                                p
+                                for p in queue
+                                if last_ep_num is None or int(p["ep_num"]) != last_ep_num
+                            ]
+                        if desired_specs:
+                            chosen_spec = dict(desired_specs[0])
+                            chosen_spec["bg_mode"] = target_bg_mode
+                            logger.info(
+                                f"[{ch_folder}] [On-Demand Render] Đang xuất ngay Bông Cúc Số {chosen_spec['ep_num']} "
+                                f"Phần {chosen_spec['part_num']}/{chosen_spec['total_parts']} "
+                                f"(views={chosen_spec.get('view_count', 0):,}, background={target_bg_mode}) cho khung giờ hiện tại..."
+                            )
+                            rendered = splitter.render_single_part(
+                                part_spec=chosen_spec,
+                                target_ready_dir=ready_dir,
+                                bg_mode=target_bg_mode,
+                            )
+                            try:
+                                from .crawler import StoryAudioCrawler
+
+                                cr_sync = StoryAudioCrawler(project_root=self.project_root)
+                                cr_sync.clear_macl_xattr(Path(rendered["final_video"]))
+                                cr_sync.save_to_history(
+                                    video_id=rendered["video_id"],
+                                    sound_id=rendered["sound_id"],
+                                    platform="tiktok",
+                                    genre="channel_3_novel_drama",
+                                    source_url=rendered["source_url"],
+                                    output_filename=rendered["filename"],
+                                    channel="audio_dem_khuyen",
+                                )
+                                cr_sync.append_to_master_csv(
+                                    filename=rendered["filename"],
+                                    source_url=rendered["source_url"],
+                                    caption=rendered["caption"],
+                                    hashtags=rendered["hashtags"],
+                                    status="READY",
+                                    channel="audio_dem_khuyen",
+                                    posted_at="",
+                                )
+                            except Exception:
+                                pass
+                            target_video = Path(rendered["final_video"])
+                        elif exact_bg_only_cands:
+                            target_video = exact_bg_only_cands[0][1]
+                        else:
+                            target_video = None
+
+                    if target_video and target_video.exists():
+                        sel_ep = parse_bongcuc_ep_and_part(target_video.name) or (0, 0)
+                        logger.info(
+                            f"[{ch_folder}] [Interleaved High-View + Day/Night Background Guard] "
+                            f"Chọn đăng: Bông Cúc Số {sel_ep[0]} Phần {sel_ep[1]} "
+                            f"(views={cat_views.get(sel_ep[0], 0):,}, bg={target_bg_mode} | bài trước: Số {last_ep_num} Phần {last_part_num})"
+                        )
                 except Exception as int_exc:
-                    logger.debug(f"[{ch_folder}] Bỏ qua lỗi phụ Interleaved Guard: {int_exc}")
+                    logger.warning(f"[{ch_folder}] Lỗi Interleaved Guard: {int_exc}")
                     target_video = None
             else:
                 target_video = valid_candidates[0]
