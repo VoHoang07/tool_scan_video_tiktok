@@ -1,9 +1,9 @@
 {
   "timezone": "Asia/Ho_Chi_Minh",
   "system_switches": {
-    "master_switch": true,
+    "master_switch": false,
     "switch_1_factory": {
-      "enabled": false,
+      "enabled": true,
       "max_ready_per_niche": 5,
       "short_video_duration_range": [
         15,
@@ -17,7 +17,7 @@
       "batch_single_chrome_session": true
     },
     "switch_3_interact": {
-      "tiktok": false,
+      "tiktok": true,
       "fb_reels": false,
       "yt_shorts": false
     },
