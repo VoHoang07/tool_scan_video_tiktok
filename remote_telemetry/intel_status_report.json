@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 12:40:56",
+    "timestamp": "2026-11-03 12:43:51",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "event_type": "upload",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 150.4,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261101_232255_tiktok_story_7670306567077629205.mp4",
+      "caption": "😂 Tình huống dở khóc dở cười của hai mẹ con khiến cả nhà bật cười. Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #tiktokvn #xuhuong",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 12:43:51",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261101_232255_tiktok_story_7670306567077629205.mp4",
+        "caption": "😂 Tình huống dở khóc dở cười của hai mẹ con khiến cả nhà bật cười. Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-03 12:40:56",
       "machine_arch": "x86_64",
@@ -551,17 +571,6 @@
         "scrolled_videos": 13,
         "elapsed_seconds": 162.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-03 11:05:54",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_upload_error_an_vat_moi_ngay.jpg",
-      "details": {
-        "video_file": "20261103_110119_youtube_shorts_story_FAP6RhvxATM.mp4",
-        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.public-DraftEditor-content[contenteditable=\\\"true\\\"], div[contenteditable=\\\"true\\\"][role=\\\"textbox\\\"], div[contenteditable=\\\"true\\\"]\").first\n    - locator resolved to <div role=\"combobox\" spellcheck=\"false\" aria-expanded=\"false\" contenteditable=\"true\" aria-autocomplete=\"list\" class=\"notranslate public-DraftEditor-content\">…</div>\n  - attempting click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class=\"jsx-1661904819 item-heading\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div class=\"jsx-1661904819 item-heading\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 100ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  13 × retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"jsx-1661904819 item-heading\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"jsx-1661904819 item-heading\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n       - waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  2 × retrying click action\n      - waiting 500ms\n      - waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"jsx-1661904819 item-heading\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n    - element is visible, enabled and stable\n    - scrolling into view if needed\n    - done scrolling\n    - <div dir=\"ltr\" class=\"TUXModal-overlay\" data-transition-status=\"open\" data-tux-color-scheme=\"light\">…</div> from <div id=\":r6u:\" data-floating-ui-portal=\"\">…</div> subtree intercepts pointer events\n  - retrying click action\n    - waiting 500ms\n"
       }
     }
   ]
