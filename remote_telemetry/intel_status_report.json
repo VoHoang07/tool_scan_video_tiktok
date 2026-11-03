@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 10:40:09",
+    "timestamp": "2026-11-03 10:46:12",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "elapsed_seconds": 160.7,
+      "scrolled_videos": 12,
+      "elapsed_seconds": 155.7,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 10:46:12",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 155.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-03 10:40:09",
       "machine_arch": "x86_64",
@@ -235,22 +247,6 @@
         "scrolled_videos": 12,
         "elapsed_seconds": 162.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-03 09:16:02",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261102_000409_tiktok_story_990014602_bongcuc_v2_s146_p2.mp4",
-        "caption": "✨ Bông Cúc Trắng Số 146 [Phần 2/8]: Vừa Sinh Đôi, Tôi Đã Bị Chồng Nghi Ngoại Tình. Càng nghe càng thấm, câu chuyện bước sang nút thắt bất ngờ nhất!",
-        "hashtags": "#bongcucso146 #bongcucaudio #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya #gocnhinkhuya #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
