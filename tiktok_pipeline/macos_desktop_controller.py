@@ -98,19 +98,27 @@ class MacOSDesktopController:
         return (res.stdout or "").strip()
 
     def ensure_app_focus(self, app_name: str = "Google Chrome", delay_sec: float = 0.25) -> None:
-        """Đưa cửa sổ ứng dụng lên tiền cảnh (Foreground Focus) như người dùng bấm vào."""
-        self.run_osascript(
-            f"""
-            tell application "{app_name}" to activate
-            delay 0.15
-            tell application "System Events"
-                tell process "{app_name}"
-                    set frontmost to true
-                    try
-                        perform action "AXRaise" of window 1
-                    end try
-                end tell
-            end tell
+        """Đưa đúng cửa sổ trình duyệt TikTok lên tiền cảnh (không kích hoạt nhầm cửa sổ Chrome cá nhân của người dùng)."""
+        self.run_jxa(
+            """
+            try {
+                var sys = Application("System Events");
+                var procs = sys.processes.whose({name: {_contains: "Chrome"}})();
+                for (var i = 0; i < procs.length; i++) {
+                    var p = procs[i];
+                    var wins = p.windows();
+                    for (var j = 0; j < wins.length; j++) {
+                        var wTitle = wins[j].name() || "";
+                        if (wTitle.indexOf("TikTok") !== -1) {
+                            if (!p.frontmost()) {
+                                p.frontmost = true;
+                            }
+                            try { wins[j].actions.byName("AXRaise").perform(); } catch (e) {}
+                            break;
+                        }
+                    }
+                }
+            } catch (e) {}
             """
         )
         if delay_sec > 0:
@@ -236,10 +244,24 @@ class MacOSDesktopController:
         ObjC.import("CoreGraphics");
         try {{
             var sys = Application("System Events");
-            var cProc = sys.processes.byName("Google Chrome");
-            if (!cProc.frontmost()) {{
-                cProc.frontmost = true;
-                delay(0.06);
+            var procs = sys.processes.whose({{name: {{_contains: "Chrome"}}}})();
+            for (var pIdx = 0; pIdx < procs.length; pIdx++) {{
+                var p = procs[pIdx];
+                var wins = p.windows();
+                var hasTikTokWin = false;
+                for (var wIdx = 0; wIdx < wins.length; wIdx++) {{
+                    var wTitle = wins[wIdx].name() || "";
+                    if (wTitle.indexOf("TikTok") !== -1) {{
+                        hasTikTokWin = true;
+                        if (!p.frontmost()) {{
+                            p.frontmost = true;
+                            delay(0.05);
+                        }}
+                        try {{ wins[wIdx].actions.byName("AXRaise").perform(); }} catch (e2) {{}}
+                        break;
+                    }}
+                }}
+                if (hasTikTokWin) break;
             }}
         }} catch (e) {{}}
         var src = $.CGEventSourceCreate($.kCGEventSourceStateHIDSystemState);

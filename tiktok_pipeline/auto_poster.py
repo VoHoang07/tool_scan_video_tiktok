@@ -1779,7 +1779,16 @@ class TikTokAutoPoster:
                     self._os_click_viewport(page, bx, by)
                     time.sleep(random.uniform(0.85, 1.35))
 
-                    if self._click_public_option_in_open_dropdown(page):
+                    opened_pub = self._click_public_option_in_open_dropdown(page)
+                    if not opened_pub:
+                        try:
+                            page.mouse.click(bx, by)
+                            time.sleep(0.9)
+                            opened_pub = self._click_public_option_in_open_dropdown(page)
+                        except Exception:
+                            pass
+
+                    if opened_pub:
                         switched_count += 1
                         logger.info(
                             f"[{ch_folder}] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: '{btn['text']}')."
