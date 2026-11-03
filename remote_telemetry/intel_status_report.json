@@ -1,207 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 17:24:36",
+    "timestamp": "2026-11-03 17:28:30",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "video_hay4",
-        "domFollowing": "175",
-        "domFollowers": "179",
-        "domLikes": "57",
-        "sidebarFollowing": [
-          "/@video_hay4",
-          "/@l.mn.niii/live",
-          "/@l.mn.niii",
-          "/@chuyn.tm.linh.495",
-          "/@h.hi1554",
-          "/@oanhnghimth4",
-          "/@boloc24hcheoflo"
-        ]
-      },
-      "records": [
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7703598351693942037",
-          "video_url": "https://www.tiktok.com/@t_121311/video/7703598351693942037",
-          "creator_handle": "@t_121311",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": false,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Cách làm video của bạn cuốn thật sự, xem một mạch tới cuối luôn 🌟",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611031822325157B555B8CF7B17E90E\",\"now\":1793701352000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202611031822325157B555B8CF7B17E90E\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611031822525956B5DAE2F4180FB1E4\",\"now\":1793701373000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611031822525956B5DAE2F4180FB1E4\"},\"status_code\":0,\"status_msg\":\"\"}"
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103182255B96D8FE165CFE30F5D3C\",\"now\":1793701375000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261103182255B96D8FE165CFE30F5D3C\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 795.15625,
-              "y": 421,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "9"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 421,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "10"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@t_121311",
-              "nav_method": "spa_click",
-              "profile_url": "https://www.tiktok.com/@t_121311?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": null,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-03 17:22:59",
-          "follow_back_window_until": "2026-11-04 17:22:59"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7703597075556093204",
-          "video_url": "https://www.tiktok.com/@hanghatde26/video/7703597075556093204",
-          "creator_handle": "@hanghatde26",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103182334499BF75B7955B30EA20E\",\"now\":1793701414000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261103182334499BF75B7955B30EA20E\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 795.15625,
-              "y": 369,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "55"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 369,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "56"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            }
-          },
-          "interacted_at": "2026-11-03 17:23:44",
-          "follow_back_window_until": "2026-11-04 17:23:44"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7703491629520293141",
-          "video_url": "https://www.tiktok.com/@suiuuoiiii1/video/7703491629520293141",
-          "creator_handle": "@suiuuoiiii1",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261103182427F629EE83D7DC3B0EB5BF\",\"now\":1793701467000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261103182427F629EE83D7DC3B0EB5BF\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 795.15625,
-              "y": 421,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "24"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 421,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "25"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            }
-          },
-          "interacted_at": "2026-11-03 17:24:32",
-          "follow_back_window_until": "2026-11-04 17:24:32"
-        }
-      ]
+      "scrolled_videos": 12,
+      "elapsed_seconds": 161.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 17:28:30",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 161.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-03 17:24:36",
       "machine_arch": "x86_64",
@@ -690,18 +512,6 @@
         "post_confirmed": true,
         "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-03 14:08:03",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "elapsed_seconds": 154.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
