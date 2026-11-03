@@ -1,17 +1,135 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-03 11:14:33",
+    "timestamp": "2026-11-03 11:16:39",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "event_type": "filter24h",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "elapsed_seconds": 162.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "an_vat_moi_ngay",
+          "video_id": "7702690744535977222",
+          "video_url": "https://www.tiktok.com/@emancomchua604/video/7702690744535977222",
+          "creator_handle": "@emancomchua604",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": false,
+            "4_added_favorite": false,
+            "5_followed_creator": false,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": true,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611031216345F78542406B47238E3AE\",\"now\":1793679395000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611031216345F78542406B47238E3AE\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 872,
+              "y": 404,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "2"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 872,
+                "y": 404,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "2"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            }
+          },
+          "interacted_at": "2026-11-03 11:16:39",
+          "follow_back_window_until": "2026-11-04 11:16:39"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-03 11:16:39",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "an_vat_moi_ngay",
+            "video_id": "7702690744535977222",
+            "video_url": "https://www.tiktok.com/@emancomchua604/video/7702690744535977222",
+            "creator_handle": "@emancomchua604",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": true,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611031216345F78542406B47238E3AE\",\"now\":1793679395000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611031216345F78542406B47238E3AE\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 872,
+                "y": 404,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "2"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 872,
+                  "y": 404,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "2"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              }
+            },
+            "interacted_at": "2026-11-03 11:16:39",
+            "follow_back_window_until": "2026-11-04 11:16:39"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-03 11:14:33",
       "machine_arch": "x86_64",
@@ -1175,18 +1293,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 159.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-03 10:20:42",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 156.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
