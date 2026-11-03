@@ -1,18 +1,13 @@
 {
-  "updated_at": "2026-11-03 19:39:44",
+  "updated_at": "2026-11-03 20:04:53",
   "latest_result": {
-    "cmd_id": "auto_heal_1793709584",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-03 19:39:44",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-03 19:39:44"
-    },
+    "cmd_id": "heartbeat_1793711092",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-03 20:04:52",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-03 19:39:44",
+      "timestamp": "2026-11-03 20:04:53",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -20,32 +15,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "37963       12:55 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "37965       12:55 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "99294 01-20:12:09 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296 01-20:12:09 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "37963       38:04 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "37965       38:04 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "99294 01-20:37:18 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296 01-20:37:18 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[19:34:28] [INFO] tiktok_pipeline: TTS #10 [21.50s-22.91s | gốc=1.44s]: rate=-25%, atempo=0.99x -> 1.41s",
-        "[19:34:41] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (72d41a0 -> 0e91cd9) | AGY-Bridge [outbox] cmd_20261103_193200_pause_intel at 2026-11-03 19:34:30",
-        "[19:34:42] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[19:34:57] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Sự khác biệt giữa căn bậc hai và căn bậc ba là gì?' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[19:35:15] [INFO] tiktok_pipeline: TTS #11 [23.26s-26.24s | gốc=3.00s]: rate=-42%, atempo=1.69x -> 2.98s",
-        "[19:35:23] [INFO] tiktok_pipeline: TTS #12 [26.54s-27.15s | gốc=0.64s]: rate=+38%, atempo=1.43x -> 0.61s",
-        "[19:35:49] [INFO] tiktok_pipeline: TTS #13 [27.78s-29.31s | gốc=1.56s]: rate=-18%, atempo=0.99x -> 1.53s",
-        "[19:35:57] [INFO] tiktok_pipeline: TTS #14 [29.94s-31.21s | gốc=1.28s]: rate=+38%, atempo=1.21x -> 1.27s",
-        "[19:36:11] [INFO] tiktok_pipeline: TTS #15 [31.62s-34.72s | gốc=3.12s]: rate=+0%, atempo=1.01x -> 3.10s",
-        "[19:36:57] [INFO] tiktok_pipeline: TTS #16 [34.98s-37.19s | gốc=2.24s]: rate=+38%, atempo=1.10x -> 2.21s",
-        "[19:37:14] [INFO] tiktok_pipeline: TTS #17 [37.50s-38.68s | gốc=1.20s]: rate=+38%, atempo=1.20x -> 1.18s",
-        "[19:37:29] [INFO] tiktok_pipeline: TTS #18 [39.38s-40.28s | gốc=0.96s]: rate=-15%, atempo=1.00x -> 0.90s",
-        "[19:37:40] [INFO] tiktok_pipeline: TTS #19 [40.34s-42.21s | gốc=1.92s]: rate=+0%, atempo=1.04x -> 1.87s",
-        "[19:37:45] [INFO] tiktok_pipeline: TTS #20 [42.28s-43.08s | gốc=0.84s]: rate=-42%, atempo=0.72x -> 0.80s",
-        "[19:37:57] [INFO] tiktok_pipeline: TTS #21 [43.34s-44.13s | gốc=0.80s]: rate=+38%, atempo=1.64x -> 0.79s",
-        "[19:38:09] [INFO] tiktok_pipeline: TTS #22 [44.42s-46.88s | gốc=2.48s]: rate=-21%, atempo=1.00x -> 2.46s",
-        "[19:38:22] [INFO] tiktok_pipeline: TTS #23 [47.22s-48.75s | gốc=1.56s]: rate=+38%, atempo=1.11x -> 1.53s",
-        "[19:38:35] [INFO] tiktok_pipeline: TTS #24 [48.98s-50.23s | gốc=1.28s]: rate=+38%, atempo=1.25x -> 1.25s",
-        "[19:38:55] [INFO] tiktok_pipeline: TTS #25 [50.62s-52.03s | gốc=1.48s]: rate=-41%, atempo=0.97x -> 1.41s",
-        "[19:39:26] [INFO] tiktok_pipeline: TTS #26 [52.10s-53.27s | gốc=1.20s]: rate=+38%, atempo=1.41x -> 1.17s"
+        "[19:58:57] [INFO] tiktok_pipeline: TTS #01 [02.10s-03.68s | gốc=1.60s]: rate=+38%, atempo=1.69x -> 1.58s",
+        "[19:59:06] [INFO] tiktok_pipeline: TTS #02 [04.22s-04.60s | gốc=0.40s]: rate=+38%, atempo=1.90x -> 0.38s",
+        "[19:59:48] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Mèo tam thể' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[19:59:48] [INFO] tiktok_pipeline: TTS #03 [04.94s-05.33s | gốc=0.44s]: rate=+38%, atempo=0.95x -> 0.39s",
+        "[20:00:03] [INFO] tiktok_pipeline: TTS #04 [12.42s-13.99s | gốc=1.62s]: rate=+38%, atempo=1.41x -> 1.57s",
+        "[20:00:19] [INFO] tiktok_pipeline: TTS #05 [14.04s-15.53s | gốc=1.56s]: rate=+38%, atempo=1.24x -> 1.49s",
+        "[20:00:43] [INFO] tiktok_pipeline: TTS #06 [15.60s-17.49s | gốc=1.96s]: rate=+38%, atempo=1.44x -> 1.89s",
+        "[20:00:53] [INFO] tiktok_pipeline: TTS #07 [17.56s-18.55s | gốc=1.02s]: rate=+13%, atempo=0.95x -> 0.99s",
+        "[20:01:08] [INFO] tiktok_pipeline: TTS #08 [19.94s-20.40s | gốc=0.48s]: rate=+38%, atempo=1.23x -> 0.46s",
+        "[20:01:28] [INFO] tiktok_pipeline: TTS #09 [20.70s-21.96s | gốc=1.32s]: rate=+38%, atempo=1.26x -> 1.26s",
+        "[20:01:41] [INFO] tiktok_pipeline: TTS #10 [22.02s-22.95s | gốc=1.00s]: rate=+38%, atempo=1.15x -> 0.93s",
+        "[20:02:04] [INFO] tiktok_pipeline: TTS #11 [23.02s-24.28s | gốc=1.28s]: rate=+38%, atempo=1.34x -> 1.26s",
+        "[20:02:09] [INFO] tiktok_pipeline: TTS #12 [30.10s-33.07s | gốc=3.00s]: rate=+0%, atempo=0.93x -> 2.97s",
+        "[20:02:38] [INFO] tiktok_pipeline: TTS #13 [34.14s-34.67s | gốc=0.56s]: rate=+38%, atempo=1.05x -> 0.53s",
+        "[20:03:16] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Qua hai ví dụ trước' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[20:03:16] [INFO] tiktok_pipeline: TTS #14 [35.02s-35.69s | gốc=0.84s]: rate=+38%, atempo=0.55x -> 0.67s",
+        "[20:03:44] [INFO] tiktok_pipeline: TTS #15 [36.26s-37.49s | gốc=1.24s]: rate=+38%, atempo=1.55x -> 1.23s",
+        "[20:04:06] [INFO] tiktok_pipeline: TTS #16 [37.94s-39.46s | gốc=1.56s]: rate=+38%, atempo=0.99x -> 1.52s",
+        "[20:04:24] [INFO] tiktok_pipeline: TTS #17 [39.82s-40.80s | gốc=1.00s]: rate=+38%, atempo=1.35x -> 0.98s",
+        "[20:04:41] [INFO] tiktok_pipeline: TTS #18 [42.74s-44.05s | gốc=1.38s]: rate=+23%, atempo=0.94x -> 1.31s"
       ]
     }
   }
