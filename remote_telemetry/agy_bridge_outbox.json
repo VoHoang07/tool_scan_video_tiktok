@@ -1,13 +1,18 @@
 {
-  "updated_at": "2026-11-03 22:05:11",
+  "updated_at": "2026-11-03 22:56:18",
   "latest_result": {
-    "cmd_id": "heartbeat_1793718311",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-03 22:05:11",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793721378",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-03 22:56:18",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-03 22:56:18"
+    },
     "system_health": {
-      "timestamp": "2026-11-03 22:05:11",
+      "timestamp": "2026-11-03 22:56:18",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -15,32 +20,31 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "37963    02:38:22 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "37965    02:38:22 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "99294 01-22:37:36 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296 01-22:37:36 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "37963    03:29:29 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "37965    03:29:29 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "99294 01-23:28:43 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296 01-23:28:43 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "66888       32:31 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[20:05:48] [INFO] tiktok_pipeline: TTS #22 [48.26s-51.43s | gốc=3.20s]: rate=+38%, atempo=1.06x -> 3.17s",
-        "[20:06:10] [INFO] tiktok_pipeline: TTS #23 [54.62s-55.08s | gốc=0.52s]: rate=+38%, atempo=1.90x -> 0.46s",
-        "[20:06:20] [INFO] tiktok_pipeline: TTS #24 [55.14s-56.71s | gốc=1.64s]: rate=-42%, atempo=0.55x -> 1.57s",
-        "[20:06:40] [INFO] tiktok_pipeline: TTS #25 [57.02s-58.12s | gốc=1.12s]: rate=+38%, atempo=1.33x -> 1.10s",
-        "[20:06:55] [INFO] tiktok_pipeline: TTS #26 [58.54s-59.47s | gốc=0.96s]: rate=+38%, atempo=1.36x -> 0.93s",
-        "[20:07:25] [INFO] tiktok_pipeline: TTS #27 [60.40s-61.47s | gốc=1.10s]: rate=+38%, atempo=1.14x -> 1.07s",
-        "[20:07:38] [INFO] tiktok_pipeline: TTS #28 [61.86s-63.28s | gốc=1.44s]: rate=+38%, atempo=1.48x -> 1.42s",
-        "[20:08:17] [INFO] tiktok_pipeline: TTS #29 [63.74s-64.57s | gốc=0.84s]: rate=+38%, atempo=1.41x -> 0.83s",
-        "[20:08:42] [INFO] tiktok_pipeline: TTS #30 [65.06s-65.85s | gốc=0.80s]: rate=+38%, atempo=1.45x -> 0.79s",
-        "[20:08:51] [INFO] tiktok_pipeline: TTS #31 [69.42s-71.13s | gốc=1.72s]: rate=+38%, atempo=1.33x -> 1.71s",
-        "[20:09:12] [INFO] tiktok_pipeline: TTS #32 [71.54s-73.12s | gốc=1.64s]: rate=+38%, atempo=1.09x -> 1.58s",
-        "[20:09:23] [INFO] tiktok_pipeline: TTS #33 [73.18s-74.27s | gốc=1.12s]: rate=+38%, atempo=1.06x -> 1.09s",
-        "[20:35:11] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (77c0682 -> e086421) | AGY-Bridge [outbox] heartbeat_1793712896 at 2026-11-03 20:34:57",
-        "[20:35:12] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[21:05:22] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (e086421 -> 1e12c56) | AGY-Bridge [outbox] heartbeat_1793714700 at 2026-11-03 21:05:00",
-        "[21:05:22] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (e086421 -> 1e12c56)!",
-        "[21:05:22] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[21:05:23] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[21:35:31] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (1e12c56 -> 72e8fd3) | AGY-Bridge [outbox] heartbeat_1793716504 at 2026-11-03 21:35:05",
-        "[21:35:32] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
+        "==============================================================================================",
+        "[22:53:16] [INFO] tiktok_pipeline: === [CHU KỲ #29] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+        "[22:53:17] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (20e6974 -> dfe1d57) | fix(macos_desktop): target only Chrome process with TikTok window instead of bringing personal Chrome to front",
+        "[22:53:18] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (20e6974 -> dfe1d57)!",
+        "[22:53:18] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[22:53:18] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[22:53:18] [INFO] tiktok_pipeline: [Master Switch] Khóa Master (`master_switch`) đang TẮT trong schedule_config.json -> Tạm nghỉ 60s...",
+        "[22:53:18] [INFO] tiktok_pipeline: [Smart Sleep] Khóa Master đang TẮT: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
+        "[22:53:30] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (20e6974 -> dfe1d57) | fix(macos_desktop): target only Chrome process with TikTok window instead of bringing personal Chrome to front",
+        "[22:53:31] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "==============================================================================================",
+        "[22:54:20] [INFO] tiktok_pipeline: === [CHU KỲ #30] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+        "[22:54:21] [INFO] tiktok_pipeline: [Master Switch] Khóa Master (`master_switch`) đang TẮT trong schedule_config.json -> Tạm nghỉ 60s...",
+        "[22:54:21] [INFO] tiktok_pipeline: [Smart Sleep] Khóa Master đang TẮT: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
+        "==============================================================================================",
+        "[22:55:23] [INFO] tiktok_pipeline: === [CHU KỲ #31] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+        "[22:55:24] [INFO] tiktok_pipeline: [Master Switch] Khóa Master (`master_switch`) đang TẮT trong schedule_config.json -> Tạm nghỉ 60s...",
+        "[22:55:24] [INFO] tiktok_pipeline: [Smart Sleep] Khóa Master đang TẮT: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
       ]
     }
   }
