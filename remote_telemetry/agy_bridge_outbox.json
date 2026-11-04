@@ -1,32 +1,31 @@
 {
-  "updated_at": "2026-11-04 16:29:58",
+  "updated_at": "2026-11-04 16:30:28",
   "latest_result": {
-    "cmd_id": "auto_restart_1793784598",
-    "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-04 16:29:58",
-    "restart_info": {
-      "restarted_streams": [
-        "stream1_upload"
-      ],
-      "timestamp": "2026-11-04 16:29:58"
-    },
+    "cmd_id": "cmd_20261104_162910_start_stream1_and_verify",
+    "action": "shell",
+    "executed_at": "2026-11-04 16:30:25",
+    "machine_arch": "x86_64",
+    "hostname": "Hoangs-MBP.fpt",
+    "status": "SUCCESS",
+    "exit_code": 0,
+    "stdout": " 3218    33:02 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python /Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py --daemon --poll 20\n 6279    00:03 ./venv/bin/python main.py --stream-upload --max-ready 5\n 6281    00:03 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n 3213    33:03 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\n 3214    33:03 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\n",
+    "stderr": "",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-04 16:29:58",
+      "timestamp": "2026-11-04 16:30:28",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
-      "stream1_running": false,
+      "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 0.7,
       "processes": [
-        "3213    32:33 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214    32:33 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "6279    00:03 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "6281    00:03 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213    33:03 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214    33:03 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "Current thread 0x00007ff85a36ca00 (most recent call first):",
-        "  <no Python frame>",
-        "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
-        "Python runtime state: core initialized",
         "OSError: [Errno 9] Bad file descriptor",
         "Current thread 0x00007ff85a36ca00 (most recent call first):",
         "  <no Python frame>",
@@ -35,12 +34,66 @@
         "OSError: [Errno 9] Bad file descriptor",
         "Current thread 0x00007ff85a36ca00 (most recent call first):",
         "  <no Python frame>",
-        "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
-        "Python runtime state: core initialized",
-        "OSError: [Errno 9] Bad file descriptor",
-        "Current thread 0x00007ff85a36ca00 (most recent call first):",
-        "  <no Python frame>"
-      ]
+        "[16:30:26] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
+        "[16:30:26] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[16:30:26] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[16:30:26] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[16:30:26] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[16:30:26] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
+        "==============================================================================================",
+        "[16:30:26] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+        "[16:30:28] [INFO] tiktok_pipeline: [Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon (post_7_channels_then_pause_20261103_2228) -> Kênh ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay']!"
+      ],
+      "lock_file_content": "pid=6279 ts=1793784628"
     }
-  }
+  },
+  "history": [
+    {
+      "cmd_id": "cmd_20261104_162910_start_stream1_and_verify",
+      "action": "shell",
+      "executed_at": "2026-11-04 16:30:25",
+      "machine_arch": "x86_64",
+      "hostname": "Hoangs-MBP.fpt",
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "stdout": " 3218    33:02 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python /Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py --daemon --poll 20\n 6279    00:03 ./venv/bin/python main.py --stream-upload --max-ready 5\n 6281    00:03 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n 3213    33:03 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\n 3214    33:03 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\n",
+      "stderr": "",
+      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+      "system_health": {
+        "timestamp": "2026-11-04 16:30:28",
+        "machine_arch": "x86_64",
+        "hostname": "Hoangs-MBP.fpt",
+        "stream1_running": true,
+        "stream2_running": true,
+        "chrome_testing_count": 0,
+        "lock_file_age_seconds": 0.7,
+        "processes": [
+          "6279    00:03 ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "6281    00:03 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "3213    33:03 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "3214    33:03 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        ],
+        "recent_daemon_log_tail": [
+          "OSError: [Errno 9] Bad file descriptor",
+          "Current thread 0x00007ff85a36ca00 (most recent call first):",
+          "  <no Python frame>",
+          "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
+          "Python runtime state: core initialized",
+          "OSError: [Errno 9] Bad file descriptor",
+          "Current thread 0x00007ff85a36ca00 (most recent call first):",
+          "  <no Python frame>",
+          "[16:30:26] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
+          "[16:30:26] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+          "[16:30:26] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+          "[16:30:26] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+          "[16:30:26] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+          "[16:30:26] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
+          "==============================================================================================",
+          "[16:30:26] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+          "[16:30:28] [INFO] tiktok_pipeline: [Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon (post_7_channels_then_pause_20261103_2228) -> Kênh ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay']!"
+        ],
+        "lock_file_content": "pid=6279 ts=1793784628"
+      }
+    }
+  ]
 }
