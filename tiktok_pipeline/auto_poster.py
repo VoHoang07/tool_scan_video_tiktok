@@ -3183,6 +3183,17 @@ class TikTokAutoPoster:
             if has_stuck_rebase:
                 _shutil.rmtree(git_dir / "rebase-merge", ignore_errors=True)
                 _shutil.rmtree(git_dir / "rebase-apply", ignore_errors=True)
+            st_chk = _sp.run(
+                ["git", "status", "--porcelain"],
+                cwd=str(self.project_root),
+                capture_output=True,
+                text=True,
+                timeout=8,
+                check=False,
+            )
+            if st_chk.returncode != 0 and "index" in (st_chk.stderr or "").lower():
+                (git_dir / "index").unlink(missing_ok=True)
+                _sp.run(["git", "reset"], cwd=str(self.project_root), capture_output=True, timeout=15, check=False)
                 _sp.run(
                     ["git", "checkout", "-f", "-B", "main", "origin/main"],
                     cwd=str(self.project_root),
