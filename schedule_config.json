@@ -177,7 +177,7 @@
     "phu_kien_tien_ich": ""
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_7_channels_then_pause_20261103_2228",
+    "trigger_id": "",
     "target_arch": "x86_64",
     "channel": "video_AI_hay,baby_AI,audio_dem_khuyen,tu_chan_gioi,suc_khoe_duong_sinh,phu_nu_khi_chat,an_vat_moi_ngay",
     "force": true,
@@ -185,7 +185,7 @@
     "auto_pause_master_after": false
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "follow_6_new_channels_20261103_1035",
+    "trigger_id": "",
     "target_arch": "x86_64",
     "channel": "phu_nu_khi_chat,suc_khoe_duong_sinh,an_vat_moi_ngay,meo_vat_gia_dinh,nuoi_con_eq,phu_kien_tien_ich",
     "video_count": 2
