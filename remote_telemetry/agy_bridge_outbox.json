@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-11-04 14:57:15",
+  "updated_at": "2026-11-04 16:22:50",
   "latest_result": {
-    "cmd_id": "auto_restart_1793779035",
+    "cmd_id": "auto_restart_1793784170",
     "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-04 14:57:15",
+    "executed_at": "2026-11-04 16:22:50",
     "restart_info": {
       "restarted_streams": [
         "stream1_upload"
       ],
-      "timestamp": "2026-11-04 14:57:15"
+      "timestamp": "2026-11-04 16:22:50"
     },
     "system_health": {
-      "timestamp": "2026-11-04 14:57:15",
+      "timestamp": "2026-11-04 16:22:50",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": false,
@@ -19,26 +19,26 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "2986   09:43 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "2988   09:43 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "3213    25:25 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214    25:25 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "Current thread 0x00007ff85bc4da00 (most recent call first):",
+        "Current thread 0x00007ff85a36ca00 (most recent call first):",
         "  <no Python frame>",
         "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
         "Python runtime state: core initialized",
         "OSError: [Errno 9] Bad file descriptor",
-        "Current thread 0x00007ff85bc4da00 (most recent call first):",
+        "Current thread 0x00007ff85a36ca00 (most recent call first):",
         "  <no Python frame>",
         "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
         "Python runtime state: core initialized",
         "OSError: [Errno 9] Bad file descriptor",
-        "Current thread 0x00007ff85bc4da00 (most recent call first):",
+        "Current thread 0x00007ff85a36ca00 (most recent call first):",
         "  <no Python frame>",
         "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
         "Python runtime state: core initialized",
         "OSError: [Errno 9] Bad file descriptor",
-        "Current thread 0x00007ff85bc4da00 (most recent call first):",
+        "Current thread 0x00007ff85a36ca00 (most recent call first):",
         "  <no Python frame>"
       ]
     }
