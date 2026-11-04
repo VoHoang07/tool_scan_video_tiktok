@@ -1,145 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-04 19:02:04",
+    "timestamp": "2026-11-04 19:12:05",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "interacted_count": 2,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "an_vat_moi_ngay",
-          "video_id": "7704162150780128533",
-          "video_url": "https://www.tiktok.com/@.thu.linh108/video/7704162150780128533",
-          "creator_handle": "@.thu.linh108",
-          "watched_seconds": 16.4,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": true,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261104200103615DAAF1A245D05D3D7C\",\"now\":1793793663000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261104200103615DAAF1A245D05D3D7C\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110420011196936F623761435F0460\",\"now\":1793793671000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026110420011196936F623761435F0460\"},\"status_code\":0,\"status_msg\":\"\"}"
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611042001133DA6792BC973DB5AEB84\",\"now\":1793793673000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611042001133DA6792BC973DB5AEB84\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "anvatmoingay.k08"
-            },
-            "before": {
-              "x": 872,
-              "y": 404,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "199"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 872,
-                "y": 404,
-                "ariaPressed": true,
-                "svgColor": "rgba(255, 59, 92, 1)",
-                "likeCount": "200"
-              },
-              "red": true,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@.thu.linh108",
-              "nav_method": "spa_click",
-              "profile_url": "https://www.tiktok.com/@.thu.linh108?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": null,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-04 19:01:20",
-          "follow_back_window_until": "2026-11-05 19:01:20"
-        },
-        {
-          "channel": "an_vat_moi_ngay",
-          "video_id": "7704158735077297428",
-          "video_url": "https://www.tiktok.com/@qunh.1fl/video/7704158735077297428",
-          "creator_handle": "@qunh.1fl",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": true,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611042002002B738098621B73607C33\",\"now\":1793793720000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611042002002B738098621B73607C33\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 871.8359375,
-              "y": 455.9921875,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "82"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 871.8359375,
-                "y": 455.9921875,
-                "ariaPressed": true,
-                "svgColor": "rgba(255, 59, 92, 1)",
-                "likeCount": "83"
-              },
-              "red": true,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            }
-          },
-          "interacted_at": "2026-11-04 19:02:04",
-          "follow_back_window_until": "2026-11-05 19:02:04"
-        }
-      ]
+      "scrolled_videos": 13,
+      "elapsed_seconds": 155.4,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-04 19:12:05",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "elapsed_seconds": 155.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-04 19:02:04",
       "machine_arch": "x86_64",
@@ -798,18 +682,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 160.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-04 17:43:10",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 165.8,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
