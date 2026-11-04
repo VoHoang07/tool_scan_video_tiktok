@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-04 06:59:41",
+    "timestamp": "2026-11-04 07:03:37",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+    "event_type": "upload",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 154.2,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261103_110609_youtube_shorts_story_1R2G1hRYKKQ.mp4",
+      "caption": "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ mỗi ngày giúp cơ thể khỏe mạnh và ngủ ngon giấc hơn. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+      "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-04 07:03:37",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261103_110609_youtube_shorts_story_1R2G1hRYKKQ.mp4",
+        "caption": "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ mỗi ngày giúp cơ thể khỏe mạnh và ngủ ngon giấc hơn. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+        "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-04 06:59:41",
       "machine_arch": "x86_64",
@@ -205,18 +225,6 @@
       "details": {
         "scrolled_videos": 13,
         "elapsed_seconds": 160.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-03 19:22:06",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 163.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
