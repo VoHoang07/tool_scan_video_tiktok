@@ -1,37 +1,32 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-04 17:35:29",
+    "timestamp": "2026-11-04 17:37:34",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
     "details": {
       "interacted_count": 2,
       "own_profile_stats": {},
       "records": [
         {
-          "channel": "meo_vat_gia_dinh",
-          "video_id": "7704210579564596500",
-          "video_url": "https://www.tiktok.com/@macdepcungthienhong/video/7704210579564596500",
-          "creator_handle": "@macdepcungthienhong",
-          "watched_seconds": 15.0,
+          "channel": "nuoi_con_eq",
+          "video_id": "7704112777610218773",
+          "video_url": "https://www.tiktok.com/@quyensoaicaa/video/7704112777610218773",
+          "creator_handle": "@quyensoaicaa",
+          "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": false,
             "3_copied_link": false,
-            "4_added_favorite": false,
+            "4_added_favorite": true,
             "5_followed_creator": true,
             "6_commented_after_follow": false
           },
           "comment_text": "",
           "circuit_breaker_tripped": false,
           "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261104183436A763B68B40485D485AD8\",\"now\":1793788476000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261104183436A763B68B40485D485AD8\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
+            "digg_responses": [],
             "follow_responses": [
               {
                 "status": 200,
@@ -39,41 +34,37 @@
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261104183445EE34BED6F90A2F491A33\",\"now\":1793788485000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261104183445EE34BED6F90A2F491A33\"},\"status_code\":0,\"status_msg\":\"\"}"
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261104183447836CAA1D7FFC784BB506\",\"now\":1793788487000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261104183447836CAA1D7FFC784BB506\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611041836436B13ABDE5FB5D353A5AE\",\"now\":1793788603000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611041836436B13ABDE5FB5D353A5AE\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "env_check": {
               "webdriver": false,
-              "loggedInUniqueId": "meovatgiadinh.k05"
+              "loggedInUniqueId": null
             },
             "before": {
-              "x": 814.96875,
-              "y": 379,
+              "x": 882.21875,
+              "y": 419,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "7"
+              "likeCount": "9"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
-                "x": 814.96875,
-                "y": 379,
+                "x": 882.21875,
+                "y": 419,
                 "ariaPressed": false,
                 "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "7"
+                "likeCount": "9"
               },
               "red": false,
               "server_digg_ok": false,
-              "server_digg_rejected": true
+              "server_digg_rejected": false
             },
             "profile_follow_verify": {
-              "creator": "@macdepcungthienhong",
+              "creator": "@quyensoaicaa",
               "nav_method": "spa_click",
-              "profile_url": "https://www.tiktok.com/@macdepcungthienhong?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@quyensoaicaa?lang=vi-VN",
               "before_btn": "Follow",
               "after_btn": "Đã follow",
               "init_relation": null,
@@ -81,15 +72,15 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-04 17:34:54",
-          "follow_back_window_until": "2026-11-05 17:34:54"
+          "interacted_at": "2026-11-04 17:36:51",
+          "follow_back_window_until": "2026-11-05 17:36:51"
         },
         {
-          "channel": "meo_vat_gia_dinh",
-          "video_id": "7703908746556083476",
-          "video_url": "https://www.tiktok.com/@suplo.2019/video/7703908746556083476",
-          "creator_handle": "@suplo.2019",
-          "watched_seconds": 16.0,
+          "channel": "nuoi_con_eq",
+          "video_id": "7703769304428465428",
+          "video_url": "https://www.tiktok.com/@meomeo_petshop/video/7703769304428465428",
+          "creator_handle": "@meomeo_petshop",
+          "watched_seconds": 21.4,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": false,
@@ -104,42 +95,173 @@
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261104183524EFF5B5983B8B9E031D36\",\"now\":1793788525000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261104183524EFF5B5983B8B9E031D36\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611041837292338B86233F5A34A36F9\",\"now\":1793788649000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611041837292338B86233F5A34A36F9\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [],
             "env_check": {
               "webdriver": false,
-              "loggedInUniqueId": "meovatgiadinh.k05"
+              "loggedInUniqueId": "nuoiconeq.k09"
             },
             "before": {
-              "x": 814.96875,
-              "y": 379,
+              "x": 882.21875,
+              "y": 419,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "20"
+              "likeCount": "2"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
-                "x": 814.96875,
-                "y": 379,
+                "x": 882.21875,
+                "y": 419,
                 "ariaPressed": true,
                 "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "21"
+                "likeCount": "3"
               },
               "red": true,
               "server_digg_ok": false,
               "server_digg_rejected": true
             }
           },
-          "interacted_at": "2026-11-04 17:35:29",
-          "follow_back_window_until": "2026-11-05 17:35:29"
+          "interacted_at": "2026-11-04 17:37:34",
+          "follow_back_window_until": "2026-11-05 17:37:34"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-04 17:37:34",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
+      "details": {
+        "interacted_count": 2,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "nuoi_con_eq",
+            "video_id": "7704112777610218773",
+            "video_url": "https://www.tiktok.com/@quyensoaicaa/video/7704112777610218773",
+            "creator_handle": "@quyensoaicaa",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611041836436B13ABDE5FB5D353A5AE\",\"now\":1793788603000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611041836436B13ABDE5FB5D353A5AE\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 882.21875,
+                "y": 419,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "9"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 882.21875,
+                  "y": 419,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "9"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": false
+              },
+              "profile_follow_verify": {
+                "creator": "@quyensoaicaa",
+                "nav_method": "spa_click",
+                "profile_url": "https://www.tiktok.com/@quyensoaicaa?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": null,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-04 17:36:51",
+            "follow_back_window_until": "2026-11-05 17:36:51"
+          },
+          {
+            "channel": "nuoi_con_eq",
+            "video_id": "7703769304428465428",
+            "video_url": "https://www.tiktok.com/@meomeo_petshop/video/7703769304428465428",
+            "creator_handle": "@meomeo_petshop",
+            "watched_seconds": 21.4,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": true,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611041837292338B86233F5A34A36F9\",\"now\":1793788649000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611041837292338B86233F5A34A36F9\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": "nuoiconeq.k09"
+              },
+              "before": {
+                "x": 882.21875,
+                "y": 419,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "2"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 882.21875,
+                  "y": 419,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "3"
+                },
+                "red": true,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              }
+            },
+            "interacted_at": "2026-11-04 17:37:34",
+            "follow_back_window_until": "2026-11-05 17:37:34"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-04 17:35:29",
       "machine_arch": "x86_64",
@@ -761,18 +883,6 @@
             "follow_back_window_until": "2026-11-05 12:15:54"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-04 12:07:33",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "elapsed_seconds": 172.3,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
