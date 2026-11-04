@@ -61,6 +61,35 @@ fi
 echo "[5/5] Đang cài đặt trình duyệt tự động & kiểm tra macos-desktop-control..."
 "$PROJECT_DIR/venv/bin/playwright" install chromium || echo "Lưu ý: Sẽ sử dụng trực tiếp Google Chrome trên máy Mac."
 
+# 5.5. Tự động khôi phục lịch sử đăng bài & hồ sơ trình duyệt 10 kênh từ bản sao lưu GitHub (nếu vừa cài lại máy)
+if [ -d "$PROJECT_DIR/remote_telemetry/state_backup" ]; then
+    echo "[5.5/5] Đang khôi phục lịch sử chống đăng trùng & phiên đăng nhập 10 kênh từ GitHub..."
+    for f in uploaded_videos_registry.json posted_schedule_history.json growth_24h_history.json; do
+        if [ -f "$PROJECT_DIR/remote_telemetry/state_backup/$f" ] && [ ! -f "$PROJECT_DIR/$f" ]; then
+            cp -f "$PROJECT_DIR/remote_telemetry/state_backup/$f" "$PROJECT_DIR/$f"
+        fi
+    done
+fi
+"$PROJECT_DIR/venv/bin/python" -c "
+import json, zlib
+from pathlib import Path
+from tiktok_pipeline.auto_poster import TikTokAutoPoster
+root = Path('$PROJECT_DIR')
+sess_dir = root / 'remote_telemetry' / 'sessions'
+if sess_dir.exists():
+    for bin_file in sorted(sess_dir.glob('*.bin')):
+        ch = bin_file.stem
+        prof_dir = root / 'browser_profiles' / ch
+        prof_dir.mkdir(parents=True, exist_ok=True)
+        try:
+            st = json.loads(zlib.decompress(TikTokAutoPoster._session_cipher_bytes(bin_file.read_bytes())).decode('utf-8'))
+            if isinstance(st.get('profile_fingerprint'), dict) and not (prof_dir / 'profile_fingerprint.json').exists():
+                (prof_dir / 'profile_fingerprint.json').write_text(json.dumps(st['profile_fingerprint'], ensure_ascii=False, indent=2), encoding='utf-8')
+        except Exception:
+            pass
+    print('Đã chuẩn bị sẵn hồ sơ đăng nhập tự động cho', len(list(sess_dir.glob('*.bin'))), 'kênh TikTok!')
+" || true
+
 echo "======================================================================"
 echo "HOÀN TẤT CÀI ĐẶT 100% TRÊN MACBOOK ($ARCH)!"
 echo "Kiểm tra Python: $("$PROJECT_DIR/venv/bin/python" --version)"

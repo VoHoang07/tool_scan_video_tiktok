@@ -689,13 +689,20 @@ class TikTokAutoPoster:
                 return None
             sess_dir = Path(__file__).resolve().parent.parent / "remote_telemetry" / "sessions"
             sess_dir.mkdir(parents=True, exist_ok=True)
+            local_prof = Path(__file__).resolve().parent.parent / "browser_profiles" / ch_folder
+            fp_path = local_prof / "profile_fingerprint.json"
+            if fp_path.exists() and "profile_fingerprint" not in state_dict:
+                try:
+                    state_dict = dict(state_dict)
+                    state_dict["profile_fingerprint"] = json.loads(fp_path.read_text(encoding="utf-8"))
+                except Exception:
+                    pass
             raw = json.dumps(state_dict, ensure_ascii=False).encode("utf-8")
             compressed = zlib.compress(raw, level=9)
             enc = TikTokAutoPoster._session_cipher_bytes(compressed)
             out_path = sess_dir / f"{ch_folder}.bin"
             out_path.write_bytes(enc)
             # Đồng thời cập nhật dấu vết tại profile local để không tự ghi đè lại chính nó
-            local_prof = Path(__file__).resolve().parent.parent / "browser_profiles" / ch_folder
             if local_prof.exists():
                 sig = hashlib.sha256(enc).hexdigest()[:24]
                 (local_prof / "_synced_session_hash.txt").write_text(sig, encoding="utf-8")
@@ -733,6 +740,15 @@ class TikTokAutoPoster:
             compressed = TikTokAutoPoster._session_cipher_bytes(enc)
             raw = zlib.decompress(compressed)
             state_dict = json.loads(raw.decode("utf-8"))
+            user_data_dir.mkdir(parents=True, exist_ok=True)
+            if isinstance(state_dict.get("profile_fingerprint"), dict):
+                try:
+                    (user_data_dir / "profile_fingerprint.json").write_text(
+                        json.dumps(state_dict["profile_fingerprint"], ensure_ascii=False, indent=2),
+                        encoding="utf-8",
+                    )
+                except Exception:
+                    pass
             cookies = state_dict.get("cookies") or []
             if cookies:
                 context.add_cookies(cookies)
