@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-04 17:01:55",
+    "timestamp": "2026-11-04 17:10:15",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261104_160403_douyin_story_7697440750308429098.mp4",
-      "caption": "🐾 Chỉ cần gửi anh ta trở lại Quần đảo San hô — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Đừng đợi đến khi thể lực hoàn toàn kiệt sức mới nghỉ ngơi...\" Theo bạn tập tiếp theo sẽ ra sao?",
-      "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #fyp",
+      "video_file": "20261104_170521_douyin_story_6740543560279477507.mp4",
+      "caption": "🌹 Tâm lý Hôn nhân & Gia đình: Cô gái nói với tôi. \"Tôi chỉ muốn mang theo giấc mơ của cô ấy...\" Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
+      "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-04 17:10:15",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261104_170521_douyin_story_6740543560279477507.mp4",
+        "caption": "🌹 Tâm lý Hôn nhân & Gia đình: Cô gái nói với tôi. \"Tôi chỉ muốn mang theo giấc mơ của cô ấy...\" Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
+        "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-04 17:01:55",
       "machine_arch": "x86_64",
@@ -500,18 +516,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 150.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-04 11:48:33",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 153.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
