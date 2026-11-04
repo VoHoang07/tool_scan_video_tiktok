@@ -1,29 +1,24 @@
 {
-  "updated_at": "2026-11-04 17:36:30",
+  "updated_at": "2026-11-04 17:57:52",
   "latest_result": {
-    "cmd_id": "auto_heal_1793788590",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-04 17:36:30",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-04 17:36:30"
-    },
+    "cmd_id": "heartbeat_1793789872",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-04 17:57:52",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-04 17:36:30",
+      "timestamp": "2026-11-04 17:57:52",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 140.7,
       "processes": [
-        "6279 01:06:05 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "6281 01:06:05 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01:39:05 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01:39:05 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "6279 01:27:27 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "6281 01:27:27 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 02:00:27 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 02:00:27 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
         "[16:41:39] [INFO] tiktok_pipeline: [92.06s - 94.22s] 皇帝就會延遲退化。  ==>  Hoàng đế sẽ trì hoãn sự thoái hóa của mình",
@@ -46,7 +41,8 @@
         "[16:44:14] [INFO] tiktok_pipeline: TTS #07 [63.90s-66.96s | gốc=3.10s]: rate=-28%, atempo=0.99x -> 3.06s",
         "[16:44:16] [INFO] tiktok_pipeline: TTS #08 [67.94s-70.47s | gốc=2.56s]: rate=+25%, atempo=0.93x -> 2.53s",
         "[16:44:25] [INFO] tiktok_pipeline: TTS #09 [73.62s-80.28s | gốc=6.70s]: rate=-14%, atempo=1.00x -> 6.66s"
-      ]
+      ],
+      "lock_file_content": "idle"
     }
   }
 }
