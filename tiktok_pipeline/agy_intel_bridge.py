@@ -370,23 +370,27 @@ def _ensure_both_streams_alive() -> Optional[Dict[str, Any]]:
     log_dir.mkdir(parents=True, exist_ok=True)
 
     if not health.get("stream1_running"):
-        fh1 = open(log_dir / "daemon_24_7.log", "a", encoding="utf-8")
+        log1 = log_dir / "daemon_24_7.log"
         subprocess.Popen(
-            ["caffeinate", "-dimsu", py_bin, "main.py", "--stream-upload", "--max-ready", "5"],
+            f"nohup caffeinate -dimsu '{py_bin}' main.py --stream-upload --max-ready 5 </dev/null >> '{log1}' 2>&1 &",
+            shell=True,
             cwd=str(PROJECT_ROOT),
-            stdout=fh1,
-            stderr=fh1,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
             start_new_session=True,
         )
         restarted.append("stream1_upload")
 
     if not health.get("stream2_running"):
-        fh2 = open(log_dir / "stream2_filter24h.log", "a", encoding="utf-8")
+        log2 = log_dir / "stream2_filter24h.log"
         subprocess.Popen(
-            ["caffeinate", "-dimsu", py_bin, "-m", "tiktok_pipeline.main", "--stream-filter24h"],
+            f"nohup caffeinate -dimsu '{py_bin}' -m tiktok_pipeline.main --stream-filter24h </dev/null >> '{log2}' 2>&1 &",
+            shell=True,
             cwd=str(PROJECT_ROOT),
-            stdout=fh2,
-            stderr=fh2,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
             start_new_session=True,
         )
         restarted.append("stream2_filter24h")

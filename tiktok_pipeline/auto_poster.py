@@ -3771,12 +3771,15 @@ class TikTokAutoPoster:
             try:
                 py_bin = self.project_root / "venv" / "bin" / "python"
                 exe_str = str(py_bin) if py_bin.exists() else _sys.executable
-                log_file = open(self.project_root / "stream1_upload_revived.log", "a", encoding="utf-8")
+                log_path = self.project_root / "logs" / "daemon_24_7.log"
+                log_path.parent.mkdir(parents=True, exist_ok=True)
                 subprocess.Popen(
-                    [exe_str, str(self.project_root / "main.py"), "--stream-upload"],
+                    f"nohup caffeinate -dimsu '{exe_str}' '{self.project_root / 'main.py'}' --stream-upload --max-ready 5 </dev/null >> '{log_path}' 2>&1 &",
+                    shell=True,
                     cwd=proj_str,
-                    stdout=log_file,
-                    stderr=log_file,
+                    stdin=subprocess.DEVNULL,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
                     start_new_session=True,
                 )
                 time.sleep(1.5)
