@@ -35,7 +35,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 from tiktok_pipeline.auto_poster import TikTokAutoPoster
 
-ap = TikTokAutoPoster()
+ap = TikTokAutoPoster(project_root=Path("."))
 with sync_playwright() as p:
     for ch in ["video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi", "suc_khoe_duong_sinh", "phu_nu_khi_chat", "an_vat_moi_ngay", "meo_vat_gia_dinh", "nuoi_con_eq", "phu_kien_tien_ich"]:
         ud = ap.profiles_root / ch
