@@ -11,13 +11,13 @@
       ]
     },
     "switch_2_upload": {
-      "tiktok": true,
+      "tiktok": false,
       "fb_reels": false,
       "yt_shorts": false,
       "batch_single_chrome_session": true
     },
     "switch_3_interact": {
-      "tiktok": true,
+      "tiktok": false,
       "fb_reels": false,
       "yt_shorts": false
     },
