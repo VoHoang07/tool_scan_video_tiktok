@@ -1,37 +1,33 @@
 {
-  "updated_at": "2026-11-04 12:24:04",
+  "updated_at": "2026-11-04 12:31:27",
   "latest_result": {
-    "cmd_id": "auto_restart_1793769844",
-    "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-04 12:24:04",
-    "restart_info": {
-      "restarted_streams": [
-        "stream1_upload",
-        "stream2_filter24h"
-      ],
-      "timestamp": "2026-11-04 12:24:04"
-    },
+    "cmd_id": "heartbeat_1793770278",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-04 12:31:18",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-04 12:24:04",
+      "timestamp": "2026-11-04 12:31:25",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 95.4,
+      "lock_file_age_seconds": 91.7,
       "processes": [
-        "37963    16:57:22 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "37965    16:57:22 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "52070       17:48 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "52072       17:48 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "52073       17:48 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "52075       17:47 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "55862       00:07 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "55863       00:07 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "55864       00:07 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "99294 02-12:56:36 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296 02-12:56:36 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "66888    14:00:25 ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "37963    17:04:38 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "37965    17:04:38 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "52070       25:04 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "52072       25:04 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "52073       25:04 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "52075       25:03 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "55862       07:23 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "55863       07:23 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "55864       07:23 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "55866       07:23 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99294 02-13:03:52 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "99296 02-13:03:52 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "66888    14:07:40 ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
@@ -50,12 +46,12 @@
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "[12:23:27] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (67158ae -> ff5d86e) | Auto-Telemetry [warmup_fyp] suc_khoe_duong_sinh at 2026-11-04 12:19:21",
-        "[12:23:41] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe."
       ],
-      "lock_file_content": "pid=52072 ts=1793769756"
+      "lock_file_content": "pid=66888 ts=1793770195"
     }
   }
 }
