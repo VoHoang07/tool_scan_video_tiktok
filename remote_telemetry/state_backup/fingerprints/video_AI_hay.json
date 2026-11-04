@@ -1,0 +1,19 @@
+{
+  "channel": "video_AI_hay",
+  "device_hash_salt": "754e89de7350c717",
+  "screen_width": 1440,
+  "screen_height": 900,
+  "window_width": 1366,
+  "window_height": 860,
+  "window_x": 20,
+  "window_y": 20,
+  "hardware_concurrency": 8,
+  "device_memory": 16,
+  "webgl_vendor": "Google Inc. (Apple)",
+  "webgl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2, Unspecified Version)",
+  "canvas_noise_r": 1,
+  "canvas_noise_g": 2,
+  "canvas_noise_b": 3,
+  "audio_noise_seed": 2e-07,
+  "proxy_server": ""
+}

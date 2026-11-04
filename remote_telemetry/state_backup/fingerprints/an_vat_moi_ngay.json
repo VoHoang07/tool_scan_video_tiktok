@@ -1,0 +1,19 @@
+{
+  "channel": "an_vat_moi_ngay",
+  "device_hash_salt": "f65cf9df76827323",
+  "screen_width": 2048,
+  "screen_height": 1152,
+  "window_width": 1500,
+  "window_height": 895,
+  "window_x": 30,
+  "window_y": 20,
+  "hardware_concurrency": 16,
+  "device_memory": 16,
+  "webgl_vendor": "Google Inc. (Apple)",
+  "webgl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+  "canvas_noise_r": 5,
+  "canvas_noise_g": 5,
+  "canvas_noise_b": 4,
+  "audio_noise_seed": 6.8e-06,
+  "proxy_server": ""
+}

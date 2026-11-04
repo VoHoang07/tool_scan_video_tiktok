@@ -1,0 +1,19 @@
+{
+  "channel": "phu_kien_tien_ich",
+  "device_hash_salt": "bb41e5edaa6d4b9a",
+  "screen_width": 1800,
+  "screen_height": 1169,
+  "window_width": 1390,
+  "window_height": 850,
+  "window_x": 38,
+  "window_y": 32,
+  "hardware_concurrency": 14,
+  "device_memory": 32,
+  "webgl_vendor": "Google Inc. (Apple)",
+  "webgl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1, Unspecified Version)",
+  "canvas_noise_r": 4,
+  "canvas_noise_g": 2,
+  "canvas_noise_b": 3,
+  "audio_noise_seed": 1.3e-06,
+  "proxy_server": ""
+}

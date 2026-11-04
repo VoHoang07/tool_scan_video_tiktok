@@ -1,0 +1,19 @@
+{
+  "channel": "phu_nu_khi_chat",
+  "device_hash_salt": "ae6493b7c0b972b2",
+  "screen_width": 2560,
+  "screen_height": 1440,
+  "window_width": 1536,
+  "window_height": 864,
+  "window_x": 16,
+  "window_y": 30,
+  "hardware_concurrency": 8,
+  "device_memory": 16,
+  "webgl_vendor": "Google Inc. (Apple)",
+  "webgl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2 Max, Unspecified Version)",
+  "canvas_noise_r": 1,
+  "canvas_noise_g": 5,
+  "canvas_noise_b": 2,
+  "audio_noise_seed": 3.9e-06,
+  "proxy_server": ""
+}

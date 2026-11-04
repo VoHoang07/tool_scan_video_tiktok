@@ -1,0 +1,19 @@
+{
+  "channel": "nuoi_con_eq",
+  "device_hash_salt": "0e3cb2bd95993570",
+  "screen_width": 1680,
+  "screen_height": 1050,
+  "window_width": 1512,
+  "window_height": 910,
+  "window_x": 48,
+  "window_y": 24,
+  "hardware_concurrency": 12,
+  "device_memory": 16,
+  "webgl_vendor": "Google Inc. (Apple)",
+  "webgl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3, Unspecified Version)",
+  "canvas_noise_r": 3,
+  "canvas_noise_g": 3,
+  "canvas_noise_b": 4,
+  "audio_noise_seed": 9.2e-06,
+  "proxy_server": ""
+}

@@ -1,0 +1,19 @@
+{
+  "channel": "baby_AI",
+  "device_hash_salt": "35e1ca9ce5711911",
+  "screen_width": 1600,
+  "screen_height": 900,
+  "window_width": 1420,
+  "window_height": 900,
+  "window_x": 32,
+  "window_y": 22,
+  "hardware_concurrency": 10,
+  "device_memory": 32,
+  "webgl_vendor": "Google Inc. (Apple)",
+  "webgl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M1 Max, Unspecified Version)",
+  "canvas_noise_r": 2,
+  "canvas_noise_g": 2,
+  "canvas_noise_b": 2,
+  "audio_noise_seed": 2.5e-06,
+  "proxy_server": ""
+}

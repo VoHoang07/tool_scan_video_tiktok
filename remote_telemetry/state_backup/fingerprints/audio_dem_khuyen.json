@@ -1,0 +1,19 @@
+{
+  "channel": "audio_dem_khuyen",
+  "device_hash_salt": "44ee74f71a9f283a",
+  "screen_width": 2560,
+  "screen_height": 1440,
+  "window_width": 1536,
+  "window_height": 864,
+  "window_x": 16,
+  "window_y": 30,
+  "hardware_concurrency": 8,
+  "device_memory": 8,
+  "webgl_vendor": "Google Inc. (Apple)",
+  "webgl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2 Max, Unspecified Version)",
+  "canvas_noise_r": 1,
+  "canvas_noise_g": 1,
+  "canvas_noise_b": 3,
+  "audio_noise_seed": 3e-06,
+  "proxy_server": ""
+}

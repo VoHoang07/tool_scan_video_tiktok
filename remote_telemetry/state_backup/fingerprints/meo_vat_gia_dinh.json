@@ -1,0 +1,19 @@
+{
+  "channel": "meo_vat_gia_dinh",
+  "device_hash_salt": "3923f39920f9b0a5",
+  "screen_width": 1920,
+  "screen_height": 1080,
+  "window_width": 1400,
+  "window_height": 870,
+  "window_x": 42,
+  "window_y": 18,
+  "hardware_concurrency": 16,
+  "device_memory": 16,
+  "webgl_vendor": "Google Inc. (Apple)",
+  "webgl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M3 Pro, Unspecified Version)",
+  "canvas_noise_r": 5,
+  "canvas_noise_g": 3,
+  "canvas_noise_b": 2,
+  "audio_noise_seed": 5.2e-06,
+  "proxy_server": ""
+}

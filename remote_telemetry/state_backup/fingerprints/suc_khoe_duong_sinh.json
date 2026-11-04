@@ -1,0 +1,19 @@
+{
+  "channel": "suc_khoe_duong_sinh",
+  "device_hash_salt": "1cb0198f8910ed14",
+  "screen_width": 1512,
+  "screen_height": 982,
+  "window_width": 1440,
+  "window_height": 880,
+  "window_x": 36,
+  "window_y": 28,
+  "hardware_concurrency": 10,
+  "device_memory": 16,
+  "webgl_vendor": "Google Inc. (Apple)",
+  "webgl_renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M2 Pro, Unspecified Version)",
+  "canvas_noise_r": 2,
+  "canvas_noise_g": 2,
+  "canvas_noise_b": 2,
+  "audio_noise_seed": 1e-07,
+  "proxy_server": ""
+}
