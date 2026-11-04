@@ -64,11 +64,19 @@ echo "[5/5] Đang cài đặt trình duyệt tự động & kiểm tra macos-des
 # 5.5. Tự động khôi phục lịch sử đăng bài & hồ sơ trình duyệt 10 kênh từ bản sao lưu GitHub (nếu vừa cài lại máy)
 if [ -d "$PROJECT_DIR/remote_telemetry/state_backup" ]; then
     echo "[5.5/5] Đang khôi phục lịch sử chống đăng trùng & phiên đăng nhập 10 kênh từ GitHub..."
-    for f in uploaded_videos_registry.json posted_schedule_history.json growth_24h_history.json; do
+    for f in uploaded_videos_registry.json posted_schedule_history.json growth_24h_history.json warmup_browse_history.json; do
         if [ -f "$PROJECT_DIR/remote_telemetry/state_backup/$f" ] && [ ! -f "$PROJECT_DIR/$f" ]; then
             cp -f "$PROJECT_DIR/remote_telemetry/state_backup/$f" "$PROJECT_DIR/$f"
         fi
     done
+    if [ -d "$PROJECT_DIR/remote_telemetry/state_backup/fingerprints" ]; then
+        for fp_file in "$PROJECT_DIR/remote_telemetry/state_backup/fingerprints/"*.json; do
+            [ -f "$fp_file" ] || continue
+            ch_name="$(basename "$fp_file" .json)"
+            mkdir -p "$PROJECT_DIR/browser_profiles/$ch_name"
+            cp -f "$fp_file" "$PROJECT_DIR/browser_profiles/$ch_name/profile_fingerprint.json"
+        done
+    fi
 fi
 "$PROJECT_DIR/venv/bin/python" -c "
 import json, zlib
