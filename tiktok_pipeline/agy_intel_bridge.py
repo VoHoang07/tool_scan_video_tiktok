@@ -96,6 +96,15 @@ def _collect_system_health() -> Dict[str, Any]:
         health["processes"] = matched_procs[:15]
     except Exception as exc:
         health["ps_error"] = str(exc)
+        try:
+            r1 = subprocess.run(["pgrep", "-f", "--", "--stream-upload"], capture_output=True, timeout=4, check=False)
+            if r1.returncode == 0 and (r1.stdout or b"").strip():
+                health["stream1_running"] = True
+            r2 = subprocess.run(["pgrep", "-f", "--", "--stream-filter24h"], capture_output=True, timeout=4, check=False)
+            if r2.returncode == 0 and (r2.stdout or b"").strip():
+                health["stream2_running"] = True
+        except Exception:
+            pass
 
     lock_file = PROJECT_ROOT / "workspace_temp" / ".tiktok_browser_session.lock"
     if lock_file.exists():
@@ -348,7 +357,10 @@ def _ensure_both_streams_alive() -> Optional[Dict[str, Any]]:
     """Tự động kiểm tra và khởi động lại Dòng 1 (`--stream-upload`) hoặc Dòng 2 (`--stream-filter24h`) nếu bị tắt trên Mac Intel."""
     if platform.machine() != "x86_64":
         return None
+    _deduplicate_stream_processes()
     health = _collect_system_health()
+    if health.get("ps_error") and not health.get("stream1_running") and not health.get("stream2_running"):
+        return None
     restarted: List[str] = []
     py_bin = str(PROJECT_ROOT / "venv" / "bin" / "python")
     if not Path(py_bin).exists():
