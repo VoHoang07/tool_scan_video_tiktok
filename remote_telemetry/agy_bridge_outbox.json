@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-11-04 18:28:10",
+  "updated_at": "2026-11-04 18:58:21",
   "latest_result": {
-    "cmd_id": "heartbeat_1793791690",
+    "cmd_id": "heartbeat_1793793500",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-04 18:28:10",
+    "executed_at": "2026-11-04 18:58:20",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-04 18:28:10",
+      "timestamp": "2026-11-04 18:58:21",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 45.3,
+      "lock_file_age_seconds": 115.2,
       "processes": [
-        "6279 01:57:45 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "6281 01:57:45 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 02:30:45 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 02:30:45 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "6279 02:27:56 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "6281 02:27:56 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 03:00:56 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 03:00:56 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
         "[16:41:39] [INFO] tiktok_pipeline: [92.06s - 94.22s] 皇帝就會延遲退化。  ==>  Hoàng đế sẽ trì hoãn sự thoái hóa của mình",
@@ -42,7 +42,7 @@
         "[16:44:16] [INFO] tiktok_pipeline: TTS #08 [67.94s-70.47s | gốc=2.56s]: rate=+25%, atempo=0.93x -> 2.53s",
         "[16:44:25] [INFO] tiktok_pipeline: TTS #09 [73.62s-80.28s | gốc=6.70s]: rate=-14%, atempo=1.00x -> 6.66s"
       ],
-      "lock_file_content": "idle"
+      "lock_file_content": "pid=3213 ts=1793793385"
     }
   }
 }
