@@ -21,7 +21,27 @@
     "7665616691048598799",
     "7684239577346739456",
     "7638714267462561417",
-    "7634246231678587978"
+    "7634246231678587978",
+    "7691716032381127966",
+    "7698309790610640148",
+    "7698739758792543508",
+    "7696217946204441869",
+    "7701981706227698964",
+    "7698192203855809812",
+    "7664467357850488071",
+    "7701531433168358677",
+    "7699307811645410580",
+    "7214839079408520452",
+    "7656305238692973832",
+    "7694494576270216478",
+    "7698906930793680148",
+    "7698936354142506260",
+    "7653148698738335945",
+    "7640576010862205938",
+    "7701190176676121877",
+    "7699677240048569621",
+    "990003901",
+    "990001002"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -45,7 +65,9 @@
     "7665616776478247731",
     "7684239654367349547",
     "7638714154345450250",
-    "7634246152468089610"
+    "7634246152468089610",
+    "bongcuc_yt_bEzOsJ3U5oc_p1",
+    "bongcuc_yt_DoVFGuEeB1k_p2"
   ],
   "items": [
     {
@@ -267,6 +289,26 @@
       "source_url": "https://www.douyin.com/video/7634246231678587978",
       "output_filename": "baby_AI/ready/20261023_091904_douyin_story_7634246231678587978.mp4",
       "crawled_at": "2026-10-23T09:21:09"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990003901",
+      "sound_id": "bongcuc_yt_bEzOsJ3U5oc_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=bEzOsJ3U5oc&t=0s",
+      "output_filename": "audio_dem_khuyen/ready/20261103_100958_tiktok_story_990003901_bongcuc_v3_s39_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-03T10:10:38"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990001002",
+      "sound_id": "bongcuc_yt_DoVFGuEeB1k_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=DoVFGuEeB1k&t=388s",
+      "output_filename": "audio_dem_khuyen/ready/20261103_101141_tiktok_story_990001002_bongcuc_v3_s10_p2_bg_mukbang.mp4",
+      "crawled_at": "2026-11-03T10:12:16"
     }
   ]
 }
