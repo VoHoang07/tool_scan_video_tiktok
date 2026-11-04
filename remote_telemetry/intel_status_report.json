@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-04 09:23:33",
+    "timestamp": "2026-11-04 09:27:51",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "event_type": "upload",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 153.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261101_235916_douyin_story_7372254906020859148.mp4",
+      "caption": "⚔️ [Tu Chân Giới] Phàm nhân nghịch thiên cải mệnh thức tỉnh huyết mạch thượng cổ tại Tu Chân Giới. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #viral",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-04 09:27:51",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261101_235916_douyin_story_7372254906020859148.mp4",
+        "caption": "⚔️ [Tu Chân Giới] Phàm nhân nghịch thiên cải mệnh thức tỉnh huyết mạch thượng cổ tại Tu Chân Giới. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-04 09:23:33",
       "machine_arch": "x86_64",
@@ -242,18 +262,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 157.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-04 08:04:58",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 159.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
