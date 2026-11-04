@@ -2718,7 +2718,7 @@ class TikTokAutoPoster:
         csv_path = self.project_root / "output" / "danh_sach_video.csv"
         if csv_path.exists():
             try:
-                with open(csv_path, mode="r", newline="", encoding="utf-8") as rf:
+                with open(csv_path, mode="r", newline="", encoding="utf-8", errors="replace") as rf:
                     for row in csv.DictReader(rf):
                         fn = (row.get("filename") or "").strip()
                         s_url = (row.get("source_url") or "").strip()

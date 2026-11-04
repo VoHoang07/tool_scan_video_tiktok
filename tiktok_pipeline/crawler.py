@@ -5,6 +5,7 @@ import re
 import shutil
 import subprocess
 import time
+import uuid
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -1031,7 +1032,7 @@ class StoryAudioCrawler:
 
         if self.csv_path.exists():
             try:
-                with open(self.csv_path, mode="r", newline="", encoding="utf-8") as rf:
+                with open(self.csv_path, mode="r", newline="", encoding="utf-8", errors="replace") as rf:
                     for row in csv.DictReader(rf):
                         st = (row.get("status") or "").strip().upper()
                         fn = (row.get("filename") or "").strip()
@@ -2881,7 +2882,7 @@ class StoryAudioCrawler:
         csv_meta_by_name: Dict[str, Tuple[str, str]] = {}
         if self.csv_path.exists():
             try:
-                with open(self.csv_path, mode="r", newline="", encoding="utf-8") as rf:
+                with open(self.csv_path, mode="r", newline="", encoding="utf-8", errors="replace") as rf:
                     for row in csv.DictReader(rf):
                         fn = Path((row.get("filename") or "").strip()).name
                         s_url = (row.get("source_url") or "").strip()
@@ -3302,9 +3303,13 @@ class StoryAudioCrawler:
         if not self.csv_path.exists() or self.csv_path.stat().st_size == 0:
             return
 
-        with open(self.csv_path, mode="r", newline="", encoding="utf-8") as rf:
-            rows = list(csv.reader(rf))
-        if not rows:
+        try:
+            with open(self.csv_path, mode="r", newline="", encoding="utf-8", errors="replace") as rf:
+                rows = list(csv.reader(rf))
+        except Exception as e:
+            logger.warning(f"Bỏ qua đọc Master CSV do đang ghi dở hoặc lỗi I/O ({e})")
+            return
+        if not rows or not rows[0]:
             return
 
         needs_rewrite = rows[0] != expected_header
@@ -3435,9 +3440,18 @@ class StoryAudioCrawler:
                     needs_rewrite = True
 
         if needs_rewrite:
-            with open(self.csv_path, mode="w", newline="", encoding="utf-8") as wf:
-                csv.writer(wf).writerows(upgraded_rows)
-            logger.info(f"Đã đồng bộ Master CSV ({self.csv_path}) với thư mục ready/ và posted/ của 4 kênh.")
+            tmp_csv_path = self.csv_path.with_name(f".{self.csv_path.name}.tmp.{os.getpid()}.{uuid.uuid4().hex[:8]}")
+            try:
+                with open(tmp_csv_path, mode="w", newline="", encoding="utf-8") as wf:
+                    csv.writer(wf).writerows(upgraded_rows)
+                os.replace(tmp_csv_path, self.csv_path)
+                logger.info(f"Đã đồng bộ Master CSV ({self.csv_path}) với thư mục ready/ và posted/ của 4 kênh.")
+            finally:
+                if tmp_csv_path.exists():
+                    try:
+                        tmp_csv_path.unlink()
+                    except OSError:
+                        pass
 
     def append_to_master_csv(
         self,
@@ -3572,7 +3586,7 @@ class StoryAudioCrawler:
         updated_csv_rows = 0
 
         if self.csv_path.exists() and self.csv_path.stat().st_size > 0:
-            with open(self.csv_path, mode="r", newline="", encoding="utf-8") as rf:
+            with open(self.csv_path, mode="r", newline="", encoding="utf-8", errors="replace") as rf:
                 rows = list(csv.reader(rf))
             header = rows[0] if rows else [
                 "channel",
@@ -3600,8 +3614,17 @@ class StoryAudioCrawler:
                     updated_csv_rows += 1
                 new_rows.append(r[:7])
 
-            with open(self.csv_path, mode="w", newline="", encoding="utf-8") as wf:
-                csv.writer(wf).writerows(new_rows)
+            tmp_csv_path = self.csv_path.with_name(f".{self.csv_path.name}.tmp.{os.getpid()}.{uuid.uuid4().hex[:8]}")
+            try:
+                with open(tmp_csv_path, mode="w", newline="", encoding="utf-8") as wf:
+                    csv.writer(wf).writerows(new_rows)
+                os.replace(tmp_csv_path, self.csv_path)
+            finally:
+                if tmp_csv_path.exists():
+                    try:
+                        tmp_csv_path.unlink()
+                    except OSError:
+                        pass
 
         # Đồng bộ luôn các kênh còn lại (nếu có video đã chọn upload qua trình duyệt hoặc chỉnh CSV)
         auto_synced_others = self.auto_sync_posted_videos()
