@@ -1,44 +1,26 @@
 {
-  "updated_at": "2026-11-04 13:17:42",
+  "updated_at": "2026-11-04 13:18:46",
   "latest_result": {
-    "cmd_id": "auto_restart_1793773062",
+    "cmd_id": "auto_restart_1793773126",
     "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-04 13:17:42",
+    "executed_at": "2026-11-04 13:18:46",
     "restart_info": {
       "restarted_streams": [
         "stream1_upload",
         "stream2_filter24h"
       ],
-      "timestamp": "2026-11-04 13:17:42"
+      "timestamp": "2026-11-04 13:18:46"
     },
     "system_health": {
-      "timestamp": "2026-11-04 13:17:42",
+      "timestamp": "2026-11-04 13:18:46",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
-      "stream1_running": true,
-      "stream2_running": true,
+      "stream1_running": false,
+      "stream2_running": false,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 109.6,
-      "processes": [
-        "37963    17:51:00 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "37965    17:51:00 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "52070    01:11:26 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "52072    01:11:26 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "52073    01:11:26 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "52075    01:11:25 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "55862       53:45 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "55863       53:45 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "55864       53:45 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "55866       53:45 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "60581       38:02 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "60584       38:01 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "60616       36:36 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "60617       36:36 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "62191       31:07 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python /Users/hoangvo/Documents/tool_scan_video_tiktok/main.py --stream-upload"
-      ],
+      "lock_file_age_seconds": 174.7,
+      "processes": [],
       "recent_daemon_log_tail": [
-        "[13:17:29] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=1643647816687945 (thời lượng=179.0s, sound='Original Audio', view=54000, tim=2160, share=270)...",
-        "[13:17:29] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/1643647816687945",
         "[facebook:reel] Extracting URL: https://www.facebook.com/reel/1643647816687945",
         "[facebook] Extracting URL: https://m.facebook.com/watch/?v=1643647816687945&_rdr",
         "[facebook] 1643647816687945: Downloading webpage",
@@ -56,8 +38,11 @@
         "ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
         "[13:17:48] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
         "[13:17:48] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 1563835349076127: Không thể tải video từ URL: https://www.facebook.com/reel/1563835349076127. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[13:17:48] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh meo_vat_gia_dinh trong lượt này. Chuyển sang kênh kế tiếp..."
+        "[13:17:48] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh meo_vat_gia_dinh trong lượt này. Chuyển sang kênh kế tiếp...",
+        "[13:17:57] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (11f238f -> 2f4d1b1) | Auto-Telemetry [upload] phu_nu_khi_chat at 2026-11-04 13:15:10",
+        "[13:18:00] [INFO] tiktok_pipeline: TTS #12 [22.82s-25.03s | gốc=2.28s]: rate=+33%, atempo=0.94x -> 2.21s"
       ],
+      "ps_error": "Command '['ps', '-Ao', 'pid,etime,command']' timed out after 8 seconds",
       "lock_file_content": "pid=60616 ts=1793772960"
     }
   }
