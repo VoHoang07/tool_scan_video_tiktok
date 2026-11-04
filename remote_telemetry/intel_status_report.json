@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-04 12:53:34",
+    "timestamp": "2026-11-04 13:00:07",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
       "scrolled_videos": 9,
-      "elapsed_seconds": 163.5,
+      "elapsed_seconds": 151.3,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-04 13:00:07",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "elapsed_seconds": 151.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-04 12:53:34",
       "machine_arch": "x86_64",
@@ -685,18 +697,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 151.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-04 11:31:02",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 153.8,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
