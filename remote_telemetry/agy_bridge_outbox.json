@@ -1,24 +1,33 @@
 {
-  "updated_at": "2026-11-04 21:29:25",
+  "updated_at": "2026-11-04 21:46:08",
   "latest_result": {
-    "cmd_id": "heartbeat_1793802564",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-04 21:29:24",
+    "cmd_id": "cmd_20261104_214515_disable_switch_2_and_3",
+    "action": "unstick_chrome",
+    "executed_at": "2026-11-04 21:46:07",
     "machine_arch": "x86_64",
+    "hostname": "Hoangs-MBP.fpt",
+    "status": "SUCCESS",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-04 21:46:07"
+    },
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-04 21:29:25",
+      "timestamp": "2026-11-04 21:46:08",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 137.4,
+      "lock_file_age_seconds": null,
       "processes": [
-        "6279 04:59:00 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "6281 04:59:00 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 05:32:00 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 05:32:00 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "6279 05:15:43 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "6281 05:15:43 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 05:48:43 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 05:48:43 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
         "[16:41:39] [INFO] tiktok_pipeline: [92.06s - 94.22s] 皇帝就會延遲退化。  ==>  Hoàng đế sẽ trì hoãn sự thoái hóa của mình",
@@ -41,8 +50,62 @@
         "[16:44:14] [INFO] tiktok_pipeline: TTS #07 [63.90s-66.96s | gốc=3.10s]: rate=-28%, atempo=0.99x -> 3.06s",
         "[16:44:16] [INFO] tiktok_pipeline: TTS #08 [67.94s-70.47s | gốc=2.56s]: rate=+25%, atempo=0.93x -> 2.53s",
         "[16:44:25] [INFO] tiktok_pipeline: TTS #09 [73.62s-80.28s | gốc=6.70s]: rate=-14%, atempo=1.00x -> 6.66s"
-      ],
-      "lock_file_content": "pid=3213 ts=1793802428"
+      ]
     }
-  }
+  },
+  "history": [
+    {
+      "cmd_id": "cmd_20261104_214515_disable_switch_2_and_3",
+      "action": "unstick_chrome",
+      "executed_at": "2026-11-04 21:46:07",
+      "machine_arch": "x86_64",
+      "hostname": "Hoangs-MBP.fpt",
+      "status": "SUCCESS",
+      "unstick_report": {
+        "killed_chrome_for_testing": false,
+        "removed_locks": [
+          "workspace_temp/.tiktok_browser_session.lock"
+        ],
+        "timestamp": "2026-11-04 21:46:07"
+      },
+      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+      "system_health": {
+        "timestamp": "2026-11-04 21:46:08",
+        "machine_arch": "x86_64",
+        "hostname": "Hoangs-MBP.fpt",
+        "stream1_running": true,
+        "stream2_running": true,
+        "chrome_testing_count": 0,
+        "lock_file_age_seconds": null,
+        "processes": [
+          "6279 05:15:43 ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "6281 05:15:43 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "3213 05:48:43 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "3214 05:48:43 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        ],
+        "recent_daemon_log_tail": [
+          "[16:41:39] [INFO] tiktok_pipeline: [92.06s - 94.22s] 皇帝就會延遲退化。  ==>  Hoàng đế sẽ trì hoãn sự thoái hóa của mình",
+          "[16:41:39] [INFO] tiktok_pipeline: [95.22s - 97.82s] 子宮內網亦會繼續加厚。  ==>  Lưới trong tử cung cũng sẽ tiếp tục dày lên",
+          "[16:41:39] [INFO] tiktok_pipeline: [98.86s - 101.50s] 相反，如果輪沒有受徵  ==>  Ngược lại, nếu bánh xe không bị ảnh hưởng",
+          "[16:41:39] [INFO] tiktok_pipeline: [102.30s - 106.18s] 加厚了的子宮內網就會破裂和脫落。  ==>  Lưới tử cung dày lên sẽ bị vỡ và rơi ra",
+          "[16:41:39] [INFO] tiktok_pipeline: [106.82s - 109.38s] 另一個月經週期，又再開始  ==>  Một chu kỳ kinh nguyệt khác lại bắt đầu",
+          "[16:41:40] [INFO] tiktok_pipeline: Caption đã dịch: 🌿 [Sức Khỏe Chủ Động] Hoạt hình 13.4 Chu kỳ kinh nguyệt. \"Vào ngày đầu tiên của chu kỳ kinh nguyệt, nếu không đạt được sự thụ tinh, nội mạc tử cung dày l...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+          "[16:41:40] [INFO] tiktok_pipeline: Hashtags: #duongsinh #songkhoe #suckhoechudong #healthyvietnam #songlanhmanh #chamSocSucKhoe #suckhoe #xh",
+          "[16:41:40] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
+          "[16:41:40] [INFO] tiktok_pipeline: Cấu hình giọng kênh [suc_khoe_duong_sinh]: Giọng nữ điềm đạm, ấm áp, đáng tin cậy (Sức khỏe chủ động & Dưỡng sinh) (voice=vi-VN-HoaiMyNeural, rate=+0%, pitch=-1Hz)",
+          "[16:41:40] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +0%, Độ trầm/cao: -1Hz) cho 17 câu thoại...",
+          "[16:41:43] [INFO] tiktok_pipeline: TTS #00 [06.74s-15.85s | gốc=9.16s]: rate=-23%, atempo=1.00x -> 9.11s",
+          "[16:41:46] [INFO] tiktok_pipeline: TTS #01 [16.82s-20.45s | gốc=3.68s]: rate=-27%, atempo=0.99x -> 3.63s",
+          "[16:42:10] [INFO] tiktok_pipeline: TTS #02 [23.30s-31.79s | gốc=8.52s]: rate=-25%, atempo=1.00x -> 8.49s",
+          "[16:43:09] [INFO] tiktok_pipeline: TTS #03 [32.82s-40.29s | gốc=7.48s]: rate=-26%, atempo=1.00x -> 7.47s",
+          "[16:43:45] [INFO] tiktok_pipeline: TTS #04 [41.22s-45.60s | gốc=4.40s]: rate=-18%, atempo=1.00x -> 4.38s",
+          "[16:43:48] [INFO] tiktok_pipeline: TTS #05 [48.54s-53.07s | gốc=4.56s]: rate=-21%, atempo=1.00x -> 4.53s",
+          "[16:43:58] [INFO] tiktok_pipeline: TTS #06 [54.02s-61.45s | gốc=7.44s]: rate=-22%, atempo=1.00x -> 7.43s",
+          "[16:44:14] [INFO] tiktok_pipeline: TTS #07 [63.90s-66.96s | gốc=3.10s]: rate=-28%, atempo=0.99x -> 3.06s",
+          "[16:44:16] [INFO] tiktok_pipeline: TTS #08 [67.94s-70.47s | gốc=2.56s]: rate=+25%, atempo=0.93x -> 2.53s",
+          "[16:44:25] [INFO] tiktok_pipeline: TTS #09 [73.62s-80.28s | gốc=6.70s]: rate=-14%, atempo=1.00x -> 6.66s"
+        ]
+      }
+    }
+  ]
 }
