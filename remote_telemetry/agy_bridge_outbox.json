@@ -1,43 +1,28 @@
 {
-  "updated_at": "2026-11-04 12:37:06",
+  "updated_at": "2026-11-04 12:58:54",
   "latest_result": {
-    "cmd_id": "auto_heal_1793770626",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-04 12:37:06",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
+    "cmd_id": "auto_restart_1793771934",
+    "action": "auto_restart_dead_streams",
+    "executed_at": "2026-11-04 12:58:54",
+    "restart_info": {
+      "restarted_streams": [
+        "stream1_upload",
+        "stream2_filter24h"
       ],
-      "timestamp": "2026-11-04 12:37:06"
+      "timestamp": "2026-11-04 12:58:54"
     },
     "system_health": {
-      "timestamp": "2026-11-04 12:37:06",
+      "timestamp": "2026-11-04 12:58:54",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
-      "stream1_running": true,
-      "stream2_running": true,
+      "stream1_running": false,
+      "stream2_running": false,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
-      "processes": [
-        "37963    17:10:17 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "37965    17:10:17 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "52070       30:44 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "52072       30:44 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "52073       30:44 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "52075       30:43 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "55862       13:03 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "55863       13:03 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "55864       13:03 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "55866       13:03 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99294 02-13:09:32 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "99296 02-13:09:32 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "66888    14:13:20 ./venv/bin/python main.py --stream-upload --max-ready 5"
-      ],
+      "lock_file_age_seconds": 123.4,
+      "processes": [],
       "recent_daemon_log_tail": [
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "[12:36:59] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Lượt 2] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
@@ -54,8 +39,11 @@
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "[12:37:04] [INFO] tiktok_pipeline: [an_vat_moi_ngay] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi')."
-      ]
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe."
+      ],
+      "ps_error": "Command '['ps', '-Ao', 'pid,etime,command']' timed out after 8 seconds",
+      "lock_file_content": "pid=60581 ts=1793771819"
     }
   }
 }
