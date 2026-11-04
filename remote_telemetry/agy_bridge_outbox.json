@@ -1,17 +1,17 @@
 {
-  "updated_at": "2026-11-04 14:54:35",
+  "updated_at": "2026-11-04 14:54:58",
   "latest_result": {
-    "cmd_id": "auto_restart_1793778875",
+    "cmd_id": "auto_restart_1793778898",
     "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-04 14:54:35",
+    "executed_at": "2026-11-04 14:54:58",
     "restart_info": {
       "restarted_streams": [
         "stream1_upload"
       ],
-      "timestamp": "2026-11-04 14:54:35"
+      "timestamp": "2026-11-04 14:54:58"
     },
     "system_health": {
-      "timestamp": "2026-11-04 14:54:35",
+      "timestamp": "2026-11-04 14:54:58",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": false,
@@ -19,15 +19,10 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "2986   07:03 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "2988   07:03 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "2986   07:26 /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "2988   07:26 caffeinate -dimsu /Users/hoangvo/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[14:10:45] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[14:10:46] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=not_installed)",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "[14:11:08] [INFO] tiktok_pipeline: [Auto-Revive Watchdog] Đã tự động bật lại tiến trình Dòng 1 (--stream-upload) thành công!",
-        "[14:12:28] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
         "==============================================================================================",
         "[14:12:33] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
@@ -36,6 +31,11 @@
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
         "[14:14:19] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
+        "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
+        "Python runtime state: core initialized",
+        "OSError: [Errno 9] Bad file descriptor",
+        "Current thread 0x00007ff85bc4da00 (most recent call first):",
+        "  <no Python frame>",
         "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
         "Python runtime state: core initialized",
         "OSError: [Errno 9] Bad file descriptor",
