@@ -99,15 +99,13 @@ if sess_dir.exists():
 " || true
 
 echo "======================================================================"
-echo "HOÀN TẤT CÀI ĐẶT 100% TRÊN MACBOOK ($ARCH)!"
+git config user.name "IntelMacBot" || true
+git config user.email "bot@tiktokpipeline.local" || true
+echo "HOÀN TẤT CÀI ĐẶT & KHÔI PHỤC 10 KÊNH TIKTOK 100% TRÊN MACBOOK ($ARCH)!"
 echo "Kiểm tra Python: $("$PROJECT_DIR/venv/bin/python" --version)"
 echo "----------------------------------------------------------------------"
-echo "Bây giờ bạn chạy TỪNG LỆNH MỘT dưới đây để quét mã QR đăng nhập 4 kênh:"
-echo "  ./venv/bin/python main.py --login-channel video_AI_hay"
-echo "  ./venv/bin/python main.py --login-channel baby_AI"
-echo "  ./venv/bin/python main.py --login-channel audio_dem_khuyen"
-echo "  ./venv/bin/python main.py --login-channel tu_chan_gioi"
-echo ""
-echo "Sau đó bật chế độ chạy 24/7:"
-echo "  ./run_24_7.sh"
+echo "Toàn bộ 10 kênh TikTok + Mã thiết bị (Fingerprint) đã được khôi phục tự động!"
+echo "Bây giờ bạn mở 2 cửa sổ Terminal chạy 2 dòng hoạt động 24/7:"
+echo "  + Cửa sổ 1 (Dòng 1 - Cào & Đăng): ./run_24_7.sh"
+echo "  + Cửa sổ 2 (Dòng 2 - Bộ lọc 24h): caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
 echo "======================================================================"
