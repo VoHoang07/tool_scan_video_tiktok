@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-04 17:10:15",
+    "timestamp": "2026-11-04 17:29:14",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261104_170521_douyin_story_6740543560279477507.mp4",
-      "caption": "🌹 Tâm lý Hôn nhân & Gia đình: Cô gái nói với tôi. \"Tôi chỉ muốn mang theo giấc mơ của cô ấy...\" Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
-      "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #viral",
+      "video_file": "20261104_171416_youtube_shorts_story_IgOE5mwunVI.mp4",
+      "caption": "🤤 [Thiên Đường Ăn Vặt] Xin chào các bạn. \"Nhào tất cả bột thành một quả bóng và đặt sang một bên...\" Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
+      "hashtags": "#anvatmoingay #doanvat #monngondelam #nauanngon #mukbangvietnam #anvatngon #fyp #xh",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-04 17:29:14",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261104_171416_youtube_shorts_story_IgOE5mwunVI.mp4",
+        "caption": "🤤 [Thiên Đường Ăn Vặt] Xin chào các bạn. \"Nhào tất cả bột thành một quả bóng và đặt sang một bên...\" Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
+        "hashtags": "#anvatmoingay #doanvat #monngondelam #nauanngon #mukbangvietnam #anvatngon #fyp #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-04 17:10:15",
       "machine_arch": "x86_64",
@@ -505,18 +521,6 @@
             "follow_back_window_until": "2026-11-05 11:58:57"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-04 11:54:25",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 150.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
