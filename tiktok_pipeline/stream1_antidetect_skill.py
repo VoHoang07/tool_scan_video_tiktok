@@ -245,12 +245,12 @@ class Stream1SixLayerAntiDetectSkill:
             )
             return False, video_path, caption, hashtags, report
 
-        if channel_folder == "audio_dem_khuyen" and "bongcuc_v3_s" not in video_path.name.lower():
+        if channel_folder == "audio_dem_khuyen" and "bongcuc_v4_s" not in video_path.name.lower():
             report["layers"]["L4_retention_duration"] = (
-                "FAIL (Video audio_dem_khuyen bản cũ chưa qua bộ ghép nền Ngày/Đêm & xen kẽ View Cao bongcuc_v3)"
+                "FAIL (Video audio_dem_khuyen bản cũ chưa qua bộ ghép nền Full HD 1080p nguyên khung hình bongcuc_v4)"
             )
             logger.warning(
-                f"[Dòng 1 - Skill 6 Lớp Anti-Detect] ❌ Chặn & xóa video bản cũ {video_path.name} trên kênh [audio_dem_khuyen] (yêu cầu chuẩn bongcuc_v3)."
+                f"[Dòng 1 - Skill 6 Lớp Anti-Detect] ❌ Chặn & xóa video bản cũ {video_path.name} trên kênh [audio_dem_khuyen] (yêu cầu chuẩn Full HD 1080p bongcuc_v4)."
             )
             video_path.unlink(missing_ok=True)
             return False, video_path, caption, hashtags, report

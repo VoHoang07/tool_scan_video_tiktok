@@ -2594,12 +2594,12 @@ class TikTokAutoPoster:
                     want_part1 = last_part_num is None or int(last_part_num) >= 2
                     target_bg_mode = get_target_bg_mode_for_hour()
 
-                    # KHÓA ĐỘC QUYỀN 100% NGUỒN @bongcucaudio v3 (Nền Mukbang Ban Đêm / Nghệ Thuật Ban Ngày):
-                    # Xóa ngay mọi file bản cũ (bongcuc_v2 hình tô màu) trong ready/
+                    # KHÓA ĐỘC QUYỀN 100% NGUỒN @bongcucaudio v4 (Full HD 1080p nguyên khung hình, không cắt mất người):
+                    # Xóa ngay mọi file bản cũ (bongcuc_v2 / bongcuc_v3 360p cắt vuông) trong ready/
                     lowest_part_by_ep: Dict[int, Tuple[int, Path, Optional[str]]] = {}
                     for c_file in valid_candidates:
                         ep_p = parse_bongcuc_ep_and_part(c_file.name)
-                        if ep_p and "bongcuc_v3_s" in c_file.name.lower():
+                        if ep_p and "bongcuc_v4_s" in c_file.name.lower():
                             ep_no, pt_no = ep_p
                             bg_m = parse_bongcuc_bg_mode(c_file.name)
                             if (

@@ -2924,8 +2924,8 @@ class StoryAudioCrawler:
                     reason = "video baby_AI bản cũ trước khi nâng cấp lồng tiếng khớp 1:1 (22:40 29/10)"
                 elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_210000":
                     reason = "video lồng tiếng bản cũ trước khi vá lỗi cắt đỉnh âm thanh & mất thoại VAD (21:00 28/10)"
-                elif ch_folder == "audio_dem_khuyen" and "bongcuc_v3_s" not in fname.lower():
-                    reason = "video audio_dem_khuyen bản cũ hình nền tô màu trước khi nâng cấp Background Mukbang Ban Đêm / Nghệ Thuật Ban Ngày + Xen Kẽ Tập Mới View Cao (bongcuc_v3)"
+                elif ch_folder == "audio_dem_khuyen" and "bongcuc_v4_s" not in fname.lower():
+                    reason = "video audio_dem_khuyen bản cũ 360p cắt khung hình trước khi nâng cấp Background Full HD 1080p nguyên khung hình không cắt mất người (bongcuc_v4)"
 
                 if not reason and sid:
                     for tr_dir in (

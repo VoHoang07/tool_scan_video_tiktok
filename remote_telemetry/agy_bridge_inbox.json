@@ -1,10 +1,10 @@
 {
-  "cmd_id": "cmd_20261104_162910_start_stream1_and_verify",
-  "created_at": "2026-11-04 16:29:10",
+  "cmd_id": "cmd_20261104_165600_upgrade_bongcuc_v4_1080p",
+  "created_at": "2026-11-04 16:56:00",
   "from_machine": "arm64",
   "target_arch": "x86_64",
   "action": "shell",
   "agy_prompt": "",
-  "shell_command": "nohup caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5 </dev/null >> logs/daemon_24_7.log 2>&1 & sleep 3 && ps -Ao pid,etime,command | grep -E 'stream-upload|stream-filter24h|agy_intel_bridge' | grep -v grep",
-  "timeout_seconds": 60
+  "shell_command": "rm -f workspace_temp/bongcuc_bg_pool/*/*.mp4 output/audio_dem_khuyen/ready/*bongcuc_v3*.mp4 && curl -sL 'https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_macos' -o ./venv/bin/yt-dlp_macos && chmod +x ./venv/bin/yt-dlp_macos && ./venv/bin/yt-dlp_macos --version",
+  "timeout_seconds": 120
 }

@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from PIL import Image, ImageDraw, ImageFont
 
-from .utils import ensure_ffmpeg, get_media_duration, logger
+from .utils import ensure_ffmpeg, get_media_duration, get_video_resolution, logger
 
 # ==============================================================================
 # CẤU HÌNH NGUỒN YOUTUBE @bongcucaudio & DANH SÁCH TẬP ĐÃ ĐĂNG PHẦN 1 TRÊN TIKTOK
@@ -36,61 +36,66 @@ BONGCUC_LOW_QUEUE_WARNING_THRESHOLD = 15
 BONGCUC_NIGHT_MUKBANG_POOL: List[Dict[str, Any]] = [
     {
         "yt_id": "07Q8NHoZjdc",
-        "title": "Crunchy Seasoned Spicy Chicken and Jajang Ramyeon Mukbang ASMR",
+        "title": "Eat with Boki Crunchy Seasoned Spicy Chicken and Jajang Ramyeon Mukbang 1080p",
         "duration": 524.0,
     },
     {
-        "yt_id": "4evvxooEV5s",
-        "title": "Hot Cheetos Sausage Cheese Sticks Fire Noodles Mukbang ASMR",
-        "duration": 773.0,
-    },
-    {
         "yt_id": "EuySE6259wQ",
-        "title": "Spicy Chicken Tteokbokki Cheese Kimchi Gimbap Mukbang ASMR",
+        "title": "SULGI Spicy Chicken Tteokbokki Cheese Kimchi Gimbap Mukbang 1080p",
         "duration": 1027.0,
     },
     {
         "yt_id": "s85cKxJIpo0",
-        "title": "Fire Noodle Hot Dog Gimbap Tteokbokki Mukbang ASMR",
+        "title": "GONGSAM TABLE Fire Noodle Hot Dog Gimbap Tteokbokki Mukbang 1080p",
         "duration": 1017.0,
     },
     {
-        "yt_id": "gM4EIfGaFCQ",
-        "title": "Giant Fresh Seafood Korean Mukbang ASMR",
-        "duration": 311.0,
+        "yt_id": "zFkeOaM9IXo",
+        "title": "Eat with Boki Pelicana Hot Devil Seasoned Fried Chicken Cheese Balls Mukbang 1080p",
+        "duration": 609.0,
+    },
+    {
+        "yt_id": "ghUgHf8VIOM",
+        "title": "SULGI Ramen Tteokbokki Omurice Seasoned Fried Chicken Mukbang 1080p",
+        "duration": 866.0,
+    },
+    {
+        "yt_id": "Ky4Cbdx7jdc",
+        "title": "Eat with Boki BBQ Jamaican Chicken Thighs and Jumbo Cheese Sticks Mukbang 1080p",
+        "duration": 549.0,
     },
 ]
 
 BONGCUC_DAY_AESTHETIC_POOL: List[Dict[str, Any]] = [
     {
-        "yt_id": "HHtuYQxJMUQ",
-        "title": "Colorful Cake Decorating Art Compilation",
-        "duration": 634.0,
-    },
-    {
-        "yt_id": "XRXMMA4YZp0",
-        "title": "Amazing Cake Decorating Satisfying Compilation",
-        "duration": 702.0,
-    },
-    {
-        "yt_id": "7cJGE6cUoao",
-        "title": "Relaxing Pottery Art Ceramic Masterpieces",
-        "duration": 646.0,
-    },
-    {
-        "yt_id": "AOcUIKXAPWw",
-        "title": "Colorful Kinetic Sand Slicing & Flowing Satisfying Art",
-        "duration": 630.0,
-    },
-    {
-        "yt_id": "rF6awqlStl4",
-        "title": "Satisfying & Relaxing 3D Art Compilation",
-        "duration": 543.0,
+        "yt_id": "1jFbyGvyAAE",
+        "title": "The Icing Artist 10 Amazing Cakes Decorating Compilation 1080p",
+        "duration": 651.0,
     },
     {
         "yt_id": "1Gic5nYiAjM",
-        "title": "Artisan Pottery Wheel Bowl Turning ASMR",
+        "title": "Florian Gadsby Artisan Pottery Wheel Bowl Turning ASMR 1080p",
         "duration": 817.0,
+    },
+    {
+        "yt_id": "rF6awqlStl4",
+        "title": "Satisfying & Relaxing 3D Kinetic Art Compilation 1080p60",
+        "duration": 543.0,
+    },
+    {
+        "yt_id": "7cJGE6cUoao",
+        "title": "Relaxing Pottery Art Ceramic Masterpieces 1080p",
+        "duration": 646.0,
+    },
+    {
+        "yt_id": "AQmRNOLthSs",
+        "title": "So Yummy 10 Amazing Dessert & Cake Decorating Recipes 1080p",
+        "duration": 605.0,
+    },
+    {
+        "yt_id": "HHtuYQxJMUQ",
+        "title": "Colorful Cake Decorating Art Compilation 1080p",
+        "duration": 634.0,
     },
 ]
 
@@ -711,13 +716,38 @@ class BongCucYouTubeSplitter:
         )
         return interleaved
 
+    def _ensure_ytdlp_macos_bin(self) -> Optional[Path]:
+        """Đảm bảo có sẵn binary `yt-dlp_macos` (Universal x86_64 + arm64 bản mới nhất) để tải 1080p Full HD qua visionos API."""
+        bin_path = self.project_root / "venv" / "bin" / "yt-dlp_macos"
+        if bin_path.exists() and bin_path.stat().st_size > 10_000_000:
+            return bin_path
+        try:
+            bin_path.parent.mkdir(parents=True, exist_ok=True)
+            subprocess.run(
+                [
+                    "curl",
+                    "-sL",
+                    "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_macos",
+                    "-o",
+                    str(bin_path),
+                ],
+                timeout=90,
+                check=False,
+            )
+            if bin_path.exists() and bin_path.stat().st_size > 10_000_000:
+                os.chmod(bin_path, 0o755)
+                return bin_path
+        except Exception:
+            pass
+        return None
+
     def ensure_background_video(
         self, bg_mode: str = "day_aesthetic", seed_val: int = 0
     ) -> Tuple[Path, float]:
         """
-        Đảm bảo có sẵn video nền (Background Visual) theo chế độ khung giờ:
-        - `night_mukbang` (Khung giờ ban đêm 18:00 - 04:59): Video Mukbang đồ ăn đêm hấp dẫn.
-        - `day_aesthetic` (Khung giờ ban ngày 05:00 - 17:59): Video Nghệ thuật làm bánh kem / Gốm sứ / Cắt cát 3D tươi sáng.
+        Đảm bảo có sẵn video nền (Background Visual) chuẩn Full HD 1080p (1920x1080, không cắt mất người) theo chế độ khung giờ:
+        - `night_mukbang` (Khung giờ ban đêm 18:00 - 04:59): Video Mukbang 1080p có đầy đủ khuôn mặt & bàn ăn.
+        - `day_aesthetic` (Khung giờ ban ngày 05:00 - 17:59): Video Nghệ thuật làm bánh kem / Gốm sứ / 3D Satisfying 1080p.
         Trả về `(bg_video_path, bg_start_sec)` với điểm bắt đầu `bg_start_sec` dịch chuyển thông minh
         để mỗi tập truyện hiển thị một món ăn / tác phẩm nghệ thuật hoàn toàn khác nhau.
         """
@@ -732,6 +762,7 @@ class BongCucYouTubeSplitter:
 
         import yt_dlp
 
+        ytdlp_macos_bin = self._ensure_ytdlp_macos_bin()
         ordered_indices = [(seed_val + i) % len(pool) for i in range(len(pool))]
         chosen_mp4: Optional[Path] = None
         for idx in ordered_indices:
@@ -739,30 +770,55 @@ class BongCucYouTubeSplitter:
             yt_id = str(cand_spec["yt_id"])
             target_mp4 = bg_dir / f"bg_{yt_id}.mp4"
             if target_mp4.exists() and target_mp4.stat().st_size > 2_000_000:
-                chosen_mp4 = target_mp4
-                break
+                try:
+                    w_chk, h_chk = get_video_resolution(target_mp4)
+                except Exception:
+                    w_chk, h_chk = 0, 0
+                if h_chk >= 720 and w_chk >= 1080:
+                    chosen_mp4 = target_mp4
+                    break
+                logger.info(
+                    f"[BongCucSplitter] Xóa bản Background độ phân giải thấp cũ ({w_chk}x{h_chk}) của {yt_id} để tải bản Full HD 1080p..."
+                )
+                target_mp4.unlink(missing_ok=True)
             tmp_out = bg_dir / f"bg_{yt_id}.part.mp4"
             tmp_out.unlink(missing_ok=True)
             url = f"https://www.youtube.com/watch?v={yt_id}"
             try:
                 logger.info(
-                    f"[BongCucSplitter] Đang tải video Background [{eff_mode}] từ YouTube ({url} - {cand_spec.get('title')})..."
+                    f"[BongCucSplitter] Đang tải video Background Full HD 1080p [{eff_mode}] từ YouTube ({url} - {cand_spec.get('title')})..."
                 )
-                ydl_opts = {
-                    "format": "18/best[ext=mp4]/best",
-                    "outtmpl": str(tmp_out),
-                    "quiet": True,
-                    "no_warnings": True,
-                    "Retries": 2,
-                    "extractor_args": {"youtube": {"player_client": ["android", "web"]}},
-                }
-                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                    ydl.download([url])
+                if ytdlp_macos_bin is not None:
+                    subprocess.run(
+                        [
+                            str(ytdlp_macos_bin),
+                            "-f",
+                            "137/299/bestvideo[height>=1080][ext=mp4]/bestvideo[height>=720][ext=mp4]/18/best[ext=mp4]",
+                            "-o",
+                            str(tmp_out),
+                            url,
+                        ],
+                        capture_output=True,
+                        timeout=180,
+                        check=False,
+                    )
+                if not tmp_out.exists() or tmp_out.stat().st_size < 2_000_000:
+                    ydl_opts = {
+                        "format": "137/299/bestvideo[height>=1080][ext=mp4]/bestvideo[height>=720][ext=mp4]/18/best[ext=mp4]",
+                        "outtmpl": str(tmp_out),
+                        "quiet": True,
+                        "no_warnings": True,
+                        "Retries": 2,
+                        "extractor_args": {"youtube": {"player_client": ["android", "web"]}},
+                    }
+                    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                        ydl.download([url])
                 if tmp_out.exists() and tmp_out.stat().st_size > 2_000_000:
                     shutil.move(str(tmp_out), str(target_mp4))
                     chosen_mp4 = target_mp4
+                    w_dl, h_dl = get_video_resolution(target_mp4)
                     logger.info(
-                        f"[BongCucSplitter] Đã tải xong Background [{eff_mode}] {yt_id} ({target_mp4.stat().st_size / 1e6:.1f} MB)."
+                        f"[BongCucSplitter] Đã tải xong Background Full HD [{eff_mode}] {yt_id} ({w_dl}x{h_dl}, {target_mp4.stat().st_size / 1e6:.1f} MB)."
                     )
                     break
             except Exception as dl_exc:
@@ -899,8 +955,8 @@ class BongCucYouTubeSplitter:
         header_color, part_color = theme_palettes[t_seed % len(theme_palettes)]
         y_jitter = ((t_seed % 9) - 4) * 3  # -12px .. +12px
 
-        _draw_centered(235 + y_jitter, line1, font_header, header_color)
-        _draw_centered(312 + y_jitter, line2, font_part, part_color)
+        _draw_centered(365 + y_jitter, line1, font_header, header_color)
+        _draw_centered(445 + y_jitter, line2, font_part, part_color)
 
         # Tự động ngắt dòng tiêu đề truyện ở phía dưới
         words = title.strip().split()
@@ -917,7 +973,7 @@ class BongCucYouTubeSplitter:
         if cur_line:
             sub_lines.append(cur_line)
 
-        y_sub = 1505 - y_jitter
+        y_sub = 1365 - y_jitter
         for sl in sub_lines[:2]:
             h_used = _draw_centered(y_sub, sl, font_sub, (255, 255, 255, 255))
             y_sub += h_used + 14
@@ -1044,7 +1100,7 @@ class BongCucYouTubeSplitter:
             bg_mode=eff_bg_mode, seed_val=seed_val
         )
 
-        overlay_png = self.cache_dir / f"ov_v3_s{ep_num}_p{part_num}of{total_parts}.png"
+        overlay_png = self.cache_dir / f"ov_v4_s{ep_num}_p{part_num}of{total_parts}.png"
         self._render_part_overlay_png(
             overlay_path=overlay_png,
             ep_num=ep_num,
@@ -1058,7 +1114,7 @@ class BongCucYouTubeSplitter:
             "%Y%m%d_%H%M%S"
         )
         out_name = (
-            f"{ts_val}_tiktok_story_{story_id}_bongcuc_v3_s{ep_num}_p{part_num}_bg_{bg_short}.mp4"
+            f"{ts_val}_tiktok_story_{story_id}_bongcuc_v4_s{ep_num}_p{part_num}_bg_{bg_short}.mp4"
         )
         out_path = target_ready_dir / out_name
         tmp_render = self.cache_dir / f"rendering_{story_id}_{bg_short}.mp4"
@@ -1068,30 +1124,31 @@ class BongCucYouTubeSplitter:
         speed_factor = round(1.412 + (seed_val % 25) * 0.001, 3)  # 1.412x .. 1.436x (quanh 1.42x)
         bg_speed = round(1.12 + (seed_val % 11) * 0.01, 2)       # 1.12x .. 1.22x cho video nền sinh động
         target_out_dur = max(30.0, round(orig_dur / speed_factor, 2))
-        crop_y_shift = round(0.08 + (seed_val % 7) * 0.005, 3)    # Cắt bỏ viền trên/dưới của clip nền
+        crop_y_shift = round(0.005 + (seed_val % 5) * 0.003, 3)   # Giữ trọn vẹn 98% chiều cao từ đỉnh đầu (không cắt mất người)
 
         # Dịch cao độ vi mô (+1.6% .. +2.1%) kết hợp bù tốc độ chính xác để phá vỡ 100% AudioPrint YouTube/TikTok
         pitch_factor = round(1.016 + (seed_val % 6) * 0.001, 4)
         atempo_comp = round(speed_factor / pitch_factor, 5)
 
-        # --- BỘ LỌC 3: Đa dạng hóa GOP Keyframe, CRF & Bitrate âm thanh + Chữ ký VN Video Editor (iOS) ---
+        # --- BỘ LỌC 3: Đa dạng hóa GOP Keyframe, CRF 19-20 (Full HD sắc nét) & Bitrate âm thanh + Chữ ký VN Video Editor (iOS) ---
         gop_val = 48 + (seed_val % 17)  # 48 .. 64
-        crf_val = 21 + (seed_val % 2)   # 21 hoặc 22
+        crf_val = 19 + (seed_val % 2)   # 19 hoặc 20 (Full HD sắc nét, không vỡ hạt)
         audio_br = "192k" if (seed_val % 2 == 0) else "160k"
         creation_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000000Z")
 
         # Input [0]: Video @bongcucaudio (CHỈ LẤY AUDIO [0:a], bỏ hoàn toàn hình tô màu cũ [0:v])
-        # Input [1]: Video Background Mukbang / Daytime Aesthetic (CHỈ LẤY HÌNH [1:v], tắt 100% tiếng [1:a])
+        # Input [1]: Video Background Full HD 1080p Mukbang / Daytime Aesthetic (CHỈ LẤY HÌNH [1:v], tắt 100% tiếng [1:a])
         # Input [2]: Lớp phủ tiêu đề PNG trong suốt 1080x1920 [2:v]
+        # Giữ trọn khung hình gốc 16:9 (95% rộng × 98% cao) để hiển thị đầy đủ cả người, khuôn mặt và bàn ăn/tác phẩm!
         filter_complex = (
-            f"[1:v]setpts=PTS/{bg_speed},fps=24,trim=duration={target_out_dur:.2f},setpts=PTS-STARTPTS,split=2[bg][fg];"
-            "[bg]scale=270:480:force_original_aspect_ratio=increase,crop=270:480,hflip,"
-            "boxblur=10:2,eq=brightness=-0.16:saturation=0.90:contrast=1.04,scale=1080:1920[bg_out];"
-            f"[fg]crop=ih*1.04:ih*0.82:(iw-ih*1.04)/2:ih*{crop_y_shift},hflip,"
-            "eq=contrast=1.05:brightness=0.01:saturation=1.08:gamma=1.02,"
-            "unsharp=3:3:0.55:3:3:0.0,vignette=PI/7,scale=972:980:force_original_aspect_ratio=increase,crop=972:980,"
-            "pad=w=iw+12:h=ih+12:x=6:y=6:color=white@0.24[fg_out];"
-            "[bg_out][fg_out]overlay=(W-w)/2:(H-h)/2,noise=alls=3:allf=t+u[v1];"
+            f"[1:v]setpts=PTS/{bg_speed},fps=25,trim=duration={target_out_dur:.2f},setpts=PTS-STARTPTS,split=2[bg][fg];"
+            "[bg]scale=360:640:force_original_aspect_ratio=increase,crop=360:640,hflip,"
+            "boxblur=16:3,eq=brightness=-0.18:saturation=0.92:contrast=1.04,scale=1080:1920:flags=bilinear[bg_out];"
+            f"[fg]crop=iw*0.95:ih*0.98:(iw-iw*0.95)/2:ih*{crop_y_shift},hflip,"
+            "eq=contrast=1.04:brightness=0.01:saturation=1.07:gamma=1.02,"
+            "unsharp=5:5:0.65:3:3:0.0,scale=w=1056:h=720:force_original_aspect_ratio=decrease:flags=lanczos,"
+            "pad=w=iw+8:h=ih+8:x=4:y=4:color=white@0.32[fg_out];"
+            "[bg_out][fg_out]overlay=(W-w)/2:(H-h)/2[v1];"
             "[v1][2:v]overlay=0:0[vout];"
             f"[0:a]highpass=f=55,lowpass=f=13500,"
             f"asetrate=44100*{pitch_factor},aresample=44100,atempo={atempo_comp},"
