@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-11-04 18:58:21",
+  "updated_at": "2026-11-04 19:28:31",
   "latest_result": {
-    "cmd_id": "heartbeat_1793793500",
+    "cmd_id": "heartbeat_1793795310",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-04 18:58:20",
+    "executed_at": "2026-11-04 19:28:30",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-04 18:58:21",
+      "timestamp": "2026-11-04 19:28:30",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 115.2,
+      "lock_file_age_seconds": 64.4,
       "processes": [
-        "6279 02:27:56 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "6281 02:27:56 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 03:00:56 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 03:00:56 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "6279 02:58:05 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "6281 02:58:05 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 03:31:05 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 03:31:05 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
         "[16:41:39] [INFO] tiktok_pipeline: [92.06s - 94.22s] 皇帝就會延遲退化。  ==>  Hoàng đế sẽ trì hoãn sự thoái hóa của mình",
@@ -42,7 +42,7 @@
         "[16:44:16] [INFO] tiktok_pipeline: TTS #08 [67.94s-70.47s | gốc=2.56s]: rate=+25%, atempo=0.93x -> 2.53s",
         "[16:44:25] [INFO] tiktok_pipeline: TTS #09 [73.62s-80.28s | gốc=6.70s]: rate=-14%, atempo=1.00x -> 6.66s"
       ],
-      "lock_file_content": "pid=3213 ts=1793793385"
+      "lock_file_content": "pid=3213 ts=1793795246"
     }
   }
 }
