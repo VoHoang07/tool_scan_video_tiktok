@@ -1,103 +1,51 @@
 {
-  "updated_at": "2026-11-06 01:07:01",
+  "updated_at": "2026-11-06 01:16:21",
   "latest_result": {
-    "cmd_id": "cmd_20261106_010500_fix_audio_dem_khuyen_post_now",
-    "action": "shell",
-    "executed_at": "2026-11-06 01:06:55",
-    "machine_arch": "x86_64",
-    "hostname": "Hoangs-MBP.fpt",
-    "status": "SUCCESS",
-    "exit_code": 0,
-    "stdout": "vohoang          66284  11.4  0.4 34623240  75368   ??  S     1:06AM   0:01.34 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang           3213   0.0  1.5 35071800 245472 s001  S+   Wed03PM  26:12.88 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           3214   0.0  0.0 34187096   1184 s001  S+   Wed03PM   0:00.01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          66286   0.0  0.0 34171236   2008   ??  S     1:06AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
-    "stderr": "Fatal Python error: init_sys_streams: can't initialize sys standard streams\nPython runtime state: core initialized\nOSError: [Errno 9] Bad file descriptor\n\nCurrent thread 0x00007ff85a36ca00 (most recent call first):\n  <no Python frame>\n",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793902581",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-06 01:16:21",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-06 01:16:21"
+    },
     "system_health": {
-      "timestamp": "2026-11-06 01:07:01",
+      "timestamp": "2026-11-06 01:16:21",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 34.5,
+      "lock_file_age_seconds": null,
       "processes": [
-        "66284       00:04 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "66286       00:04 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-09:09:36 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-09:09:36 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "66284       09:24 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "66286       09:24 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-09:18:56 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-09:18:56 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[01:06:23] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[01:06:23] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
-        "[01:06:24] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[01:06:31] [INFO] tiktok_pipeline: TTS #30 [44.52s-45.38s | gốc=0.92s]: rate=+45%, atempo=1.60x -> 0.86s",
-        "[01:06:39] [INFO] tiktok_pipeline: TTS #31 [45.44s-46.37s | gốc=1.00s]: rate=+37%, atempo=1.00x -> 0.93s",
-        "[01:06:47] [INFO] tiktok_pipeline: TTS #32 [46.44s-47.42s | gốc=1.34s]: rate=+16%, atempo=1.00x -> 0.98s",
-        "[01:06:55] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (2f63b87 -> 9a9df3f) | fix(upload): multi-layer post_video_button click, prevent mid-upload macl deletion & trigger audio_dem_khuyen [BUG-008]",
-        "[01:06:55] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (2f63b87 -> 9a9df3f)!",
-        "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
-        "  warnings.warn('resource_tracker: There appear to be %d '",
-        "[01:06:58] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
-        "[01:06:58] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[01:06:58] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[01:06:58] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[01:06:58] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
-        "[01:06:58] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
-        "==============================================================================================",
-        "[01:06:58] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
-        "[01:07:01] [INFO] tiktok_pipeline: [Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon (post_now_audio_dem_khuyen_fix_20261106_0105) -> Kênh ['audio_dem_khuyen', 'suc_khoe_duong_sinh']!"
-      ],
-      "lock_file_content": "pid=3213 ts=1793901986"
+        "[download]  96.6% of  242.50MiB at  Unknown B/s ETA Unknown",
+        "[download]  96.6% of  242.50MiB at  Unknown B/s ETA Unknown",
+        "[download]  96.6% of  242.50MiB at    5.54MiB/s ETA 00:01  ",
+        "[download]  96.6% of  242.50MiB at    8.24MiB/s ETA 00:01",
+        "[download]  96.6% of  242.50MiB at    4.98MiB/s ETA 00:01",
+        "[download]  96.6% of  242.50MiB at    6.01MiB/s ETA 00:01",
+        "[download]  96.7% of  242.50MiB at    7.83MiB/s ETA 00:01",
+        "[download]  96.7% of  242.50MiB at   11.68MiB/s ETA 00:00",
+        "[download]  96.8% of  242.50MiB at   18.37MiB/s ETA 00:00",
+        "[download]  97.0% of  242.50MiB at   25.75MiB/s ETA 00:00",
+        "[download]  97.4% of  242.50MiB at    7.40MiB/s ETA 00:00",
+        "[download]  98.2% of  242.50MiB at   12.71MiB/s ETA 00:00",
+        "[download]  99.9% of  242.50MiB at   20.09MiB/s ETA 00:00",
+        "[download] 100.0% of  242.50MiB at   20.60MiB/s ETA 00:00",
+        "[download] 100% of  242.50MiB in 00:00:09 at 24.47MiB/s  ",
+        "[01:13:11] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong YouTube DoVFGuEeB1k (254.3 MB, thời lượng=5122.4s).",
+        "[01:13:11] [INFO] tiktok_pipeline: [BongCucSplitter] Đang tải video Background Full HD 1080p [night_mukbang] từ YouTube (https://www.youtube.com/watch?v=EuySE6259wQ - SULGI Spicy Chicken Tteokbokki Cheese Kimchi Gimbap Mukbang 1080p)...",
+        "[01:13:56] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong Background Full HD [night_mukbang] EuySE6259wQ (1920x1080, 289.1 MB).",
+        "[01:13:56] [INFO] tiktok_pipeline: [BongCucSplitter] Đang cắt & ghép Background [night_mukbang -> bg_EuySE6259wQ.mp4 @757s] (1.423x, pitch=1.017x, GOP=52): Bông Cúc Số 10 [Phần 3/13 | views=472,140]..."
+      ]
     }
-  },
-  "history": [
-    {
-      "cmd_id": "cmd_20261106_010500_fix_audio_dem_khuyen_post_now",
-      "action": "shell",
-      "executed_at": "2026-11-06 01:06:55",
-      "machine_arch": "x86_64",
-      "hostname": "Hoangs-MBP.fpt",
-      "status": "SUCCESS",
-      "exit_code": 0,
-      "stdout": "vohoang          66284  11.4  0.4 34623240  75368   ??  S     1:06AM   0:01.34 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang           3213   0.0  1.5 35071800 245472 s001  S+   Wed03PM  26:12.88 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           3214   0.0  0.0 34187096   1184 s001  S+   Wed03PM   0:00.01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          66286   0.0  0.0 34171236   2008   ??  S     1:06AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
-      "stderr": "Fatal Python error: init_sys_streams: can't initialize sys standard streams\nPython runtime state: core initialized\nOSError: [Errno 9] Bad file descriptor\n\nCurrent thread 0x00007ff85a36ca00 (most recent call first):\n  <no Python frame>\n",
-      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
-      "system_health": {
-        "timestamp": "2026-11-06 01:07:01",
-        "machine_arch": "x86_64",
-        "hostname": "Hoangs-MBP.fpt",
-        "stream1_running": true,
-        "stream2_running": true,
-        "chrome_testing_count": 0,
-        "lock_file_age_seconds": 34.5,
-        "processes": [
-          "66284       00:04 ./venv/bin/python main.py --stream-upload --max-ready 5",
-          "66286       00:04 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-          "3213 01-09:09:36 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-          "3214 01-09:09:36 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
-        ],
-        "recent_daemon_log_tail": [
-          "[01:06:23] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-          "[01:06:23] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
-          "[01:06:24] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-          "[01:06:31] [INFO] tiktok_pipeline: TTS #30 [44.52s-45.38s | gốc=0.92s]: rate=+45%, atempo=1.60x -> 0.86s",
-          "[01:06:39] [INFO] tiktok_pipeline: TTS #31 [45.44s-46.37s | gốc=1.00s]: rate=+37%, atempo=1.00x -> 0.93s",
-          "[01:06:47] [INFO] tiktok_pipeline: TTS #32 [46.44s-47.42s | gốc=1.34s]: rate=+16%, atempo=1.00x -> 0.98s",
-          "[01:06:55] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (2f63b87 -> 9a9df3f) | fix(upload): multi-layer post_video_button click, prevent mid-upload macl deletion & trigger audio_dem_khuyen [BUG-008]",
-          "[01:06:55] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (2f63b87 -> 9a9df3f)!",
-          "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
-          "  warnings.warn('resource_tracker: There appear to be %d '",
-          "[01:06:58] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
-          "[01:06:58] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-          "[01:06:58] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-          "[01:06:58] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-          "[01:06:58] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
-          "[01:06:58] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
-          "==============================================================================================",
-          "[01:06:58] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
-          "[01:07:01] [INFO] tiktok_pipeline: [Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon (post_now_audio_dem_khuyen_fix_20261106_0105) -> Kênh ['audio_dem_khuyen', 'suc_khoe_duong_sinh']!"
-        ],
-        "lock_file_content": "pid=3213 ts=1793901986"
-      }
-    }
-  ]
+  }
 }
