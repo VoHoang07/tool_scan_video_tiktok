@@ -1,21 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 19:02:57",
+    "timestamp": "2026-11-05 19:07:58",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "upload_error",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_error_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261105_141815_tiktok_story_7703396595689213204.mp4",
-      "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Tin Tức Tu Tiên Giới: Thiên Bắc xuất hiện dị tượng! Nghi vấn có thiên ngoại pháp bảo giáng lâm!. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-      "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #tiktokvn #xuhuong",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "video_file": "20261105_190601_youtube_shorts_story_hmDRy0NjfzM.mp4",
+      "error": "Locator.scroll_into_view_if_needed: Target page, context or browser has been closed"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 19:07:58",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_error_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261105_190601_youtube_shorts_story_hmDRy0NjfzM.mp4",
+        "error": "Locator.scroll_into_view_if_needed: Target page, context or browser has been closed"
+      }
+    },
     {
       "timestamp": "2026-11-05 19:02:57",
       "machine_arch": "x86_64",
@@ -773,18 +779,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 12:29:19",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 157.3,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]

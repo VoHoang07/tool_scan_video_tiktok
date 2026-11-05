@@ -138,7 +138,8 @@
     "990002101",
     "7684235157036879124",
     "6862280720614739204",
-    "7581027567194298984"
+    "7581027567194298984",
+    "hmDRy0NjfzM"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -714,6 +715,16 @@
       "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=0s",
       "output_filename": "audio_dem_khuyen/ready/20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4",
       "crawled_at": "2026-11-05T18:56:04"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "hmDRy0NjfzM",
+      "sound_id": "yt_sound_hmDRy0NjfzM",
+      "platform": "youtube_shorts",
+      "genre": "channel_6_health_wellness",
+      "source_url": "https://www.youtube.com/watch?v=hmDRy0NjfzM",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261105_190601_youtube_shorts_story_hmDRy0NjfzM.mp4",
+      "crawled_at": "2026-11-05T19:06:27"
     }
   ]
 }
