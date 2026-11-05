@@ -1,48 +1,52 @@
 {
-  "updated_at": "2026-11-05 09:44:39",
+  "updated_at": "2026-11-05 09:47:09",
   "latest_result": {
-    "cmd_id": "heartbeat_1793846678",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-05 09:44:38",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793846829",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-05 09:47:09",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-05 09:47:09"
+    },
     "system_health": {
-      "timestamp": "2026-11-05 09:44:39",
+      "timestamp": "2026-11-05 09:47:09",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 274.0,
+      "lock_file_age_seconds": null,
       "processes": [
-        "60899 01:30:56 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "60901 01:30:56 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 17:47:14 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 17:47:14 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "60899 01:33:26 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "60901 01:33:26 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 17:49:44 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 17:49:44 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[09:44:07] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] ✅ ĐÃ KIỂM TRA & XÁC NHẬN 6/6 LỚP BẢO VỆ TRƯỚC KHI ĐĂNG [phu_nu_khi_chat -> 20261105_094254_douyin_story_6714103873667173646.mp4]:",
-        "  + Lớp 1 (Visual pHash/vHash) : PASS (h264 540x960 yuv420p)",
-        "  + Lớp 2 (AudioPrint Evasion) : PASS (aac 44100Hz conditioned)",
-        "  + Lớp 3 (Device Metadata)    : PASS (sig='CapCut 14.5.0 (iPhone15,3)', handler='CoreMedia', xattr=CLEAN)",
-        "  + Lớp 4 (Retention/Duration) : PASS (28.3s | 2.2MB)",
-        "  + Lớp 5 (Policy Safe-Guard)  : PASS (Caption & Hashtags sạch 100%)",
-        "  + Lớp 6 (Interleaved/AIGC)   : PASS (Anti-Duplicate & AIGC Guard OK)",
-        "  + Tự động khắc phục tại chỗ  : Full A/V Anti-Fingerprint Re-encode",
-        "[09:44:07] [INFO] tiktok_pipeline: === BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [phu_nu_khi_chat] ===",
-        "  + File: 20261105_094254_douyin_story_6714103873667173646.mp4",
-        "  + Kịch bản ngắn: 🌹 Tâm lý Hôn nhân & Gia đình: Nếu một người phụ nữ luôn đợi đến tận đêm khuya. \"Nếu cô ấy không dồn hết năng lượng vào, cô ấy sẽ bị ám ảnh bởi bạn...\" Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
-        "  + Hashtags Hot Search: #giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #viral #foryou",
-        "[09:44:09] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Anti-Detect Warmup] Đang lướt dạo trang chủ TikTok 15s như người dùng thật...",
-        "[09:44:32] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h Warmup] Kết hợp chạy 1 video tương tác chéo 'Bộ lọc 24 giờ' trước khi đăng bài...",
-        "[09:44:32] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h] Đang quét video mới xây kênh 24h qua thẻ #flcheo (cursor=0)...",
-        "[09:44:34] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h] Đang tương tác video #1/1: https://www.tiktok.com/@tran.nhi123/video/7703968269719391508",
-        "[09:44:34] [INFO] tiktok_pipeline: [phu_nu_khi_chat] === BẮT ĐẦU BỘ LỌC 24 GIỜ TRÊN VIDEO CỦA @tran.nhi123 (https://www.tiktok.com/@tran.nhi123/video/7703968269719391508) ===",
-        "[09:44:36] [INFO] tiktok_pipeline: TTS #03 [07.50s-11.74s | gốc=4.28s]: rate=+25%, atempo=0.94x -> 4.24s",
-        "[09:44:38] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h - Bước 1/6] Đang XEM HẾT VIDEO (16.0s / thời lượng gốc 15.2s): https://www.tiktok.com/@tran.nhi123/video/7703968269719391508",
-        "[09:44:38] [INFO] tiktok_pipeline: TTS #04 [11.98s-13.28s | gốc=1.32s]: rate=+38%, atempo=1.21x -> 1.30s"
-      ],
-      "lock_file_content": "pid=60899 ts=1793846405"
+        "[09:45:48] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
+        "[09:45:49] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
+        "[09:45:50] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
+        "[09:45:52] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
+        "[09:46:15] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Tiết kiệm không gian cho người khác' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[09:46:15] [INFO] tiktok_pipeline: TTS #07 [16.60s-17.27s | gốc=0.90s]: rate=-42%, atempo=0.55x -> 0.67s",
+        "[09:46:24] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã nhập xong Mô tả & 8 Hashtag chuẩn vào TikTok Studio: \"🌹 Tâm lý Hôn nhân & Gia đình: Nếu một người phụ nữ luôn đợi đến tận đêm khuya. \"Nếu cô ấy không dồn hết năng lượng vào, cô ấy sẽ bị ám ảnh bởi bạn...\" Ngẫm từng...\"",
+        "[09:46:24] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = TẮT)...",
+        "[09:46:32] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đang bấm nút đỏ ĐĂNG ('Đăng', data-e2e='post_video_button') tại (380.0, 620.9)...",
+        "[09:46:32] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất...",
+        "[09:46:34] [INFO] tiktok_pipeline: [phu_nu_khi_chat] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!",
+        "[09:46:34] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[09:46:34] [INFO] tiktok_pipeline: Đã đánh dấu POSTED thành công: /Users/vohoang/Documents/tool_scan_video_tiktok/output/phu_nu_khi_chat/posted/20261105_094254_douyin_story_6714103873667173646.mp4 | posted_at=2026-11-05 09:46:34 (đã cập nhật 2 dòng trong CSV, tự động đồng bộ thêm 0 video)",
+        "[09:46:39] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Lượt 1] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[09:46:41] [INFO] tiktok_pipeline: [phu_nu_khi_chat] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[09:46:44] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Mẹ sẽ tìm một cái tốt sau khi mẹ rời đi và gửi bố mẹ đi' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[09:46:54] [INFO] tiktok_pipeline: TTS #08 [18.02s-20.62s | gốc=2.66s]: rate=-42%, atempo=1.90x -> 2.60s",
+        "[09:46:56] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Lượt 2] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[09:46:58] [INFO] tiktok_pipeline: [phu_nu_khi_chat] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[09:47:09] [INFO] tiktok_pipeline: TTS #09 [20.68s-22.54s | gốc=1.94s]: rate=+36%, atempo=0.93x -> 1.86s"
+      ]
     }
   }
 }
