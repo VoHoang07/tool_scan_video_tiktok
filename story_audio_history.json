@@ -148,7 +148,8 @@
     "RZ5ExrPnS9g",
     "iioCY__jipU",
     "990005401",
-    "7486892216481467703"
+    "7486892216481467703",
+    "2StxahiYYAI"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -831,6 +832,16 @@
       "source_url": "https://www.tiktok.com/@dangdztv2004/video/7486892216481467703",
       "output_filename": "tu_chan_gioi/ready/20261105_212551_tiktok_story_7486892216481467703.mp4",
       "crawled_at": "2026-11-05T21:26:06"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "2StxahiYYAI",
+      "sound_id": "yt_sound_2StxahiYYAI",
+      "platform": "youtube_shorts",
+      "genre": "channel_10_tech_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=2StxahiYYAI",
+      "output_filename": "phu_kien_tien_ich/ready/20261105_215107_youtube_shorts_story_2StxahiYYAI.mp4",
+      "crawled_at": "2026-11-05T23:01:00"
     }
   ]
 }
