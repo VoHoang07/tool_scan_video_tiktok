@@ -1,54 +1,48 @@
 {
-  "updated_at": "2026-11-05 19:13:23",
+  "updated_at": "2026-11-05 19:36:17",
   "latest_result": {
-    "cmd_id": "auto_evolve_d14d1c7ffc5a",
-    "action": "auto_self_evolve_fix",
-    "executed_at": "2026-11-05 19:13:23",
-    "ai_fix_report": {
-      "error_hash": "d14d1c7ffc5a",
-      "log_file": "daemon_24_7.log",
-      "error_line": "[19:07:58] [ERROR] tiktok_pipeline: [Dòng 1 - Đăng Video] Lỗi khi đăng ngay (post_now_fast_tts_dedup_20261105_1805) kênh [suc_khoe_duong_sinh]: Locator.scroll_into_view_if_needed: Target page, context or browser has been closed",
-      "agy_exit_code": 1,
-      "agy_fix_summary": "",
-      "timestamp": "2026-11-05 19:13:23"
-    },
+    "cmd_id": "heartbeat_1793882176",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-05 19:36:16",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 19:13:23",
+      "timestamp": "2026-11-05 19:36:17",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 325.1,
+      "lock_file_age_seconds": 131.4,
       "processes": [
-        "29297    01:07:38 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "29299    01:07:38 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-03:15:58 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-03:15:58 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "29297    01:30:32 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "29299    01:30:32 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-03:38:52 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-03:38:52 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[19:11:57] [INFO] tiktok_pipeline: Đang xóa tinh tế nét chữ sub gốc theo từng khung hình tại dải Y=[830..972]...",
-        "[19:12:33] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc...",
-        "[19:12:42] [INFO] tiktok_pipeline: Hoàn tất xuất bản video tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/phu_nu_khi_chat/ready/20261105_190959_douyin_story_7473815778035289378.mp4",
-        "[19:12:46] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[19:12:46] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=phu_nu_khi_chat, file=phu_nu_khi_chat/ready/20261105_190959_douyin_story_7473815778035289378.mp4, status=READY)",
-        "[19:12:46] [INFO] tiktok_pipeline: ==> Đã hoàn thành 1/1 video cho [phu_nu_khi_chat]: /Users/vohoang/Documents/tool_scan_video_tiktok/output/phu_nu_khi_chat/ready/20261105_190959_douyin_story_7473815778035289378.mp4",
-        "[19:12:47] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] 🔧 Phát hiện 20261105_190959_douyin_story_7473815778035289378.mp4 cần chuẩn hóa (Bitexact Metadata & Device Signature Scrub) -> Đang tự động xử lý ngay trước khi đăng...",
-        "[19:12:47] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] ✅ ĐÃ KIỂM TRA & XÁC NHẬN 6/6 LỚP BẢO VỆ TRƯỚC KHI ĐĂNG [phu_nu_khi_chat -> 20261105_190959_douyin_story_7473815778035289378.mp4]:",
-        "  + Lớp 1 (Visual pHash/vHash) : PASS (h264 720x1280 yuv420p)",
-        "  + Lớp 2 (AudioPrint Evasion) : PASS (aac 44100Hz conditioned)",
-        "  + Lớp 3 (Device Metadata)    : PASS (sig='CapCut 14.5.0 (iPhone15,3)', handler='CoreMedia', xattr=CLEAN)",
-        "  + Lớp 4 (Retention/Duration) : PASS (40.7s | 10.8MB)",
-        "  + Lớp 5 (Policy Safe-Guard)  : PASS (Caption & Hashtags sạch 100%)",
-        "  + Lớp 6 (Interleaved/AIGC)   : PASS (Anti-Duplicate & AIGC Guard OK)",
-        "  + Tự động khắc phục tại chỗ  : Bitexact Metadata & Device Signature Scrub",
-        "[19:12:47] [INFO] tiktok_pipeline: === BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [phu_nu_khi_chat] ===",
-        "  + File: 20261105_190959_douyin_story_7473815778035289378.mp4",
-        "  + Kịch bản ngắn: 🌹 Tâm lý Hôn nhân & Gia đình: Khi chúng ta già đi, em phải đi trước anh. \"Nếu tôi đi trước bạn, bạn sẽ cảm thấy khó chịu thế nào khi ở một mình...\" Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
-        "  + Hashtags Hot Search: #giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #viral #foryou",
-        "[19:12:57] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã nạp file video vào TikTok Studio. Đang chờ tải lên 100% và tự động đóng các hộp thoại hướng dẫn ('Đã hiểu')..."
+        "[19:32:35] [INFO] tiktok_pipeline: Đã phát hiện vị trí sub gốc cần làm mờ: tâm Y=799px (78.0%), chiều cao=98px (peak_score=4946.9)",
+        "[19:32:35] [INFO] tiktok_pipeline: Đã tạo trục âm thanh lồng tiếng Việt: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7647042355509431559/voiceover_track.wav",
+        "[19:32:35] [INFO] tiktok_pipeline: Đang trộn lồng tiếng Việt đè lên giọng nhân vật gốc (nền gốc=0.25, giọng Việt=1.35)...",
+        "[19:32:39] [INFO] tiktok_pipeline: Đang xóa tinh tế nét chữ sub gốc theo từng khung hình tại dải Y=[744..852]...",
+        "[19:33:03] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc...",
+        "[19:33:11] [INFO] tiktok_pipeline: Hoàn tất xuất bản video tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/baby_AI/ready/20261105_192707_tiktok_story_7647042355509431559.mp4",
+        "[19:33:28] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[19:33:41] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[19:33:41] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[19:33:41] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[19:34:13] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (d2054c5 -> d5e9a9b) | Auto-Telemetry [warmup_fyp] nuoi_con_eq at 2026-11-05 19:34:04",
+        "[19:34:13] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (d2054c5 -> d5e9a9b)!",
+        "[19:35:10] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[19:35:10] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=baby_AI, file=baby_AI/ready/20261105_192707_tiktok_story_7647042355509431559.mp4, status=READY)",
+        "[19:35:10] [INFO] tiktok_pipeline: ==> Đã hoàn thành 1/1 video cho [baby_AI]: /Users/vohoang/Documents/tool_scan_video_tiktok/output/baby_AI/ready/20261105_192707_tiktok_story_7647042355509431559.mp4",
+        "[19:35:10] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh baby_AI (baby_AI)! Kho chờ ready/ hiện tại: 2/5",
+        "[19:35:11] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[19:35:11] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh baby_AI (baby_AI): Nghỉ an toàn 126s (~2.1 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
+        "[19:36:02] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[19:36:02] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
       ],
-      "lock_file_content": "pid=29297 ts=1793880478"
+      "lock_file_content": "idle"
     }
   }
 }
