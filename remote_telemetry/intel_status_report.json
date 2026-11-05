@@ -1,16 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 18:57:56",
+    "timestamp": "2026-11-05 18:59:21",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4",
-      "error": "Không tìm thấy video nào khớp với '/Users/vohoang/Documents/tool_scan_video_tiktok/output/audio_dem_khuyen/ready/20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4' trong các thư mục output/channel_X/ready/."
+      "scrolled_videos": 13,
+      "elapsed_seconds": 158.8,
+      "final_url": "https://www.tiktok.com/@user5338792288000/photo/7686850212043771144?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 18:59:21",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "elapsed_seconds": 158.8,
+        "final_url": "https://www.tiktok.com/@user5338792288000/photo/7686850212043771144?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 18:57:56",
       "machine_arch": "x86_64",
@@ -763,18 +776,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 158.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 12:17:35",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 156.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
