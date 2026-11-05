@@ -130,7 +130,13 @@
     "7689800524379458817",
     "7700057407061331220",
     "7672330697012497671",
-    "7690752235659185414"
+    "7690752235659185414",
+    "990004501",
+    "990006001",
+    "7703396595689213204",
+    "990003501",
+    "990002101",
+    "7684235157036879124"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -156,7 +162,32 @@
     "7638714154345450250",
     "7634246152468089610",
     "bongcuc_yt_bEzOsJ3U5oc_p1",
-    "bongcuc_yt_DoVFGuEeB1k_p2"
+    "bongcuc_yt_DoVFGuEeB1k_p2",
+    "yt_sound_2StxahiYYAI",
+    "yt_sound_RZ5ExrPnS9g",
+    "7686077426530618162",
+    "tt_seed_7661486125428559112",
+    "bongcuc_yt_DTr7WSxC37g_p1",
+    "7541033372576598785",
+    "yt_sound_CQu4D_ZGDSg",
+    "yt_sound_hmDRy0NjfzM",
+    "7648046075701742362",
+    "7376186268457846821",
+    "7104565100765268749",
+    "7291244198481251133",
+    "7649090239608245043",
+    "bongcuc_yt_0GDXD2fwhcE_p1",
+    "7686087547956857608",
+    "yt_sound_CSRw8o5QvRQ",
+    "7483458182145477414",
+    "7380249095700432937",
+    "yt_sound_6bmpZbcnasA",
+    "7550668165668293382",
+    "yt_sound_9MTbvEomxdU",
+    "7659099507426151195",
+    "bongcuc_yt_KkvdYTXdeJU_p1",
+    "7684235205623876370",
+    "7681324230528486180"
   ],
   "items": [
     {
@@ -398,6 +429,256 @@
       "source_url": "https://www.youtube.com/watch?v=DoVFGuEeB1k&t=388s",
       "output_filename": "audio_dem_khuyen/ready/20261103_101141_tiktok_story_990001002_bongcuc_v3_s10_p2_bg_mukbang.mp4",
       "crawled_at": "2026-11-03T10:12:16"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "2StxahiYYAI",
+      "sound_id": "yt_sound_2StxahiYYAI",
+      "platform": "youtube_shorts",
+      "genre": "channel_10_tech_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=2StxahiYYAI",
+      "output_filename": "phu_kien_tien_ich/ready/20261105_120114_youtube_shorts_story_2StxahiYYAI.mp4",
+      "crawled_at": "2026-11-05T13:23:55"
+    },
+    {
+      "channel": "thu_cung_vui_nhon",
+      "video_id": "RZ5ExrPnS9g",
+      "sound_id": "yt_sound_RZ5ExrPnS9g",
+      "platform": "youtube_shorts",
+      "genre": "channel_11_pet_comedy",
+      "source_url": "https://www.youtube.com/watch?v=RZ5ExrPnS9g",
+      "output_filename": "thu_cung_vui_nhon/ready/20261105_133240_youtube_shorts_story_RZ5ExrPnS9g.mp4",
+      "crawled_at": "2026-11-05T13:44:38"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7686077455564988992",
+      "sound_id": "7686077426530618162",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/7686077455564988992",
+      "output_filename": "video_AI_hay/ready/20261105_134745_douyin_story_7686077455564988992.mp4",
+      "crawled_at": "2026-11-05T13:48:27"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7661486125428559112",
+      "sound_id": "tt_seed_7661486125428559112",
+      "platform": "tiktok",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.tiktok.com/@andy76243/video/7661486125428559112",
+      "output_filename": "baby_AI/ready/20261105_135437_tiktok_story_7661486125428559112.mp4",
+      "crawled_at": "2026-11-05T14:04:23"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990006001",
+      "sound_id": "bongcuc_yt_DTr7WSxC37g_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=DTr7WSxC37g&t=0s",
+      "output_filename": "audio_dem_khuyen/ready/20261105_140908_tiktok_story_990006001_bongcuc_v4_s60_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-05T14:11:18"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7703396595689213204",
+      "sound_id": "7541033372576598785",
+      "platform": "tiktok",
+      "genre": "tiennghich",
+      "source_url": "https://www.tiktok.com/@ngvinhdalat/video/7703396595689213204",
+      "output_filename": "tu_chan_gioi/ready/20261105_141815_tiktok_story_7703396595689213204.mp4",
+      "crawled_at": "2026-11-05T14:18:23"
+    },
+    {
+      "channel": "meo_vat_gia_dinh",
+      "video_id": "CQu4D_ZGDSg",
+      "sound_id": "yt_sound_CQu4D_ZGDSg",
+      "platform": "youtube_shorts",
+      "genre": "channel_5_home_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=CQu4D_ZGDSg",
+      "output_filename": "meo_vat_gia_dinh/ready/20261105_142506_youtube_shorts_story_CQu4D_ZGDSg.mp4",
+      "crawled_at": "2026-11-05T14:25:53"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "hmDRy0NjfzM",
+      "sound_id": "yt_sound_hmDRy0NjfzM",
+      "platform": "youtube_shorts",
+      "genre": "channel_6_health_wellness",
+      "source_url": "https://www.youtube.com/watch?v=hmDRy0NjfzM",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261105_143018_youtube_shorts_story_hmDRy0NjfzM.mp4",
+      "crawled_at": "2026-11-05T14:30:45"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "7656011526658770353",
+      "sound_id": "7648046075701742362",
+      "platform": "douyin",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.douyin.com/video/7656011526658770353",
+      "output_filename": "phu_nu_khi_chat/ready/20261105_143729_douyin_story_7656011526658770353.mp4",
+      "crawled_at": "2026-11-05T14:39:07"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7663077920365274618",
+      "sound_id": "7376186268457846821",
+      "platform": "douyin",
+      "genre": "channel_9_smart_parenting",
+      "source_url": "https://www.douyin.com/video/7663077920365274618",
+      "output_filename": "nuoi_con_eq/ready/20261105_144709_douyin_story_7663077920365274618.mp4",
+      "crawled_at": "2026-11-05T14:54:40"
+    },
+    {
+      "channel": "thu_cung_vui_nhon",
+      "video_id": "7104565045266222351",
+      "sound_id": "7104565100765268749",
+      "platform": "douyin",
+      "genre": "channel_11_pet_comedy",
+      "source_url": "https://www.douyin.com/video/7104565045266222351",
+      "output_filename": "thu_cung_vui_nhon/ready/20261105_150840_douyin_story_7104565045266222351.mp4",
+      "crawled_at": "2026-11-05T15:14:40"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7291244162836368674",
+      "sound_id": "7291244198481251133",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/7291244162836368674",
+      "output_filename": "video_AI_hay/ready/20261105_152126_douyin_story_7291244162836368674.mp4",
+      "crawled_at": "2026-11-05T15:28:30"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7649090399869777051",
+      "sound_id": "7649090239608245043",
+      "platform": "douyin",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.douyin.com/video/7649090399869777051",
+      "output_filename": "baby_AI/ready/20261105_153432_douyin_story_7649090399869777051.mp4",
+      "crawled_at": "2026-11-05T15:47:01"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990003501",
+      "sound_id": "bongcuc_yt_0GDXD2fwhcE_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=0GDXD2fwhcE&t=0s",
+      "output_filename": "audio_dem_khuyen/ready/20261105_155237_tiktok_story_990003501_bongcuc_v4_s35_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-05T15:55:41"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7686087505615195412",
+      "sound_id": "7686087547956857608",
+      "platform": "tiktok",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.tiktok.com/@funny.gau/video/7686087505615195412",
+      "output_filename": "tu_chan_gioi/ready/20261105_160216_tiktok_story_7686087505615195412.mp4",
+      "crawled_at": "2026-11-05T16:02:32"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "CSRw8o5QvRQ",
+      "sound_id": "yt_sound_CSRw8o5QvRQ",
+      "platform": "youtube_shorts",
+      "genre": "channel_6_health_wellness",
+      "source_url": "https://www.youtube.com/watch?v=CSRw8o5QvRQ",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261105_161153_youtube_shorts_story_CSRw8o5QvRQ.mp4",
+      "crawled_at": "2026-11-05T16:12:16"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "7483458164164234531",
+      "sound_id": "7483458182145477414",
+      "platform": "douyin",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.douyin.com/video/7483458164164234531",
+      "output_filename": "phu_nu_khi_chat/ready/20261105_161832_douyin_story_7483458164164234531.mp4",
+      "crawled_at": "2026-11-05T16:20:02"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7677679104964384953",
+      "sound_id": "7380249095700432937",
+      "platform": "douyin",
+      "genre": "channel_9_smart_parenting",
+      "source_url": "https://www.douyin.com/video/7677679104964384953",
+      "output_filename": "nuoi_con_eq/ready/20261105_163025_douyin_story_7677679104964384953.mp4",
+      "crawled_at": "2026-11-05T16:44:58"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "6bmpZbcnasA",
+      "sound_id": "yt_sound_6bmpZbcnasA",
+      "platform": "youtube_shorts",
+      "genre": "channel_10_tech_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=6bmpZbcnasA",
+      "output_filename": "phu_kien_tien_ich/ready/20261105_164848_youtube_shorts_story_6bmpZbcnasA.mp4",
+      "crawled_at": "2026-11-05T16:49:21"
+    },
+    {
+      "channel": "thu_cung_vui_nhon",
+      "video_id": "7624513451959815431",
+      "sound_id": "7550668165668293382",
+      "platform": "tiktok",
+      "genre": "thucunghaihuoc",
+      "source_url": "https://www.tiktok.com/@rykhongsun2612/video/7624513451959815431",
+      "output_filename": "thu_cung_vui_nhon/ready/20261105_165529_tiktok_story_7624513451959815431.mp4",
+      "crawled_at": "2026-11-05T16:55:32"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "9MTbvEomxdU",
+      "sound_id": "yt_sound_9MTbvEomxdU",
+      "platform": "youtube_shorts",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.youtube.com/watch?v=9MTbvEomxdU",
+      "output_filename": "video_AI_hay/ready/20261105_170229_youtube_shorts_story_9MTbvEomxdU.mp4",
+      "crawled_at": "2026-11-05T17:02:47"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7659099729062903625",
+      "sound_id": "7659099507426151195",
+      "platform": "douyin",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.douyin.com/video/7659099729062903625",
+      "output_filename": "baby_AI/ready/20261105_170711_douyin_story_7659099729062903625.mp4",
+      "crawled_at": "2026-11-05T17:19:20"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990002101",
+      "sound_id": "bongcuc_yt_KkvdYTXdeJU_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=KkvdYTXdeJU&t=0s",
+      "output_filename": "audio_dem_khuyen/ready/20261105_172530_tiktok_story_990002101_bongcuc_v4_s21_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-05T17:29:01"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7684235157036879124",
+      "sound_id": "7684235205623876370",
+      "platform": "tiktok",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.tiktok.com/@funny.gau/video/7684235157036879124",
+      "output_filename": "tu_chan_gioi/ready/20261105_173353_tiktok_story_7684235157036879124.mp4",
+      "crawled_at": "2026-11-05T17:33:58"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "7681324285081178105",
+      "sound_id": "7681324230528486180",
+      "platform": "douyin",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.douyin.com/video/7681324285081178105",
+      "output_filename": "phu_nu_khi_chat/ready/20261105_174431_douyin_story_7681324285081178105.mp4",
+      "crawled_at": "2026-11-05T17:48:14"
     }
   ]
 }
