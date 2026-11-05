@@ -1,48 +1,111 @@
 {
-  "updated_at": "2026-11-05 12:15:45",
+  "updated_at": "2026-11-05 12:34:30",
   "latest_result": {
-    "cmd_id": "heartbeat_1793855745",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-05 12:15:45",
+    "cmd_id": "cmd_20261105_123400_disable_switch_2_and_3",
+    "action": "unstick_chrome",
+    "executed_at": "2026-11-05 12:34:30",
     "machine_arch": "x86_64",
+    "hostname": "Hoangs-MBP.fpt",
+    "status": "SUCCESS",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-05 12:34:30"
+    },
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 12:15:45",
+      "timestamp": "2026-11-05 12:34:30",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 58.3,
+      "lock_file_age_seconds": null,
       "processes": [
-        "60899 04:02:02 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "60901 04:02:02 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 20:18:20 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 20:18:20 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "60899 04:20:47 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "60901 04:20:47 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 20:37:05 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 20:37:05 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[12:12:23] [INFO] tiktok_pipeline: [video_AI_hay] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!",
-        "[12:12:23] [INFO] tiktok_pipeline: Đã đánh dấu POSTED thành công: /Users/vohoang/Documents/tool_scan_video_tiktok/output/video_AI_hay/posted/20261105_093228_douyin_story_7464198303807245608.mp4 | posted_at=2026-11-05 12:12:23 (đã cập nhật 1 dòng trong CSV, tự động đồng bộ thêm 0 video)",
-        "[12:12:28] [INFO] tiktok_pipeline: [video_AI_hay] Tất cả bài đăng trên trang Quản lý đều đã ở trạng thái 'Mọi người' (Công khai)!",
-        "[12:12:28] [INFO] tiktok_pipeline: [video_AI_hay] Hoàn tất kiểm tra trang Bài đăng (đã chuyển 0 bài từ 'Chỉ mình tôi' -> 'Mọi người').",
-        "[12:12:28] [INFO] tiktok_pipeline: [video_AI_hay] [Remote Telemetry] Đã lưu ảnh (latest_upload_video_AI_hay.jpg) & đẩy đồng bộ GitHub chạy ngầm!",
-        "[12:12:38] [INFO] tiktok_pipeline: [video_AI_hay] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: video_AI_hay/posted/20261105_093228_douyin_story_7464198303807245608.mp4",
-        "[12:12:47] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Nhiều tiền hơn có nghĩa là nhiều tiền hơn' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[12:12:47] [INFO] tiktok_pipeline: TTS #24 [26.10s-26.77s | gốc=0.90s]: rate=-42%, atempo=0.55x -> 0.67s",
-        "[12:13:08] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (2cc1fc9 -> 2bc55f7) | Auto-Telemetry [upload] video_AI_hay at 2026-11-05 12:12:28",
-        "[12:13:28] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Trên thực tế mua bó này' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[12:13:28] [INFO] tiktok_pipeline: TTS #25 [27.00s-27.67s | gốc=1.02s]: rate=+38%, atempo=0.55x -> 0.67s",
-        "[12:14:03] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Đây là thứ duy nhất có giá trị thực sự' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[12:14:03] [INFO] tiktok_pipeline: TTS #26 [28.02s-28.69s | gốc=1.68s]: rate=+38%, atempo=0.55x -> 0.67s",
-        "[12:14:32] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Đầu những năm 1982, con người lần đầu tiên thử đưa chữ viết tay lên màn hình' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[12:14:41] [INFO] tiktok_pipeline: TTS #27 [29.70s-33.36s | gốc=3.72s]: rate=-42%, atempo=1.90x -> 3.66s",
-        "[12:14:51] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[12:14:52] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[12:15:19] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Đây là chiếc đồng hồ màn hình cảm ứng đầu tiên trên thế giới do Casio sản xuất' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[12:15:19] [INFO] tiktok_pipeline: TTS #28 [33.42s-34.09s | gốc=3.18s]: rate=+33%, atempo=0.55x -> 0.67s",
-        "[12:15:35] [INFO] tiktok_pipeline: TTS #29 [36.60s-37.99s | gốc=1.46s]: rate=+0%, atempo=0.91x -> 1.39s"
-      ],
-      "lock_file_content": "pid=3213 ts=1793855687"
+        "[12:32:48] [INFO] tiktok_pipeline: [an_vat_moi_ngay] Đang bấm nút đỏ ĐĂNG ('Đăng', data-e2e='post_video_button') tại (380.0, 651.9)...",
+        "[12:32:48] [INFO] tiktok_pipeline: [an_vat_moi_ngay] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất...",
+        "[12:32:50] [INFO] tiktok_pipeline: [an_vat_moi_ngay] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!",
+        "[12:32:50] [INFO] tiktok_pipeline: Đã đánh dấu POSTED thành công: /Users/vohoang/Documents/tool_scan_video_tiktok/output/an_vat_moi_ngay/posted/20261105_113300_youtube_shorts_story_FAP6RhvxATM.mp4 | posted_at=2026-11-05 12:32:50 (đã cập nhật 1 dòng trong CSV, tự động đồng bộ thêm 0 video)",
+        "[12:32:50] [INFO] tiktok_pipeline: [an_vat_moi_ngay] Đang mở trang Quản lý Bài đăng (tiktok.com/tiktokstudio/content) để kiểm tra & bật Công khai ('Mọi người')...",
+        "[12:32:52] [INFO] tiktok_pipeline: TTS #59 [88.76s-92.21s | gốc=3.52s]: rate=+38%, atempo=1.07x -> 3.45s",
+        "[12:32:57] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Lượt 1] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[12:33:00] [INFO] tiktok_pipeline: [an_vat_moi_ngay] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[12:33:14] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Lượt 2] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[12:33:15] [INFO] tiktok_pipeline: [an_vat_moi_ngay] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[12:33:26] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Lượt 3] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[12:33:29] [INFO] tiktok_pipeline: [an_vat_moi_ngay] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[12:33:30] [INFO] tiktok_pipeline: [an_vat_moi_ngay] Hoàn tất kiểm tra trang Bài đăng (đã chuyển 3 bài từ 'Chỉ mình tôi' -> 'Mọi người').",
+        "[12:33:31] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Remote Telemetry] Đã lưu ảnh (latest_upload_an_vat_moi_ngay.jpg) & đẩy đồng bộ GitHub chạy ngầm!",
+        "[12:33:35] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Hôm nay, 40 năm sau' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[12:33:35] [INFO] tiktok_pipeline: TTS #60 [92.28s-92.95s | gốc=1.20s]: rate=+38%, atempo=0.55x -> 0.67s",
+        "[12:33:46] [INFO] tiktok_pipeline: [an_vat_moi_ngay] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: an_vat_moi_ngay/posted/20261105_113300_youtube_shorts_story_FAP6RhvxATM.mp4",
+        "[12:34:17] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (02bbd3e -> f921b1c) | Auto-Telemetry [upload] an_vat_moi_ngay at 2026-11-05 12:33:31",
+        "[12:34:25] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Thay vào đó tôi bắt đầu gõ lại những thông tin quan trọng ra giấy' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[12:34:25] [INFO] tiktok_pipeline: TTS #61 [93.48s-94.15s | gốc=2.94s]: rate=+14%, atempo=0.55x -> 0.67s"
+      ]
     }
-  }
+  },
+  "history": [
+    {
+      "cmd_id": "cmd_20261105_123400_disable_switch_2_and_3",
+      "action": "unstick_chrome",
+      "executed_at": "2026-11-05 12:34:30",
+      "machine_arch": "x86_64",
+      "hostname": "Hoangs-MBP.fpt",
+      "status": "SUCCESS",
+      "unstick_report": {
+        "killed_chrome_for_testing": false,
+        "removed_locks": [
+          "workspace_temp/.tiktok_browser_session.lock"
+        ],
+        "timestamp": "2026-11-05 12:34:30"
+      },
+      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+      "system_health": {
+        "timestamp": "2026-11-05 12:34:30",
+        "machine_arch": "x86_64",
+        "hostname": "Hoangs-MBP.fpt",
+        "stream1_running": true,
+        "stream2_running": true,
+        "chrome_testing_count": 0,
+        "lock_file_age_seconds": null,
+        "processes": [
+          "60899 04:20:47 ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "60901 04:20:47 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "3213 20:37:05 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "3214 20:37:05 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        ],
+        "recent_daemon_log_tail": [
+          "[12:32:48] [INFO] tiktok_pipeline: [an_vat_moi_ngay] Đang bấm nút đỏ ĐĂNG ('Đăng', data-e2e='post_video_button') tại (380.0, 651.9)...",
+          "[12:32:48] [INFO] tiktok_pipeline: [an_vat_moi_ngay] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất...",
+          "[12:32:50] [INFO] tiktok_pipeline: [an_vat_moi_ngay] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!",
+          "[12:32:50] [INFO] tiktok_pipeline: Đã đánh dấu POSTED thành công: /Users/vohoang/Documents/tool_scan_video_tiktok/output/an_vat_moi_ngay/posted/20261105_113300_youtube_shorts_story_FAP6RhvxATM.mp4 | posted_at=2026-11-05 12:32:50 (đã cập nhật 1 dòng trong CSV, tự động đồng bộ thêm 0 video)",
+          "[12:32:50] [INFO] tiktok_pipeline: [an_vat_moi_ngay] Đang mở trang Quản lý Bài đăng (tiktok.com/tiktokstudio/content) để kiểm tra & bật Công khai ('Mọi người')...",
+          "[12:32:52] [INFO] tiktok_pipeline: TTS #59 [88.76s-92.21s | gốc=3.52s]: rate=+38%, atempo=1.07x -> 3.45s",
+          "[12:32:57] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Lượt 1] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+          "[12:33:00] [INFO] tiktok_pipeline: [an_vat_moi_ngay] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+          "[12:33:14] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Lượt 2] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+          "[12:33:15] [INFO] tiktok_pipeline: [an_vat_moi_ngay] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+          "[12:33:26] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Lượt 3] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+          "[12:33:29] [INFO] tiktok_pipeline: [an_vat_moi_ngay] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+          "[12:33:30] [INFO] tiktok_pipeline: [an_vat_moi_ngay] Hoàn tất kiểm tra trang Bài đăng (đã chuyển 3 bài từ 'Chỉ mình tôi' -> 'Mọi người').",
+          "[12:33:31] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Remote Telemetry] Đã lưu ảnh (latest_upload_an_vat_moi_ngay.jpg) & đẩy đồng bộ GitHub chạy ngầm!",
+          "[12:33:35] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Hôm nay, 40 năm sau' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+          "[12:33:35] [INFO] tiktok_pipeline: TTS #60 [92.28s-92.95s | gốc=1.20s]: rate=+38%, atempo=0.55x -> 0.67s",
+          "[12:33:46] [INFO] tiktok_pipeline: [an_vat_moi_ngay] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: an_vat_moi_ngay/posted/20261105_113300_youtube_shorts_story_FAP6RhvxATM.mp4",
+          "[12:34:17] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (02bbd3e -> f921b1c) | Auto-Telemetry [upload] an_vat_moi_ngay at 2026-11-05 12:33:31",
+          "[12:34:25] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Thay vào đó tôi bắt đầu gõ lại những thông tin quan trọng ra giấy' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+          "[12:34:25] [INFO] tiktok_pipeline: TTS #61 [93.48s-94.15s | gốc=2.94s]: rate=+14%, atempo=0.55x -> 0.67s"
+        ]
+      }
+    }
+  ]
 }
