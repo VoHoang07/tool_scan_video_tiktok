@@ -292,6 +292,8 @@ def _git_sync_and_push_outbox(outbox_payload: Dict[str, Any]) -> None:
     files_to_add = [str(OUTBOX_PATH.relative_to(PROJECT_ROOT))]
     if DESKTOP_SCREENSHOT_PATH.exists():
         files_to_add.append(str(DESKTOP_SCREENSHOT_PATH.relative_to(PROJECT_ROOT)))
+    if (PROJECT_ROOT / "AGENT.md").exists():
+        files_to_add.append("AGENT.md")
 
     try:
         subprocess.run(
@@ -411,6 +413,45 @@ def _ensure_both_streams_alive() -> Optional[Dict[str, Any]]:
     return None
 
 
+def record_bug_to_agent_md(
+    bug_title: str,
+    symptom: str,
+    root_cause: str,
+    fix_summary: str,
+    immunity_rule: str,
+    error_hash: str = "",
+) -> bool:
+    """Tự động ghi nối tiếp lỗi mới và Luật Miễn Dịch Vĩnh Viễn vào file `AGENT.md`."""
+    agent_file = PROJECT_ROOT / "AGENT.md"
+    try:
+        existing = agent_file.read_text(encoding="utf-8") if agent_file.exists() else ""
+        if error_hash and error_hash in existing:
+            return False
+        import re
+
+        nums = [int(m) for m in re.findall(r"\[BUG-(\d+)\]", existing)]
+        next_id = (max(nums) + 1) if nums else 1
+        tag = f"BUG-{next_id:03d}"
+        hash_note = f" (hash: `{error_hash}`)" if error_hash else ""
+        entry = (
+            f"\n### [{tag}] {bug_title}{hash_note}\n"
+            f"- **Thời gian**: {_now_str()}\n"
+            f"- **Triệu chứng**: {symptom.strip()}\n"
+            f"- **Nguyên nhân gốc rễ**: {root_cause.strip()}\n"
+            f"- **Cách khắc phục & File đã sửa**: {fix_summary.strip()}\n"
+            f"- **Luật Miễn Dịch Vĩnh Viễn**: {immunity_rule.strip()}\n"
+        )
+        marker = "## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI"
+        if marker in existing:
+            updated = existing.replace(marker, entry.lstrip("\n") + "\n---\n\n" + marker, 1)
+        else:
+            updated = existing.rstrip() + "\n" + entry
+        agent_file.write_text(updated, encoding="utf-8")
+        return True
+    except Exception:
+        return False
+
+
 def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str, Any]]:
     """
     Cơ chế Tự Tiến Hóa Kép (Dual Self-Evolving Engine):
@@ -480,11 +521,13 @@ def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str
                     healed_db_path.write_text(json.dumps(healed_hashes[-100:], indent=2), encoding="utf-8")
                     ev_json_str = json.dumps(latest_ev, ensure_ascii=False, indent=2)[-2400:]
                     prompt = (
-                        f"Phát hiện lỗi nghiệp vụ ngầm (Silent KPI Anomaly) trong `remote_telemetry/intel_status_report.json`:\n"
+                        f"Phát hiện lỗi nghiệp vụ ngầm (Silent KPI Anomaly | hash={anom_hash}) trong `remote_telemetry/intel_status_report.json`:\n"
                         f"{anomaly_desc}\n```json\n{ev_json_str}\n```\n"
-                        "Hãy đọc `tiktok_pipeline/growth_24h_filter.py` và `tiktok_pipeline/auto_poster.py`, "
-                        "tìm nguyên nhân vì sao thao tác Follow/Lướt không đạt KPI, tự động sửa code, "
-                        "kiểm tra py_compile, commit & push lên origin/main."
+                        "1. Hãy đọc `AGENT.md` trước để nắm các Luật Miễn Dịch Vĩnh Viễn.\n"
+                        "2. Đọc `tiktok_pipeline/growth_24h_filter.py` và `tiktok_pipeline/auto_poster.py`, "
+                        "tìm nguyên nhân vì sao thao tác Follow/Lướt không đạt KPI, tự động sửa code.\n"
+                        "3. Ghi bổ sung mục `[BUG-XXX]` mới kèm Luật Miễn Dịch Vĩnh Viễn vào `AGENT.md`.\n"
+                        "4. Kiểm tra py_compile, commit & push cả code lẫn `AGENT.md` lên origin/main."
                     )
                     agy_bin = _find_agy_bin()
                     proc = subprocess.run(
@@ -501,6 +544,15 @@ def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str
                         text=True,
                         timeout=260,
                         check=False,
+                    )
+                    fix_out = (proc.stdout or "").strip()
+                    record_bug_to_agent_md(
+                        bug_title=f"Silent KPI Anomaly ({ev_type} - {ev_ch})",
+                        symptom=anomaly_desc,
+                        root_cause="Phát hiện tự động qua Silent Logic Auditor trên máy Mac Intel.",
+                        fix_summary=(fix_out[-500:] if fix_out else "Tự động kích hoạt AI Self-Heal trên Mac Intel."),
+                        immunity_rule="Giám sát KPI thực tế sau mỗi phiên trình duyệt và tự động điều chỉnh selector/điều hướng.",
+                        error_hash=anom_hash,
                     )
                     return {
                         "error_hash": anom_hash,
@@ -547,11 +599,12 @@ def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str
             healed_db_path.write_text(json.dumps(healed_hashes[-100:], indent=2), encoding="utf-8")
 
             prompt = (
-                f"Phát hiện lỗi mới trong `{log_name}` trên máy Mac Intel:\n"
+                f"Phát hiện lỗi mới (hash={err_hash}) trong `{log_name}` trên máy Mac Intel:\n"
                 f"```\n{tail_txt[-1800:]}\n```\n"
-                "Hãy kiểm tra nguyên nhân gốc rễ, tự động sửa lỗi (nếu là lỗi code hoặc trạng thái kẹt), "
-                "kiểm tra cú pháp bằng py_compile, commit & push lên origin/main nếu có sửa file .py, "
-                "và tóm tắt ngắn gọn cách đã xử lý."
+                "1. Hãy đọc `AGENT.md` trước để nắm toàn bộ Luật Miễn Dịch Vĩnh Viễn.\n"
+                "2. Kiểm tra nguyên nhân gốc rễ, tự động sửa lỗi (code hoặc trạng thái kẹt).\n"
+                "3. Ghi bổ sung mục `[BUG-XXX]` mới (Triệu chứng, Nguyên nhân, Cách khắc phục, Luật Miễn Dịch Vĩnh Viễn) vào `AGENT.md`.\n"
+                "4. Kiểm tra cú pháp bằng py_compile, commit & push cả file sửa lẫn `AGENT.md` lên origin/main."
             )
             agy_bin = _find_agy_bin()
             proc = subprocess.run(
@@ -568,6 +621,15 @@ def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str
                 text=True,
                 timeout=260,
                 check=False,
+            )
+            fix_out = (proc.stdout or "").strip()
+            record_bug_to_agent_md(
+                bug_title=f"Runtime Error trong {log_name}",
+                symptom=latest_err,
+                root_cause=f"Ngoại lệ phát sinh trong `{log_name}` trên máy Mac Intel.",
+                fix_summary=(fix_out[-500:] if fix_out else "Đã tự động phân tích và vá lỗi qua AGY Self-Heal."),
+                immunity_rule="Bọc kiểm tra ngoại lệ/timeout và tuân thủ chuẩn chống tái phát lỗi trong AGENT.md.",
+                error_hash=err_hash,
             )
             return {
                 "error_hash": err_hash,
