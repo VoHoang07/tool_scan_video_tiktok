@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 09:22:34",
+    "timestamp": "2026-11-05 09:31:06",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "event_type": "upload",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "elapsed_seconds": 153.6,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261105_092449_tiktok_story_990001002_bongcuc_v4_s10_p2_bg_daylight.mp4",
+      "caption": "📖 Góc Kể Chuyện: Lòng người khó đoán chỉ đến khi biến cố ập tới mới biết ai thật lòng. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+      "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #vahmattraxanh #gocchiaSe #tamtrang #xh #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 09:31:06",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261105_092449_tiktok_story_990001002_bongcuc_v4_s10_p2_bg_daylight.mp4",
+        "caption": "📖 Góc Kể Chuyện: Lòng người khó đoán chỉ đến khi biến cố ập tới mới biết ai thật lòng. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+        "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #vahmattraxanh #gocchiaSe #tamtrang #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-05 09:22:34",
       "machine_arch": "x86_64",
@@ -371,18 +391,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 161.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 08:08:15",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 13,
-        "elapsed_seconds": 165.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
