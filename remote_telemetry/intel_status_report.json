@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 10:40:31",
+    "timestamp": "2026-11-05 10:46:42",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
       "scrolled_videos": 12,
-      "elapsed_seconds": 151.6,
+      "elapsed_seconds": 154.9,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 10:46:42",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 154.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 10:40:31",
       "machine_arch": "x86_64",
@@ -621,22 +633,6 @@
         "scrolled_videos": 13,
         "elapsed_seconds": 150.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 09:31:06",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261105_092449_tiktok_story_990001002_bongcuc_v4_s10_p2_bg_daylight.mp4",
-        "caption": "📖 Góc Kể Chuyện: Lòng người khó đoán chỉ đến khi biến cố ập tới mới biết ai thật lòng. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
-        "hashtags": "#truyenaudio #kechuyendemkhuya #truyenngan #vahmattraxanh #gocchiaSe #tamtrang #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
