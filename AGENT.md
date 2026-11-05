@@ -70,6 +70,30 @@
   - Bổ sung `_deduplicate_stream_processes()` trong [`tiktok_pipeline/agy_intel_bridge.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py) chạy mỗi 20 giây để giữ lại đúng 1 PID mới nhất cho mỗi dòng và tắt toàn bộ bản trùng lặp.
 - **Luật Miễn Dịch Vĩnh Viễn**: Trước mọi thao tác kiểm tra sức khỏe hoặc khởi động lại stream trên máy Intel, bắt buộc chạy `_deduplicate_stream_processes()` trước tiên.
 
+### [BUG-006] Lồng tiếng Edge-TTS đọc quá chậm (như slow-motion `-25%..-42%` và `atempo 0.55x`)
+- **Thời gian**: 2026-11-05 18:05:00
+- **Triệu chứng**: Các video lồng tiếng Việt có tốc độ giọng đọc lê thê, thiếu tự nhiên (`rate=-25%..-42%`, `atempo < 1.0`).
+- **Nguyên nhân gốc rễ**:
+  1. `CHANNEL_VOICE_PROFILES` trong [`tiktok_pipeline/composer.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/composer.py) để `base_rate: "+0%"` và hàm `_synthesize_all_async` trong [`tiktok_pipeline/tts_engine.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/tts_engine.py) gán cứng `rate_str = "+0%"` ở bước 1.
+  2. Khi câu dịch tiếng Việt ngắn hơn khoảng thời gian segment của Whisper (`ratio < 0.90`), `tts_engine.py` ép giảm tốc độ phát âm xuống `-10% .. -42%` và dùng `atempo` kéo giãn xuống `0.55x` để lấp đầy toàn bộ khoảng lặng của câu gốc.
+- **Cách khắc phục & File đã sửa**:
+  - Nâng `base_rate` mặc định của toàn bộ kênh trong [`tiktok_pipeline/composer.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/composer.py) lên `+15%..+18%` và khóa sàn `self.base_pct = max(15, raw_pct)` trong [`tiktok_pipeline/tts_engine.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/tts_engine.py).
+  - Xóa bỏ hoàn toàn nhánh làm chậm `if ratio < 0.90:` và khóa cứng `residual_factor = max(1.0, min(1.60, needed_factor))` (cùng `clamped = max(1.0, ...)` trong `_finalize_segment_audio`).
+- **Luật Miễn Dịch Vĩnh Viễn**: Tuyệt đối không bao giờ truyền `rate < +15%` (hoặc số âm `-XX%`) vào `edge-tts` và không bao giờ dùng `atempo < 1.0`. Nếu câu thoại ngắn hơn khung thời gian gốc, giữ nguyên tốc độ chuẩn và để khoảng nghỉ tự nhiên trước câu kế tiếp.
+
+### [BUG-007] Đăng trùng video trên một số kênh (`an_vat_moi_ngay`, `suc_khoe_duong_sinh`, `phu_nu_khi_chat`, `audio_dem_khuyen`)
+- **Thời gian**: 2026-11-05 18:05:00
+- **Triệu chứng**: Cùng một video được cào và đăng lại lần 2 lên kênh TikTok sau vài giờ hoặc ngày hôm sau.
+- **Nguyên nhân gốc rễ**:
+  1. Hàm `_save_and_push_telemetry` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py) chạy `git checkout -f -B main origin/main` mỗi 3 phút mà không sao lưu/hợp nhất `story_audio_history.json` và không push `story_audio_history.json` lên GitHub, làm mất các `video_id` vừa cào trên máy Intel.
+  2. Biểu thức chính quy `r"(?:tiktok|douyin)_story_(\d+)"` ở 6 vị trí trong `auto_poster.py`, `crawler.py`, `main.py` bỏ sót tiền tố `youtube_shorts_story_([A-Za-z0-9_-]+)` khiến ID của YouTube Shorts trả về rỗng (`""`) khi kiểm tra chống trùng.
+  3. Cả Dòng 1 và Dòng 2 cùng gọi `check_and_run_stream1_upload_schedule()` khi có `remote_trigger_post_now`.
+- **Cách khắc phục & File đã sửa**:
+  - Đồng nhất regex đa nền tảng `r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)"` tại mọi điểm trích xuất ID trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py), [`tiktok_pipeline/crawler.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py), và [`tiktok_pipeline/main.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py).
+  - Sao lưu, hợp nhất (union-merge) và `git add story_audio_history.json` ngay trong `_save_and_push_telemetry()` và `_auto_git_pull_if_available()`, đồng thời nạp toàn bộ 131 ID lịch sử vào [`story_audio_history.json`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/story_audio_history.json).
+  - Thêm hàm `_deduplicate_existing_posts_in_content_page()` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py) để tự động phát hiện và xóa ngay các bài đăng bị trùng trên bảng `tiktokstudio/content`.
+- **Luật Miễn Dịch Vĩnh Viễn**: Mọi lệnh `git checkout -f` trên máy Intel bắt buộc phải union-merge và push `story_audio_history.json`; mọi regex trích xuất `story_id` bắt buộc hỗ trợ đầy đủ cả 7 nền tảng (`[A-Za-z0-9_-]+`).
+
 ---
 
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)

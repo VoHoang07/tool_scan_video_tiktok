@@ -27,7 +27,7 @@ class TTSEngine:
         self,
         work_dir: Path,
         voice: Optional[str] = None,
-        base_rate: str = "+0%",
+        base_rate: str = "+16%",
         pitch: str = "+0Hz",
     ):
         self.work_dir = Path(work_dir)
@@ -36,7 +36,13 @@ class TTSEngine:
 
         chosen_voice = (voice or os.getenv("TTS_VOICE") or "vi-VN-NamMinhNeural").strip()
         self.voice = SUPPORTED_VOICES.get(chosen_voice, chosen_voice)
-        self.base_rate = base_rate or "+0%"
+        try:
+            raw_pct = int(str(base_rate or "+16%").replace("%", "").replace("+", "").strip())
+        except Exception:
+            raw_pct = 16
+        # Khóa tốc độ sàn tối thiểu +15% để giọng lồng tiếng luôn lưu loát, dứt khoát chuẩn TikTok (TUYỆT ĐỐI không đọc chậm)
+        self.base_pct = max(15, raw_pct)
+        self.base_rate = f"+{self.base_pct}%"
         self.pitch = pitch or "+0Hz"
         self.ffmpeg_bin, _ = ensure_ffmpeg()
 
@@ -98,8 +104,9 @@ class TTSEngine:
             trimmed_wav = self.tts_dir / f"seg_{idx:04d}_trimmed.wav"
             final_wav = self.tts_dir / f"seg_{idx:04d}.wav"
 
-            # Bước 1: Tạo TTS ở tốc độ tự nhiên (+0%) và cắt khoảng lặng thừa sát đầu/cuối âm tiết
-            rate_str = "+0%"
+            # Bước 1: Tạo TTS ở tốc độ chuẩn của kênh (tối thiểu +15%) và cắt khoảng lặng thừa sát đầu/cuối âm tiết
+            # TUYỆT ĐỐI KHÔNG BAO GIỜ hạ tốc độ xuống âm (-XX%) hoặc kéo giãn atempo < 1.0 gây đọc chậm lê thê!
+            rate_str = self.base_rate
             await self._generate_edge_tts(vi_text, rate_str, raw_mp3)
             self._trim_silence(raw_mp3, trimmed_wav)
             base_duration = get_media_duration(trimmed_wav)
@@ -108,19 +115,10 @@ class TTSEngine:
                 base_duration = get_media_duration(raw_mp3)
                 trimmed_wav = raw_mp3
 
-            # Nếu câu tiếng Việt ngắn hơn hoặc dài hơn đáng kể so với thời lượng câu gốc (exact_target_dur),
-            # điều chỉnh trực tiếp tốc độ phát âm Neural Prosody của Edge-TTS trước để giữ ngữ điệu tự nhiên nhất
+            # Chỉ tăng tốc thêm nếu câu tiếng Việt dài hơn khung thời gian câu gốc (ratio > 1.02)
             ratio = base_duration / max(0.25, exact_target_dur)
-            if ratio < 0.90:
-                slow_pct = max(-42, min(-10, int(round((ratio - 1.0) * 100))))
-                rate_str = f"{slow_pct}%"
-                await self._generate_edge_tts(vi_text, rate_str, raw_mp3)
-                self._trim_silence(raw_mp3, trimmed_wav)
-                new_dur = get_media_duration(trimmed_wav)
-                if new_dur > 0.05:
-                    base_duration = new_dur
-            elif ratio > 1.05 or (idx == len(segments) - 1 and ratio > 0.98):
-                fast_pct = max(12, min(38, int(round((ratio - 0.95) * 115))))
+            if ratio > 1.02 or (idx == len(segments) - 1 and ratio > 0.98):
+                fast_pct = max(self.base_pct + 4, min(45, int(round(self.base_pct + (ratio - 0.96) * 105))))
                 rate_str = f"+{fast_pct}%"
                 await self._generate_edge_tts(vi_text, rate_str, raw_mp3)
                 self._trim_silence(raw_mp3, trimmed_wav)
@@ -128,9 +126,9 @@ class TTSEngine:
                 if new_dur > 0.05:
                     base_duration = new_dur
 
-            # Bước 2: Tinh chỉnh atempo liên tục (không cắt ngắt giữa câu) để khớp 1:1 với exact_target_dur
+            # Bước 2: Chỉ dùng atempo >= 1.0 khi câu vẫn dài hơn exact_target_dur; nếu câu ngắn hơn thì giữ nguyên 1.0x tự nhiên!
             needed_factor = base_duration / max(0.25, exact_target_dur)
-            residual_factor = max(0.55, min(1.90, needed_factor))
+            residual_factor = max(1.0, min(1.60, needed_factor))
 
             self._finalize_segment_audio(
                 trimmed_wav,
@@ -300,7 +298,7 @@ class TTSEngine:
 
         filters = []
         if abs(atempo_factor - 1.0) > 0.015:
-            clamped = max(0.5, min(2.0, atempo_factor))
+            clamped = max(1.0, min(2.0, atempo_factor))
             filters.append(f"atempo={clamped:.4f}")
         if max_duration is not None and max_duration > 0.30:
             fade_st = max(0.15, max_duration - 0.05)

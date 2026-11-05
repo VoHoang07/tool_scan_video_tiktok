@@ -995,6 +995,29 @@ class StoryAudioCrawler:
             "7683492499272273173",
             "7698299779394080050",
             "7638714267462561417",
+            "1R2G1hRYKKQ", "6714103873667173646", "6740543560279477507", "6868106031671627016",
+            "7229243919555480887", "7254524593694608651", "72w2MZKluvg", "7372254906020859148",
+            "7399272270973177124", "7464198303807245608", "7552470440078249227", "7597740771093138718",
+            "7599812377127850560", "7617108715614866720", "7628956379604159765", "7629803455813243043",
+            "7632736494406438162", "7633061533374827797", "7633372395427941652", "7636735907755773202",
+            "7638184065786631546", "7649090399869777051", "7656305238692973832", "7656458366373350663",
+            "7656683365013179655", "7659099729062903625", "7661486125428559112", "7663279320877616392",
+            "7664467357850488071", "7665657536728567047", "7668157404000931079", "7668708297821670663",
+            "7670306567077629205", "7672330697012497671", "7678489140266126612", "7680421803159833877",
+            "7681137499921550619", "7681180131586559252", "7682408323186150677", "7683183620114156821",
+            "7683258021358669077", "7683861627950648596", "7683967426475609351", "7684163510250507541",
+            "7684611088683519253", "7684980163959950612", "7685359044369894677", "7686077455564988992",
+            "7686087505615195412", "7687947200969657620", "7688314097850404116", "7688705812809960725",
+            "7689059278321241350", "7689800524379458817", "7690752235659185414", "7692989950672768263",
+            "7693332511530781972", "7693908916241042695", "7695359399006620934", "7695990805097401618",
+            "7696730565881515282", "7697267839144594709", "7697440750308429098", "7697471240776240400",
+            "7697500395819650310", "7697638039421455637", "7697650250793651486", "7697778349690670357",
+            "7698223650570276134", "7698371375077018888", "7698594900329221397", "7698980197327965448",
+            "7699288031840308500", "7700057407061331220", "7700060081739582721", "7700149454669843732",
+            "7700254944028364052", "7700764387950300436", "7700789370625805598", "990001002",
+            "990003901", "990014102", "990014202", "990014302", "990014402", "990014602",
+            "ChBS_r_mC5Y", "FAP6RhvxATM", "IgOE5mwunVI", "YjmXoARv1Ko", "ZWJfOStWq8M",
+            "v5Hs6tww2b0", "wHMzoqtE3Sk",
         }
         posted_filenames: Set[str] = {
             "20261023_090135_tiktok_story_7690915418453708052.mp4",
@@ -1106,10 +1129,16 @@ class StoryAudioCrawler:
                     sub_dir = self.output_root / ch_folder / sub
                     if sub_dir.exists():
                         for mp4 in sub_dir.glob("*.mp4"):
-                            m = re.search(r"(?:tiktok|douyin)_story_(\d+)", mp4.stem, re.IGNORECASE)
-                            if m and m.group(1) not in existing_vids:
-                                data["video_ids"].append(m.group(1))
-                                existing_vids.add(m.group(1))
+                            m = re.search(
+                                r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+                                mp4.stem,
+                                re.IGNORECASE,
+                            )
+                            if m:
+                                sid_val = m.group(1).split("_bongcuc_")[0]
+                                if sid_val and sid_val not in existing_vids:
+                                    data["video_ids"].append(sid_val)
+                                    existing_vids.add(sid_val)
         except Exception:
             pass
         return data
@@ -2926,6 +2955,8 @@ class StoryAudioCrawler:
                     reason = "video lồng tiếng bản cũ trước khi vá lỗi cắt đỉnh âm thanh & mất thoại VAD (21:00 28/10)"
                 elif ch_folder == "audio_dem_khuyen" and "bongcuc_v4_s" not in fname.lower():
                     reason = "video audio_dem_khuyen bản cũ 360p cắt khung hình trước khi nâng cấp Background Full HD 1080p nguyên khung hình không cắt mất người (bongcuc_v4)"
+                elif ch_folder not in ("audio_dem_khuyen", "tu_chan_gioi") and fname[:15] < "20261105_180000":
+                    reason = "video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)"
 
                 if not reason and sid:
                     for tr_dir in (
@@ -2946,8 +2977,9 @@ class StoryAudioCrawler:
                 if reason:
                     mp4.unlink(missing_ok=True)
                     purged.append(f"{ch_folder}/ready/{fname}")
-                    # Xóa luôn ID khỏi story_audio_history.json để hệ thống có thể lồng tiếng lại bằng thuật toán mới chuẩn khớp 100%
-                    if sid and self.history_path.exists():
+                    # Chỉ xóa ID khỏi story_audio_history.json nếu video đó CHƯA TỪNG ĐƯỢC ĐĂNG (tránh cào trùng bài đã đăng!)
+                    known_posted_sids, _ = self._collect_all_known_posted_story_ids_and_files()
+                    if sid and sid not in known_posted_sids and self.history_path.exists():
                         try:
                             h_data = json.loads(self.history_path.read_text(encoding="utf-8"))
                             v_ids = h_data.get("video_ids") or []
@@ -3821,12 +3853,12 @@ def _hot_patch_live_crawler() -> None:
                                 if s_dir.exists():
                                     for mp4 in s_dir.glob("*.mp4"):
                                         m_s = re.search(
-                                            r"(?:tiktok|douyin)_story_(\d+)",
+                                            r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
                                             mp4.stem,
                                             re.IGNORECASE,
                                         )
                                         if m_s:
-                                            k_ids.add(m_s.group(1))
+                                            k_ids.add(m_s.group(1).split("_bongcuc_")[0])
                                         ep_p = parse_bongcuc_ep_and_part(mp4.name)
                                         if ep_p and sub == "ready":
                                             r_eps.add(ep_p[0])

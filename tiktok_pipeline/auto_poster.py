@@ -1826,7 +1826,208 @@ class TikTokAutoPoster:
         except Exception as exc:
             logger.warning(f"[{ch_folder}] Lưu ý khi chuyển quyền riêng tư tại tiktokstudio/content: {exc}")
 
+        try:
+            self._deduplicate_existing_posts_in_content_page(page, ch_folder)
+        except Exception as dedup_exc:
+            logger.debug(f"[{ch_folder}] Bỏ qua lỗi phụ khi quét dọn bài trùng trên tiktokstudio/content: {dedup_exc}")
+
         return switched_count
+
+    def _deduplicate_existing_posts_in_content_page(self, page: Any, ch_folder: str) -> List[str]:
+        """
+        Tự động quét bảng `tiktok.com/tiktokstudio/content` để phát hiện các bài đăng bị trùng lặp
+        (cùng thời lượng `MM:SS` và cùng nội dung/caption hoặc bản trùng 0 view do cào lại)
+        và tự động bấm `...` -> `Xóa` -> `Xác nhận` để làm sạch kênh.
+        """
+        deleted_dups: List[str] = []
+        if "tiktokstudio/content" not in (page.url or ""):
+            return deleted_dups
+
+        for _pass in range(3):
+            rows = page.evaluate(
+                """() => {
+                    const norm = (s) => (s || '').normalize('NFC').trim();
+                    const privacyPrefixes = ['Mọi người', 'Chỉ mình', 'Bạn bè', 'Everyone', 'Only me', 'Private', 'Friends'];
+                    const allEls = Array.from(document.querySelectorAll('button, [role="button"], [role="combobox"], div, span, a, p'));
+                    const privacyBtns = [];
+                    for (const el of allEls) {
+                        if (el.children.length > 4) continue;
+                        const txt = norm(el.innerText || el.textContent || '');
+                        if (!txt || txt.length > 26) continue;
+                        if (!privacyPrefixes.some(p => txt.startsWith(p) || txt === p)) continue;
+                        const r = el.getBoundingClientRect();
+                        if (r.width < 45 || r.width > 210 || r.height < 18 || r.height > 60 || r.top < 205) continue;
+                        const cy = r.top + r.height / 2;
+                        if (!privacyBtns.some(b => Math.abs(b.y - cy) < 28)) {
+                            privacyBtns.push({ y: cy, top: r.top });
+                        }
+                    }
+                    privacyBtns.sort((a, b) => a.top - b.top);
+                    const svgs = Array.from(document.querySelectorAll('svg'));
+                    const textNodes = Array.from(document.querySelectorAll('*'));
+                    const out = [];
+                    for (const pb of privacyBtns) {
+                        const rowY = pb.y;
+                        let dur = '';
+                        let views = 0;
+                        const capParts = [];
+                        for (const el of textNodes) {
+                            if (el.children.length > 2) continue;
+                            const r = el.getBoundingClientRect();
+                            if (r.width < 8 || r.height < 8 || r.height > 110) continue;
+                            const cy = r.top + r.height / 2;
+                            if (Math.abs(cy - rowY) > 52) continue;
+                            const t = norm(el.innerText || el.textContent || '').replace(/\\s+/g, ' ');
+                            if (!t) continue;
+                            if (r.left >= 180 && r.left <= 275 && /^\\d{2}:\\d{2}$/.test(t)) {
+                                dur = t;
+                            } else if (r.left >= 245 && r.left <= 475 && t.length >= 12 && t.length <= 220) {
+                                if (!capParts.includes(t)) capParts.push(t);
+                            } else if (r.left >= 540 && r.left <= 640 && /^\\d+$/.test(t)) {
+                                views = parseInt(t, 10) || 0;
+                            }
+                        }
+                        const actionCandidates = [];
+                        for (const svg of svgs) {
+                            const r = svg.getBoundingClientRect();
+                            if (r.left < 1050 || r.left > 1420 || r.width < 8 || r.width > 48 || r.height < 8 || r.height > 48) continue;
+                            const cy = r.top + r.height / 2;
+                            if (Math.abs(cy - rowY) > 36) continue;
+                            const btn = svg.closest('button, [role="button"]') || svg.parentElement || svg;
+                            const br = btn.getBoundingClientRect();
+                            actionCandidates.push({ x: br.left + br.width / 2, y: br.top + br.height / 2, left: br.left });
+                        }
+                        actionCandidates.sort((a, b) => b.x - a.x);
+                        if (actionCandidates.length > 0) {
+                            out.push({
+                                rowY: Math.round(rowY),
+                                duration: dur,
+                                views: views,
+                                caption: capParts.join(' | ').slice(0, 260),
+                                moreX: Math.round(actionCandidates[0].x * 10) / 10,
+                                moreY: Math.round(actionCandidates[0].y * 10) / 10
+                            });
+                        }
+                    }
+                    return out;
+                }"""
+            )
+            if not rows or len(rows) < 2:
+                break
+
+            dup_row = None
+            generic_markers = (
+                "thói quen nhỏ mỗi ngày giúp cơ thể khỏe",
+                "bài học tâm lý hôn nhân sâu sắc giúp giữ lửa",
+                "công thức món ngon siêu dễ làm tại nhà",
+                "phim ngắn hoạt hình ai siêu cuốn",
+            )
+            for i in range(len(rows)):
+                for j in range(i + 1, len(rows)):
+                    ri, rj = rows[i], rows[j]
+                    di, dj = (ri.get("duration") or "").strip(), (rj.get("duration") or "").strip()
+                    ci = (ri.get("caption") or "").strip().lower()
+                    cj = (rj.get("caption") or "").strip().lower()
+                    same_cap = bool(ci and cj and len(ci) >= 20 and ci[:32] == cj[:32])
+                    same_dur_dup = bool(
+                        di
+                        and di == dj
+                        and (ri.get("views", 0) <= 5 or rj.get("views", 0) <= 5)
+                        and (
+                            same_cap
+                            or any(gm in ci or gm in cj for gm in generic_markers)
+                            or (ri.get("views", 0) == 0 and rj.get("views", 0) == 0)
+                        )
+                    )
+                    if same_cap or same_dur_dup:
+                        # Ưu tiên xóa bản có caption chung chung hoặc bản cũ hơn có ít view hơn
+                        if any(gm in cj for gm in generic_markers) and not any(gm in ci for gm in generic_markers):
+                            dup_row = rj
+                        elif any(gm in ci for gm in generic_markers) and not any(gm in cj for gm in generic_markers):
+                            dup_row = ri
+                        else:
+                            dup_row = rj if rj.get("views", 0) <= ri.get("views", 0) else ri
+                        break
+                if dup_row:
+                    break
+
+            if not dup_row:
+                break
+
+            logger.info(
+                f"[{ch_folder}] [Anti-Duplicate Content Page] Phát hiện bài đăng trùng lặp trên kênh "
+                f"(thời lượng={dup_row.get('duration')}, views={dup_row.get('views')}, caption='{dup_row.get('caption')[:60]}') -> Đang xóa..."
+            )
+            mx, my = float(dup_row["moreX"]), float(dup_row["moreY"])
+            self._os_click_viewport(page, mx, my)
+            time.sleep(1.3)
+            del_opt = page.evaluate(
+                """() => {
+                    const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
+                    for (const el of document.querySelectorAll('*')) {
+                        if (el.children.length > 3) continue;
+                        const t = norm(el.innerText || el.textContent || '');
+                        if (t === 'xóa' || t === 'xoá' || t === 'xóa video' || t === 'delete' || t === 'delete video') {
+                            const r = el.getBoundingClientRect();
+                            if (r.width >= 15 && r.width <= 300 && r.height >= 12 && r.height <= 75 && r.top > 80) {
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if not del_opt:
+                page.mouse.click(mx, my)
+                time.sleep(1.2)
+                del_opt = page.evaluate(
+                    """() => {
+                        const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
+                        for (const el of document.querySelectorAll('*')) {
+                            if (el.children.length > 3) continue;
+                            const t = norm(el.innerText || el.textContent || '');
+                            if (t === 'xóa' || t === 'xoá' || t === 'xóa video' || t === 'delete' || t === 'delete video') {
+                                const r = el.getBoundingClientRect();
+                                if (r.width >= 15 && r.width <= 300 && r.height >= 12 && r.height <= 75 && r.top > 80) {
+                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                }
+                            }
+                        }
+                        return null;
+                    }"""
+                )
+            if not del_opt:
+                break
+
+            self._os_click_viewport(page, float(del_opt["x"]), float(del_opt["y"]))
+            time.sleep(1.6)
+            conf_btn = page.evaluate(
+                """() => {
+                    const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
+                    const labels = ['xóa', 'xoá', 'xóa video', 'delete', 'xác nhận', 'confirm'];
+                    for (const b of document.querySelectorAll('button, [role="button"], div, span')) {
+                        if (b.children.length > 3) continue;
+                        const t = norm(b.innerText || b.textContent || '');
+                        if (!labels.includes(t)) continue;
+                        const r = b.getBoundingClientRect();
+                        if (r.left >= 250 && r.left <= 1050 && r.top >= 160 && r.width >= 36 && r.width <= 280 && r.height >= 22 && r.height <= 75) {
+                            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if conf_btn:
+                self._os_click_viewport(page, float(conf_btn["x"]), float(conf_btn["y"]))
+                page.mouse.click(float(conf_btn["x"]), float(conf_btn["y"]))
+                time.sleep(3.8)
+                deleted_dups.append(str(dup_row.get("caption") or dup_row.get("duration")))
+                logger.info(f"[{ch_folder}] Đã tự động xóa 1 bài đăng trùng trên kênh: {dup_row.get('caption')[:60]}")
+            else:
+                page.keyboard.press("Escape")
+                break
+
+        return deleted_dups
 
     def _delete_post_in_content_page(
         self,
@@ -2393,8 +2594,12 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
-        m_id = re.search(r"(?:tiktok|douyin)_story_(\d+)", video_path.stem, re.IGNORECASE)
-        vid_id = m_id.group(1) if m_id else ""
+        m_id = re.search(
+            r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+            video_path.stem,
+            re.IGNORECASE,
+        )
+        vid_id = m_id.group(1).split("_bongcuc_")[0] if m_id else ""
         fp = self._quick_video_fingerprint(video_path) if video_path.exists() else ""
 
         sids = set(str(x) for x in (data.get("posted_story_ids") or []) if x)
@@ -2403,6 +2608,18 @@ class TikTokAutoPoster:
 
         if vid_id:
             sids.add(vid_id)
+            try:
+                hist_p = self.project_root / "story_audio_history.json"
+                if hist_p.exists():
+                    h_d = json.loads(hist_p.read_text(encoding="utf-8"))
+                    if isinstance(h_d, dict):
+                        v_list = list(h_d.get("video_ids") or [])
+                        if vid_id not in v_list:
+                            v_list.append(vid_id)
+                            h_d["video_ids"] = v_list
+                            hist_p.write_text(json.dumps(h_d, ensure_ascii=False, indent=2), encoding="utf-8")
+            except Exception:
+                pass
         fns.add(video_path.name)
         if fp:
             fps.add(fp)
@@ -2482,8 +2699,12 @@ class TikTokAutoPoster:
                 )
                 continue
 
-            m_cand = re.search(r"(?:tiktok|douyin)_story_(\d+)", cand.stem, re.IGNORECASE)
-            cand_id = m_cand.group(1) if m_cand else ""
+            m_cand = re.search(
+                r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+                cand.stem,
+                re.IGNORECASE,
+            )
+            cand_id = m_cand.group(1).split("_bongcuc_")[0] if m_cand else ""
             cand_fp = self._quick_video_fingerprint(cand)
             cand_dur, cand_bits = self._audio_story_fingerprint(cand)
 
@@ -2728,8 +2949,12 @@ class TikTokAutoPoster:
 
         caption = ""
         hashtags = ""
-        m_id = re.search(r"(?:tiktok|douyin)_story_(\d+)", target_video.stem, re.IGNORECASE)
-        vid_id = m_id.group(1) if m_id else ""
+        m_id = re.search(
+            r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+            target_video.stem,
+            re.IGNORECASE,
+        )
+        vid_id = m_id.group(1).split("_bongcuc_")[0] if m_id else ""
 
         csv_path = self.project_root / "output" / "danh_sach_video.csv"
         if csv_path.exists():
@@ -3088,22 +3313,13 @@ class TikTokAutoPoster:
                     except Exception:
                         pass
 
-                    # Nếu sau 4.5s nút đỏ Đăng vẫn còn nguyên và đang enabled (chưa ăn click), bấm trực tiếp lần nữa
-                    if wait_idx in (3, 7, 12):
+                    # Nếu sau 12s nút đỏ Đăng vẫn còn nguyên và đang enabled (chưa ăn click), bấm trực tiếp 1 lần nữa
+                    if wait_idx in (8, 16):
                         still_btn = self._find_exact_post_button(page, scroll_into_view=True)
                         if still_btn and still_btn.get("found") and still_btn.get("enabled"):
                             logger.info(
                                 f"[{ch_folder}] Nút ĐĂNG vẫn đang chờ trên màn hình (lần thử {wait_idx}), thực hiện click trực tiếp vào post_video_button..."
                             )
-                            try:
-                                page.evaluate(
-                                    """() => {
-                                        const b = document.querySelector('button[data-e2e="post_video_button"], [data-e2e="post_video_button"]');
-                                        if (b) b.click();
-                                    }"""
-                                )
-                            except Exception:
-                                pass
                             self._os_click_viewport(page, float(still_btn["x"]), float(still_btn["y"]))
 
                 if post_confirmed:
@@ -3277,6 +3493,14 @@ class TikTokAutoPoster:
                         _shutil.rmtree(git_dir / "rebase-merge", ignore_errors=True)
                         _shutil.rmtree(git_dir / "rebase-apply", ignore_errors=True)
 
+                    hist_p = self.project_root / "story_audio_history.json"
+                    local_hist: Dict[str, Any] = {}
+                    if hist_p.exists():
+                        try:
+                            local_hist = json.loads(hist_p.read_text(encoding="utf-8"))
+                        except Exception:
+                            local_hist = {}
+
                     subprocess.run(
                         ["git", "fetch", "origin", "main"],
                         cwd=proj_str,
@@ -3291,6 +3515,37 @@ class TikTokAutoPoster:
                         timeout=10,
                         check=False,
                     )
+
+                    # Hợp nhất story_audio_history.json sau khi checkout để KHÔNG BAO GIỜ mất ID video đã cào/đăng trên máy Intel!
+                    if local_hist and isinstance(local_hist, dict):
+                        try:
+                            remote_hist = (
+                                json.loads(hist_p.read_text(encoding="utf-8"))
+                                if hist_p.exists()
+                                else {}
+                            )
+                            if not isinstance(remote_hist, dict):
+                                remote_hist = {}
+                            v_union = list(
+                                dict.fromkeys(
+                                    [*(remote_hist.get("video_ids") or []), *(local_hist.get("video_ids") or [])]
+                                )
+                            )
+                            s_union = list(
+                                dict.fromkeys(
+                                    [*(remote_hist.get("sound_ids") or []), *(local_hist.get("sound_ids") or [])]
+                                )
+                            )
+                            remote_hist["video_ids"] = v_union
+                            remote_hist["sound_ids"] = s_union
+                            if local_hist.get("items"):
+                                remote_hist["items"] = local_hist["items"]
+                            hist_p.write_text(
+                                json.dumps(remote_hist, ensure_ascii=False, indent=2),
+                                encoding="utf-8",
+                            )
+                        except Exception:
+                            pass
 
                     # Ghi lại ảnh & report mới nhất sau khi đã đồng bộ HEAD với origin/main (không bao giờ xung đột rebase!)
                     if img_bytes:
@@ -3310,8 +3565,11 @@ class TikTokAutoPoster:
                         encoding="utf-8",
                     )
 
+                    add_targets = ["remote_telemetry"]
+                    if hist_p.exists():
+                        add_targets.append("story_audio_history.json")
                     subprocess.run(
-                        ["git", "add", "remote_telemetry"],
+                        ["git", "add", *add_targets],
                         cwd=proj_str,
                         capture_output=True,
                         timeout=10,
@@ -3821,17 +4079,6 @@ class TikTokAutoPoster:
 
         history = self._load_post_history()
         filter_results: Dict[str, Any] = {}
-
-        # 0a-bridge. Nếu có lệnh remote_trigger_post_now mới từ máy Silicon chưa xử lý, ưu tiên chạy ngay
-        remote_post_chk = cfg.get("remote_trigger_post_now")
-        if isinstance(remote_post_chk, dict) and remote_post_chk.get("trigger_id"):
-            p_tid = str(remote_post_chk["trigger_id"]).strip()
-            if p_tid and f"remote_post_{p_tid}" not in history:
-                try:
-                    self.check_and_run_stream1_upload_schedule()
-                    history = self._load_post_history()
-                except Exception:
-                    pass
 
         # 0b. Kiểm tra lệnh kích hoạt chạy thử Bộ lọc 24h từ xa (Remote Trigger)
         remote_trig = cfg.get("remote_trigger_filter_24h")

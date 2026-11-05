@@ -477,10 +477,12 @@ def run_crawl_story_mode(
                 if sub_dir.exists():
                     for mp4 in sub_dir.glob("*.mp4"):
                         m_sid = re.search(
-                            r"(?:tiktok|douyin)_story_(\d+)", mp4.stem, re.IGNORECASE
+                            r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+                            mp4.stem,
+                            re.IGNORECASE,
                         )
                         if m_sid:
-                            known_ids.add(m_sid.group(1))
+                            known_ids.add(m_sid.group(1).split("_bongcuc_")[0])
                         ep_p = parse_bongcuc_ep_and_part(mp4.name)
                         if ep_p and sub == "ready":
                             ready_ep_nums.add(ep_p[0])
@@ -813,14 +815,45 @@ def _auto_git_pull_if_available(project_root: Path) -> bool:
             )
 
             if hist_bak.exists():
-                shutil.copy2(hist_bak, hist_path)
+                try:
+                    bak_h = json.loads(hist_bak.read_text(encoding="utf-8"))
+                    cur_h = (
+                        json.loads(hist_path.read_text(encoding="utf-8"))
+                        if hist_path.exists()
+                        else {}
+                    )
+                    v_union = list(dict.fromkeys([*(cur_h.get("video_ids") or []), *(bak_h.get("video_ids") or [])]))
+                    s_union = list(dict.fromkeys([*(cur_h.get("sound_ids") or []), *(bak_h.get("sound_ids") or [])]))
+                    items_bak = bak_h.get("items") or []
+                    cur_h["video_ids"] = v_union
+                    cur_h["sound_ids"] = s_union
+                    if items_bak:
+                        cur_h["items"] = items_bak
+                    hist_path.write_text(json.dumps(cur_h, ensure_ascii=False, indent=2), encoding="utf-8")
+                except Exception:
+                    shutil.copy2(hist_bak, hist_path)
                 hist_bak.unlink(missing_ok=True)
             if csv_bak.exists():
                 csv_path.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(csv_bak, csv_path)
                 csv_bak.unlink(missing_ok=True)
             if reg_bak.exists():
-                shutil.copy2(reg_bak, reg_path)
+                try:
+                    bak_r = json.loads(reg_bak.read_text(encoding="utf-8"))
+                    cur_r = (
+                        json.loads(reg_path.read_text(encoding="utf-8"))
+                        if reg_path.exists()
+                        else {}
+                    )
+                    for k_set in ("posted_story_ids", "posted_filenames", "posted_fingerprints"):
+                        cur_r[k_set] = sorted(
+                            set(str(x) for x in [*(cur_r.get(k_set) or []), *(bak_r.get(k_set) or [])] if x)
+                        )
+                    if bak_r.get("history"):
+                        cur_r["history"] = bak_r["history"]
+                    reg_path.write_text(json.dumps(cur_r, ensure_ascii=False, indent=2), encoding="utf-8")
+                except Exception:
+                    shutil.copy2(reg_bak, reg_path)
                 reg_bak.unlink(missing_ok=True)
             if post_log_bak.exists():
                 try:
