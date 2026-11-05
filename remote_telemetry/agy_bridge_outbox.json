@@ -1,52 +1,48 @@
 {
-  "updated_at": "2026-11-05 18:18:15",
+  "updated_at": "2026-11-05 18:35:55",
   "latest_result": {
-    "cmd_id": "auto_heal_1793877495",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-05 18:18:15",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-05 18:18:15"
-    },
+    "cmd_id": "heartbeat_1793878554",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-05 18:35:54",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 18:18:15",
+      "timestamp": "2026-11-05 18:35:55",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 275.7,
       "processes": [
-        "29297       12:30 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "29299       12:30 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-02:20:50 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-02:20:50 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "29297       30:10 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "29299       30:10 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-02:38:30 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-02:38:30 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[18:16:12] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[18:16:14] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[18:16:14] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7691766718599295080/raw_video.mp4 (5.62 MB)",
-        "[18:16:14] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7691766718599295080/audio.mp3",
-        "[18:16:15] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 26.12s)",
-        "[18:16:15] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7691766718599295080/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[18:16:15] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
-        "[18:16:19] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 67.22%)",
-        "[18:16:31] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 1 câu thoại hoàn chỉnh (mean_logprob=-0.99, ocr_coverage=0%).",
-        "[18:16:31] [INFO] tiktok_pipeline: [Voice Filter] Kết quả đo 7691766718599295080: lang=zh, số câu=1, độ dài TB=3.0 ký tự/câu, thời gian thoại=0.6s/26.2s (2.3%), logprob=-0.99, ocr=0%",
-        "[18:16:31] [INFO] tiktok_pipeline: [Voice Filter] -> LOẠI BỎ 7691766718599295080 (phương ngữ nặng / âm thanh mờ khó nghe: logprob=-0.99, ocr=0%).",
-        "[18:16:31] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #2/14: [DOUYIN] ID=7696826479242519139 (tim=33441, thời lượng=416.6s) ---",
-        "[18:16:31] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7696826479242519139 (thời lượng=416.6s, sound='@努力的喵喵酱创作的原声一努力的喵喵酱', view=501615, tim=33441, share=20421)...",
-        "[18:16:32] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[18:16:33] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[18:16:36] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7696826479242519139/raw_video.mp4 (85.22 MB)",
-        "[18:16:36] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7696826479242519139/audio.mp3",
-        "[18:16:40] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 416.59s)",
-        "[18:16:41] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7696826479242519139/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[18:16:43] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'en' (độ tin cậy: 79.09%)"
-      ]
+        "[18:31:19] [INFO] tiktok_pipeline: [video_AI_hay] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: video_AI_hay/posted/20261105_182317_douyin_story_6862280720614739204.mp4",
+        "[18:33:07] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[18:33:07] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[18:33:07] [INFO] tiktok_pipeline: [baby_AI] Kho ready/ đã lọc hết các bản trùng nội dung -> Đang tự động cào ngay 1 video truyện mới hoàn toàn cho [baby_AI]...",
+        "[18:33:07] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[18:33:07] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[18:33:07] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[18:33:07] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_2_life_comedy] -> Thư mục: output/baby_AI/ready/ | Link mẫu: 15 | Kênh mẫu: [] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
+        "[18:34:43] [INFO] tiktok_pipeline: Kênh [channel_2_life_comedy]: Tìm thấy tổng cộng 63 ứng viên Trung/Việt view cao (Link mẫu: 1, Kênh mẫu: 0, Douyin: 27, TikTok: 26, Đa nền tảng Shorts/Reels: 10).",
+        "[18:34:43] [INFO] tiktok_pipeline: === BẮT ĐẦU CÀO KÊNH [channel_2_life_comedy -> output/baby_AI/ready/ | Số lượng cần lấy: 1] ===",
+        "[18:34:43] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #1/30: [DOUYIN] ID=7212859447947889959 (tim=6419287, thời lượng=30.7s) ---",
+        "[18:34:43] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7212859447947889959 (thời lượng=30.7s, sound='@小西米成长记创作的原声一小西米成长记（原声中的歌曲：满园春色惹人醉（DJ完整版）-DJRE）', view=96289305, tim=6419287, share=650477)...",
+        "[18:34:43] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
+        "[18:34:45] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
+        "[18:34:46] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7212859447947889959/raw_video.mp4 (4.48 MB)",
+        "[18:34:46] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7212859447947889959/audio.mp3",
+        "[18:34:46] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 30.60s)",
+        "[18:34:47] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7212859447947889959/audio.mp3 (auto-detect language, word_timestamps=True)...",
+        "[18:34:47] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
+        "[18:34:50] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'km' (độ tin cậy: 22.51%)"
+      ],
+      "lock_file_content": "pid=29297 ts=1793878279"
     }
   }
 }
