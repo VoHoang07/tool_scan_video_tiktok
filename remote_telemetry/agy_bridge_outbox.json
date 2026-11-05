@@ -1,52 +1,48 @@
 {
-  "updated_at": "2026-11-05 09:47:09",
+  "updated_at": "2026-11-05 10:14:51",
   "latest_result": {
-    "cmd_id": "auto_heal_1793846829",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-05 09:47:09",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-05 09:47:09"
-    },
+    "cmd_id": "heartbeat_1793848490",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-05 10:14:50",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 09:47:09",
+      "timestamp": "2026-11-05 10:14:51",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 71.0,
       "processes": [
-        "60899 01:33:26 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "60901 01:33:26 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 17:49:44 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 17:49:44 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "60899 02:01:08 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "60901 02:01:08 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 18:17:26 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 18:17:26 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[09:45:48] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[09:45:49] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[09:45:50] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[09:45:52] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[09:46:15] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Tiết kiệm không gian cho người khác' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[09:46:15] [INFO] tiktok_pipeline: TTS #07 [16.60s-17.27s | gốc=0.90s]: rate=-42%, atempo=0.55x -> 0.67s",
-        "[09:46:24] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã nhập xong Mô tả & 8 Hashtag chuẩn vào TikTok Studio: \"🌹 Tâm lý Hôn nhân & Gia đình: Nếu một người phụ nữ luôn đợi đến tận đêm khuya. \"Nếu cô ấy không dồn hết năng lượng vào, cô ấy sẽ bị ám ảnh bởi bạn...\" Ngẫm từng...\"",
-        "[09:46:24] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = TẮT)...",
-        "[09:46:32] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đang bấm nút đỏ ĐĂNG ('Đăng', data-e2e='post_video_button') tại (380.0, 620.9)...",
-        "[09:46:32] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất...",
-        "[09:46:34] [INFO] tiktok_pipeline: [phu_nu_khi_chat] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!",
-        "[09:46:34] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[09:46:34] [INFO] tiktok_pipeline: Đã đánh dấu POSTED thành công: /Users/vohoang/Documents/tool_scan_video_tiktok/output/phu_nu_khi_chat/posted/20261105_094254_douyin_story_6714103873667173646.mp4 | posted_at=2026-11-05 09:46:34 (đã cập nhật 2 dòng trong CSV, tự động đồng bộ thêm 0 video)",
-        "[09:46:39] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Lượt 1] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
-        "[09:46:41] [INFO] tiktok_pipeline: [phu_nu_khi_chat] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
-        "[09:46:44] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Mẹ sẽ tìm một cái tốt sau khi mẹ rời đi và gửi bố mẹ đi' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[09:46:54] [INFO] tiktok_pipeline: TTS #08 [18.02s-20.62s | gốc=2.66s]: rate=-42%, atempo=1.90x -> 2.60s",
-        "[09:46:56] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Lượt 2] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
-        "[09:46:58] [INFO] tiktok_pipeline: [phu_nu_khi_chat] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
-        "[09:47:09] [INFO] tiktok_pipeline: TTS #09 [20.68s-22.54s | gốc=1.94s]: rate=+36%, atempo=0.93x -> 1.86s"
-      ]
+        "[10:09:42] [INFO] tiktok_pipeline: Hashtags: #tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuong #viral",
+        "[10:09:44] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[10:09:44] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=tu_chan_gioi, file=tu_chan_gioi/ready/20261105_100929_tiktok_story_7688705812809960725.mp4, status=READY)",
+        "[10:09:44] [INFO] tiktok_pipeline: ==> Đã hoàn thành 1/1 video cho [tu_chan_gioi]: /Users/vohoang/Documents/tool_scan_video_tiktok/output/tu_chan_gioi/ready/20261105_100929_tiktok_story_7688705812809960725.mp4",
+        "[10:09:44] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh tu_chan_gioi (tu_chan_gioi)! Kho chờ ready/ hiện tại: 1/5",
+        "[10:09:46] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh tu_chan_gioi (tu_chan_gioi): Nghỉ an toàn 196s (~3.3 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
+        "[10:10:48] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (de2b750 -> 08351ac) | Auto-Telemetry [warmup_fyp] an_vat_moi_ngay at 2026-11-05 10:10:28",
+        "[10:11:59] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[10:11:59] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[10:12:00] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[10:12:02] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[10:14:23] [INFO] tiktok_pipeline: [Round-Robin] Kênh meo_vat_gia_dinh (meo_vat_gia_dinh) hiện có 0/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
+        "[10:14:23] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[10:14:23] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[10:14:23] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[10:14:23] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_5_home_gadgets] -> Thư mục: output/meo_vat_gia_dinh/ready/ | Link mẫu: 0 | Kênh mẫu: ['meovatcuocsong.vn', 'meovathaymoingay', 'giadungthongminh.official', 'meobepnhỏ'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
+        "[10:14:23] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @meovatcuocsong.vn.",
+        "[10:14:23] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @meovathaymoingay.",
+        "[10:14:23] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @giadungthongminh.official.",
+        "[10:14:23] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @meobepnhỏ."
+      ],
+      "lock_file_content": "pid=3213 ts=1793848420"
     }
   }
 }
