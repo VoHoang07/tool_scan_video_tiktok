@@ -1,18 +1,13 @@
 {
-  "updated_at": "2026-11-05 08:43:42",
+  "updated_at": "2026-11-05 08:44:08",
   "latest_result": {
-    "cmd_id": "auto_heal_1793843022",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-05 08:43:42",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-05 08:43:42"
-    },
+    "cmd_id": "heartbeat_1793843047",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-05 08:44:07",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 08:43:42",
+      "timestamp": "2026-11-05 08:44:08",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -20,13 +15,12 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "60899    29:59 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "60901    29:59 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 16:46:17 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 16:46:17 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "60899    30:25 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "60901    30:25 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 16:46:43 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 16:46:43 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[08:40:55] [INFO] tiktok_pipeline: TTS #19 [36.32s-38.19s | gốc=1.90s]: rate=-18%, atempo=1.00x -> 1.87s",
         "[08:40:57] [INFO] tiktok_pipeline: TTS #20 [38.94s-39.31s | gốc=0.40s]: rate=+38%, atempo=1.09x -> 0.37s",
         "[08:40:59] [INFO] tiktok_pipeline: TTS #21 [40.26s-40.74s | gốc=0.62s]: rate=-42%, atempo=0.55x -> 0.48s",
         "[08:41:00] [INFO] tiktok_pipeline: TTS #22 [40.88s-41.67s | gốc=0.82s]: rate=+0%, atempo=1.04x -> 0.79s",
@@ -45,7 +39,8 @@
         "[08:41:54] [INFO] tiktok_pipeline: Đã phát hiện vị trí sub gốc cần làm mờ: tâm Y=1498px (78.0%), chiều cao=180px (peak_score=1430.8)",
         "[08:41:54] [INFO] tiktok_pipeline: Đã tạo trục âm thanh lồng tiếng Việt: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7663279320877616392/voiceover_track.wav",
         "[08:41:54] [INFO] tiktok_pipeline: Đang trộn lồng tiếng Việt đè lên giọng nhân vật gốc (nền gốc=0.25, giọng Việt=1.35)...",
-        "[08:42:00] [INFO] tiktok_pipeline: Đang xóa tinh tế nét chữ sub gốc theo từng khung hình tại dải Y=[1398..1598]..."
+        "[08:42:00] [INFO] tiktok_pipeline: Đang xóa tinh tế nét chữ sub gốc theo từng khung hình tại dải Y=[1398..1598]...",
+        "[08:43:49] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc..."
       ]
     }
   }
