@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 08:57:07",
+    "timestamp": "2026-11-05 08:58:47",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261105_085046_youtube_shorts_story_72w2MZKluvg.mp4",
-      "caption": "🌿 [Sức Khỏe Chủ Động] Chu kỳ kinh nguyệt là sự thay đổi mang tính chu kỳ của sự dày lên và vỡ ra lặp đi lặp lại của niêm mạc tử cung. \"Nội mạc tử cung chứa một lượng nhỏ máu có thể thoát ra khỏi âm đạo cùng với chu kỳ kinh nguyệt ...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #xh",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "elapsed_seconds": 153.3,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 08:58:47",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "elapsed_seconds": 153.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 08:57:07",
       "machine_arch": "x86_64",
@@ -193,18 +201,6 @@
       "details": {
         "scrolled_videos": 13,
         "elapsed_seconds": 154.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 07:32:11",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 163.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
