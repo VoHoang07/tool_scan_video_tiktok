@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-05 18:38:26",
+  "updated_at": "2026-11-05 18:56:02",
   "latest_result": {
-    "cmd_id": "auto_heal_1793878706",
+    "cmd_id": "auto_heal_1793879762",
     "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-05 18:38:26",
+    "executed_at": "2026-11-05 18:56:02",
     "unstick_report": {
       "killed_chrome_for_testing": false,
       "removed_locks": [
         "workspace_temp/.tiktok_browser_session.lock"
       ],
-      "timestamp": "2026-11-05 18:38:26"
+      "timestamp": "2026-11-05 18:56:02"
     },
     "system_health": {
-      "timestamp": "2026-11-05 18:38:26",
+      "timestamp": "2026-11-05 18:56:02",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -20,32 +20,31 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "29297       32:41 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "29299       32:41 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-02:41:01 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-02:41:01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "29297       50:17 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "29299       50:17 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-02:58:37 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-02:58:37 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[18:38:03] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 18.51s)",
-        "[18:38:03] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7581027567194298984/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[18:38:05] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 99.07%)",
-        "[18:38:12] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 6 câu thoại hoàn chỉnh (mean_logprob=-0.31, ocr_coverage=0%).",
-        "[18:38:12] [INFO] tiktok_pipeline: [Voice Filter] Kết quả đo 7581027567194298984: lang=zh, số câu=6, độ dài TB=9.8 ký tự/câu, thời gian thoại=12.5s/18.6s (67.2%), logprob=-0.31, ocr=0%",
-        "[18:38:12] [INFO] tiktok_pipeline: [Voice Filter] -> ĐẠT CHUẨN TRUNG/VIỆT VIEW CAO! Chọn video 7581027567194298984 để dịch trực tiếp sang tiếng Việt & lồng tiếng.",
-        "[18:38:12] [INFO] tiktok_pipeline: === [3/5] DỊCH TRỰC TIẾP LỜI THOẠI SANG TIẾNG VIỆT ===",
-        "[18:38:12] [INFO] tiktok_pipeline: Bắt đầu biên tập kịch bản 6 câu từ 'zh' -> 'vi' [Phong cách: CHANNEL_2 | Provider: FALLBACK]",
-        "[18:38:12] [INFO] tiktok_pipeline: Đang dịch trực tiếp tiếng Trung/ngoại ngữ sang tiếng Việt theo ngữ cảnh (Contextual NMT)...",
-        "[18:38:14] [INFO] tiktok_pipeline: [00.86s - 04.06s] iPhone这Live图选图是不是有毛病啊  ==>  Có vấn đề gì với việc chọn ảnh Live của iPhone không?",
-        "[18:38:14] [INFO] tiktok_pipeline: [05.34s - 06.98s] 不是这张图我打开实况  ==>  Đây không phải là hình ảnh mà mình bật trực tiếp",
-        "[18:38:14] [INFO] tiktok_pipeline: [06.98s - 10.62s] 就这几帧都很好看啊  ==>  Một vài khung hình này rất đẹp",
-        "[18:38:14] [INFO] tiktok_pipeline: [11.26s - 13.22s] 他给我选上这张啊  ==>  Anh ấy đã chọn cái này cho mình",
-        "[18:38:14] [INFO] tiktok_pipeline: [15.14s - 16.28s] 有没有人能管过啊  ==>  Có ai có thể lo việc này không?",
-        "[18:38:14] [INFO] tiktok_pipeline: [16.28s - 17.18s] 有病啊  ==>  Mình bị ốm",
-        "[18:38:15] [INFO] tiktok_pipeline: Caption đã dịch: 🤣 Trên đời này có quá nhiều thứ con người không thể hiểu được, việc học không có điểm dừng — Pha xử lý đi vào lòng đất của hai mẹ con! \"Đây không phải là hình ảnh mà mình bật trực tiếp...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-        "[18:38:15] [INFO] tiktok_pipeline: Hashtags: #chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #fyp #xh",
-        "[18:38:15] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
-        "[18:38:15] [INFO] tiktok_pipeline: Cấu hình giọng kênh [baby_AI]: Giọng tự nhiên, đời thường, tếu táo, nhịp nhanh cuốn hút (voice=vi-VN-HoaiMyNeural, rate=+18%, pitch=+2Hz)",
-        "[18:38:15] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +18%, Độ trầm/cao: +2Hz) cho 6 câu thoại..."
+        "[download]  96.9% of   81.12MiB at   16.10MiB/s ETA 00:00",
+        "[download]  96.9% of   81.12MiB at  Unknown B/s ETA Unknown",
+        "[download]  96.9% of   81.12MiB at  Unknown B/s ETA Unknown",
+        "[download]  96.9% of   81.12MiB at    6.04MiB/s ETA 00:00  ",
+        "[download]  96.9% of   81.12MiB at    9.37MiB/s ETA 00:00",
+        "[download]  96.9% of   81.12MiB at    5.95MiB/s ETA 00:00",
+        "[download]  97.0% of   81.12MiB at    7.29MiB/s ETA 00:00",
+        "[download]  97.0% of   81.12MiB at   10.22MiB/s ETA 00:00",
+        "[download]  97.2% of   81.12MiB at   14.57MiB/s ETA 00:00",
+        "[download]  97.5% of   81.12MiB at   21.50MiB/s ETA 00:00",
+        "[download]  98.1% of   81.12MiB at   27.91MiB/s ETA 00:00",
+        "[download]  99.4% of   81.12MiB at   32.24MiB/s ETA 00:00",
+        "[download] 100.0% of   81.12MiB at   34.53MiB/s ETA 00:00",
+        "[download] 100% of   81.12MiB in 00:00:04 at 17.36MiB/s  ",
+        "[18:51:00] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong YouTube kFTHnxWLomM (85.1 MB, thời lượng=1758.8s).",
+        "[18:51:00] [INFO] tiktok_pipeline: [BongCucSplitter] Đang tải video Background Full HD 1080p [night_mukbang] từ YouTube (https://www.youtube.com/watch?v=s85cKxJIpo0 - GONGSAM TABLE Fire Noodle Hot Dog Gimbap Tteokbokki Mukbang 1080p)...",
+        "[18:51:44] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong Background Full HD [night_mukbang] s85cKxJIpo0 (1920x1080, 446.9 MB).",
+        "[18:51:44] [INFO] tiktok_pipeline: [BongCucSplitter] Đang cắt & ghép Background [night_mukbang -> bg_s85cKxJIpo0.mp4 @756s] (1.424x, pitch=1.018x, GOP=49): Bông Cúc Số 45 [Phần 1/4 | views=102,834]...",
+        "[18:56:01] [INFO] tiktok_pipeline: [BongCucSplitter] Hoàn tất xuất bản (v3 Background night_mukbang + 6 Bộ Lọc): 20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4 (thời lượng=308.8s, size=225.3MB)"
       ]
     }
   }
