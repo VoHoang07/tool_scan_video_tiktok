@@ -1,51 +1,48 @@
 {
-  "updated_at": "2026-11-06 01:16:21",
+  "updated_at": "2026-11-06 02:07:16",
   "latest_result": {
-    "cmd_id": "auto_heal_1793902581",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-06 01:16:21",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-06 01:16:21"
-    },
+    "cmd_id": "heartbeat_1793905635",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-06 02:07:15",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-06 01:16:21",
+      "timestamp": "2026-11-06 02:07:16",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 14.5,
       "processes": [
-        "66284       09:24 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "66286       09:24 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-09:18:56 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-09:18:56 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "66284    01:00:19 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "66286    01:00:19 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-10:09:51 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-10:09:51 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[download]  96.6% of  242.50MiB at  Unknown B/s ETA Unknown",
-        "[download]  96.6% of  242.50MiB at  Unknown B/s ETA Unknown",
-        "[download]  96.6% of  242.50MiB at    5.54MiB/s ETA 00:01  ",
-        "[download]  96.6% of  242.50MiB at    8.24MiB/s ETA 00:01",
-        "[download]  96.6% of  242.50MiB at    4.98MiB/s ETA 00:01",
-        "[download]  96.6% of  242.50MiB at    6.01MiB/s ETA 00:01",
-        "[download]  96.7% of  242.50MiB at    7.83MiB/s ETA 00:01",
-        "[download]  96.7% of  242.50MiB at   11.68MiB/s ETA 00:00",
-        "[download]  96.8% of  242.50MiB at   18.37MiB/s ETA 00:00",
-        "[download]  97.0% of  242.50MiB at   25.75MiB/s ETA 00:00",
-        "[download]  97.4% of  242.50MiB at    7.40MiB/s ETA 00:00",
-        "[download]  98.2% of  242.50MiB at   12.71MiB/s ETA 00:00",
-        "[download]  99.9% of  242.50MiB at   20.09MiB/s ETA 00:00",
-        "[download] 100.0% of  242.50MiB at   20.60MiB/s ETA 00:00",
-        "[download] 100% of  242.50MiB in 00:00:09 at 24.47MiB/s  ",
-        "[01:13:11] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong YouTube DoVFGuEeB1k (254.3 MB, thời lượng=5122.4s).",
-        "[01:13:11] [INFO] tiktok_pipeline: [BongCucSplitter] Đang tải video Background Full HD 1080p [night_mukbang] từ YouTube (https://www.youtube.com/watch?v=EuySE6259wQ - SULGI Spicy Chicken Tteokbokki Cheese Kimchi Gimbap Mukbang 1080p)...",
-        "[01:13:56] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong Background Full HD [night_mukbang] EuySE6259wQ (1920x1080, 289.1 MB).",
-        "[01:13:56] [INFO] tiktok_pipeline: [BongCucSplitter] Đang cắt & ghép Background [night_mukbang -> bg_EuySE6259wQ.mp4 @757s] (1.423x, pitch=1.017x, GOP=52): Bông Cúc Số 10 [Phần 3/13 | views=472,140]..."
-      ]
+        "[02:05:25] [INFO] tiktok_pipeline: TTS #19 [35.26s-36.94s | gốc=1.72s]: rate=+36%, atempo=1.00x -> 1.68s",
+        "[02:05:36] [INFO] tiktok_pipeline: TTS #20 [37.26s-39.61s | gốc=2.48s]: rate=+25%, atempo=1.00x -> 2.35s",
+        "[02:05:42] [INFO] tiktok_pipeline: TTS #21 [39.74s-42.14s | gốc=2.56s]: rate=+18%, atempo=1.00x -> 2.40s",
+        "[02:05:48] [INFO] tiktok_pipeline: TTS #22 [42.58s-44.16s | gốc=1.76s]: rate=+18%, atempo=1.00x -> 1.58s",
+        "[02:05:51] [INFO] tiktok_pipeline: TTS #23 [45.58s-46.26s | gốc=0.54s]: rate=+18%, atempo=1.00x -> 0.68s",
+        "[02:05:51] [INFO] tiktok_pipeline: === [5/5] GHÉP ÂM THANH & ĐÓNG PHỤ ĐỀ LÊN VIDEO (FFMPEG) ===",
+        "[02:05:51] [INFO] tiktok_pipeline: Thông số video gốc: 720x1280, thời lượng: 48.20s",
+        "[02:05:53] [INFO] tiktok_pipeline: Không phát hiện phụ đề cứng trên video gốc (peak_score=192.1 < 420).",
+        "[02:05:53] [INFO] tiktok_pipeline: Đã tạo trục âm thanh lồng tiếng Việt: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7353976976912289058/voiceover_track.wav",
+        "[02:05:53] [INFO] tiktok_pipeline: Đang trộn lồng tiếng Việt đè lên giọng nhân vật gốc (nền gốc=0.25, giọng Việt=1.35)...",
+        "[02:05:58] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc...",
+        "[02:06:19] [INFO] tiktok_pipeline: Hoàn tất xuất bản video tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/baby_AI/ready/20261106_020213_douyin_story_7353976976912289058.mp4",
+        "[02:06:45] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[02:06:45] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[02:06:45] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=baby_AI, file=baby_AI/ready/20261106_020213_douyin_story_7353976976912289058.mp4, status=READY)",
+        "[02:06:45] [INFO] tiktok_pipeline: ==> Đã hoàn thành 1/1 video cho [baby_AI]: /Users/vohoang/Documents/tool_scan_video_tiktok/output/baby_AI/ready/20261106_020213_douyin_story_7353976976912289058.mp4",
+        "[02:06:45] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh baby_AI (baby_AI)! Kho chờ ready/ hiện tại: 4/5",
+        "[Buffer Guard] Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[02:06:48] [INFO] tiktok_pipeline: Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[02:06:51] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh baby_AI (baby_AI): Nghỉ an toàn 208s (~3.5 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
+      ],
+      "lock_file_content": "idle"
     }
   }
 }
