@@ -139,7 +139,8 @@
     "7684235157036879124",
     "6862280720614739204",
     "7581027567194298984",
-    "hmDRy0NjfzM"
+    "hmDRy0NjfzM",
+    "7473815778035289378"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -193,7 +194,8 @@
     "7681324230528486180",
     "6862280731360496392",
     "7581027535253801769",
-    "bongcuc_yt_kFTHnxWLomM_p1"
+    "bongcuc_yt_kFTHnxWLomM_p1",
+    "7473815884100799259"
   ],
   "items": [
     {
@@ -725,6 +727,16 @@
       "source_url": "https://www.youtube.com/watch?v=hmDRy0NjfzM",
       "output_filename": "suc_khoe_duong_sinh/ready/20261105_190601_youtube_shorts_story_hmDRy0NjfzM.mp4",
       "crawled_at": "2026-11-05T19:06:27"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "7473815778035289378",
+      "sound_id": "7473815884100799259",
+      "platform": "douyin",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.douyin.com/video/7473815778035289378",
+      "output_filename": "phu_nu_khi_chat/ready/20261105_190959_douyin_story_7473815778035289378.mp4",
+      "crawled_at": "2026-11-05T19:12:42"
     }
   ]
 }

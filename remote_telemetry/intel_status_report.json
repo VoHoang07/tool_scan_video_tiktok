@@ -1,145 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 19:09:17",
+    "timestamp": "2026-11-05 19:14:27",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
+    "event_type": "upload",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "interacted_count": 2,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "suc_khoe_duong_sinh",
-          "video_id": "7703163421704949000",
-          "video_url": "https://www.tiktok.com/@l.ngc.trm5329/video/7703163421704949000",
-          "creator_handle": "@l.ngc.trm5329",
-          "watched_seconds": 19.7,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": true,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110520082711A1C98059972B4FCE77\",\"now\":1793880507000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110520082711A1C98059972B4FCE77\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611052008360BD8A99B0CDBA852CDA8\",\"now\":1793880516000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611052008360BD8A99B0CDBA852CDA8\"},\"status_code\":0,\"status_msg\":\"\"}"
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611052008383FF59E10A008515616BF\",\"now\":1793880518000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611052008383FF59E10A008515616BF\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "suckhoeduongsinh.k06"
-            },
-            "before": {
-              "x": 837.78125,
-              "y": 389,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "53"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 837.78125,
-                "y": 389,
-                "ariaPressed": true,
-                "svgColor": "rgba(255, 59, 92, 1)",
-                "likeCount": "54"
-              },
-              "red": true,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@l.ngc.trm5329",
-              "nav_method": "spa_click",
-              "profile_url": "https://www.tiktok.com/@l.ngc.trm5329?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": null,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-05 19:08:44",
-          "follow_back_window_until": "2026-11-06 19:08:44"
-        },
-        {
-          "channel": "suc_khoe_duong_sinh",
-          "video_id": "7703101695986912519",
-          "video_url": "https://www.tiktok.com/@chung.ngc.i120/video/7703101695986912519",
-          "creator_handle": "@chung.ngc.i120",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": true,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110520091277FD023CAEBC9F551A05\",\"now\":1793880552000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110520091277FD023CAEBC9F551A05\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "suckhoeduongsinh.k06"
-            },
-            "before": {
-              "x": 837.78125,
-              "y": 389,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "78"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 837.78125,
-                "y": 389,
-                "ariaPressed": true,
-                "svgColor": "rgba(255, 59, 92, 1)",
-                "likeCount": "79"
-              },
-              "red": true,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            }
-          },
-          "interacted_at": "2026-11-05 19:09:16",
-          "follow_back_window_until": "2026-11-06 19:09:16"
-        }
-      ]
+      "video_file": "20261105_190959_douyin_story_7473815778035289378.mp4",
+      "caption": "🌹 Tâm lý Hôn nhân & Gia đình: Khi chúng ta già đi, em phải đi trước anh. \"Nếu tôi đi trước bạn, bạn sẽ cảm thấy khó chịu thế nào khi ở một mình...\" Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
+      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #viral #foryou",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 19:14:27",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261105_190959_douyin_story_7473815778035289378.mp4",
+        "caption": "🌹 Tâm lý Hôn nhân & Gia đình: Khi chúng ta già đi, em phải đi trước anh. \"Nếu tôi đi trước bạn, bạn sẽ cảm thấy khó chịu thế nào khi ở một mình...\" Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
+        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-05 19:09:17",
       "machine_arch": "x86_64",
@@ -836,202 +728,6 @@
         "scrolled_videos": 13,
         "elapsed_seconds": 159.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 18:08:22",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "video_hay4",
-          "domFollowing": "17",
-          "domFollowers": "16",
-          "domLikes": "233",
-          "sidebarFollowing": [
-            "/@video_hay4",
-            "/@chuyn.tm.linh.495",
-            "/@h.hi1554",
-            "/@l.mn.niii",
-            "/@oanhnghimth4",
-            "/@boloc24hcheoflo"
-          ]
-        },
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7703525677575802132",
-            "video_url": "https://www.tiktok.com/@gocnhocuahuyen81/video/7703525677575802132",
-            "creator_handle": "@gocnhocuahuyen81",
-            "watched_seconds": 20.9,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Cách làm video của bạn cuốn thật sự, xem một mạch tới cuối luôn 🌟",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105190606AC851E343C656261E5E9\",\"now\":1793876766000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261105190606AC851E343C656261E5E9\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611051906235CD84361D806D85ED2FA\",\"now\":1793876783000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611051906235CD84361D806D85ED2FA\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105190625186E4F4707C26B5FB583\",\"now\":1793876785000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261105190625186E4F4707C26B5FB583\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "video_hay4"
-              },
-              "before": {
-                "x": 795.15625,
-                "y": 369,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "9"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 795.15625,
-                  "y": 369,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "10"
-                },
-                "red": true,
-                "server_digg_ok": true,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@gocnhocuahuyen81",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@gocnhocuahuyen81?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": null,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-05 18:06:32",
-            "follow_back_window_until": "2026-11-06 18:06:32"
-          },
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7703430220983880980",
-            "video_url": "https://www.tiktok.com/@ba.en.taxi.35/video/7703430220983880980",
-            "creator_handle": "@ba.en.taxi.35",
-            "watched_seconds": 23.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "video_hay4"
-              },
-              "before": {
-                "x": 885,
-                "y": 242.5,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "7"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 885,
-                  "y": 242.5,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "7"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": false
-              }
-            },
-            "interacted_at": "2026-11-05 18:07:25",
-            "follow_back_window_until": "2026-11-06 18:07:25"
-          },
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7703386842204245266",
-            "video_url": "https://www.tiktok.com/@aqkwj2/video/7703386842204245266",
-            "creator_handle": "@aqkwj2",
-            "watched_seconds": 16.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": false,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Mê cái vibe của kênh bạn ghê, sẽ theo dõi ủng hộ dài lâu ạ 🫶",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105190801614FBC09609F6A4E556F\",\"now\":1793876881000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261105190801614FBC09609F6A4E556F\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "video_hay4"
-              },
-              "before": {
-                "x": 795.15625,
-                "y": 369,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "26"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 795.15625,
-                  "y": 369,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "27"
-                },
-                "red": true,
-                "server_digg_ok": true,
-                "server_digg_rejected": false
-              }
-            },
-            "interacted_at": "2026-11-05 18:08:18",
-            "follow_back_window_until": "2026-11-06 18:08:18"
-          }
-        ]
       }
     }
   ]
