@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 21:27:36",
+    "timestamp": "2026-11-05 21:39:41",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
       "scrolled_videos": 12,
-      "elapsed_seconds": 151.1,
+      "elapsed_seconds": 155.5,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 21:39:41",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 155.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 21:27:36",
       "machine_arch": "x86_64",
@@ -241,142 +253,6 @@
         "scrolled_videos": 10,
         "elapsed_seconds": 164.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 20:09:09",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
-      "details": {
-        "interacted_count": 2,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7704516878441483540",
-            "video_url": "https://www.tiktok.com/@taphoa3mien8/video/7704516878441483540",
-            "creator_handle": "@taphoa3mien8",
-            "watched_seconds": 16.5,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Một chiếc video đầy năng lượng tích cực, chúc kênh luôn bùng nổ view nhé 🔥",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105210758413DDC9D18706E59BEF3\",\"now\":1793884079000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261105210758413DDC9D18706E59BEF3\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110521082002D3606FDDE9FB583F91\",\"now\":1793884100000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026110521082002D3606FDDE9FB583F91\"},\"status_code\":0,\"status_msg\":\"\"}"
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611052108227FE176291BF68658ED70\",\"now\":1793884102000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611052108227FE176291BF68658ED70\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "anvatmoingay.k08"
-              },
-              "before": {
-                "x": 872,
-                "y": 404,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "29"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 404,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "30"
-                },
-                "red": true,
-                "server_digg_ok": true,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@taphoa3mien8",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@taphoa3mien8?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": null,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-05 20:08:28",
-            "follow_back_window_until": "2026-11-06 20:08:28"
-          },
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7704474538469313799",
-            "video_url": "https://www.tiktok.com/@1000follows.s.i.t/video/7704474538469313799",
-            "creator_handle": "@1000follows.s.i.t",
-            "watched_seconds": 16.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105210905B28A404D8D1E5C58F396\",\"now\":1793884145000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261105210905B28A404D8D1E5C58F396\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "anvatmoingay.k08"
-              },
-              "before": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "94"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 456,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "95"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              }
-            },
-            "interacted_at": "2026-11-05 20:09:09",
-            "follow_back_window_until": "2026-11-06 20:09:09"
-          }
-        ]
       }
     }
   ]
