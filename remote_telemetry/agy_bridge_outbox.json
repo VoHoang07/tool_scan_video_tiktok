@@ -1,51 +1,54 @@
 {
-  "updated_at": "2026-11-05 18:56:02",
+  "updated_at": "2026-11-05 18:58:18",
   "latest_result": {
-    "cmd_id": "auto_heal_1793879762",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-05 18:56:02",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-05 18:56:02"
+    "cmd_id": "auto_evolve_62b580a5405c",
+    "action": "auto_self_evolve_fix",
+    "executed_at": "2026-11-05 18:58:18",
+    "ai_fix_report": {
+      "error_hash": "62b580a5405c",
+      "log_file": "daemon_24_7.log",
+      "error_line": "[18:57:57] [ERROR] tiktok_pipeline: [Dòng 1 - Đăng Video] Lỗi khi đăng ngay (post_now_fast_tts_dedup_20261105_1805) kênh [audio_dem_khuyen]: Không tìm thấy video nào khớp với '/Users/vohoang/Documents/tool_scan_video_tiktok/output/audio_dem_khuyen/ready/20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4' trong các thư mục output/channel_X/ready/.",
+      "agy_exit_code": 1,
+      "agy_fix_summary": "",
+      "timestamp": "2026-11-05 18:58:18"
     },
     "system_health": {
-      "timestamp": "2026-11-05 18:56:02",
+      "timestamp": "2026-11-05 18:58:18",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 106.0,
       "processes": [
-        "29297       50:17 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "29299       50:17 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-02:58:37 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-02:58:37 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "29297       52:33 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "29299       52:33 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-03:00:53 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-03:00:53 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[download]  96.9% of   81.12MiB at   16.10MiB/s ETA 00:00",
-        "[download]  96.9% of   81.12MiB at  Unknown B/s ETA Unknown",
-        "[download]  96.9% of   81.12MiB at  Unknown B/s ETA Unknown",
-        "[download]  96.9% of   81.12MiB at    6.04MiB/s ETA 00:00  ",
-        "[download]  96.9% of   81.12MiB at    9.37MiB/s ETA 00:00",
-        "[download]  96.9% of   81.12MiB at    5.95MiB/s ETA 00:00",
-        "[download]  97.0% of   81.12MiB at    7.29MiB/s ETA 00:00",
-        "[download]  97.0% of   81.12MiB at   10.22MiB/s ETA 00:00",
-        "[download]  97.2% of   81.12MiB at   14.57MiB/s ETA 00:00",
-        "[download]  97.5% of   81.12MiB at   21.50MiB/s ETA 00:00",
-        "[download]  98.1% of   81.12MiB at   27.91MiB/s ETA 00:00",
-        "[download]  99.4% of   81.12MiB at   32.24MiB/s ETA 00:00",
-        "[download] 100.0% of   81.12MiB at   34.53MiB/s ETA 00:00",
-        "[download] 100% of   81.12MiB in 00:00:04 at 17.36MiB/s  ",
-        "[18:51:00] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong YouTube kFTHnxWLomM (85.1 MB, thời lượng=1758.8s).",
-        "[18:51:00] [INFO] tiktok_pipeline: [BongCucSplitter] Đang tải video Background Full HD 1080p [night_mukbang] từ YouTube (https://www.youtube.com/watch?v=s85cKxJIpo0 - GONGSAM TABLE Fire Noodle Hot Dog Gimbap Tteokbokki Mukbang 1080p)...",
-        "[18:51:44] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong Background Full HD [night_mukbang] s85cKxJIpo0 (1920x1080, 446.9 MB).",
-        "[18:51:44] [INFO] tiktok_pipeline: [BongCucSplitter] Đang cắt & ghép Background [night_mukbang -> bg_s85cKxJIpo0.mp4 @756s] (1.424x, pitch=1.018x, GOP=49): Bông Cúc Số 45 [Phần 1/4 | views=102,834]...",
-        "[18:56:01] [INFO] tiktok_pipeline: [BongCucSplitter] Hoàn tất xuất bản (v3 Background night_mukbang + 6 Bộ Lọc): 20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4 (thời lượng=308.8s, size=225.3MB)"
-      ]
+        "  + Lớp 1 (Visual pHash/vHash) : PASS (h264 1080x1920 yuv420p)",
+        "  + Lớp 2 (AudioPrint Evasion) : PASS (aac 44100Hz conditioned)",
+        "  + Lớp 3 (Device Metadata)    : PASS (sig='VN Video Editor 2.24.1 (iOS)', handler='CoreMedia', xattr=CLEAN)",
+        "  + Lớp 4 (Retention/Duration) : PASS (308.8s | 214.8MB)",
+        "  + Lớp 5 (Policy Safe-Guard)  : PASS (Caption & Hashtags sạch 100%)",
+        "  + Lớp 6 (Interleaved/AIGC)   : PASS (So le: Số 45 Phần 1 != Tập trước 10 | AIGC=OFF)",
+        "[18:56:04] [INFO] tiktok_pipeline: === BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [audio_dem_khuyen] ===",
+        "  + File: 20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4",
+        "  + Kịch bản ngắn: 📖 Góc Kể Chuyện: Góc khuất tình cảm và màn đáp trả cực gắt khiến trà xanh không kịp trở tay. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+        "  + Hashtags Hot Search: #truyenaudio #kechuyendemkhuya #truyenngan #truyenfull #dramatiktok #phimngantrungquoc #xuhuong #viral",
+        "[18:56:14] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đã nạp file video vào TikTok Studio. Đang chờ tải lên 100% và tự động đóng các hộp thoại hướng dẫn ('Đã hiểu')...",
+        "[18:57:02] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đã nhập xong Mô tả & 8 Hashtag chuẩn vào TikTok Studio: \"📖 Góc Kể Chuyện: Góc khuất tình cảm và màn đáp trả cực gắt khiến trà xanh không kịp trở tay. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lò...\"",
+        "[18:57:02] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = TẮT)...",
+        "[18:57:09] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đang bấm nút đỏ ĐĂNG ('Đăng', data-e2e='post_video_button') tại (380.0, 620.9)...",
+        "[18:57:10] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất...",
+        "[18:57:24] [INFO] tiktok_pipeline: [audio_dem_khuyen] Nút ĐĂNG vẫn đang chờ trên màn hình (lần thử 8), thực hiện click trực tiếp vào post_video_button...",
+        "[18:57:36] [INFO] tiktok_pipeline: [audio_dem_khuyen] Nút ĐĂNG vẫn đang chờ trên màn hình (lần thử 16), thực hiện click trực tiếp vào post_video_button...",
+        "[18:57:56] [WARNING] tiktok_pipeline: [audio_dem_khuyen] Đã hết thời gian chờ phản hồi sau khi bấm Đăng, tiến hành kiểm tra tại trang Quản lý Bài đăng...",
+        "[18:57:56] [INFO] tiktok_pipeline: [audio_dem_khuyen] [Remote Telemetry] Đã lưu ảnh (latest_upload_error_audio_dem_khuyen.jpg) & đẩy đồng bộ GitHub chạy ngầm!",
+        "[18:57:57] [ERROR] tiktok_pipeline: [Dòng 1 - Đăng Video] Lỗi khi đăng ngay (post_now_fast_tts_dedup_20261105_1805) kênh [audio_dem_khuyen]: Không tìm thấy video nào khớp với '/Users/vohoang/Documents/tool_scan_video_tiktok/output/audio_dem_khuyen/ready/20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4' trong các thư mục output/channel_X/ready/."
+      ],
+      "lock_file_content": "pid=3213 ts=1793879792"
     }
   }
 }
