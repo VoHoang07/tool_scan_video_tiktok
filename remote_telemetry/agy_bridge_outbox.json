@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-05 20:06:24",
+  "updated_at": "2026-11-05 20:36:37",
   "latest_result": {
-    "cmd_id": "heartbeat_1793883983",
+    "cmd_id": "heartbeat_1793885796",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-05 20:06:23",
+    "executed_at": "2026-11-05 20:36:36",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 20:06:23",
+      "timestamp": "2026-11-05 20:36:37",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 74.3,
+      "lock_file_age_seconds": 43.9,
       "processes": [
-        "29297    02:00:38 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "29299    02:00:38 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-04:08:58 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-04:08:58 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "29297    02:30:52 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "29299    02:30:52 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-04:39:12 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-04:39:12 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[20:06:05] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=26460643143536761 (thời lượng=165.9s, sound='Original Audio', view=480931, tim=19237, share=2404)...",
-        "[20:06:05] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/26460643143536761",
-        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/26460643143536761",
-        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=26460643143536761&_rdr",
-        "[facebook] 26460643143536761: Downloading webpage",
-        "[facebook] 26460643143536761: Downloading webpage",
-        "ERROR: [facebook] 26460643143536761: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
-        "[20:06:07] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 26460643143536761: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
-        "[20:06:07] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 26460643143536761: Không thể tải video từ URL: https://www.facebook.com/reel/26460643143536761. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[20:06:07] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #4/4: [FACEBOOK_REELS] ID=574354431953554 (tim=4894, thời lượng=57.6s) ---",
-        "[20:06:07] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=574354431953554 (thời lượng=57.6s, sound='Original Audio', view=122371, tim=4894, share=611)...",
-        "[20:06:07] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/574354431953554",
-        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/574354431953554",
-        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=574354431953554&_rdr",
-        "[facebook] 574354431953554: Downloading webpage",
-        "[facebook] 574354431953554: Downloading webpage",
-        "ERROR: [facebook] 574354431953554: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
-        "[20:06:09] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 574354431953554: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
-        "[20:06:09] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 574354431953554: Không thể tải video từ URL: https://www.facebook.com/reel/574354431953554. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[20:06:09] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh nuoi_con_eq trong lượt này. Chuyển sang kênh kế tiếp..."
+        "[20:30:59] [INFO] tiktok_pipeline: TTS #15 [36.26s-36.66s | gốc=1.24s]: rate=+45%, atempo=1.00x -> 0.40s",
+        "[20:31:27] [INFO] tiktok_pipeline: TTS #16 [37.94s-39.46s | gốc=1.56s]: rate=+38%, atempo=1.00x -> 1.52s",
+        "[20:32:00] [INFO] tiktok_pipeline: TTS #17 [39.82s-40.80s | gốc=1.00s]: rate=+45%, atempo=1.29x -> 0.98s",
+        "[20:32:27] [INFO] tiktok_pipeline: TTS #18 [42.74s-44.04s | gốc=1.38s]: rate=+18%, atempo=1.00x -> 1.30s",
+        "[20:32:35] [INFO] tiktok_pipeline: TTS #19 [46.66s-47.11s | gốc=0.48s]: rate=+18%, atempo=1.00x -> 0.45s",
+        "[20:32:53] [INFO] tiktok_pipeline: TTS #20 [47.42s-47.90s | gốc=0.52s]: rate=+27%, atempo=1.00x -> 0.48s",
+        "[20:33:03] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (4a3ec9b -> 285506f) | Auto-Telemetry [warmup_fyp] an_vat_moi_ngay at 2026-11-05 20:32:46",
+        "[20:33:07] [INFO] tiktok_pipeline: TTS #21 [48.26s-51.46s | gốc=3.20s]: rate=+45%, atempo=1.01x -> 3.20s",
+        "[20:33:45] [INFO] tiktok_pipeline: TTS #22 [54.62s-55.08s | gốc=0.52s]: rate=+45%, atempo=1.60x -> 0.46s",
+        "[20:33:49] [INFO] tiktok_pipeline: TTS #23 [55.14s-55.61s | gốc=1.64s]: rate=+18%, atempo=1.00x -> 0.47s",
+        "[20:34:06] [INFO] tiktok_pipeline: TTS #24 [57.02s-58.11s | gốc=1.12s]: rate=+45%, atempo=1.26x -> 1.09s",
+        "[20:34:27] [INFO] tiktok_pipeline: TTS #25 [58.54s-59.49s | gốc=0.96s]: rate=+45%, atempo=1.29x -> 0.95s",
+        "[20:34:39] [INFO] tiktok_pipeline: TTS #26 [60.40s-61.47s | gốc=1.10s]: rate=+45%, atempo=1.09x -> 1.07s",
+        "[20:35:01] [INFO] tiktok_pipeline: TTS #27 [61.86s-63.27s | gốc=1.44s]: rate=+45%, atempo=1.41x -> 1.41s",
+        "[20:35:14] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[20:35:14] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[20:35:14] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[20:35:32] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Cười lên, cái thứ sáu' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[20:35:32] [INFO] tiktok_pipeline: TTS #28 [63.74s-64.14s | gốc=0.84s]: rate=+18%, atempo=1.00x -> 0.40s",
+        "[20:36:20] [INFO] tiktok_pipeline: TTS #29 [65.06s-65.85s | gốc=0.80s]: rate=+45%, atempo=1.39x -> 0.79s"
       ],
-      "lock_file_content": "idle"
+      "lock_file_content": "pid=3213 ts=1793885753"
     }
   }
 }
