@@ -1,24 +1,24 @@
 {
-  "updated_at": "2026-11-05 06:50:14",
+  "updated_at": "2026-11-05 07:20:22",
   "latest_result": {
-    "cmd_id": "heartbeat_1793836214",
+    "cmd_id": "heartbeat_1793838021",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-05 06:50:14",
+    "executed_at": "2026-11-05 07:20:21",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 06:50:14",
+      "timestamp": "2026-11-05 07:20:22",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 19.4,
+      "lock_file_age_seconds": 12.5,
       "processes": [
-        "6279 14:19:49 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "6281 14:19:49 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 14:52:49 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 14:52:49 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "6279 14:49:57 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "6281 14:49:57 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 15:22:57 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 15:22:57 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
         "[16:41:39] [INFO] tiktok_pipeline: [92.06s - 94.22s] 皇帝就會延遲退化。  ==>  Hoàng đế sẽ trì hoãn sự thoái hóa của mình",
