@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 18:41:12",
+    "timestamp": "2026-11-05 18:44:29",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "elapsed_seconds": 150.5,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261105_183812_douyin_story_7581027567194298984.mp4",
+      "caption": "🤣 Có vấn đề gì với việc chọn ảnh Live của iPhone không? — Pha xử lý đi vào lòng đất của hai mẹ con! \"Nếu không phải bức ảnh này thì tôi sẽ bật phát sóng trực tiếp...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #xuhuongtiktok #tiktokvn",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 0,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 18:44:29",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261105_183812_douyin_story_7581027567194298984.mp4",
+        "caption": "🤣 Có vấn đề gì với việc chọn ảnh Live của iPhone không? — Pha xử lý đi vào lòng đất của hai mẹ con! \"Nếu không phải bức ảnh này thì tôi sẽ bật phát sóng trực tiếp...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-05 18:41:12",
       "machine_arch": "x86_64",
@@ -577,18 +597,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 12:00:04",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "elapsed_seconds": 150.3,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
