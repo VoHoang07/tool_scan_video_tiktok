@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 18:31:04",
+    "timestamp": "2026-11-05 18:41:12",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261105_182317_douyin_story_6862280720614739204.mp4",
-      "caption": "✨ Câu chuyện AI cực cuốn: Sự không hài lòng duy nhất của tôi với thế giới này là. \"Thế giới này luôn cho phép những người nhạy cảm hơn chịu đựng nhiều hơn...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
-      "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #tiktokvn",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "elapsed_seconds": 150.5,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 18:41:12",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "elapsed_seconds": 150.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 18:31:04",
       "machine_arch": "x86_64",
@@ -581,81 +589,6 @@
         "scrolled_videos": 11,
         "elapsed_seconds": 150.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 11:57:09",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "phu_kien_tien_ich",
-            "video_id": "7703031907990113557",
-            "video_url": "https://www.tiktok.com/@nguyphuonlinh.06/video/7703031907990113557",
-            "creator_handle": "@nguyphuonlinh.06",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110512565983FBC72D5B78743C7E24\",\"now\":1793854619000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110512565983FBC72D5B78743C7E24\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 804.34375,
-                "y": 359,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "126"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 804.34375,
-                  "y": 359,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "127"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@nguyphuonlinh.06",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@nguyphuonlinh.06?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-05 11:57:07",
-            "follow_back_window_until": "2026-11-06 11:57:07"
-          }
-        ]
       }
     }
   ]
