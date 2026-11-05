@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 12:04:01",
+    "timestamp": "2026-11-05 12:08:44",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261105_103856_youtube_shorts_story_wHMzoqtE3Sk.mp4",
-      "caption": "💪 Chăm sóc sức khỏe gia đình: Âm thanh này phát ra từ cơ bắp bền bỉ nhất của các cô gái, đó là trái tim.. \"Đó là những động mạch hình hộp tấn công các chất dinh dưỡng và giữ cho nó hoạt động...\" Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
-      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #tiktokvn",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 12,
+      "elapsed_seconds": 162.3,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 12:08:44",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 162.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 12:04:01",
       "machine_arch": "x86_64",
@@ -769,18 +777,6 @@
             "follow_back_window_until": "2026-11-06 11:02:39"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-05 10:58:35",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "elapsed_seconds": 158.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
