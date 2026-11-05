@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-05 21:37:10",
+  "updated_at": "2026-11-05 22:07:12",
   "latest_result": {
-    "cmd_id": "heartbeat_1793889429",
+    "cmd_id": "heartbeat_1793891232",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-05 21:37:09",
+    "executed_at": "2026-11-05 22:07:12",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 21:37:10",
+      "timestamp": "2026-11-05 22:07:12",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 14.4,
+      "lock_file_age_seconds": 154.1,
       "processes": [
-        "29297    03:31:25 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "29299    03:31:25 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-05:39:45 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-05:39:45 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "29297    04:01:27 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "29299    04:01:27 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-06:09:47 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-06:09:47 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[21:34:14] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 118.42s)",
-        "[21:34:16] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_NsqgmeH5Jvs/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[21:34:16] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
-        "[21:34:20] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'en' (độ tin cậy: 53.29%)",
-        "[21:34:47] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 15 câu thoại hoàn chỉnh (mean_logprob=-0.74, ocr_coverage=0%).",
-        "[21:34:47] [INFO] tiktok_pipeline: [Language Gate] -> LOẠI BỎ NsqgmeH5Jvs: Ngôn ngữ âm thanh phát hiện là 'en' (chỉ cho phép video Trung Quốc 'zh' và Việt Nam 'vi').",
-        "[21:34:47] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #3/3: [FACEBOOK_REELS] ID=1563835349076127 (tim=2680, thời lượng=179.0s) ---",
-        "[21:34:47] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=1563835349076127 (thời lượng=179.0s, sound='Original Audio', view=67000, tim=2680, share=335)...",
-        "[21:34:47] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/1563835349076127",
-        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/1563835349076127",
-        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=1563835349076127&_rdr",
-        "[facebook] 1563835349076127: Downloading webpage",
-        "[facebook] 1563835349076127: Downloading webpage",
-        "ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
-        "[21:34:49] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
-        "[21:34:49] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 1563835349076127: Không thể tải video từ URL: https://www.facebook.com/reel/1563835349076127. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[21:34:49] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh meo_vat_gia_dinh trong lượt này. Chuyển sang kênh kế tiếp...",
-        "[21:36:40] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[21:36:40] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
-        "[21:36:40] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
+        "[22:01:53] [INFO] tiktok_pipeline: TTS #26 [28.02s-28.42s | gốc=1.68s]: rate=+36%, atempo=1.00x -> 0.40s",
+        "[22:02:36] [INFO] tiktok_pipeline: TTS #27 [29.70s-33.29s | gốc=3.72s]: rate=+36%, atempo=1.00x -> 3.59s",
+        "[22:02:51] [INFO] tiktok_pipeline: TTS #28 [33.42s-36.45s | gốc=3.18s]: rate=+28%, atempo=1.00x -> 3.03s",
+        "[22:03:01] [INFO] tiktok_pipeline: TTS #29 [36.60s-37.68s | gốc=1.46s]: rate=+18%, atempo=1.00x -> 1.08s",
+        "[22:03:30] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Hồi đó chuyện này khổ lắm' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[22:03:30] [INFO] tiktok_pipeline: TTS #30 [38.06s-38.46s | gốc=2.14s]: rate=+18%, atempo=1.00x -> 0.40s",
+        "[22:03:44] [INFO] tiktok_pipeline: TTS #31 [40.20s-42.21s | gốc=2.54s]: rate=+18%, atempo=1.00x -> 2.01s",
+        "[22:03:48] [INFO] tiktok_pipeline: TTS #32 [42.74s-44.55s | gốc=2.14s]: rate=+18%, atempo=1.00x -> 1.81s",
+        "[22:04:33] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Nó không được mọi người chấp nhận vào thời điểm đó' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[22:04:33] [INFO] tiktok_pipeline: TTS #33 [44.88s-45.28s | gốc=1.50s]: rate=+45%, atempo=1.00x -> 0.40s",
+        "[22:04:45] [INFO] tiktok_pipeline: TTS #34 [46.38s-48.40s | gốc=2.08s]: rate=+30%, atempo=1.00x -> 2.02s",
+        "[22:04:57] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (99b4665 -> 2290cc3) | Auto-Telemetry [warmup_fyp] baby_AI at 2026-11-05 22:04:37",
+        "[22:05:15] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Biểu thức là một thiết kế chín phần' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[22:05:16] [INFO] tiktok_pipeline: TTS #35 [48.50s-48.90s | gốc=1.52s]: rate=+18%, atempo=1.00x -> 0.40s",
+        "[22:05:45] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Còn được gọi là chuỗi vỏ nằm' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[22:05:45] [INFO] tiktok_pipeline: TTS #36 [50.02s-50.42s | gốc=0.80s]: rate=+18%, atempo=1.00x -> 0.40s",
+        "[22:06:16] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Điều này trông đẹp' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[22:06:16] [INFO] tiktok_pipeline: TTS #37 [50.82s-51.22s | gốc=1.46s]: rate=+18%, atempo=1.00x -> 0.40s",
+        "[22:06:45] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Mặt số có màn hình kép' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[22:06:46] [INFO] tiktok_pipeline: TTS #38 [52.28s-52.68s | gốc=1.06s]: rate=+18%, atempo=1.00x -> 0.40s"
       ],
-      "lock_file_content": "pid=3213 ts=1793889415"
+      "lock_file_content": "idle"
     }
   }
 }
