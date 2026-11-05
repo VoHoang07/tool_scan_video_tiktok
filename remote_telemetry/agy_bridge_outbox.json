@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-06 00:07:48",
+  "updated_at": "2026-11-06 00:38:03",
   "latest_result": {
-    "cmd_id": "heartbeat_1793898467",
+    "cmd_id": "heartbeat_1793900283",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-06 00:07:47",
+    "executed_at": "2026-11-06 00:38:03",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-06 00:07:48",
+      "timestamp": "2026-11-06 00:38:03",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 208.3,
+      "lock_file_age_seconds": 89.2,
       "processes": [
-        "29297    06:02:03 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "29299    06:02:03 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-08:10:23 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-08:10:23 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "29297    06:32:18 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "29299    06:32:18 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-08:40:38 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-08:40:38 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[00:07:25] [INFO] tiktok_pipeline: [Language Gate] -> LOẠI BỎ 7648251368246955277: Ngôn ngữ âm thanh phát hiện là 'ko' (chỉ cho phép video Trung Quốc 'zh' và Việt Nam 'vi').",
-        "[00:07:25] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #4/30: [FACEBOOK_REELS] ID=1052755240012437 (tim=1800, thời lượng=29.3s) ---",
-        "[00:07:25] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=1052755240012437 (thời lượng=29.3s, sound='Original Audio', view=45000, tim=1800, share=225)...",
-        "[00:07:25] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/1052755240012437",
-        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/1052755240012437",
-        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=1052755240012437&_rdr",
-        "[facebook] 1052755240012437: Downloading webpage",
-        "[facebook] 1052755240012437: Downloading webpage",
-        "ERROR: [facebook] 1052755240012437: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
-        "[00:07:27] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 1052755240012437: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
-        "[00:07:27] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 1052755240012437: Không thể tải video từ URL: https://www.facebook.com/reel/1052755240012437. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[00:07:27] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #5/30: [DOUYIN] ID=7142621410391805196 (tim=1612772, thời lượng=34.1s) ---",
-        "[00:07:27] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7142621410391805196 (thời lượng=34.1s, sound='@蛋白妈咪创作的原声一蛋白妈咪（原声中的歌曲：New Baby Shark-Pinkfong）', view=70317590, tim=1612772, share=189182)...",
-        "[00:07:27] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[00:07:29] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[00:07:33] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7142621410391805196/raw_video.mp4 (6.71 MB)",
-        "[00:07:33] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7142621410391805196/audio.mp3",
-        "[00:07:33] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 34.09s)",
-        "[00:07:34] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7142621410391805196/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[00:07:36] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'en' (độ tin cậy: 94.25%)"
+        "[00:32:26] [INFO] tiktok_pipeline: TTS #36 [71.54s-73.35s | gốc=1.84s]: rate=+45%, atempo=1.22x -> 1.81s",
+        "[00:32:54] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (6144db7 -> 7dd5ae6) | Auto-Telemetry [warmup_fyp] tu_chan_gioi at 2026-11-06 00:32:38",
+        "[00:32:54] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Bố bé giải thích như thế này, Bố mẹ con thường làm điều này' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[00:32:55] [INFO] tiktok_pipeline: TTS #37 [73.94s-74.34s | gốc=4.02s]: rate=+18%, atempo=1.00x -> 0.40s",
+        "[00:32:59] [INFO] tiktok_pipeline: TTS #38 [77.96s-81.21s | gốc=3.86s]: rate=+18%, atempo=1.00x -> 3.25s",
+        "[00:33:34] [INFO] tiktok_pipeline: TTS #39 [82.62s-84.49s | gốc=1.88s]: rate=+45%, atempo=1.24x -> 1.87s",
+        "[00:34:07] [INFO] tiktok_pipeline: TTS #40 [85.42s-86.84s | gốc=1.44s]: rate=+45%, atempo=1.35x -> 1.42s",
+        "[00:34:37] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Bố cứ tưởng con bé sẽ ngoan ngoãn và không nghịch ngợm nữa' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[00:34:37] [INFO] tiktok_pipeline: TTS #41 [87.86s-88.26s | gốc=2.16s]: rate=+18%, atempo=1.00x -> 0.40s",
+        "[00:35:06] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Nhưng điều mọi người không ngờ tới lại là' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[00:35:06] [INFO] tiktok_pipeline: TTS #42 [90.58s-90.98s | gốc=0.84s]: rate=+18%, atempo=1.00x -> 0.40s",
+        "[00:35:38] [INFO] tiktok_pipeline: TTS #43 [92.02s-92.67s | gốc=0.68s]: rate=+26%, atempo=1.00x -> 0.65s",
+        "[00:36:33] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[00:36:33] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[00:36:34] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[00:36:34] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Con bé cố tình lấy súp trên Pan weibo' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[00:36:34] [INFO] tiktok_pipeline: TTS #44 [93.34s-93.74s | gốc=1.76s]: rate=+37%, atempo=1.00x -> 0.40s",
+        "[00:37:18] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Pan Weiwei cũng không tha thứ cho anh ta' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[00:37:18] [INFO] tiktok_pipeline: TTS #45 [95.58s-95.98s | gốc=0.92s]: rate=+18%, atempo=1.00x -> 0.40s",
+        "[00:37:50] [INFO] tiktok_pipeline: TTS #46 [97.06s-98.44s | gốc=1.40s]: rate=+45%, atempo=1.19x -> 1.38s"
       ],
-      "lock_file_content": "idle"
+      "lock_file_content": "pid=3213 ts=1793900194"
     }
   }
 }
