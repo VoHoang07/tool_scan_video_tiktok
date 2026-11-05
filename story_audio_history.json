@@ -150,7 +150,8 @@
     "990005401",
     "7486892216481467703",
     "2StxahiYYAI",
-    "3ICgjZ4kWfU"
+    "3ICgjZ4kWfU",
+    "QjNcEG68q_c"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -212,7 +213,8 @@
     "yt_sound_iioCY__jipU",
     "bongcuc_yt_uYLLb4TWfhk_p1",
     "7486011049779514128",
-    "yt_sound_3ICgjZ4kWfU"
+    "yt_sound_3ICgjZ4kWfU",
+    "yt_sound_QjNcEG68q_c"
   ],
   "items": [
     {
@@ -854,6 +856,16 @@
       "source_url": "https://www.youtube.com/watch?v=3ICgjZ4kWfU",
       "output_filename": "thu_cung_vui_nhon/ready/20261105_231054_youtube_shorts_story_3ICgjZ4kWfU.mp4",
       "crawled_at": "2026-11-05T23:41:35"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "QjNcEG68q_c",
+      "sound_id": "yt_sound_QjNcEG68q_c",
+      "platform": "youtube_shorts",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.youtube.com/watch?v=QjNcEG68q_c",
+      "output_filename": "video_AI_hay/ready/20261105_235310_youtube_shorts_story_QjNcEG68q_c.mp4",
+      "crawled_at": "2026-11-05T23:53:16"
     }
   ]
 }
