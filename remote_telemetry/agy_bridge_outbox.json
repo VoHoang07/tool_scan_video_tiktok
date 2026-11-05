@@ -1,103 +1,52 @@
 {
-  "updated_at": "2026-11-05 08:13:47",
+  "updated_at": "2026-11-05 08:21:35",
   "latest_result": {
-    "cmd_id": "cmd_20261105_081200_unhang_stream1_edge_tts",
-    "action": "shell",
-    "executed_at": "2026-11-05 08:13:42",
-    "machine_arch": "x86_64",
-    "hostname": "Hoangs-MBP.fpt",
-    "status": "SUCCESS",
-    "exit_code": 0,
-    "stdout": "vohoang          60899  10.6  0.4 34622216  74732   ??  S     8:13AM   0:01.27 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang           3218   0.0  0.1 34210620  12572   ??  Ss    3:57PM   0:59.60 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python /Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py --daemon --poll 20\nvohoang           3213   0.0  1.2 34999696 199724 s001  S+    3:57PM  15:53.31 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           3214   0.0  0.0 34187096   1184 s001  S+    3:57PM   0:00.01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          60901   0.0  0.0 34179428   2044   ??  S     8:13AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
-    "stderr": "",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793841695",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-05 08:21:35",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-05 08:21:35"
+    },
     "system_health": {
-      "timestamp": "2026-11-05 08:13:46",
+      "timestamp": "2026-11-05 08:21:35",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 136.3,
+      "lock_file_age_seconds": null,
       "processes": [
-        "60899    00:04 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "60901    00:04 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 16:16:22 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 16:16:22 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "60899    07:52 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "60901    07:52 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 16:24:10 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 16:24:10 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[16:41:46] [INFO] tiktok_pipeline: TTS #01 [16.82s-20.45s | gốc=3.68s]: rate=-27%, atempo=0.99x -> 3.63s",
-        "[16:42:10] [INFO] tiktok_pipeline: TTS #02 [23.30s-31.79s | gốc=8.52s]: rate=-25%, atempo=1.00x -> 8.49s",
-        "[16:43:09] [INFO] tiktok_pipeline: TTS #03 [32.82s-40.29s | gốc=7.48s]: rate=-26%, atempo=1.00x -> 7.47s",
-        "[16:43:45] [INFO] tiktok_pipeline: TTS #04 [41.22s-45.60s | gốc=4.40s]: rate=-18%, atempo=1.00x -> 4.38s",
-        "[16:43:48] [INFO] tiktok_pipeline: TTS #05 [48.54s-53.07s | gốc=4.56s]: rate=-21%, atempo=1.00x -> 4.53s",
-        "[16:43:58] [INFO] tiktok_pipeline: TTS #06 [54.02s-61.45s | gốc=7.44s]: rate=-22%, atempo=1.00x -> 7.43s",
-        "[16:44:14] [INFO] tiktok_pipeline: TTS #07 [63.90s-66.96s | gốc=3.10s]: rate=-28%, atempo=0.99x -> 3.06s",
-        "[16:44:16] [INFO] tiktok_pipeline: TTS #08 [67.94s-70.47s | gốc=2.56s]: rate=+25%, atempo=0.93x -> 2.53s",
-        "[16:44:25] [INFO] tiktok_pipeline: TTS #09 [73.62s-80.28s | gốc=6.70s]: rate=-14%, atempo=1.00x -> 6.66s",
-        "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
-        "  warnings.warn('resource_tracker: There appear to be %d '",
-        "[08:13:44] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
-        "[08:13:44] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[08:13:44] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[08:13:44] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[08:13:44] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[08:13:45] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
-        "==============================================================================================",
-        "[08:13:45] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ==="
-      ],
-      "lock_file_content": "pid=3213 ts=1793841090"
+        "[08:19:59] [INFO] tiktok_pipeline: [195.46s - 198.42s] 捷克 二鼠 执行带烂 收放闲梯和甲板工艺工作  ==>  Con chuột thứ hai của Séc thực hiện công việc đưa ra vào thang và đồ thủ công trên boong",
+        "[08:19:59] [INFO] tiktok_pipeline: [199.66s - 203.18s] 安娜 船一 负责船员疾病治疗和日常体检  ==>  Anna Chuanyi chịu trách nhiệm điều trị bệnh cho phi hành đoàn và khám sức khỏe hàng ngày",
+        "[08:19:59] [INFO] tiktok_pipeline: [204.66s - 205.72s] 事情终于过去了  ==>  Sự việc cuối cùng cũng trôi qua",
+        "[08:20:02] [INFO] tiktok_pipeline: Caption đã dịch: 🎬 Phim truyền hình AIEarthsea Tập 21: Nỗi ám ảnh về biển sâu thật thú vị!. \"Cái ống lớn bật bếp, người thủy thủ nhổ tóc, ông to lớn cầm lái, chúng mình ra khỏi cái nơi chế...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+        "[08:20:02] [INFO] tiktok_pipeline: Hashtags: #videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #hoathinhhai #xh",
+        "[08:20:02] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
+        "[08:20:02] [INFO] tiktok_pipeline: Cấu hình giọng kênh [video_AI_hay]: Tông giọng đáng yêu, hài hước, sinh động (AI Hoạt họa / Thú cưng / Kể chuyện) (voice=vi-VN-HoaiMyNeural, rate=+0%, pitch=+4Hz)",
+        "[08:20:02] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +0%, Độ trầm/cao: +4Hz) cho 38 câu thoại...",
+        "[08:20:10] [INFO] tiktok_pipeline: TTS #00 [11.46s-12.43s | gốc=1.00s]: rate=+38%, atempo=1.16x -> 0.97s",
+        "[08:20:24] [INFO] tiktok_pipeline: TTS #01 [13.30s-14.24s | gốc=0.98s]: rate=+17%, atempo=0.93x -> 0.94s",
+        "[08:20:28] [INFO] tiktok_pipeline: TTS #02 [21.40s-22.11s | gốc=0.74s]: rate=+22%, atempo=0.95x -> 0.71s",
+        "[08:20:37] [INFO] tiktok_pipeline: TTS #03 [22.46s-23.18s | gốc=0.78s]: rate=+38%, atempo=1.90x -> 0.72s",
+        "[08:20:43] [INFO] tiktok_pipeline: TTS #04 [23.24s-23.58s | gốc=0.35s]: rate=-41%, atempo=0.90x -> 0.34s",
+        "[08:20:51] [INFO] tiktok_pipeline: TTS #05 [32.38s-34.20s | gốc=1.84s]: rate=-42%, atempo=0.98x -> 1.82s",
+        "[08:20:57] [INFO] tiktok_pipeline: TTS #06 [36.50s-37.10s | gốc=0.64s]: rate=-42%, atempo=0.78x -> 0.60s",
+        "[08:21:05] [INFO] tiktok_pipeline: TTS #07 [38.56s-39.35s | gốc=0.82s]: rate=-25%, atempo=0.98x -> 0.79s",
+        "[08:21:09] [INFO] tiktok_pipeline: TTS #08 [70.62s-71.11s | gốc=0.52s]: rate=+30%, atempo=0.95x -> 0.49s",
+        "[08:21:14] [INFO] tiktok_pipeline: TTS #09 [85.60s-86.31s | gốc=0.74s]: rate=+0%, atempo=0.92x -> 0.71s",
+        "[08:21:20] [INFO] tiktok_pipeline: TTS #10 [100.66s-101.61s | gốc=0.98s]: rate=-42%, atempo=0.91x -> 0.95s",
+        "[08:21:33] [INFO] tiktok_pipeline: TTS #11 [124.78s-128.26s | gốc=3.52s]: rate=+38%, atempo=1.24x -> 3.48s"
+      ]
     }
-  },
-  "history": [
-    {
-      "cmd_id": "cmd_20261105_081200_unhang_stream1_edge_tts",
-      "action": "shell",
-      "executed_at": "2026-11-05 08:13:42",
-      "machine_arch": "x86_64",
-      "hostname": "Hoangs-MBP.fpt",
-      "status": "SUCCESS",
-      "exit_code": 0,
-      "stdout": "vohoang          60899  10.6  0.4 34622216  74732   ??  S     8:13AM   0:01.27 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang           3218   0.0  0.1 34210620  12572   ??  Ss    3:57PM   0:59.60 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python /Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py --daemon --poll 20\nvohoang           3213   0.0  1.2 34999696 199724 s001  S+    3:57PM  15:53.31 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           3214   0.0  0.0 34187096   1184 s001  S+    3:57PM   0:00.01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          60901   0.0  0.0 34179428   2044   ??  S     8:13AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
-      "stderr": "",
-      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
-      "system_health": {
-        "timestamp": "2026-11-05 08:13:46",
-        "machine_arch": "x86_64",
-        "hostname": "Hoangs-MBP.fpt",
-        "stream1_running": true,
-        "stream2_running": true,
-        "chrome_testing_count": 0,
-        "lock_file_age_seconds": 136.3,
-        "processes": [
-          "60899    00:04 ./venv/bin/python main.py --stream-upload --max-ready 5",
-          "60901    00:04 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-          "3213 16:16:22 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-          "3214 16:16:22 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
-        ],
-        "recent_daemon_log_tail": [
-          "[16:41:46] [INFO] tiktok_pipeline: TTS #01 [16.82s-20.45s | gốc=3.68s]: rate=-27%, atempo=0.99x -> 3.63s",
-          "[16:42:10] [INFO] tiktok_pipeline: TTS #02 [23.30s-31.79s | gốc=8.52s]: rate=-25%, atempo=1.00x -> 8.49s",
-          "[16:43:09] [INFO] tiktok_pipeline: TTS #03 [32.82s-40.29s | gốc=7.48s]: rate=-26%, atempo=1.00x -> 7.47s",
-          "[16:43:45] [INFO] tiktok_pipeline: TTS #04 [41.22s-45.60s | gốc=4.40s]: rate=-18%, atempo=1.00x -> 4.38s",
-          "[16:43:48] [INFO] tiktok_pipeline: TTS #05 [48.54s-53.07s | gốc=4.56s]: rate=-21%, atempo=1.00x -> 4.53s",
-          "[16:43:58] [INFO] tiktok_pipeline: TTS #06 [54.02s-61.45s | gốc=7.44s]: rate=-22%, atempo=1.00x -> 7.43s",
-          "[16:44:14] [INFO] tiktok_pipeline: TTS #07 [63.90s-66.96s | gốc=3.10s]: rate=-28%, atempo=0.99x -> 3.06s",
-          "[16:44:16] [INFO] tiktok_pipeline: TTS #08 [67.94s-70.47s | gốc=2.56s]: rate=+25%, atempo=0.93x -> 2.53s",
-          "[16:44:25] [INFO] tiktok_pipeline: TTS #09 [73.62s-80.28s | gốc=6.70s]: rate=-14%, atempo=1.00x -> 6.66s",
-          "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
-          "  warnings.warn('resource_tracker: There appear to be %d '",
-          "[08:13:44] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
-          "[08:13:44] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-          "[08:13:44] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-          "[08:13:44] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-          "[08:13:44] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-          "[08:13:45] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
-          "==============================================================================================",
-          "[08:13:45] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ==="
-        ],
-        "lock_file_content": "pid=3213 ts=1793841090"
-      }
-    }
-  ]
+  }
 }
