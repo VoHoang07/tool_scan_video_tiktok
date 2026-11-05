@@ -143,7 +143,8 @@
     "7473815778035289378",
     "7647042355509431559",
     "990012001",
-    "7685728082287791380"
+    "7685728082287791380",
+    "6bmpZbcnasA"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -773,6 +774,16 @@
       "source_url": "https://www.tiktok.com/@funny.gau/video/7685728082287791380",
       "output_filename": "tu_chan_gioi/ready/20261105_195119_tiktok_story_7685728082287791380.mp4",
       "crawled_at": "2026-11-05T19:51:29"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "6bmpZbcnasA",
+      "sound_id": "yt_sound_6bmpZbcnasA",
+      "platform": "youtube_shorts",
+      "genre": "channel_10_tech_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=6bmpZbcnasA",
+      "output_filename": "phu_kien_tien_ich/ready/20261105_200912_youtube_shorts_story_6bmpZbcnasA.mp4",
+      "crawled_at": "2026-11-05T20:10:09"
     }
   ]
 }
