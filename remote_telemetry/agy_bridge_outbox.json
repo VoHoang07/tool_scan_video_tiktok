@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-05 08:55:51",
+  "updated_at": "2026-11-05 09:06:08",
   "latest_result": {
-    "cmd_id": "auto_heal_1793843751",
+    "cmd_id": "auto_heal_1793844368",
     "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-05 08:55:51",
+    "executed_at": "2026-11-05 09:06:08",
     "unstick_report": {
       "killed_chrome_for_testing": false,
       "removed_locks": [
         "workspace_temp/.tiktok_browser_session.lock"
       ],
-      "timestamp": "2026-11-05 08:55:51"
+      "timestamp": "2026-11-05 09:06:08"
     },
     "system_health": {
-      "timestamp": "2026-11-05 08:55:51",
+      "timestamp": "2026-11-05 09:06:08",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -20,32 +20,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "60899    42:08 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "60901    42:08 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 16:58:26 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 16:58:26 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "60899    52:25 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "60901    52:25 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 17:08:43 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 17:08:43 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[08:55:15] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:16] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:17] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:18] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:19] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:21] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:22] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:23] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:24] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:25] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:28] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:30] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:31] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:32] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:33] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:34] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:36] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:37] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:38] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[08:55:39] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'"
+        "[09:01:56] [INFO] tiktok_pipeline: Hashtags: #monngondelam #amthuctiktok #anvatmoingay #anchayngon #reviewdoan #nauanngon #doanvat #foryou",
+        "[09:01:56] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
+        "[09:01:56] [INFO] tiktok_pipeline: Cấu hình giọng kênh [an_vat_moi_ngay]: Giọng nữ hào hứng, tươi vui, kích thích vị giác (Ẩm thực & Đồ ăn vặt) (voice=vi-VN-HoaiMyNeural, rate=+4%, pitch=+2Hz)",
+        "[09:01:56] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +4%, Độ trầm/cao: +2Hz) cho 41 câu thoại...",
+        "[09:02:14] [INFO] tiktok_pipeline: TTS #00 [01.22s-03.95s | gốc=2.76s]: rate=+25%, atempo=0.94x -> 2.73s",
+        "[09:02:17] [INFO] tiktok_pipeline: TTS #01 [04.46s-06.43s | gốc=2.04s]: rate=+38%, atempo=0.93x -> 1.97s",
+        "[09:02:38] [INFO] tiktok_pipeline: TTS #02 [06.50s-09.24s | gốc=2.76s]: rate=-15%, atempo=1.00x -> 2.74s",
+        "[09:02:48] [INFO] tiktok_pipeline: TTS #03 [10.54s-12.67s | gốc=2.16s]: rate=+15%, atempo=0.94x -> 2.13s",
+        "[09:03:06] [INFO] tiktok_pipeline: TTS #04 [12.98s-13.87s | gốc=0.92s]: rate=+21%, atempo=0.95x -> 0.89s",
+        "[09:03:19] [INFO] tiktok_pipeline: TTS #05 [14.38s-17.08s | gốc=2.72s]: rate=-16%, atempo=1.00x -> 2.70s",
+        "[09:03:24] [INFO] tiktok_pipeline: TTS #06 [17.62s-20.07s | gốc=2.48s]: rate=+0%, atempo=0.93x -> 2.45s",
+        "[09:03:35] [INFO] tiktok_pipeline: TTS #07 [21.26s-23.67s | gốc=2.44s]: rate=+38%, atempo=0.96x -> 2.41s",
+        "[09:03:55] [INFO] tiktok_pipeline: TTS #08 [25.26s-26.59s | gốc=1.40s]: rate=+18%, atempo=0.94x -> 1.33s",
+        "[09:04:09] [INFO] tiktok_pipeline: TTS #09 [26.66s-29.25s | gốc=2.68s]: rate=-20%, atempo=0.99x -> 2.59s",
+        "[09:04:39] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Thật dễ dàng để nhào bột cho đến khi nó mịn và tinh tế' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[09:04:50] [INFO] tiktok_pipeline: TTS #10 [29.34s-33.00s | gốc=3.68s]: rate=-42%, atempo=1.49x -> 3.66s",
+        "[09:05:23] [INFO] tiktok_pipeline: TTS #11 [34.26s-36.19s | gốc=1.96s]: rate=+23%, atempo=0.94x -> 1.93s",
+        "[09:05:25] [INFO] tiktok_pipeline: TTS #12 [38.26s-39.61s | gốc=1.42s]: rate=+13%, atempo=0.95x -> 1.35s",
+        "[09:05:50] [INFO] tiktok_pipeline: TTS #13 [39.68s-41.51s | gốc=1.86s]: rate=-10%, atempo=0.99x -> 1.83s",
+        "[09:05:58] [INFO] tiktok_pipeline: TTS #14 [43.38s-44.83s | gốc=1.48s]: rate=+24%, atempo=0.93x -> 1.45s"
       ]
     }
   }
