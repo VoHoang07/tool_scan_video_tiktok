@@ -1,17 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 18:48:45",
+    "timestamp": "2026-11-05 18:57:56",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "event_type": "upload_error",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 163.1,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4",
+      "error": "Không tìm thấy video nào khớp với '/Users/vohoang/Documents/tool_scan_video_tiktok/output/audio_dem_khuyen/ready/20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4' trong các thư mục output/channel_X/ready/."
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 18:57:56",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4",
+        "error": "Không tìm thấy video nào khớp với '/Users/vohoang/Documents/tool_scan_video_tiktok/output/audio_dem_khuyen/ready/20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4' trong các thư mục output/channel_X/ready/."
+      }
+    },
     {
       "timestamp": "2026-11-05 18:48:45",
       "machine_arch": "x86_64",
@@ -766,22 +776,6 @@
         "scrolled_videos": 12,
         "elapsed_seconds": 156.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 12:12:28",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261105_093228_douyin_story_7464198303807245608.mp4",
-        "caption": "🐾 Đừng tin tôi — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Hãy nhìn tôi, chờ đợi tôi, khóa chặt tôi vào tình yêu...\" Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
