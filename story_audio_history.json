@@ -144,7 +144,8 @@
     "7647042355509431559",
     "990012001",
     "7685728082287791380",
-    "6bmpZbcnasA"
+    "6bmpZbcnasA",
+    "RZ5ExrPnS9g"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -784,6 +785,16 @@
       "source_url": "https://www.youtube.com/watch?v=6bmpZbcnasA",
       "output_filename": "phu_kien_tien_ich/ready/20261105_200912_youtube_shorts_story_6bmpZbcnasA.mp4",
       "crawled_at": "2026-11-05T20:10:09"
+    },
+    {
+      "channel": "thu_cung_vui_nhon",
+      "video_id": "RZ5ExrPnS9g",
+      "sound_id": "yt_sound_RZ5ExrPnS9g",
+      "platform": "youtube_shorts",
+      "genre": "channel_11_pet_comedy",
+      "source_url": "https://www.youtube.com/watch?v=RZ5ExrPnS9g",
+      "output_filename": "thu_cung_vui_nhon/ready/20261105_202502_youtube_shorts_story_RZ5ExrPnS9g.mp4",
+      "crawled_at": "2026-11-05T20:52:33"
     }
   ]
 }
