@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 12:00:04",
+    "timestamp": "2026-11-05 12:04:01",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
+    "event_type": "upload",
     "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "elapsed_seconds": 150.3,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261105_103856_youtube_shorts_story_wHMzoqtE3Sk.mp4",
+      "caption": "💪 Chăm sóc sức khỏe gia đình: Âm thanh này phát ra từ cơ bắp bền bỉ nhất của các cô gái, đó là trái tim.. \"Đó là những động mạch hình hộp tấn công các chất dinh dưỡng và giữ cho nó hoạt động...\" Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
+      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #tiktokvn",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 12:04:01",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261105_103856_youtube_shorts_story_wHMzoqtE3Sk.mp4",
+        "caption": "💪 Chăm sóc sức khỏe gia đình: Âm thanh này phát ra từ cơ bắp bền bỉ nhất của các cô gái, đó là trái tim.. \"Đó là những động mạch hình hộp tấn công các chất dinh dưỡng và giữ cho nó hoạt động...\" Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
+        "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-05 12:00:04",
       "machine_arch": "x86_64",
@@ -760,18 +780,6 @@
       "details": {
         "scrolled_videos": 11,
         "elapsed_seconds": 158.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 10:52:41",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 163.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
