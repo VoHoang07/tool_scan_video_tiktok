@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 20:12:14",
+    "timestamp": "2026-11-05 20:18:28",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "elapsed_seconds": 164.3,
+      "scrolled_videos": 12,
+      "elapsed_seconds": 157.5,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 20:18:28",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 157.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 20:12:14",
       "machine_arch": "x86_64",
@@ -760,22 +772,6 @@
       "details": {
         "video_file": "20261105_190601_youtube_shorts_story_hmDRy0NjfzM.mp4",
         "error": "Locator.scroll_into_view_if_needed: Target page, context or browser has been closed"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 19:02:57",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261105_141815_tiktok_story_7703396595689213204.mp4",
-        "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Tin Tức Tu Tiên Giới: Thiên Bắc xuất hiện dị tượng! Nghi vấn có thiên ngoại pháp bảo giáng lâm!. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-        "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
