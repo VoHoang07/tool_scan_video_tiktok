@@ -1,48 +1,52 @@
 {
-  "updated_at": "2026-11-05 09:14:26",
+  "updated_at": "2026-11-05 09:30:52",
   "latest_result": {
-    "cmd_id": "heartbeat_1793844862",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-05 09:14:22",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793845852",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-05 09:30:52",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-05 09:30:52"
+    },
     "system_health": {
-      "timestamp": "2026-11-05 09:14:25",
+      "timestamp": "2026-11-05 09:30:52",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 116.3,
+      "lock_file_age_seconds": null,
       "processes": [
-        "60899 01:00:43 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "60901 01:00:43 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 17:17:01 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 17:17:01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "60899 01:17:09 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "60901 01:17:09 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 17:33:27 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 17:33:27 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[09:08:43] [INFO] tiktok_pipeline: TTS #28 [88.98s-92.12s | gốc=3.16s]: rate=+0%, atempo=1.01x -> 3.14s",
-        "[09:08:46] [INFO] tiktok_pipeline: TTS #29 [92.70s-95.67s | gốc=3.00s]: rate=+28%, atempo=0.94x -> 2.97s",
-        "[09:08:59] [INFO] tiktok_pipeline: TTS #30 [96.14s-98.09s | gốc=2.02s]: rate=+20%, atempo=0.94x -> 1.95s",
-        "[09:09:19] [INFO] tiktok_pipeline: TTS #31 [98.16s-100.56s | gốc=2.42s]: rate=-14%, atempo=1.00x -> 2.40s",
-        "[09:09:35] [INFO] tiktok_pipeline: TTS #32 [101.22s-103.74s | gốc=2.56s]: rate=-19%, atempo=0.99x -> 2.52s",
-        "[09:09:48] [INFO] tiktok_pipeline: TTS #33 [104.02s-105.70s | gốc=1.72s]: rate=+38%, atempo=0.96x -> 1.68s",
-        "[09:09:51] [INFO] tiktok_pipeline: TTS #34 [106.46s-108.28s | gốc=1.84s]: rate=-18%, atempo=1.00x -> 1.82s",
-        "[09:10:02] [INFO] tiktok_pipeline: TTS #35 [108.66s-110.68s | gốc=2.04s]: rate=-12%, atempo=1.00x -> 2.02s",
-        "[09:10:05] [INFO] tiktok_pipeline: TTS #36 [112.78s-115.71s | gốc=2.96s]: rate=+34%, atempo=0.93x -> 2.93s",
-        "[09:10:17] [INFO] tiktok_pipeline: TTS #37 [116.78s-119.79s | gốc=3.04s]: rate=+31%, atempo=0.93x -> 3.01s",
-        "[09:10:18] [INFO] tiktok_pipeline: TTS #38 [120.94s-124.43s | gốc=3.52s]: rate=+0%, atempo=1.02x -> 3.49s",
-        "[09:10:57] [INFO] tiktok_pipeline: TTS #39 [125.22s-128.43s | gốc=3.28s]: rate=+34%, atempo=0.93x -> 3.21s",
-        "[09:10:59] [INFO] tiktok_pipeline: TTS #40 [128.50s-130.28s | gốc=1.84s]: rate=+34%, atempo=0.93x -> 1.78s",
-        "[09:10:59] [INFO] tiktok_pipeline: === [5/5] GHÉP ÂM THANH & ĐÓNG PHỤ ĐỀ LÊN VIDEO (FFMPEG) ===",
-        "[09:10:59] [INFO] tiktok_pipeline: Thông số video gốc: 1280x720, thời lượng: 131.05s",
-        "[09:11:01] [INFO] tiktok_pipeline: Đã phát hiện vị trí sub gốc cần làm mờ: tâm Y=650px (90.3%), chiều cao=84px (peak_score=10302.6)",
-        "[09:11:01] [INFO] tiktok_pipeline: Đã tạo trục âm thanh lồng tiếng Việt: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_v5Hs6tww2b0/voiceover_track.wav",
-        "[09:11:01] [INFO] tiktok_pipeline: Đang trộn lồng tiếng Việt đè lên giọng nhân vật gốc (nền gốc=0.25, giọng Việt=1.35)...",
-        "[09:11:13] [INFO] tiktok_pipeline: Đang xóa tinh tế nét chữ sub gốc theo từng khung hình tại dải Y=[602..696]...",
-        "[09:14:11] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc..."
-      ],
-      "lock_file_content": "pid=3213 ts=1793844750"
+        "[09:29:27] [INFO] tiktok_pipeline: [audio_dem_khuyen] [Kiểm chứng Hồ sơ Kênh] Thông số server sau phiên chạy: {'uniqueId': 'audio_ba_con_oi', 'domFollowing': '7', 'domFollowers': '106', 'domLikes': '120', 'sidebarFollowing': ['/@audio_ba_con_oi', '/@giahan_14102015', '/@emmeo527', '/@user234327174', '/@_thylee_', '/@vinitaharvey']}",
+        "[09:29:33] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đã nạp file video vào TikTok Studio. Đang chờ tải lên 100% và tự động đóng các hộp thoại hướng dẫn ('Đã hiểu')...",
+        "[09:29:36] [INFO] tiktok_pipeline: [audio_dem_khuyen] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Đã hiểu'",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "[09:29:38] [INFO] tiktok_pipeline: [audio_dem_khuyen] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Đã hiểu'",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "[09:30:20] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đã nhập xong Mô tả & 8 Hashtag chuẩn vào TikTok Studio: \"📖 Góc Kể Chuyện: Lòng người khó đoán chỉ đến khi biến cố ập tới mới biết ai thật lòng. Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạ...\"",
+        "[09:30:20] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = TẮT)...",
+        "[09:30:27] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đang bấm nút đỏ ĐĂNG ('Đăng', data-e2e='post_video_button') tại (380.0, 620.9)...",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "[09:30:28] [INFO] tiktok_pipeline: [audio_dem_khuyen] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất...",
+        "[09:30:30] [INFO] tiktok_pipeline: [audio_dem_khuyen] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!",
+        "[09:30:30] [INFO] tiktok_pipeline: Đã đánh dấu POSTED thành công: /Users/vohoang/Documents/tool_scan_video_tiktok/output/audio_dem_khuyen/posted/20261105_092449_tiktok_story_990001002_bongcuc_v4_s10_p2_bg_daylight.mp4 | posted_at=2026-11-05 09:30:30 (đã cập nhật 2 dòng trong CSV, tự động đồng bộ thêm 0 video)",
+        "[09:30:35] [INFO] tiktok_pipeline: [audio_dem_khuyen] [Lượt 1] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "[09:30:37] [INFO] tiktok_pipeline: [audio_dem_khuyen] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[09:30:50] [INFO] tiktok_pipeline: [audio_dem_khuyen] [Lượt 2] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "[09:30:52] [INFO] tiktok_pipeline: [audio_dem_khuyen] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi')."
+      ]
     }
   }
 }
