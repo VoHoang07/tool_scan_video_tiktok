@@ -368,9 +368,20 @@ def _ensure_both_streams_alive() -> Optional[Dict[str, Any]]:
 
     log_dir = PROJECT_ROOT / "logs"
     log_dir.mkdir(parents=True, exist_ok=True)
+    log1 = log_dir / "daemon_24_7.log"
+
+    if health.get("stream1_running") and log1.exists():
+        try:
+            idle_sec = time.time() - log1.stat().st_mtime
+            if idle_sec > 1200:
+                subprocess.run(["pkill", "-9", "-f", "main.py --stream-upload"], check=False)
+                log1.touch()
+                health["stream1_running"] = False
+                restarted.append(f"stream1_unhung_after_{int(idle_sec)}s")
+        except Exception:
+            pass
 
     if not health.get("stream1_running"):
-        log1 = log_dir / "daemon_24_7.log"
         subprocess.Popen(
             f"nohup caffeinate -dimsu '{py_bin}' main.py --stream-upload --max-ready 5 </dev/null >> '{log1}' 2>&1 &",
             shell=True,

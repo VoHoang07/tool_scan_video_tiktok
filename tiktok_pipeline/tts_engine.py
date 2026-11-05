@@ -179,7 +179,7 @@ class TTSEngine:
                     rate=rate,
                     pitch=self.pitch,
                 )
-                await communicate.save(str(output_path))
+                await asyncio.wait_for(communicate.save(str(output_path)), timeout=25.0)
                 if output_path.exists() and output_path.stat().st_size > 100:
                     return
             except Exception as exc:
