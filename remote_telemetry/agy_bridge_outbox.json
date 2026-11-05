@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-05 10:14:51",
+  "updated_at": "2026-11-05 10:44:58",
   "latest_result": {
-    "cmd_id": "heartbeat_1793848490",
+    "cmd_id": "heartbeat_1793850297",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-05 10:14:50",
+    "executed_at": "2026-11-05 10:44:57",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 10:14:51",
+      "timestamp": "2026-11-05 10:44:58",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 71.0,
+      "lock_file_age_seconds": 62.0,
       "processes": [
-        "60899 02:01:08 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "60901 02:01:08 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 18:17:26 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 18:17:26 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "60899 02:31:15 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "60901 02:31:15 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 18:47:33 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 18:47:33 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[10:09:42] [INFO] tiktok_pipeline: Hashtags: #tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuong #viral",
-        "[10:09:44] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[10:09:44] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=tu_chan_gioi, file=tu_chan_gioi/ready/20261105_100929_tiktok_story_7688705812809960725.mp4, status=READY)",
-        "[10:09:44] [INFO] tiktok_pipeline: ==> Đã hoàn thành 1/1 video cho [tu_chan_gioi]: /Users/vohoang/Documents/tool_scan_video_tiktok/output/tu_chan_gioi/ready/20261105_100929_tiktok_story_7688705812809960725.mp4",
-        "[10:09:44] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh tu_chan_gioi (tu_chan_gioi)! Kho chờ ready/ hiện tại: 1/5",
-        "[10:09:46] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh tu_chan_gioi (tu_chan_gioi): Nghỉ an toàn 196s (~3.3 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
-        "[10:10:48] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (de2b750 -> 08351ac) | Auto-Telemetry [warmup_fyp] an_vat_moi_ngay at 2026-11-05 10:10:28",
-        "[10:11:59] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[10:11:59] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
-        "[10:12:00] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[10:12:02] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[10:14:23] [INFO] tiktok_pipeline: [Round-Robin] Kênh meo_vat_gia_dinh (meo_vat_gia_dinh) hiện có 0/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
-        "[10:14:23] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[10:14:23] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[10:14:23] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[10:14:23] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_5_home_gadgets] -> Thư mục: output/meo_vat_gia_dinh/ready/ | Link mẫu: 0 | Kênh mẫu: ['meovatcuocsong.vn', 'meovathaymoingay', 'giadungthongminh.official', 'meobepnhỏ'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-        "[10:14:23] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @meovatcuocsong.vn.",
-        "[10:14:23] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @meovathaymoingay.",
-        "[10:14:23] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @giadungthongminh.official.",
-        "[10:14:23] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @meobepnhỏ."
+        "[10:41:10] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Do chế độ ăn uống không đúng cách' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[10:41:10] [INFO] tiktok_pipeline: TTS #03 [20.14s-20.81s | gốc=1.18s]: rate=+38%, atempo=0.55x -> 0.67s",
+        "[10:41:25] [INFO] tiktok_pipeline: TTS #04 [21.32s-23.59s | gốc=2.30s]: rate=+0%, atempo=0.97x -> 2.27s",
+        "[10:41:55] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Hút thuốc hoặc tiểu đường' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[10:41:55] [INFO] tiktok_pipeline: TTS #05 [24.18s-24.85s | gốc=1.76s]: rate=-30%, atempo=0.55x -> 0.67s",
+        "[10:41:57] [INFO] tiktok_pipeline: TTS #06 [26.42s-27.39s | gốc=1.02s]: rate=+38%, atempo=1.20x -> 0.97s",
+        "[10:42:04] [INFO] tiktok_pipeline: TTS #07 [27.44s-30.05s | gốc=2.64s]: rate=-42%, atempo=0.88x -> 2.61s",
+        "[10:42:24] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[10:42:25] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[10:42:33] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Điều này lần lượt dẫn đến việc thu hẹp các động mạch hình chậu' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[10:42:43] [INFO] tiktok_pipeline: TTS #08 [30.90s-33.64s | gốc=2.76s]: rate=-42%, atempo=1.89x -> 2.74s",
+        "[10:42:45] [INFO] tiktok_pipeline: TTS #09 [34.44s-36.68s | gốc=2.26s]: rate=-21%, atempo=1.00x -> 2.24s",
+        "[10:43:18] [INFO] tiktok_pipeline: TTS #10 [36.82s-38.76s | gốc=2.00s]: rate=-11%, atempo=1.00x -> 1.94s",
+        "[10:43:39] [INFO] tiktok_pipeline: TTS #11 [38.82s-39.87s | gốc=1.12s]: rate=+38%, atempo=0.95x -> 1.05s",
+        "[10:43:40] [INFO] tiktok_pipeline: TTS #12 [39.94s-41.98s | gốc=2.08s]: rate=+0%, atempo=0.92x -> 2.04s",
+        "[10:43:53] [INFO] tiktok_pipeline: TTS #13 [42.98s-44.27s | gốc=1.36s]: rate=+22%, atempo=0.94x -> 1.29s",
+        "[10:43:54] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[10:43:54] [INFO] tiktok_pipeline: [Anti-Duplicate Guard] Phát hiện video trong baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (story_id=7656305238692973832) ĐÃ ĐƯỢC ĐĂNG TRƯỚC ĐÓ -> Tự động chuyển sang posted/!",
+        "[10:44:24] [INFO] tiktok_pipeline: TTS #14 [44.34s-45.87s | gốc=1.60s]: rate=-29%, atempo=0.98x -> 1.53s",
+        "[10:44:25] [INFO] tiktok_pipeline: TTS #15 [45.94s-48.47s | gốc=2.56s]: rate=+0%, atempo=0.96x -> 2.53s"
       ],
-      "lock_file_content": "pid=3213 ts=1793848420"
+      "lock_file_content": "pid=3213 ts=1793850236"
     }
   }
 }
