@@ -1,10 +1,10 @@
 {
-  "cmd_id": "cmd_20261105_180500_enable_sw23_fast_tts_dedup",
-  "created_at": "2026-11-05 18:05:00",
+  "cmd_id": "cmd_20261106_010500_fix_audio_dem_khuyen_post_now",
+  "created_at": "2026-11-06 01:05:00",
   "from_machine": "arm64",
   "target_arch": "x86_64",
   "action": "shell",
   "agy_prompt": "",
-  "shell_command": "pkill -9 -f 'main.py --stream-upload' || true; sleep 1; nohup caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5 </dev/null >> logs/daemon_24_7.log 2>&1 & sleep 2; ps aux | grep -E 'stream-upload|stream-filter24h' | grep -v grep",
+  "shell_command": "./venv/bin/python -c 'import json; from pathlib import Path\nfor fn in [\"uploaded_videos_registry.json\", \"story_audio_history.json\", \"posted_schedule_history.json\"]:\n    p = Path(fn)\n    if p.exists():\n        txt = p.read_text(encoding=\"utf-8\")\n        if \"990004501\" in txt or \"audio_dem_khuyen\" in txt:\n            d = json.loads(txt)\n            if fn == \"uploaded_videos_registry.json\":\n                d[\"posted_story_ids\"] = [x for x in d.get(\"posted_story_ids\", []) if x != \"990004501\"]\n                d[\"posted_filenames\"] = [x for x in d.get(\"posted_filenames\", []) if \"990004501\" not in x]\n                d[\"history\"] = [x for x in d.get(\"history\", []) if x.get(\"story_id\") != \"990004501\" and not (x.get(\"channel\") == \"audio_dem_khuyen\" and str(x.get(\"timestamp\", \"\")).startswith(\"2026-11-05 18:57\"))]\n            elif fn == \"story_audio_history.json\":\n                d[\"video_ids\"] = [x for x in d.get(\"video_ids\", []) if x != \"990004501\"]\n            elif fn == \"posted_schedule_history.json\":\n                for k in list(d.keys()):\n                    if \"audio_dem_khuyen\" in k and (\"2026-11-05\" in k or \"last_upload_ts\" in k):\n                        d.pop(k, None)\n            p.write_text(json.dumps(d, ensure_ascii=False, indent=2), encoding=\"utf-8\")\n'; pkill -9 -f 'main.py --stream-upload' || true; sleep 1; nohup caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5 </dev/null >> logs/daemon_24_7.log 2>&1 & sleep 2; ps aux | grep -E 'stream-upload|stream-filter24h' | grep -v grep",
   "timeout_seconds": 45
 }

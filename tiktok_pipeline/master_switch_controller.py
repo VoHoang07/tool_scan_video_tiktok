@@ -241,7 +241,9 @@ class MasterSwitchController:
             )
             sid = m_sid.group(1).split("_bongcuc_")[0] if m_sid else ""
             viral_score = score_map.get(sid, 0)
-            if viral_score == 0 and sid and sid[-4:].isdigit():
+            if "bongcuc_v4_" in mp4.name.lower() or (time.time() - mtime < 3600):
+                viral_score = max(viral_score, 6_000_000 + int(size_mb * 1000))
+            elif viral_score == 0 and sid and sid[-4:].isdigit():
                 # Điểm cơ sở ổn định theo video_id + ưu tiên video dung lượng chuẩn HD
                 viral_score = 100_000 + int(size_mb * 1000)
 

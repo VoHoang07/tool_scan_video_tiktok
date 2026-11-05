@@ -94,6 +94,20 @@
   - Thêm hàm `_deduplicate_existing_posts_in_content_page()` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py) để tự động phát hiện và xóa ngay các bài đăng bị trùng trên bảng `tiktokstudio/content`.
 - **Luật Miễn Dịch Vĩnh Viễn**: Mọi lệnh `git checkout -f` trên máy Intel bắt buộc phải union-merge và push `story_audio_history.json`; mọi regex trích xuất `story_id` bắt buộc hỗ trợ đầy đủ cả 7 nền tảng (`[A-Za-z0-9_-]+`).
 
+### [BUG-008] Kênh `audio_dem_khuyen` lỡ lịch đăng buổi tối do click trượt nút `Đăng` + `auto_sync_posted_videos` xóa nhầm file đang upload + khóa cứng khung giờ
+- **Thời gian**: 2026-11-06 01:05:00
+- **Triệu chứng**: Phiên đăng `audio_dem_khuyen` lúc `18:56` tải video `20261105_185144_tiktok_story_990004501_bongcuc_v4_s45_p1_bg_mukbang.mp4` đạt 100% nhưng nút đỏ `Đăng` không ăn click (`post_confirmed = False`), sau đó báo `FileNotFoundError` ở `mark_video_posted` và bỏ qua luôn khung giờ `21:15`.
+- **Nguyên nhân gốc rễ**:
+  1. `upload_one_channel_video` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py) chỉ gọi `_os_click_viewport` (tọa độ màn hình OS) mà không gọi kèm `page.mouse.click` + DOM `b.click()`, nên khi cửa sổ Chrome trên Mac Intel bị lệch/mất focus thì nút `Đăng` không ăn click.
+  2. Dù `post_confirmed == False`, code vẫn gọi `_record_uploaded_video_in_registry` và giữ lại timestamp đặt chỗ trong `posted_schedule_history.json`, làm `_was_channel_uploaded_recently(min_interval_minutes=180.0)` tưởng kênh vừa đăng lúc `18:57` nên chặn luôn khung `21:15`.
+  3. `auto_sync_posted_videos(min_age_seconds=35.0)` trong [`tiktok_pipeline/crawler.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py) thấy cờ `com.apple.macl` sau 35 giây liền di chuyển file đang upload sang `posted/` rồi gọi `run_switch_4_clear()` xóa mất file mới vì điểm viral mặc định thấp hơn 8 video seed cũ (`5_000_000`).
+  4. Thời gian render on-demand (4–5 phút) cộng dồn vào `.tiktok_browser_session.lock` làm Watchdog tưởng Chrome treo.
+- **Cách khắc phục & File đã sửa**:
+  - Click nút `Đăng` (`post_video_button`) đa tầng (`_os_click_viewport` + `page.mouse.click` + DOM `b.click()` + `locator.click(force=True)`), và nếu `post_confirmed == False` khi vẫn ở trang upload thì raise `RuntimeError` trước khi ghi vào `uploaded_videos_registry.json`, đồng thời khôi phục `slot_key` / `last_upload_ts` trong `except` của [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py).
+  - Tăng `min_age_seconds` của `auto_sync_posted_videos` lên `900.0` giây, không di chuyển file khi `.tiktok_browser_session.lock` đang bận, xử lý êm `mark_video_posted` trong [`tiktok_pipeline/crawler.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py), và ưu tiên giữ video mới/<1h hoặc `bongcuc_v4_` (`score >= 6_000_000`) trong [`tiktok_pipeline/master_switch_controller.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/master_switch_controller.py).
+  - Bổ sung `_refresh_browser_process_lock()` sau khi render và nâng ngưỡng Watchdog lên `720s` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py) & [`tiktok_pipeline/agy_intel_bridge.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py).
+- **Luật Miễn Dịch Vĩnh Viễn**: Tuyệt đối không ghi nhận `uploaded_videos_registry.json` hoặc giữ `slot_key` khi `post_confirmed == False`; không bao giờ chạy `auto_sync_posted_videos` trên file mới dưới 15 phút hoặc khi trình duyệt đang giữ lock; luôn click nút `Đăng` bằng cả OS click lẫn DOM `.click()`.
+
 ---
 
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)

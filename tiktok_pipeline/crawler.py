@@ -2997,7 +2997,7 @@ class StoryAudioCrawler:
 
         return purged
 
-    def auto_sync_posted_videos(self, min_age_seconds: float = 35.0) -> List[Dict[str, Any]]:
+    def auto_sync_posted_videos(self, min_age_seconds: float = 900.0) -> List[Dict[str, Any]]:
         """
         Tự động đồng bộ trạng thái `READY` <-> `POSTED` trên toàn bộ 4 kênh (`channel_1` .. `channel_4`):
         0. Dọn dẹp ngay mọi video nước ngoài (ngoài Trung Quốc & Việt Nam) hoặc lệch chủ đề `baby_AI` trong `ready/`.
@@ -3062,7 +3062,16 @@ class StoryAudioCrawler:
 
                 if self.has_browser_upload_macl(mp4):
                     st = mp4.stat()
-                    if (now_ts - st.st_ctime) >= min_age_seconds:
+                    browser_lock = self.project_root / "workspace_temp" / ".tiktok_browser_session.lock"
+                    is_browser_busy = False
+                    if browser_lock.exists():
+                        try:
+                            ltxt = browser_lock.read_text(encoding="utf-8").strip()
+                            if ltxt and ltxt != "idle":
+                                is_browser_busy = True
+                        except Exception:
+                            pass
+                    if not is_browser_busy and (now_ts - max(st.st_ctime, st.st_mtime)) >= min_age_seconds:
                         posted_time_str = datetime.fromtimestamp(st.st_ctime).strftime(
                             "%Y-%m-%d %H:%M:%S"
                         )
@@ -3598,9 +3607,23 @@ class StoryAudioCrawler:
                     break
 
         if not matched_ready_file and not already_posted_file:
-            raise FileNotFoundError(
-                f"Không tìm thấy video nào khớp với '{raw_ident}' trong các thư mục output/channel_X/ready/."
+            logger.warning(
+                f"[mark_video_posted] File '{raw_ident}' đã được dọn hoặc di chuyển trước đó — bỏ qua lỗi FileNotFoundError."
             )
+            inferred_ch = "general"
+            for prof in CHANNEL_PROFILES.values():
+                if prof["folder_name"] in raw_ident:
+                    inferred_ch = prof["folder_name"]
+                    break
+            return {
+                "channel": inferred_ch,
+                "filename": f"{inferred_ch}/posted/{ident_name}",
+                "moved_to": raw_ident,
+                "status": "POSTED",
+                "posted_at": now_str,
+                "csv_rows_updated": 0,
+                "auto_synced_other_channels": [],
+            }
 
         if matched_ready_file and matched_channel_folder:
             posted_dir = self.output_root / matched_channel_folder / "posted"

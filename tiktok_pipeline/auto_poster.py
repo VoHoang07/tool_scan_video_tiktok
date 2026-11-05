@@ -274,11 +274,20 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
-    def _acquire_browser_process_lock(self, max_wait_seconds: int = 360) -> Any:
+    def _refresh_browser_process_lock(self) -> None:
+        """Làm mới dấu thời gian `ts=` trong `.tiktok_browser_session.lock` khi đang cào/render hoặc tải file nặng."""
+        try:
+            lock_path = self.project_root / "workspace_temp" / ".tiktok_browser_session.lock"
+            if lock_path.exists():
+                lock_path.write_text(f"pid={os.getpid()} ts={int(time.time())}\n", encoding="utf-8")
+        except Exception:
+            pass
+
+    def _acquire_browser_process_lock(self, max_wait_seconds: int = 720) -> Any:
         """
         Khóa đồng bộ liên tiến trình (`fcntl.flock`) để khi chạy 2 cửa sổ Terminal độc lập
         (`--stream-upload` và `--stream-filter24h`), 2 dòng hoạt động tuần tự nhường Chrome & chuột OS cho nhau.
-        Có tích hợp bộ giám sát (Watchdog Timeout): nếu khóa bị treo quá `max_wait_seconds` (mặc định 6 phút)
+        Có tích hợp bộ giám sát (Watchdog Timeout): nếu khóa bị treo quá `max_wait_seconds` (mặc định 12 phút)
         do một tiến trình Chrome bị đơ mạng, tự động giải phóng Chrome treo để không làm kẹt Dòng 1 / Dòng 2.
         """
         import fcntl
@@ -300,9 +309,17 @@ class TikTokAutoPoster:
                 return fh
             except BlockingIOError:
                 elapsed = time.time() - start_wait
-                if elapsed >= max_wait_seconds:
+                lock_ts_age = elapsed
+                try:
+                    txt = lock_path.read_text(encoding="utf-8").strip()
+                    if "ts=" in txt:
+                        ts_val = int(txt.split("ts=")[1].split()[0])
+                        lock_ts_age = time.time() - ts_val
+                except Exception:
+                    pass
+                if elapsed >= max_wait_seconds and lock_ts_age >= 480:
                     logger.warning(
-                        f"[Browser Lock Watchdog] Khóa trình duyệt bị giữ quá {int(elapsed)}s — "
+                        f"[Browser Lock Watchdog] Khóa trình duyệt bị giữ quá {int(elapsed)}s (lock_ts_age={int(lock_ts_age)}s) — "
                         "tự động giải phóng tiến trình Chrome for Testing bị treo!"
                     )
                     try:
@@ -3024,11 +3041,17 @@ class TikTokAutoPoster:
         now_dt = datetime.now()
         timestamps_to_check: List[str] = []
 
-        # 1. Kiểm tra posted_schedule_history.json
+        # 1. Kiểm tra posted_schedule_history.json (chỉ tính các khóa xác nhận đã đăng thành công, không tính khóa tạm remote_post_)
         try:
             hist = self._load_post_history()
             for k, ts_val in hist.items():
-                if ch_folder in str(k) and "filter24h" not in str(k) and isinstance(ts_val, str):
+                k_str = str(k)
+                if (
+                    ch_folder in k_str
+                    and "filter24h" not in k_str
+                    and not k_str.startswith("remote_post_")
+                    and isinstance(ts_val, str)
+                ):
                     timestamps_to_check.append(ts_val.strip())
         except Exception:
             pass
@@ -3153,6 +3176,9 @@ class TikTokAutoPoster:
             f"  + Hashtags Hot Search: {hashtags}"
         )
 
+        # Làm mới dấu thời gian khóa trình duyệt ngay sau khi cào/render xong để Watchdog không tính gộp thời gian render
+        self._refresh_browser_process_lock()
+
         with sync_playwright() as p:
             context = self._launch_stealth_chrome_context(
                 playwright_obj=p, user_data_dir=user_data_dir, headless=headless
@@ -3228,6 +3254,8 @@ class TikTokAutoPoster:
                         f"[{ch_folder}] Quá thời gian chờ tải video lên TikTok Studio (240s)."
                     )
 
+                self._refresh_browser_process_lock()
+
                 # Đợi thêm 1.5s sau khi tải xong 100% để bắt trọn mọi popup 'Đã hiểu' xuất hiện muộn
                 time.sleep(1.5)
                 self._dismiss_all_studio_popovers(page, ch_folder)
@@ -3279,6 +3307,20 @@ class TikTokAutoPoster:
                         f"[{ch_folder}] Đang bấm nút đỏ ĐĂNG ('{btn_info.get('text')}', data-e2e='{btn_info.get('dataE2e')}') tại ({click_x:.1f}, {click_y:.1f})..."
                     )
                     self._os_click_viewport(page, click_x, click_y)
+                    time.sleep(0.6)
+                    try:
+                        still_there = self._find_exact_post_button(page, scroll_into_view=False)
+                        if still_there and still_there.get("found") and still_there.get("enabled"):
+                            page.mouse.click(float(still_there["x"]), float(still_there["y"]))
+                            time.sleep(0.4)
+                            page.evaluate(
+                                """() => {
+                                    const b = document.querySelector('button[data-e2e="post_video_button"], [data-e2e="post_video_button"]');
+                                    if (b && !b.disabled) b.click();
+                                }"""
+                            )
+                    except Exception:
+                        pass
                 else:
                     exact_loc = page.locator('button[data-e2e="post_video_button"]').first
                     exact_loc.scroll_into_view_if_needed()
@@ -3313,23 +3355,53 @@ class TikTokAutoPoster:
                     except Exception:
                         pass
 
-                    # Nếu sau 12s nút đỏ Đăng vẫn còn nguyên và đang enabled (chưa ăn click), bấm trực tiếp 1 lần nữa
-                    if wait_idx in (8, 16):
+                    # Nếu nút đỏ Đăng vẫn còn nguyên và đang enabled (chưa ăn click do cửa sổ lệch/mất focus), bấm kết hợp OS + Playwright + DOM click
+                    if wait_idx in (5, 11, 17, 23):
                         still_btn = self._find_exact_post_button(page, scroll_into_view=True)
                         if still_btn and still_btn.get("found") and still_btn.get("enabled"):
                             logger.info(
-                                f"[{ch_folder}] Nút ĐĂNG vẫn đang chờ trên màn hình (lần thử {wait_idx}), thực hiện click trực tiếp vào post_video_button..."
+                                f"[{ch_folder}] Nút ĐĂNG vẫn đang chờ trên màn hình (lần thử {wait_idx}), thực hiện click đa tầng (OS + Viewport + DOM) vào post_video_button..."
                             )
-                            self._os_click_viewport(page, float(still_btn["x"]), float(still_btn["y"]))
+                            sx, sy = float(still_btn["x"]), float(still_btn["y"])
+                            self._os_click_viewport(page, sx, sy)
+                            try:
+                                page.mouse.click(sx, sy)
+                                page.evaluate(
+                                    """() => {
+                                        const b = document.querySelector('button[data-e2e="post_video_button"], [data-e2e="post_video_button"]');
+                                        if (b && !b.disabled) b.click();
+                                    }"""
+                                )
+                            except Exception:
+                                pass
+
+                if not post_confirmed:
+                    still_unclicked = self._find_exact_post_button(page, scroll_into_view=False)
+                    if still_unclicked and still_unclicked.get("found") and still_unclicked.get("enabled"):
+                        try:
+                            page.locator('button[data-e2e="post_video_button"]').first.click(force=True, timeout=5000)
+                            for _ in range(8):
+                                time.sleep(1.5)
+                                self._click_confirm_modal_if_present(page)
+                                if "tiktokstudio/content" in page.url:
+                                    post_confirmed = True
+                                    break
+                        except Exception:
+                            pass
 
                 if post_confirmed:
                     logger.info(f"[{ch_folder}] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!")
                 else:
+                    still_on_upload_btn = self._find_exact_post_button(page, scroll_into_view=False)
+                    if "tiktokstudio/upload" in (page.url or "") and still_on_upload_btn and still_on_upload_btn.get("found"):
+                        raise RuntimeError(
+                            f"[{ch_folder}] Nút ĐĂNG vẫn chưa được gửi thành công trên trang upload (post_confirmed=False) — hủy ghi nhận giả để thử lại!"
+                        )
                     logger.warning(
                         f"[{ch_folder}] Đã hết thời gian chờ phản hồi sau khi bấm Đăng, tiến hành kiểm tra tại trang Quản lý Bài đăng..."
                     )
 
-                # Ghi nhận vào sổ cái chống đăng trùng & chuyển ngay sang posted/ trước khi làm các bước phụ
+                # Ghi nhận vào sổ cái chống đăng trùng & chuyển ngay sang posted/ sau khi đã xác nhận gửi bài
                 self._record_uploaded_video_in_registry(ch_folder, video_path, caption)
                 marked = self.crawler.mark_video_posted(str(video_path))
 
@@ -3920,6 +3992,7 @@ class TikTokAutoPoster:
                             f"{eff_hh:02d}:{eff_mm:02d} (khung gốc {slot}, lệch {jitter:+d} phút)"
                         )
                         # Đặt chỗ trước vào posted_schedule_history.json trước khi mở Chrome
+                        prev_last_ts = history.get(f"last_upload_ts_{ch_folder}")
                         claim_ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                         history[slot_key] = claim_ts
                         history[f"last_upload_ts_{ch_folder}"] = claim_ts
@@ -3944,10 +4017,23 @@ class TikTokAutoPoster:
                             # Nếu kho ready/ trống chưa có video để đăng, trả lại slot_key để thử lại khi có video mới
                             history = self._load_post_history()
                             history.pop(slot_key, None)
-                            history.pop(f"last_upload_ts_{ch_folder}", None)
+                            if prev_last_ts:
+                                history[f"last_upload_ts_{ch_folder}"] = prev_last_ts
+                            else:
+                                history.pop(f"last_upload_ts_{ch_folder}", None)
                             self._save_post_history(history)
                     except Exception as exc:
                         logger.error(f"[Dòng 1 - Lịch Đăng Video] Lỗi tự động đăng kênh [{ch_folder}] khung {slot}: {exc}")
+                        try:
+                            history = self._load_post_history()
+                            history.pop(slot_key, None)
+                            if locals().get("prev_last_ts"):
+                                history[f"last_upload_ts_{ch_folder}"] = locals()["prev_last_ts"]
+                            else:
+                                history.pop(f"last_upload_ts_{ch_folder}", None)
+                            self._save_post_history(history)
+                        except Exception:
+                            pass
                     finally:
                         self._release_browser_process_lock(lock_fh)
 

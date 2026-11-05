@@ -798,7 +798,7 @@ def run_bridge_daemon(poll_seconds: int = 20) -> None:
                                 lock_age = time.time() - ts_val
                             except Exception:
                                 pass
-                        if lock_age > 420:
+                        if lock_age > 720:
                             print(
                                 f"[{_now_str()}] [AGY Bridge Auto-Healer] Phát hiện khóa trình duyệt bị giữ treo {int(lock_age)}s -> Tự động giải phóng Chrome!",
                                 flush=True,
