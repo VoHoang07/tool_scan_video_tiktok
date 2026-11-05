@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 22:16:39",
+    "timestamp": "2026-11-05 22:22:51",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 164.4,
+      "scrolled_videos": 11,
+      "elapsed_seconds": 152.0,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 22:22:51",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "elapsed_seconds": 152.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 22:16:39",
       "machine_arch": "x86_64",
@@ -177,18 +189,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 159.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 20:44:51",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 155.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
