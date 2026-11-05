@@ -1,17 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 21:58:35",
+    "timestamp": "2026-11-05 22:04:37",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
       "scrolled_videos": 12,
-      "elapsed_seconds": 161.6,
+      "elapsed_seconds": 159.7,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 22:04:37",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "elapsed_seconds": 159.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 21:58:35",
       "machine_arch": "x86_64",
@@ -178,81 +190,6 @@
         "scrolled_videos": 13,
         "elapsed_seconds": 156.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 20:27:41",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "phu_kien_tien_ich",
-            "video_id": "7704590714436406549",
-            "video_url": "https://www.tiktok.com/@caniodo/video/7704590714436406549",
-            "creator_handle": "@caniodo",
-            "watched_seconds": 15.5,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611052127342FAFA20B1126A45C8517\",\"now\":1793885254000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611052127342FAFA20B1126A45C8517\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "phukientienich.k10"
-              },
-              "before": {
-                "x": 909,
-                "y": 263.5,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "23"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 909,
-                  "y": 263.5,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "24"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@caniodo",
-                "nav_method": "spa_click",
-                "profile_url": "https://www.tiktok.com/@caniodo?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-05 20:27:41",
-            "follow_back_window_until": "2026-11-06 20:27:41"
-          }
-        ]
       }
     }
   ]
