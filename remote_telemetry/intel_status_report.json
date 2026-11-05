@@ -1,17 +1,415 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 10:58:35",
+    "timestamp": "2026-11-05 11:02:43",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "event_type": "filter24h",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "elapsed_seconds": 158.1,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "interacted_count": 3,
+      "own_profile_stats": {
+        "uniqueId": "audio_ba_con_oi",
+        "domFollowing": "29",
+        "domFollowers": "20",
+        "domLikes": "759",
+        "sidebarFollowing": [
+          "/@audio_ba_con_oi",
+          "/@giahan_14102015",
+          "/@emmeo527",
+          "/@user234327174",
+          "/@_thylee_",
+          "/@vinitaharvey"
+        ]
+      },
+      "records": [
+        {
+          "channel": "audio_dem_khuyen",
+          "video_id": "7703956709475093767",
+          "video_url": "https://www.tiktok.com/@l.t..nh.linh/video/7703956709475093767",
+          "creator_handle": "@l.t..nh.linh",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": false,
+            "4_added_favorite": false,
+            "5_followed_creator": true,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120052208457BEEB2341486682\",\"now\":1793851252000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261105120052208457BEEB2341486682\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120100F96B16FFB3BD193AF686\",\"now\":1793851261000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261105120100F96B16FFB3BD193AF686\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120102B335AFC2C21EE939F78B\",\"now\":1793851263000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261105120102B335AFC2C21EE939F78B\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 881.28125,
+              "y": 373,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "34"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 881.28125,
+                "y": 373,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "35"
+              },
+              "red": true,
+              "server_digg_ok": true,
+              "server_digg_rejected": false
+            },
+            "profile_follow_verify": {
+              "creator": "@l.t..nh.linh",
+              "nav_method": "spa_click",
+              "profile_url": "https://www.tiktok.com/@l.t..nh.linh?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": null,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-05 11:01:09",
+          "follow_back_window_until": "2026-11-06 11:01:09"
+        },
+        {
+          "channel": "audio_dem_khuyen",
+          "video_id": "7703964923549846792",
+          "video_url": "https://www.tiktok.com/@cng.xy.knh82/video/7703964923549846792",
+          "creator_handle": "@cng.xy.knh82",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": false,
+            "4_added_favorite": false,
+            "5_followed_creator": false,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120156A833B826E1A1C937868B\",\"now\":1793851316000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261105120156A833B826E1A1C937868B\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 881.28125,
+              "y": 373,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "13"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 881.28125,
+                "y": 373,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "14"
+              },
+              "red": true,
+              "server_digg_ok": true,
+              "server_digg_rejected": false
+            }
+          },
+          "interacted_at": "2026-11-05 11:02:01",
+          "follow_back_window_until": "2026-11-06 11:02:01"
+        },
+        {
+          "channel": "audio_dem_khuyen",
+          "video_id": "7704330542925335815",
+          "video_url": "https://www.tiktok.com/@anhchangnhaque9999/video/7704330542925335815",
+          "creator_handle": "@anhchangnhaque9999",
+          "watched_seconds": 15.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": false,
+            "4_added_favorite": false,
+            "5_followed_creator": false,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120234FFE58F76EF1C263C498F\",\"now\":1793851354000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261105120234FFE58F76EF1C263C498F\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": "audio_ba_con_oi"
+            },
+            "before": {
+              "x": 881.28125,
+              "y": 373,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "30"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 881.28125,
+                "y": 373,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "31"
+              },
+              "red": true,
+              "server_digg_ok": true,
+              "server_digg_rejected": false
+            }
+          },
+          "interacted_at": "2026-11-05 11:02:39",
+          "follow_back_window_until": "2026-11-06 11:02:39"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 11:02:43",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "audio_ba_con_oi",
+          "domFollowing": "29",
+          "domFollowers": "20",
+          "domLikes": "759",
+          "sidebarFollowing": [
+            "/@audio_ba_con_oi",
+            "/@giahan_14102015",
+            "/@emmeo527",
+            "/@user234327174",
+            "/@_thylee_",
+            "/@vinitaharvey"
+          ]
+        },
+        "records": [
+          {
+            "channel": "audio_dem_khuyen",
+            "video_id": "7703956709475093767",
+            "video_url": "https://www.tiktok.com/@l.t..nh.linh/video/7703956709475093767",
+            "creator_handle": "@l.t..nh.linh",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": false,
+              "4_added_favorite": false,
+              "5_followed_creator": true,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120052208457BEEB2341486682\",\"now\":1793851252000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261105120052208457BEEB2341486682\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120100F96B16FFB3BD193AF686\",\"now\":1793851261000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261105120100F96B16FFB3BD193AF686\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120102B335AFC2C21EE939F78B\",\"now\":1793851263000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261105120102B335AFC2C21EE939F78B\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 881.28125,
+                "y": 373,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "34"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 881.28125,
+                  "y": 373,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "35"
+                },
+                "red": true,
+                "server_digg_ok": true,
+                "server_digg_rejected": false
+              },
+              "profile_follow_verify": {
+                "creator": "@l.t..nh.linh",
+                "nav_method": "spa_click",
+                "profile_url": "https://www.tiktok.com/@l.t..nh.linh?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": null,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-05 11:01:09",
+            "follow_back_window_until": "2026-11-06 11:01:09"
+          },
+          {
+            "channel": "audio_dem_khuyen",
+            "video_id": "7703964923549846792",
+            "video_url": "https://www.tiktok.com/@cng.xy.knh82/video/7703964923549846792",
+            "creator_handle": "@cng.xy.knh82",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": false,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120156A833B826E1A1C937868B\",\"now\":1793851316000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261105120156A833B826E1A1C937868B\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 881.28125,
+                "y": 373,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "13"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 881.28125,
+                  "y": 373,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "14"
+                },
+                "red": true,
+                "server_digg_ok": true,
+                "server_digg_rejected": false
+              }
+            },
+            "interacted_at": "2026-11-05 11:02:01",
+            "follow_back_window_until": "2026-11-06 11:02:01"
+          },
+          {
+            "channel": "audio_dem_khuyen",
+            "video_id": "7704330542925335815",
+            "video_url": "https://www.tiktok.com/@anhchangnhaque9999/video/7704330542925335815",
+            "creator_handle": "@anhchangnhaque9999",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": false,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261105120234FFE58F76EF1C263C498F\",\"now\":1793851354000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261105120234FFE58F76EF1C263C498F\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": "audio_ba_con_oi"
+              },
+              "before": {
+                "x": 881.28125,
+                "y": 373,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "30"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 881.28125,
+                  "y": 373,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "31"
+                },
+                "red": true,
+                "server_digg_ok": true,
+                "server_digg_rejected": false
+              }
+            },
+            "interacted_at": "2026-11-05 11:02:39",
+            "follow_back_window_until": "2026-11-06 11:02:39"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-05 10:58:35",
       "machine_arch": "x86_64",
@@ -613,22 +1011,6 @@
             "follow_back_window_until": "2026-11-06 09:49:38"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-05 09:47:15",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261105_094254_douyin_story_6714103873667173646.mp4",
-        "caption": "🌹 Tâm lý Hôn nhân & Gia đình: Nếu một người phụ nữ luôn đợi đến tận đêm khuya. \"Nếu cô ấy không dồn hết năng lượng vào, cô ấy sẽ bị ám ảnh bởi bạn...\" Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
-        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
