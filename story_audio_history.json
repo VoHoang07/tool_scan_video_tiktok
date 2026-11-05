@@ -136,7 +136,8 @@
     "7703396595689213204",
     "990003501",
     "990002101",
-    "7684235157036879124"
+    "7684235157036879124",
+    "6862280720614739204"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -187,7 +188,8 @@
     "7659099507426151195",
     "bongcuc_yt_KkvdYTXdeJU_p1",
     "7684235205623876370",
-    "7681324230528486180"
+    "7681324230528486180",
+    "6862280731360496392"
   ],
   "items": [
     {
@@ -679,6 +681,16 @@
       "source_url": "https://www.douyin.com/video/7681324285081178105",
       "output_filename": "phu_nu_khi_chat/ready/20261105_174431_douyin_story_7681324285081178105.mp4",
       "crawled_at": "2026-11-05T17:48:14"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "6862280720614739204",
+      "sound_id": "6862280731360496392",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/6862280720614739204",
+      "output_filename": "video_AI_hay/ready/20261105_182317_douyin_story_6862280720614739204.mp4",
+      "crawled_at": "2026-11-05T18:27:48"
     }
   ]
 }
