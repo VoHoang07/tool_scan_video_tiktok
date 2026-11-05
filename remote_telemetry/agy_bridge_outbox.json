@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-05 21:06:49",
+  "updated_at": "2026-11-05 21:37:10",
   "latest_result": {
-    "cmd_id": "heartbeat_1793887609",
+    "cmd_id": "heartbeat_1793889429",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-05 21:06:49",
+    "executed_at": "2026-11-05 21:37:09",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-05 21:06:49",
+      "timestamp": "2026-11-05 21:37:10",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 29.9,
+      "lock_file_age_seconds": 14.4,
       "processes": [
-        "29297    03:01:04 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "29299    03:01:04 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-05:09:24 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-05:09:24 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "29297    03:31:25 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "29299    03:31:25 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-05:39:45 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-05:39:45 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[download]  10.6% of  595.18KiB at   19.27MiB/s ETA 00:00",
-        "[download]  21.3% of  595.18KiB at   33.13MiB/s ETA 00:00",
-        "[download]  42.8% of  595.18KiB at   56.87MiB/s ETA 00:00",
-        "[download]  85.9% of  595.18KiB at   95.42MiB/s ETA 00:00",
-        "[download] 100.0% of  595.18KiB at   89.35MiB/s ETA 00:00",
-        "[download] 100% of  595.18KiB in 00:00:00 at 13.87MiB/s  ",
-        "[Merger] Merging formats into \"/Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_iioCY__jipU/ytdlp_raw.mp4\"",
-        "Deleting original file /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_iioCY__jipU/ytdlp_raw.f397.mp4 (pass -k to keep)",
-        "Deleting original file /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_iioCY__jipU/ytdlp_raw.f140.m4a (pass -k to keep)",
-        "[21:05:13] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_iioCY__jipU/raw_video.mp4 (2.69 MB)",
-        "[21:05:13] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_iioCY__jipU/audio.mp3",
-        "[21:05:13] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 37.62s)",
-        "[21:05:13] [INFO] tiktok_pipeline: [Voice Filter] Video iioCY__jipU là Tiếng Việt ('vi') có sẵn -> Giữ nguyên video & âm thanh gốc 100%.",
-        "[21:05:13] [INFO] tiktok_pipeline: === [3-5/5] VIDEO GỐC ĐÃ LÀ TIẾNG VIỆT ('vi') -> GIỮ NGUYÊN BẢN GỐC & LÁCH MÃ BĂM TRÙNG LẶP TIKTOK (MD5/vHash/AudioPrint) ===",
-        "[21:05:16] [INFO] tiktok_pipeline: Đã giữ nguyên video tiếng Việt tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/baby_AI/ready/20261105_210513_youtube_shorts_story_iioCY__jipU.mp4",
-        "[21:05:16] [INFO] tiktok_pipeline: Caption gốc: 🤣 Một Chiếc Em Bé Siêu Cute Rễ Thương Tập Gọi Ba Mẹ — Pha xử lý đi vào lòng đất của hai mẹ con! Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-        "[21:05:16] [INFO] tiktok_pipeline: Hashtags: #chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xuhuongtiktok #tiktokvn",
-        "[21:06:27] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[21:06:27] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[21:06:27] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
+        "[21:34:14] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 118.42s)",
+        "[21:34:16] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_NsqgmeH5Jvs/audio.mp3 (auto-detect language, word_timestamps=True)...",
+        "[21:34:16] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
+        "[21:34:20] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'en' (độ tin cậy: 53.29%)",
+        "[21:34:47] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 15 câu thoại hoàn chỉnh (mean_logprob=-0.74, ocr_coverage=0%).",
+        "[21:34:47] [INFO] tiktok_pipeline: [Language Gate] -> LOẠI BỎ NsqgmeH5Jvs: Ngôn ngữ âm thanh phát hiện là 'en' (chỉ cho phép video Trung Quốc 'zh' và Việt Nam 'vi').",
+        "[21:34:47] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #3/3: [FACEBOOK_REELS] ID=1563835349076127 (tim=2680, thời lượng=179.0s) ---",
+        "[21:34:47] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=1563835349076127 (thời lượng=179.0s, sound='Original Audio', view=67000, tim=2680, share=335)...",
+        "[21:34:47] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/1563835349076127",
+        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/1563835349076127",
+        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=1563835349076127&_rdr",
+        "[facebook] 1563835349076127: Downloading webpage",
+        "[facebook] 1563835349076127: Downloading webpage",
+        "ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
+        "[21:34:49] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
+        "[21:34:49] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 1563835349076127: Không thể tải video từ URL: https://www.facebook.com/reel/1563835349076127. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
+        "[21:34:49] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh meo_vat_gia_dinh trong lượt này. Chuyển sang kênh kế tiếp...",
+        "[21:36:40] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[21:36:40] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[21:36:40] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
       ],
-      "lock_file_content": "pid=3213 ts=1793887579"
+      "lock_file_content": "pid=3213 ts=1793889415"
     }
   }
 }
