@@ -1,70 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-05 10:05:38",
+    "timestamp": "2026-11-05 10:10:28",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "suc_khoe_duong_sinh",
-          "video_id": "7703815743095278900",
-          "video_url": "https://www.tiktok.com/@haa.nhiii3/video/7703815743095278900",
-          "creator_handle": "@haa.nhiii3",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": true,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611051105330CF08F871D35E6383344\",\"now\":1793847933000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611051105330CF08F871D35E6383344\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "suckhoeduongsinh.k06"
-            },
-            "before": {
-              "x": 837.78125,
-              "y": 441,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "21"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 837.78125,
-                "y": 441,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "21"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            }
-          },
-          "interacted_at": "2026-11-05 10:05:37",
-          "follow_back_window_until": "2026-11-06 10:05:37"
-        }
-      ]
+      "scrolled_videos": 13,
+      "elapsed_seconds": 157.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-05 10:10:28",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "elapsed_seconds": 157.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-05 10:05:38",
       "machine_arch": "x86_64",
@@ -671,22 +630,6 @@
         "scrolled_videos": 11,
         "elapsed_seconds": 153.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-05 08:57:07",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261105_085046_youtube_shorts_story_72w2MZKluvg.mp4",
-        "caption": "🌿 [Sức Khỏe Chủ Động] Chu kỳ kinh nguyệt là sự thay đổi mang tính chu kỳ của sự dày lên và vỡ ra lặp đi lặp lại của niêm mạc tử cung. \"Nội mạc tử cung chứa một lượng nhỏ máu có thể thoát ra khỏi âm đạo cùng với chu kỳ kinh nguyệt ...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
