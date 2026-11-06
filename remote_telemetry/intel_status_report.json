@@ -1,21 +1,341 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 00:35:01",
+    "timestamp": "2026-11-07 01:12:07",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "event_type": "filter24h",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261107_003148_youtube_shorts_story_IymOGSS8ZRo.mp4",
-      "caption": "🤤 [Thiên Đường Ăn Vặt] Cách Nấu Thịt Kho Tàu ( Braised Pork With Eggs | Món Ngon Knorr Hàng Ngày. Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
-      "hashtags": "#monngondelam #amthuctiktok #anvatmoingay #anchayngon #reviewdoan #nauanngon #doanvat #fyp",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 3,
+      "own_profile_stats": {
+        "uniqueId": "video_hay4",
+        "domFollowing": "17",
+        "domFollowers": "16",
+        "domLikes": "241",
+        "sidebarFollowing": [
+          "/@video_hay4",
+          "/@chuyn.tm.linh.495",
+          "/@h.hi1554",
+          "/@l.mn.niii",
+          "/@oanhnghimth4",
+          "/@boloc24hcheoflo"
+        ]
+      },
+      "records": [
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7704918199820635410",
+          "video_url": "https://www.tiktok.com/@zoompro.xinso/video/7704918199820635410",
+          "creator_handle": "@zoompro.xinso",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": false,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Một chiếc video đầy năng lượng tích cực, chúc kênh luôn bùng nổ view nhé 🔥",
+          "circuit_breaker_tripped": true,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261107020950170AB03AAF8CAD256545\",\"now\":1793988590000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261107020950170AB03AAF8CAD256545\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 421,
+              "ariaPressed": false,
+              "svgColor": "rgba(255, 255, 255, .9)",
+              "likeCount": "576"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": true,
+                "svgColor": "rgba(255, 59, 92, 1)",
+                "likeCount": "577"
+              },
+              "red": true,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@zoompro.xinso",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@zoompro.xinso/video/7704918199820635410?lang=vi-VN",
+              "before_btn": "",
+              "after_btn": "",
+              "init_relation": null,
+              "server_follow_ok": false,
+              "ui_confirmed": false,
+              "persisted": false,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-07 01:10:11",
+          "follow_back_window_until": "2026-11-08 01:10:11"
+        },
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7704317392339455240",
+          "video_url": "https://www.tiktok.com/@ng.hng.anh14/video/7704317392339455240",
+          "creator_handle": "@ng.hng.anh14",
+          "watched_seconds": 15.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Hình ảnh với âm thanh đỉnh thật sự, ủng hộ kênh bạn lâu dài nha 🔥",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": "video_hay4"
+            },
+            "profile_follow_verify": {
+              "creator": "@ng.hng.anh14",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@ng.hng.anh14/video/7704317392339455240?lang=vi-VN",
+              "before_btn": "",
+              "after_btn": "",
+              "init_relation": null,
+              "server_follow_ok": false,
+              "ui_confirmed": false,
+              "persisted": false,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-07 01:11:03",
+          "follow_back_window_until": "2026-11-08 01:11:03"
+        },
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7704261486574603541",
+          "video_url": "https://www.tiktok.com/@linh.xy.knh80/video/7704261486574603541",
+          "creator_handle": "@linh.xy.knh80",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Mê cái vibe của kênh bạn ghê, sẽ theo dõi ủng hộ dài lâu ạ 🫶",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "profile_follow_verify": {
+              "creator": "@linh.xy.knh80",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@linh.xy.knh80/video/7704261486574603541?lang=vi-VN",
+              "before_btn": "",
+              "after_btn": "",
+              "init_relation": null,
+              "server_follow_ok": false,
+              "ui_confirmed": false,
+              "persisted": false,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-07 01:12:02",
+          "follow_back_window_until": "2026-11-08 01:12:02"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 01:12:07",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "video_hay4",
+          "domFollowing": "17",
+          "domFollowers": "16",
+          "domLikes": "241",
+          "sidebarFollowing": [
+            "/@video_hay4",
+            "/@chuyn.tm.linh.495",
+            "/@h.hi1554",
+            "/@l.mn.niii",
+            "/@oanhnghimth4",
+            "/@boloc24hcheoflo"
+          ]
+        },
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7704918199820635410",
+            "video_url": "https://www.tiktok.com/@zoompro.xinso/video/7704918199820635410",
+            "creator_handle": "@zoompro.xinso",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Một chiếc video đầy năng lượng tích cực, chúc kênh luôn bùng nổ view nhé 🔥",
+            "circuit_breaker_tripped": true,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261107020950170AB03AAF8CAD256545\",\"now\":1793988590000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261107020950170AB03AAF8CAD256545\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "576"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(255, 59, 92, 1)",
+                  "likeCount": "577"
+                },
+                "red": true,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@zoompro.xinso",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@zoompro.xinso/video/7704918199820635410?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-07 01:10:11",
+            "follow_back_window_until": "2026-11-08 01:10:11"
+          },
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7704317392339455240",
+            "video_url": "https://www.tiktok.com/@ng.hng.anh14/video/7704317392339455240",
+            "creator_handle": "@ng.hng.anh14",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Hình ảnh với âm thanh đỉnh thật sự, ủng hộ kênh bạn lâu dài nha 🔥",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": "video_hay4"
+              },
+              "profile_follow_verify": {
+                "creator": "@ng.hng.anh14",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@ng.hng.anh14/video/7704317392339455240?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-07 01:11:03",
+            "follow_back_window_until": "2026-11-08 01:11:03"
+          },
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7704261486574603541",
+            "video_url": "https://www.tiktok.com/@linh.xy.knh80/video/7704261486574603541",
+            "creator_handle": "@linh.xy.knh80",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Mê cái vibe của kênh bạn ghê, sẽ theo dõi ủng hộ dài lâu ạ 🫶",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "profile_follow_verify": {
+                "creator": "@linh.xy.knh80",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@linh.xy.knh80/video/7704261486574603541?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-07 01:12:02",
+            "follow_back_window_until": "2026-11-08 01:12:02"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-07 00:35:01",
       "machine_arch": "x86_64",
@@ -474,18 +794,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-06 12:35:19",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "elapsed_seconds": 157.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]

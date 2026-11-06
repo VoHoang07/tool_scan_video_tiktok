@@ -173,7 +173,10 @@
     "7084737259936779535",
     "990001004",
     "7458254613217594642",
-    "IymOGSS8ZRo"
+    "IymOGSS8ZRo",
+    "7675742941222178055",
+    "990005101",
+    "7088337949602909466"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -258,7 +261,10 @@
     "7084737231847443211",
     "bongcuc_yt_DoVFGuEeB1k_p4",
     "7176165317066885122",
-    "yt_sound_IymOGSS8ZRo"
+    "yt_sound_IymOGSS8ZRo",
+    "tt_seed_7675742941222178055",
+    "bongcuc_yt_MVLIbFWGTxE_p1",
+    "7088337947338656539"
   ],
   "items": [
     {
@@ -1130,6 +1136,36 @@
       "source_url": "https://www.youtube.com/watch?v=IymOGSS8ZRo",
       "output_filename": "an_vat_moi_ngay/ready/20261107_003148_youtube_shorts_story_IymOGSS8ZRo.mp4",
       "crawled_at": "2026-11-07T00:31:57"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7675742941222178055",
+      "sound_id": "tt_seed_7675742941222178055",
+      "platform": "tiktok",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.tiktok.com/@andy76243/video/7675742941222178055",
+      "output_filename": "baby_AI/ready/20261107_004317_tiktok_story_7675742941222178055.mp4",
+      "crawled_at": "2026-11-07T00:48:45"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990005101",
+      "sound_id": "bongcuc_yt_MVLIbFWGTxE_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=MVLIbFWGTxE&t=0s",
+      "output_filename": "audio_dem_khuyen/ready/20261107_005555_tiktok_story_990005101_bongcuc_v4_s51_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-07T00:59:26"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7088337949602909466",
+      "sound_id": "7088337947338656539",
+      "platform": "tiktok",
+      "genre": "tiennghich",
+      "source_url": "https://www.tiktok.com/@tienhiep420/video/7088337949602909466",
+      "output_filename": "tu_chan_gioi/ready/20261107_010630_tiktok_story_7088337949602909466.mp4",
+      "crawled_at": "2026-11-07T01:06:34"
     }
   ]
 }
