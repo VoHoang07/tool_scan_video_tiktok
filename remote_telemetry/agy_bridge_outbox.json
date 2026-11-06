@@ -1,48 +1,47 @@
 {
-  "updated_at": "2026-11-06 02:37:32",
+  "updated_at": "2026-11-06 12:02:19",
   "latest_result": {
-    "cmd_id": "heartbeat_1793907452",
+    "cmd_id": "heartbeat_1793941334",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-06 02:37:32",
+    "executed_at": "2026-11-06 12:02:14",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-06 02:37:32",
+      "timestamp": "2026-11-06 12:02:19",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 10.4,
+      "lock_file_age_seconds": null,
       "processes": [
-        "66284    01:30:35 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "66286    01:30:35 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-10:40:07 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-10:40:07 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "66284    10:55:22 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "66286    10:55:22 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-20:04:54 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-20:04:54 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[02:36:55] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=1563835349076127 (thời lượng=179.0s, sound='Original Audio', view=67000, tim=2680, share=335)...",
-        "[02:36:55] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/1563835349076127",
-        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/1563835349076127",
-        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=1563835349076127&_rdr",
-        "[facebook] 1563835349076127: Downloading webpage",
-        "[facebook] 1563835349076127: Downloading webpage",
-        "ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
-        "[02:36:57] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
-        "[02:36:57] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 1563835349076127: Không thể tải video từ URL: https://www.facebook.com/reel/1563835349076127. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[02:36:57] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh meo_vat_gia_dinh trong lượt này. Chuyển sang kênh kế tiếp...",
-        "[02:36:59] [INFO] tiktok_pipeline: [Round-Robin] Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh) hiện có 0/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
-        "[02:36:59] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[02:36:59] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[02:36:59] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[02:36:59] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_6_health_wellness] -> Thư mục: output/suc_khoe_duong_sinh/ready/ | Link mẫu: 0 | Kênh mẫu: ['suckhoedoisong.vn', 'duongsinhmoingay', 'songkhoemoingay', 'bacsidinhduong'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-        "[02:36:59] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @suckhoedoisong.vn.",
-        "[02:36:59] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @duongsinhmoingay.",
-        "[02:37:00] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @songkhoemoingay.",
-        "[02:37:00] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @bacsidinhduong.",
-        "[02:37:22] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11))."
-      ],
-      "lock_file_content": "idle"
+        "[02:44:15] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
+        "[02:44:16] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
+        "[02:44:17] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/raw_video.mp4 (2.37 MB)",
+        "[02:44:17] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/audio.mp3",
+        "[02:44:18] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 16.09s)",
+        "[02:44:18] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/audio.mp3 (auto-detect language, word_timestamps=True)...",
+        "[02:44:22] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 99.21%)",
+        "[02:44:38] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 1 câu thoại hoàn chỉnh (mean_logprob=-0.41, ocr_coverage=0%).",
+        "[02:44:38] [INFO] tiktok_pipeline: [Voice Filter] Kết quả đo 7693187994052346276: lang=zh, số câu=1, độ dài TB=18.0 ký tự/câu, thời gian thoại=3.1s/16.1s (19.3%), logprob=-0.41, ocr=0%",
+        "[02:44:38] [INFO] tiktok_pipeline: [Voice Filter] -> LOẠI BỎ 7693187994052346276 (không đạt chuẩn mật độ câu thoại).",
+        "[02:44:38] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh phu_nu_khi_chat trong lượt này. Chuyển sang kênh kế tiếp...",
+        "[02:44:40] [INFO] tiktok_pipeline: [Round-Robin] Kênh an_vat_moi_ngay (an_vat_moi_ngay) hiện có 0/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
+        "[02:44:40] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[02:44:40] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[02:44:40] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[02:44:40] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_8_food_snacks] -> Thư mục: output/an_vat_moi_ngay/ready/ | Link mẫu: 0 | Kênh mẫu: ['anvatmoingay.vn', 'congthucnauannhanh', 'monngonmoingay', 'bepnhỏ.official'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
+        "[02:44:40] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @anvatmoingay.vn.",
+        "[02:44:40] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @congthucnauannhanh.",
+        "[02:44:41] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @monngonmoingay.",
+        "[02:44:41] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @bepnhỏ.official."
+      ]
     }
   }
 }
