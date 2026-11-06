@@ -1,48 +1,52 @@
 {
-  "updated_at": "2026-11-06 13:02:49",
+  "updated_at": "2026-11-06 13:05:03",
   "latest_result": {
-    "cmd_id": "heartbeat_1793944968",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-06 13:02:48",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793945103",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-06 13:05:03",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-06 13:05:03"
+    },
     "system_health": {
-      "timestamp": "2026-11-06 13:02:49",
+      "timestamp": "2026-11-06 13:05:03",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 288.4,
+      "lock_file_age_seconds": null,
       "processes": [
-        "66284    11:55:52 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "66286    11:55:52 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-21:05:24 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-21:05:24 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "66284    11:58:07 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "66286    11:58:07 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-21:07:39 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-21:07:39 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[12:56:33] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7696826479242519139 (thời lượng=416.6s, sound='@努力的喵喵酱创作的原声一努力的喵喵酱', view=507150, tim=33810, share=20499)...",
-        "[12:56:33] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[12:56:34] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[12:56:38] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7696826479242519139/raw_video.mp4 (85.22 MB)",
-        "[12:56:38] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7696826479242519139/audio.mp3",
-        "[12:56:43] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 416.59s)",
-        "[12:56:45] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7696826479242519139/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[12:56:48] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'en' (độ tin cậy: 79.09%)",
-        "[12:58:00] [INFO] tiktok_pipeline: [Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [baby_AI]: 12:40 (khung gốc 12:42, lệch -2 phút)",
-        "[13:02:09] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 19 câu thoại hoàn chỉnh (mean_logprob=-0.81, ocr_coverage=0%).",
-        "[13:02:09] [INFO] tiktok_pipeline: [Language Gate] -> LOẠI BỎ 7696826479242519139: Ngôn ngữ âm thanh phát hiện là 'en' (chỉ cho phép video Trung Quốc 'zh' và Việt Nam 'vi').",
-        "[13:02:09] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #3/15: [DOUYIN] ID=6887067881641610509 (tim=1440390, thời lượng=65.1s) ---",
-        "[13:02:09] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=6887067881641610509 (thời lượng=65.1s, sound='@故事叔创作的原声一故事叔', view=31668100, tim=1440390, share=42506)...",
-        "[13:02:09] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[13:02:11] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[13:02:17] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_6887067881641610509/raw_video.mp4 (13.85 MB)",
-        "[13:02:17] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_6887067881641610509/audio.mp3",
-        "[13:02:18] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 65.06s)",
-        "[13:02:18] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_6887067881641610509/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[13:02:20] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 99.19%)"
-      ],
-      "lock_file_content": "pid=66284 ts=1793944680"
+        "[13:04:05] [INFO] tiktok_pipeline: [Language Gate] -> LOẠI BỎ 7704506265019436306: Ngôn ngữ âm thanh phát hiện là 'ru' (chỉ cho phép video Trung Quốc 'zh' và Việt Nam 'vi').",
+        "[13:04:05] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #8/15: [FACEBOOK_REELS] ID=3617268205196268 (tim=2240, thời lượng=57.3s) ---",
+        "[13:04:05] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=3617268205196268 (thời lượng=57.3s, sound='Original Audio', view=56000, tim=2240, share=280)...",
+        "[13:04:05] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/3617268205196268",
+        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/3617268205196268",
+        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=3617268205196268&_rdr",
+        "[facebook] 3617268205196268: Downloading webpage",
+        "[facebook] 3617268205196268: Downloading webpage",
+        "ERROR: [facebook] 3617268205196268: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
+        "[13:04:08] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 3617268205196268: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
+        "[13:04:08] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 3617268205196268: Không thể tải video từ URL: https://www.facebook.com/reel/3617268205196268. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
+        "[13:04:08] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #9/15: [DOUYIN] ID=7675336496103348586 (tim=536792, thời lượng=72.2s) ---",
+        "[13:04:08] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7675336496103348586 (thời lượng=72.2s, sound='@抛弃曲创作的原声一抛弃曲', view=24213140, tim=536792, share=219431)...",
+        "[13:04:08] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
+        "[13:04:10] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
+        "[13:04:13] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7675336496103348586/raw_video.mp4 (11.36 MB)",
+        "[13:04:13] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7675336496103348586/audio.mp3",
+        "[13:04:14] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 72.21s)",
+        "[13:04:16] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7675336496103348586/audio.mp3 (auto-detect language, word_timestamps=True)...",
+        "[13:04:21] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 94.39%)"
+      ]
     }
   }
 }
