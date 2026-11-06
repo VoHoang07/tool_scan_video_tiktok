@@ -1,33 +1,33 @@
 {
-  "updated_at": "2026-11-07 00:01:55",
+  "updated_at": "2026-11-07 00:02:20",
   "latest_result": {
-    "cmd_id": "auto_restart_1793984515",
+    "cmd_id": "auto_restart_1793984540",
     "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-07 00:01:55",
+    "executed_at": "2026-11-07 00:02:20",
     "restart_info": {
       "restarted_streams": [
         "stream1_upload"
       ],
-      "timestamp": "2026-11-07 00:01:55"
+      "timestamp": "2026-11-07 00:02:20"
     },
     "system_health": {
-      "timestamp": "2026-11-07 00:01:55",
+      "timestamp": "2026-11-07 00:02:20",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 34235.6,
+      "lock_file_age_seconds": 34260.1,
       "processes": [
-        "44436       00:00 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "44438       00:00 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 02-08:04:30 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 02-08:04:30 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "44476       00:00 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "44478       00:00 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 02-08:04:55 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 02-08:04:55 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[00:01:44] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[00:01:44] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[00:01:46] [ERROR] tiktok_pipeline: Pipeline thất bại: name 'hashlib' is not defined",
+        "[00:01:56] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[00:01:56] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[00:01:58] [ERROR] tiktok_pipeline: Pipeline thất bại: name 'hashlib' is not defined",
         "Traceback (most recent call last):",
         "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 1659, in main",
         "    run_continuous_mode(",
