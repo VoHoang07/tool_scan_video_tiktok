@@ -163,7 +163,14 @@
     "7677437154435304719",
     "c_oM3i3HbJw",
     "7168670942225354010",
-    "mIKW1krZy4E"
+    "mIKW1krZy4E",
+    "7312997468654849318",
+    "7614826780863868137",
+    "7568762631415610041",
+    "7386602828736810267",
+    "7525660586017918260",
+    "7536515801240964386",
+    "7084737259936779535"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -238,7 +245,14 @@
     "7677437143286991625",
     "yt_sound_c_oM3i3HbJw",
     "7168670978917042970",
-    "yt_sound_mIKW1krZy4E"
+    "yt_sound_mIKW1krZy4E",
+    "7312997658841418506",
+    "7614826793786264370",
+    "7568762551543073590",
+    "7386602800093858569",
+    "7525660511875255103",
+    "7536515786358164266",
+    "7084737231847443211"
   ],
   "items": [
     {
@@ -1010,6 +1024,76 @@
       "source_url": "https://www.youtube.com/watch?v=mIKW1krZy4E",
       "output_filename": "meo_vat_gia_dinh/ready/20261106_140901_youtube_shorts_story_mIKW1krZy4E.mp4",
       "crawled_at": "2026-11-06T14:19:35"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7312997468654849318",
+      "sound_id": "7312997658841418506",
+      "platform": "douyin",
+      "genre": "channel_9_smart_parenting",
+      "source_url": "https://www.douyin.com/video/7312997468654849318",
+      "output_filename": "nuoi_con_eq/ready/20261106_143048_douyin_story_7312997468654849318.mp4",
+      "crawled_at": "2026-11-06T14:33:16"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7614826780863868137",
+      "sound_id": "7614826793786264370",
+      "platform": "douyin",
+      "genre": "channel_9_smart_parenting",
+      "source_url": "https://www.douyin.com/video/7614826780863868137",
+      "output_filename": "nuoi_con_eq/ready/20261106_143440_douyin_story_7614826780863868137.mp4",
+      "crawled_at": "2026-11-06T14:42:02"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7568762631415610041",
+      "sound_id": "7568762551543073590",
+      "platform": "douyin",
+      "genre": "channel_9_smart_parenting",
+      "source_url": "https://www.douyin.com/video/7568762631415610041",
+      "output_filename": "nuoi_con_eq/ready/20261106_144231_douyin_story_7568762631415610041.mp4",
+      "crawled_at": "2026-11-06T14:48:47"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7386602828736810267",
+      "sound_id": "7386602800093858569",
+      "platform": "douyin",
+      "genre": "channel_9_smart_parenting",
+      "source_url": "https://www.douyin.com/video/7386602828736810267",
+      "output_filename": "nuoi_con_eq/ready/20261106_144911_douyin_story_7386602828736810267.mp4",
+      "crawled_at": "2026-11-06T14:54:47"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7525660586017918260",
+      "sound_id": "7525660511875255103",
+      "platform": "douyin",
+      "genre": "channel_9_smart_parenting",
+      "source_url": "https://www.douyin.com/video/7525660586017918260",
+      "output_filename": "nuoi_con_eq/ready/20261106_145505_douyin_story_7525660586017918260.mp4",
+      "crawled_at": "2026-11-06T14:57:29"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7536515801240964386",
+      "sound_id": "7536515786358164266",
+      "platform": "douyin",
+      "genre": "channel_9_smart_parenting",
+      "source_url": "https://www.douyin.com/video/7536515801240964386",
+      "output_filename": "nuoi_con_eq/ready/20261106_145745_douyin_story_7536515801240964386.mp4",
+      "crawled_at": "2026-11-06T15:00:34"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7084737259936779535",
+      "sound_id": "7084737231847443211",
+      "platform": "douyin",
+      "genre": "channel_9_smart_parenting",
+      "source_url": "https://www.douyin.com/video/7084737259936779535",
+      "output_filename": "nuoi_con_eq/ready/20261106_150103_douyin_story_7084737259936779535.mp4",
+      "crawled_at": "2026-11-06T15:10:07"
     }
   ]
 }

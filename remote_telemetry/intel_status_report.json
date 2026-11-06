@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-06 14:30:39",
+    "timestamp": "2026-11-07 00:06:07",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261105_140908_tiktok_story_990006001_bongcuc_v4_s60_p1_bg_daylight.mp4",
-      "caption": "🎧 [Truyện Đêm Khuya] Bông Cúc Số 60 (Phần 1/5) — Hôn Lễ Chưa Bắt Đầu, Chú Rể Đã Thân Bại Danh Liệt. Từng tình tiết đều cuốn không rời tai, bạn nghĩ sao về phần này?",
-      "hashtags": "#bongcucso60 #bongcucaudio #fyp #kechuyendemkhuya #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya",
+      "video_file": "20261106_020213_douyin_story_7353976976912289058.mp4",
+      "caption": "🥰 Nhật ký gia đình siêu lầy: Lần tới Super Wings sẽ đến Peter Pan để phục vụ đồ ăn. \"Bây giờ cậu có muốn biết chuyện gì đang xảy ra bên trong không...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 00:06:07",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261106_020213_douyin_story_7353976976912289058.mp4",
+        "caption": "🥰 Nhật ký gia đình siêu lầy: Lần tới Super Wings sẽ đến Peter Pan để phục vụ đồ ăn. \"Bây giờ cậu có muốn biết chuyện gì đang xảy ra bên trong không...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-06 14:30:39",
       "machine_arch": "x86_64",
@@ -770,18 +786,6 @@
       "details": {
         "scrolled_videos": 10,
         "elapsed_seconds": 33576.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-06 02:37:21",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "elapsed_seconds": 150.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
