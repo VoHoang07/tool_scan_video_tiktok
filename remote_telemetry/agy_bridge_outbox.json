@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-07 02:39:03",
+  "updated_at": "2026-11-07 03:09:04",
   "latest_result": {
-    "cmd_id": "heartbeat_1793993942",
+    "cmd_id": "heartbeat_1793995744",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 02:39:02",
+    "executed_at": "2026-11-07 03:09:04",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 02:39:03",
+      "timestamp": "2026-11-07 03:09:04",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 0.6,
+      "lock_file_age_seconds": 195.5,
       "processes": [
-        "44731    02:34:37 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "44733    02:34:37 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    02:03:05 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    02:03:05 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "44731    03:04:38 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "44733    03:04:38 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    02:33:06 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    02:33:06 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe."
+        "[03:08:15] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
+        "[03:08:20] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 86.15%)",
+        "[03:08:36] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 5 câu thoại hoàn chỉnh (mean_logprob=-0.98, ocr_coverage=0%).",
+        "[03:08:36] [INFO] tiktok_pipeline: [Voice Filter] Kết quả đo 7678287962634767657: lang=zh, số câu=5, độ dài TB=1.8 ký tự/câu, thời gian thoại=4.4s/45.5s (9.8%), logprob=-0.98, ocr=0%",
+        "[03:08:36] [INFO] tiktok_pipeline: [Voice Filter] -> LOẠI BỎ 7678287962634767657 (không đạt chuẩn mật độ câu thoại).",
+        "[03:08:36] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #2/14: [TIKTOK] ID=7587055116528766216 (tim=27290, thời lượng=74.0s) ---",
+        "[03:08:36] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên TIKTOK ID=7587055116528766216 (thời lượng=74.0s, sound='original sound - hquang212', view=317252, tim=27290, share=8071)...",
+        "[03:08:36] [INFO] tiktok_pipeline: Đang tải video TikTok không watermark qua TikWM API...",
+        "[03:08:47] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7587055116528766216/raw_video.mp4 (8.26 MB)",
+        "[03:08:47] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7587055116528766216/audio.mp3",
+        "[03:08:48] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 74.70s)",
+        "[03:08:48] [INFO] tiktok_pipeline: [Voice Filter] Video 7587055116528766216 là Tiếng Việt ('vi') có sẵn -> Giữ nguyên video & âm thanh gốc 100%.",
+        "[03:08:48] [INFO] tiktok_pipeline: === [3-5/5] VIDEO GỐC ĐÃ LÀ TIẾNG VIỆT ('vi') -> GIỮ NGUYÊN BẢN GỐC & LÁCH MÃ BĂM TRÙNG LẶP TIKTOK (MD5/vHash/AudioPrint) ===",
+        "[03:09:02] [INFO] tiktok_pipeline: Đã giữ nguyên video tiếng Việt tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/tu_chan_gioi/ready/20261107_030848_tiktok_story_7587055116528766216.mp4",
+        "[03:09:02] [INFO] tiktok_pipeline: Caption gốc: 🔥 Siêu phẩm Huyền Huyễn Tu Tiên: \"Mới chút thất bại, tim đã nhói đau, nhưng đau là vì mơ ước còn sâu. Một hòn đá nhỏ giữa đường dài vô tận, chưa đủ chôn vùi chí hướng mai sau. Ngã không phải thua, chỉ là tạm dừng, để biết mình còn có thể đứng lên. Khi bóng tối phủ kín đôi vai mệt mỏi, chính vết thương này dạy ta cách vững bền.\". Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "[03:09:02] [INFO] tiktok_pipeline: Hashtags: #tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #foryou #fyp",
+        "[03:09:02] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=tu_chan_gioi, file=tu_chan_gioi/ready/20261107_030848_tiktok_story_7587055116528766216.mp4, status=READY)",
+        "[03:09:02] [INFO] tiktok_pipeline: ==> Đã hoàn thành 1/1 video cho [tu_chan_gioi]: /Users/vohoang/Documents/tool_scan_video_tiktok/output/tu_chan_gioi/ready/20261107_030848_tiktok_story_7587055116528766216.mp4",
+        "[03:09:02] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh tu_chan_gioi (tu_chan_gioi)! Kho chờ ready/ hiện tại: 5/5",
+        "[03:09:04] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh tu_chan_gioi (tu_chan_gioi): Nghỉ an toàn 187s (~3.1 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
       ],
-      "lock_file_content": "pid=48549 ts=1793993942"
+      "lock_file_content": "idle"
     }
   }
 }
