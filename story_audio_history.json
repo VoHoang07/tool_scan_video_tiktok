@@ -184,7 +184,8 @@
     "KJoEAqOKEj0",
     "7300189613413371154",
     "7661968290692107528",
-    "7016607076457729293"
+    "7016607076457729293",
+    "7691101883590544660"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -280,7 +281,8 @@
     "yt_sound_KJoEAqOKEj0",
     "7300189633986546434",
     "tt_seed_7661968290692107528",
-    "7016607322567199495"
+    "7016607322567199495",
+    "tt_seed_7691101883590544660"
   ],
   "items": [
     {
@@ -1262,6 +1264,16 @@
       "source_url": "https://www.douyin.com/video/7016607076457729293",
       "output_filename": "video_AI_hay/ready/20261107_041345_douyin_story_7016607076457729293.mp4",
       "crawled_at": "2026-11-07T04:14:56"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7691101883590544660",
+      "sound_id": "tt_seed_7691101883590544660",
+      "platform": "tiktok",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.tiktok.com/@jean131419/video/7691101883590544660",
+      "output_filename": "baby_AI/ready/20261107_041929_tiktok_story_7691101883590544660.mp4",
+      "crawled_at": "2026-11-07T04:23:04"
     }
   ]
 }
