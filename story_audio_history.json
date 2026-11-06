@@ -176,7 +176,9 @@
     "IymOGSS8ZRo",
     "7675742941222178055",
     "990005101",
-    "7088337949602909466"
+    "7088337949602909466",
+    "xIqKaq64kdU",
+    "EogJbS9JB54"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -264,7 +266,9 @@
     "yt_sound_IymOGSS8ZRo",
     "tt_seed_7675742941222178055",
     "bongcuc_yt_MVLIbFWGTxE_p1",
-    "7088337947338656539"
+    "7088337947338656539",
+    "yt_sound_xIqKaq64kdU",
+    "yt_sound_EogJbS9JB54"
   ],
   "items": [
     {
@@ -1166,6 +1170,26 @@
       "source_url": "https://www.tiktok.com/@tienhiep420/video/7088337949602909466",
       "output_filename": "tu_chan_gioi/ready/20261107_010630_tiktok_story_7088337949602909466.mp4",
       "crawled_at": "2026-11-07T01:06:34"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "xIqKaq64kdU",
+      "sound_id": "yt_sound_xIqKaq64kdU",
+      "platform": "youtube_shorts",
+      "genre": "channel_10_tech_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=xIqKaq64kdU",
+      "output_filename": "phu_kien_tien_ich/ready/20261107_013630_youtube_shorts_story_xIqKaq64kdU.mp4",
+      "crawled_at": "2026-11-07T02:00:48"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "EogJbS9JB54",
+      "sound_id": "yt_sound_EogJbS9JB54",
+      "platform": "youtube_shorts",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.youtube.com/watch?v=EogJbS9JB54",
+      "output_filename": "phu_nu_khi_chat/ready/20261107_020627_youtube_shorts_story_EogJbS9JB54.mp4",
+      "crawled_at": "2026-11-07T02:22:51"
     }
   ]
 }
