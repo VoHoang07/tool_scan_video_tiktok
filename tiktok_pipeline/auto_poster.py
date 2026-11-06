@@ -4414,8 +4414,8 @@ class TikTokAutoPoster:
 
     def _focus_and_play_tiktok_video(self, page: Any, ch_folder: str) -> Tuple[float, float]:
         """
-        Đóng thanh tìm kiếm/địa chỉ của Chrome (nếu đang mở) và click trực tiếp vào giữa màn hình video
-        để kích hoạt phát video thật sự trên TikTok. Trả về tọa độ tâm video (vid_x, vid_y).
+        Đóng thanh tìm kiếm/địa chỉ của Chrome (nếu đang mở) bằng cách click vào vùng nền tối trung tính (x=295, y=420)
+        để KHÔNG làm tạm dừng (pause) video đang tự chạy trên FYP, và chỉ click vào tâm video nếu video đang thực sự bị paused.
         """
         vid_x, vid_y = 560.0, 450.0
         try:
@@ -4433,6 +4433,13 @@ class TikTokAutoPoster:
         except Exception:
             pass
 
+        # Click vào vùng nền tối trung tính giữa sidebar trái và khung video (x=295, y=420) để lấy focus cửa sổ mà không pause video
+        try:
+            self._os_click_viewport(page, 295.0, 420.0)
+            page.wait_for_timeout(350)
+        except Exception:
+            pass
+
         try:
             info = page.evaluate(
                 """() => {
@@ -4441,61 +4448,31 @@ class TikTokAutoPoster:
                             document.activeElement.blur();
                         }
                     } catch (e) {}
-                    const v = document.querySelector('video');
-                    if (!v) return null;
-                    const r = v.getBoundingClientRect();
-                    if (r.width < 100 || r.height < 100) return null;
-                    return {
-                        x: r.left + r.width * 0.45,
-                        y: r.top + r.height * 0.48,
-                        paused: Boolean(v.paused)
-                    };
+                    const videos = Array.from(document.querySelectorAll('video'));
+                    for (const v of videos) {
+                        const r = v.getBoundingClientRect();
+                        if (r.width >= 120 && r.height >= 150 && r.top >= -40 && r.top < window.innerHeight * 0.7) {
+                            try {
+                                v.muted = false;
+                                v.volume = 0.5;
+                                if (v.paused) v.play().catch(() => {});
+                            } catch (e) {}
+                            return {
+                                x: r.left + r.width * 0.45,
+                                y: r.top + r.height * 0.48,
+                                paused: Boolean(v.paused)
+                            };
+                        }
+                    }
+                    return null;
                 }"""
             )
             if isinstance(info, dict) and info.get("x") and info.get("y"):
                 vid_x = float(info["x"])
                 vid_y = float(info["y"])
-        except Exception:
-            pass
-
-        # 2. Click chuột thật (CoreGraphics CGEvent) vào giữa màn hình video để đóng hẳn thanh tìm kiếm Chrome & lấy focus
-        try:
-            self._os_click_viewport(page, vid_x, vid_y)
-            time.sleep(0.45)
-        except Exception:
-            try:
-                page.mouse.click(vid_x, vid_y)
-                time.sleep(0.45)
-            except Exception:
-                pass
-
-        # 3. Kiểm tra nếu cú click vừa rồi làm tạm dừng video (paused=true) thì click/play lại ngay để video chạy 100%
-        try:
-            still_paused = page.evaluate(
-                """() => {
-                    const v = document.querySelector('video');
-                    if (!v) return false;
-                    try {
-                        v.muted = false;
-                        v.volume = 0.5;
-                    } catch (e) {}
-                    if (v.paused) {
-                        try { v.play().catch(() => {}); } catch (e) {}
-                    }
-                    return Boolean(v.paused);
-                }"""
-            )
-            if still_paused:
-                self._os_click_viewport(page, vid_x, vid_y)
-                time.sleep(0.35)
-                page.evaluate(
-                    """() => {
-                        const v = document.querySelector('video');
-                        if (v && v.paused) {
-                            try { v.play().catch(() => {}); } catch (e) {}
-                        }
-                    }"""
-                )
+                if info.get("paused"):
+                    self._os_click_viewport(page, vid_x, vid_y)
+                    page.wait_for_timeout(400)
         except Exception:
             pass
 
@@ -4503,30 +4480,38 @@ class TikTokAutoPoster:
 
     def _scroll_to_next_fyp_video(self, page: Any, vid_x: float, vid_y: float) -> None:
         """
-        Chuyển sang video tiếp theo trên trang Đề xuất (FYP) TikTok một cách mượt mà và chắc chắn 100%:
-        - Đảm bảo không bị kẹt focus ở ô Tìm kiếm.
-        - Đưa chuột vào giữa màn hình video và cuộn con lăn chuột kết hợp phím ArrowDown.
-        - Đảm bảo video mới tự động phát ngay khi lướt tới.
+        Chuyển sang đúng 1 video tiếp theo trên trang Đề xuất (FYP) TikTok:
+        - Dùng phím `ArrowDown` chuẩn của TikTok Web FYP trước (tránh gọi đồng thời cả wheel + ArrowDown gây nhảy cóc 2 video).
+        - Chỉ dùng con lăn chuột `page.mouse.wheel` làm dự phòng nếu sau 0.9s video hoạt động chưa chuyển sang clip mới.
         """
+        prev_sig = ""
         try:
-            page.evaluate(
-                """() => {
-                    if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-                        document.activeElement.blur();
-                    }
-                }"""
+            prev_sig = str(
+                page.evaluate(
+                    """() => {
+                        if (document.activeElement && ['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+                            document.activeElement.blur();
+                        }
+                        const videos = Array.from(document.querySelectorAll('video'));
+                        for (const v of videos) {
+                            const r = v.getBoundingClientRect();
+                            if (r.height > 150 && r.top >= -50 && r.top < window.innerHeight * 0.65) {
+                                return (v.currentSrc || v.src || '') + '|' + Math.round(r.top);
+                            }
+                        }
+                        return '';
+                    }"""
+                )
+                or ""
             )
         except Exception:
             pass
 
-        # Đưa chuột vào vùng màn hình video rồi cuộn xuống + bấm ArrowDown
         try:
             jitter_x = vid_x + random.uniform(-35, 35)
             jitter_y = vid_y + random.uniform(-35, 35)
             self._human_move_mouse(page, jitter_x, jitter_y)
-            time.sleep(0.15)
-            page.mouse.wheel(0, random.randint(650, 850))
-            time.sleep(0.25)
+            page.wait_for_timeout(150)
             page.keyboard.press("ArrowDown")
         except Exception:
             try:
@@ -4534,7 +4519,29 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
-        time.sleep(random.uniform(1.0, 1.6))
+        page.wait_for_timeout(random.randint(950, 1350))
+
+        # Kiểm tra xem đã sang video mới chưa; nếu chưa thì mới cuộn con lăn chuột 1 nhịp
+        try:
+            state_after = page.evaluate(
+                """(oldSig) => {
+                    const videos = Array.from(document.querySelectorAll('video'));
+                    for (const v of videos) {
+                        const r = v.getBoundingClientRect();
+                        if (r.height > 150 && r.top >= -50 && r.top < window.innerHeight * 0.65) {
+                            const curSig = (v.currentSrc || v.src || '') + '|' + Math.round(r.top);
+                            return { changed: Boolean(!oldSig || curSig !== oldSig), paused: Boolean(v.paused) };
+                        }
+                    }
+                    return { changed: true, paused: false };
+                }""",
+                prev_sig,
+            )
+            if isinstance(state_after, dict) and not state_after.get("changed"):
+                page.mouse.wheel(0, random.randint(680, 780))
+                page.wait_for_timeout(random.randint(900, 1250))
+        except Exception:
+            pass
 
         # Đảm bảo video mới đang chạy (không bị paused)
         try:
@@ -4543,7 +4550,7 @@ class TikTokAutoPoster:
                     const videos = Array.from(document.querySelectorAll('video'));
                     for (const v of videos) {
                         const r = v.getBoundingClientRect();
-                        if (r.height > 150 && r.top >= -50 && r.top < window.innerHeight * 0.7) {
+                        if (r.height > 150 && r.top >= -50 && r.top < window.innerHeight * 0.65) {
                             if (v.paused) {
                                 try { v.play().catch(() => {}); } catch (e) {}
                             }
@@ -4555,12 +4562,17 @@ class TikTokAutoPoster:
             )
             if is_paused:
                 self._os_click_viewport(page, vid_x, vid_y)
-                time.sleep(0.3)
+                page.wait_for_timeout(350)
         except Exception:
             pass
 
     def warmup_browse_channel(self, ch_folder: str, browse_seconds: int = 150) -> bool:
-        """Lướt FYP TikTok tự nhiên bằng CoreGraphics CGEvent (click màn hình chạy video + cuộn mượt) để TikTok nhận diện account thật."""
+        """
+        Lướt FYP TikTok tự nhiên bằng CoreGraphics CGEvent:
+        - Tự động nhận diện và lướt qua nhanh các video Quảng cáo (`Được tài trợ` / `Sponsored`).
+        - Xem video tự nhiên 9-17s kèm di chuyển chuột Bezier và tương tác thật (Thả tim / Follow tự nhiên bằng chuột phần cứng Single-Click).
+        - Chụp ảnh telemetry ngay sau khi xem/tương tác xong video cuối trước khi cuộn sang video 00:01.
+        """
         user_data_dir = self.profiles_root / ch_folder
         if not user_data_dir.exists():
             user_data_dir.mkdir(parents=True, exist_ok=True)
@@ -4596,43 +4608,108 @@ class TikTokAutoPoster:
                     page = context.pages[0] if context.pages else context.new_page()
 
                     page.goto("https://www.tiktok.com/foryou?lang=vi-VN", wait_until="domcontentloaded", timeout=35000)
-                    time.sleep(random.uniform(3.5, 5.0))
+                    page.wait_for_timeout(random.randint(3600, 5000))
 
                     try:
                         self.filter_24h.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
                     except Exception:
                         pass
 
-                    # Click vào giữa màn hình để tắt thanh tìm kiếm Chrome và cho video chạy ngay
                     vid_x, vid_y = self._focus_and_play_tiktok_video(page, ch_folder)
                     logger.info(
-                        f"[Warmup FYP] [{ch_folder}] Đã click vào màn hình ({vid_x:.0f}, {vid_y:.0f}) kích hoạt chạy video & bắt đầu lướt..."
+                        f"[Warmup FYP] [{ch_folder}] Đã lấy focus màn hình phát video ({vid_x:.0f}, {vid_y:.0f}) & bắt đầu lướt FYP..."
                     )
 
                     start = time.time()
                     scroll_count = 0
-                    while time.time() - start < browse_seconds:
-                        watch_time = random.uniform(7.0, 15.0)
-                        logger.info(
-                            f"[Warmup FYP] [{ch_folder}] ▶️ Đang xem video #{scroll_count + 1} ({watch_time:.1f}s)..."
-                        )
-                        time.sleep(watch_time)
+                    ads_skipped = 0
+                    fyp_liked_count = 0
+                    fyp_followed_count = 0
+                    recent_follows_24h = self.filter_24h._count_recent_channel_follows(ch_folder, hours=24.0)
 
-                        # Di chuột nhẹ trong màn hình video (giả lập người xem thật)
-                        if random.random() < 0.35:
+                    while time.time() - start < browse_seconds:
+                        if scroll_count > 0:
+                            self._scroll_to_next_fyp_video(page, vid_x, vid_y)
+
+                        scroll_count += 1
+                        clip_meta = page.evaluate(
+                            """() => {
+                                let isSponsored = false;
+                                let duration = 0;
+                                const videos = Array.from(document.querySelectorAll('video'));
+                                for (const v of videos) {
+                                    const r = v.getBoundingClientRect();
+                                    if (r.height > 150 && r.top >= -50 && r.top < window.innerHeight * 0.65) {
+                                        duration = (v.duration && isFinite(v.duration)) ? v.duration : 0;
+                                        const card = v.closest('[data-e2e="recommend-list-item-container"], article, div[class*="DivItemContainer"]') || document.body;
+                                        const txt = (card.innerText || '').toLowerCase();
+                                        if (txt.includes('được tài trợ') || txt.includes('sponsored') || duration > 420) {
+                                            isSponsored = true;
+                                        }
+                                        break;
+                                    }
+                                }
+                                return { isSponsored, duration };
+                            }"""
+                        ) or {}
+
+                        if clip_meta.get("isSponsored"):
+                            ads_skipped += 1
+                            logger.info(
+                                f"[Warmup FYP] [{ch_folder}] ⏭️ Phát hiện video Quảng cáo (Được tài trợ, dài {float(clip_meta.get('duration') or 0):.0f}s) -> Lướt qua sau 1.8s..."
+                            )
+                            page.wait_for_timeout(random.randint(1500, 2100))
+                            continue
+
+                        watch_time = random.uniform(9.0, 16.5)
+                        logger.info(
+                            f"[Warmup FYP] [{ch_folder}] ▶️ Đang xem video đề xuất #{scroll_count} ({watch_time:.1f}s)..."
+                        )
+                        page.wait_for_timeout(int(watch_time * 1000))
+
+                        if random.random() < 0.45:
                             self._human_move_mouse(
                                 page,
-                                vid_x + random.uniform(-80, 80),
-                                vid_y + random.uniform(-80, 80),
+                                vid_x + random.uniform(-75, 75),
+                                vid_y + random.uniform(-75, 75),
                             )
-                            time.sleep(random.uniform(0.3, 0.7))
+                            page.wait_for_timeout(random.randint(350, 700))
 
-                        # Lướt sang video kế tiếp & đảm bảo video mới chạy ngay
-                        self._scroll_to_next_fyp_video(page, vid_x, vid_y)
-                        scroll_count += 1
+                        # Tương tác người thật trên FYP: Thả tim tối đa 1 video/phiên & Follow tối đa 1 kênh/phiên (nếu kênh chưa đủ quota ngày)
+                        if fyp_liked_count == 0 and scroll_count >= 2 and random.random() < 0.55:
+                            try:
+                                if not getattr(self.filter_24h, "_session_digg_rate_limited", False):
+                                    if self.filter_24h._step2_like_video(page, ch_folder):
+                                        fyp_liked_count += 1
+                                        logger.info(f"[Warmup FYP] [{ch_folder}] ❤️ Đã thả tim tự nhiên 1 video hợp gu trên FYP.")
+                            except Exception:
+                                pass
+
+                        if (
+                            fyp_followed_count == 0
+                            and recent_follows_24h < 3
+                            and scroll_count >= 2
+                            and random.random() < 0.50
+                        ):
+                            try:
+                                f_info = self.filter_24h._check_follow_state(page)
+                                if f_info and not f_info.get("alreadyFollowing") and f_info.get("x") and f_info.get("y"):
+                                    fx, fy = float(f_info["x"]), float(f_info["y"])
+                                    self._human_move_mouse(page, fx, fy)
+                                    page.wait_for_timeout(random.randint(250, 450))
+                                    self._os_click_viewport(page, fx, fy)
+                                    page.wait_for_timeout(3800)
+                                    self.filter_24h.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+                                    f_after = self.filter_24h._check_follow_state(page)
+                                    if f_after and f_after.get("alreadyFollowing"):
+                                        fyp_followed_count += 1
+                                        recent_follows_24h += 1
+                                        logger.info(f"[Warmup FYP] [{ch_folder}] ➕ Đã bấm Follow tự nhiên 1 kênh trên FYP (đã xác nhận dấu tích).")
+                            except Exception:
+                                pass
 
                     logger.info(
-                        f"[Warmup FYP] [{ch_folder}] ✅ Hoàn tất lướt {scroll_count} video trong {time.time() - start:.0f}s!"
+                        f"[Warmup FYP] [{ch_folder}] ✅ Hoàn tất lướt {scroll_count} video FYP (bỏ qua {ads_skipped} QC, Tim={fyp_liked_count}, Follow={fyp_followed_count}) trong {time.time() - start:.0f}s!"
                     )
                     try:
                         self._save_and_push_telemetry(
@@ -4641,6 +4718,9 @@ class TikTokAutoPoster:
                             ch_folder=ch_folder,
                             details={
                                 "scrolled_videos": scroll_count,
+                                "ads_skipped": ads_skipped,
+                                "fyp_liked": fyp_liked_count,
+                                "fyp_followed": fyp_followed_count,
                                 "elapsed_seconds": round(time.time() - start, 1),
                                 "final_url": page.url,
                             },
