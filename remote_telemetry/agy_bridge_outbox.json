@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-06 13:05:03",
+  "updated_at": "2026-11-06 13:17:42",
   "latest_result": {
-    "cmd_id": "auto_heal_1793945103",
+    "cmd_id": "auto_heal_1793945862",
     "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-06 13:05:03",
+    "executed_at": "2026-11-06 13:17:42",
     "unstick_report": {
       "killed_chrome_for_testing": false,
       "removed_locks": [
         "workspace_temp/.tiktok_browser_session.lock"
       ],
-      "timestamp": "2026-11-06 13:05:03"
+      "timestamp": "2026-11-06 13:17:42"
     },
     "system_health": {
-      "timestamp": "2026-11-06 13:05:03",
+      "timestamp": "2026-11-06 13:17:42",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -20,32 +20,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "66284    11:58:07 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "66286    11:58:07 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-21:07:39 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-21:07:39 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "66284    12:10:45 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "66286    12:10:45 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-21:20:17 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-21:20:17 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[13:04:05] [INFO] tiktok_pipeline: [Language Gate] -> LOẠI BỎ 7704506265019436306: Ngôn ngữ âm thanh phát hiện là 'ru' (chỉ cho phép video Trung Quốc 'zh' và Việt Nam 'vi').",
-        "[13:04:05] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #8/15: [FACEBOOK_REELS] ID=3617268205196268 (tim=2240, thời lượng=57.3s) ---",
-        "[13:04:05] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=3617268205196268 (thời lượng=57.3s, sound='Original Audio', view=56000, tim=2240, share=280)...",
-        "[13:04:05] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/3617268205196268",
-        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/3617268205196268",
-        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=3617268205196268&_rdr",
-        "[facebook] 3617268205196268: Downloading webpage",
-        "[facebook] 3617268205196268: Downloading webpage",
-        "ERROR: [facebook] 3617268205196268: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
-        "[13:04:08] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 3617268205196268: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
-        "[13:04:08] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 3617268205196268: Không thể tải video từ URL: https://www.facebook.com/reel/3617268205196268. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[13:04:08] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #9/15: [DOUYIN] ID=7675336496103348586 (tim=536792, thời lượng=72.2s) ---",
-        "[13:04:08] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7675336496103348586 (thời lượng=72.2s, sound='@抛弃曲创作的原声一抛弃曲', view=24213140, tim=536792, share=219431)...",
-        "[13:04:08] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[13:04:10] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[13:04:13] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7675336496103348586/raw_video.mp4 (11.36 MB)",
-        "[13:04:13] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7675336496103348586/audio.mp3",
-        "[13:04:14] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 72.21s)",
-        "[13:04:16] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7675336496103348586/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[13:04:21] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 94.39%)"
+        "[13:12:00] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
+        "[13:12:00] [INFO] tiktok_pipeline: Cấu hình giọng kênh [video_AI_hay]: Tông giọng đáng yêu, hài hước, sinh động (AI Hoạt họa / Thú cưng / Kể chuyện) (voice=vi-VN-HoaiMyNeural, rate=+16%, pitch=+4Hz)",
+        "[13:12:00] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +16%, Độ trầm/cao: +4Hz) cho 44 câu thoại...",
+        "[13:12:13] [INFO] tiktok_pipeline: TTS #00 [00.02s-01.87s | gốc=1.92s]: rate=+45%, atempo=1.50x -> 1.85s",
+        "[13:12:44] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Ngoại trừ AMG tự trị của blogger' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[13:12:44] [INFO] tiktok_pipeline: TTS #01 [01.94s-02.34s | gốc=1.32s]: rate=+16%, atempo=1.00x -> 0.40s",
+        "[13:13:11] [INFO] tiktok_pipeline: TTS #02 [03.26s-04.28s | gốc=1.04s]: rate=+45%, atempo=1.60x -> 1.02s",
+        "[13:13:42] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Mình hy vọng những người phạm tội bạo lực gia đình sẽ phải vào tù' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[13:13:42] [INFO] tiktok_pipeline: TTS #03 [04.38s-04.78s | gốc=1.88s]: rate=+16%, atempo=1.00x -> 0.40s",
+        "[13:13:49] [INFO] tiktok_pipeline: TTS #04 [06.96s-07.66s | gốc=0.76s]: rate=+45%, atempo=1.04x -> 0.70s",
+        "[13:14:38] [INFO] tiktok_pipeline: TTS #05 [07.72s-10.29s | gốc=2.64s]: rate=+45%, atempo=1.22x -> 2.57s",
+        "[13:15:26] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Phòng thứ mười' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[13:15:27] [INFO] tiktok_pipeline: TTS #06 [10.36s-10.76s | gốc=0.52s]: rate=+45%, atempo=1.00x -> 0.40s",
+        "[13:16:07] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Mọi tầng lớp đang đón chào mùa xuân đã mất từ ​​lâu' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[13:16:07] [INFO] tiktok_pipeline: TTS #07 [10.88s-11.28s | gốc=1.64s]: rate=+45%, atempo=1.00x -> 0.40s",
+        "[13:16:37] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Quá nhiều người bị đuổi đi vì bạo lực gia đình' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[13:16:38] [INFO] tiktok_pipeline: TTS #08 [12.52s-12.92s | gốc=1.42s]: rate=+16%, atempo=1.00x -> 0.40s",
+        "[13:17:13] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Không có đủ nhà tù để sống' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[13:17:13] [INFO] tiktok_pipeline: TTS #09 [13.94s-14.34s | gốc=0.88s]: rate=+45%, atempo=1.00x -> 0.40s",
+        "[13:17:16] [INFO] tiktok_pipeline: TTS #10 [14.98s-15.71s | gốc=0.82s]: rate=+16%, atempo=1.00x -> 0.73s"
       ]
     }
   }
