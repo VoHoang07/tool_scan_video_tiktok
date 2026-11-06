@@ -237,9 +237,10 @@ def _execute_inbox_command(cmd: Dict[str, Any]) -> Dict[str, Any]:
 
         if action == "shell" and shell_cmd:
             proc = subprocess.run(
-                shell_cmd,
+                f"exec </dev/null\n{shell_cmd}",
                 shell=True,
                 cwd=str(PROJECT_ROOT),
+                stdin=subprocess.DEVNULL,
                 capture_output=True,
                 text=True,
                 timeout=timeout_sec,
@@ -708,6 +709,20 @@ def _broadcast_to_open_terminals(msg: str) -> None:
 def run_bridge_daemon(poll_seconds: int = 20) -> None:
     """Vòng lặp Daemon độc lập trên máy Mac Intel: nhận lệnh từ GitHub, tự chữa lỗi khóa treo & gọi AGY CLI."""
     import fcntl
+
+    # Bảo vệ tuyệt đối khỏi lỗi Revoked TTY (EBADF Errno 9) trên macOS khi cửa sổ Terminal khởi chạy ban đầu bị đóng
+    try:
+        devnull_fd = os.open(os.devnull, os.O_RDWR)
+        os.dup2(devnull_fd, 0)
+        for std_fd in (1, 2):
+            try:
+                os.fstat(std_fd)
+            except OSError:
+                os.dup2(devnull_fd, std_fd)
+        if devnull_fd > 2:
+            os.close(devnull_fd)
+    except Exception:
+        pass
 
     daemon_lock_path = PROJECT_ROOT / "workspace_temp" / ".agy_intel_bridge_daemon.lock"
     daemon_lock_path.parent.mkdir(parents=True, exist_ok=True)
