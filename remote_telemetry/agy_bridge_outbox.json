@@ -1,13 +1,18 @@
 {
-  "updated_at": "2026-11-06 12:02:19",
+  "updated_at": "2026-11-06 12:29:18",
   "latest_result": {
-    "cmd_id": "heartbeat_1793941334",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-06 12:02:14",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1793942958",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-06 12:29:18",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-06 12:29:18"
+    },
     "system_health": {
-      "timestamp": "2026-11-06 12:02:19",
+      "timestamp": "2026-11-06 12:29:18",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -15,32 +20,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "66284    10:55:22 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "66286    10:55:22 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-20:04:54 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-20:04:54 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "66284    11:22:22 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "66286    11:22:22 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-20:31:54 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-20:31:54 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[02:44:15] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[02:44:16] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[02:44:17] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/raw_video.mp4 (2.37 MB)",
-        "[02:44:17] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/audio.mp3",
-        "[02:44:18] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 16.09s)",
-        "[02:44:18] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[02:44:22] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 99.21%)",
-        "[02:44:38] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 1 câu thoại hoàn chỉnh (mean_logprob=-0.41, ocr_coverage=0%).",
-        "[02:44:38] [INFO] tiktok_pipeline: [Voice Filter] Kết quả đo 7693187994052346276: lang=zh, số câu=1, độ dài TB=18.0 ký tự/câu, thời gian thoại=3.1s/16.1s (19.3%), logprob=-0.41, ocr=0%",
-        "[02:44:38] [INFO] tiktok_pipeline: [Voice Filter] -> LOẠI BỎ 7693187994052346276 (không đạt chuẩn mật độ câu thoại).",
-        "[02:44:38] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh phu_nu_khi_chat trong lượt này. Chuyển sang kênh kế tiếp...",
-        "[02:44:40] [INFO] tiktok_pipeline: [Round-Robin] Kênh an_vat_moi_ngay (an_vat_moi_ngay) hiện có 0/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
-        "[02:44:40] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[02:44:40] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[02:44:40] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[02:44:40] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_8_food_snacks] -> Thư mục: output/an_vat_moi_ngay/ready/ | Link mẫu: 0 | Kênh mẫu: ['anvatmoingay.vn', 'congthucnauannhanh', 'monngonmoingay', 'bepnhỏ.official'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-        "[02:44:40] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @anvatmoingay.vn.",
-        "[02:44:40] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @congthucnauannhanh.",
-        "[02:44:41] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @monngonmoingay.",
-        "[02:44:41] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @bepnhỏ.official."
+        "[12:21:27] [INFO] tiktok_pipeline: [tu_chan_gioi] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[12:21:33] [INFO] tiktok_pipeline: TTS #26 [52.10s-53.27s | gốc=1.20s]: rate=+45%, atempo=1.21x -> 1.17s",
+        "[12:21:40] [INFO] tiktok_pipeline: [tu_chan_gioi] [Lượt 3] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[12:21:42] [INFO] tiktok_pipeline: [tu_chan_gioi] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[12:21:43] [INFO] tiktok_pipeline: [tu_chan_gioi] Hoàn tất kiểm tra trang Bài đăng (đã chuyển 3 bài từ 'Chỉ mình tôi' -> 'Mọi người').",
+        "[12:21:43] [INFO] tiktok_pipeline: [tu_chan_gioi] [Remote Telemetry] Đã lưu ảnh (latest_upload_tu_chan_gioi.jpg) & đẩy đồng bộ GitHub chạy ngầm!",
+        "[12:21:58] [INFO] tiktok_pipeline: [tu_chan_gioi] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: tu_chan_gioi/posted/20261105_173353_tiktok_story_7684235157036879124.mp4",
+        "[12:21:58] [INFO] tiktok_pipeline: [Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [suc_khoe_duong_sinh]: 11:54 (khung gốc 11:55, lệch -1 phút)",
+        "[12:22:04] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Nào, được rồi, căn bậc hai của một số dương là gì' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[12:22:04] [INFO] tiktok_pipeline: TTS #27 [53.98s-54.38s | gốc=3.32s]: rate=+16%, atempo=1.00x -> 0.40s",
+        "[12:22:32] [INFO] tiktok_pipeline: TTS #28 [57.74s-59.08s | gốc=1.40s]: rate=+25%, atempo=1.00x -> 1.34s",
+        "[12:22:36] [INFO] tiktok_pipeline: TTS #29 [60.46s-61.57s | gốc=0.58s]: rate=+16%, atempo=1.00x -> 1.11s",
+        "[12:22:36] [INFO] tiktok_pipeline: === [5/5] GHÉP ÂM THANH & ĐÓNG PHỤ ĐỀ LÊN VIDEO (FFMPEG) ===",
+        "[12:22:36] [INFO] tiktok_pipeline: Thông số video gốc: 720x1280, thời lượng: 63.47s",
+        "[12:22:38] [INFO] tiktok_pipeline: Đã phát hiện vị trí sub gốc cần làm mờ: tâm Y=1056px (82.5%), chiều cao=128px (peak_score=676.4)",
+        "[12:22:38] [INFO] tiktok_pipeline: Đã tạo trục âm thanh lồng tiếng Việt: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7636015710594379258/voiceover_track.wav",
+        "[12:22:38] [INFO] tiktok_pipeline: Đang trộn lồng tiếng Việt đè lên giọng nhân vật gốc (nền gốc=0.25, giọng Việt=1.35)...",
+        "[12:22:44] [INFO] tiktok_pipeline: Đang xóa tinh tế nét chữ sub gốc theo từng khung hình tại dải Y=[984..1126]...",
+        "[12:23:38] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc...",
+        "[12:23:53] [INFO] tiktok_pipeline: Hoàn tất xuất bản video tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/nuoi_con_eq/ready/20261106_121103_douyin_story_7636015710594379258.mp4"
       ]
     }
   }
