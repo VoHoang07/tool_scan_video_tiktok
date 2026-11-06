@@ -1,21 +1,285 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-06 13:10:20",
+    "timestamp": "2026-11-06 13:20:52",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "event_type": "filter24h",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261105_192707_tiktok_story_7647042355509431559.mp4",
-      "caption": "😂 Tiểu Béo, cậu bị sao vậy? Có chuyện gì với Fatty vậy? Tại sao?. \"Béo Ngưu đồng ý để ngày mai tôi đãi anh ấy bữa tối và còn đãi anh ấy đi xem phim...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #embecute #tinhhuonghaihuoc #haihuocmoingay #giadinhhaihuoc #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 1,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 2,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "phu_kien_tien_ich",
+          "video_id": "7704694268836810005",
+          "video_url": "https://www.tiktok.com/@l.diu.vy8/video/7704694268836810005",
+          "creator_handle": "@l.diu.vy8",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": true,
+            "3_copied_link": true,
+            "4_added_favorite": false,
+            "5_followed_creator": true,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611061419474218212D1709DCB5F840\",\"now\":1793945987000},\"is_digg\":null,\"log_pb\":{\"impr_id\":\"202611061419474218212D1709DCB5F840\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611061419591E19148D7E4559B71D43\",\"now\":1793945999000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611061419591E19148D7E4559B71D43\"},\"status_code\":0,\"status_msg\":\"\"}"
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611061420013E7922AF9893D7B45800\",\"now\":1793946001000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611061420013E7922AF9893D7B45800\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 804.34375,
+              "y": 411,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "14"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 804.34375,
+                "y": 411,
+                "ariaPressed": true,
+                "svgColor": "rgba(254, 44, 85, 1)",
+                "likeCount": "15"
+              },
+              "red": true,
+              "server_digg_ok": false,
+              "server_digg_rejected": false
+            },
+            "profile_follow_verify": {
+              "creator": "@l.diu.vy8",
+              "nav_method": "spa_click",
+              "profile_url": "https://www.tiktok.com/@l.diu.vy8?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": null,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-06 13:20:08",
+          "follow_back_window_until": "2026-11-07 13:20:08"
+        },
+        {
+          "channel": "phu_kien_tien_ich",
+          "video_id": "7704624004807544070",
+          "video_url": "https://www.tiktok.com/@cuteso1tg_125/video/7704624004807544070",
+          "creator_handle": "@cuteso1tg_125",
+          "watched_seconds": 23.6,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": false,
+            "4_added_favorite": false,
+            "5_followed_creator": false,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": true,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611061420472CE03E93B8A6FFBE5822\",\"now\":1793946047000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611061420472CE03E93B8A6FFBE5822\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": "phukientienich.k10"
+            },
+            "before": {
+              "x": 804.34375,
+              "y": 411,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "15"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 804.34375,
+                "y": 411,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "15"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            }
+          },
+          "interacted_at": "2026-11-06 13:20:52",
+          "follow_back_window_until": "2026-11-07 13:20:52"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-06 13:20:52",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
+      "details": {
+        "interacted_count": 2,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "phu_kien_tien_ich",
+            "video_id": "7704694268836810005",
+            "video_url": "https://www.tiktok.com/@l.diu.vy8/video/7704694268836810005",
+            "creator_handle": "@l.diu.vy8",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": false,
+              "5_followed_creator": true,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611061419474218212D1709DCB5F840\",\"now\":1793945987000},\"is_digg\":null,\"log_pb\":{\"impr_id\":\"202611061419474218212D1709DCB5F840\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611061419591E19148D7E4559B71D43\",\"now\":1793945999000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611061419591E19148D7E4559B71D43\"},\"status_code\":0,\"status_msg\":\"\"}"
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611061420013E7922AF9893D7B45800\",\"now\":1793946001000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611061420013E7922AF9893D7B45800\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 804.34375,
+                "y": 411,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "14"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 804.34375,
+                  "y": 411,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(254, 44, 85, 1)",
+                  "likeCount": "15"
+                },
+                "red": true,
+                "server_digg_ok": false,
+                "server_digg_rejected": false
+              },
+              "profile_follow_verify": {
+                "creator": "@l.diu.vy8",
+                "nav_method": "spa_click",
+                "profile_url": "https://www.tiktok.com/@l.diu.vy8?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": null,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-06 13:20:08",
+            "follow_back_window_until": "2026-11-07 13:20:08"
+          },
+          {
+            "channel": "phu_kien_tien_ich",
+            "video_id": "7704624004807544070",
+            "video_url": "https://www.tiktok.com/@cuteso1tg_125/video/7704624004807544070",
+            "creator_handle": "@cuteso1tg_125",
+            "watched_seconds": 23.6,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": true,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611061420472CE03E93B8A6FFBE5822\",\"now\":1793946047000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611061420472CE03E93B8A6FFBE5822\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": "phukientienich.k10"
+              },
+              "before": {
+                "x": 804.34375,
+                "y": 411,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "15"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 804.34375,
+                  "y": 411,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "15"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              }
+            },
+            "interacted_at": "2026-11-06 13:20:52",
+            "follow_back_window_until": "2026-11-07 13:20:52"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-06 13:10:20",
       "machine_arch": "x86_64",
@@ -638,18 +902,6 @@
       "details": {
         "scrolled_videos": 12,
         "elapsed_seconds": 159.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-06 02:14:32",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "elapsed_seconds": 150.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
