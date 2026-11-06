@@ -1,35 +1,36 @@
 {
-  "updated_at": "2026-11-06 14:33:26",
+  "updated_at": "2026-11-06 15:10:45",
   "latest_result": {
-    "cmd_id": "auto_evolve_95e9fa4d7161",
+    "cmd_id": "auto_evolve_c84063a15bdf",
     "action": "auto_self_evolve_fix",
-    "executed_at": "2026-11-06 14:33:26",
+    "executed_at": "2026-11-06 15:10:45",
     "ai_fix_report": {
-      "error_hash": "95e9fa4d7161",
+      "error_hash": "c84063a15bdf",
       "log_file": "daemon_24_7.log",
-      "error_line": "NameError: name 'hashlib' is not defined",
+      "error_line": "OSError: [Errno 9] Bad file descriptor",
       "agy_exit_code": 1,
       "agy_fix_summary": "",
-      "timestamp": "2026-11-06 14:33:26"
+      "timestamp": "2026-11-06 15:10:45"
     },
     "system_health": {
-      "timestamp": "2026-11-06 14:33:26",
+      "timestamp": "2026-11-06 15:10:45",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
-      "stream1_running": true,
+      "stream1_running": false,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 126.1,
+      "lock_file_age_seconds": 2365.3,
       "processes": [
-        "66284    13:26:29 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "66286    13:26:29 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-22:36:01 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-22:36:01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "3213 01-23:13:20 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-23:13:20 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 620, in run_crawl_story_mode",
-        "    crawler.append_to_master_csv(",
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3656, in append_to_master_csv",
+        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3872, in format_inventory_status_table",
+        "    inv = self.get_inventory_status()",
+        "          ^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3831, in get_inventory_status",
+        "    self.ensure_channel_directories()",
+        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 960, in ensure_channel_directories",
         "    self._upgrade_master_csv_schema()",
         "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3573, in _upgrade_master_csv_schema",
         "    rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(",
@@ -38,15 +39,11 @@
         "    idx = int(hashlib.md5(hash_seed).hexdigest()[:8], 16) % len(topic_list)",
         "              ^^^^^^^",
         "NameError: name 'hashlib' is not defined",
-        "[14:33:18] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #10/18: [DOUYIN] ID=7481255503675379001 (tim=3099079, thời lượng=20.9s) ---",
-        "[14:33:18] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7481255503675379001 (thời lượng=20.9s, sound='@咩咩大王创作的原声一咩咩大王', view=123220880, tim=3099079, share=1127862)...",
-        "[14:33:18] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[14:33:19] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[14:33:20] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7481255503675379001/raw_video.mp4 (2.16 MB)",
-        "[14:33:20] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7481255503675379001/audio.mp3",
-        "[14:33:20] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 20.90s)",
-        "[14:33:21] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7481255503675379001/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[14:33:22] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'en' (độ tin cậy: 80.47%)"
+        "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
+        "Python runtime state: core initialized",
+        "OSError: [Errno 9] Bad file descriptor",
+        "Current thread 0x00007ff85a36ca00 (most recent call first):",
+        "  <no Python frame>"
       ],
       "lock_file_content": "idle"
     }
