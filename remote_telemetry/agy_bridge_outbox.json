@@ -1,33 +1,30 @@
 {
-  "updated_at": "2026-11-07 00:35:35",
+  "updated_at": "2026-11-07 00:35:58",
   "latest_result": {
-    "cmd_id": "cmd_20261107_0034_turn_off_switch3",
-    "action": "shell",
-    "executed_at": "2026-11-07 00:35:34",
-    "machine_arch": "x86_64",
-    "hostname": "Hoangs-MBP.fpt",
-    "status": "SUCCESS",
-    "exit_code": 0,
-    "stdout": "vohoang          44731   5.6  1.3 34897476 213728   ??  S    12:04AM   5:22.61 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang          44733   0.0  0.0 34153304   1324   ??  S    12:04AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
-    "stderr": "",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_restart_1793986558",
+    "action": "auto_restart_dead_streams",
+    "executed_at": "2026-11-07 00:35:58",
+    "restart_info": {
+      "restarted_streams": [
+        "stream2_filter24h"
+      ],
+      "timestamp": "2026-11-07 00:35:58"
+    },
     "system_health": {
-      "timestamp": "2026-11-07 00:35:35",
+      "timestamp": "2026-11-07 00:35:58",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
-      "stream2_running": false,
+      "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 6.1,
+      "lock_file_age_seconds": 28.7,
       "processes": [
-        "44731       31:09 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "44733       31:09 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "44731       31:32 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "44733       31:32 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549       00:00 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551       00:00 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[00:35:29] [INFO] tiktok_pipeline: [Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [phu_nu_khi_chat]: 23:33 (khung gốc 23:32, lệch +1 phút)",
-        "[00:35:30] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Kho ready/ đã lọc hết các bản trùng nội dung -> Đang tự động cào ngay 1 video truyện mới hoàn toàn cho [phu_nu_khi_chat]...",
-        "[00:35:30] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[00:35:30] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
         "[00:35:30] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
         "[00:35:30] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_7_women_eq] -> Thư mục: output/phu_nu_khi_chat/ready/ | Link mẫu: 0 | Kênh mẫu: ['phunukhichat.vn', 'tamlyhoccuocsong', 'nghethuatgiaotiep', 'gocphunu.official'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
         "[00:35:30] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @phunukhichat.vn.",
@@ -43,59 +40,13 @@
         "[00:35:33] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/Mr4JFtYJ-lg/",
         "[00:35:34] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7698023893977599272 (ID: 7698023893977599272)",
         "[00:35:34] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/KhnOwGH99QQ/",
-        "[00:35:35] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)"
+        "[00:35:35] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)",
+        "[00:35:40] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/5PXz62pKn0s/",
+        "[00:35:41] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7696826479242519139 (ID: 7696826479242519139)",
+        "[00:35:41] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/RrMNQy7NBa0/",
+        "[00:35:42] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7681137499921550619 (ID: 7681137499921550619)"
       ],
       "lock_file_content": "pid=44731 ts=1793986529"
     }
-  },
-  "history": [
-    {
-      "cmd_id": "cmd_20261107_0034_turn_off_switch3",
-      "action": "shell",
-      "executed_at": "2026-11-07 00:35:34",
-      "machine_arch": "x86_64",
-      "hostname": "Hoangs-MBP.fpt",
-      "status": "SUCCESS",
-      "exit_code": 0,
-      "stdout": "vohoang          44731   5.6  1.3 34897476 213728   ??  S    12:04AM   5:22.61 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang          44733   0.0  0.0 34153304   1324   ??  S    12:04AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
-      "stderr": "",
-      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
-      "system_health": {
-        "timestamp": "2026-11-07 00:35:35",
-        "machine_arch": "x86_64",
-        "hostname": "Hoangs-MBP.fpt",
-        "stream1_running": true,
-        "stream2_running": false,
-        "chrome_testing_count": 0,
-        "lock_file_age_seconds": 6.1,
-        "processes": [
-          "44731       31:09 ./venv/bin/python main.py --stream-upload --max-ready 5",
-          "44733       31:09 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
-        ],
-        "recent_daemon_log_tail": [
-          "[00:35:29] [INFO] tiktok_pipeline: [Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [phu_nu_khi_chat]: 23:33 (khung gốc 23:32, lệch +1 phút)",
-          "[00:35:30] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Kho ready/ đã lọc hết các bản trùng nội dung -> Đang tự động cào ngay 1 video truyện mới hoàn toàn cho [phu_nu_khi_chat]...",
-          "[00:35:30] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-          "[00:35:30] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-          "[00:35:30] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-          "[00:35:30] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_7_women_eq] -> Thư mục: output/phu_nu_khi_chat/ready/ | Link mẫu: 0 | Kênh mẫu: ['phunukhichat.vn', 'tamlyhoccuocsong', 'nghethuatgiaotiep', 'gocphunu.official'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-          "[00:35:30] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @phunukhichat.vn.",
-          "[00:35:30] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @tamlyhoccuocsong.",
-          "[00:35:31] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @nghethuatgiaotiep.",
-          "[00:35:31] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @gocphunu.official.",
-          "[00:35:32] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-          "[00:35:32] [INFO] tiktok_pipeline: [Round-Robin] Kênh video_AI_hay (video_AI_hay) hiện có 1/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
-          "[00:35:32] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-          "[00:35:32] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-          "[00:35:32] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-          "[00:35:32] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_1_ai_animation] -> Thư mục: output/video_AI_hay/ready/ | Link mẫu: 10 | Kênh mẫu: [] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-          "[00:35:33] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/Mr4JFtYJ-lg/",
-          "[00:35:34] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7698023893977599272 (ID: 7698023893977599272)",
-          "[00:35:34] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/KhnOwGH99QQ/",
-          "[00:35:35] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)"
-        ],
-        "lock_file_content": "pid=44731 ts=1793986529"
-      }
-    }
-  ]
+  }
 }
