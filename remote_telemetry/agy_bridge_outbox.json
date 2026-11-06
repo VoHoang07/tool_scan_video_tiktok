@@ -1,26 +1,26 @@
 {
-  "updated_at": "2026-11-06 23:13:11",
+  "updated_at": "2026-11-06 23:13:35",
   "latest_result": {
-    "cmd_id": "auto_restart_1793981591",
+    "cmd_id": "auto_restart_1793981615",
     "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-06 23:13:11",
+    "executed_at": "2026-11-06 23:13:35",
     "restart_info": {
       "restarted_streams": [
         "stream1_upload"
       ],
-      "timestamp": "2026-11-06 23:13:11"
+      "timestamp": "2026-11-06 23:13:35"
     },
     "system_health": {
-      "timestamp": "2026-11-06 23:13:11",
+      "timestamp": "2026-11-06 23:13:35",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": false,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 31311.5,
+      "lock_file_age_seconds": 31335.4,
       "processes": [
-        "3213 02-07:15:46 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 02-07:15:46 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "3213 02-07:16:10 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 02-07:16:10 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
         "Current thread 0x00007ff85a36ca00 (most recent call first):",
