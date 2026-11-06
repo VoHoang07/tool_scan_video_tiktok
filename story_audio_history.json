@@ -172,7 +172,8 @@
     "7536515801240964386",
     "7084737259936779535",
     "990001004",
-    "7458254613217594642"
+    "7458254613217594642",
+    "IymOGSS8ZRo"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -256,7 +257,8 @@
     "7536515786358164266",
     "7084737231847443211",
     "bongcuc_yt_DoVFGuEeB1k_p4",
-    "7176165317066885122"
+    "7176165317066885122",
+    "yt_sound_IymOGSS8ZRo"
   ],
   "items": [
     {
@@ -1118,6 +1120,16 @@
       "source_url": "https://www.tiktok.com/@songkhoemoingay/video/7458254613217594642",
       "output_filename": "suc_khoe_duong_sinh/ready/20261107_002143_tiktok_story_7458254613217594642.mp4",
       "crawled_at": "2026-11-07T00:22:06"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "IymOGSS8ZRo",
+      "sound_id": "yt_sound_IymOGSS8ZRo",
+      "platform": "youtube_shorts",
+      "genre": "channel_8_food_snacks",
+      "source_url": "https://www.youtube.com/watch?v=IymOGSS8ZRo",
+      "output_filename": "an_vat_moi_ngay/ready/20261107_003148_youtube_shorts_story_IymOGSS8ZRo.mp4",
+      "crawled_at": "2026-11-07T00:31:57"
     }
   ]
 }
