@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-07 02:08:44",
+  "updated_at": "2026-11-07 02:39:03",
   "latest_result": {
-    "cmd_id": "heartbeat_1793992123",
+    "cmd_id": "heartbeat_1793993942",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 02:08:43",
+    "executed_at": "2026-11-07 02:39:02",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 02:08:44",
+      "timestamp": "2026-11-07 02:39:03",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 380.6,
+      "lock_file_age_seconds": 0.6,
       "processes": [
-        "44731    02:04:18 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "44733    02:04:18 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    01:32:46 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    01:32:46 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "44731    02:34:37 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "44733    02:34:37 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    02:03:05 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    02:03:05 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[02:06:38] [INFO] tiktok_pipeline: [163.14s - 164.94s] 让你愿意把中心收回到自己身上  ==>  Làm cho bạn sẵn sàng lấy lại trung tâm cho chính mình",
-        "[02:06:38] [INFO] tiktok_pipeline: [164.94s - 165.66s] 一切的改变  ==>  Mọi thứ đều thay đổi",
-        "[02:06:38] [INFO] tiktok_pipeline: [165.70s - 166.28s] 不晚  ==>  Không quá muộn",
-        "[02:06:40] [INFO] tiktok_pipeline: Caption đã dịch: 🌹 Tâm lý Hôn nhân & Gia đình: [Ly hôn] Việc bạn có muốn ly hôn hay không không quan trọng lắm. \"Đặc biệt là đối với những cặp vợ chồng trung niên trên 40 tuổi...\" Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
-        "[02:06:40] [INFO] tiktok_pipeline: Hashtags: #tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chualanhtamhon #phunuthongminh #kynanggiaotiep #phunukhichat #tiktokvn",
-        "[02:06:40] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
-        "[02:06:40] [INFO] tiktok_pipeline: Cấu hình giọng kênh [phu_nu_khi_chat]: Giọng nữ sâu sắc, truyền cảm, lưu loát (Tâm lý hôn nhân & Phụ nữ khí chất) (voice=vi-VN-HoaiMyNeural, rate=+15%, pitch=-2Hz)",
-        "[02:06:40] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +15%, Độ trầm/cao: -2Hz) cho 104 câu thoại...",
-        "[02:06:50] [INFO] tiktok_pipeline: TTS #00 [00.06s-01.65s | gốc=1.64s]: rate=+45%, atempo=1.01x -> 1.59s",
-        "[02:07:02] [INFO] tiktok_pipeline: TTS #01 [01.70s-04.09s | gốc=2.48s]: rate=+41%, atempo=1.00x -> 2.39s",
-        "[02:07:15] [INFO] tiktok_pipeline: TTS #02 [04.18s-06.65s | gốc=2.56s]: rate=+22%, atempo=1.00x -> 2.47s",
-        "[02:07:28] [INFO] tiktok_pipeline: TTS #03 [07.06s-08.58s | gốc=1.58s]: rate=+45%, atempo=1.60x -> 1.52s",
-        "[02:07:37] [INFO] tiktok_pipeline: TTS #04 [08.64s-09.84s | gốc=1.22s]: rate=+45%, atempo=1.15x -> 1.20s",
-        "[02:07:44] [INFO] tiktok_pipeline: TTS #05 [10.26s-11.20s | gốc=0.96s]: rate=+45%, atempo=1.15x -> 0.94s",
-        "[02:07:48] [INFO] tiktok_pipeline: TTS #06 [11.46s-11.88s | gốc=0.48s]: rate=+37%, atempo=1.00x -> 0.42s",
-        "[02:07:59] [INFO] tiktok_pipeline: TTS #07 [11.94s-13.07s | gốc=1.20s]: rate=+45%, atempo=1.49x -> 1.13s",
-        "[02:08:09] [INFO] tiktok_pipeline: TTS #08 [13.14s-14.32s | gốc=1.20s]: rate=+45%, atempo=1.28x -> 1.18s",
-        "[02:08:16] [INFO] tiktok_pipeline: TTS #09 [14.86s-16.08s | gốc=1.24s]: rate=+45%, atempo=1.37x -> 1.22s",
-        "[02:08:24] [INFO] tiktok_pipeline: TTS #10 [16.50s-17.51s | gốc=1.08s]: rate=+34%, atempo=1.00x -> 1.01s",
-        "[02:08:32] [INFO] tiktok_pipeline: TTS #11 [17.58s-18.95s | gốc=1.44s]: rate=+45%, atempo=1.06x -> 1.37s"
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe."
       ],
-      "lock_file_content": "pid=44731 ts=1793991743"
+      "lock_file_content": "pid=48549 ts=1793993942"
     }
   }
 }
