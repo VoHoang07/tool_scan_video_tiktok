@@ -1,17 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-06 12:35:19",
+    "timestamp": "2026-11-06 12:44:26",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "elapsed_seconds": 157.0,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261105_235310_youtube_shorts_story_QjNcEG68q_c.mp4",
+      "caption": "✨ Câu chuyện AI cực cuốn: Thú cưng thành tinh và màn phiêu lưu kỳ ảo không thể rời mắt. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+      "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #viral",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-06 12:44:26",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261105_235310_youtube_shorts_story_QjNcEG68q_c.mp4",
+        "caption": "✨ Câu chuyện AI cực cuốn: Thú cưng thành tinh và màn phiêu lưu kỳ ảo không thể rời mắt. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+        "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-06 12:35:19",
       "machine_arch": "x86_64",
@@ -498,18 +518,6 @@
       "details": {
         "scrolled_videos": 11,
         "elapsed_seconds": 160.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-06 01:37:02",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 13,
-        "elapsed_seconds": 155.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
