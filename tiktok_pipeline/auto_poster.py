@@ -27,18 +27,18 @@ from .utils import logger
 
 DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
     "timezone": "Asia/Ho_Chi_Minh",
-    "default_post_times": ["07:45", "12:15", "19:45"],
+    "default_post_times": ["08:00", "12:30", "23:30"],
     "channel_post_times": {
-        "video_AI_hay": ["07:25", "12:05", "19:20"],
-        "baby_AI": ["08:05", "12:42", "20:05"],
-        "audio_dem_khuyen": ["08:48", "13:25", "21:15"],
-        "tu_chan_gioi": ["09:18", "14:10", "20:42"],
-        "meo_vat_gia_dinh": ["07:10", "11:35", "18:50"],
-        "suc_khoe_duong_sinh": ["06:50", "11:55", "19:35"],
-        "phu_nu_khi_chat": ["08:28", "13:05", "20:25"],
-        "an_vat_moi_ngay": ["07:38", "12:22", "21:00"],
-        "nuoi_con_eq": ["08:15", "12:52", "19:50"],
-        "phu_kien_tien_ich": ["09:05", "13:45", "21:35"],
+        "video_AI_hay": ["07:25", "12:05", "23:30"],
+        "baby_AI": ["08:05", "12:42", "23:30"],
+        "audio_dem_khuyen": ["08:48", "13:25", "23:30"],
+        "tu_chan_gioi": ["09:18", "14:10", "23:30"],
+        "meo_vat_gia_dinh": ["07:10", "11:35", "23:30"],
+        "suc_khoe_duong_sinh": ["06:50", "11:55", "23:30"],
+        "phu_nu_khi_chat": ["08:28", "13:05", "23:30"],
+        "an_vat_moi_ngay": ["07:38", "12:22", "23:30"],
+        "nuoi_con_eq": ["08:15", "12:52", "23:30"],
+        "phu_kien_tien_ich": ["09:05", "13:45", "23:30"],
     },
     "filter_24h_enabled": True,
     "filter_24h_runs_per_day": 2,
@@ -3958,19 +3958,38 @@ class TikTokAutoPoster:
                 continue
             slots = ch_times_map.get(ch_folder) or default_times
             for slot in slots:
+                now = datetime.now()
+                today_str = now.strftime("%Y-%m-%d")
+                now_minutes = now.hour * 60 + now.minute
                 history = self._load_post_history()
-                slot_key = f"{today_str}_{ch_folder}_{slot}"
-                if slot_key in history:
-                    continue
                 try:
                     sh, sm = map(int, slot.split(":"))
                 except Exception:
                     continue
-                jitter = self._compute_daily_jitter_minutes(today_str, ch_folder, slot, max_jitter)
-                effective_slot_min = max(0, min(23 * 60 + 59, sh * 60 + sm + jitter))
+
+                # Hỗ trợ cửa sổ 180 phút xuyên qua mốc 00:00 đêm cho khung giờ khuya (như 23:30)
+                from datetime import timedelta as _td
+
+                yesterday_str = (now - _td(days=1)).strftime("%Y-%m-%d")
+                y_jitter = self._compute_daily_jitter_minutes(yesterday_str, ch_folder, slot, max_jitter)
+                y_eff_min = max(0, min(23 * 60 + 59, sh * 60 + sm + y_jitter))
+                y_slot_key = f"{yesterday_str}_{ch_folder}_{slot}"
+
+                if y_slot_key not in history and 0 <= (now_minutes + 1440 - y_eff_min) <= 180:
+                    slot_key = y_slot_key
+                    jitter = y_jitter
+                    effective_slot_min = y_eff_min
+                    is_due = True
+                else:
+                    slot_key = f"{today_str}_{ch_folder}_{slot}"
+                    if slot_key in history:
+                        continue
+                    jitter = self._compute_daily_jitter_minutes(today_str, ch_folder, slot, max_jitter)
+                    effective_slot_min = max(0, min(23 * 60 + 59, sh * 60 + sm + jitter))
+                    is_due = 0 <= (now_minutes - effective_slot_min) <= 180
 
                 # Kích hoạt nếu thời gian hiện tại nằm trong khoảng [effective_slot_min, effective_slot_min + 180 phút]
-                if 0 <= (now_minutes - effective_slot_min) <= 180:
+                if is_due:
                     lock_fh = self._acquire_browser_process_lock()
                     try:
                         # Đọc lại lịch sử sau khi đã giữ khóa độc quyền để không bao giờ bị 2 luồng/2 cửa sổ đăng trùng
