@@ -1951,7 +1951,16 @@ class TikTokAutoPoster:
                 "biến cố bất ngờ lúc nửa đêm và sự thật",
                 "góc khuất tình cảm và màn đáp trả",
             )
+            if ch_folder == "baby_AI":
+                for r_item in rows:
+                    c_low = (r_item.get("caption") or "").strip().lower()
+                    if "ảnh live của iphone" in c_low or "chọn ảnh live" in c_low:
+                        dup_row = r_item
+                        break
+
             for i in range(len(rows)):
+                if dup_row:
+                    break
                 for j in range(i + 1, len(rows)):
                     ri, rj = rows[i], rows[j]
                     di, dj = (ri.get("duration") or "").strip(), (rj.get("duration") or "").strip()
@@ -4219,21 +4228,22 @@ class TikTokAutoPoster:
         except Exception:
             pass
 
-        # 2. Nếu cửa sổ Terminal chưa nhận lệnh (hoặc chưa cấp quyền Automation cho Terminal), chạy ngầm Popen trực tiếp
+        # 2. Nếu cửa sổ Terminal chưa nhận lệnh (hoặc chưa cấp quyền Automation cho Terminal), chạy ngầm Popen trực tiếp với file descriptor chuẩn
         if not self._is_stream1_upload_process_running():
             try:
                 py_bin = self.project_root / "venv" / "bin" / "python"
                 exe_str = str(py_bin) if py_bin.exists() else _sys.executable
                 log_path = self.project_root / "logs" / "daemon_24_7.log"
                 log_path.parent.mkdir(parents=True, exist_ok=True)
+                log_fh = open(log_path, "a", encoding="utf-8")
                 subprocess.Popen(
-                    f"nohup caffeinate -dimsu '{exe_str}' '{self.project_root / 'main.py'}' --stream-upload --max-ready 5 </dev/null >> '{log_path}' 2>&1 &",
-                    shell=True,
+                    ["caffeinate", "-dimsu", exe_str, str(self.project_root / "main.py"), "--stream-upload", "--max-ready", "5"],
                     cwd=proj_str,
                     stdin=subprocess.DEVNULL,
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.DEVNULL,
+                    stdout=log_fh,
+                    stderr=subprocess.STDOUT,
                     start_new_session=True,
+                    close_fds=True,
                 )
                 time.sleep(1.5)
                 logger.info("[Auto-Revive Watchdog] Đã tự động bật lại tiến trình Dòng 1 (--stream-upload) thành công!")

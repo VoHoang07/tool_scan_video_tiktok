@@ -113,72 +113,67 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "channel_id": "2",
         "profile_key": "channel_2_life_comedy",
         "folder_name": "baby_AI",
-        "description": "Em bé AI hài hước (AI萌娃 / 大头菠萝), Mầm non lém lỉnh & Gia đình vui nhộn (Trung - Việt view cao)",
+        "description": "Chuyên biệt 100% Em bé AI hài hước (AI萌娃 / 小胖大胖 / 大头菠萝 / 巨婴宝宝 / 萌娃搞笑日常) đúng chuẩn các video Baby đã đăng trên kênh",
         "seed_video_urls": [
-            "https://www.tiktok.com/@andy76243/video/7656305238692973832",  # #萌娃搞笑日常 #语出惊人的熊孩子 - 大胖：一天天的这些大人一点不省心 (779k views)
-            "https://www.tiktok.com/@andy76243/video/7663279320877616392",  # #萌娃搞笑 #语出惊人的熊孩子 - 小胖面试，“不同凡响” (640k views)
+            "https://www.tiktok.com/@funybaby199/video/7632736494406438162",  # #萌娃搞笑日常 - 老师来家访啦！ (1.02M views)
+            "https://www.tiktok.com/@andy76243/video/7675742941222178055",  # #萌娃搞笑日常 - 老板到底亏了还是赚了 (287k views)
+            "https://www.tiktok.com/@andy76243/video/7653335234007551239",  # #语出惊人的熊孩子 - 小胖啊！终于聪明了一回 (196k views)
+            "https://www.tiktok.com/@andy76243/video/7661968290692107528",  # #萌娃搞笑日常 - 大胖：我还是太年轻了 (90k views)
+            "https://www.tiktok.com/@andy76243/video/7668708297821670663",  # #AI萌娃 - 男人为什么要做家务？听听小胖怎么说 (287k views)
+            "https://www.tiktok.com/@andy76243/video/7668157404000931079",  # #语出惊人的熊孩子 #萌娃搞笑日常 (408k views)
             "https://www.tiktok.com/@andy76243/video/7656683365013179655",  # #语出惊人的熊孩子 - 老妈，你可长点心吧 (55k views)
             "https://www.tiktok.com/@andy76243/video/7661486125428559112",  # #萌娃搞笑日常 #语出惊人的熊孩子 - 小胖啊！天天上当 (50k views)
-            "https://www.douyin.com/video/7638714267462561417",  # #大头菠萝 #一人带娃日常 - 小孩怎么这么喜欢吃泡面呀
-            "https://www.douyin.com/video/7634246231678587978",  # #大头菠萝 #一人带娃日常 - 巨婴宝宝上学又迟到了
+            "https://www.tiktok.com/@jean131419/video/7691101883590544660",  # #萌娃搞笑日常 #萌娃驚人語錄 (255k views)
+            "https://www.tiktok.com/@jean131419/video/7682559297057819924",  # #萌娃驚人語錄 #萌娃搞笑日常 (225k views)
+            "https://www.tiktok.com/@jean131419/video/7678350894982860053",  # #萌娃驚人語錄 #萌娃搞笑日常 (212k views)
+            "https://www.tiktok.com/@jean131419/video/7671865233484320021",  # #萌娃搞笑日常 (193k views)
+            "https://www.tiktok.com/@lin_cen_ling/video/7684069833423752455",  # #萌娃搞笑日常 #大牙顽顽崽 (406k views)
+            "https://www.tiktok.com/@lin_cen_ling/video/7689463489458490631",  # #萌娃搞笑日常 #人类幼崽 (183k views)
+            "https://www.tiktok.com/@tinyverse78827/video/7637480061947464978",  # #软萌宝宝可爱瞬间 #萌娃搞笑日常 (376k views)
+            "https://www.tiktok.com/@waikityaw/video/7696924801042107669",  # #AI萌娃 (806k views)
+            "https://www.tiktok.com/@waikityaw/video/7702934995412782356",  # #AI萌娃 (460k views)
+            "https://www.tiktok.com/@waikityaw/video/7684687724355538197",  # #可爱小孩 #AI萌娃 (360k views)
+            "https://www.tiktok.com/@waikityaw/video/7700516081202482453",  # #AI萌娃 (303k views)
+            "https://www.tiktok.com/@waikityaw/video/7696855763699961109",  # #AI萌娃 (250k views)
+            "https://www.tiktok.com/@waikityaw/video/7689808702488055060",  # #AI萌娃 #卯卯 (231k views)
+            "https://www.tiktok.com/@waikityaw/video/7694555658925952276",  # #AI萌娃 (227k views)
+            "https://www.tiktok.com/@waikityaw/video/7691338570447047988",  # #AI萌娃 (203k views)
             "https://www.douyin.com/video/7653148698738335945",  # #大头菠萝 - 巨婴宝宝的烤肠差一点被小老鼠偷走
             "https://www.douyin.com/video/7640576010862205938",  # #大头菠萝 - 迷你妈妈为了摘野果差一点被螳螂抓住吃掉
             "https://www.douyin.com/video/7649090399869777051",  # #大头菠萝 - 迷你妈妈差一点被癞蛤蟆吃掉
             "https://www.douyin.com/video/7659099729062903625",  # #大头菠萝 - 巨婴宝宝和迷你妈妈抢电视遥控器
-            "https://www.tiktok.com/@andy76243/video/7668708297821670663",  # #AI萌娃 - 男人为什么要做家务？听听小胖怎么说 (287k views)
-            "https://www.tiktok.com/@andy76243/video/7664467357850488071",  # #AI萌娃 - 这结尾万万没想到啊 (240k views)
-            "https://www.tiktok.com/@andy76243/video/7668157404000931079",  # #语出惊人的熊孩子 #萌娃搞笑日常 (407k views)
             "https://www.douyin.com/video/7254524593694608651",  # #人类幼崽 #萌娃 - 忘了喝孟婆汤了？
             "https://www.douyin.com/video/7212859447947889959",  # #懂事的孩子 #萌娃 - 就剩最后两块肉了，宝宝的做法太让妈妈感动了
         ],
         "seed_channels": [],
         "douyin_keywords": [
-            "大头菠萝",
             "AI萌娃",
+            "大头菠萝",
             "巨婴宝宝",
             "萌娃搞笑日常",
             "人类幼崽",
-            "熊孩子搞笑日常",
-            "一人带娃日常",
         ],
         "tiktok_keywords": [
             "#ai萌娃",
             "#萌娃搞笑日常",
-            "#人类幼崽",
             "#语出惊人的熊孩子",
             "#人类幼崽有多可爱",
-            "#embehaihuoc",
-            "#embecute",
-            "#embedangyeu",
+            "#人类幼崽",
         ],
         "tiktok_challenge_ids": [
             "7236712553568976902",  # #ai萌娃 (16.4M views CN AI Baby)
             "1678587005908993",  # #萌娃搞笑日常 (518M views CN Baby Comedy)
-            "1682665615870977",  # #人类幼崽 (1.6B views CN Cute Kids)
             "7242345830019072005",  # #语出惊人的熊孩子 (375M views CN Funny Kid Dialogue)
             "7035311318714449925",  # #人类幼崽有多可爱 (17.9M views CN)
-            "1577251025398814",  # #骗你生女儿 (789M views CN)
-            "1634934865901569",  # #embehaihuoc (4.86B views VN)
-            "1589552538562561",  # #embecute (1.13B views VN)
-            "1601303421157377",  # #embedangyeu (49.8B views VN)
+            "1682665615870977",  # #人类幼崽 (1.6B views CN Cute Kids)
         ],
         "douyin_challenge_ids": [
             "1631527180822535",  # #大头菠萝 (Series AI Baby bé Dứa / 迷你妈妈 巨婴宝宝)
             "1619206220311555",  # #巨婴宝宝 (Series em bé AI khổng lồ hài hước)
             "1560480383202305",  # #萌娃 (Chủ đề em bé đáng yêu triệu tim trên Douyin)
             "1588769457994759",  # #熊孩子搞笑日常 (Các pha đối đáp hài hước của trẻ nhỏ)
-            "1618466015647748",  # #一人带娃日常 (Nhật ký chăm con hài hước triệu view)
-            "1639642543618055",  # #亲子互动日常 (Tương tác hài hước giữa bố mẹ và bé)
-            "1576122662289438",  # #亲子互动 (Tương tác cha mẹ con cái)
-            "1607861792729096",  # #你家孩子也这样吗 (Tình huống lém lỉnh của bé)
-            "1632017292199939",  # #儿童搞笑视频 (Video hoạt hình & hài hước trẻ em)
         ],
-        "multi_platform_keywords": [
-            "AI萌娃 搞笑日常 #shorts",
-            "语出惊人的熊孩子 #shorts",
-            "em bé hài hước đáng yêu #shorts",
-            "em bé lém lỉnh triệu view #shorts",
-        ],
+        "multi_platform_keywords": [],
     },
     "channel_3_novel_drama": {
         "channel_id": "3",
@@ -1258,24 +1253,53 @@ class StoryAudioCrawler:
     @staticmethod
     def is_valid_baby_ai_topic(title: str, music_title: str = "") -> bool:
         """
-        Bộ lọc chủ đề chuyên biệt cho kênh `baby_AI` (`channel_2_life_comedy`):
-        - Bắt buộc nội dung phải thuộc chủ đề Em bé AI / Mầm non / Đại Đầu Bô Lô / Trẻ nhỏ hài hước đáng yêu.
-        - Loại bỏ các video hài người lớn, vợ chồng, tắm gội (#淋浴), tình yêu đôi lứa không liên quan đến em bé.
+        Bộ lọc chủ đề chuyên biệt 100% cho kênh `baby_AI` (`channel_2_life_comedy`):
+        - Bắt buộc nội dung phải thuộc chủ đề Em bé AI / Tiểu Béo Đại Béo (`小胖`, `大胖`, `AI萌娃`) / Mầm non (`萌娃搞笑日常`) / Đại Đầu Bô Lô (`大头菠萝`, `巨婴宝宝`).
+        - Loại bỏ tuyệt đối các video người lớn, điện thoại iPhone/Live Photo, review phim, tình yêu đôi lứa, anh chị em người lớn (`小姐姐`, `小哥哥`, `宝子`).
         """
         combined = f"{title or ''} {music_title or ''}".lower()
         if re.search(r"^\s*\d{15,20}", combined):
             return False
         adult_offtopic_markers = (
+            "iphone",
+            "live图",
+            "live photo",
+            "实况",
+            "手机",
+            "拍照",
+            "修图",
+            "自拍",
+            "穿搭",
+            "ootd",
+            "美妆",
+            "护肤",
+            "减肥",
+            "健身",
+            "电影",
+            "解说",
+            "电视剧",
+            "总裁",
+            "豪门",
             "淋浴",
             "爱夫",
             "夫妻幽默",
             "情侣",
+            "男女朋友",
+            "男朋友",
+            "女朋友",
             "相亲",
             "前任",
             "分手",
             "夜店",
             "蹦迪",
-            "美妆",
+            "小姐姐",
+            "小哥哥",
+            "女孩子",
+            "男孩子",
+            "宝子",
+            "淘宝",
+            "充电宝",
+            "支付宝",
             "吃糖果",
             "糖果视频",
             "棒棒糖",
@@ -1286,37 +1310,31 @@ class StoryAudioCrawler:
                 return False
 
         baby_markers = (
-            "娃",
-            "宝",
-            "孩",
+            "萌娃",
+            "ai萌娃",
+            "人类幼崽",
             "幼崽",
-            "菠萝",
-            "亲子",
+            "大头菠萝",
+            "巨婴",
             "小胖",
+            "大胖",
+            "小宝",
+            "大宝",
+            "熊孩子",
+            "宝宝",
+            "小宝宝",
+            "婴儿",
+            "奶娃",
             "小奶",
-            "闺女",
-            "儿子",
-            "女儿",
-            "儿童",
+            "童言",
             "小朋友",
-            "弟弟",
-            "妹妹",
-            "姐姐",
-            "哥哥",
             "幼儿园",
-            "小学生",
-            "辅导作业",
+            "骗你生女儿",
+            "骗你生儿子",
             "em bé",
             "embe",
-            "bé ",
-            "con ",
-            "con gái",
-            "con trai",
             "mẹ và bé",
             "mevabe",
-            "bố trông con",
-            "chăm con",
-            "chamcon",
             "baby",
         )
         return any(m in combined for m in baby_markers)
@@ -2295,14 +2313,30 @@ class StoryAudioCrawler:
             )
         )
 
-        target_cap = min(max_candidates, 24)
+        pure_baby_ai_creators = {
+            "andy76243",
+            "lucas86868686",
+            "funybaby199",
+            "waikityaw",
+            "jean131419",
+            "aamm14114pf",
+            "pebblepuff99329",
+            "lin_cen_ling",
+            "tinyverse78827",
+            "shin6006",
+            "holmewnjvyl",
+        }
+        target_cap = min(max_candidates, 36 if is_baby_channel else 24)
+        cursors_to_scan = (0, 20, 40) if is_baby_channel else (0, 20)
         for cid, kw_label in challenge_ids:
             if len(candidates) >= target_cap:
                 break
-            for cursor in (0, 20):
+            for cursor in cursors_to_scan:
                 if len(candidates) >= target_cap:
                     break
                 try:
+                    if is_baby_channel and cursor > 0:
+                        time.sleep(1.1)
                     r = creq.get(
                         "https://www.tikwm.com/api/challenge/posts",
                         params={"challenge_id": cid, "count": 25, "cursor": cursor},
@@ -2341,6 +2375,7 @@ class StoryAudioCrawler:
                     desc = str(v.get("title") or "")
                     region = str(v.get("region") or "").upper()
                     author_id = (v.get("author") or {}).get("unique_id") or "tiktoker"
+                    auth_lower = author_id.lower().strip()
 
                     # 1. Bộ lọc Quốc gia & Ngôn ngữ: Chỉ lấy Trung Quốc & Việt Nam
                     if not self.is_strictly_chinese_or_vietnamese_video(
@@ -2353,7 +2388,7 @@ class StoryAudioCrawler:
                         continue
 
                     # 2. Bộ lọc Chủ đề Baby AI / Em bé hài hước (nếu là kênh baby_AI)
-                    if is_baby_channel and not self.is_valid_baby_ai_topic(desc, music_title):
+                    if is_baby_channel and auth_lower not in pure_baby_ai_creators and not self.is_valid_baby_ai_topic(desc, music_title):
                         continue
 
                     allowed, is_explicit_orig = self.is_original_story_sound(
@@ -2372,17 +2407,35 @@ class StoryAudioCrawler:
                     )
                     shares_and_saves = share + collect
 
-                    # 3. Bộ lọc Lượng View Cao & Tương Tác Cao (High-View Filter):
-                    # Bắt buộc đạt >= 100,000 lượt xem (play_count) hoặc >= 5,000 lượt tim (digg_count)
-                    min_req_likes = max(self.min_likes, MIN_HIGH_VIEW_LIKES_TIKTOK)
-                    if play_cnt < MIN_HIGH_VIEW_PLAY_COUNT_TIKTOK and digg < min_req_likes:
-                        continue
-                    if digg < 1000 or shares_and_saves < self.min_shares_saves:
-                        continue
+                    # 3. Bộ lọc Lượng View Cao & Tương Tác Cao:
+                    # Với kênh baby_AI: ưu tiên tuyệt đối các kênh Baby AI chuẩn (@andy76243, @lucas86868686, @funybaby199...)
+                    if is_baby_channel:
+                        if auth_lower not in pure_baby_ai_creators:
+                            if play_cnt < 25_000 and digg < 800:
+                                continue
+                        elif play_cnt < 3_000 and digg < 100:
+                            continue
+                    else:
+                        min_req_likes = max(self.min_likes, MIN_HIGH_VIEW_LIKES_TIKTOK)
+                        if play_cnt < MIN_HIGH_VIEW_PLAY_COUNT_TIKTOK and digg < min_req_likes:
+                            continue
+                        if digg < 1000 or shares_and_saves < self.min_shares_saves:
+                            continue
 
                     is_vi = (
-                        author_id.lower() in KNOWN_VIETNAMESE_HANDLES
+                        auth_lower in KNOWN_VIETNAMESE_HANDLES
                         or has_vietnamese_diacritics(desc)
+                    )
+                    baby_creator_bonus = (
+                        5_000_000
+                        if (
+                            is_baby_channel
+                            and (
+                                auth_lower in pure_baby_ai_creators
+                                or any(k in desc for k in ("小胖", "大胖", "AI萌娃", "萌娃搞笑日常", "语出惊人的熊孩子"))
+                            )
+                        )
+                        else 0
                     )
 
                     candidates.append(
@@ -2404,12 +2457,12 @@ class StoryAudioCrawler:
                             "share_count": share,
                             "collect_count": collect,
                             "shares_and_saves": shares_and_saves,
-                            "engagement_score": play_cnt + digg * 5 + shares_and_saves * 15,
+                            "engagement_score": baby_creator_bonus + play_cnt + digg * 5 + shares_and_saves * 15,
                         }
                     )
 
         candidates.sort(
-            key=lambda x: (int(x.get("play_count") or 0), int(x.get("engagement_score") or 0)),
+            key=lambda x: (int(x.get("engagement_score") or 0), int(x.get("play_count") or 0)),
             reverse=True,
         )
         return candidates[:max_candidates]
@@ -2700,6 +2753,20 @@ class StoryAudioCrawler:
                 shutil.rmtree(cand_dir, ignore_errors=True)
                 return False, None
 
+            cand_genre = str(candidate.get("genre") or "").lower()
+            is_baby_cand = (
+                "channel_2" in cand_genre
+                or "baby" in cand_genre
+                or any(k in cand_genre for k in ("萌娃", "幼崽", "菠萝", "巨婴", "熊孩子"))
+            )
+            if is_baby_cand and not candidate.get("is_seed") and dl_title:
+                if not self.is_valid_baby_ai_topic(dl_title, str(candidate.get("music_title") or "")):
+                    logger.info(
+                        f"[Baby AI Topic Gate] Loại bỏ {vid}: Tiêu đề '{dl_title[:60]}' không thuộc chủ đề Em bé AI / Baby."
+                    )
+                    shutil.rmtree(cand_dir, ignore_errors=True)
+                    return False, None
+
             actual_duration = get_media_duration(raw_video_path) or float(
                 candidate["duration"]
             )
@@ -2962,6 +3029,14 @@ class StoryAudioCrawler:
                     reason = "kênh nước ngoài lệch chủ đề (@guangzhoujianglan_mx / @phngnhphng)"
                 elif cap and (english_sentence_re.search(cap) or "kẹo mút" in cap.lower() or "kẹo cao su" in cap.lower()):
                     reason = "caption chứa lời thoại tiếng Anh nước ngoài hoặc video kẹo mút lệch chủ đề"
+                elif ch_folder == "baby_AI" and (
+                    plat in ("youtube_shorts", "facebook_reels", "instagram_reels")
+                    or "iphone" in cap.lower()
+                    or "ảnh live" in cap.lower()
+                    or "phát sóng trực tiếp" in cap.lower()
+                    or sid in ("7581027567194298984", "ChBS_r_mC5Y")
+                ):
+                    reason = "video baby_AI lệch chủ đề (Shorts/Reels ngoài hoặc video iPhone Live Photo)"
                 elif ch_folder in ("baby_AI", "video_AI_hay") and plat == "tiktok" and re.match(r"^2026102[0-7]_", fname):
                     reason = f"video TikTok tiếng Anh cũ trước 28/10 trong {ch_folder}"
                 elif ch_folder == "baby_AI" and plat == "douyin" and re.match(r"^2026102[0-7]_", fname) and sid not in valid_baby_ai_douyin_seeds:
