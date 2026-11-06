@@ -1,30 +1,30 @@
 {
-  "updated_at": "2026-11-06 15:11:31",
+  "updated_at": "2026-11-06 15:11:55",
   "latest_result": {
-    "cmd_id": "auto_restart_1793952691",
+    "cmd_id": "auto_restart_1793952715",
     "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-06 15:11:31",
+    "executed_at": "2026-11-06 15:11:55",
     "restart_info": {
       "restarted_streams": [
         "stream1_upload"
       ],
-      "timestamp": "2026-11-06 15:11:31"
+      "timestamp": "2026-11-06 15:11:55"
     },
     "system_health": {
-      "timestamp": "2026-11-06 15:11:31",
+      "timestamp": "2026-11-06 15:11:55",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": false,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 2411.8,
+      "lock_file_age_seconds": 2435.2,
       "processes": [
-        "3213 01-23:14:07 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-23:14:07 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "3213 01-23:14:30 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-23:14:30 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "              ^^^^^^^",
-        "NameError: name 'hashlib' is not defined",
+        "Current thread 0x00007ff85a36ca00 (most recent call first):",
+        "  <no Python frame>",
         "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
         "Python runtime state: core initialized",
         "OSError: [Errno 9] Bad file descriptor",
