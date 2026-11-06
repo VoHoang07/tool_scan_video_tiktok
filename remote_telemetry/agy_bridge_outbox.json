@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-07 04:09:28",
+  "updated_at": "2026-11-07 04:39:32",
   "latest_result": {
-    "cmd_id": "heartbeat_1793999367",
+    "cmd_id": "heartbeat_1794001171",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 04:09:27",
+    "executed_at": "2026-11-07 04:39:31",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 04:09:28",
+      "timestamp": "2026-11-07 04:39:32",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 52.7,
+      "lock_file_age_seconds": 92.3,
       "processes": [
-        "44731    04:05:02 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "44733    04:05:02 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    03:33:30 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    03:33:30 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "44731    04:35:06 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "44733    04:35:06 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    04:03:34 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    04:03:34 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[04:06:48] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/Mr4JFtYJ-lg/",
-        "[04:06:49] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7698023893977599272 (ID: 7698023893977599272)",
-        "[04:06:50] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/KhnOwGH99QQ/",
-        "[04:06:51] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)",
-        "[04:06:56] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/5PXz62pKn0s/",
-        "[04:06:56] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7696826479242519139 (ID: 7696826479242519139)",
-        "[04:06:57] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/RrMNQy7NBa0/",
-        "[04:06:57] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7681137499921550619 (ID: 7681137499921550619)",
-        "[04:09:01] [INFO] tiktok_pipeline: Kênh [channel_1_ai_animation]: Tìm thấy tổng cộng 10 ứng viên Trung/Việt view cao (Link mẫu: 2, Kênh mẫu: 0, Douyin: 4, TikTok: 2, Đa nền tảng Shorts/Reels: 3).",
-        "[04:09:01] [INFO] tiktok_pipeline: === BẮT ĐẦU CÀO KÊNH [channel_1_ai_animation -> output/video_AI_hay/ready/ | Số lượng cần lấy: 1] ===",
-        "[04:09:01] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #1/10: [DOUYIN] ID=7691766718599295080 (tim=29528, thời lượng=26.2s) ---",
-        "[04:09:01] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7691766718599295080 (thời lượng=26.2s, sound='@努力的喵喵酱创作的原声一努力的喵喵酱', view=442920, tim=29528, share=22445)...",
-        "[04:09:01] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[04:09:02] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[04:09:03] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7691766718599295080/raw_video.mp4 (5.62 MB)",
-        "[04:09:03] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7691766718599295080/audio.mp3",
-        "[04:09:03] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 26.12s)",
-        "[04:09:04] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7691766718599295080/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[04:09:04] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
-        "[04:09:10] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 67.22%)"
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe."
       ],
-      "lock_file_content": "pid=48549 ts=1793999315"
+      "lock_file_content": "pid=48549 ts=1794001080"
     }
   }
 }
