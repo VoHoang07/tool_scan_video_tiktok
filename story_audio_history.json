@@ -159,7 +159,11 @@
     "iioCY__jipU",
     "lUac9S9t1oM",
     "v5Hs6tww2b0",
-    "wHMzoqtE3Sk"
+    "wHMzoqtE3Sk",
+    "7677437154435304719",
+    "c_oM3i3HbJw",
+    "7168670942225354010",
+    "mIKW1krZy4E"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -230,7 +234,11 @@
     "7592584247398107911",
     "7636015688827145006",
     "yt_sound_lUac9S9t1oM",
-    "yt_sound_Tpuig6HJ7XI"
+    "yt_sound_Tpuig6HJ7XI",
+    "7677437143286991625",
+    "yt_sound_c_oM3i3HbJw",
+    "7168670978917042970",
+    "yt_sound_mIKW1krZy4E"
   ],
   "items": [
     {
@@ -962,6 +970,46 @@
       "source_url": "https://www.youtube.com/watch?v=Tpuig6HJ7XI",
       "output_filename": "thu_cung_vui_nhon/ready/20261106_124659_youtube_shorts_story_Tpuig6HJ7XI.mp4",
       "crawled_at": "2026-11-06T12:47:04"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7677437154435304719",
+      "sound_id": "7677437143286991625",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/7677437154435304719",
+      "output_filename": "video_AI_hay/ready/20261106_131154_douyin_story_7677437154435304719.mp4",
+      "crawled_at": "2026-11-06T13:35:09"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "c_oM3i3HbJw",
+      "sound_id": "yt_sound_c_oM3i3HbJw",
+      "platform": "youtube_shorts",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.youtube.com/watch?v=c_oM3i3HbJw",
+      "output_filename": "baby_AI/ready/20261106_134916_youtube_shorts_story_c_oM3i3HbJw.mp4",
+      "crawled_at": "2026-11-06T13:49:41"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7168670942225354010",
+      "sound_id": "7168670978917042970",
+      "platform": "tiktok",
+      "genre": "tiennghich",
+      "source_url": "https://www.tiktok.com/@lydaokhong/video/7168670942225354010",
+      "output_filename": "tu_chan_gioi/ready/20261106_140136_tiktok_story_7168670942225354010.mp4",
+      "crawled_at": "2026-11-06T14:01:42"
+    },
+    {
+      "channel": "meo_vat_gia_dinh",
+      "video_id": "mIKW1krZy4E",
+      "sound_id": "yt_sound_mIKW1krZy4E",
+      "platform": "youtube_shorts",
+      "genre": "channel_5_home_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=mIKW1krZy4E",
+      "output_filename": "meo_vat_gia_dinh/ready/20261106_140901_youtube_shorts_story_mIKW1krZy4E.mp4",
+      "crawled_at": "2026-11-06T14:19:35"
     }
   ]
 }
