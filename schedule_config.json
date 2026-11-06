@@ -11,7 +11,7 @@
       ]
     },
     "switch_2_upload": {
-      "tiktok": false,
+      "tiktok": true,
       "fb_reels": false,
       "yt_shorts": false,
       "batch_single_chrome_session": true
@@ -177,13 +177,10 @@
     "phu_kien_tien_ich": ""
   },
   "remote_trigger_post_now": {
-    "trigger_id": "dedup_clean_channels_20261106_1325",
+    "trigger_id": "post_now_4_channels_20261106_1428",
     "target_arch": "x86_64",
-    "action": "delete_only",
-    "channel": "phu_nu_khi_chat,an_vat_moi_ngay,suc_khoe_duong_sinh",
-    "delete_match_keywords": [
-      "__auto_dedup_only__"
-    ],
+    "action": "upload",
+    "channel": "audio_dem_khuyen,phu_nu_khi_chat,an_vat_moi_ngay,suc_khoe_duong_sinh",
     "force": true,
     "skip_warmup": true,
     "auto_pause_master_after": false
