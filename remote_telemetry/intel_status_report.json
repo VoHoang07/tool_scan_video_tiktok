@@ -1,28 +1,28 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 01:32:17",
+    "timestamp": "2026-11-07 01:35:26",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
     "details": {
       "interacted_count": 3,
       "own_profile_stats": {
-        "uniqueId": "meovatgiadinh.k05",
+        "uniqueId": "nuoiconeq.k09",
         "domFollowing": "0",
         "domFollowers": "0",
         "domLikes": "0",
         "sidebarFollowing": [
-          "/@meovatgiadinh.k05"
+          "/@nuoiconeq.k09"
         ]
       },
       "records": [
         {
-          "channel": "meo_vat_gia_dinh",
-          "video_id": "7704964145724149010",
-          "video_url": "https://www.tiktok.com/@nguyn.ngc.linh2320/video/7704964145724149010",
-          "creator_handle": "@nguyn.ngc.linh2320",
-          "watched_seconds": 15.0,
+          "channel": "nuoi_con_eq",
+          "video_id": "7704514989616385301",
+          "video_url": "https://www.tiktok.com/@phuong.tran6579/video/7704514989616385301",
+          "creator_handle": "@phuong.tran6579",
+          "watched_seconds": 16.2,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": false,
@@ -31,44 +31,44 @@
             "5_followed_creator": false,
             "6_commented_after_follow": true
           },
-          "comment_text": "Hình ảnh với âm thanh đỉnh thật sự, ủng hộ kênh bạn lâu dài nha 🔥",
+          "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
           "circuit_breaker_tripped": true,
           "like_debug": {
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611070230021E24C7B4F0BE9C2546B9\",\"now\":1793989802000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611070230021E24C7B4F0BE9C2546B9\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261107023255D9350D27A6AB7D26E4EC\",\"now\":1793989975000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261107023255D9350D27A6AB7D26E4EC\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [],
             "env_check": {
               "webdriver": false,
-              "loggedInUniqueId": "meovatgiadinh.k05"
+              "loggedInUniqueId": null
             },
             "before": {
-              "x": 814.96875,
-              "y": 431,
+              "x": 882.21875,
+              "y": 471,
               "ariaPressed": false,
               "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "35"
+              "likeCount": "83"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
-                "x": 814.96875,
-                "y": 431,
+                "x": 882.21875,
+                "y": 471,
                 "ariaPressed": false,
                 "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "35"
+                "likeCount": "83"
               },
               "red": false,
               "server_digg_ok": false,
               "server_digg_rejected": true
             },
             "profile_follow_verify": {
-              "creator": "@nguyn.ngc.linh2320",
+              "creator": "@phuong.tran6579",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@nguyn.ngc.linh2320/video/7704964145724149010?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@phuong.tran6579/video/7704514989616385301?lang=vi-VN",
               "before_btn": "",
               "after_btn": "",
               "init_relation": null,
@@ -78,53 +78,14 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-07 01:30:20",
-          "follow_back_window_until": "2026-11-08 01:30:20"
+          "interacted_at": "2026-11-07 01:33:17",
+          "follow_back_window_until": "2026-11-08 01:33:17"
         },
         {
-          "channel": "meo_vat_gia_dinh",
-          "video_id": "7704977374932208914",
-          "video_url": "https://www.tiktok.com/@.diu.ngn17/video/7704977374932208914",
-          "creator_handle": "@.diu.ngn17",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Video chất lượng lắm ạ, mong chờ các tập tiếp theo từ kênh của bạn 🫶",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "meovatgiadinh.k05"
-            },
-            "profile_follow_verify": {
-              "creator": "@.diu.ngn17",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@.diu.ngn17/video/7704977374932208914?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-07 01:31:13",
-          "follow_back_window_until": "2026-11-08 01:31:13"
-        },
-        {
-          "channel": "meo_vat_gia_dinh",
-          "video_id": "7704934704411053364",
-          "video_url": "https://www.tiktok.com/@tra.giang.sewing/video/7704934704411053364",
-          "creator_handle": "@tra.giang.sewing",
+          "channel": "nuoi_con_eq",
+          "video_id": "7704166924791418132",
+          "video_url": "https://www.tiktok.com/@tm.rivew/video/7704166924791418132",
+          "creator_handle": "@tm.rivew",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
@@ -134,7 +95,7 @@
             "5_followed_creator": false,
             "6_commented_after_follow": true
           },
-          "comment_text": "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
+          "comment_text": "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
           "circuit_breaker_tripped": false,
           "like_debug": {
             "digg_responses": [],
@@ -144,9 +105,9 @@
               "loggedInUniqueId": null
             },
             "profile_follow_verify": {
-              "creator": "@tra.giang.sewing",
+              "creator": "@tm.rivew",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@tra.giang.sewing/video/7704934704411053364?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@tm.rivew/video/7704166924791418132?lang=vi-VN",
               "before_btn": "",
               "after_btn": "",
               "init_relation": null,
@@ -156,13 +117,215 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-07 01:32:12",
-          "follow_back_window_until": "2026-11-08 01:32:12"
+          "interacted_at": "2026-11-07 01:34:18",
+          "follow_back_window_until": "2026-11-08 01:34:18"
+        },
+        {
+          "channel": "nuoi_con_eq",
+          "video_id": "7702787429530389780",
+          "video_url": "https://www.tiktok.com/@bayshop980/video/7702787429530389780",
+          "creator_handle": "@bayshop980",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "profile_follow_verify": {
+              "creator": "@bayshop980",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@bayshop980/video/7702787429530389780?lang=vi-VN",
+              "before_btn": "",
+              "after_btn": "",
+              "init_relation": null,
+              "server_follow_ok": false,
+              "ui_confirmed": false,
+              "persisted": false,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-07 01:35:21",
+          "follow_back_window_until": "2026-11-08 01:35:21"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 01:35:26",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "nuoiconeq.k09",
+          "domFollowing": "0",
+          "domFollowers": "0",
+          "domLikes": "0",
+          "sidebarFollowing": [
+            "/@nuoiconeq.k09"
+          ]
+        },
+        "records": [
+          {
+            "channel": "nuoi_con_eq",
+            "video_id": "7704514989616385301",
+            "video_url": "https://www.tiktok.com/@phuong.tran6579/video/7704514989616385301",
+            "creator_handle": "@phuong.tran6579",
+            "watched_seconds": 16.2,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
+            "circuit_breaker_tripped": true,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261107023255D9350D27A6AB7D26E4EC\",\"now\":1793989975000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261107023255D9350D27A6AB7D26E4EC\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 882.21875,
+                "y": 471,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "83"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 882.21875,
+                  "y": 471,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(255, 255, 255, .9)",
+                  "likeCount": "83"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@phuong.tran6579",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@phuong.tran6579/video/7704514989616385301?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-07 01:33:17",
+            "follow_back_window_until": "2026-11-08 01:33:17"
+          },
+          {
+            "channel": "nuoi_con_eq",
+            "video_id": "7704166924791418132",
+            "video_url": "https://www.tiktok.com/@tm.rivew/video/7704166924791418132",
+            "creator_handle": "@tm.rivew",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "profile_follow_verify": {
+                "creator": "@tm.rivew",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@tm.rivew/video/7704166924791418132?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-07 01:34:18",
+            "follow_back_window_until": "2026-11-08 01:34:18"
+          },
+          {
+            "channel": "nuoi_con_eq",
+            "video_id": "7702787429530389780",
+            "video_url": "https://www.tiktok.com/@bayshop980/video/7702787429530389780",
+            "creator_handle": "@bayshop980",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "profile_follow_verify": {
+                "creator": "@bayshop980",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@bayshop980/video/7702787429530389780?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-07 01:35:21",
+            "follow_back_window_until": "2026-11-08 01:35:21"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-07 01:32:17",
       "machine_arch": "x86_64",
@@ -1573,22 +1736,6 @@
         "video_file": "20261106_020213_douyin_story_7353976976912289058.mp4",
         "caption": "🥰 Nhật ký gia đình siêu lầy: Lần tới Super Wings sẽ đến Peter Pan để phục vụ đồ ăn. \"Bây giờ cậu có muốn biết chuyện gì đang xảy ra bên trong không...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
         "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-06 14:30:39",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261105_140908_tiktok_story_990006001_bongcuc_v4_s60_p1_bg_daylight.mp4",
-        "caption": "🎧 [Truyện Đêm Khuya] Bông Cúc Số 60 (Phần 1/5) — Hôn Lễ Chưa Bắt Đầu, Chú Rể Đã Thân Bại Danh Liệt. Từng tình tiết đều cuốn không rời tai, bạn nghĩ sao về phần này?",
-        "hashtags": "#bongcucso60 #bongcucaudio #fyp #kechuyendemkhuya #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
