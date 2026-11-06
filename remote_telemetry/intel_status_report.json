@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 03:05:48",
+    "timestamp": "2026-11-07 03:12:02",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
+      "scrolled_videos": 10,
+      "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 150.8,
+      "elapsed_seconds": 158.0,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 03:12:02",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 158.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-07 03:05:48",
       "machine_arch": "x86_64",
@@ -665,169 +680,6 @@
             },
             "interacted_at": "2026-11-07 01:32:12",
             "follow_back_window_until": "2026-11-08 01:32:12"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-07 01:29:25",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "anvatmoingay.k08",
-          "domFollowing": "0",
-          "domFollowers": "0",
-          "domLikes": "0",
-          "sidebarFollowing": [
-            "/@anvatmoingay.k08"
-          ]
-        },
-        "records": [
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7704975598057196808",
-            "video_url": "https://www.tiktok.com/@dng.th.hoi.linh018/video/7704975598057196808",
-            "creator_handle": "@dng.th.hoi.linh018",
-            "watched_seconds": 15.3,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Hình ảnh với âm thanh đỉnh thật sự, ủng hộ kênh bạn lâu dài nha 🔥",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110702271570DCEDC4E7647125FE47\",\"now\":1793989636000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110702271570DCEDC4E7647125FE47\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "anvatmoingay.k08"
-              },
-              "before": {
-                "x": 872,
-                "y": 404,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "56"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 404,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "57"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@dng.th.hoi.linh018",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@dng.th.hoi.linh018/video/7704975598057196808?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-07 01:27:35",
-            "follow_back_window_until": "2026-11-08 01:27:35"
-          },
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7704948362591653126",
-            "video_url": "https://www.tiktok.com/@chuagiaunhungsang/video/7704948362591653126",
-            "creator_handle": "@chuagiaunhungsang",
-            "watched_seconds": 15.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Video hay và ý nghĩa quá bạn ơi, chúc kênh ngày càng phát triển nhé ❤️",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "anvatmoingay.k08"
-              },
-              "profile_follow_verify": {
-                "creator": "@chuagiaunhungsang",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@chuagiaunhungsang/video/7704948362591653126?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-07 01:28:24",
-            "follow_back_window_until": "2026-11-08 01:28:24"
-          },
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7704945095941967112",
-            "video_url": "https://www.tiktok.com/@st123s30/video/7704945095941967112",
-            "creator_handle": "@st123s30",
-            "watched_seconds": 18.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "anvatmoingay.k08"
-              },
-              "profile_follow_verify": {
-                "creator": "@st123s30",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@st123s30/video/7704945095941967112?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-07 01:29:20",
-            "follow_back_window_until": "2026-11-08 01:29:20"
           }
         ]
       }
