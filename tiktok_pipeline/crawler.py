@@ -1014,10 +1014,12 @@ class StoryAudioCrawler:
             "7697500395819650310", "7697638039421455637", "7697650250793651486", "7697778349690670357",
             "7698223650570276134", "7698371375077018888", "7698594900329221397", "7698980197327965448",
             "7699288031840308500", "7700057407061331220", "7700060081739582721", "7700149454669843732",
-            "7700254944028364052", "7700764387950300436", "7700789370625805598", "990001002",
-            "990003901", "990014102", "990014202", "990014302", "990014402", "990014602",
-            "ChBS_r_mC5Y", "FAP6RhvxATM", "IgOE5mwunVI", "YjmXoARv1Ko", "ZWJfOStWq8M",
-            "v5Hs6tww2b0", "wHMzoqtE3Sk",
+            "7700254944028364052", "7700764387950300436", "7700789370625805598",
+            "7684235157036879124", "7473815778035289378", "7703396595689213204",
+            "7581027567194298984", "6862280720614739204",
+            "990001002", "990001003", "990003901", "990014102", "990014202", "990014302", "990014402", "990014602",
+            "ChBS_r_mC5Y", "FAP6RhvxATM", "IgOE5mwunVI", "QjNcEG68q_c", "YjmXoARv1Ko", "ZWJfOStWq8M",
+            "hmDRy0NjfzM", "v5Hs6tww2b0", "wHMzoqtE3Sk",
         }
         posted_filenames: Set[str] = {
             "20261023_090135_tiktok_story_7690915418453708052.mp4",
@@ -1097,6 +1099,21 @@ class StoryAudioCrawler:
                             sid = _extract_sid(vfile)
                             if sid:
                                 posted_ids.add(sid)
+            except Exception:
+                pass
+
+        ledger_path = self.project_root / "multi_platform_post_ledger.json"
+        if ledger_path.exists():
+            try:
+                ldata = json.loads(ledger_path.read_text(encoding="utf-8"))
+                if isinstance(ldata, dict):
+                    for k, v in ldata.items():
+                        k_name = Path(str(k)).name
+                        if k_name.endswith(".mp4"):
+                            posted_filenames.add(k_name)
+                        sid = _extract_sid(k_name) or _extract_sid(str(v))
+                        if sid:
+                            posted_ids.add(sid)
             except Exception:
                 pass
 
@@ -3147,12 +3164,13 @@ class StoryAudioCrawler:
             ep_part = parse_bongcuc_ep_and_part(stem)
             if ep_part and ("bongcuc_" in stem.lower() or "9900" in stem):
                 ep_num, part_num = ep_part
+                splitter = BongCucYouTubeSplitter(project_root=self.project_root)
+                full_cat = splitter.get_full_catalog() or BONGCUC_EPISODES_CATALOG
                 ep_info = next(
-                    (e for e in BONGCUC_EPISODES_CATALOG if int(e["ep_num"]) == ep_num),
+                    (e for e in full_cat if int(e["ep_num"]) == ep_num),
                     None,
                 )
                 if ep_info:
-                    splitter = BongCucYouTubeSplitter(project_root=self.project_root)
                     plan = splitter.compute_episode_parts_plan(ep_info)
                     part_spec = next(
                         (p for p in plan if int(p["part_num"]) == part_num),
@@ -3195,19 +3213,45 @@ class StoryAudioCrawler:
         original_title = ""
         segments: List[Dict[str, Any]] = []
 
-        # 1. Kiểm tra bản lưu tạm trong temp/ nếu có
+        # 1. Kiểm tra bản lưu tạm trong workspace_temp/ và temp/ nếu có
         if video_id:
-            for p_try in (platform, "tiktok", "douyin"):
-                tr_path = self.temp_root / f"{p_try}_{video_id}" / "transcript_raw.json"
-                if tr_path.exists():
+            ws_root = self.project_root / "workspace_temp"
+            candidate_dirs = []
+            for base_dir in (ws_root, ws_root / "crawler_candidates", self.temp_root):
+                if not base_dir.exists():
+                    continue
+                for p_try in (platform, "tiktok", "douyin", "youtube_shorts", "facebook_reels", "instagram_reels", "bilibili", "xiaohongshu"):
+                    candidate_dirs.append(base_dir / f"{p_try}_{video_id}")
+            for cdir in candidate_dirs:
+                if not cdir.exists():
+                    continue
+                sum_path = cdir / "pipeline_summary.json"
+                if sum_path.exists():
                     try:
-                        tr_data = json.loads(tr_path.read_text(encoding="utf-8"))
-                        original_title = str(tr_data.get("original_title") or "").strip()
-                        segments = tr_data.get("segments") or []
-                        if original_title or segments:
-                            break
+                        sdata = json.loads(sum_path.read_text(encoding="utf-8"))
+                        sc = str(sdata.get("caption") or "").strip()
+                        stags = str(sdata.get("hashtags") or "").strip()
+                        surl = str(sdata.get("source_url") or resolved_url).strip()
+                        if sc and not self.is_raw_filename_caption(sc, stem):
+                            return sc, stags or "#xuhuong #xuhuongtiktok #fyp #viral #tiktokvn", surl
                     except Exception:
                         pass
+                for tr_name in ("segments_translated.json", "transcript_raw.json"):
+                    tr_path = cdir / tr_name
+                    if tr_path.exists():
+                        try:
+                            tr_data = json.loads(tr_path.read_text(encoding="utf-8"))
+                            if isinstance(tr_data, dict):
+                                original_title = str(tr_data.get("original_title") or original_title or "").strip()
+                                segments = tr_data.get("segments") or segments
+                            elif isinstance(tr_data, list) and tr_data:
+                                segments = tr_data
+                            if original_title or segments:
+                                break
+                        except Exception:
+                            pass
+                if original_title or segments:
+                    break
 
         # 2. Nếu chưa có tiêu đề gốc, truy vấn nhanh API tikwm / douyin theo video_id (timeout ngắn 5s)
         if not original_title and video_id:
@@ -3308,7 +3352,8 @@ class StoryAudioCrawler:
                 ],
             }
             topic_list = fallback_topics.get(ch_folder, fallback_topics["video_AI_hay"])
-            idx = int(video_id[-4:]) % len(topic_list) if (video_id and video_id[-4:].isdigit()) else 0
+            hash_seed = str(video_id or filename_or_stem or ch_folder).encode("utf-8")
+            idx = int(hashlib.md5(hash_seed).hexdigest()[:8], 16) % len(topic_list)
             original_title = topic_list[idx]
 
         translator = SubtitleTranslator()
@@ -3325,6 +3370,32 @@ class StoryAudioCrawler:
         if not hashtags:
             hashtags = "#xuhuong #xuhuongtiktok #fyp #viral #tiktokvn"
         return caption, hashtags, resolved_url
+
+    def _is_generic_fallback_caption(self, cap: str) -> bool:
+        """Kiểm tra xem caption có phải là câu mẫu fallback chung chung hay không."""
+        c = (cap or "").strip().lower()
+        if not c:
+            return True
+        generic_phrases = (
+            "biến cố bất ngờ lúc nửa đêm và sự thật chấn động",
+            "góc khuất tình cảm và màn đáp trả cực gắt",
+            "lòng người khó đoán chỉ đến khi biến cố ập tới",
+            "cú quay xe nghẹt thở ở phút cuối của câu chuyện đêm khuya",
+            "thói quen nhỏ mỗi ngày giúp cơ thể khỏe mạnh",
+            "tín hiệu cảnh báo sớm của cơ thể mà dân văn phòng",
+            "bí quyết dưỡng sinh đơn giản tại nhà giúp tràn đầy năng lượng",
+            "phụ nữ thông minh luôn nắm vững nguyên tắc này",
+            "bài học tâm lý hôn nhân sâu sắc giúp giữ lửa",
+            "bản lĩnh và khí chất của người phụ nữ hiện đại",
+            "công thức món ngon siêu dễ làm tại nhà nhìn thôi",
+            "món ăn vặt quốc dân gây nghiện mà tín đồ ẩm thực",
+            "bí quyết nấu ăn nhanh gọn đậm đà đưa cơm",
+            "thú cưng thành tinh và màn phiêu lưu kỳ ảo",
+            "phim ngắn hoạt hình ai siêu cuốn với tình tiết bất ngờ",
+            "câu chuyện hoạt hình ai chữa lành khiến hàng triệu người",
+            "thế giới ai kỳ ảo với màn biến hình đỉnh cao",
+        )
+        return any(gp in c for gp in generic_phrases)
 
     def _upgrade_master_csv_schema(self) -> None:
         """
@@ -3356,6 +3427,7 @@ class StoryAudioCrawler:
         needs_rewrite = rows[0] != expected_header
         upgraded_rows = [expected_header]
         seen_basenames = set()
+        basename_to_row_idx: Dict[str, int] = {}
 
         for r in rows[1:]:
             if not r:
@@ -3440,20 +3512,46 @@ class StoryAudioCrawler:
                     fn = new_fn
                     needs_rewrite = True
 
-            # Tự động sửa lại nếu cột caption đang bị ghi tên file/dãy số hoặc thiếu hashtags
-            if self.is_raw_filename_caption(cap, Path(basename).stem) or not (tags or "").strip():
+            # Tự động sửa lại nếu cột caption đang bị ghi tên file/dãy số, thiếu hashtags, hoặc Bông Cúc đang bị gán caption chung chung
+            is_bongcuc_generic = (
+                ch == "audio_dem_khuyen"
+                and ("bongcuc_" in basename.lower() or "9900" in basename)
+                and "bông cúc" not in (cap or "").lower()
+            )
+            if (
+                self.is_raw_filename_caption(cap, Path(basename).stem)
+                or not (tags or "").strip()
+                or is_bongcuc_generic
+            ):
                 rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(
                     ch, basename, url
                 )
-                if self.is_raw_filename_caption(cap, Path(basename).stem):
+                if self.is_raw_filename_caption(cap, Path(basename).stem) or is_bongcuc_generic:
                     cap = rec_cap
-                if not (tags or "").strip():
+                if not (tags or "").strip() or is_bongcuc_generic:
                     tags = rec_tags
                 if not (url or "").strip() and rec_url:
                     url = rec_url
                 needs_rewrite = True
 
-            upgraded_rows.append([ch, fn, url, cap, tags, st, pat])
+            new_row = [ch, fn, url, cap, tags, st, pat]
+            if basename in basename_to_row_idx:
+                prev_idx = basename_to_row_idx[basename]
+                prev_row = upgraded_rows[prev_idx]
+                prev_cap = prev_row[3]
+                # Ưu tiên giữ dòng có caption thực tế (không phải fallback chung chung) hoặc trạng thái POSTED mới nhất
+                if self._is_generic_fallback_caption(prev_cap) and not self._is_generic_fallback_caption(cap):
+                    upgraded_rows[prev_idx] = new_row
+                elif not self._is_generic_fallback_caption(cap):
+                    upgraded_rows[prev_idx] = new_row
+                elif st == "POSTED" and prev_row[5] != "POSTED":
+                    upgraded_rows[prev_idx][1] = fn
+                    upgraded_rows[prev_idx][5] = st
+                    upgraded_rows[prev_idx][6] = pat
+                needs_rewrite = True
+            else:
+                basename_to_row_idx[basename] = len(upgraded_rows)
+                upgraded_rows.append(new_row)
 
         # Quét bổ sung các file .mp4 có trên ổ cứng (ready/ hoặc posted/) nhưng chưa có trong CSV
         for profile in CHANNEL_PROFILES.values():
@@ -3519,17 +3617,43 @@ class StoryAudioCrawler:
             "posted_at",
         ]
 
-        self._upgrade_master_csv_schema()
-        file_exists = self.csv_path.exists() and self.csv_path.stat().st_size > 0
-
         norm_status = "POSTED" if status.upper() == "POSTED" else "READY"
-        with open(self.csv_path, mode="a", newline="", encoding="utf-8") as f:
-            writer = csv.writer(f)
-            if not file_exists:
-                writer.writerow(expected_header)
-            writer.writerow(
-                [channel, filename, source_url, caption, hashtags, norm_status, posted_at]
-            )
+        target_base = Path(filename).name
+        existing_rows: List[List[str]] = []
+        if self.csv_path.exists() and self.csv_path.stat().st_size > 0:
+            try:
+                with open(self.csv_path, mode="r", newline="", encoding="utf-8", errors="replace") as rf:
+                    existing_rows = list(csv.reader(rf))
+            except Exception:
+                existing_rows = []
+
+        if not existing_rows or existing_rows[0] != expected_header:
+            existing_rows = [expected_header] + (existing_rows[1:] if existing_rows else [])
+
+        replaced = False
+        new_entry = [channel, filename, source_url, caption, hashtags, norm_status, posted_at]
+        for idx in range(1, len(existing_rows)):
+            r = existing_rows[idx]
+            if len(r) >= 2 and Path(r[1]).name == target_base:
+                existing_rows[idx] = new_entry
+                replaced = True
+                break
+        if not replaced:
+            existing_rows.append(new_entry)
+
+        tmp_csv_path = self.csv_path.with_name(f".{self.csv_path.name}.tmp.{os.getpid()}.{uuid.uuid4().hex[:8]}")
+        try:
+            with open(tmp_csv_path, mode="w", newline="", encoding="utf-8") as wf:
+                csv.writer(wf).writerows(existing_rows)
+            os.replace(tmp_csv_path, self.csv_path)
+        finally:
+            if tmp_csv_path.exists():
+                try:
+                    tmp_csv_path.unlink()
+                except OSError:
+                    pass
+
+        self._upgrade_master_csv_schema()
 
         logger.info(
             f"Đã cập nhật Master List CSV: {self.csv_path} "

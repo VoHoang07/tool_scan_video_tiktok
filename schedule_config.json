@@ -177,9 +177,13 @@
     "phu_kien_tien_ich": ""
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_audio_dem_khuyen_fix_20261106_0105",
+    "trigger_id": "dedup_clean_channels_20261106_1325",
     "target_arch": "x86_64",
-    "channel": "audio_dem_khuyen,suc_khoe_duong_sinh",
+    "action": "delete_only",
+    "channel": "phu_nu_khi_chat,an_vat_moi_ngay,suc_khoe_duong_sinh",
+    "delete_match_keywords": [
+      "__auto_dedup_only__"
+    ],
     "force": true,
     "skip_warmup": true,
     "auto_pause_master_after": false

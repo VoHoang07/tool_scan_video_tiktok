@@ -1853,18 +1853,19 @@ class TikTokAutoPoster:
     def _deduplicate_existing_posts_in_content_page(self, page: Any, ch_folder: str) -> List[str]:
         """
         Tự động quét bảng `tiktok.com/tiktokstudio/content` để phát hiện các bài đăng bị trùng lặp
-        (cùng thời lượng `MM:SS` và cùng nội dung/caption hoặc bản trùng 0 view do cào lại)
+        (cùng thời lượng `MM:SS` và cùng nội dung/caption hoặc bản trùng re-upload)
         và tự động bấm `...` -> `Xóa` -> `Xác nhận` để làm sạch kênh.
         """
         deleted_dups: List[str] = []
         if "tiktokstudio/content" not in (page.url or ""):
             return deleted_dups
 
-        for _pass in range(3):
+        for _pass in range(4):
             rows = page.evaluate(
                 """() => {
                     const norm = (s) => (s || '').normalize('NFC').trim();
                     const privacyPrefixes = ['Mọi người', 'Chỉ mình', 'Bạn bè', 'Everyone', 'Only me', 'Private', 'Friends'];
+                    const isDateText = (s) => /^\\d{1,2}\\s+tháng\\s+\\d{1,2}/i.test(s) || /^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s+\\d{1,2}/i.test(s) || /^Đã xuất bản|^Đã lên lịch|^Nội dung đang được xét duyệt/i.test(s);
                     const allEls = Array.from(document.querySelectorAll('button, [role="button"], [role="combobox"], div, span, a, p'));
                     const privacyBtns = [];
                     for (const el of allEls) {
@@ -1873,10 +1874,10 @@ class TikTokAutoPoster:
                         if (!txt || txt.length > 26) continue;
                         if (!privacyPrefixes.some(p => txt.startsWith(p) || txt === p)) continue;
                         const r = el.getBoundingClientRect();
-                        if (r.width < 45 || r.width > 210 || r.height < 18 || r.height > 60 || r.top < 205) continue;
+                        if (r.width < 45 || r.width > 210 || r.height < 18 || r.height > 60 || r.top < 185) continue;
                         const cy = r.top + r.height / 2;
                         if (!privacyBtns.some(b => Math.abs(b.y - cy) < 28)) {
-                            privacyBtns.push({ y: cy, top: r.top });
+                            privacyBtns.push({ y: cy, top: r.top, left: r.left, right: r.right });
                         }
                     }
                     privacyBtns.sort((a, b) => a.top - b.top);
@@ -1891,25 +1892,25 @@ class TikTokAutoPoster:
                         for (const el of textNodes) {
                             if (el.children.length > 2) continue;
                             const r = el.getBoundingClientRect();
-                            if (r.width < 8 || r.height < 8 || r.height > 110) continue;
+                            if (r.width < 6 || r.height < 8 || r.height > 110) continue;
                             const cy = r.top + r.height / 2;
-                            if (Math.abs(cy - rowY) > 52) continue;
+                            if (Math.abs(cy - rowY) > 54) continue;
                             const t = norm(el.innerText || el.textContent || '').replace(/\\s+/g, ' ');
                             if (!t) continue;
-                            if (r.left >= 180 && r.left <= 275 && /^\\d{2}:\\d{2}$/.test(t)) {
+                            if (r.left >= 50 && r.left < pb.left - 15 && /^\\d{2}:\\d{2}$/.test(t)) {
                                 dur = t;
-                            } else if (r.left >= 245 && r.left <= 475 && t.length >= 12 && t.length <= 220) {
+                            } else if (r.left >= 70 && r.left < pb.left - 15 && t.length >= 12 && t.length <= 240 && !isDateText(t)) {
                                 if (!capParts.includes(t)) capParts.push(t);
-                            } else if (r.left >= 540 && r.left <= 640 && /^\\d+$/.test(t)) {
+                            } else if (r.left >= pb.right + 4 && r.left <= pb.right + 160 && /^\\d+$/.test(t)) {
                                 views = parseInt(t, 10) || 0;
                             }
                         }
                         const actionCandidates = [];
                         for (const svg of svgs) {
                             const r = svg.getBoundingClientRect();
-                            if (r.left < 1050 || r.left > 1420 || r.width < 8 || r.width > 48 || r.height < 8 || r.height > 48) continue;
+                            if (r.left < pb.right + 75 || r.left > 1480 || r.width < 8 || r.width > 48 || r.height < 8 || r.height > 48) continue;
                             const cy = r.top + r.height / 2;
-                            if (Math.abs(cy - rowY) > 36) continue;
+                            if (Math.abs(cy - rowY) > 38) continue;
                             const btn = svg.closest('button, [role="button"]') || svg.parentElement || svg;
                             const br = btn.getBoundingClientRect();
                             actionCandidates.push({ x: br.left + br.width / 2, y: br.top + br.height / 2, left: br.left });
@@ -1935,9 +1936,20 @@ class TikTokAutoPoster:
             dup_row = None
             generic_markers = (
                 "thói quen nhỏ mỗi ngày giúp cơ thể khỏe",
+                "tín hiệu cảnh báo sớm của cơ thể",
+                "bí quyết dưỡng sinh đơn giản tại nhà",
                 "bài học tâm lý hôn nhân sâu sắc giúp giữ lửa",
+                "phụ nữ thông minh luôn nắm vững nguyên tắc",
+                "bản lĩnh và khí chất của người phụ nữ hiện đại",
                 "công thức món ngon siêu dễ làm tại nhà",
+                "món ăn vặt quốc dân gây nghiện",
+                "bí quyết nấu ăn nhanh gọn đậm đà",
                 "phim ngắn hoạt hình ai siêu cuốn",
+                "thú cưng thành tinh và màn phiêu lưu",
+                "lòng người khó đoán chỉ đến khi biến cố",
+                "cú quay xe nghẹt thở ở phút cuối",
+                "biến cố bất ngờ lúc nửa đêm và sự thật",
+                "góc khuất tình cảm và màn đáp trả",
             )
             for i in range(len(rows)):
                 for j in range(i + 1, len(rows)):
@@ -1945,25 +1957,34 @@ class TikTokAutoPoster:
                     di, dj = (ri.get("duration") or "").strip(), (rj.get("duration") or "").strip()
                     ci = (ri.get("caption") or "").strip().lower()
                     cj = (rj.get("caption") or "").strip().lower()
-                    same_cap = bool(ci and cj and len(ci) >= 20 and ci[:32] == cj[:32])
-                    same_dur_dup = bool(
-                        di
-                        and di == dj
-                        and (ri.get("views", 0) <= 5 or rj.get("views", 0) <= 5)
-                        and (
-                            same_cap
-                            or any(gm in ci or gm in cj for gm in generic_markers)
-                            or (ri.get("views", 0) == 0 and rj.get("views", 0) == 0)
+                    ci_is_gen = any(gm in ci for gm in generic_markers)
+                    cj_is_gen = any(gm in cj for gm in generic_markers)
+                    same_cap = bool(ci and cj and len(ci) >= 20 and ci[:34] == cj[:34])
+                    # Hai bài trùng caption cụ thể (không phải caption fallback chung chung khác thời lượng)
+                    same_specific_cap = bool(same_cap and (not ci_is_gen or di == dj))
+                    # Cùng thời lượng MM:SS trên cùng kênh (trừ audio_dem_khuyen có nhiều tập Bông Cúc khác nhau cùng dài 04:35/04:39)
+                    if ch_folder == "audio_dem_khuyen":
+                        same_dur_dup = bool(di and di == dj and same_cap)
+                    else:
+                        same_dur_dup = bool(
+                            di
+                            and di == dj
+                            and (
+                                same_cap
+                                or ci_is_gen
+                                or cj_is_gen
+                                or ri.get("views", 0) <= 15
+                                or rj.get("views", 0) <= 15
+                            )
                         )
-                    )
-                    if same_cap or same_dur_dup:
-                        # Ưu tiên xóa bản có caption chung chung hoặc bản cũ hơn có ít view hơn
-                        if any(gm in cj for gm in generic_markers) and not any(gm in ci for gm in generic_markers):
-                            dup_row = rj
-                        elif any(gm in ci for gm in generic_markers) and not any(gm in cj for gm in generic_markers):
+                    if same_specific_cap or same_dur_dup:
+                        # Ưu tiên xóa bản có caption fallback chung chung và giữ lại bản có caption chi tiết gốc
+                        if ci_is_gen and not cj_is_gen:
                             dup_row = ri
+                        elif cj_is_gen and not ci_is_gen:
+                            dup_row = rj
                         else:
-                            dup_row = rj if rj.get("views", 0) <= ri.get("views", 0) else ri
+                            dup_row = ri if ri.get("views", 0) <= rj.get("views", 0) else rj
                         break
                 if dup_row:
                     break
@@ -1984,7 +2005,7 @@ class TikTokAutoPoster:
                     for (const el of document.querySelectorAll('*')) {
                         if (el.children.length > 3) continue;
                         const t = norm(el.innerText || el.textContent || '');
-                        if (t === 'xóa' || t === 'xoá' || t === 'xóa video' || t === 'delete' || t === 'delete video') {
+                        if (t === 'xóa' || t === 'xoá' || t === 'xóa video' || t === 'xoá video' || t === 'delete' || t === 'delete video') {
                             const r = el.getBoundingClientRect();
                             if (r.width >= 15 && r.width <= 300 && r.height >= 12 && r.height <= 75 && r.top > 80) {
                                 return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
@@ -2003,7 +2024,7 @@ class TikTokAutoPoster:
                         for (const el of document.querySelectorAll('*')) {
                             if (el.children.length > 3) continue;
                             const t = norm(el.innerText || el.textContent || '');
-                            if (t === 'xóa' || t === 'xoá' || t === 'xóa video' || t === 'delete' || t === 'delete video') {
+                            if (t === 'xóa' || t === 'xoá' || t === 'xóa video' || t === 'xoá video' || t === 'delete' || t === 'delete video') {
                                 const r = el.getBoundingClientRect();
                                 if (r.width >= 15 && r.width <= 300 && r.height >= 12 && r.height <= 75 && r.top > 80) {
                                     return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
@@ -2016,18 +2037,20 @@ class TikTokAutoPoster:
             if not del_opt:
                 break
 
-            self._os_click_viewport(page, float(del_opt["x"]), float(del_opt["y"]))
+            dx, dy = float(del_opt["x"]), float(del_opt["y"])
+            self._os_click_viewport(page, dx, dy)
+            page.mouse.click(dx, dy)
             time.sleep(1.6)
             conf_btn = page.evaluate(
                 """() => {
                     const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
-                    const labels = ['xóa', 'xoá', 'xóa video', 'delete', 'xác nhận', 'confirm'];
+                    const labels = ['xóa', 'xoá', 'xóa video', 'xoá video', 'delete', 'xác nhận', 'confirm'];
                     for (const b of document.querySelectorAll('button, [role="button"], div, span')) {
                         if (b.children.length > 3) continue;
                         const t = norm(b.innerText || b.textContent || '');
                         if (!labels.includes(t)) continue;
                         const r = b.getBoundingClientRect();
-                        if (r.left >= 250 && r.left <= 1050 && r.top >= 160 && r.width >= 36 && r.width <= 280 && r.height >= 22 && r.height <= 75) {
+                        if (r.left >= 180 && r.left <= 1050 && r.top >= 150 && r.width >= 36 && r.width <= 280 && r.height >= 22 && r.height <= 75) {
                             return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                         }
                     }
@@ -2035,9 +2058,23 @@ class TikTokAutoPoster:
                 }"""
             )
             if conf_btn:
-                self._os_click_viewport(page, float(conf_btn["x"]), float(conf_btn["y"]))
-                page.mouse.click(float(conf_btn["x"]), float(conf_btn["y"]))
-                time.sleep(3.8)
+                cx, cy = float(conf_btn["x"]), float(conf_btn["y"])
+                self._os_click_viewport(page, cx, cy)
+                page.mouse.click(cx, cy)
+                try:
+                    page.evaluate(
+                        """({x, y}) => {
+                            const el = document.elementFromPoint(x, y);
+                            if (el) {
+                                const btn = el.closest('button, [role="button"]') || el;
+                                btn.click();
+                            }
+                        }""",
+                        {"x": cx, "y": cy},
+                    )
+                except Exception:
+                    pass
+                time.sleep(4.0)
                 deleted_dups.append(str(dup_row.get("caption") or dup_row.get("duration")))
                 logger.info(f"[{ch_folder}] Đã tự động xóa 1 bài đăng trùng trên kênh: {dup_row.get('caption')[:60]}")
             else:
@@ -2343,12 +2380,29 @@ class TikTokAutoPoster:
             )
             try:
                 page = context.pages[0] if context.pages else context.new_page()
-                deleted = self._delete_post_in_content_page(
-                    page=page,
-                    ch_folder=ch_folder,
-                    match_keywords=match_keywords,
-                    delete_top_if_no_match=False,
-                )
+                clean_kws = [k for k in (match_keywords or []) if k != "__auto_dedup_only__"]
+                if clean_kws:
+                    deleted.extend(
+                        self._delete_post_in_content_page(
+                            page=page,
+                            ch_folder=ch_folder,
+                            match_keywords=clean_kws,
+                            delete_top_if_no_match=False,
+                        )
+                    )
+                else:
+                    page.goto(
+                        "https://www.tiktok.com/tiktokstudio/content",
+                        wait_until="domcontentloaded",
+                        timeout=45000,
+                    )
+                    time.sleep(random.uniform(5.2, 6.8))
+                    self._dismiss_all_studio_popovers(page, ch_folder)
+
+                dedup_deleted = self._deduplicate_existing_posts_in_content_page(page, ch_folder)
+                if dedup_deleted:
+                    deleted.extend(dedup_deleted)
+                self._ensure_posts_public_in_content_page(page, ch_folder)
                 self._save_and_push_telemetry(
                     page=page,
                     event_type="upload",
@@ -2983,19 +3037,38 @@ class TikTokAutoPoster:
                         if Path(fn).name == target_video.name or (
                             vid_id and (vid_id in fn or vid_id in s_url)
                         ):
-                            caption = (row.get("caption") or "").strip()
-                            hashtags = (row.get("hashtags") or "").strip()
-                            break
+                            row_cap = (row.get("caption") or "").strip()
+                            row_tags = (row.get("hashtags") or "").strip()
+                            if row_cap and not self.crawler._is_generic_fallback_caption(row_cap):
+                                caption = row_cap
+                                hashtags = row_tags
+                            elif not caption:
+                                caption = row_cap
+                                hashtags = row_tags
             except Exception:
                 pass
 
-        if self.crawler.is_raw_filename_caption(caption, target_video.stem) or not hashtags.strip():
+        is_bongcuc_missing_title = (
+            ch_folder == "audio_dem_khuyen"
+            and ("bongcuc_" in target_video.name.lower() or "9900" in target_video.name)
+            and "bông cúc" not in (caption or "").lower()
+        )
+        if (
+            self.crawler.is_raw_filename_caption(caption, target_video.stem)
+            or not hashtags.strip()
+            or is_bongcuc_missing_title
+            or self.crawler._is_generic_fallback_caption(caption)
+        ):
             rec_cap, rec_tags, _ = self.crawler.recover_contextual_caption_and_hashtags(
                 ch_folder, target_video.name
             )
-            if self.crawler.is_raw_filename_caption(caption, target_video.stem):
+            if (
+                self.crawler.is_raw_filename_caption(caption, target_video.stem)
+                or is_bongcuc_missing_title
+                or (self.crawler._is_generic_fallback_caption(caption) and not self.crawler._is_generic_fallback_caption(rec_cap))
+            ):
                 caption = rec_cap
-            if not hashtags.strip():
+            if not hashtags.strip() or is_bongcuc_missing_title:
                 hashtags = rec_tags
             try:
                 self.crawler._upgrade_master_csv_schema()
@@ -3297,6 +3370,8 @@ class TikTokAutoPoster:
                 except Exception:
                     pass
 
+                self._refresh_browser_process_lock()
+                post_btn_clicked = False
                 btn_info = self._find_exact_post_button(page, scroll_into_view=True)
                 time.sleep(0.8)
                 btn_info = self._find_exact_post_button(page, scroll_into_view=False) or btn_info
@@ -3307,6 +3382,7 @@ class TikTokAutoPoster:
                         f"[{ch_folder}] Đang bấm nút đỏ ĐĂNG ('{btn_info.get('text')}', data-e2e='{btn_info.get('dataE2e')}') tại ({click_x:.1f}, {click_y:.1f})..."
                     )
                     self._os_click_viewport(page, click_x, click_y)
+                    post_btn_clicked = True
                     time.sleep(0.6)
                     try:
                         still_there = self._find_exact_post_button(page, scroll_into_view=False)
@@ -3325,6 +3401,7 @@ class TikTokAutoPoster:
                     exact_loc = page.locator('button[data-e2e="post_video_button"]').first
                     exact_loc.scroll_into_view_if_needed()
                     exact_loc.click()
+                    post_btn_clicked = True
 
                 logger.info(
                     f"[{ch_folder}] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất..."
@@ -3432,6 +3509,19 @@ class TikTokAutoPoster:
                 time.sleep(dwell_sec)
 
             except Exception as up_exc:
+                if locals().get("post_btn_clicked") and (
+                    locals().get("post_confirmed")
+                    or "closed" in str(up_exc).lower()
+                    or "targetclosed" in str(up_exc).lower()
+                ):
+                    try:
+                        logger.warning(
+                            f"[{ch_folder}] Trình duyệt đóng ngay sau khi đã bấm nút ĐĂNG ({up_exc}) -> Vẫn ghi nhận video đã đăng để chống đăng lặp lần 2!"
+                        )
+                        self._record_uploaded_video_in_registry(ch_folder, video_path, caption)
+                        self.crawler.mark_video_posted(str(video_path))
+                    except Exception:
+                        pass
                 try:
                     self._save_and_push_telemetry(
                         page=page,

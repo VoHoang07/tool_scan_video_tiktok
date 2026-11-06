@@ -798,23 +798,31 @@ def run_bridge_daemon(poll_seconds: int = 20) -> None:
                                 lock_age = time.time() - ts_val
                             except Exception:
                                 pass
-                        if lock_age > 720:
-                            print(
-                                f"[{_now_str()}] [AGY Bridge Auto-Healer] Phát hiện khóa trình duyệt bị giữ treo {int(lock_age)}s -> Tự động giải phóng Chrome!",
-                                flush=True,
-                            )
-                            heal_report = _unstick_chrome_and_locks()
-                            outbox = {
-                                "updated_at": _now_str(),
-                                "latest_result": {
-                                    "cmd_id": f"auto_heal_{int(time.time())}",
-                                    "action": "auto_heal_stuck_browser_lock",
-                                    "executed_at": _now_str(),
-                                    "unstick_report": heal_report,
-                                    "system_health": _collect_system_health(),
-                                },
-                            }
-                            _git_sync_and_push_outbox(outbox)
+                        if lock_age > 1500:
+                            ps_chk = subprocess.run(
+                                ["ps", "-axo", "command"],
+                                capture_output=True,
+                                text=True,
+                                timeout=4,
+                                check=False,
+                            ).stdout
+                            if "ffmpeg" not in ps_chk and "yt-dlp" not in ps_chk:
+                                print(
+                                    f"[{_now_str()}] [AGY Bridge Auto-Healer] Phát hiện khóa trình duyệt bị giữ treo {int(lock_age)}s -> Tự động giải phóng Chrome!",
+                                    flush=True,
+                                )
+                                heal_report = _unstick_chrome_and_locks()
+                                outbox = {
+                                    "updated_at": _now_str(),
+                                    "latest_result": {
+                                        "cmd_id": f"auto_heal_{int(time.time())}",
+                                        "action": "auto_heal_stuck_browser_lock",
+                                        "executed_at": _now_str(),
+                                        "unstick_report": heal_report,
+                                        "system_health": _collect_system_health(),
+                                    },
+                                }
+                                _git_sync_and_push_outbox(outbox)
                 except Exception:
                     pass
 
