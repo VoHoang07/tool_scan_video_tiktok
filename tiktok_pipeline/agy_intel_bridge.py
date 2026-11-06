@@ -397,7 +397,13 @@ def _ensure_both_streams_alive() -> Optional[Dict[str, Any]]:
         )
         restarted.append("stream1_upload")
 
-    if not health.get("stream2_running"):
+    from .master_switch_controller import MasterSwitchController
+
+    interact_enabled = MasterSwitchController(project_root=PROJECT_ROOT).is_interact_enabled("tiktok")
+    if not interact_enabled:
+        if health.get("stream2_running"):
+            subprocess.run(["pkill", "-9", "-f", "stream-filter24h"], check=False)
+    elif not health.get("stream2_running"):
         log2 = log_dir / "stream2_filter24h.log"
         log2_fh = open(log2, "a", encoding="utf-8")
         subprocess.Popen(

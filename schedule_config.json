@@ -118,7 +118,7 @@
       "23:50"
     ]
   },
-  "filter_24h_enabled": true,
+  "filter_24h_enabled": false,
   "filter_24h_cooldown_until": "",
   "filter_24h_runs_per_day": 2,
   "filter_24h_videos_per_session": 3,
@@ -193,7 +193,7 @@
   },
   "headless": false,
   "random_jitter_minutes": 9,
-  "warmup_before_upload": true,
+  "warmup_before_upload": false,
   "use_macos_native_input": true,
   "warmup_browse_seconds": 150,
   "warmup_gap_seconds": 180,

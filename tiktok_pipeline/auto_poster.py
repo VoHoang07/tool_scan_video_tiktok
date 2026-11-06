@@ -3249,7 +3249,10 @@ class TikTokAutoPoster:
 
         video_path, caption, hashtags = next_item
         cfg = self.ensure_schedule_config()
-        do_warmup = bool(cfg.get("warmup_before_upload", True)) and not skip_warmup
+        from .master_switch_controller import MasterSwitchController
+
+        interact_on = MasterSwitchController(project_root=self.project_root).is_interact_enabled("tiktok")
+        do_warmup = interact_on and bool(cfg.get("warmup_before_upload", True)) and not skip_warmup
 
         logger.info(
             f"=== BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [{ch_folder}] ===\n"
