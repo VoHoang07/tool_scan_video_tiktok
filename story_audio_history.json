@@ -182,7 +182,8 @@
     "7653335234007551239",
     "7587055116528766216",
     "KJoEAqOKEj0",
-    "7300189613413371154"
+    "7300189613413371154",
+    "7661968290692107528"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -276,7 +277,8 @@
     "tt_seed_7653335234007551239",
     "7575344286577724161",
     "yt_sound_KJoEAqOKEj0",
-    "7300189633986546434"
+    "7300189633986546434",
+    "tt_seed_7661968290692107528"
   ],
   "items": [
     {
@@ -1238,6 +1240,16 @@
       "source_url": "https://www.tiktok.com/@viaconyeu/video/7300189613413371154",
       "output_filename": "thu_cung_vui_nhon/ready/20261107_032619_tiktok_story_7300189613413371154.mp4",
       "crawled_at": "2026-11-07T03:26:21"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7661968290692107528",
+      "sound_id": "tt_seed_7661968290692107528",
+      "platform": "tiktok",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.tiktok.com/@andy76243/video/7661968290692107528",
+      "output_filename": "baby_AI/ready/20261107_033757_tiktok_story_7661968290692107528.mp4",
+      "crawled_at": "2026-11-07T03:39:54"
     }
   ]
 }
