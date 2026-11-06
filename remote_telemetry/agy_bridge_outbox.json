@@ -1,47 +1,101 @@
 {
-  "updated_at": "2026-11-07 00:01:38",
+  "updated_at": "2026-11-07 00:01:48",
   "latest_result": {
-    "cmd_id": "auto_restart_1793984498",
-    "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-07 00:01:38",
-    "restart_info": {
-      "restarted_streams": [
-        "stream1_upload"
-      ],
-      "timestamp": "2026-11-07 00:01:38"
-    },
+    "cmd_id": "cmd_20261107_0001_fix_revoked_tty_and_start_upload",
+    "action": "shell",
+    "executed_at": "2026-11-07 00:01:42",
+    "machine_arch": "x86_64",
+    "hostname": "Hoangs-MBP.fpt",
+    "status": "SUCCESS",
+    "exit_code": 0,
+    "stdout": "vohoang           3213   0.0  1.2 34996816 203288 s001  S+   Wed03PM  32:36.45 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           3214   0.0  0.0 34187096      8 s001  S+   Wed03PM   0:00.01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\n    run_continuous_mode(\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 943, in run_continuous_mode\n    crawler = StoryAudioCrawler(\n              ^^^^^^^^^^^^^^^^^^\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 907, in __init__\n    self.ensure_channel_directories()\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 955, in ensure_channel_directories\n    self._upgrade_master_csv_schema()\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3648, in _upgrade_master_csv_schema\n    rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3431, in recover_contextual_caption_and_hashtags\n    idx = int(hashlib.md5(hash_seed).hexdigest()[:8], 16) % len(topic_list)\n              ^^^^^^^\nNameError: name 'hashlib' is not defined\n",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nImportError: cannot import name 'purge_foreign_and_offtopic_ready_videos' from 'tiktok_pipeline.crawler' (/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py)\n",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 00:01:38",
+      "timestamp": "2026-11-07 00:01:48",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": false,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 34218.4,
+      "lock_file_age_seconds": 34228.0,
       "processes": [
-        "3213 02-08:04:13 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 02-08:04:13 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "3213 02-08:04:23 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 02-08:04:23 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "Current thread 0x00007ff85a36ca00 (most recent call first):",
-        "  <no Python frame>",
-        "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
-        "Python runtime state: core initialized",
-        "OSError: [Errno 9] Bad file descriptor",
-        "Current thread 0x00007ff85a36ca00 (most recent call first):",
-        "  <no Python frame>",
-        "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
-        "Python runtime state: core initialized",
-        "OSError: [Errno 9] Bad file descriptor",
-        "Current thread 0x00007ff85a36ca00 (most recent call first):",
-        "  <no Python frame>",
-        "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
-        "Python runtime state: core initialized",
-        "OSError: [Errno 9] Bad file descriptor",
-        "Current thread 0x00007ff85a36ca00 (most recent call first):",
-        "  <no Python frame>"
+        "[00:01:44] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[00:01:44] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[00:01:46] [ERROR] tiktok_pipeline: Pipeline thất bại: name 'hashlib' is not defined",
+        "Traceback (most recent call last):",
+        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 1659, in main",
+        "    run_continuous_mode(",
+        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 943, in run_continuous_mode",
+        "    crawler = StoryAudioCrawler(",
+        "              ^^^^^^^^^^^^^^^^^^",
+        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 907, in __init__",
+        "    self.ensure_channel_directories()",
+        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 955, in ensure_channel_directories",
+        "    self._upgrade_master_csv_schema()",
+        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3648, in _upgrade_master_csv_schema",
+        "    rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(",
+        "                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3431, in recover_contextual_caption_and_hashtags",
+        "    idx = int(hashlib.md5(hash_seed).hexdigest()[:8], 16) % len(topic_list)",
+        "              ^^^^^^^",
+        "NameError: name 'hashlib' is not defined"
       ],
       "lock_file_content": "idle"
     }
-  }
+  },
+  "history": [
+    {
+      "cmd_id": "cmd_20261107_0001_fix_revoked_tty_and_start_upload",
+      "action": "shell",
+      "executed_at": "2026-11-07 00:01:42",
+      "machine_arch": "x86_64",
+      "hostname": "Hoangs-MBP.fpt",
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "stdout": "vohoang           3213   0.0  1.2 34996816 203288 s001  S+   Wed03PM  32:36.45 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           3214   0.0  0.0 34187096      8 s001  S+   Wed03PM   0:00.01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\n    run_continuous_mode(\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 943, in run_continuous_mode\n    crawler = StoryAudioCrawler(\n              ^^^^^^^^^^^^^^^^^^\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 907, in __init__\n    self.ensure_channel_directories()\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 955, in ensure_channel_directories\n    self._upgrade_master_csv_schema()\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3648, in _upgrade_master_csv_schema\n    rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3431, in recover_contextual_caption_and_hashtags\n    idx = int(hashlib.md5(hash_seed).hexdigest()[:8], 16) % len(topic_list)\n              ^^^^^^^\nNameError: name 'hashlib' is not defined\n",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nImportError: cannot import name 'purge_foreign_and_offtopic_ready_videos' from 'tiktok_pipeline.crawler' (/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py)\n",
+      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+      "system_health": {
+        "timestamp": "2026-11-07 00:01:48",
+        "machine_arch": "x86_64",
+        "hostname": "Hoangs-MBP.fpt",
+        "stream1_running": false,
+        "stream2_running": true,
+        "chrome_testing_count": 0,
+        "lock_file_age_seconds": 34228.0,
+        "processes": [
+          "3213 02-08:04:23 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "3214 02-08:04:23 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        ],
+        "recent_daemon_log_tail": [
+          "[00:01:44] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+          "[00:01:44] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+          "[00:01:46] [ERROR] tiktok_pipeline: Pipeline thất bại: name 'hashlib' is not defined",
+          "Traceback (most recent call last):",
+          "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 1659, in main",
+          "    run_continuous_mode(",
+          "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 943, in run_continuous_mode",
+          "    crawler = StoryAudioCrawler(",
+          "              ^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 907, in __init__",
+          "    self.ensure_channel_directories()",
+          "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 955, in ensure_channel_directories",
+          "    self._upgrade_master_csv_schema()",
+          "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3648, in _upgrade_master_csv_schema",
+          "    rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(",
+          "                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+          "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3431, in recover_contextual_caption_and_hashtags",
+          "    idx = int(hashlib.md5(hash_seed).hexdigest()[:8], 16) % len(topic_list)",
+          "              ^^^^^^^",
+          "NameError: name 'hashlib' is not defined"
+        ],
+        "lock_file_content": "idle"
+      }
+    }
+  ]
 }
