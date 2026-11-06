@@ -158,7 +158,8 @@
     "7353976976912289058",
     "7592584174402391303",
     "7636015710594379258",
-    "lUac9S9t1oM"
+    "lUac9S9t1oM",
+    "Tpuig6HJ7XI"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -228,7 +229,8 @@
     "7140959347722422274",
     "7592584247398107911",
     "7636015688827145006",
-    "yt_sound_lUac9S9t1oM"
+    "yt_sound_lUac9S9t1oM",
+    "yt_sound_Tpuig6HJ7XI"
   ],
   "items": [
     {
@@ -950,6 +952,16 @@
       "source_url": "https://www.youtube.com/watch?v=lUac9S9t1oM",
       "output_filename": "phu_kien_tien_ich/ready/20261106_124154_youtube_shorts_story_lUac9S9t1oM.mp4",
       "crawled_at": "2026-11-06T12:42:05"
+    },
+    {
+      "channel": "thu_cung_vui_nhon",
+      "video_id": "Tpuig6HJ7XI",
+      "sound_id": "yt_sound_Tpuig6HJ7XI",
+      "platform": "youtube_shorts",
+      "genre": "channel_11_pet_comedy",
+      "source_url": "https://www.youtube.com/watch?v=Tpuig6HJ7XI",
+      "output_filename": "thu_cung_vui_nhon/ready/20261106_124659_youtube_shorts_story_Tpuig6HJ7XI.mp4",
+      "crawled_at": "2026-11-06T12:47:04"
     }
   ]
 }
