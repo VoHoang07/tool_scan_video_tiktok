@@ -1,52 +1,103 @@
 {
-  "updated_at": "2026-11-07 00:03:56",
+  "updated_at": "2026-11-07 00:04:33",
   "latest_result": {
-    "cmd_id": "auto_restart_1793984636",
-    "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-07 00:03:56",
-    "restart_info": {
-      "restarted_streams": [
-        "stream1_upload"
-      ],
-      "timestamp": "2026-11-07 00:03:56"
-    },
+    "cmd_id": "cmd_20261107_0003_start_stream1_after_hashlib_fix",
+    "action": "shell",
+    "executed_at": "2026-11-07 00:03:59",
+    "machine_arch": "x86_64",
+    "hostname": "Hoangs-MBP.fpt",
+    "status": "SUCCESS",
+    "exit_code": 0,
+    "stdout": "548 203264 s001  S+   Wed03PM  32:38.61 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           3214   0.0  0.0 34187096      8 s001  S+   Wed03PM   0:00.01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          44733   0.0  0.0 34153304   1944   ??  S    12:04AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n[00:03:57] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))\n[00:04:24] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.\n[00:04:25] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.\n[00:04:26] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===\n[00:04:26] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg\n[00:04:26] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)\n[00:04:26] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))\n[00:04:27] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===\n\n==============================================================================================\n[00:04:27] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===\n[00:04:29] [INFO] tiktok_pipeline: [Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon (post_now_baby_ai_and_night_20261106_2338) -> Kênh ['baby_AI', 'video_AI_hay', 'audio_dem_khuyen', 'tu_chan_gioi', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'suc_khoe_duong_sinh']!\n[00:04:30] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] 🔧 Phát hiện 20261106_020213_douyin_story_7353976976912289058.mp4 cần chuẩn hóa (Bitexact Metadata & Device Signature Scrub) -> Đang tự động xử lý ngay trước khi đăng...\n[00:04:30] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] ✅ ĐÃ KIỂM TRA & XÁC NHẬN 6/6 LỚP BẢO VỆ TRƯỚC KHI ĐĂNG [baby_AI -> 20261106_020213_douyin_story_7353976976912289058.mp4]:\n  + Lớp 1 (Visual pHash/vHash) : PASS (h264 720x1280 yuv420p)\n  + Lớp 2 (AudioPrint Evasion) : PASS (aac 44100Hz conditioned)\n  + Lớp 3 (Device Metadata)    : PASS (sig='CapCut 14.2.0 (iPhone16,2)', handler='CoreMedia', xattr=CLEAN)\n  + Lớp 4 (Retention/Duration) : PASS (48.0s | 20.1MB)\n  + Lớp 5 (Policy Safe-Guard)  : PASS (Caption & Hashtags sạch 100%)\n  + Lớp 6 (Interleaved/AIGC)   : PASS (Anti-Duplicate & AIGC Guard OK)\n  + Tự động khắc phục tại chỗ  : Bitexact Metadata & Device Signature Scrub\n[00:04:30] [INFO] tiktok_pipeline: === BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [baby_AI] ===\n  + File: 20261106_020213_douyin_story_7353976976912289058.mp4\n  + Kịch bản ngắn: 🥰 Nhật ký gia đình siêu lầy: Lần tới Super Wings sẽ đến Peter Pan để phục vụ đồ ăn. \"Bây giờ cậu có muốn biết chuyện gì đang xảy ra bên trong không...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?\n  + Hashtags Hot Search: #chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh\n",
+    "stderr": "",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 00:03:56",
+      "timestamp": "2026-11-07 00:04:33",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 34356.2,
+      "lock_file_age_seconds": 3.4,
       "processes": [
-        "44647       00:00 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "44649       00:00 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 02-08:06:31 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 02-08:06:31 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "44731       00:07 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "44733       00:07 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 02-08:07:08 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 02-08:07:08 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[00:03:33] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[00:03:33] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[00:03:36] [ERROR] tiktok_pipeline: Pipeline thất bại: name 'hashlib' is not defined",
-        "Traceback (most recent call last):",
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 1659, in main",
-        "    run_continuous_mode(",
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py\", line 943, in run_continuous_mode",
-        "    crawler = StoryAudioCrawler(",
-        "              ^^^^^^^^^^^^^^^^^^",
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 907, in __init__",
-        "    self.ensure_channel_directories()",
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 955, in ensure_channel_directories",
-        "    self._upgrade_master_csv_schema()",
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3648, in _upgrade_master_csv_schema",
-        "    rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(",
-        "                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3431, in recover_contextual_caption_and_hashtags",
-        "    idx = int(hashlib.md5(hash_seed).hexdigest()[:8], 16) % len(topic_list)",
-        "              ^^^^^^^",
-        "NameError: name 'hashlib' is not defined"
+        "[00:04:26] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[00:04:26] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[00:04:27] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
+        "==============================================================================================",
+        "[00:04:27] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+        "[00:04:29] [INFO] tiktok_pipeline: [Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon (post_now_baby_ai_and_night_20261106_2338) -> Kênh ['baby_AI', 'video_AI_hay', 'audio_dem_khuyen', 'tu_chan_gioi', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'suc_khoe_duong_sinh']!",
+        "[00:04:30] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] 🔧 Phát hiện 20261106_020213_douyin_story_7353976976912289058.mp4 cần chuẩn hóa (Bitexact Metadata & Device Signature Scrub) -> Đang tự động xử lý ngay trước khi đăng...",
+        "[00:04:30] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] ✅ ĐÃ KIỂM TRA & XÁC NHẬN 6/6 LỚP BẢO VỆ TRƯỚC KHI ĐĂNG [baby_AI -> 20261106_020213_douyin_story_7353976976912289058.mp4]:",
+        "  + Lớp 1 (Visual pHash/vHash) : PASS (h264 720x1280 yuv420p)",
+        "  + Lớp 2 (AudioPrint Evasion) : PASS (aac 44100Hz conditioned)",
+        "  + Lớp 3 (Device Metadata)    : PASS (sig='CapCut 14.2.0 (iPhone16,2)', handler='CoreMedia', xattr=CLEAN)",
+        "  + Lớp 4 (Retention/Duration) : PASS (48.0s | 20.1MB)",
+        "  + Lớp 5 (Policy Safe-Guard)  : PASS (Caption & Hashtags sạch 100%)",
+        "  + Lớp 6 (Interleaved/AIGC)   : PASS (Anti-Duplicate & AIGC Guard OK)",
+        "  + Tự động khắc phục tại chỗ  : Bitexact Metadata & Device Signature Scrub",
+        "[00:04:30] [INFO] tiktok_pipeline: === BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [baby_AI] ===",
+        "  + File: 20261106_020213_douyin_story_7353976976912289058.mp4",
+        "  + Kịch bản ngắn: 🥰 Nhật ký gia đình siêu lầy: Lần tới Super Wings sẽ đến Peter Pan để phục vụ đồ ăn. \"Bây giờ cậu có muốn biết chuyện gì đang xảy ra bên trong không...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+        "  + Hashtags Hot Search: #chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh"
       ],
-      "lock_file_content": "idle"
+      "lock_file_content": "pid=44731 ts=1793984670"
     }
-  }
+  },
+  "history": [
+    {
+      "cmd_id": "cmd_20261107_0003_start_stream1_after_hashlib_fix",
+      "action": "shell",
+      "executed_at": "2026-11-07 00:03:59",
+      "machine_arch": "x86_64",
+      "hostname": "Hoangs-MBP.fpt",
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "stdout": "548 203264 s001  S+   Wed03PM  32:38.61 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           3214   0.0  0.0 34187096      8 s001  S+   Wed03PM   0:00.01 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          44733   0.0  0.0 34153304   1944   ??  S    12:04AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n[00:03:57] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))\n[00:04:24] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.\n[00:04:25] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.\n[00:04:26] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===\n[00:04:26] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg\n[00:04:26] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)\n[00:04:26] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))\n[00:04:27] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===\n\n==============================================================================================\n[00:04:27] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===\n[00:04:29] [INFO] tiktok_pipeline: [Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon (post_now_baby_ai_and_night_20261106_2338) -> Kênh ['baby_AI', 'video_AI_hay', 'audio_dem_khuyen', 'tu_chan_gioi', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'suc_khoe_duong_sinh']!\n[00:04:30] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] 🔧 Phát hiện 20261106_020213_douyin_story_7353976976912289058.mp4 cần chuẩn hóa (Bitexact Metadata & Device Signature Scrub) -> Đang tự động xử lý ngay trước khi đăng...\n[00:04:30] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] ✅ ĐÃ KIỂM TRA & XÁC NHẬN 6/6 LỚP BẢO VỆ TRƯỚC KHI ĐĂNG [baby_AI -> 20261106_020213_douyin_story_7353976976912289058.mp4]:\n  + Lớp 1 (Visual pHash/vHash) : PASS (h264 720x1280 yuv420p)\n  + Lớp 2 (AudioPrint Evasion) : PASS (aac 44100Hz conditioned)\n  + Lớp 3 (Device Metadata)    : PASS (sig='CapCut 14.2.0 (iPhone16,2)', handler='CoreMedia', xattr=CLEAN)\n  + Lớp 4 (Retention/Duration) : PASS (48.0s | 20.1MB)\n  + Lớp 5 (Policy Safe-Guard)  : PASS (Caption & Hashtags sạch 100%)\n  + Lớp 6 (Interleaved/AIGC)   : PASS (Anti-Duplicate & AIGC Guard OK)\n  + Tự động khắc phục tại chỗ  : Bitexact Metadata & Device Signature Scrub\n[00:04:30] [INFO] tiktok_pipeline: === BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [baby_AI] ===\n  + File: 20261106_020213_douyin_story_7353976976912289058.mp4\n  + Kịch bản ngắn: 🥰 Nhật ký gia đình siêu lầy: Lần tới Super Wings sẽ đến Peter Pan để phục vụ đồ ăn. \"Bây giờ cậu có muốn biết chuyện gì đang xảy ra bên trong không...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?\n  + Hashtags Hot Search: #chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh\n",
+      "stderr": "",
+      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+      "system_health": {
+        "timestamp": "2026-11-07 00:04:33",
+        "machine_arch": "x86_64",
+        "hostname": "Hoangs-MBP.fpt",
+        "stream1_running": true,
+        "stream2_running": true,
+        "chrome_testing_count": 0,
+        "lock_file_age_seconds": 3.4,
+        "processes": [
+          "44731       00:07 ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "44733       00:07 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "3213 02-08:07:08 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "3214 02-08:07:08 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        ],
+        "recent_daemon_log_tail": [
+          "[00:04:26] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+          "[00:04:26] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+          "[00:04:27] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
+          "==============================================================================================",
+          "[00:04:27] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+          "[00:04:29] [INFO] tiktok_pipeline: [Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon (post_now_baby_ai_and_night_20261106_2338) -> Kênh ['baby_AI', 'video_AI_hay', 'audio_dem_khuyen', 'tu_chan_gioi', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'suc_khoe_duong_sinh']!",
+          "[00:04:30] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] 🔧 Phát hiện 20261106_020213_douyin_story_7353976976912289058.mp4 cần chuẩn hóa (Bitexact Metadata & Device Signature Scrub) -> Đang tự động xử lý ngay trước khi đăng...",
+          "[00:04:30] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] ✅ ĐÃ KIỂM TRA & XÁC NHẬN 6/6 LỚP BẢO VỆ TRƯỚC KHI ĐĂNG [baby_AI -> 20261106_020213_douyin_story_7353976976912289058.mp4]:",
+          "  + Lớp 1 (Visual pHash/vHash) : PASS (h264 720x1280 yuv420p)",
+          "  + Lớp 2 (AudioPrint Evasion) : PASS (aac 44100Hz conditioned)",
+          "  + Lớp 3 (Device Metadata)    : PASS (sig='CapCut 14.2.0 (iPhone16,2)', handler='CoreMedia', xattr=CLEAN)",
+          "  + Lớp 4 (Retention/Duration) : PASS (48.0s | 20.1MB)",
+          "  + Lớp 5 (Policy Safe-Guard)  : PASS (Caption & Hashtags sạch 100%)",
+          "  + Lớp 6 (Interleaved/AIGC)   : PASS (Anti-Duplicate & AIGC Guard OK)",
+          "  + Tự động khắc phục tại chỗ  : Bitexact Metadata & Device Signature Scrub",
+          "[00:04:30] [INFO] tiktok_pipeline: === BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [baby_AI] ===",
+          "  + File: 20261106_020213_douyin_story_7353976976912289058.mp4",
+          "  + Kịch bản ngắn: 🥰 Nhật ký gia đình siêu lầy: Lần tới Super Wings sẽ đến Peter Pan để phục vụ đồ ăn. \"Bây giờ cậu có muốn biết chuyện gì đang xảy ra bên trong không...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+          "  + Hashtags Hot Search: #chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh"
+        ],
+        "lock_file_content": "pid=44731 ts=1793984670"
+      }
+    }
+  ]
 }
