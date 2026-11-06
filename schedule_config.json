@@ -11,13 +11,13 @@
       ]
     },
     "switch_2_upload": {
-      "tiktok": true,
+      "tiktok": false,
       "fb_reels": false,
       "yt_shorts": false,
       "batch_single_chrome_session": true
     },
     "switch_3_interact": {
-      "tiktok": true,
+      "tiktok": false,
       "fb_reels": false,
       "yt_shorts": false
     },
@@ -70,52 +70,52 @@
     "video_AI_hay": [
       "07:25",
       "12:05",
-      "23:30"
+      "22:55"
     ],
     "baby_AI": [
       "08:05",
       "12:42",
-      "23:30"
+      "23:20"
     ],
     "audio_dem_khuyen": [
       "08:48",
       "13:25",
-      "23:30"
+      "23:44"
     ],
     "tu_chan_gioi": [
       "09:18",
       "14:10",
-      "23:30"
+      "23:56"
     ],
     "meo_vat_gia_dinh": [
       "07:10",
       "11:35",
-      "23:30"
+      "22:35"
     ],
     "suc_khoe_duong_sinh": [
       "06:50",
       "11:55",
-      "23:30"
+      "22:45"
     ],
     "phu_nu_khi_chat": [
       "08:28",
       "13:05",
-      "23:30"
+      "23:32"
     ],
     "an_vat_moi_ngay": [
       "07:38",
       "12:22",
-      "23:30"
+      "23:08"
     ],
     "nuoi_con_eq": [
       "08:15",
       "12:52",
-      "23:30"
+      "23:26"
     ],
     "phu_kien_tien_ich": [
       "09:05",
       "13:45",
-      "23:30"
+      "23:50"
     ]
   },
   "filter_24h_enabled": true,
