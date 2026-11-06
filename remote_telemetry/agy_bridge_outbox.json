@@ -1,36 +1,28 @@
 {
-  "updated_at": "2026-11-06 15:10:45",
+  "updated_at": "2026-11-06 15:11:08",
   "latest_result": {
-    "cmd_id": "auto_evolve_c84063a15bdf",
-    "action": "auto_self_evolve_fix",
-    "executed_at": "2026-11-06 15:10:45",
-    "ai_fix_report": {
-      "error_hash": "c84063a15bdf",
-      "log_file": "daemon_24_7.log",
-      "error_line": "OSError: [Errno 9] Bad file descriptor",
-      "agy_exit_code": 1,
-      "agy_fix_summary": "",
-      "timestamp": "2026-11-06 15:10:45"
+    "cmd_id": "auto_restart_1793952668",
+    "action": "auto_restart_dead_streams",
+    "executed_at": "2026-11-06 15:11:08",
+    "restart_info": {
+      "restarted_streams": [
+        "stream1_upload"
+      ],
+      "timestamp": "2026-11-06 15:11:08"
     },
     "system_health": {
-      "timestamp": "2026-11-06 15:10:45",
+      "timestamp": "2026-11-06 15:11:08",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": false,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 2365.3,
+      "lock_file_age_seconds": 2388.5,
       "processes": [
-        "3213 01-23:13:20 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-23:13:20 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "3213 01-23:13:43 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-23:13:43 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3872, in format_inventory_status_table",
-        "    inv = self.get_inventory_status()",
-        "          ^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3831, in get_inventory_status",
-        "    self.ensure_channel_directories()",
-        "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 960, in ensure_channel_directories",
         "    self._upgrade_master_csv_schema()",
         "  File \"/Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py\", line 3573, in _upgrade_master_csv_schema",
         "    rec_cap, rec_tags, rec_url = self.recover_contextual_caption_and_hashtags(",
@@ -39,6 +31,11 @@
         "    idx = int(hashlib.md5(hash_seed).hexdigest()[:8], 16) % len(topic_list)",
         "              ^^^^^^^",
         "NameError: name 'hashlib' is not defined",
+        "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
+        "Python runtime state: core initialized",
+        "OSError: [Errno 9] Bad file descriptor",
+        "Current thread 0x00007ff85a36ca00 (most recent call first):",
+        "  <no Python frame>",
         "Fatal Python error: init_sys_streams: can't initialize sys standard streams",
         "Python runtime state: core initialized",
         "OSError: [Errno 9] Bad file descriptor",
