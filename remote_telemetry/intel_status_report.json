@@ -1,168 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 01:38:25",
+    "timestamp": "2026-11-07 01:41:11",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "phukientienich.k10",
-        "domFollowing": "0",
-        "domFollowers": "0",
-        "domLikes": "0",
-        "sidebarFollowing": [
-          "/@phukientienich.k10"
-        ]
-      },
-      "records": [
-        {
-          "channel": "phu_kien_tien_ich",
-          "video_id": "7704931429490380040",
-          "video_url": "https://www.tiktok.com/@luoidilamz/video/7704931429490380040",
-          "creator_handle": "@luoidilamz",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Video hay và ý nghĩa quá bạn ơi, chúc kênh ngày càng phát triển nhé ❤️",
-          "circuit_breaker_tripped": true,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261107023612E44F266E2D5A8D2818A8\",\"now\":1793990172000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261107023612E44F266E2D5A8D2818A8\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "phukientienich.k10"
-            },
-            "before": {
-              "x": 804.34375,
-              "y": 411,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "42"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 804.34375,
-                "y": 411,
-                "ariaPressed": true,
-                "svgColor": "rgba(255, 59, 92, 1)",
-                "likeCount": "43"
-              },
-              "red": true,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@luoidilamz",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@luoidilamz/video/7704931429490380040?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-07 01:36:36",
-          "follow_back_window_until": "2026-11-08 01:36:36"
-        },
-        {
-          "channel": "phu_kien_tien_ich",
-          "video_id": "7704164301816237333",
-          "video_url": "https://www.tiktok.com/@ng.tuyt.chi1/video/7704164301816237333",
-          "creator_handle": "@ng.tuyt.chi1",
-          "watched_seconds": 16.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Nhạc với hình hợp nhau thực sự, xem đi xem lại vẫn thấy cuốn 🥰",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "phukientienich.k10"
-            },
-            "profile_follow_verify": {
-              "creator": "@ng.tuyt.chi1",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@ng.tuyt.chi1/video/7704164301816237333?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-07 01:37:29",
-          "follow_back_window_until": "2026-11-08 01:37:29"
-        },
-        {
-          "channel": "phu_kien_tien_ich",
-          "video_id": "7703983801743019285",
-          "video_url": "https://www.tiktok.com/@phng.tp.ho67/video/7703983801743019285",
-          "creator_handle": "@phng.tp.ho67",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Xem cuốn luôn á, mong kênh ra thêm nhiều video chất lượng như này nhé 🥰",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "phukientienich.k10"
-            },
-            "profile_follow_verify": {
-              "creator": "@phng.tp.ho67",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@phng.tp.ho67/video/7703983801743019285?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-07 01:38:20",
-          "follow_back_window_until": "2026-11-08 01:38:20"
-        }
-      ]
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 156.2,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 01:41:11",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 156.2,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-07 01:38:25",
       "machine_arch": "x86_64",
@@ -1870,22 +1737,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 00:07:56",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261106_013447_douyin_story_7150491538382966047.mp4",
-        "caption": "🐾 Phim ngắn hoạt hình AI siêu cuốn với tình tiết bất ngờ ở giây cuối cùng — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
