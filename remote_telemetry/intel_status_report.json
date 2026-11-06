@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 01:48:11",
+    "timestamp": "2026-11-07 01:54:02",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "ads_skipped": 3,
-      "fyp_liked": 1,
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 169.4,
+      "elapsed_seconds": 150.6,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 01:54:02",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 150.6,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-07 01:48:11",
       "machine_arch": "x86_64",
@@ -1717,22 +1732,6 @@
         "video_file": "20261107_002143_tiktok_story_7458254613217594642.mp4",
         "caption": "💪 Chăm sóc sức khỏe gia đình: NGUYÊN NHÂN GÂY UNG THƯ. Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
         "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 00:16:18",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261105_195119_tiktok_story_7685728082287791380.mp4",
-        "caption": "⚔️ [Tu Chân Giới] Phàm nhân nghịch thiên cải mệnh thức tỉnh huyết mạch thượng cổ tại Tu Chân Giới. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
