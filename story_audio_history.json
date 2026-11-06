@@ -188,7 +188,8 @@
     "7691101883590544660",
     "7323060116121488694",
     "7682559297057819924",
-    "CSRw8o5QvRQ"
+    "CSRw8o5QvRQ",
+    "7518762517464763665"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -287,7 +288,8 @@
     "7016607322567199495",
     "tt_seed_7691101883590544660",
     "6814375596605459204",
-    "tt_seed_7682559297057819924"
+    "tt_seed_7682559297057819924",
+    "7518762566055643920"
   ],
   "items": [
     {
@@ -1309,6 +1311,16 @@
       "source_url": "https://www.youtube.com/watch?v=CSRw8o5QvRQ",
       "output_filename": "suc_khoe_duong_sinh/ready/20261107_051221_youtube_shorts_story_CSRw8o5QvRQ.mp4",
       "crawled_at": "2026-11-07T05:12:45"
+    },
+    {
+      "channel": "thu_cung_vui_nhon",
+      "video_id": "7518762517464763665",
+      "sound_id": "7518762566055643920",
+      "platform": "tiktok",
+      "genre": "thucunghaihuoc",
+      "source_url": "https://www.tiktok.com/@con_la_min_ne/video/7518762517464763665",
+      "output_filename": "thu_cung_vui_nhon/ready/20261107_055545_tiktok_story_7518762517464763665.mp4",
+      "crawled_at": "2026-11-07T05:55:50"
     }
   ]
 }
