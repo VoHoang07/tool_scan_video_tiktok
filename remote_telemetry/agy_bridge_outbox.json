@@ -1,18 +1,18 @@
 {
-  "updated_at": "2026-11-06 12:29:18",
+  "updated_at": "2026-11-06 12:51:37",
   "latest_result": {
-    "cmd_id": "auto_heal_1793942958",
+    "cmd_id": "auto_heal_1793944297",
     "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-06 12:29:18",
+    "executed_at": "2026-11-06 12:51:37",
     "unstick_report": {
       "killed_chrome_for_testing": false,
       "removed_locks": [
         "workspace_temp/.tiktok_browser_session.lock"
       ],
-      "timestamp": "2026-11-06 12:29:18"
+      "timestamp": "2026-11-06 12:51:37"
     },
     "system_health": {
-      "timestamp": "2026-11-06 12:29:18",
+      "timestamp": "2026-11-06 12:51:37",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -20,32 +20,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "66284    11:22:22 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "66286    11:22:22 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "3213 01-20:31:54 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "3214 01-20:31:54 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "66284    11:44:40 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "66286    11:44:40 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "3213 01-20:54:12 ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "3214 01-20:54:12 caffeinate -dimsu ./venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[12:21:27] [INFO] tiktok_pipeline: [tu_chan_gioi] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
-        "[12:21:33] [INFO] tiktok_pipeline: TTS #26 [52.10s-53.27s | gốc=1.20s]: rate=+45%, atempo=1.21x -> 1.17s",
-        "[12:21:40] [INFO] tiktok_pipeline: [tu_chan_gioi] [Lượt 3] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
-        "[12:21:42] [INFO] tiktok_pipeline: [tu_chan_gioi] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
-        "[12:21:43] [INFO] tiktok_pipeline: [tu_chan_gioi] Hoàn tất kiểm tra trang Bài đăng (đã chuyển 3 bài từ 'Chỉ mình tôi' -> 'Mọi người').",
-        "[12:21:43] [INFO] tiktok_pipeline: [tu_chan_gioi] [Remote Telemetry] Đã lưu ảnh (latest_upload_tu_chan_gioi.jpg) & đẩy đồng bộ GitHub chạy ngầm!",
-        "[12:21:58] [INFO] tiktok_pipeline: [tu_chan_gioi] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: tu_chan_gioi/posted/20261105_173353_tiktok_story_7684235157036879124.mp4",
-        "[12:21:58] [INFO] tiktok_pipeline: [Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [suc_khoe_duong_sinh]: 11:54 (khung gốc 11:55, lệch -1 phút)",
-        "[12:22:04] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Nào, được rồi, căn bậc hai của một số dương là gì' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[12:22:04] [INFO] tiktok_pipeline: TTS #27 [53.98s-54.38s | gốc=3.32s]: rate=+16%, atempo=1.00x -> 0.40s",
-        "[12:22:32] [INFO] tiktok_pipeline: TTS #28 [57.74s-59.08s | gốc=1.40s]: rate=+25%, atempo=1.00x -> 1.34s",
-        "[12:22:36] [INFO] tiktok_pipeline: TTS #29 [60.46s-61.57s | gốc=0.58s]: rate=+16%, atempo=1.00x -> 1.11s",
-        "[12:22:36] [INFO] tiktok_pipeline: === [5/5] GHÉP ÂM THANH & ĐÓNG PHỤ ĐỀ LÊN VIDEO (FFMPEG) ===",
-        "[12:22:36] [INFO] tiktok_pipeline: Thông số video gốc: 720x1280, thời lượng: 63.47s",
-        "[12:22:38] [INFO] tiktok_pipeline: Đã phát hiện vị trí sub gốc cần làm mờ: tâm Y=1056px (82.5%), chiều cao=128px (peak_score=676.4)",
-        "[12:22:38] [INFO] tiktok_pipeline: Đã tạo trục âm thanh lồng tiếng Việt: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7636015710594379258/voiceover_track.wav",
-        "[12:22:38] [INFO] tiktok_pipeline: Đang trộn lồng tiếng Việt đè lên giọng nhân vật gốc (nền gốc=0.25, giọng Việt=1.35)...",
-        "[12:22:44] [INFO] tiktok_pipeline: Đang xóa tinh tế nét chữ sub gốc theo từng khung hình tại dải Y=[984..1126]...",
-        "[12:23:38] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc...",
-        "[12:23:53] [INFO] tiktok_pipeline: Hoàn tất xuất bản video tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/nuoi_con_eq/ready/20261106_121103_douyin_story_7636015710594379258.mp4"
+        "Deleting original file /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_Tpuig6HJ7XI/ytdlp_raw.f140.m4a (pass -k to keep)",
+        "[12:46:58] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_Tpuig6HJ7XI/raw_video.mp4 (3.72 MB)",
+        "[12:46:58] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_Tpuig6HJ7XI/audio.mp3",
+        "[12:46:59] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 78.81s)",
+        "[12:46:59] [INFO] tiktok_pipeline: [Voice Filter] Video Tpuig6HJ7XI là Tiếng Việt ('vi') có sẵn -> Giữ nguyên video & âm thanh gốc 100%.",
+        "[12:46:59] [INFO] tiktok_pipeline: === [3-5/5] VIDEO GỐC ĐÃ LÀ TIẾNG VIỆT ('vi') -> GIỮ NGUYÊN BẢN GỐC & LÁCH MÃ BĂM TRÙNG LẶP TIKTOK (MD5/vHash/AudioPrint) ===",
+        "[12:47:04] [INFO] tiktok_pipeline: Đã giữ nguyên video tiếng Việt tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/thu_cung_vui_nhon/ready/20261106_124659_youtube_shorts_story_Tpuig6HJ7XI.mp4",
+        "[12:47:04] [INFO] tiktok_pipeline: Caption gốc: 🎬 Tổng Hợp Con Mèo Hài Hước Đáng Yêu | Collection of Cute Funny Cats. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+        "[12:47:04] [INFO] tiktok_pipeline: Hashtags: #videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #hoathinhhai #fyp",
+        "[12:51:03] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[12:51:03] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[12:51:03] [INFO] tiktok_pipeline: [suc_khoe_duong_sinh] Kho ready/ đã lọc hết các bản trùng nội dung -> Đang tự động cào ngay 1 video truyện mới hoàn toàn cho [suc_khoe_duong_sinh]...",
+        "[12:51:03] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[12:51:03] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[12:51:03] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[12:51:03] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_6_health_wellness] -> Thư mục: output/suc_khoe_duong_sinh/ready/ | Link mẫu: 0 | Kênh mẫu: ['suckhoedoisong.vn', 'duongsinhmoingay', 'songkhoemoingay', 'bacsidinhduong'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
+        "[12:51:03] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @suckhoedoisong.vn.",
+        "[12:51:04] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @duongsinhmoingay.",
+        "[12:51:04] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @songkhoemoingay.",
+        "[12:51:04] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @bacsidinhduong."
       ]
     }
   }
