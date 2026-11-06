@@ -180,7 +180,8 @@
     "xIqKaq64kdU",
     "EogJbS9JB54",
     "7653335234007551239",
-    "7587055116528766216"
+    "7587055116528766216",
+    "KJoEAqOKEj0"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -272,7 +273,8 @@
     "yt_sound_xIqKaq64kdU",
     "yt_sound_EogJbS9JB54",
     "tt_seed_7653335234007551239",
-    "7575344286577724161"
+    "7575344286577724161",
+    "yt_sound_KJoEAqOKEj0"
   ],
   "items": [
     {
@@ -1214,6 +1216,16 @@
       "source_url": "https://www.tiktok.com/@bachtiensinh_00/video/7587055116528766216",
       "output_filename": "tu_chan_gioi/ready/20261107_030848_tiktok_story_7587055116528766216.mp4",
       "crawled_at": "2026-11-07T03:09:02"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "KJoEAqOKEj0",
+      "sound_id": "yt_sound_KJoEAqOKEj0",
+      "platform": "youtube_shorts",
+      "genre": "channel_10_tech_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=KJoEAqOKEj0",
+      "output_filename": "phu_kien_tien_ich/ready/20261107_032025_youtube_shorts_story_KJoEAqOKEj0.mp4",
+      "crawled_at": "2026-11-07T03:21:28"
     }
   ]
 }
