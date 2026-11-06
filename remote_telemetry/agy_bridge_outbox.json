@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-07 03:39:10",
+  "updated_at": "2026-11-07 04:09:28",
   "latest_result": {
-    "cmd_id": "heartbeat_1793997550",
+    "cmd_id": "heartbeat_1793999367",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 03:39:10",
+    "executed_at": "2026-11-07 04:09:27",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 03:39:10",
+      "timestamp": "2026-11-07 04:09:28",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 5.0,
+      "lock_file_age_seconds": 52.7,
       "processes": [
-        "44731    03:34:44 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "44733    03:34:44 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    03:03:12 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    03:03:12 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "44731    04:05:02 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "44733    04:05:02 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    03:33:30 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    03:33:30 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[03:37:59] [INFO] tiktok_pipeline: [10.14s - 11.42s] 小胖 那你烤了几分  ==>  Tiểu Bàn, con nướng nó bao nhiêu vậy?",
-        "[03:37:59] [INFO] tiktok_pipeline: [11.42s - 12.94s] 和你年龄一样  ==>  Cùng tuổi với con",
-        "[03:37:59] [INFO] tiktok_pipeline: [12.94s - 14.98s] 30多分 你是用脚烤的吗  ==>  Hơn 30 phút, Con đã nướng nó bằng chân của con?",
-        "[03:37:59] [INFO] tiktok_pipeline: [14.98s - 16.02s] 是吧  ==>  Phải?",
-        "[03:37:59] [INFO] tiktok_pipeline: [17.30s - 18.94s] 没事儿子 晚上给你加鸡腿  ==>  Không sao đâu con trai, Tối nay mẹ sẽ thêm đùi gà cho con",
-        "[03:37:59] [INFO] tiktok_pipeline: [18.94s - 19.95s] 这也行  ==>  Điều này cũng hoạt động",
-        "[03:38:03] [INFO] tiktok_pipeline: Caption đã dịch: 🤣 Đại Bàng: Tôi vẫn còn quá trẻ — Pha xử lý đi vào lòng đất của hai mẹ con! \"Không sao đâu con trai, Tối nay mẹ sẽ thêm đùi gà cho con...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-        "[03:38:03] [INFO] tiktok_pipeline: Hashtags: #giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #viral #foryou",
-        "[03:38:03] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
-        "[03:38:03] [INFO] tiktok_pipeline: Cấu hình giọng kênh [baby_AI]: Giọng tự nhiên, đời thường, tếu táo, nhịp nhanh cuốn hút (voice=vi-VN-HoaiMyNeural, rate=+18%, pitch=+2Hz)",
-        "[03:38:03] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +18%, Độ trầm/cao: +2Hz) cho 10 câu thoại...",
-        "[03:38:16] [INFO] tiktok_pipeline: TTS #00 [00.50s-01.91s | gốc=1.44s]: rate=+45%, atempo=1.07x -> 1.41s",
-        "[03:38:19] [INFO] tiktok_pipeline: TTS #01 [02.98s-04.76s | gốc=1.84s]: rate=+18%, atempo=1.00x -> 1.78s",
-        "[03:38:27] [INFO] tiktok_pipeline: TTS #02 [04.94s-06.75s | gốc=2.00s]: rate=+18%, atempo=1.00x -> 1.81s",
-        "[03:38:36] [INFO] tiktok_pipeline: TTS #03 [06.94s-08.33s | gốc=1.40s]: rate=+45%, atempo=1.34x -> 1.39s",
-        "[03:38:43] [INFO] tiktok_pipeline: TTS #04 [10.14s-11.35s | gốc=1.28s]: rate=+45%, atempo=1.30x -> 1.21s",
-        "[03:38:46] [INFO] tiktok_pipeline: TTS #05 [11.42s-12.40s | gốc=1.52s]: rate=+18%, atempo=1.00x -> 0.98s",
-        "[03:38:55] [INFO] tiktok_pipeline: TTS #06 [12.94s-14.93s | gốc=2.04s]: rate=+45%, atempo=1.00x -> 1.99s",
-        "[03:38:57] [INFO] tiktok_pipeline: TTS #07 [14.98s-15.27s | gốc=1.04s]: rate=+18%, atempo=1.00x -> 0.29s",
-        "[03:39:04] [INFO] tiktok_pipeline: TTS #08 [17.30s-18.87s | gốc=1.64s]: rate=+45%, atempo=1.48x -> 1.57s"
+        "[04:06:48] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/Mr4JFtYJ-lg/",
+        "[04:06:49] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7698023893977599272 (ID: 7698023893977599272)",
+        "[04:06:50] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/KhnOwGH99QQ/",
+        "[04:06:51] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)",
+        "[04:06:56] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/5PXz62pKn0s/",
+        "[04:06:56] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7696826479242519139 (ID: 7696826479242519139)",
+        "[04:06:57] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/RrMNQy7NBa0/",
+        "[04:06:57] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7681137499921550619 (ID: 7681137499921550619)",
+        "[04:09:01] [INFO] tiktok_pipeline: Kênh [channel_1_ai_animation]: Tìm thấy tổng cộng 10 ứng viên Trung/Việt view cao (Link mẫu: 2, Kênh mẫu: 0, Douyin: 4, TikTok: 2, Đa nền tảng Shorts/Reels: 3).",
+        "[04:09:01] [INFO] tiktok_pipeline: === BẮT ĐẦU CÀO KÊNH [channel_1_ai_animation -> output/video_AI_hay/ready/ | Số lượng cần lấy: 1] ===",
+        "[04:09:01] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #1/10: [DOUYIN] ID=7691766718599295080 (tim=29528, thời lượng=26.2s) ---",
+        "[04:09:01] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7691766718599295080 (thời lượng=26.2s, sound='@努力的喵喵酱创作的原声一努力的喵喵酱', view=442920, tim=29528, share=22445)...",
+        "[04:09:01] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
+        "[04:09:02] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
+        "[04:09:03] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7691766718599295080/raw_video.mp4 (5.62 MB)",
+        "[04:09:03] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7691766718599295080/audio.mp3",
+        "[04:09:03] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 26.12s)",
+        "[04:09:04] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7691766718599295080/audio.mp3 (auto-detect language, word_timestamps=True)...",
+        "[04:09:04] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
+        "[04:09:10] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 67.22%)"
       ],
-      "lock_file_content": "pid=48549 ts=1793997545"
+      "lock_file_content": "pid=48549 ts=1793999315"
     }
   }
 }
