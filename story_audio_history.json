@@ -223,7 +223,8 @@
     "b8ZIU1mjH7A",
     "RumbVCvGJVo",
     "3q9bTD7Apr0",
-    "qjr42DMIHbs"
+    "qjr42DMIHbs",
+    "7704256984731667718"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -357,7 +358,8 @@
     "yt_sound_b8ZIU1mjH7A",
     "yt_sound_RumbVCvGJVo",
     "yt_sound_3q9bTD7Apr0",
-    "yt_sound_qjr42DMIHbs"
+    "yt_sound_qjr42DMIHbs",
+    "7704257060409477896"
   ],
   "items": [
     {
@@ -1729,6 +1731,16 @@
       "source_url": "https://www.youtube.com/watch?v=qjr42DMIHbs",
       "output_filename": "phu_nu_khi_chat/ready/20261107_211540_youtube_shorts_story_qjr42DMIHbs.mp4",
       "crawled_at": "2026-11-07T21:15:55"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "7704256984731667718",
+      "sound_id": "7704257060409477896",
+      "platform": "tiktok",
+      "genre": "channel_6_health_wellness",
+      "source_url": "https://www.tiktok.com/@suckhoedoisong.vn/video/7704256984731667718",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261107_230544_tiktok_story_7704256984731667718.mp4",
+      "crawled_at": "2026-11-07T23:05:46"
     }
   ]
 }
