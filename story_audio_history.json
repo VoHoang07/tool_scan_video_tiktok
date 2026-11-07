@@ -229,7 +229,8 @@
     "7684069833423752455",
     "990010101",
     "q0g8wvstCvI",
-    "7527659162948439304"
+    "7527659162948439304",
+    "bksKdhW_YDg"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -369,7 +370,8 @@
     "tt_seed_7684069833423752455",
     "bongcuc_yt_ZPpMXuogRoA_p1",
     "yt_sound_q0g8wvstCvI",
-    "7303154672704588546"
+    "7303154672704588546",
+    "yt_sound_bksKdhW_YDg"
   ],
   "items": [
     {
@@ -1811,6 +1813,16 @@
       "source_url": "https://www.tiktok.com/@ngvinhdalat/video/7527659162948439304",
       "output_filename": "tu_chan_gioi/ready/20261108_001025_tiktok_story_7527659162948439304.mp4",
       "crawled_at": "2026-11-08T00:10:29"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "bksKdhW_YDg",
+      "sound_id": "yt_sound_bksKdhW_YDg",
+      "platform": "youtube_shorts",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.youtube.com/watch?v=bksKdhW_YDg",
+      "output_filename": "phu_nu_khi_chat/ready/20261108_031029_youtube_shorts_story_bksKdhW_YDg.mp4",
+      "crawled_at": "2026-11-08T03:10:37"
     }
   ]
 }
