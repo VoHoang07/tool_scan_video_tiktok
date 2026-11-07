@@ -217,7 +217,8 @@
     "7PvFRrHLg44",
     "KGFlIZrn_4U",
     "DhLMR-HJ1zI",
-    "7241844480637242630"
+    "7241844480637242630",
+    "wbaueoiNAEA"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -345,7 +346,8 @@
     "yt_sound_7PvFRrHLg44",
     "yt_sound_KGFlIZrn_4U",
     "yt_sound_DhLMR-HJ1zI",
-    "7241844487844530950"
+    "7241844487844530950",
+    "yt_sound_wbaueoiNAEA"
   ],
   "items": [
     {
@@ -1657,6 +1659,16 @@
       "source_url": "https://www.tiktok.com/@phunukhichat.vn/video/7241844480637242630",
       "output_filename": "phu_nu_khi_chat/ready/20261107_171052_tiktok_story_7241844480637242630.mp4",
       "crawled_at": "2026-11-07T17:10:56"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "wbaueoiNAEA",
+      "sound_id": "yt_sound_wbaueoiNAEA",
+      "platform": "youtube_shorts",
+      "genre": "channel_8_food_snacks",
+      "source_url": "https://www.youtube.com/watch?v=wbaueoiNAEA",
+      "output_filename": "an_vat_moi_ngay/ready/20261107_183027_youtube_shorts_story_wbaueoiNAEA.mp4",
+      "crawled_at": "2026-11-07T18:40:34"
     }
   ]
 }
