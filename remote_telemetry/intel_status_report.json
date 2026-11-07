@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 21:24:20",
+    "timestamp": "2026-11-07 21:30:21",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 9,
+      "scrolled_videos": 11,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 150.3,
+      "elapsed_seconds": 162.6,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 21:30:21",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 162.6,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-07 21:24:20",
       "machine_arch": "x86_64",
@@ -371,21 +386,6 @@
             "follow_back_window_until": "2026-11-08 20:03:31"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-07 19:59:05",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 1,
-        "fyp_followed": 0,
-        "elapsed_seconds": 155.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
