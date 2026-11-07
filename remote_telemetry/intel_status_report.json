@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 08:55:06",
+    "timestamp": "2026-11-07 08:58:54",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
+    "event_type": "upload",
     "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 169.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261105_155237_tiktok_story_990003501_bongcuc_v4_s35_p1_bg_daylight.mp4",
+      "caption": "💫 Bông Cúc Số 35 — Phần 1/13: Tôi Trở Về Hào Môn Chỉ Vì Một Tấm Hộ Khẩu. Một quyết định thay đổi tất cả, liệu cái kết có xứng đáng?",
+      "hashtags": "#bongcucso35 #bongcucaudio #truyentamly #satisfying #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 08:58:54",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261105_155237_tiktok_story_990003501_bongcuc_v4_s35_p1_bg_daylight.mp4",
+        "caption": "💫 Bông Cúc Số 35 — Phần 1/13: Tôi Trở Về Hào Môn Chỉ Vì Một Tấm Hộ Khẩu. Một quyết định thay đổi tất cả, liệu cái kết có xứng đáng?",
+        "hashtags": "#bongcucso35 #bongcucaudio #truyentamly #satisfying #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-07 08:55:06",
       "machine_arch": "x86_64",
@@ -227,21 +244,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 07:25:24",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 153.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
