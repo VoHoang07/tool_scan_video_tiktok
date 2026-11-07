@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 13:40:05",
+    "timestamp": "2026-11-07 13:44:38",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261107_133430_tiktok_story_990001005_bongcuc_v4_s10_p5_bg_daylight.mp4",
-      "caption": "🌙 Thức đêm nghe truyện: Bông Cúc Số 10 (Phần 5/13) - Họ Lấy Hết Mọi Thứ Rồi Vẫn Muốn Tôi Biết Điều. Đừng bỏ lỡ những tình tiết gay cấn nhất trong phần này nhé!",
-      "hashtags": "#bongcucso10 #bongcucaudio #satisfying #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya #gocnhinkhuya",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 150.2,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 13:44:38",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 150.2,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-07 13:40:05",
       "machine_arch": "x86_64",
@@ -370,21 +384,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 161.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 12:20:16",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 158.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
