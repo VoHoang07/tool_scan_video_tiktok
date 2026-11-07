@@ -1,46 +1,48 @@
 {
-  "updated_at": "2026-11-07 07:11:02",
+  "updated_at": "2026-11-07 07:41:17",
   "latest_result": {
-    "cmd_id": "heartbeat_1794010261",
+    "cmd_id": "heartbeat_1794012074",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 07:11:01",
+    "executed_at": "2026-11-07 07:41:14",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 07:11:01",
+      "timestamp": "2026-11-07 07:41:16",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 39.6,
+      "lock_file_age_seconds": 63.5,
       "processes": [
-        "44731    07:06:36 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "44733    07:06:36 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    06:35:04 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    06:35:04 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "44731    07:36:50 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "44733    07:36:50 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    07:05:18 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    07:05:18 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "====================================================================================================",
-        "Master CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
-        "[07:08:44] [INFO] tiktok_pipeline: [Continuous Worker] Cả 4 kênh vừa đạt mốc 5/5 video. Chuyển sang chu kỳ kiểm tra xác nhận...",
-        "==============================================================================================",
-        "[07:08:44] [INFO] tiktok_pipeline: === [CHU KỲ #9] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
-        "[07:08:48] [INFO] tiktok_pipeline: [Round-Robin] Kênh video_AI_hay (video_AI_hay) hiện có 3/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
-        "[07:08:48] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[07:08:48] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[07:08:48] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[07:08:48] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_1_ai_animation] -> Thư mục: output/video_AI_hay/ready/ | Link mẫu: 10 | Kênh mẫu: [] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-        "[07:08:49] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/Mr4JFtYJ-lg/",
-        "[07:08:50] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7698023893977599272 (ID: 7698023893977599272)",
-        "[07:08:51] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/KhnOwGH99QQ/",
-        "[07:08:51] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)",
-        "[07:08:57] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/5PXz62pKn0s/",
-        "[07:08:57] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7696826479242519139 (ID: 7696826479242519139)",
-        "[07:08:58] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/RrMNQy7NBa0/",
-        "[07:08:58] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7681137499921550619 (ID: 7681137499921550619)"
+        "[07:40:13] [INFO] tiktok_pipeline: [Dòng 1 - Skill 6 Lớp Anti-Detect] ✅ ĐÃ KIỂM TRA & XÁC NHẬN 6/6 LỚP BẢO VỆ TRƯỚC KHI ĐĂNG [an_vat_moi_ngay -> 20261107_063845_youtube_shorts_story_PzC2Ej2_Gn8.mp4]:",
+        "  + Lớp 1 (Visual pHash/vHash) : PASS (h264 3840x2160 yuv420p)",
+        "  + Lớp 2 (AudioPrint Evasion) : PASS (aac 44100Hz conditioned)",
+        "  + Lớp 3 (Device Metadata)    : PASS (sig='CapCut 14.7.0 (iOS 17.6)', handler='CoreMedia', xattr=CLEAN)",
+        "  + Lớp 4 (Retention/Duration) : PASS (120.9s | 589.8MB)",
+        "  + Lớp 5 (Policy Safe-Guard)  : PASS (Caption & Hashtags sạch 100%)",
+        "  + Lớp 6 (Interleaved/AIGC)   : PASS (Anti-Duplicate & AIGC Guard OK)",
+        "  + Tự động khắc phục tại chỗ  : Bitexact Metadata & Device Signature Scrub",
+        "[07:40:13] [INFO] tiktok_pipeline: === BẮT ĐẦU TỰ ĐỘNG ĐĂNG TIKTOK (FULL SETTING + CÔNG KHAI) KÊNH [an_vat_moi_ngay] ===",
+        "  + File: 20261107_063845_youtube_shorts_story_PzC2Ej2_Gn8.mp4",
+        "  + Kịch bản ngắn: 🤤 [Thiên Đường Ăn Vặt] Xin chào mọi người, tôi là LazyPongPong và hôm nay tôi sẽ chia sẻ công thức khoai tây. \"Sau khi chảo nóng, cho chút dầu vào, sau đó cho gừng, tỏi vào xào cho đến khi có mùi thơm...\" Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
+        "  + Hashtags Hot Search: #anvatmoingay #doanvat #monngondelam #nauanngon #mukbangvietnam #anvatngon #viral #foryou",
+        "[07:40:16] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Anti-Detect Warmup] Đang lướt dạo trang chủ TikTok 15s như người dùng thật...",
+        "[07:40:35] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h Warmup] Kết hợp chạy 1 video tương tác chéo 'Bộ lọc 24 giờ' trước khi đăng bài...",
+        "[07:40:35] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h] Làm ấm phiên webmssdk.js trên FYP trước khi tương tác...",
+        "[07:40:45] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h] Đang quét video mới xây kênh 24h qua thẻ #moixaykenh (cursor=40)...",
+        "[07:40:48] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h] Đang quét video mới xây kênh 24h qua thẻ #xaykenhtiktok (cursor=40)...",
+        "[07:40:51] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h] Đang tương tác video #1/1: https://www.tiktok.com/@ynhudsal3wj/video/7704721393589570823",
+        "[07:40:51] [INFO] tiktok_pipeline: [an_vat_moi_ngay] === BẮT ĐẦU BỘ LỌC 24 GIỜ TRÊN VIDEO CỦA @ynhudsal3wj (https://www.tiktok.com/@ynhudsal3wj/video/7704721393589570823) ===",
+        "[07:40:53] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h - Bước 1/6] Đang XEM HẾT VIDEO (24.8s / thời lượng gốc 24.0s): https://www.tiktok.com/@ynhudsal3wj/video/7704721393589570823"
       ],
-      "lock_file_content": "pid=48549 ts=1794010222"
+      "lock_file_content": "pid=44731 ts=1794012013"
     }
   }
 }
