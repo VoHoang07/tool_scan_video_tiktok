@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 22:53:55",
+    "timestamp": "2026-11-07 23:00:08",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+    "event_type": "upload",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 150.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261107_045445_douyin_story_7323060116121488694.mp4",
+      "caption": "🎬 Hôm nay mình hơi cô đơn. \"Giày thể thao không thể chạy trốn theo thời gian...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+      "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #hoathinhhai #xh",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 23:00:08",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261107_045445_douyin_story_7323060116121488694.mp4",
+        "caption": "🎬 Hôm nay mình hơi cô đơn. \"Giày thể thao không thể chạy trốn theo thời gian...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+        "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #hoathinhhai #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-07 22:53:55",
       "machine_arch": "x86_64",
@@ -222,21 +239,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 158.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 21:06:17",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 153.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
