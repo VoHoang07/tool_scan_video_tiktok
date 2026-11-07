@@ -221,7 +221,8 @@
     "wbaueoiNAEA",
     "ikf3tOTzfTE",
     "b8ZIU1mjH7A",
-    "RumbVCvGJVo"
+    "RumbVCvGJVo",
+    "3q9bTD7Apr0"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -353,7 +354,8 @@
     "yt_sound_wbaueoiNAEA",
     "yt_sound_ikf3tOTzfTE",
     "yt_sound_b8ZIU1mjH7A",
-    "yt_sound_RumbVCvGJVo"
+    "yt_sound_RumbVCvGJVo",
+    "yt_sound_3q9bTD7Apr0"
   ],
   "items": [
     {
@@ -1705,6 +1707,16 @@
       "source_url": "https://www.youtube.com/watch?v=RumbVCvGJVo",
       "output_filename": "an_vat_moi_ngay/ready/20261107_200330_youtube_shorts_story_RumbVCvGJVo.mp4",
       "crawled_at": "2026-11-07T20:32:35"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "3q9bTD7Apr0",
+      "sound_id": "yt_sound_3q9bTD7Apr0",
+      "platform": "youtube_shorts",
+      "genre": "channel_8_food_snacks",
+      "source_url": "https://www.youtube.com/watch?v=3q9bTD7Apr0",
+      "output_filename": "an_vat_moi_ngay/ready/20261107_204546_youtube_shorts_story_3q9bTD7Apr0.mp4",
+      "crawled_at": "2026-11-07T21:05:32"
     }
   ]
 }
