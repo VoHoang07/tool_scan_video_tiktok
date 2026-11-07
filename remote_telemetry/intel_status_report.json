@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 18:20:07",
+    "timestamp": "2026-11-07 18:26:08",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 10,
+      "scrolled_videos": 11,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 162.3,
+      "elapsed_seconds": 156.4,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 18:26:08",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 156.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-07 18:20:07",
       "machine_arch": "x86_64",
@@ -636,169 +651,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 162.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 16:56:17",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "meovatgiadinh.k05",
-          "domFollowing": "0",
-          "domFollowers": "0",
-          "domLikes": "0",
-          "sidebarFollowing": [
-            "/@meovatgiadinh.k05"
-          ]
-        },
-        "records": [
-          {
-            "channel": "meo_vat_gia_dinh",
-            "video_id": "7705041061260889351",
-            "video_url": "https://www.tiktok.com/@binhanhamycute18/video/7705041061260889351",
-            "creator_handle": "@binhanhamycute18",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Quá tuyệt vời luôn bạn ơi, thả tim ủng hộ kênh nhiệt tình nhé ❤️✨",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261107175358F789F88776E2236E5C6B\",\"now\":1794045238000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261107175358F789F88776E2236E5C6B\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 825.421875,
-                "y": 378.9921875,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "14"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 825.421875,
-                  "y": 378.9921875,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "14"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@binhanhamycute18",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@binhanhamycute18/video/7705041061260889351?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-07 16:54:18",
-            "follow_back_window_until": "2026-11-08 16:54:18"
-          },
-          {
-            "channel": "meo_vat_gia_dinh",
-            "video_id": "7704850940414790930",
-            "video_url": "https://www.tiktok.com/@giang_9600/video/7704850940414790930",
-            "creator_handle": "@giang_9600",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Ý tưởng video sáng tạo và cuốn hút thật sự, chúc kênh mau lên xu hướng nha 💯",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "profile_follow_verify": {
-                "creator": "@giang_9600",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@giang_9600/video/7704850940414790930?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-07 16:55:16",
-            "follow_back_window_until": "2026-11-08 16:55:16"
-          },
-          {
-            "channel": "meo_vat_gia_dinh",
-            "video_id": "7704860216734567698",
-            "video_url": "https://www.tiktok.com/@.tuyt.anh785/video/7704860216734567698",
-            "creator_handle": "@.tuyt.anh785",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "profile_follow_verify": {
-                "creator": "@.tuyt.anh785",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@.tuyt.anh785/video/7704860216734567698?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-07 16:56:13",
-            "follow_back_window_until": "2026-11-08 16:56:13"
-          }
-        ]
       }
     }
   ]
