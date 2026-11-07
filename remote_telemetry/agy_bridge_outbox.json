@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-07 18:23:22",
+  "updated_at": "2026-11-07 18:53:29",
   "latest_result": {
-    "cmd_id": "heartbeat_1794050602",
+    "cmd_id": "heartbeat_1794052408",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 18:23:22",
+    "executed_at": "2026-11-07 18:53:28",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 18:23:22",
+      "timestamp": "2026-11-07 18:53:29",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 0.5,
+      "lock_file_age_seconds": 115.7,
       "processes": [
-        "48513    08:23:36 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514    08:23:36 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "91758    04:35:43 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "91760    04:35:42 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "48513    08:53:43 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48514    08:53:43 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "91758    05:05:50 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "91760    05:05:49 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[18:23:17] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 2342250786250959: Không thể tải video từ URL: https://www.facebook.com/reel/2342250786250959. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[18:23:17] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #3/3: [FACEBOOK_REELS] ID=923754533356774 (tim=5939, thời lượng=27.0s) ---",
-        "[18:23:17] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=923754533356774 (thời lượng=27.0s, sound='Original Audio', view=148487, tim=5939, share=742)...",
-        "[18:23:17] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/923754533356774",
-        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/923754533356774",
-        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=923754533356774&_rdr",
-        "[facebook] 923754533356774: Downloading webpage",
-        "[facebook] 923754533356774: Downloading webpage",
-        "ERROR: [facebook] 923754533356774: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
-        "[18:23:18] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 923754533356774: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
-        "[18:23:18] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 923754533356774: Không thể tải video từ URL: https://www.facebook.com/reel/923754533356774. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[18:23:18] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh phu_nu_khi_chat trong lượt này. Chuyển sang kênh kế tiếp...",
-        "[18:23:21] [INFO] tiktok_pipeline: [Round-Robin] Kênh an_vat_moi_ngay (an_vat_moi_ngay) hiện có 1/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
-        "[18:23:21] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[18:23:21] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[18:23:21] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[18:23:21] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_8_food_snacks] -> Thư mục: output/an_vat_moi_ngay/ready/ | Link mẫu: 0 | Kênh mẫu: ['anvatmoingay.vn', 'congthucnauannhanh', 'monngonmoingay', 'bepnhỏ.official'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-        "[18:23:22] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @anvatmoingay.vn.",
-        "[18:23:22] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @congthucnauannhanh.",
-        "[18:23:22] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @monngonmoingay."
+        "[18:52:30] [INFO] tiktok_pipeline: Kênh video_AI_hay (video_AI_hay - channel_1_ai_animation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[18:52:33] [INFO] tiktok_pipeline: Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[18:52:35] [INFO] tiktok_pipeline: Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[18:52:37] [INFO] tiktok_pipeline: Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[18:52:40] [INFO] tiktok_pipeline: Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh - channel_6_health_wellness) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[18:52:42] [INFO] tiktok_pipeline: Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh - channel_6_health_wellness) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[18:52:45] [INFO] tiktok_pipeline: [Round-Robin] Kênh phu_nu_khi_chat (phu_nu_khi_chat) hiện có 3/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
+        "[18:52:45] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[18:52:45] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[18:52:45] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[18:52:45] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_7_women_eq] -> Thư mục: output/phu_nu_khi_chat/ready/ | Link mẫu: 0 | Kênh mẫu: ['phunukhichat.vn', 'tamlyhoccuocsong', 'nghethuatgiaotiep', 'gocphunu.official'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
+        "[18:52:45] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @phunukhichat.vn.",
+        "[18:52:45] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @tamlyhoccuocsong.",
+        "[18:52:45] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @nghethuatgiaotiep.",
+        "[18:52:46] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @gocphunu.official."
       ],
-      "lock_file_content": "pid=91758 ts=1794050601"
+      "lock_file_content": "idle"
     }
   }
 }
