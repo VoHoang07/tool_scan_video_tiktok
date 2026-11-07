@@ -1,32 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 15:13:03",
+    "timestamp": "2026-11-07 15:16:00",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_filter24h_phu_nu_khi_chat.jpg",
     "details": {
       "interacted_count": 3,
       "own_profile_stats": {
-        "uniqueId": "tu_chan_gioi0",
-        "domFollowing": "25",
-        "domFollowers": "15",
-        "domLikes": "145",
+        "uniqueId": "phunukhichat.k07",
+        "domFollowing": "0",
+        "domFollowers": "0",
+        "domLikes": "0",
         "sidebarFollowing": [
-          "/@tu_chan_gioi0",
-          "/@empiictehotle",
-          "/@shwksoowoo",
-          "/@suusii7878",
-          "/@chillgirl7949",
-          "/@minh.trit0696"
+          "/@phunukhichat.k07"
         ]
       },
       "records": [
         {
-          "channel": "tu_chan_gioi",
-          "video_id": "7705269214277324039",
-          "video_url": "https://www.tiktok.com/@dip.dfl/video/7705269214277324039",
-          "creator_handle": "@dip.dfl",
+          "channel": "phu_nu_khi_chat",
+          "video_id": "7705018357623360786",
+          "video_url": "https://www.tiktok.com/@phm.hng.trm3/video/7705018357623360786",
+          "creator_handle": "@phm.hng.trm3",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
@@ -36,44 +31,44 @@
             "5_followed_creator": false,
             "6_commented_after_follow": true
           },
-          "comment_text": "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
+          "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
           "circuit_breaker_tripped": true,
           "like_debug": {
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261107161044E5F850E75B34E7531FA2\",\"now\":1794039044000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261107161044E5F850E75B34E7531FA2\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261107161351329417D8BDC772596313\",\"now\":1794039231000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261107161351329417D8BDC772596313\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [],
             "env_check": {
               "webdriver": false,
-              "loggedInUniqueId": "tu_chan_gioi0"
+              "loggedInUniqueId": null
             },
             "before": {
-              "x": 872,
-              "y": 456,
+              "x": 881.28125,
+              "y": 425,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "54"
+              "likeCount": "15"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
-                "x": 872,
-                "y": 456,
+                "x": 881.28125,
+                "y": 425,
                 "ariaPressed": false,
                 "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "54"
+                "likeCount": "15"
               },
               "red": false,
               "server_digg_ok": false,
               "server_digg_rejected": true
             },
             "profile_follow_verify": {
-              "creator": "@dip.dfl",
+              "creator": "@phm.hng.trm3",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@dip.dfl/video/7705269214277324039?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@phm.hng.trm3/video/7705018357623360786?lang=vi-VN",
               "before_btn": "",
               "after_btn": "",
               "init_relation": null,
@@ -83,14 +78,14 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-07 15:11:04",
-          "follow_back_window_until": "2026-11-08 15:11:04"
+          "interacted_at": "2026-11-07 15:14:09",
+          "follow_back_window_until": "2026-11-08 15:14:09"
         },
         {
-          "channel": "tu_chan_gioi",
-          "video_id": "7705000717299240198",
-          "video_url": "https://www.tiktok.com/@ho.ho.ang.xy.knh/video/7705000717299240198",
-          "creator_handle": "@ho.ho.ang.xy.knh",
+          "channel": "phu_nu_khi_chat",
+          "video_id": "7705055108299607316",
+          "video_url": "https://www.tiktok.com/@nordlnbai5o/video/7705055108299607316",
+          "creator_handle": "@nordlnbai5o",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
@@ -100,7 +95,7 @@
             "5_followed_creator": false,
             "6_commented_after_follow": true
           },
-          "comment_text": "Cách làm video của bạn cuốn thật sự, xem một mạch tới cuối luôn 🌟",
+          "comment_text": "Một chiếc video đầy năng lượng tích cực, chúc kênh luôn bùng nổ view nhé 🔥",
           "circuit_breaker_tripped": false,
           "like_debug": {
             "digg_responses": [],
@@ -110,9 +105,9 @@
               "loggedInUniqueId": null
             },
             "profile_follow_verify": {
-              "creator": "@ho.ho.ang.xy.knh",
+              "creator": "@nordlnbai5o",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@ho.ho.ang.xy.knh/video/7705000717299240198?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@nordlnbai5o/video/7705055108299607316?lang=vi-VN",
               "before_btn": "",
               "after_btn": "",
               "init_relation": null,
@@ -122,15 +117,15 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-07 15:12:01",
-          "follow_back_window_until": "2026-11-08 15:12:01"
+          "interacted_at": "2026-11-07 15:15:06",
+          "follow_back_window_until": "2026-11-08 15:15:06"
         },
         {
-          "channel": "tu_chan_gioi",
-          "video_id": "7704987679997365524",
-          "video_url": "https://www.tiktok.com/@minh.cng.xy.knh/video/7704987679997365524",
-          "creator_handle": "@minh.cng.xy.knh",
-          "watched_seconds": 24.8,
+          "channel": "phu_nu_khi_chat",
+          "video_id": "7705017709829852434",
+          "video_url": "https://www.tiktok.com/@nguyn.thanh.chi03/video/7705017709829852434",
+          "creator_handle": "@nguyn.thanh.chi03",
+          "watched_seconds": 16.0,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": false,
@@ -139,7 +134,7 @@
             "5_followed_creator": false,
             "6_commented_after_follow": true
           },
-          "comment_text": "Kênh đầu tư chỉn chu từ hình ảnh tới âm thanh, chúc bạn phát triển mạnh nha ✨",
+          "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
           "circuit_breaker_tripped": false,
           "like_debug": {
             "digg_responses": [],
@@ -149,9 +144,9 @@
               "loggedInUniqueId": null
             },
             "profile_follow_verify": {
-              "creator": "@minh.cng.xy.knh",
+              "creator": "@nguyn.thanh.chi03",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@minh.cng.xy.knh/video/7704987679997365524?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@nguyn.thanh.chi03/video/7705017709829852434?lang=vi-VN",
               "before_btn": "",
               "after_btn": "",
               "init_relation": null,
@@ -161,13 +156,176 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-07 15:12:58",
-          "follow_back_window_until": "2026-11-08 15:12:58"
+          "interacted_at": "2026-11-07 15:15:55",
+          "follow_back_window_until": "2026-11-08 15:15:55"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 15:16:00",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_filter24h_phu_nu_khi_chat.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "phunukhichat.k07",
+          "domFollowing": "0",
+          "domFollowers": "0",
+          "domLikes": "0",
+          "sidebarFollowing": [
+            "/@phunukhichat.k07"
+          ]
+        },
+        "records": [
+          {
+            "channel": "phu_nu_khi_chat",
+            "video_id": "7705018357623360786",
+            "video_url": "https://www.tiktok.com/@phm.hng.trm3/video/7705018357623360786",
+            "creator_handle": "@phm.hng.trm3",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
+            "circuit_breaker_tripped": true,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261107161351329417D8BDC772596313\",\"now\":1794039231000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261107161351329417D8BDC772596313\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 881.28125,
+                "y": 425,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "15"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 881.28125,
+                  "y": 425,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "15"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@phm.hng.trm3",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@phm.hng.trm3/video/7705018357623360786?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-07 15:14:09",
+            "follow_back_window_until": "2026-11-08 15:14:09"
+          },
+          {
+            "channel": "phu_nu_khi_chat",
+            "video_id": "7705055108299607316",
+            "video_url": "https://www.tiktok.com/@nordlnbai5o/video/7705055108299607316",
+            "creator_handle": "@nordlnbai5o",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Một chiếc video đầy năng lượng tích cực, chúc kênh luôn bùng nổ view nhé 🔥",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "profile_follow_verify": {
+                "creator": "@nordlnbai5o",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@nordlnbai5o/video/7705055108299607316?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-07 15:15:06",
+            "follow_back_window_until": "2026-11-08 15:15:06"
+          },
+          {
+            "channel": "phu_nu_khi_chat",
+            "video_id": "7705017709829852434",
+            "video_url": "https://www.tiktok.com/@nguyn.thanh.chi03/video/7705017709829852434",
+            "creator_handle": "@nguyn.thanh.chi03",
+            "watched_seconds": 16.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "profile_follow_verify": {
+                "creator": "@nguyn.thanh.chi03",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@nguyn.thanh.chi03/video/7705017709829852434?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-07 15:15:55",
+            "follow_back_window_until": "2026-11-08 15:15:55"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-07 15:13:03",
       "machine_arch": "x86_64",
@@ -686,22 +844,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 155.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 12:47:49",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261107_025616_tiktok_story_7653335234007551239.mp4",
-        "caption": "🤣 Mẹ không được đánh con — Pha xử lý đi vào lòng đất của hai mẹ con! \"Đánh đòn ảnh hưởng đến nội tạng, đánh vào mặt sẽ làm tổn thương màng nhĩ...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-        "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
