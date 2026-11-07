@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-07 13:13:18",
+  "updated_at": "2026-11-07 13:43:39",
   "latest_result": {
-    "cmd_id": "heartbeat_1794031997",
+    "cmd_id": "heartbeat_1794033818",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 13:13:17",
+    "executed_at": "2026-11-07 13:43:38",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 13:13:18",
+      "timestamp": "2026-11-07 13:43:39",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 0.7,
+      "lock_file_age_seconds": 101.6,
       "processes": [
-        "48513    03:13:32 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514    03:13:32 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    12:37:20 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    12:37:20 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "48513    03:43:53 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48514    03:43:53 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    13:07:41 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    13:07:41 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[13:11:24] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Cậu có thể vui lòng ngừng kiểm soát mình một cách nghiêm ngặt như vậy được không?' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[13:11:24] [INFO] tiktok_pipeline: TTS #00 [00.70s-01.10s | gốc=1.74s]: rate=+45%, atempo=1.00x -> 0.40s",
-        "[13:11:25] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h] Đang tương tác video #1/1: https://www.tiktok.com/@ng.ngc.chi96/video/7704683006430104833",
-        "[13:11:25] [INFO] tiktok_pipeline: [phu_nu_khi_chat] === BẮT ĐẦU BỘ LỌC 24 GIỜ TRÊN VIDEO CỦA @ng.ngc.chi96 (https://www.tiktok.com/@ng.ngc.chi96/video/7704683006430104833) ===",
-        "[13:11:27] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h - Bước 1/6] Đang XEM HẾT VIDEO (24.8s / thời lượng gốc 24.0s): https://www.tiktok.com/@ng.ngc.chi96/video/7704683006430104833",
-        "[13:11:42] [INFO] tiktok_pipeline: TTS #01 [02.90s-04.02s | gốc=1.18s]: rate=+45%, atempo=1.06x -> 1.12s",
-        "[13:11:53] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h] Đã chuyển sang tab 'Bình luận' ở khung phải.",
-        "[13:11:58] [WARNING] tiktok_pipeline: [phu_nu_khi_chat] [Circuit Breaker Anti-Shark] Máy chủ TikTok trả về is_digg=1 (tài khoản đang trong thời gian giới hạn thả tim) -> Ngắt thao tác Like ngay, KHÔNG bấm nhồi lần 2 để tránh reset bộ đếm phạt!",
-        "[13:12:01] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h - Bước 3/6] Đã mở menu Chia sẻ & SAO CHÉP LIÊN KẾT video 🔗.",
-        "[13:12:04] [INFO] tiktok_pipeline: TTS #02 [04.08s-05.60s | gốc=1.80s]: rate=+18%, atempo=1.00x -> 1.52s",
-        "[13:12:10] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h - Bước 6/6] Đã BÌNH LUẬN thành công: \"Hình ảnh với âm thanh đỉnh thật sự, ủng hộ kênh bạn lâu dài nha 🔥\"",
-        "[13:12:13] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Xác thực Follow Hồ Sơ @ng.ngc.chi96] Trước='' -> Sau='' (ServerOK=False, UIConfirmed=False, Đã lưu thật=False).",
-        "[13:12:13] [INFO] tiktok_pipeline: [phu_nu_khi_chat] === HOÀN TẤT BỘ LỌC 24 GIỜ CHO @ng.ngc.chi96: Xem=24.8s | Tim=False | CopyLink=True | YêuThích=False | Follow=False (ProfileVerified=False) | Comment=True ===",
-        "[13:12:18] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Kiểm chứng Hồ sơ Kênh] Thông số server sau phiên chạy: {'uniqueId': 'phunukhichat.k07', 'domFollowing': '0', 'domFollowers': '0', 'domLikes': '0', 'sidebarFollowing': ['/@phunukhichat.k07']}",
-        "[13:12:26] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã nạp file video vào TikTok Studio. Đang chờ tải lên 100% và tự động đóng các hộp thoại hướng dẫn ('Đã hiểu')...",
-        "[13:12:28] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:12:51] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Cho dù cậu có cắn cô ấy, cô ấy cũng sẽ không quan tâm đến cậu' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[13:12:51] [INFO] tiktok_pipeline: TTS #03 [05.88s-06.28s | gốc=1.84s]: rate=+45%, atempo=1.00x -> 0.40s",
-        "[13:13:10] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã nhập xong Mô tả & 8 Hashtag chuẩn vào TikTok Studio: \"✨ [Phụ Nữ Khí Chất] Bài học tâm lý hôn nhân sâu sắc giúp giữ lửa hạnh phúc gia đình. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thươ...\"",
-        "[13:13:10] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = TẮT)..."
+        "[13:43:34] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #3/3: [FACEBOOK_REELS] ID=1563835349076127 (tim=2680, thời lượng=179.0s) ---",
+        "[13:43:34] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=1563835349076127 (thời lượng=179.0s, sound='Original Audio', view=67000, tim=2680, share=335)...",
+        "[13:43:34] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/1563835349076127",
+        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/1563835349076127",
+        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=1563835349076127&_rdr",
+        "[facebook] 1563835349076127: Downloading webpage",
+        "[facebook] 1563835349076127: Downloading webpage",
+        "ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
+        "[13:43:35] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 1563835349076127: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
+        "[13:43:35] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 1563835349076127: Không thể tải video từ URL: https://www.facebook.com/reel/1563835349076127. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
+        "[13:43:36] [WARNING] tiktok_pipeline: [Round-Robin] Chưa tìm được ứng viên mới đạt chuẩn cho Kênh meo_vat_gia_dinh trong lượt này. Chuyển sang kênh kế tiếp...",
+        "[13:43:37] [INFO] tiktok_pipeline: [Round-Robin] Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh) hiện có 3/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
+        "[13:43:37] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[13:43:37] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[13:43:37] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[13:43:37] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_6_health_wellness] -> Thư mục: output/suc_khoe_duong_sinh/ready/ | Link mẫu: 0 | Kênh mẫu: ['suckhoedoisong.vn', 'duongsinhmoingay', 'songkhoemoingay', 'bacsidinhduong'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
+        "[13:43:38] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @suckhoedoisong.vn.",
+        "[13:43:38] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @duongsinhmoingay.",
+        "[13:43:38] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @songkhoemoingay.",
+        "[13:43:38] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @bacsidinhduong."
       ],
-      "lock_file_content": "pid=48513 ts=1794031997"
+      "lock_file_content": "pid=48549 ts=1794033717"
     }
   }
 }
