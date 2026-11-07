@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 23:14:58",
+    "timestamp": "2026-11-07 23:18:57",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+    "event_type": "upload",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 1,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 153.6,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261107_163528_youtube_shorts_story_DhLMR-HJ1zI.mp4",
+      "caption": "🍜 Món Ngon Dễ Làm Mỗi Ngày: Vì vậy, bạn hãy thử những thứ này. \"Tôi vừa ăn vừa xem và nó ngon đến mức làm tôi đau tay...\" Công thức siêu đơn giản mà hương vị đỉnh của chóp. Lưu lại vào bếp thử ngay nhé!",
+      "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #xh #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 23:18:57",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261107_163528_youtube_shorts_story_DhLMR-HJ1zI.mp4",
+        "caption": "🍜 Món Ngon Dễ Làm Mỗi Ngày: Vì vậy, bạn hãy thử những thứ này. \"Tôi vừa ăn vừa xem và nó ngon đến mức làm tôi đau tay...\" Công thức siêu đơn giản mà hương vị đỉnh của chóp. Lưu lại vào bếp thử ngay nhé!",
+        "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-07 23:14:58",
       "machine_arch": "x86_64",
@@ -223,21 +240,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 162.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 21:24:20",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 150.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
