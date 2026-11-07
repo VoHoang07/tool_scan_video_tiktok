@@ -201,7 +201,8 @@
     "hJQl8ROvZWg",
     "990008901",
     "7660423297871465761",
-    "WWF-PNZtuCg"
+    "WWF-PNZtuCg",
+    "6Y8oi2E1Qfg"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -313,7 +314,8 @@
     "yt_sound_hJQl8ROvZWg",
     "bongcuc_yt_Zppw2lUNK-0_p1",
     "7653948748032166676",
-    "yt_sound_WWF-PNZtuCg"
+    "yt_sound_WWF-PNZtuCg",
+    "yt_sound_6Y8oi2E1Qfg"
   ],
   "items": [
     {
@@ -1465,6 +1467,16 @@
       "source_url": "https://www.youtube.com/watch?v=WWF-PNZtuCg",
       "output_filename": "suc_khoe_duong_sinh/ready/20261107_100651_youtube_shorts_story_WWF-PNZtuCg.mp4",
       "crawled_at": "2026-11-07T10:40:37"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "6Y8oi2E1Qfg",
+      "sound_id": "yt_sound_6Y8oi2E1Qfg",
+      "platform": "youtube_shorts",
+      "genre": "channel_6_health_wellness",
+      "source_url": "https://www.youtube.com/watch?v=6Y8oi2E1Qfg",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261107_105605_youtube_shorts_story_6Y8oi2E1Qfg.mp4",
+      "crawled_at": "2026-11-07T11:05:29"
     }
   ]
 }
