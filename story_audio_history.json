@@ -208,7 +208,10 @@
     "wIjSNyrGhrM",
     "7458245965032475926",
     "7671865233484320021",
-    "990001005"
+    "990001005",
+    "dgaLMNTHBjg",
+    "8ziBfOjnk84",
+    "zPpAM0tqC58"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -327,7 +330,10 @@
     "yt_sound_wIjSNyrGhrM",
     "7458245930446916374",
     "tt_seed_7671865233484320021",
-    "bongcuc_yt_DoVFGuEeB1k_p5"
+    "bongcuc_yt_DoVFGuEeB1k_p5",
+    "yt_sound_dgaLMNTHBjg",
+    "yt_sound_8ziBfOjnk84",
+    "yt_sound_zPpAM0tqC58"
   ],
   "items": [
     {
@@ -1549,6 +1555,36 @@
       "source_url": "https://www.youtube.com/watch?v=DoVFGuEeB1k&t=1570s",
       "output_filename": "audio_dem_khuyen/ready/20261107_133430_tiktok_story_990001005_bongcuc_v4_s10_p5_bg_daylight.mp4",
       "crawled_at": "2026-11-07T13:36:28"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "dgaLMNTHBjg",
+      "sound_id": "yt_sound_dgaLMNTHBjg",
+      "platform": "youtube_shorts",
+      "genre": "channel_6_health_wellness",
+      "source_url": "https://www.youtube.com/watch?v=dgaLMNTHBjg",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261107_134509_youtube_shorts_story_dgaLMNTHBjg.mp4",
+      "crawled_at": "2026-11-07T13:50:32"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "8ziBfOjnk84",
+      "sound_id": "yt_sound_8ziBfOjnk84",
+      "platform": "youtube_shorts",
+      "genre": "channel_6_health_wellness",
+      "source_url": "https://www.youtube.com/watch?v=8ziBfOjnk84",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261107_142328_youtube_shorts_story_8ziBfOjnk84.mp4",
+      "crawled_at": "2026-11-07T14:42:22"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "zPpAM0tqC58",
+      "sound_id": "yt_sound_zPpAM0tqC58",
+      "platform": "youtube_shorts",
+      "genre": "channel_8_food_snacks",
+      "source_url": "https://www.youtube.com/watch?v=zPpAM0tqC58",
+      "output_filename": "an_vat_moi_ngay/ready/20261107_144734_youtube_shorts_story_zPpAM0tqC58.mp4",
+      "crawled_at": "2026-11-07T14:47:56"
     }
   ]
 }
