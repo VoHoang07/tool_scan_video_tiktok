@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-08 01:31:09",
+    "timestamp": "2026-11-08 01:36:57",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
+      "scrolled_videos": 10,
+      "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 163.5,
+      "elapsed_seconds": 153.2,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-08 01:36:57",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 153.2,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-08 01:31:09",
       "machine_arch": "x86_64",
@@ -223,22 +238,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 164.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-08 00:04:51",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261106_140136_tiktok_story_7168670942225354010.mp4",
-        "caption": "🐉 Ai chắc mới đọc tiên hiệp cũng được giới thiệu cho mấy bộ này — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-        "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
