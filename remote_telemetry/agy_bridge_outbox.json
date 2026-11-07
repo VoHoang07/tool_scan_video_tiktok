@@ -1,27 +1,28 @@
 {
-  "updated_at": "2026-11-07 13:47:16",
+  "updated_at": "2026-11-07 13:47:40",
   "latest_result": {
-    "cmd_id": "cmd_20261107_1346_disable_switch2_and_switch3",
-    "action": "shell",
-    "executed_at": "2026-11-07 13:47:16",
-    "machine_arch": "x86_64",
-    "hostname": "Hoangs-MBP.fpt",
-    "status": "SUCCESS",
-    "exit_code": 0,
-    "stdout": "vohoang          48513  13.3  3.2 37204852 539856   ??  Ss    9:59AM  89:56.71 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5\nvohoang          48514   0.0  0.0 34169688   2032   ??  S     9:59AM   0:00.01 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5\n",
-    "stderr": "",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_restart_1794034060",
+    "action": "auto_restart_dead_streams",
+    "executed_at": "2026-11-07 13:47:40",
+    "restart_info": {
+      "restarted_streams": [
+        "stream2_filter24h"
+      ],
+      "timestamp": "2026-11-07 13:47:40"
+    },
     "system_health": {
-      "timestamp": "2026-11-07 13:47:16",
+      "timestamp": "2026-11-07 13:47:40",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
-      "stream2_running": false,
+      "stream2_running": true,
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "48513    03:47:30 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514    03:47:30 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5"
+        "48513    03:47:54 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48514    03:47:54 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "91758       00:01 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "91760       00:00 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
         "[13:46:20] [INFO] tiktok_pipeline: Kênh [an_vat_moi_ngay] hiện không có video nào trong ready/ để đăng.",
@@ -46,54 +47,5 @@
         "[13:47:15] [INFO] tiktok_pipeline: TTS #11 [37.18s-39.36s | gốc=2.30s]: rate=+16%, atempo=1.00x -> 2.18s"
       ]
     }
-  },
-  "history": [
-    {
-      "cmd_id": "cmd_20261107_1346_disable_switch2_and_switch3",
-      "action": "shell",
-      "executed_at": "2026-11-07 13:47:16",
-      "machine_arch": "x86_64",
-      "hostname": "Hoangs-MBP.fpt",
-      "status": "SUCCESS",
-      "exit_code": 0,
-      "stdout": "vohoang          48513  13.3  3.2 37204852 539856   ??  Ss    9:59AM  89:56.71 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5\nvohoang          48514   0.0  0.0 34169688   2032   ??  S     9:59AM   0:00.01 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5\n",
-      "stderr": "",
-      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
-      "system_health": {
-        "timestamp": "2026-11-07 13:47:16",
-        "machine_arch": "x86_64",
-        "hostname": "Hoangs-MBP.fpt",
-        "stream1_running": true,
-        "stream2_running": false,
-        "chrome_testing_count": 0,
-        "lock_file_age_seconds": null,
-        "processes": [
-          "48513    03:47:30 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-          "48514    03:47:30 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5"
-        ],
-        "recent_daemon_log_tail": [
-          "[13:46:20] [INFO] tiktok_pipeline: Kênh [an_vat_moi_ngay] hiện không có video nào trong ready/ để đăng.",
-          "[13:46:20] [INFO] tiktok_pipeline: TTS #05 [17.78s-18.90s | gốc=1.92s]: rate=+16%, atempo=1.00x -> 1.12s",
-          "[13:46:25] [INFO] tiktok_pipeline: TTS #06 [20.38s-22.90s | gốc=3.56s]: rate=+16%, atempo=1.00x -> 2.52s",
-          "[13:46:43] [INFO] tiktok_pipeline: TTS #07 [26.34s-27.71s | gốc=1.40s]: rate=+40%, atempo=1.00x -> 1.37s",
-          "[13:46:51] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (2e0707c -> 686524e) | Auto-Telemetry [warmup_fyp] tu_chan_gioi at 2026-11-07 13:44:38",
-          "[13:46:52] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-          "[13:46:52] [INFO] tiktok_pipeline: [Dòng 1 - Lịch Đăng Video] Đã điểm giờ đăng cố định hôm nay của kênh [an_vat_moi_ngay]: 12:30 (khung gốc 12:22, lệch +8 phút)",
-          "[13:46:54] [INFO] tiktok_pipeline: [an_vat_moi_ngay] Kho ready/ đã lọc hết các bản trùng nội dung -> Đang tự động cào ngay 1 video truyện mới hoàn toàn cho [an_vat_moi_ngay]...",
-          "[13:46:54] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-          "[13:46:54] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-          "[13:46:54] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-          "[13:46:54] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_8_food_snacks] -> Thư mục: output/an_vat_moi_ngay/ready/ | Link mẫu: 0 | Kênh mẫu: ['anvatmoingay.vn', 'congthucnauannhanh', 'monngonmoingay', 'bepnhỏ.official'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-          "[13:46:55] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @anvatmoingay.vn.",
-          "[13:46:55] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @congthucnauannhanh.",
-          "[13:46:55] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @monngonmoingay.",
-          "[13:46:55] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @bepnhỏ.official.",
-          "[13:46:56] [INFO] tiktok_pipeline: TTS #08 [29.38s-31.16s | gốc=1.82s]: rate=+16%, atempo=1.00x -> 1.78s",
-          "[13:47:01] [INFO] tiktok_pipeline: TTS #09 [32.30s-34.40s | gốc=2.10s]: rate=+16%, atempo=1.01x -> 2.10s",
-          "[13:47:10] [INFO] tiktok_pipeline: TTS #10 [35.14s-36.46s | gốc=1.88s]: rate=+16%, atempo=1.00x -> 1.32s",
-          "[13:47:15] [INFO] tiktok_pipeline: TTS #11 [37.18s-39.36s | gốc=2.30s]: rate=+16%, atempo=1.00x -> 2.18s"
-        ]
-      }
-    }
-  ]
+  }
 }
