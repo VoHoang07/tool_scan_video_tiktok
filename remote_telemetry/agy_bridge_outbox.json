@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-07 09:11:40",
+  "updated_at": "2026-11-07 09:41:54",
   "latest_result": {
-    "cmd_id": "heartbeat_1794017499",
+    "cmd_id": "heartbeat_1794019313",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 09:11:39",
+    "executed_at": "2026-11-07 09:41:53",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 09:11:40",
+      "timestamp": "2026-11-07 09:41:53",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 13.9,
+      "lock_file_age_seconds": 65.6,
       "processes": [
-        "44731    09:07:14 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "44733    09:07:14 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    08:35:42 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    08:35:42 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "44731    09:37:28 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "44733    09:37:28 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    09:05:56 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    09:05:56 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[09:11:27] [INFO] tiktok_pipeline: [Voice Filter] -> LOẠI BỎ 7532109751288073531 (không đạt chuẩn mật độ câu thoại).",
-        "[09:11:27] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #6/8: [FACEBOOK_REELS] ID=923754533356774 (tim=5939, thời lượng=27.0s) ---",
-        "[09:11:27] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=923754533356774 (thời lượng=27.0s, sound='Original Audio', view=148487, tim=5939, share=742)...",
-        "[09:11:27] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/923754533356774",
-        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/923754533356774",
-        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=923754533356774&_rdr",
-        "[facebook] 923754533356774: Downloading webpage",
-        "[facebook] 923754533356774: Downloading webpage",
-        "ERROR: [facebook] 923754533356774: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
-        "[09:11:28] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 923754533356774: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
-        "[09:11:28] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 923754533356774: Không thể tải video từ URL: https://www.facebook.com/reel/923754533356774. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
-        "[09:11:28] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #7/8: [DOUYIN] ID=7693187994052346276 (tim=510251, thời lượng=16.1s) ---",
-        "[09:11:28] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7693187994052346276 (thời lượng=16.1s, sound='@天冷冷创作的原声一天冷冷（原声中的歌曲：我会永远爱你 在平行时空的每个版本里-Ki哩哩）', view=20473020, tim=510251, share=155444)...",
-        "[09:11:28] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[09:11:29] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[09:11:30] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/raw_video.mp4 (2.37 MB)",
-        "[09:11:30] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/audio.mp3",
-        "[09:11:31] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 16.09s)",
-        "[09:11:32] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[09:11:36] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 99.21%)"
+        "[download]   0.1% of    1.94MiB at  Unknown B/s ETA Unknown",
+        "[download]   0.2% of    1.94MiB at  Unknown B/s ETA Unknown",
+        "[download]   0.4% of    1.94MiB at    6.27MiB/s ETA 00:00  ",
+        "[download]   0.8% of    1.94MiB at   10.26MiB/s ETA 00:00",
+        "[download]   1.6% of    1.94MiB at   16.24MiB/s ETA 00:00",
+        "[download]   3.2% of    1.94MiB at   27.45MiB/s ETA 00:00",
+        "[download]   6.4% of    1.94MiB at   46.78MiB/s ETA 00:00",
+        "[download]  12.9% of    1.94MiB at   79.97MiB/s ETA 00:00",
+        "[download]  25.8% of    1.94MiB at   41.12MiB/s ETA 00:00",
+        "[download]  51.6% of    1.94MiB at   16.79MiB/s ETA 00:00",
+        "[download] 100.0% of    1.94MiB at   16.97MiB/s ETA 00:00",
+        "[download] 100% of    1.94MiB in 00:00:00 at 7.02MiB/s   ",
+        "[Merger] Merging formats into \"/Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/ytdlp_raw.mp4\"",
+        "Deleting original file /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/ytdlp_raw.f616.mp4 (pass -k to keep)",
+        "Deleting original file /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/ytdlp_raw.f140.m4a (pass -k to keep)",
+        "[09:39:30] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/raw_video.mp4 (20.94 MB)",
+        "[09:39:30] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/audio.mp3",
+        "[09:39:31] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 125.39s)",
+        "[09:39:32] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/audio.mp3 (auto-detect language, word_timestamps=True)...",
+        "[09:39:32] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)..."
       ],
-      "lock_file_content": "pid=48549 ts=1794017486"
+      "lock_file_content": "pid=48549 ts=1794019248"
     }
   }
 }
