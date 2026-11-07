@@ -1,53 +1,48 @@
 {
-  "updated_at": "2026-11-07 09:59:46",
+  "updated_at": "2026-11-07 10:12:02",
   "latest_result": {
-    "cmd_id": "auto_restart_1794020386",
-    "action": "auto_restart_dead_streams",
-    "executed_at": "2026-11-07 09:59:46",
-    "restart_info": {
-      "restarted_streams": [
-        "stream1_unhung_after_1213s",
-        "stream1_upload"
-      ],
-      "timestamp": "2026-11-07 09:59:46"
-    },
+    "cmd_id": "heartbeat_1794021122",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-07 10:12:02",
+    "machine_arch": "x86_64",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 09:59:46",
+      "timestamp": "2026-11-07 10:12:02",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 180.0,
+      "lock_file_age_seconds": 130.0,
       "processes": [
-        "48513       00:00 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514       00:00 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    09:23:48 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    09:23:48 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "48513       12:16 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48514       12:16 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    09:36:04 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    09:36:04 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[download]   0.4% of    1.94MiB at    6.27MiB/s ETA 00:00  ",
-        "[download]   0.8% of    1.94MiB at   10.26MiB/s ETA 00:00",
-        "[download]   1.6% of    1.94MiB at   16.24MiB/s ETA 00:00",
-        "[download]   3.2% of    1.94MiB at   27.45MiB/s ETA 00:00",
-        "[download]   6.4% of    1.94MiB at   46.78MiB/s ETA 00:00",
-        "[download]  12.9% of    1.94MiB at   79.97MiB/s ETA 00:00",
-        "[download]  25.8% of    1.94MiB at   41.12MiB/s ETA 00:00",
-        "[download]  51.6% of    1.94MiB at   16.79MiB/s ETA 00:00",
-        "[download] 100.0% of    1.94MiB at   16.97MiB/s ETA 00:00",
-        "[download] 100% of    1.94MiB in 00:00:00 at 7.02MiB/s   ",
-        "[Merger] Merging formats into \"/Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/ytdlp_raw.mp4\"",
-        "Deleting original file /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/ytdlp_raw.f616.mp4 (pass -k to keep)",
-        "Deleting original file /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/ytdlp_raw.f140.m4a (pass -k to keep)",
-        "[09:39:30] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/raw_video.mp4 (20.94 MB)",
-        "[09:39:30] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/audio.mp3",
-        "[09:39:31] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 125.39s)",
-        "[09:39:32] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_WWF-PNZtuCg/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[09:39:32] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
-        "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
-        "  warnings.warn('resource_tracker: There appear to be %d '"
+        "[10:08:09] [INFO] tiktok_pipeline: TTS #04 [07.48s-09.50s | gốc=2.32s]: rate=+16%, atempo=1.00x -> 2.02s",
+        "[10:08:14] [INFO] tiktok_pipeline: TTS #05 [09.80s-11.14s | gốc=1.54s]: rate=+16%, atempo=1.00x -> 1.34s",
+        "[10:08:24] [INFO] tiktok_pipeline: TTS #06 [11.58s-12.86s | gốc=1.34s]: rate=+45%, atempo=1.25x -> 1.28s",
+        "[10:08:29] [INFO] tiktok_pipeline: TTS #07 [12.92s-14.42s | gốc=1.76s]: rate=+16%, atempo=1.00x -> 1.50s",
+        "[10:08:44] [INFO] tiktok_pipeline: TTS #08 [14.68s-15.97s | gốc=1.36s]: rate=+45%, atempo=1.07x -> 1.29s",
+        "[10:08:55] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (03943d4 -> e23b585) | Auto-Telemetry [warmup_fyp] tu_chan_gioi at 2026-11-07 10:08:42",
+        "[10:09:20] [INFO] tiktok_pipeline: TTS #09 [16.04s-17.86s | gốc=1.88s]: rate=+45%, atempo=1.45x -> 1.82s",
+        "[10:09:28] [INFO] tiktok_pipeline: TTS #10 [17.92s-20.22s | gốc=2.44s]: rate=+16%, atempo=1.00x -> 2.30s",
+        "[10:09:37] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[10:09:37] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[10:09:37] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[10:09:42] [INFO] tiktok_pipeline: TTS #11 [20.66s-22.52s | gốc=2.18s]: rate=+16%, atempo=1.00x -> 1.86s",
+        "[10:09:53] [INFO] tiktok_pipeline: TTS #12 [23.10s-23.92s | gốc=1.12s]: rate=+16%, atempo=1.00x -> 0.82s",
+        "[10:10:05] [INFO] tiktok_pipeline: TTS #13 [24.54s-26.30s | gốc=1.84s]: rate=+43%, atempo=1.00x -> 1.76s",
+        "[10:10:37] [INFO] tiktok_pipeline: TTS #14 [26.38s-27.75s | gốc=1.46s]: rate=+30%, atempo=1.00x -> 1.37s",
+        "[10:11:02] [INFO] tiktok_pipeline: TTS #15 [27.84s-29.56s | gốc=1.78s]: rate=+45%, atempo=1.00x -> 1.72s",
+        "[10:11:11] [INFO] tiktok_pipeline: TTS #16 [29.62s-31.03s | gốc=1.52s]: rate=+23%, atempo=1.00x -> 1.41s",
+        "[10:11:40] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Buồng trứng của một cô gái giải phóng một quả trứng trưởng thành' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[10:11:40] [INFO] tiktok_pipeline: TTS #17 [31.14s-31.54s | gốc=2.66s]: rate=+16%, atempo=1.00x -> 0.40s",
+        "[10:11:54] [INFO] tiktok_pipeline: TTS #18 [33.80s-35.40s | gốc=1.68s]: rate=+16%, atempo=1.00x -> 1.60s"
       ],
-      "lock_file_content": "idle"
+      "lock_file_content": "pid=48549 ts=1794020992"
     }
   }
 }
