@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 07:13:13",
+    "timestamp": "2026-11-07 07:25:24",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 2,
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 159.5,
-      "final_url": "https://www.tiktok.com/@thedietingartist.sanctum/live?enter_from_merge=homepage_hot&enter_method=live_fyp_like&entrance_detail=homepage_hot_live_fyp_like&is_highlight=1&is_landscape=0&request_id=20261107081231EF5975C0B93FF03CFC1A&video_id=live_7705210233752275743"
+      "elapsed_seconds": 153.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 07:25:24",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 153.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-07 07:13:13",
       "machine_arch": "x86_64",
@@ -223,21 +238,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 159.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 05:52:08",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 165.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
