@@ -1,48 +1,46 @@
 {
-  "updated_at": "2026-11-07 06:40:43",
+  "updated_at": "2026-11-07 07:11:02",
   "latest_result": {
-    "cmd_id": "heartbeat_1794008443",
+    "cmd_id": "heartbeat_1794010261",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 06:40:43",
+    "executed_at": "2026-11-07 07:11:01",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 06:40:43",
+      "timestamp": "2026-11-07 07:11:01",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 60.8,
+      "lock_file_age_seconds": 39.6,
       "processes": [
-        "44731    06:36:17 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "44733    06:36:17 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    06:04:45 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    06:04:45 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "44731    07:06:36 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "44733    07:06:36 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    06:35:04 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    06:35:04 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[06:38:50] [INFO] tiktok_pipeline: [109.06s - 109.90s] 好吃肉下饭  ==>  Thịt ngon ăn với cơm",
-        "[06:38:50] [INFO] tiktok_pipeline: [113.06s - 115.86s] 看一下就知道土豆下个两碗饭应该没有问题  ==>  Chỉ cần nhìn vào cũng có thể biết hai bát cơm với khoai tây tiếp theo là ổn",
-        "[06:38:50] [INFO] tiktok_pipeline: [116.46s - 120.46s] 喜欢就试一下吧好了今天的视频就分享到这里了我们下次再见拜拜  ==>  Nếu bạn thích nó, hãy thử nó, Video hôm nay sẽ được chia sẻ tại đây, Hẹn gặp lại lần sau, Tạm biệt",
-        "[06:38:53] [INFO] tiktok_pipeline: Caption đã dịch: 🤤 [Thiên Đường Ăn Vặt] Bạn có thể nấu ba bát cơm với khoai tây theo cách này. Thật dễ dàng để làm và nấu ăn nhanh chóng. Nó rất ngon. \"Sau khi chảo nóng, cho chút dầu vào, sau đó cho gừng, tỏi vào xào cho đến khi có mùi thơm...\" Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
-        "[06:38:53] [INFO] tiktok_pipeline: Hashtags: #anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #viral #foryou",
-        "[06:38:53] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
-        "[06:38:53] [INFO] tiktok_pipeline: Cấu hình giọng kênh [an_vat_moi_ngay]: Giọng nữ hào hứng, tươi vui, kích thích vị giác (Ẩm thực & Đồ ăn vặt) (voice=vi-VN-HoaiMyNeural, rate=+18%, pitch=+2Hz)",
-        "[06:38:53] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +18%, Độ trầm/cao: +2Hz) cho 30 câu thoại...",
-        "[06:39:08] [INFO] tiktok_pipeline: TTS #00 [00.50s-02.95s | gốc=2.48s]: rate=+45%, atempo=1.28x -> 2.45s",
-        "[06:39:18] [INFO] tiktok_pipeline: TTS #01 [03.26s-04.63s | gốc=1.40s]: rate=+45%, atempo=1.14x -> 1.37s",
-        "[06:39:36] [INFO] tiktok_pipeline: TTS #02 [05.22s-05.96s | gốc=0.76s]: rate=+45%, atempo=1.01x -> 0.74s",
-        "[06:39:49] [INFO] tiktok_pipeline: TTS #03 [06.90s-07.79s | gốc=0.92s]: rate=+45%, atempo=1.38x -> 0.89s",
-        "[06:39:49] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (31bf5f4 -> 866ab8a) | Auto-Telemetry [warmup_fyp] audio_dem_khuyen at 2026-11-07 06:39:41",
-        "[06:39:56] [INFO] tiktok_pipeline: TTS #04 [09.78s-11.27s | gốc=1.52s]: rate=+37%, atempo=1.00x -> 1.49s",
-        "[06:39:59] [INFO] tiktok_pipeline: TTS #05 [11.98s-12.92s | gốc=1.20s]: rate=+18%, atempo=1.00x -> 0.94s",
-        "[06:40:14] [INFO] tiktok_pipeline: TTS #06 [15.46s-16.41s | gốc=0.96s]: rate=+45%, atempo=1.60x -> 0.95s",
-        "[06:40:24] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[06:40:24] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
-        "[06:40:25] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[06:40:32] [INFO] tiktok_pipeline: TTS #07 [19.22s-20.41s | gốc=1.22s]: rate=+45%, atempo=1.35x -> 1.19s"
+        "====================================================================================================",
+        "Master CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
+        "[07:08:44] [INFO] tiktok_pipeline: [Continuous Worker] Cả 4 kênh vừa đạt mốc 5/5 video. Chuyển sang chu kỳ kiểm tra xác nhận...",
+        "==============================================================================================",
+        "[07:08:44] [INFO] tiktok_pipeline: === [CHU KỲ #9] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+        "[07:08:48] [INFO] tiktok_pipeline: [Round-Robin] Kênh video_AI_hay (video_AI_hay) hiện có 3/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
+        "[07:08:48] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[07:08:48] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[07:08:48] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[07:08:48] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_1_ai_animation] -> Thư mục: output/video_AI_hay/ready/ | Link mẫu: 10 | Kênh mẫu: [] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
+        "[07:08:49] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/Mr4JFtYJ-lg/",
+        "[07:08:50] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7698023893977599272 (ID: 7698023893977599272)",
+        "[07:08:51] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/KhnOwGH99QQ/",
+        "[07:08:51] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)",
+        "[07:08:57] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/5PXz62pKn0s/",
+        "[07:08:57] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7696826479242519139 (ID: 7696826479242519139)",
+        "[07:08:58] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/RrMNQy7NBa0/",
+        "[07:08:58] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7681137499921550619 (ID: 7681137499921550619)"
       ],
-      "lock_file_content": "idle"
+      "lock_file_content": "pid=48549 ts=1794010222"
     }
   }
 }
