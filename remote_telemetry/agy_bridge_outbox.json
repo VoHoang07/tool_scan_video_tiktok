@@ -1,48 +1,52 @@
 {
-  "updated_at": "2026-11-07 15:22:37",
+  "updated_at": "2026-11-07 15:25:33",
   "latest_result": {
-    "cmd_id": "heartbeat_1794039754",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 15:22:34",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_heal_1794039933",
+    "action": "auto_heal_stuck_browser_lock",
+    "executed_at": "2026-11-07 15:25:33",
+    "unstick_report": {
+      "killed_chrome_for_testing": false,
+      "removed_locks": [
+        "workspace_temp/.tiktok_browser_session.lock"
+      ],
+      "timestamp": "2026-11-07 15:25:33"
+    },
     "system_health": {
-      "timestamp": "2026-11-07 15:22:36",
+      "timestamp": "2026-11-07 15:25:33",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 1343.4,
+      "lock_file_age_seconds": null,
       "processes": [
-        "48513    05:22:50 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514    05:22:50 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "91758    01:34:57 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "91760    01:34:56 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "48513    05:25:48 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48514    05:25:48 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "91758    01:37:55 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "91760    01:37:54 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe."
-      ],
-      "lock_file_content": "pid=91758 ts=1794038413"
+        "[15:25:18] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/2342250786250959",
+        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/2342250786250959",
+        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=2342250786250959&_rdr",
+        "[facebook] 2342250786250959: Downloading webpage",
+        "[facebook] 2342250786250959: Downloading webpage",
+        "[15:25:20] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "ERROR: [facebook] 2342250786250959: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
+        "[15:25:20] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 2342250786250959: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
+        "[15:25:20] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 2342250786250959: Không thể tải video từ URL: https://www.facebook.com/reel/2342250786250959. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
+        "[15:25:20] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #7/7: [DOUYIN] ID=7693187994052346276 (tim=510258, thời lượng=16.1s) ---",
+        "[15:25:20] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7693187994052346276 (thời lượng=16.1s, sound='@天冷冷创作的原声一天冷冷（原声中的歌曲：我会永远爱你 在平行时空的每个版本里-Ki哩哩）', view=20474060, tim=510258, share=155461)...",
+        "[15:25:20] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
+        "[15:25:20] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[15:25:21] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
+        "[15:25:22] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/raw_video.mp4 (2.37 MB)",
+        "[15:25:22] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/audio.mp3",
+        "[15:25:23] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[15:25:23] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 16.09s)",
+        "[15:25:25] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7693187994052346276/audio.mp3 (auto-detect language, word_timestamps=True)...",
+        "[15:25:29] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 99.21%)"
+      ]
     }
   }
 }
