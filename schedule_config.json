@@ -11,13 +11,13 @@
       ]
     },
     "switch_2_upload": {
-      "tiktok": true,
+      "tiktok": false,
       "fb_reels": false,
       "yt_shorts": false,
       "batch_single_chrome_session": true
     },
     "switch_3_interact": {
-      "tiktok": true,
+      "tiktok": false,
       "fb_reels": false,
       "yt_shorts": false
     },
@@ -118,7 +118,7 @@
       "23:50"
     ]
   },
-  "filter_24h_enabled": true,
+  "filter_24h_enabled": false,
   "filter_24h_cooldown_until": "",
   "filter_24h_runs_per_day": 2,
   "filter_24h_videos_per_session": 3,
@@ -177,27 +177,27 @@
     "phu_kien_tien_ich": ""
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_baby_ai_and_night_20261106_2338",
+    "trigger_id": "",
     "target_arch": "x86_64",
     "action": "upload",
     "channel": "baby_AI,video_AI_hay,audio_dem_khuyen,tu_chan_gioi,phu_nu_khi_chat,an_vat_moi_ngay,suc_khoe_duong_sinh",
-    "force": true,
+    "force": false,
     "skip_warmup": true,
     "auto_pause_master_after": false
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "filter_24h_20261107_0108",
+    "trigger_id": "",
     "target_arch": "x86_64",
     "channel": "video_AI_hay,baby_AI,audio_dem_khuyen,tu_chan_gioi,phu_nu_khi_chat,suc_khoe_duong_sinh,an_vat_moi_ngay,meo_vat_gia_dinh,nuoi_con_eq,phu_kien_tien_ich",
     "video_count": 3
   },
   "headless": false,
   "random_jitter_minutes": 9,
-  "warmup_before_upload": true,
+  "warmup_before_upload": false,
   "use_macos_native_input": true,
   "warmup_browse_seconds": 150,
   "warmup_gap_seconds": 180,
   "warmup_channel_cooldown_seconds": 1800,
   "warmup_max_per_day": 24,
-  "warmup_reset_id": "rotate_all_10_channels_20261107_0108"
+  "warmup_reset_id": ""
 }
