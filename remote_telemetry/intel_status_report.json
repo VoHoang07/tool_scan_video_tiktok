@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-08 00:26:00",
+    "timestamp": "2026-11-08 00:31:53",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
       "scrolled_videos": 9,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 161.3,
-      "final_url": "https://www.tiktok.com/@hayyitsskayyxo/live?enter_from_merge=homepage_hot&enter_method=live_fyp_like&entrance_detail=homepage_hot_live_fyp_like&is_highlight=1&is_landscape=0&request_id=20261108012315ABB0878E3243797EDBE8&video_id=live_7705475271465503519"
+      "elapsed_seconds": 151.5,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-08 00:31:53",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 151.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-08 00:26:00",
       "machine_arch": "x86_64",
@@ -228,21 +243,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 153.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 23:03:08",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 157.5,
-        "final_url": "https://www.tiktok.com/@hongchibi1922/live"
       }
     }
   ]
