@@ -214,7 +214,8 @@
     "zPpAM0tqC58",
     "7181089306113494299",
     "7242214257767550213",
-    "7PvFRrHLg44"
+    "7PvFRrHLg44",
+    "KGFlIZrn_4U"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -339,7 +340,8 @@
     "yt_sound_zPpAM0tqC58",
     "7181089322708159258",
     "7242214270446029574",
-    "yt_sound_7PvFRrHLg44"
+    "yt_sound_7PvFRrHLg44",
+    "yt_sound_KGFlIZrn_4U"
   ],
   "items": [
     {
@@ -1621,6 +1623,16 @@
       "source_url": "https://www.youtube.com/watch?v=7PvFRrHLg44",
       "output_filename": "meo_vat_gia_dinh/ready/20261107_153950_youtube_shorts_story_7PvFRrHLg44.mp4",
       "crawled_at": "2026-11-07T15:47:57"
+    },
+    {
+      "channel": "meo_vat_gia_dinh",
+      "video_id": "KGFlIZrn_4U",
+      "sound_id": "yt_sound_KGFlIZrn_4U",
+      "platform": "youtube_shorts",
+      "genre": "channel_5_home_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=KGFlIZrn_4U",
+      "output_filename": "meo_vat_gia_dinh/ready/20261107_160321_youtube_shorts_story_KGFlIZrn_4U.mp4",
+      "crawled_at": "2026-11-07T16:24:53"
     }
   ]
 }
