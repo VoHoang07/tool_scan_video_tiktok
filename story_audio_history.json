@@ -213,7 +213,8 @@
     "8ziBfOjnk84",
     "zPpAM0tqC58",
     "7181089306113494299",
-    "7242214257767550213"
+    "7242214257767550213",
+    "7PvFRrHLg44"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -337,7 +338,8 @@
     "yt_sound_8ziBfOjnk84",
     "yt_sound_zPpAM0tqC58",
     "7181089322708159258",
-    "7242214270446029574"
+    "7242214270446029574",
+    "yt_sound_7PvFRrHLg44"
   ],
   "items": [
     {
@@ -1609,6 +1611,16 @@
       "source_url": "https://www.tiktok.com/@phunukhichat.vn/video/7242214257767550213",
       "output_filename": "phu_nu_khi_chat/ready/20261107_153144_tiktok_story_7242214257767550213.mp4",
       "crawled_at": "2026-11-07T15:31:48"
+    },
+    {
+      "channel": "meo_vat_gia_dinh",
+      "video_id": "7PvFRrHLg44",
+      "sound_id": "yt_sound_7PvFRrHLg44",
+      "platform": "youtube_shorts",
+      "genre": "channel_5_home_gadgets",
+      "source_url": "https://www.youtube.com/watch?v=7PvFRrHLg44",
+      "output_filename": "meo_vat_gia_dinh/ready/20261107_153950_youtube_shorts_story_7PvFRrHLg44.mp4",
+      "crawled_at": "2026-11-07T15:47:57"
     }
   ]
 }
