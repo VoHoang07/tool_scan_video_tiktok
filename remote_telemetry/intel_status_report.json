@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 19:28:25",
+    "timestamp": "2026-11-07 19:34:28",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
-      "scrolled_videos": 14,
-      "ads_skipped": 3,
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 158.1,
+      "elapsed_seconds": 165.9,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 19:34:28",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 165.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-07 19:28:25",
       "machine_arch": "x86_64",
@@ -643,169 +658,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 162.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 18:11:03",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "nuoiconeq.k09",
-          "domFollowing": "0",
-          "domFollowers": "0",
-          "domLikes": "0",
-          "sidebarFollowing": [
-            "/@nuoiconeq.k09"
-          ]
-        },
-        "records": [
-          {
-            "channel": "nuoi_con_eq",
-            "video_id": "7704472441975803157",
-            "video_url": "https://www.tiktok.com/@tiemgiayconga/video/7704472441975803157",
-            "creator_handle": "@tiemgiayconga",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Mê cái vibe của kênh bạn ghê, sẽ theo dõi ủng hộ dài lâu ạ 🫶",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110719084978AD954352C06665A11B\",\"now\":1794049729000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110719084978AD954352C06665A11B\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 882.21875,
-                "y": 471,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "36"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 882.21875,
-                  "y": 471,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "36"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@tiemgiayconga",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@tiemgiayconga/video/7704472441975803157?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-07 18:09:07",
-            "follow_back_window_until": "2026-11-08 18:09:07"
-          },
-          {
-            "channel": "nuoi_con_eq",
-            "video_id": "7704204347663469845",
-            "video_url": "https://www.tiktok.com/@taphoacomai88/video/7704204347663469845",
-            "creator_handle": "@taphoacomai88",
-            "watched_seconds": 16.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "nuoiconeq.k09"
-              },
-              "profile_follow_verify": {
-                "creator": "@taphoacomai88",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@taphoacomai88/video/7704204347663469845?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-07 18:09:58",
-            "follow_back_window_until": "2026-11-08 18:09:58"
-          },
-          {
-            "channel": "nuoi_con_eq",
-            "video_id": "7703983593952988437",
-            "video_url": "https://www.tiktok.com/@ngo.eu/video/7703983593952988437",
-            "creator_handle": "@ngo.eu",
-            "watched_seconds": 26.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Video hay và ý nghĩa quá bạn ơi, chúc kênh ngày càng phát triển nhé ❤️",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "nuoiconeq.k09"
-              },
-              "profile_follow_verify": {
-                "creator": "@ngo.eu",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@ngo.eu/video/7703983593952988437?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-07 18:10:58",
-            "follow_back_window_until": "2026-11-08 18:10:58"
-          }
-        ]
       }
     }
   ]
