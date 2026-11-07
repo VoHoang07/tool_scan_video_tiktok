@@ -194,7 +194,8 @@
     "PzC2Ej2_Gn8",
     "7565693537977044250",
     "Jh8YXtk7g6Y",
-    "7659326829458640149"
+    "7659326829458640149",
+    "7697560560066413775"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -299,7 +300,8 @@
     "yt_sound_PzC2Ej2_Gn8",
     "7565693310959045411",
     "yt_sound_Jh8YXtk7g6Y",
-    "7659326885768907528"
+    "7659326885768907528",
+    "7697560510190881587"
   ],
   "items": [
     {
@@ -1381,6 +1383,16 @@
       "source_url": "https://www.tiktok.com/@kytoons29/video/7659326829458640149",
       "output_filename": "video_AI_hay/ready/20261107_080121_tiktok_story_7659326829458640149.mp4",
       "crawled_at": "2026-11-07T08:01:27"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7697560560066413775",
+      "sound_id": "7697560510190881587",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/7697560560066413775",
+      "output_filename": "video_AI_hay/ready/20261107_082016_douyin_story_7697560560066413775.mp4",
+      "crawled_at": "2026-11-07T08:21:23"
     }
   ]
 }
