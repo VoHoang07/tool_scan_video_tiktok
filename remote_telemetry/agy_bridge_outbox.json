@@ -1,48 +1,47 @@
 {
-  "updated_at": "2026-11-07 16:53:03",
+  "updated_at": "2026-11-07 17:23:15",
   "latest_result": {
-    "cmd_id": "heartbeat_1794045182",
+    "cmd_id": "heartbeat_1794046995",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 16:53:02",
+    "executed_at": "2026-11-07 17:23:15",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 16:53:03",
+      "timestamp": "2026-11-07 17:23:15",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 88.9,
+      "lock_file_age_seconds": 161.5,
       "processes": [
-        "48513    06:53:17 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514    06:53:17 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "91758    03:05:24 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "91760    03:05:23 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "48513    07:23:29 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48514    07:23:29 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "91758    03:35:36 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "91760    03:35:35 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[16:47:51] [INFO] tiktok_pipeline: TTS #34 [61.54s-62.68s | gốc=2.20s]: rate=+18%, atempo=1.00x -> 1.14s",
-        "[16:48:05] [INFO] tiktok_pipeline: TTS #35 [64.22s-65.99s | gốc=1.84s]: rate=+29%, atempo=1.00x -> 1.77s",
-        "[16:48:38] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Đó thực sự là một sự lãng phí tiền bạc' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[16:48:39] [INFO] tiktok_pipeline: TTS #36 [66.46s-66.86s | gốc=1.28s]: rate=+45%, atempo=1.00x -> 0.40s",
-        "[16:48:45] [INFO] tiktok_pipeline: TTS #37 [70.06s-70.60s | gốc=0.60s]: rate=+45%, atempo=1.59x -> 0.54s",
-        "[16:49:25] [INFO] tiktok_pipeline: TTS #38 [70.66s-72.93s | gốc=2.36s]: rate=+32%, atempo=1.00x -> 2.27s",
-        "[16:49:57] [INFO] tiktok_pipeline: TTS #39 [73.02s-74.33s | gốc=1.38s]: rate=+44%, atempo=1.00x -> 1.31s",
-        "[16:50:09] [INFO] tiktok_pipeline: TTS #40 [74.40s-75.34s | gốc=1.14s]: rate=+18%, atempo=1.00x -> 0.94s",
-        "[16:50:37] [INFO] tiktok_pipeline: TTS #41 [76.06s-76.55s | gốc=0.52s]: rate=+45%, atempo=1.10x -> 0.49s",
-        "[16:50:54] [INFO] tiktok_pipeline: TTS #42 [78.34s-78.57s | gốc=0.42s]: rate=+18%, atempo=1.00x -> 0.23s",
-        "[16:51:13] [INFO] tiktok_pipeline: TTS #43 [79.62s-80.64s | gốc=1.04s]: rate=+45%, atempo=1.60x -> 1.02s",
-        "[16:51:19] [INFO] tiktok_pipeline: TTS #44 [82.22s-83.55s | gốc=1.84s]: rate=+18%, atempo=1.00x -> 1.33s",
-        "[16:51:31] [INFO] tiktok_pipeline: TTS #45 [84.62s-86.15s | gốc=1.60s]: rate=+45%, atempo=1.10x -> 1.53s",
-        "[16:51:43] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (689dbd8 -> b141671) | Auto-Telemetry [warmup_fyp] nuoi_con_eq at 2026-11-07 16:51:33",
-        "[16:51:48] [INFO] tiktok_pipeline: TTS #46 [86.22s-86.79s | gốc=0.60s]: rate=+45%, atempo=1.29x -> 0.57s",
-        "[16:52:21] [INFO] tiktok_pipeline: TTS #47 [88.38s-90.12s | gốc=1.80s]: rate=+45%, atempo=1.41x -> 1.74s",
-        "[16:52:23] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[16:52:23] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
-        "[16:52:24] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[16:52:30] [INFO] tiktok_pipeline: TTS #48 [90.18s-93.63s | gốc=4.88s]: rate=+18%, atempo=1.00x -> 3.45s"
+        "KÊNH               | CHỦ ĐỀ NGÁCH (PROFILE)     |  READY (CHỜ ĐĂNG) |  POSTED (ĐÃ ĐĂNG) |  TỔNG CỘNG",
+        "----------------------------------------------------------------------------------------------------",
+        "video_AI_hay       | channel_1_ai_animation     |                 5 |                 8 |         13",
+        "baby_AI            | channel_2_life_comedy      |                 5 |                 7 |         12",
+        "audio_dem_khuyen   | channel_3_novel_drama      |                 5 |                 8 |         13",
+        "tu_chan_gioi       | channel_4_ai_cultivation   |                 5 |                 8 |         13",
+        "meo_vat_gia_dinh   | channel_5_home_gadgets     |                 5 |                 0 |          5",
+        "suc_khoe_duong_sinh | channel_6_health_wellness  |                 5 |                 6 |         11",
+        "phu_nu_khi_chat    | channel_7_women_eq         |                 3 |                 6 |          9",
+        "an_vat_moi_ngay    | channel_8_food_snacks      |                 1 |                 6 |          7",
+        "nuoi_con_eq        | channel_9_smart_parenting  |                 8 |                 0 |          8",
+        "phu_kien_tien_ich  | channel_10_tech_gadgets    |                 5 |                 0 |          5",
+        "thu_cung_vui_nhon  | channel_11_pet_comedy      |                 5 |                 0 |          5",
+        "----------------------------------------------------------------------------------------------------",
+        "TỔNG KẾT           | Toàn bộ 11 kênh TikTok     |                52 |                49 |        101",
+        "====================================================================================================",
+        "Master CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
+        "[17:22:24] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
+        "[17:22:24] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
       ],
-      "lock_file_content": "idle"
+      "lock_file_content": "pid=91758 ts=1794046834"
     }
   }
 }
