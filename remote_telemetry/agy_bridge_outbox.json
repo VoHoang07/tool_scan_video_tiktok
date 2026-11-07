@@ -1,47 +1,48 @@
 {
-  "updated_at": "2026-11-07 12:12:49",
+  "updated_at": "2026-11-07 13:13:18",
   "latest_result": {
-    "cmd_id": "heartbeat_1794028368",
+    "cmd_id": "heartbeat_1794031997",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-07 12:12:48",
+    "executed_at": "2026-11-07 13:13:17",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-07 12:12:49",
+      "timestamp": "2026-11-07 13:13:18",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 26.6,
+      "lock_file_age_seconds": 0.7,
       "processes": [
-        "48513    02:13:03 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514    02:13:03 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48549    11:36:51 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "48551    11:36:51 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "48513    03:13:32 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48514    03:13:32 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48549    12:37:20 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "48551    12:37:20 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[download] 100% of    8.93MiB in 00:00:00 at 28.69MiB/s  ",
-        "[download] Destination: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_ZbCNv4L53Kk/ytdlp_raw.f140.m4a",
-        "[download]   0.1% of    1.46MiB at  Unknown B/s ETA Unknown",
-        "[download]   0.2% of    1.46MiB at    2.71MiB/s ETA 00:00  ",
-        "[download]   0.5% of    1.46MiB at    3.98MiB/s ETA 00:00",
-        "[download]   1.0% of    1.46MiB at    6.24MiB/s ETA 00:00",
-        "[download]   2.1% of    1.46MiB at    9.53MiB/s ETA 00:00",
-        "[download]   4.2% of    1.46MiB at   16.47MiB/s ETA 00:00",
-        "[download]   8.5% of    1.46MiB at   28.59MiB/s ETA 00:00",
-        "[download]  17.0% of    1.46MiB at   49.45MiB/s ETA 00:00",
-        "[download]  34.1% of    1.46MiB at   72.69MiB/s ETA 00:00",
-        "[download]  68.3% of    1.46MiB at   72.57MiB/s ETA 00:00",
-        "[download] 100.0% of    1.46MiB at   60.55MiB/s ETA 00:00",
-        "[download] 100% of    1.46MiB in 00:00:00 at 26.89MiB/s  ",
-        "[Merger] Merging formats into \"/Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_ZbCNv4L53Kk/ytdlp_raw.mp4\"",
-        "Deleting original file /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_ZbCNv4L53Kk/ytdlp_raw.f140.m4a (pass -k to keep)",
-        "Deleting original file /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_ZbCNv4L53Kk/ytdlp_raw.f399.mp4 (pass -k to keep)",
-        "[12:12:48] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_ZbCNv4L53Kk/raw_video.mp4 (10.42 MB)",
-        "[12:12:48] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/youtube_shorts_ZbCNv4L53Kk/audio.mp3"
+        "[13:11:24] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Cậu có thể vui lòng ngừng kiểm soát mình một cách nghiêm ngặt như vậy được không?' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[13:11:24] [INFO] tiktok_pipeline: TTS #00 [00.70s-01.10s | gốc=1.74s]: rate=+45%, atempo=1.00x -> 0.40s",
+        "[13:11:25] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h] Đang tương tác video #1/1: https://www.tiktok.com/@ng.ngc.chi96/video/7704683006430104833",
+        "[13:11:25] [INFO] tiktok_pipeline: [phu_nu_khi_chat] === BẮT ĐẦU BỘ LỌC 24 GIỜ TRÊN VIDEO CỦA @ng.ngc.chi96 (https://www.tiktok.com/@ng.ngc.chi96/video/7704683006430104833) ===",
+        "[13:11:27] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h - Bước 1/6] Đang XEM HẾT VIDEO (24.8s / thời lượng gốc 24.0s): https://www.tiktok.com/@ng.ngc.chi96/video/7704683006430104833",
+        "[13:11:42] [INFO] tiktok_pipeline: TTS #01 [02.90s-04.02s | gốc=1.18s]: rate=+45%, atempo=1.06x -> 1.12s",
+        "[13:11:53] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h] Đã chuyển sang tab 'Bình luận' ở khung phải.",
+        "[13:11:58] [WARNING] tiktok_pipeline: [phu_nu_khi_chat] [Circuit Breaker Anti-Shark] Máy chủ TikTok trả về is_digg=1 (tài khoản đang trong thời gian giới hạn thả tim) -> Ngắt thao tác Like ngay, KHÔNG bấm nhồi lần 2 để tránh reset bộ đếm phạt!",
+        "[13:12:01] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h - Bước 3/6] Đã mở menu Chia sẻ & SAO CHÉP LIÊN KẾT video 🔗.",
+        "[13:12:04] [INFO] tiktok_pipeline: TTS #02 [04.08s-05.60s | gốc=1.80s]: rate=+18%, atempo=1.00x -> 1.52s",
+        "[13:12:10] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Bộ lọc 24h - Bước 6/6] Đã BÌNH LUẬN thành công: \"Hình ảnh với âm thanh đỉnh thật sự, ủng hộ kênh bạn lâu dài nha 🔥\"",
+        "[13:12:13] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Xác thực Follow Hồ Sơ @ng.ngc.chi96] Trước='' -> Sau='' (ServerOK=False, UIConfirmed=False, Đã lưu thật=False).",
+        "[13:12:13] [INFO] tiktok_pipeline: [phu_nu_khi_chat] === HOÀN TẤT BỘ LỌC 24 GIỜ CHO @ng.ngc.chi96: Xem=24.8s | Tim=False | CopyLink=True | YêuThích=False | Follow=False (ProfileVerified=False) | Comment=True ===",
+        "[13:12:18] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Kiểm chứng Hồ sơ Kênh] Thông số server sau phiên chạy: {'uniqueId': 'phunukhichat.k07', 'domFollowing': '0', 'domFollowers': '0', 'domLikes': '0', 'sidebarFollowing': ['/@phunukhichat.k07']}",
+        "[13:12:26] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã nạp file video vào TikTok Studio. Đang chờ tải lên 100% và tự động đóng các hộp thoại hướng dẫn ('Đã hiểu')...",
+        "[13:12:28] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
+        "[13:12:51] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Cho dù cậu có cắn cô ấy, cô ấy cũng sẽ không quan tâm đến cậu' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
+        "[13:12:51] [INFO] tiktok_pipeline: TTS #03 [05.88s-06.28s | gốc=1.84s]: rate=+45%, atempo=1.00x -> 0.40s",
+        "[13:13:10] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã nhập xong Mô tả & 8 Hashtag chuẩn vào TikTok Studio: \"✨ [Phụ Nữ Khí Chất] Bài học tâm lý hôn nhân sâu sắc giúp giữ lửa hạnh phúc gia đình. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thươ...\"",
+        "[13:13:10] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = TẮT)..."
       ],
-      "lock_file_content": "pid=48513 ts=1794028343"
+      "lock_file_content": "pid=48513 ts=1794031997"
     }
   }
 }
