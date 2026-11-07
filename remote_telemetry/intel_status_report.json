@@ -1,168 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 12:17:23",
+    "timestamp": "2026-11-07 12:20:16",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "nuoiconeq.k09",
-        "domFollowing": "0",
-        "domFollowers": "0",
-        "domLikes": "0",
-        "sidebarFollowing": [
-          "/@nuoiconeq.k09"
-        ]
-      },
-      "records": [
-        {
-          "channel": "nuoi_con_eq",
-          "video_id": "7704899302186929415",
-          "video_url": "https://www.tiktok.com/@annhienrice_/video/7704899302186929415",
-          "creator_handle": "@annhienrice_",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Cách làm video của bạn cuốn thật sự, xem một mạch tới cuối luôn 🌟",
-          "circuit_breaker_tripped": true,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110713140696A8D72E2EFC7D5DF9DB\",\"now\":1794028447000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110713140696A8D72E2EFC7D5DF9DB\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 890.6171875,
-              "y": 470.9921875,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "387"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 890.6171875,
-                "y": 470.9921875,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "388"
-              },
-              "red": true,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@annhienrice_",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@annhienrice_/video/7704899302186929415?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-07 12:14:34",
-          "follow_back_window_until": "2026-11-08 12:14:34"
-        },
-        {
-          "channel": "nuoi_con_eq",
-          "video_id": "7704849311070162228",
-          "video_url": "https://www.tiktok.com/@hin.hfl/video/7704849311070162228",
-          "creator_handle": "@hin.hfl",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Mê cái vibe của kênh bạn ghê, sẽ theo dõi ủng hộ dài lâu ạ 🫶",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "nuoiconeq.k09"
-            },
-            "profile_follow_verify": {
-              "creator": "@hin.hfl",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@hin.hfl/video/7704849311070162228?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-07 12:15:53",
-          "follow_back_window_until": "2026-11-08 12:15:53"
-        },
-        {
-          "channel": "nuoi_con_eq",
-          "video_id": "7704664006908185908",
-          "video_url": "https://www.tiktok.com/@thanhngo200826/video/7704664006908185908",
-          "creator_handle": "@thanhngo200826",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "profile_follow_verify": {
-              "creator": "@thanhngo200826",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@thanhngo200826/video/7704664006908185908?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-07 12:17:10",
-          "follow_back_window_until": "2026-11-08 12:17:10"
-        }
-      ]
+      "scrolled_videos": 11,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 158.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 12:20:16",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 158.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-07 12:17:23",
       "machine_arch": "x86_64",
@@ -962,21 +829,6 @@
             "follow_back_window_until": "2026-11-08 11:09:15"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-07 11:05:20",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 163.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
