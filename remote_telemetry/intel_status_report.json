@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 07:39:27",
+    "timestamp": "2026-11-07 07:44:12",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "event_type": "upload",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 157.8,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261107_063845_youtube_shorts_story_PzC2Ej2_Gn8.mp4",
+      "caption": "🤤 [Thiên Đường Ăn Vặt] Xin chào mọi người, tôi là LazyPongPong và hôm nay tôi sẽ chia sẻ công thức khoai tây. \"Sau khi chảo nóng, cho chút dầu vào, sau đó cho gừng, tỏi vào xào cho đến khi có mùi thơm...\" Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
+      "hashtags": "#anvatmoingay #doanvat #monngondelam #nauanngon #mukbangvietnam #anvatngon #viral #foryou",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-07 07:44:12",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261107_063845_youtube_shorts_story_PzC2Ej2_Gn8.mp4",
+        "caption": "🤤 [Thiên Đường Ăn Vặt] Xin chào mọi người, tôi là LazyPongPong và hôm nay tôi sẽ chia sẻ công thức khoai tây. \"Sau khi chảo nóng, cho chút dầu vào, sau đó cho gừng, tỏi vào xào cho đến khi có mùi thơm...\" Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
+        "hashtags": "#anvatmoingay #doanvat #monngondelam #nauanngon #mukbangvietnam #anvatngon #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-07 07:39:27",
       "machine_arch": "x86_64",
@@ -224,21 +241,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 164.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 06:09:53",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 1,
-        "fyp_followed": 0,
-        "elapsed_seconds": 165.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
