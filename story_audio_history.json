@@ -212,7 +212,8 @@
     "dgaLMNTHBjg",
     "8ziBfOjnk84",
     "zPpAM0tqC58",
-    "7181089306113494299"
+    "7181089306113494299",
+    "7242214257767550213"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -335,7 +336,8 @@
     "yt_sound_dgaLMNTHBjg",
     "yt_sound_8ziBfOjnk84",
     "yt_sound_zPpAM0tqC58",
-    "7181089322708159258"
+    "7181089322708159258",
+    "7242214270446029574"
   ],
   "items": [
     {
@@ -1597,6 +1599,16 @@
       "source_url": "https://www.tiktok.com/@tienhiep420/video/7181089306113494299",
       "output_filename": "tu_chan_gioi/ready/20261107_150946_tiktok_story_7181089306113494299.mp4",
       "crawled_at": "2026-11-07T15:09:54"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "7242214257767550213",
+      "sound_id": "7242214270446029574",
+      "platform": "tiktok",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.tiktok.com/@phunukhichat.vn/video/7242214257767550213",
+      "output_filename": "phu_nu_khi_chat/ready/20261107_153144_tiktok_story_7242214257767550213.mp4",
+      "crawled_at": "2026-11-07T15:31:48"
     }
   ]
 }
