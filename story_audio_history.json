@@ -204,7 +204,8 @@
     "WWF-PNZtuCg",
     "6Y8oi2E1Qfg",
     "dRJorm0Kt3c",
-    "1Nn3II88p_Q"
+    "1Nn3II88p_Q",
+    "wIjSNyrGhrM"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -319,7 +320,8 @@
     "yt_sound_WWF-PNZtuCg",
     "yt_sound_6Y8oi2E1Qfg",
     "yt_sound_dRJorm0Kt3c",
-    "yt_sound_1Nn3II88p_Q"
+    "yt_sound_1Nn3II88p_Q",
+    "yt_sound_wIjSNyrGhrM"
   ],
   "items": [
     {
@@ -1501,6 +1503,16 @@
       "source_url": "https://www.youtube.com/watch?v=1Nn3II88p_Q",
       "output_filename": "phu_nu_khi_chat/ready/20261107_120110_youtube_shorts_story_1Nn3II88p_Q.mp4",
       "crawled_at": "2026-11-07T12:03:04"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "wIjSNyrGhrM",
+      "sound_id": "yt_sound_wIjSNyrGhrM",
+      "platform": "youtube_shorts",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.youtube.com/watch?v=wIjSNyrGhrM",
+      "output_filename": "phu_nu_khi_chat/ready/20261107_122139_youtube_shorts_story_wIjSNyrGhrM.mp4",
+      "crawled_at": "2026-11-07T12:21:51"
     }
   ]
 }
