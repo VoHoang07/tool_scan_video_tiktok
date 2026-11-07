@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-07 23:43:48",
+    "timestamp": "2026-11-08 00:01:40",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "event_type": "upload",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 152.2,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261107_235448_tiktok_story_990002101_bongcuc_v4_s21_p1_bg_mukbang.mp4",
+      "caption": "✨ Bông Cúc Trắng Số 21 [Phần 1/5]: Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo. Càng nghe càng thấm, câu chuyện bước sang nút thắt bất ngờ nhất!",
+      "hashtags": "#bongcucso21 #bongcucaudio #truyentamly #mukbang #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-08 00:01:40",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261107_235448_tiktok_story_990002101_bongcuc_v4_s21_p1_bg_mukbang.mp4",
+        "caption": "✨ Bông Cúc Trắng Số 21 [Phần 1/5]: Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo. Càng nghe càng thấm, câu chuyện bước sang nút thắt bất ngờ nhất!",
+        "hashtags": "#bongcucso21 #bongcucaudio #truyentamly #mukbang #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-07 23:43:48",
       "machine_arch": "x86_64",
@@ -226,21 +243,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 170.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-07 22:18:17",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 150.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }

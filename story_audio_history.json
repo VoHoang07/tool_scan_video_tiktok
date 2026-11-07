@@ -226,7 +226,9 @@
     "qjr42DMIHbs",
     "7704256984731667718",
     "6887534636591844621",
-    "7684069833423752455"
+    "7684069833423752455",
+    "990010101",
+    "q0g8wvstCvI"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -363,7 +365,9 @@
     "yt_sound_qjr42DMIHbs",
     "7704257060409477896",
     "6887534671710767879",
-    "tt_seed_7684069833423752455"
+    "tt_seed_7684069833423752455",
+    "bongcuc_yt_ZPpMXuogRoA_p1",
+    "yt_sound_q0g8wvstCvI"
   ],
   "items": [
     {
@@ -1765,6 +1769,36 @@
       "source_url": "https://www.tiktok.com/@lin_cen_ling/video/7684069833423752455",
       "output_filename": "baby_AI/ready/20261107_233817_tiktok_story_7684069833423752455.mp4",
       "crawled_at": "2026-11-07T23:43:23"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990010101",
+      "sound_id": "bongcuc_yt_ZPpMXuogRoA_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=ZPpMXuogRoA&t=0s",
+      "output_filename": "audio_dem_khuyen/ready/20261107_235143_tiktok_story_990010101_bongcuc_v4_s101_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-07T23:54:45"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990002101",
+      "sound_id": "bongcuc_yt_KkvdYTXdeJU_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=KkvdYTXdeJU&t=0s",
+      "output_filename": "audio_dem_khuyen/ready/20261107_235448_tiktok_story_990002101_bongcuc_v4_s21_p1_bg_mukbang.mp4",
+      "crawled_at": "2026-11-07T23:58:28"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "q0g8wvstCvI",
+      "sound_id": "yt_sound_q0g8wvstCvI",
+      "platform": "youtube_shorts",
+      "genre": "channel_8_food_snacks",
+      "source_url": "https://www.youtube.com/watch?v=q0g8wvstCvI",
+      "output_filename": "an_vat_moi_ngay/ready/20261107_235618_youtube_shorts_story_q0g8wvstCvI.mp4",
+      "crawled_at": "2026-11-08T00:00:35"
     }
   ]
 }
