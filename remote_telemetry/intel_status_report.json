@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 00:09:21",
+    "timestamp": "2026-11-09 00:11:57",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261107_093214_tiktok_story_7660423297871465761.mp4",
-      "caption": "🐉 Nếu mọi chuyện chẳng như mình mong đợi, thì ta cũng đã cháy hết mình một lần trong đời — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #xh #xuhuongtiktok",
+      "video_file": "20261107_192718_youtube_shorts_story_ikf3tOTzfTE.mp4",
+      "caption": "✨ [Phụ Nữ Khí Chất] Bản lĩnh và khí chất của người phụ nữ hiện đại tự chủ. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
+      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #tamlyhoc #trietlytinhyeu #phunulamdep #xuhuongtiktok #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 00:11:57",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261107_192718_youtube_shorts_story_ikf3tOTzfTE.mp4",
+        "caption": "✨ [Phụ Nữ Khí Chất] Bản lĩnh và khí chất của người phụ nữ hiện đại tự chủ. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
+        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #tamlyhoc #trietlytinhyeu #phunulamdep #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 00:09:21",
       "machine_arch": "x86_64",
@@ -226,21 +242,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 152.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-08 20:33:34",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 163.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
