@@ -230,7 +230,8 @@
     "990010101",
     "q0g8wvstCvI",
     "7527659162948439304",
-    "bksKdhW_YDg"
+    "bksKdhW_YDg",
+    "7602503856299199762"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -371,7 +372,8 @@
     "bongcuc_yt_ZPpMXuogRoA_p1",
     "yt_sound_q0g8wvstCvI",
     "7303154672704588546",
-    "yt_sound_bksKdhW_YDg"
+    "yt_sound_bksKdhW_YDg",
+    "7602503941888805639"
   ],
   "items": [
     {
@@ -1823,6 +1825,16 @@
       "source_url": "https://www.youtube.com/watch?v=bksKdhW_YDg",
       "output_filename": "phu_nu_khi_chat/ready/20261108_031029_youtube_shorts_story_bksKdhW_YDg.mp4",
       "crawled_at": "2026-11-08T03:10:37"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7602503856299199762",
+      "sound_id": "7602503941888805639",
+      "platform": "tiktok",
+      "genre": "hoathinhai",
+      "source_url": "https://www.tiktok.com/@ninababystory/video/7602503856299199762",
+      "output_filename": "video_AI_hay/ready/20261108_074347_tiktok_story_7602503856299199762.mp4",
+      "crawled_at": "2026-11-08T07:43:55"
     }
   ]
 }
