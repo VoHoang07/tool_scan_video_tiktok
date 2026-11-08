@@ -1,173 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-08 10:28:56",
+    "timestamp": "2026-11-08 10:37:40",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "tania199356/video/7705011617334906132",
-        "domFollowing": null,
-        "domFollowers": null,
-        "domLikes": null,
-        "sidebarFollowing": [
-          "/@babyai025",
-          "/@nguyen_21078",
-          "/@_n.khanhly.07_",
-          "/@video_hay4",
-          "/@audio_ba_con_oi",
-          "/@tu_chan_gioi0"
-        ]
-      },
-      "records": [
-        {
-          "channel": "baby_AI",
-          "video_id": "7705227130690456850",
-          "video_url": "https://www.tiktok.com/@vaodaycheodi/video/7705227130690456850",
-          "creator_handle": "@vaodaycheodi",
-          "watched_seconds": 26.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Quá tuyệt vời luôn bạn ơi, thả tim ủng hộ kênh nhiệt tình nhé ❤️✨",
-          "circuit_breaker_tripped": true,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611081126326B63015A0D59CEA101F4\",\"now\":1794108392000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611081126326B63015A0D59CEA101F4\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": "babyai025"
-            },
-            "before": {
-              "x": 846.546875,
-              "y": 408.9921875,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "369"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 846.546875,
-                "y": 408.9921875,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "369"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@vaodaycheodi",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@vaodaycheodi/video/7705227130690456850?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-08 10:26:52",
-          "follow_back_window_until": "2026-11-09 10:26:52"
-        },
-        {
-          "channel": "baby_AI",
-          "video_id": "7705004550935121153",
-          "video_url": "https://www.tiktok.com/@301m3.21/video/7705004550935121153",
-          "creator_handle": "@301m3.21",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "profile_follow_verify": {
-              "creator": "@301m3.21",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@301m3.21/video/7705004550935121153?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-08 10:27:51",
-          "follow_back_window_until": "2026-11-09 10:27:51"
-        },
-        {
-          "channel": "baby_AI",
-          "video_id": "7705011617334906132",
-          "video_url": "https://www.tiktok.com/@tania199356/video/7705011617334906132",
-          "creator_handle": "@tania199356",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "profile_follow_verify": {
-              "creator": "@tania199356",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@tania199356/video/7705011617334906132?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-08 10:28:46",
-          "follow_back_window_until": "2026-11-09 10:28:46"
-        }
-      ]
+      "scrolled_videos": 10,
+      "ads_skipped": 2,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 164.7,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-08 10:37:40",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 2,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 164.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-08 10:28:56",
       "machine_arch": "x86_64",
@@ -832,21 +694,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-08 09:09:13",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "ads_skipped": 2,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 159.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
