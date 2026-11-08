@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-08 08:26:19",
+  "updated_at": "2026-11-08 08:56:26",
   "latest_result": {
-    "cmd_id": "heartbeat_1794101178",
+    "cmd_id": "heartbeat_1794102985",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-08 08:26:18",
+    "executed_at": "2026-11-08 08:56:25",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-08 08:26:19",
+      "timestamp": "2026-11-08 08:56:26",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 13.3,
+      "lock_file_age_seconds": 149.0,
       "processes": [
-        "48513    22:26:33 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514    22:26:33 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "91758    18:38:40 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "91760    18:38:39 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "48513    22:56:40 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48514    22:56:40 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "91758    19:08:47 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "91760    19:08:46 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[08:22:00] [INFO] tiktok_pipeline: [25.28s - 27.18s] 咱哪儿都用你的气儿气儿  ==>  Chúng mẹ có sử dụng sự tức giận của con ở mọi nơi không?",
-        "[08:22:00] [INFO] tiktok_pipeline: [28.04s - 28.64s] 出发  ==>  Khởi hành",
-        "[08:22:03] [INFO] tiktok_pipeline: Caption đã dịch: 🥰 Nhật ký gia đình siêu lầy: Lời khuyên khi về thăm nhà bố mẹ😂. \"Con có biết công thức bí mật để trở về nhà cha mẹ không...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "[08:22:03] [INFO] tiktok_pipeline: Hashtags: #giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #xuhuong #viral",
-        "[08:22:03] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
-        "[08:22:03] [INFO] tiktok_pipeline: Cấu hình giọng kênh [baby_AI]: Giọng tự nhiên, đời thường, tếu táo, nhịp nhanh cuốn hút (voice=vi-VN-HoaiMyNeural, rate=+18%, pitch=+2Hz)",
-        "[08:22:03] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-HoaiMyNeural, Tốc độ gốc: +18%, Độ trầm/cao: +2Hz) cho 18 câu thoại...",
-        "[08:22:33] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Không phải mẹ đã nói sẽ về nhà bố mẹ đẻ sớm sao?' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[08:22:33] [INFO] tiktok_pipeline: TTS #00 [01.30s-01.70s | gốc=2.40s]: rate=+18%, atempo=1.00x -> 0.40s",
-        "[08:23:02] [INFO] tiktok_pipeline: TTS #01 [03.82s-05.23s | gốc=1.48s]: rate=+45%, atempo=1.52x -> 1.41s",
-        "[08:23:43] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Thật là một công thức' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[08:23:44] [INFO] tiktok_pipeline: TTS #02 [05.30s-05.70s | gốc=0.74s]: rate=+45%, atempo=1.00x -> 0.40s",
-        "[08:24:10] [INFO] tiktok_pipeline: TTS #03 [06.04s-06.76s | gốc=0.74s]: rate=+45%, atempo=1.28x -> 0.72s",
-        "[08:24:39] [INFO] tiktok_pipeline: TTS #04 [07.14s-08.37s | gốc=1.32s]: rate=+25%, atempo=1.00x -> 1.23s",
-        "[08:24:50] [INFO] tiktok_pipeline: TTS #05 [08.46s-09.98s | gốc=1.58s]: rate=+45%, atempo=1.36x -> 1.52s",
-        "[08:24:58] [INFO] tiktok_pipeline: TTS #06 [10.04s-10.55s | gốc=0.56s]: rate=+45%, atempo=1.38x -> 0.51s",
-        "[08:25:26] [WARNING] tiktok_pipeline: Edge-TTS không trả về audio cho câu 'Lấy cái ngon, cái đắt, chứ không lấy cái miễn phí, gà, vịt, cá, tôm' (No audio was received. Please verify that your parameters are correct.), tạo đoạn lặng thay thế.",
-        "[08:25:26] [INFO] tiktok_pipeline: TTS #07 [10.60s-11.00s | gốc=4.30s]: rate=+18%, atempo=1.00x -> 0.40s",
-        "[08:25:47] [INFO] tiktok_pipeline: TTS #08 [14.90s-16.28s | gốc=1.44s]: rate=+45%, atempo=1.09x -> 1.38s",
-        "[08:26:12] [INFO] tiktok_pipeline: TTS #09 [16.34s-16.73s | gốc=0.68s]: rate=+18%, atempo=1.00x -> 0.39s"
+        "[08:49:46] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 9 câu thoại hoàn chỉnh (mean_logprob=-0.43, ocr_coverage=0%).",
+        "[08:49:46] [INFO] tiktok_pipeline: [Language Gate] -> LOẠI BỎ 6653750135396289806: Ngôn ngữ âm thanh phát hiện là 'en' (chỉ cho phép video Trung Quốc 'zh' và Việt Nam 'vi').",
+        "[08:49:46] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #4/8: [FACEBOOK_REELS] ID=418364624187014 (tim=1840, thời lượng=59.5s) ---",
+        "[08:49:46] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=418364624187014 (thời lượng=59.5s, sound='Original Audio', view=46000, tim=1840, share=230)...",
+        "[08:49:46] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/418364624187014",
+        "[facebook:reel] Extracting URL: https://www.facebook.com/reel/418364624187014",
+        "[facebook] Extracting URL: https://m.facebook.com/watch/?v=418364624187014&_rdr",
+        "[facebook] 418364624187014: Downloading webpage",
+        "[facebook] 418364624187014: Downloading webpage",
+        "ERROR: [facebook] 418364624187014: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U",
+        "[08:49:48] [WARNING] tiktok_pipeline: yt-dlp gặp lỗi trên facebook_reels (ERROR: [facebook] 418364624187014: Cannot parse data; please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U).",
+        "[08:49:48] [WARNING] tiktok_pipeline: [Voice Filter] Lỗi khi kiểm tra ứng viên 418364624187014: Không thể tải video từ URL: https://www.facebook.com/reel/418364624187014. Vui lòng kiểm tra lại đường dẫn hoặc kết nối mạng.",
+        "[08:49:48] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #5/8: [DOUYIN] ID=7532109751288073531 (tim=724658, thời lượng=17.9s) ---",
+        "[08:49:48] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7532109751288073531 (thời lượng=17.9s, sound='@白月.创作的原声一白月.', view=26495410, tim=724658, share=180601)...",
+        "[08:49:48] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
+        "[08:49:49] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
+        "[08:49:52] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7532109751288073531/raw_video.mp4 (1.40 MB)",
+        "[08:49:52] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7532109751288073531/audio.mp3",
+        "[08:49:52] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 17.86s)",
+        "[08:49:53] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7532109751288073531/audio.mp3 (auto-detect language, word_timestamps=True)..."
       ],
-      "lock_file_content": "idle"
+      "lock_file_content": "pid=91758 ts=1794102837"
     }
   }
 }
