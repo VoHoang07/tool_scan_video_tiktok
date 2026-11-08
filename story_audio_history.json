@@ -238,7 +238,8 @@
     "dLcFxrBrPQo",
     "7690225058379336991",
     "7424705726947314962",
-    "7478633906443488520"
+    "7478633906443488520",
+    "6828480025688395019"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -386,7 +387,8 @@
     "bongcuc_yt_DoVFGuEeB1k_p6",
     "yt_sound_dLcFxrBrPQo",
     "7690225127690226463",
-    "7424705780030376721"
+    "7424705780030376721",
+    "6828480072249248526"
   ],
   "items": [
     {
@@ -1918,6 +1920,16 @@
       "source_url": "https://www.tiktok.com/@songkhoemoingay/video/7478633906443488520",
       "output_filename": "suc_khoe_duong_sinh/ready/20261108_120233_tiktok_story_7478633906443488520.mp4",
       "crawled_at": "2026-11-08T12:02:57"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "6828480025688395019",
+      "sound_id": "6828480072249248526",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/6828480025688395019",
+      "output_filename": "video_AI_hay/ready/20261108_123250_douyin_story_6828480025688395019.mp4",
+      "crawled_at": "2026-11-08T12:36:54"
     }
   ]
 }
