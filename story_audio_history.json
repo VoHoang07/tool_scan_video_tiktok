@@ -236,7 +236,8 @@
     "7689463489458490631",
     "990001006",
     "dLcFxrBrPQo",
-    "7690225058379336991"
+    "7690225058379336991",
+    "7424705726947314962"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -383,7 +384,8 @@
     "tt_seed_7689463489458490631",
     "bongcuc_yt_DoVFGuEeB1k_p6",
     "yt_sound_dLcFxrBrPQo",
-    "7690225127690226463"
+    "7690225127690226463",
+    "7424705780030376721"
   ],
   "items": [
     {
@@ -1895,6 +1897,16 @@
       "source_url": "https://www.tiktok.com/@xelalexe/video/7690225058379336991",
       "output_filename": "tu_chan_gioi/ready/20261108_094812_tiktok_story_7690225058379336991.mp4",
       "crawled_at": "2026-11-08T09:48:19"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "7424705726947314962",
+      "sound_id": "7424705780030376721",
+      "platform": "tiktok",
+      "genre": "channel_8_food_snacks",
+      "source_url": "https://www.tiktok.com/@monngonmoingay/video/7424705726947314962",
+      "output_filename": "an_vat_moi_ngay/ready/20261108_095829_tiktok_story_7424705726947314962.mp4",
+      "crawled_at": "2026-11-08T09:58:33"
     }
   ]
 }
