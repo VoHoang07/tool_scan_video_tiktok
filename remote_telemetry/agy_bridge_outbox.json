@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-09 03:26:41",
+  "updated_at": "2026-11-09 03:56:45",
   "latest_result": {
-    "cmd_id": "heartbeat_1794169600",
+    "cmd_id": "heartbeat_1794171405",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-09 03:26:40",
+    "executed_at": "2026-11-09 03:56:45",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-09 03:26:41",
+      "timestamp": "2026-11-09 03:56:45",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -15,30 +15,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "51409    05:16:49 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "51411    05:16:49 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "85549    02:43:32 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "85551    02:43:32 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "51409    05:46:53 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "51411    05:46:53 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "85549    03:13:36 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "85551    03:13:36 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "Master CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
-        "[03:24:47] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
-        "[03:24:47] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
-        "==============================================================================================",
-        "[03:25:49] [INFO] tiktok_pipeline: === [CHU KỲ #11] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
-        "[03:25:54] [INFO] tiktok_pipeline: [Round-Robin] Kênh video_AI_hay (video_AI_hay) hiện có 4/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
-        "[03:25:54] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[03:25:54] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[03:25:54] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[03:25:54] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_1_ai_animation] -> Thư mục: output/video_AI_hay/ready/ | Link mẫu: 10 | Kênh mẫu: [] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-        "[03:25:54] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/Mr4JFtYJ-lg/",
-        "[03:25:56] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7698023893977599272 (ID: 7698023893977599272)",
-        "[03:25:57] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/KhnOwGH99QQ/",
-        "[03:25:58] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)",
-        "[03:26:03] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/5PXz62pKn0s/",
-        "[03:26:04] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7696826479242519139 (ID: 7696826479242519139)",
-        "[03:26:05] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/RrMNQy7NBa0/",
-        "[03:26:06] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7681137499921550619 (ID: 7681137499921550619)"
+        "[03:56:05] [INFO] tiktok_pipeline: === [CHU KỲ #13] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+        "[Buffer Guard] Kênh video_AI_hay (video_AI_hay - channel_1_ai_animation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[03:56:11] [INFO] tiktok_pipeline: Kênh video_AI_hay (video_AI_hay - channel_1_ai_animation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[03:56:14] [INFO] tiktok_pipeline: Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[03:56:17] [INFO] tiktok_pipeline: Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[03:56:20] [INFO] tiktok_pipeline: Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[03:56:22] [INFO] tiktok_pipeline: Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[03:56:26] [INFO] tiktok_pipeline: [Round-Robin] Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh) hiện có 4/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
+        "[03:56:26] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[03:56:26] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[03:56:26] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[03:56:26] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_6_health_wellness] -> Thư mục: output/suc_khoe_duong_sinh/ready/ | Link mẫu: 0 | Kênh mẫu: ['suckhoedoisong.vn', 'duongsinhmoingay', 'songkhoemoingay', 'bacsidinhduong'] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
+        "[03:56:27] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @suckhoedoisong.vn.",
+        "[03:56:27] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @duongsinhmoingay.",
+        "[03:56:28] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @songkhoemoingay.",
+        "[03:56:28] [WARNING] tiktok_pipeline: Không tìm thấy secUid cho kênh TikTok @bacsidinhduong."
       ]
     }
   }
