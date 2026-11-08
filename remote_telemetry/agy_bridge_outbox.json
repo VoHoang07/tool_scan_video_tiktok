@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-08 12:27:11",
+  "updated_at": "2026-11-08 12:57:29",
   "latest_result": {
-    "cmd_id": "heartbeat_1794115630",
+    "cmd_id": "heartbeat_1794117449",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-08 12:27:10",
+    "executed_at": "2026-11-08 12:57:29",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-08 12:27:11",
+      "timestamp": "2026-11-08 12:57:29",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 87.2,
+      "lock_file_age_seconds": 48.9,
       "processes": [
-        "12670    03:17:17 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "12671    03:17:17 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "91758    22:39:32 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "91760    22:39:31 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "12670    03:47:35 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "12671    03:47:35 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "91758    23:09:50 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "91760    23:09:49 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "  + Kịch bản ngắn: 🤤 [Thiên Đường Ăn Vặt] Công thức món ngon siêu dễ làm tại nhà nhìn thôi đã thấy thèm. Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
-        "  + Hashtags Hot Search: #monngondelam #amthuctiktok #anvatmoingay #anvatngon #congthucnauan #doanvatnoidia #doanvat #viral",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "[12:25:47] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Anti-Detect Warmup] Đang lướt dạo trang chủ TikTok 15s như người dùng thật...",
-        "[12:26:05] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h Warmup] Kết hợp chạy 1 video tương tác chéo 'Bộ lọc 24 giờ' trước khi đăng bài...",
-        "[12:26:05] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h] Làm ấm phiên webmssdk.js trên FYP trước khi tương tác...",
-        "[12:26:15] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h] Đang quét video mới xây kênh 24h qua thẻ #tuongtaccheo (cursor=60)...",
-        "[12:26:18] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h] Đang quét video mới xây kênh 24h qua thẻ #flcheo (cursor=60)...",
-        "[12:26:20] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h] Đang tương tác video #1/1: https://www.tiktok.com/@buniu400/video/7705504681098743047",
-        "[12:26:20] [INFO] tiktok_pipeline: [an_vat_moi_ngay] === BẮT ĐẦU BỘ LỌC 24 GIỜ TRÊN VIDEO CỦA @buniu400 (https://www.tiktok.com/@buniu400/video/7705504681098743047) ===",
-        "[12:26:22] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h - Bước 1/6] Đang XEM HẾT VIDEO (24.8s / thời lượng gốc 24.0s): https://www.tiktok.com/@buniu400/video/7705504681098743047",
-        "[12:26:50] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h] Đã chuyển sang tab 'Bình luận' ở khung phải.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "[12:26:55] [WARNING] tiktok_pipeline: [an_vat_moi_ngay] [Circuit Breaker Anti-Shark] Máy chủ TikTok trả về is_digg=1 (tài khoản đang trong thời gian giới hạn thả tim) -> Ngắt thao tác Like ngay, KHÔNG bấm nhồi lần 2 để tránh reset bộ đếm phạt!",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "[12:27:00] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h - Bước 3/6] Đã mở menu Chia sẻ & SAO CHÉP LIÊN KẾT video 🔗.",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "[12:27:09] [INFO] tiktok_pipeline: [an_vat_moi_ngay] [Bộ lọc 24h - Bước 6/6] Đã BÌNH LUẬN thành công: \"Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️\""
+        "[12:54:02] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc...",
+        "[12:54:05] [INFO] tiktok_pipeline: Hoàn tất xuất bản video tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/baby_AI/ready/20261108_125329_tiktok_story_7684687724355538197.mp4",
+        "[12:54:05] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=baby_AI, file=baby_AI/ready/20261108_125329_tiktok_story_7684687724355538197.mp4, status=READY)",
+        "[12:54:05] [INFO] tiktok_pipeline: ==> Đã hoàn thành 1/1 video cho [baby_AI]: /Users/vohoang/Documents/tool_scan_video_tiktok/output/baby_AI/ready/20261108_125329_tiktok_story_7684687724355538197.mp4",
+        "[12:54:05] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh baby_AI (baby_AI)! Kho chờ ready/ hiện tại: 5/5",
+        "[Buffer Guard] Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[12:54:08] [INFO] tiktok_pipeline: Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[12:54:11] [INFO] tiktok_pipeline: Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[12:54:14] [INFO] tiktok_pipeline: Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh - channel_6_health_wellness) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[12:54:17] [INFO] tiktok_pipeline: Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh - channel_6_health_wellness) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh phu_nu_khi_chat (phu_nu_khi_chat - channel_7_women_eq) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[12:54:20] [INFO] tiktok_pipeline: Kênh phu_nu_khi_chat (phu_nu_khi_chat - channel_7_women_eq) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[12:54:23] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh baby_AI (baby_AI): Nghỉ an toàn 270s (~4.5 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
+        "[12:56:46] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (9b62339 -> 60ad603) | Auto-Telemetry [warmup_fyp] meo_vat_gia_dinh at 2026-11-08 12:56:39",
+        "[12:57:24] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[12:57:24] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[12:57:25] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!"
       ],
-      "lock_file_content": "pid=12670 ts=1794115544"
+      "lock_file_content": "idle"
     }
   }
 }
