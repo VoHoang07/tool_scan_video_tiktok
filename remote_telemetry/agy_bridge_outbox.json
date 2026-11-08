@@ -1,28 +1,31 @@
 {
-  "updated_at": "2026-11-08 08:56:26",
+  "updated_at": "2026-11-08 09:09:54",
   "latest_result": {
-    "cmd_id": "heartbeat_1794102985",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-08 08:56:25",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_restart_1794103794",
+    "action": "auto_restart_dead_streams",
+    "executed_at": "2026-11-08 09:09:54",
+    "restart_info": {
+      "restarted_streams": [
+        "stream1_unhung_after_1201s",
+        "stream1_upload"
+      ],
+      "timestamp": "2026-11-08 09:09:54"
+    },
     "system_health": {
-      "timestamp": "2026-11-08 08:56:26",
+      "timestamp": "2026-11-08 09:09:54",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 149.0,
+      "lock_file_age_seconds": 40.0,
       "processes": [
-        "48513    22:56:40 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514    22:56:40 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "91758    19:08:47 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "91760    19:08:46 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "12670       00:00 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "12671       00:00 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "91758    19:22:15 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "91760    19:22:14 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[08:49:46] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 9 câu thoại hoàn chỉnh (mean_logprob=-0.43, ocr_coverage=0%).",
-        "[08:49:46] [INFO] tiktok_pipeline: [Language Gate] -> LOẠI BỎ 6653750135396289806: Ngôn ngữ âm thanh phát hiện là 'en' (chỉ cho phép video Trung Quốc 'zh' và Việt Nam 'vi').",
         "[08:49:46] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #4/8: [FACEBOOK_REELS] ID=418364624187014 (tim=1840, thời lượng=59.5s) ---",
         "[08:49:46] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên FACEBOOK_REELS ID=418364624187014 (thời lượng=59.5s, sound='Original Audio', view=46000, tim=1840, share=230)...",
         "[08:49:46] [INFO] tiktok_pipeline: Đang tải video bằng yt-dlp từ [facebook_reels]: https://www.facebook.com/reel/418364624187014",
@@ -40,9 +43,11 @@
         "[08:49:52] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7532109751288073531/raw_video.mp4 (1.40 MB)",
         "[08:49:52] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7532109751288073531/audio.mp3",
         "[08:49:52] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 17.86s)",
-        "[08:49:53] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7532109751288073531/audio.mp3 (auto-detect language, word_timestamps=True)..."
+        "[08:49:53] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7532109751288073531/audio.mp3 (auto-detect language, word_timestamps=True)...",
+        "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
+        "  warnings.warn('resource_tracker: There appear to be %d '"
       ],
-      "lock_file_content": "pid=91758 ts=1794102837"
+      "lock_file_content": "idle"
     }
   }
 }
