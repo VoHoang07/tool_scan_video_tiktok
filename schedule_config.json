@@ -11,7 +11,7 @@
       ]
     },
     "switch_2_upload": {
-      "tiktok": false,
+      "tiktok": true,
       "fb_reels": false,
       "yt_shorts": false,
       "batch_single_chrome_session": true
@@ -177,7 +177,7 @@
     "phu_kien_tien_ich": ""
   },
   "remote_trigger_post_now": {
-    "trigger_id": "",
+    "trigger_id": "post_now_night_20261108_2357",
     "target_arch": "x86_64",
     "action": "upload",
     "channel": "baby_AI,video_AI_hay,audio_dem_khuyen,tu_chan_gioi,phu_nu_khi_chat,an_vat_moi_ngay,suc_khoe_duong_sinh",

@@ -1,10 +1,10 @@
 {
-  "cmd_id": "cmd_20261108_2208_disable_switch2_and_switch3",
-  "created_at": "2026-11-08 22:08:45",
+  "cmd_id": "cmd_20261108_2357_enable_switch2_upload",
+  "created_at": "2026-11-08 23:57:45",
   "from_machine": "arm64",
   "target_arch": "x86_64",
   "action": "shell",
   "agy_prompt": "",
-  "shell_command": "exec </dev/null; pkill -9 -f 'stream-filter24h' || true; pkill -9 -f 'Google Chrome for Testing' || true; rm -f workspace_temp/.tiktok_browser_session.lock; ps aux | grep -E 'stream-upload|stream-filter24h' | grep -v grep",
+  "shell_command": "exec </dev/null; mkdir -p logs; pkill -9 -f 'main.py --stream-upload' || true; sleep 1; nohup caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5 </dev/null >> logs/daemon_24_7.log 2>&1 & sleep 2; ps aux | grep -E 'stream-upload|stream-filter24h' | grep -v grep",
   "timeout_seconds": 30
 }
