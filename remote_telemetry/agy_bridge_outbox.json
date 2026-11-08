@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-09 04:26:47",
+  "updated_at": "2026-11-09 04:56:53",
   "latest_result": {
-    "cmd_id": "heartbeat_1794173206",
+    "cmd_id": "heartbeat_1794175012",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-09 04:26:46",
+    "executed_at": "2026-11-09 04:56:52",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-09 04:26:47",
+      "timestamp": "2026-11-09 04:56:53",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -15,31 +15,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "51409    06:16:55 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "51411    06:16:55 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "85549    03:43:38 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "85551    03:43:38 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "51409    06:47:01 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "51411    06:47:01 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "85549    04:13:44 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "85551    04:13:44 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "KÊNH               | CHỦ ĐỀ NGÁCH (PROFILE)     |  READY (CHỜ ĐĂNG) |  POSTED (ĐÃ ĐĂNG) |  TỔNG CỘNG",
-        "----------------------------------------------------------------------------------------------------",
-        "video_AI_hay       | channel_1_ai_animation     |                 5 |                 8 |         13",
-        "baby_AI            | channel_2_life_comedy      |                 5 |                 8 |         13",
-        "audio_dem_khuyen   | channel_3_novel_drama      |                 5 |                 8 |         13",
-        "tu_chan_gioi       | channel_4_ai_cultivation   |                 5 |                 8 |         13",
-        "meo_vat_gia_dinh   | channel_5_home_gadgets     |                 5 |                 0 |          5",
-        "suc_khoe_duong_sinh | channel_6_health_wellness  |                 4 |                 8 |         12",
-        "phu_nu_khi_chat    | channel_7_women_eq         |                 4 |                 8 |         12",
-        "an_vat_moi_ngay    | channel_8_food_snacks      |                 4 |                 8 |         12",
-        "nuoi_con_eq        | channel_9_smart_parenting  |                 8 |                 0 |          8",
-        "phu_kien_tien_ich  | channel_10_tech_gadgets    |                 5 |                 0 |          5",
-        "thu_cung_vui_nhon  | channel_11_pet_comedy      |                 5 |                 0 |          5",
-        "----------------------------------------------------------------------------------------------------",
-        "TỔNG KẾT           | Toàn bộ 11 kênh TikTok     |                55 |                56 |        111",
-        "====================================================================================================",
-        "Master CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
-        "[04:26:07] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
-        "[04:26:07] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe."
       ]
     }
   }
