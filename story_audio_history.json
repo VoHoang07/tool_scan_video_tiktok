@@ -234,7 +234,8 @@
     "7602503856299199762",
     "7703807328830688520",
     "7689463489458490631",
-    "990001006"
+    "990001006",
+    "dLcFxrBrPQo"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -379,7 +380,8 @@
     "7602503941888805639",
     "7703807380794690324",
     "tt_seed_7689463489458490631",
-    "bongcuc_yt_DoVFGuEeB1k_p6"
+    "bongcuc_yt_DoVFGuEeB1k_p6",
+    "yt_sound_dLcFxrBrPQo"
   ],
   "items": [
     {
@@ -1871,6 +1873,16 @@
       "source_url": "https://www.youtube.com/watch?v=DoVFGuEeB1k&t=1964s",
       "output_filename": "audio_dem_khuyen/ready/20261108_091142_tiktok_story_990001006_bongcuc_v4_s10_p6_bg_daylight.mp4",
       "crawled_at": "2026-11-08T09:14:21"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "dLcFxrBrPQo",
+      "sound_id": "yt_sound_dLcFxrBrPQo",
+      "platform": "youtube_shorts",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.youtube.com/watch?v=dLcFxrBrPQo",
+      "output_filename": "phu_nu_khi_chat/ready/20261108_092108_youtube_shorts_story_dLcFxrBrPQo.mp4",
+      "crawled_at": "2026-11-08T09:38:24"
     }
   ]
 }
