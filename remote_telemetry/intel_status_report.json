@@ -1,21 +1,331 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-08 09:17:31",
+    "timestamp": "2026-11-08 09:24:52",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "filter24h",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261108_091142_tiktok_story_990001006_bongcuc_v4_s10_p6_bg_daylight.mp4",
-      "caption": "✨ Bông Cúc Trắng Số 10 [Phần 6/13]: Họ Lấy Hết Mọi Thứ Rồi Vẫn Muốn Tôi Biết Điều. Càng nghe càng thấm, câu chuyện bước sang nút thắt bất ngờ nhất!",
-      "hashtags": "#bongcucso10 #bongcucaudio #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly #satisfying",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 3,
+      "own_profile_stats": {
+        "uniqueId": "meovatgiadinh.k05",
+        "domFollowing": "0",
+        "domFollowers": "0",
+        "domLikes": "0",
+        "sidebarFollowing": [
+          "/@meovatgiadinh.k05"
+        ]
+      },
+      "records": [
+        {
+          "channel": "meo_vat_gia_dinh",
+          "video_id": "7705410793902296338",
+          "video_url": "https://www.tiktok.com/@mlkboy0/video/7705410793902296338",
+          "creator_handle": "@mlkboy0",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": false,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Video chất lượng lắm ạ, mong chờ các tập tiếp theo từ kênh của bạn 🫶",
+          "circuit_breaker_tripped": true,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261108102234EF2789B5473061BA9D1F\",\"now\":1794104554000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261108102234EF2789B5473061BA9D1F\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 814.96875,
+              "y": 379,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "5"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 814.96875,
+                "y": 379,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "5"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@mlkboy0",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@mlkboy0/video/7705410793902296338?lang=vi-VN",
+              "before_btn": "",
+              "after_btn": "",
+              "init_relation": null,
+              "server_follow_ok": false,
+              "ui_confirmed": false,
+              "persisted": false,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-08 09:22:53",
+          "follow_back_window_until": "2026-11-09 09:22:53"
+        },
+        {
+          "channel": "meo_vat_gia_dinh",
+          "video_id": "7705419596601314568",
+          "video_url": "https://www.tiktok.com/@ngam.th6/video/7705419596601314568",
+          "creator_handle": "@ngam.th6",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Một chiếc video đầy năng lượng tích cực, chúc kênh luôn bùng nổ view nhé 🔥",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "profile_follow_verify": {
+              "creator": "@ngam.th6",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@ngam.th6/video/7705419596601314568?lang=vi-VN",
+              "before_btn": "",
+              "after_btn": "",
+              "init_relation": null,
+              "server_follow_ok": false,
+              "ui_confirmed": false,
+              "persisted": false,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-08 09:23:53",
+          "follow_back_window_until": "2026-11-09 09:23:53"
+        },
+        {
+          "channel": "meo_vat_gia_dinh",
+          "video_id": "7705276994526760200",
+          "video_url": "https://www.tiktok.com/@tn.hnh.linh6205/video/7705276994526760200",
+          "creator_handle": "@tn.hnh.linh6205",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Video chất lượng lắm ạ, mong chờ các tập tiếp theo từ kênh của bạn 🫶",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "profile_follow_verify": {
+              "creator": "@tn.hnh.linh6205",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@tn.hnh.linh6205/video/7705276994526760200?lang=vi-VN",
+              "before_btn": "",
+              "after_btn": "",
+              "init_relation": null,
+              "server_follow_ok": false,
+              "ui_confirmed": false,
+              "persisted": false,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-08 09:24:47",
+          "follow_back_window_until": "2026-11-09 09:24:47"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-08 09:24:52",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "meovatgiadinh.k05",
+          "domFollowing": "0",
+          "domFollowers": "0",
+          "domLikes": "0",
+          "sidebarFollowing": [
+            "/@meovatgiadinh.k05"
+          ]
+        },
+        "records": [
+          {
+            "channel": "meo_vat_gia_dinh",
+            "video_id": "7705410793902296338",
+            "video_url": "https://www.tiktok.com/@mlkboy0/video/7705410793902296338",
+            "creator_handle": "@mlkboy0",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Video chất lượng lắm ạ, mong chờ các tập tiếp theo từ kênh của bạn 🫶",
+            "circuit_breaker_tripped": true,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261108102234EF2789B5473061BA9D1F\",\"now\":1794104554000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261108102234EF2789B5473061BA9D1F\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 814.96875,
+                "y": 379,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "5"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 814.96875,
+                  "y": 379,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "5"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@mlkboy0",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@mlkboy0/video/7705410793902296338?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-08 09:22:53",
+            "follow_back_window_until": "2026-11-09 09:22:53"
+          },
+          {
+            "channel": "meo_vat_gia_dinh",
+            "video_id": "7705419596601314568",
+            "video_url": "https://www.tiktok.com/@ngam.th6/video/7705419596601314568",
+            "creator_handle": "@ngam.th6",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Một chiếc video đầy năng lượng tích cực, chúc kênh luôn bùng nổ view nhé 🔥",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "profile_follow_verify": {
+                "creator": "@ngam.th6",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@ngam.th6/video/7705419596601314568?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-08 09:23:53",
+            "follow_back_window_until": "2026-11-09 09:23:53"
+          },
+          {
+            "channel": "meo_vat_gia_dinh",
+            "video_id": "7705276994526760200",
+            "video_url": "https://www.tiktok.com/@tn.hnh.linh6205/video/7705276994526760200",
+            "creator_handle": "@tn.hnh.linh6205",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Video chất lượng lắm ạ, mong chờ các tập tiếp theo từ kênh của bạn 🫶",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "profile_follow_verify": {
+                "creator": "@tn.hnh.linh6205",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@tn.hnh.linh6205/video/7705276994526760200?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-08 09:24:47",
+            "follow_back_window_until": "2026-11-09 09:24:47"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-08 09:17:31",
       "machine_arch": "x86_64",
@@ -228,21 +538,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-08 07:46:57",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 162.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
