@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-08 13:21:28",
+    "timestamp": "2026-11-08 13:27:25",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
+      "scrolled_videos": 11,
+      "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 160.1,
+      "elapsed_seconds": 155.9,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-08 13:27:25",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 155.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-08 13:21:28",
       "machine_arch": "x86_64",
@@ -374,22 +389,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 156.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-08 12:08:57",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261107_080121_tiktok_story_7659326829458640149.mp4",
-        "caption": "🐾 Phim ngắn hoạt hình AI siêu cuốn với tình tiết bất ngờ ở giây cuối cùng — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
