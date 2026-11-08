@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-08 12:08:57",
+    "timestamp": "2026-11-08 12:11:53",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261107_080121_tiktok_story_7659326829458640149.mp4",
-      "caption": "🐾 Phim ngắn hoạt hình AI siêu cuốn với tình tiết bất ngờ ở giây cuối cùng — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-      "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 156.7,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-08 12:11:53",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 156.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-08 12:08:57",
       "machine_arch": "x86_64",
@@ -840,21 +854,6 @@
             "follow_back_window_until": "2026-11-09 10:47:03"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-08 10:37:40",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 2,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 164.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
