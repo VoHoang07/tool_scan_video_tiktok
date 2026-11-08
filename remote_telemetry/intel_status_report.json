@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-08 13:02:39",
+    "timestamp": "2026-11-08 13:06:25",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "event_type": "upload",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "ads_skipped": 3,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 161.1,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261107_171052_tiktok_story_7241844480637242630.mp4",
+      "caption": "🌹 Tâm lý Hôn nhân & Gia đình: chia ly cũng là một loại may mắn, vì rồi ta sẽ hiểu ai trong đời đến rồi đi cũng đều có lý do. điều cuối cùng ở lại là đáng trân quý 😍. Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
+      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #foryou #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-08 13:06:25",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261107_171052_tiktok_story_7241844480637242630.mp4",
+        "caption": "🌹 Tâm lý Hôn nhân & Gia đình: chia ly cũng là một loại may mắn, vì rồi ta sẽ hiểu ai trong đời đến rồi đi cũng đều có lý do. điều cuối cùng ở lại là đáng trân quý 😍. Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
+        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-08 13:02:39",
       "machine_arch": "x86_64",
@@ -523,22 +540,6 @@
             "follow_back_window_until": "2026-11-09 12:02:38"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-08 11:55:24",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261107_113447_youtube_shorts_story_dRJorm0Kt3c.mp4",
-        "caption": "🌿 [Sức Khỏe Chủ Động] Bí quyết dưỡng sinh đơn giản tại nhà giúp tràn đầy năng lượng. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-        "hashtags": "#duongsinh #songkhoe #suckhoechudong #healthyvietnam #songlanhmanh #chamSocSucKhoe #suckhoe #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
