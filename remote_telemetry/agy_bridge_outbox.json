@@ -1,46 +1,47 @@
 {
-  "updated_at": "2026-11-08 07:25:59",
+  "updated_at": "2026-11-08 07:56:11",
   "latest_result": {
-    "cmd_id": "heartbeat_1794097558",
+    "cmd_id": "heartbeat_1794099371",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-08 07:25:58",
+    "executed_at": "2026-11-08 07:56:11",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-08 07:25:59",
+      "timestamp": "2026-11-08 07:56:11",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 35.0,
+      "lock_file_age_seconds": 129.6,
       "processes": [
-        "48513    21:26:13 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "48514    21:26:13 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "91758    17:38:20 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "91760    17:38:19 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "48513    21:56:25 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "48514    21:56:25 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "91758    18:08:32 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "91760    18:08:31 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
+        "KÊNH               | CHỦ ĐỀ NGÁCH (PROFILE)     |  READY (CHỜ ĐĂNG) |  POSTED (ĐÃ ĐĂNG) |  TỔNG CỘNG",
+        "----------------------------------------------------------------------------------------------------",
+        "video_AI_hay       | channel_1_ai_animation     |                 5 |                 8 |         13",
+        "baby_AI            | channel_2_life_comedy      |                 5 |                 8 |         13",
+        "audio_dem_khuyen   | channel_3_novel_drama      |                 5 |                 8 |         13",
+        "tu_chan_gioi       | channel_4_ai_cultivation   |                 5 |                 8 |         13",
+        "meo_vat_gia_dinh   | channel_5_home_gadgets     |                 5 |                 0 |          5",
+        "suc_khoe_duong_sinh | channel_6_health_wellness  |                 4 |                 8 |         12",
+        "phu_nu_khi_chat    | channel_7_women_eq         |                 5 |                 7 |         12",
+        "an_vat_moi_ngay    | channel_8_food_snacks      |                 4 |                 8 |         12",
+        "nuoi_con_eq        | channel_9_smart_parenting  |                 8 |                 0 |          8",
         "phu_kien_tien_ich  | channel_10_tech_gadgets    |                 5 |                 0 |          5",
         "thu_cung_vui_nhon  | channel_11_pet_comedy      |                 5 |                 0 |          5",
         "----------------------------------------------------------------------------------------------------",
-        "TỔNG KẾT           | Toàn bộ 11 kênh TikTok     |                57 |                54 |        111",
+        "TỔNG KẾT           | Toàn bộ 11 kênh TikTok     |                56 |                55 |        111",
         "====================================================================================================",
         "Master CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
-        "[07:24:39] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
-        "[07:24:39] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
-        "==============================================================================================",
-        "[07:25:41] [INFO] tiktok_pipeline: === [CHU KỲ #309] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
-        "[Buffer Guard] Kênh video_AI_hay (video_AI_hay - channel_1_ai_animation) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:25:47] [INFO] tiktok_pipeline: Kênh video_AI_hay (video_AI_hay - channel_1_ai_animation) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[Buffer Guard] Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:25:50] [INFO] tiktok_pipeline: Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[Buffer Guard] Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:25:54] [INFO] tiktok_pipeline: Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[Buffer Guard] Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:25:57] [INFO] tiktok_pipeline: Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua"
+        "[07:55:55] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
+        "[07:55:55] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
       ],
-      "lock_file_content": "pid=91758 ts=1794097524"
+      "lock_file_content": "idle"
     }
   }
 }
