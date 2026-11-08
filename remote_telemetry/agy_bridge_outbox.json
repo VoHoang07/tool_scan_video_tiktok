@@ -1,46 +1,101 @@
 {
-  "updated_at": "2026-11-09 01:43:34",
+  "updated_at": "2026-11-09 01:56:27",
   "latest_result": {
-    "cmd_id": "heartbeat_1794163414",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-09 01:43:34",
+    "cmd_id": "cmd_20261109_0155_disable_switch2_upload",
+    "action": "shell",
+    "executed_at": "2026-11-09 01:56:26",
     "machine_arch": "x86_64",
+    "hostname": "Hoangs-MBP.fpt",
+    "status": "SUCCESS",
+    "exit_code": 0,
+    "stdout": "vohoang          51409   0.0  0.5 34627572  86668   ??  Ss   10:09PM   0:20.09 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          51411   0.0  0.0 34169688   1332   ??  S    10:09PM   0:00.01 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          85549   0.0  1.2 34867808 205980   ??  S    12:43AM  71:08.66 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang          85551   0.0  0.0 34143064   1864   ??  S    12:43AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
+    "stderr": "",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-09 01:43:34",
+      "timestamp": "2026-11-09 01:56:27",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 4992.7,
+      "lock_file_age_seconds": null,
       "processes": [
-        "51409    03:33:42 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "51411    03:33:42 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "85549    01:00:25 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "85551    01:00:25 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "51409    03:46:35 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "51411    03:46:35 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "85549    01:13:18 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "85551    01:13:18 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "====================================================================================================",
-        "Master CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
-        "[01:42:06] [INFO] tiktok_pipeline: [Continuous Worker] Cả 4 kênh vừa đạt mốc 5/5 video. Chuyển sang chu kỳ kiểm tra xác nhận...",
-        "==============================================================================================",
-        "[01:42:06] [INFO] tiktok_pipeline: === [CHU KỲ #4] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
-        "[01:42:12] [INFO] tiktok_pipeline: [Round-Robin] Kênh video_AI_hay (video_AI_hay) hiện có 4/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
-        "[01:42:12] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[01:42:12] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[01:42:12] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[01:42:12] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_1_ai_animation] -> Thư mục: output/video_AI_hay/ready/ | Link mẫu: 10 | Kênh mẫu: [] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
-        "[01:42:12] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/Mr4JFtYJ-lg/",
-        "[01:42:14] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7698023893977599272 (ID: 7698023893977599272)",
-        "[01:42:15] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/KhnOwGH99QQ/",
-        "[01:42:15] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)",
-        "[01:42:21] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/5PXz62pKn0s/",
-        "[01:42:22] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7696826479242519139 (ID: 7696826479242519139)",
-        "[01:42:22] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/RrMNQy7NBa0/",
-        "[01:42:23] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7681137499921550619 (ID: 7681137499921550619)"
-      ],
-      "lock_file_content": "idle"
+        "[download]  99.7% of  350.32MiB at    6.50MiB/s ETA 00:00",
+        "[download]  99.7% of  350.32MiB at    9.36MiB/s ETA 00:00",
+        "[download]  99.8% of  350.32MiB at   12.06MiB/s ETA 00:00",
+        "[download]  99.8% of  350.32MiB at   18.04MiB/s ETA 00:00",
+        "[download] 100.0% of  350.32MiB at   25.28MiB/s ETA 00:00",
+        "[download] 100.0% of  350.32MiB at   26.90MiB/s ETA 00:00",
+        "[download] 100% of  350.32MiB in 00:00:16 at 21.78MiB/s  ",
+        "[01:50:59] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong YouTube 8Nhl2wfWKL8 (367.3 MB, thời lượng=6797.8s).",
+        "[01:50:59] [INFO] tiktok_pipeline: [BongCucSplitter] Đang tải video Background Full HD 1080p [day_aesthetic] từ YouTube (https://www.youtube.com/watch?v=rF6awqlStl4 - Satisfying & Relaxing 3D Kinetic Art Compilation 1080p60)...",
+        "[01:51:39] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong Background Full HD [day_aesthetic] rF6awqlStl4 (1920x1080, 203.0 MB).",
+        "[01:51:39] [INFO] tiktok_pipeline: [BongCucSplitter] Đang cắt & ghép Background [day_aesthetic -> bg_rF6awqlStl4.mp4 @72s] (1.416x, pitch=1.018x, GOP=59): Bông Cúc Số 70 [Phần 2/17 | views=135,832]...",
+        "[01:54:48] [INFO] tiktok_pipeline: [BongCucSplitter] Hoàn tất xuất bản (v3 Background day_aesthetic + 6 Bộ Lọc): 20261109_015139_tiktok_story_990007002_bongcuc_v4_s70_p2_bg_daylight.mp4 (thời lượng=282.9s, size=157.2MB)",
+        "[01:54:48] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=audio_dem_khuyen, file=audio_dem_khuyen/ready/20261109_015139_tiktok_story_990007002_bongcuc_v4_s70_p2_bg_daylight.mp4, status=READY)",
+        "[01:54:48] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh audio_dem_khuyen (audio_dem_khuyen)! Kho chờ ready/ hiện tại: 4/5",
+        "[Buffer Guard] Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[01:54:51] [INFO] tiktok_pipeline: Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[01:54:54] [INFO] tiktok_pipeline: Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[01:54:57] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh audio_dem_khuyen (audio_dem_khuyen): Nghỉ an toàn 216s (~3.6 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
+      ]
     }
-  }
+  },
+  "history": [
+    {
+      "cmd_id": "cmd_20261109_0155_disable_switch2_upload",
+      "action": "shell",
+      "executed_at": "2026-11-09 01:56:26",
+      "machine_arch": "x86_64",
+      "hostname": "Hoangs-MBP.fpt",
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "stdout": "vohoang          51409   0.0  0.5 34627572  86668   ??  Ss   10:09PM   0:20.09 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          51411   0.0  0.0 34169688   1332   ??  S    10:09PM   0:00.01 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          85549   0.0  1.2 34867808 205980   ??  S    12:43AM  71:08.66 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang          85551   0.0  0.0 34143064   1864   ??  S    12:43AM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
+      "stderr": "",
+      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+      "system_health": {
+        "timestamp": "2026-11-09 01:56:27",
+        "machine_arch": "x86_64",
+        "hostname": "Hoangs-MBP.fpt",
+        "stream1_running": true,
+        "stream2_running": true,
+        "chrome_testing_count": 0,
+        "lock_file_age_seconds": null,
+        "processes": [
+          "51409    03:46:35 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "51411    03:46:35 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "85549    01:13:18 ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "85551    01:13:18 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
+        ],
+        "recent_daemon_log_tail": [
+          "[download]  99.7% of  350.32MiB at    6.50MiB/s ETA 00:00",
+          "[download]  99.7% of  350.32MiB at    9.36MiB/s ETA 00:00",
+          "[download]  99.8% of  350.32MiB at   12.06MiB/s ETA 00:00",
+          "[download]  99.8% of  350.32MiB at   18.04MiB/s ETA 00:00",
+          "[download] 100.0% of  350.32MiB at   25.28MiB/s ETA 00:00",
+          "[download] 100.0% of  350.32MiB at   26.90MiB/s ETA 00:00",
+          "[download] 100% of  350.32MiB in 00:00:16 at 21.78MiB/s  ",
+          "[01:50:59] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong YouTube 8Nhl2wfWKL8 (367.3 MB, thời lượng=6797.8s).",
+          "[01:50:59] [INFO] tiktok_pipeline: [BongCucSplitter] Đang tải video Background Full HD 1080p [day_aesthetic] từ YouTube (https://www.youtube.com/watch?v=rF6awqlStl4 - Satisfying & Relaxing 3D Kinetic Art Compilation 1080p60)...",
+          "[01:51:39] [INFO] tiktok_pipeline: [BongCucSplitter] Đã tải xong Background Full HD [day_aesthetic] rF6awqlStl4 (1920x1080, 203.0 MB).",
+          "[01:51:39] [INFO] tiktok_pipeline: [BongCucSplitter] Đang cắt & ghép Background [day_aesthetic -> bg_rF6awqlStl4.mp4 @72s] (1.416x, pitch=1.018x, GOP=59): Bông Cúc Số 70 [Phần 2/17 | views=135,832]...",
+          "[01:54:48] [INFO] tiktok_pipeline: [BongCucSplitter] Hoàn tất xuất bản (v3 Background day_aesthetic + 6 Bộ Lọc): 20261109_015139_tiktok_story_990007002_bongcuc_v4_s70_p2_bg_daylight.mp4 (thời lượng=282.9s, size=157.2MB)",
+          "[01:54:48] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=audio_dem_khuyen, file=audio_dem_khuyen/ready/20261109_015139_tiktok_story_990007002_bongcuc_v4_s70_p2_bg_daylight.mp4, status=READY)",
+          "[01:54:48] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh audio_dem_khuyen (audio_dem_khuyen)! Kho chờ ready/ hiện tại: 4/5",
+          "[Buffer Guard] Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+          "[01:54:51] [INFO] tiktok_pipeline: Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+          "[Buffer Guard] Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+          "[01:54:54] [INFO] tiktok_pipeline: Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+          "[01:54:57] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh audio_dem_khuyen (audio_dem_khuyen): Nghỉ an toàn 216s (~3.6 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
+        ]
+      }
+    }
+  ]
 }
