@@ -603,29 +603,58 @@ class BongCucYouTubeSplitter:
     ) -> List[Dict[str, Any]]:
         """
         Xây dựng hàng đợi độc quyền 100% từ kênh YouTube `@bongcucaudio` (148+ tập truyện)
-        theo chiến lược **ĐAN XEN 1:1 GIỮA [TẬP MỚI VIEW CAO (PHẦN 1)] <-> [PHẦN TIẾP THEO (PHẦN 2+)]**:
-        - Nhánh A (`fresh_part1_specs`): Các tập mới chưa từng đăng `Phần 1` (`part1_posted == False`),
-          được sắp xếp theo **`view_count` thực tế trên YouTube giảm dần** (Số 20: 161,231 views,
-          Số 39: 112,208 views, Số 23: 103,146 views, Số 45: 102,834 views, Số 60: 102,409 views...)
-          để kéo tệp người xem mới từ FYP TikTok.
-        - Nhánh B (`continuation_specs`): Các `Phần 2, 3...` của những tập đã chiếu `Phần 1`
-          (sắp xếp ưu tiên view cao + xoay vòng theo đợt `Wave` để không trùng tập liên tiếp).
-        - Đan xen 1:1: `[Tập Mới View Cao - Phần 1]` -> `[Tập Đang Chiếu - Phần 2+]` -> `[Tập Mới View Cao - Phần 1]`...
+        theo chiến lược **ĐỒNG BỘ CẤP ĐỘ PHẦN (LEVEL-SYNCHRONIZED WAVE: PHẦN 2 -> PHẦN 3 -> PHẦN 4...)
+        & ƯU TIÊN TẬP NHIỀU VIEW TRÊN KÊNH (TỶ LỆ 6 PHẦN TIẾP THEO : 1 TẬP MỚI PHẦN 1)**:
+        - Tuyệt đối không để 1 tập chạy vọt lên Phần 6-7 trong khi các tập khác (đặc biệt các tập nhiều view
+          như Số 21, 120, 119, 70, 39, 60, 35, 110, 141) mới ở Phần 1 hoặc Phần 2.
+        - Nhánh Tiếp Theo (`continuation_specs`): Gom toàn bộ các phần chưa đăng (`part_num >= 2`) của các tập
+          đã mở `Phần 1` theo đúng **cấp độ `part_num` tăng dần** (Tất cả các tập hoàn thành `Phần 2` trước ->
+          tất cả hoàn thành `Phần 3` -> `Phần 4` -> `Phần 5` -> `Phần 6` -> `Phần 7` -> `Phần 8`...).
+          Trong mỗi đợt `part_num`, sắp xếp ưu tiên các tập đang nhiều view trên kênh TikTok & YouTube giảm dần.
+        - Nhánh Tập Mới (`fresh_part1_specs`): Chỉ chèn `1 Tập Mới (Phần 1)` sau mỗi `6 Phần Tiếp Theo (Phần 2+)`
+          để giữ chân người xem đang chờ phần sau của các tập nhiều view.
         """
         catalog = self.get_full_catalog()
 
-        # Phân loại các tập đã chiếu Phần 1 (trong lịch sử hoặc trong known_posted_or_ready_ids) và các tập mới chưa chiếu Phần 1
+        # Tập hợp đầy đủ các story_id đã từng đăng trên kênh audio_dem_khuyen (bảo toàn 100% dù posted/ đã dọn)
+        confirmed_posted_ids: Set[str] = {
+            "990001001", "990001002", "990001003", "990001004", "990001005", "990001006", "990001007",
+            "990014101", "990014102", "990014201", "990014202", "990014301", "990014302",
+            "990014401", "990014402", "990014601", "990014602",
+            "990011901", "990007001", "990011001", "990014501", "990013801", "990013701",
+            "990003901", "990006001", "990003501", "990002101", "990012001",
+        }
+        effective_known_ids: Set[str] = set(known_posted_or_ready_ids) | confirmed_posted_ids
+
+        # Trọng số ưu tiên đặc biệt cho các tập đang có view cao trên kênh TikTok audio_dem_khuyen & YouTube
+        high_view_channel_prio: Dict[int, int] = {
+            21: 1000,   # 414 TikTok views (17 tim) + 90,987 YT views -> ưu tiên số 1 lên Phần 2 ngay
+            120: 950,   # 209 TikTok views (5 tim) + 88,376 YT views -> ưu tiên số 2 lên Phần 2 ngay
+            119: 900,   # 245,499 YT views
+            70: 850,    # 135,832 YT views
+            39: 800,    # 112,208 YT views
+            60: 750,    # 102,409 YT views
+            35: 700,    # 96,812 YT views
+            110: 650,   # 55,433 YT views
+            141: 600,   # 40,489 YT views
+            145: 550,   # 10,029 YT views
+        }
+
+        # Phân loại các tập đã chiếu Phần 1 và các tập mới chưa chiếu Phần 1
         active_cont_eps: List[Dict[str, Any]] = []
         brand_new_eps: List[Dict[str, Any]] = []
         for ep in catalog:
             ep_num = int(ep.get("ep_num") or 0)
             p1_sid = make_bongcuc_story_id(ep_num, 1)
-            if bool(ep.get("part1_posted")) or p1_sid in known_posted_or_ready_ids:
+            has_any_part_known = any(
+                sid.startswith(f"9900{ep_num:03d}") for sid in effective_known_ids
+            )
+            if bool(ep.get("part1_posted")) or p1_sid in effective_known_ids or has_any_part_known:
                 active_cont_eps.append(ep)
             else:
                 brand_new_eps.append(ep)
 
-        # Sắp xếp tập mới ưu tiên các tập có độ dài chuẩn TikTok (4 - 13 phần, <= 5400s) + lượt view YouTube cao nhất (>100k view: Số 39, 45, 60, 35, 21, 120...)
+        # Sắp xếp tập mới ưu tiên độ dài chuẩn TikTok (4 - 13 phần, <= 5400s) + lượt view YouTube cao nhất
         brand_new_eps.sort(
             key=lambda x: (
                 1 if 600 <= float(x.get("duration") or 3200) <= 5400 else 0,
@@ -634,9 +663,10 @@ class BongCucYouTubeSplitter:
             ),
             reverse=True,
         )
-        # Sắp xếp tập đang chiếu dở theo độ dài chuẩn + lượt view giảm dần (Số 10: 472k view, Số 119: 245k view, Số 141: 40k view...)
+        # Sắp xếp tập đang chiếu dở theo trọng số view kênh TikTok + lượt view YouTube giảm dần
         active_cont_eps.sort(
             key=lambda x: (
+                high_view_channel_prio.get(int(x.get("ep_num") or 0), 0),
                 1 if 600 <= float(x.get("duration") or 3200) <= 5400 else 0,
                 int(x.get("view_count") or 0),
                 int(x.get("ep_num") or 0),
@@ -656,7 +686,11 @@ class BongCucYouTubeSplitter:
             plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
             if allow_net:
                 fetched_online_count += 1
-            pending = [p for p in plan if str(p["story_id"]) not in known_posted_or_ready_ids]
+            pending = [
+                p
+                for p in plan
+                if str(p["story_id"]) not in effective_known_ids and int(p["part_num"]) >= 2
+            ]
             if pending:
                 cont_per_ep_lists.append(pending)
                 remaining_eps_count += 1
@@ -666,7 +700,7 @@ class BongCucYouTubeSplitter:
             plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
             if allow_net:
                 fetched_online_count += 1
-            pending = [p for p in plan if str(p["story_id"]) not in known_posted_or_ready_ids]
+            pending = [p for p in plan if str(p["story_id"]) not in effective_known_ids]
             if not pending:
                 continue
             remaining_eps_count += 1
@@ -677,38 +711,60 @@ class BongCucYouTubeSplitter:
             else:
                 cont_per_ep_lists.append(pending)
 
-        # Trải phẳng danh sách Phần 2+ theo từng đợt (Wave) để không bao giờ có 2 phần cùng tập đứng gần nhau
-        continuation_specs: List[Dict[str, Any]] = []
-        max_cont_wave = max((len(lst) for lst in cont_per_ep_lists), default=0)
-        for w_idx in range(max_cont_wave):
-            for ep_list in cont_per_ep_lists:
-                if w_idx < len(ep_list):
-                    continuation_specs.append(ep_list[w_idx])
+        # ĐỒNG BỘ CẤP ĐỘ PHẦN (LEVEL-SYNCHRONIZED WAVE BY part_num):
+        # Toàn bộ các tập đang mở phải lần lượt đi qua Phần 2 -> Phần 3 -> Phần 4 -> Phần 5 -> Phần 6 -> Phần 7 -> Phần 8...
+        # Nhờ đó Bông Cúc Số 10 (đã ở Phần 7) sẽ chờ các tập khác (Số 21, 120, 119, 70, 39, 60, 35, 141...) lên hết Phần 2..7 rồi mới đăng Phần 8!
+        parts_by_level: Dict[int, List[Dict[str, Any]]] = {}
+        for ep_list in cont_per_ep_lists:
+            for p_spec in ep_list:
+                pt_num = int(p_spec["part_num"])
+                parts_by_level.setdefault(pt_num, []).append(p_spec)
 
-        # Nối thêm các phần 2+ của những tập mới (theo từng cụm 10 tập) vào sau
+        continuation_specs: List[Dict[str, Any]] = []
+        for pt_level in sorted(parts_by_level.keys()):
+            level_items = parts_by_level[pt_level]
+            level_items.sort(
+                key=lambda p: (
+                    high_view_channel_prio.get(int(p.get("ep_num") or 0), 0),
+                    int(p.get("view_count") or 0),
+                    int(p.get("ep_num") or 0),
+                ),
+                reverse=True,
+            )
+            continuation_specs.extend(level_items)
+
+        # Nối thêm các phần 2+ của những tập mới (cũng đồng bộ theo part_num trong từng cụm 10 tập) vào sau
         batch_size = 10
         for b_start in range(0, len(new_eps_followup_lists), batch_size):
             sub_lists = new_eps_followup_lists[b_start : b_start + batch_size]
-            max_w = max((len(lst) for lst in sub_lists), default=0)
-            for w_idx in range(max_w):
-                for ep_list in sub_lists:
-                    if w_idx < len(ep_list):
-                        continuation_specs.append(ep_list[w_idx])
+            sub_by_level: Dict[int, List[Dict[str, Any]]] = {}
+            for ep_list in sub_lists:
+                for p_spec in ep_list:
+                    sub_by_level.setdefault(int(p_spec["part_num"]), []).append(p_spec)
+            for pt_level in sorted(sub_by_level.keys()):
+                continuation_specs.extend(sub_by_level[pt_level])
 
-        # Đan xen 1:1 giữa [Tập Mới View Cao - Phần 1] và [Phần Tiếp Theo - Phần 2+]
-        # Đồng thời gán xoay vòng bg_mode ("day_aesthetic" / "night_mukbang") cho từng nhóm
+        # Đan xen theo tỷ lệ [6 Phần Tiếp Theo (Phần 2+ so le các tập)] : [1 Tập Mới View Cao (Phần 1)]
+        # để giải quyết dứt điểm tình trạng tập nhiều view thiếu phần sau, đồng thời gán xoay vòng bg_mode
         interleaved: List[Dict[str, Any]] = []
-        max_len = max(len(fresh_part1_specs), len(continuation_specs))
-        for idx in range(max_len):
-            bg_choice = "day_aesthetic" if (idx % 2 == 0) else "night_mukbang"
-            if idx < len(fresh_part1_specs):
-                p1_item = dict(fresh_part1_specs[idx])
-                p1_item["bg_mode"] = bg_choice
+        cont_idx = 0
+        p1_idx = 0
+        slot_counter = 0
+        cont_burst = 6
+        while cont_idx < len(continuation_specs) or p1_idx < len(fresh_part1_specs):
+            for _ in range(cont_burst):
+                if cont_idx < len(continuation_specs):
+                    c_item = dict(continuation_specs[cont_idx])
+                    c_item["bg_mode"] = "day_aesthetic" if (slot_counter % 2 == 0) else "night_mukbang"
+                    interleaved.append(c_item)
+                    cont_idx += 1
+                    slot_counter += 1
+            if p1_idx < len(fresh_part1_specs):
+                p1_item = dict(fresh_part1_specs[p1_idx])
+                p1_item["bg_mode"] = "day_aesthetic" if (slot_counter % 2 == 0) else "night_mukbang"
                 interleaved.append(p1_item)
-            if idx < len(continuation_specs):
-                c_item = dict(continuation_specs[idx])
-                c_item["bg_mode"] = bg_choice
-                interleaved.append(c_item)
+                p1_idx += 1
+                slot_counter += 1
 
         self.check_and_alert_low_inventory(
             remaining_parts=len(interleaved),

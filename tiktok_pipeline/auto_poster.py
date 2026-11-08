@@ -2839,69 +2839,115 @@ class TikTokAutoPoster:
                         parse_bongcuc_ep_and_part,
                     )
 
-                    # Tìm tập (ep_num) và phần (part_num) vừa đăng gần nhất trên kênh audio_dem_khuyen
-                    # để ĐAN XEN 1:1 giữa [Tập Mới View Cao - Phần 1] <-> [Phần Tiếp Theo - Phần 2+]
-                    last_ep_num: Optional[int] = None
-                    last_part_num: Optional[int] = None
+                    # Thu thập chuỗi các bài vừa đăng gần nhất trên kênh audio_dem_khuyen
+                    # để kiểm soát chặt chẽ tỷ lệ [6 Phần Tiếp Theo (Phần 2+ đồng bộ cấp độ) : 1 Tập Mới (Phần 1)]
+                    # và khóa Cooldown 4 bài liên tiếp không lặp lại cùng 1 tập!
+                    recent_ep_parts: List[Tuple[int, int]] = []
+
+                    def _append_recent_ep(ep_p_val: Optional[Tuple[int, int]]) -> None:
+                        if ep_p_val and (not recent_ep_parts or recent_ep_parts[-1] != ep_p_val):
+                            recent_ep_parts.append(ep_p_val)
+
                     if reg_path.exists():
                         try:
                             reg_d = json.loads(reg_path.read_text(encoding="utf-8"))
                             for h_item in reg_d.get("history") or []:
                                 if isinstance(h_item, dict) and h_item.get("channel") == "audio_dem_khuyen":
-                                    ep_p = parse_bongcuc_ep_and_part(
-                                        f"{h_item.get('filename', '')} {h_item.get('story_id', '')} {h_item.get('caption', '')}"
+                                    _append_recent_ep(
+                                        parse_bongcuc_ep_and_part(
+                                            f"{h_item.get('filename', '')} {h_item.get('story_id', '')} {h_item.get('caption', '')}"
+                                        )
                                     )
-                                    if ep_p:
-                                        last_ep_num, last_part_num = ep_p
+                                    if len(recent_ep_parts) >= 10:
                                         break
                         except Exception:
                             pass
 
-                    if last_ep_num is None:
-                        rep_p = self.project_root / "remote_telemetry" / "intel_status_report.json"
-                        if rep_p.exists():
-                            try:
-                                rep_d = json.loads(rep_p.read_text(encoding="utf-8"))
-                                for ev in rep_d.get("recent_events") or []:
-                                    if (
-                                        isinstance(ev, dict)
-                                        and ev.get("event_type") == "upload"
-                                        and ev.get("channel") == "audio_dem_khuyen"
-                                    ):
-                                        det = ev.get("details") or {}
-                                        ep_p = parse_bongcuc_ep_and_part(
+                    rep_p = self.project_root / "remote_telemetry" / "intel_status_report.json"
+                    if rep_p.exists() and len(recent_ep_parts) < 10:
+                        try:
+                            rep_d = json.loads(rep_p.read_text(encoding="utf-8"))
+                            for ev in rep_d.get("recent_events") or []:
+                                if (
+                                    isinstance(ev, dict)
+                                    and ev.get("event_type") == "upload"
+                                    and ev.get("channel") == "audio_dem_khuyen"
+                                ):
+                                    det = ev.get("details") or {}
+                                    _append_recent_ep(
+                                        parse_bongcuc_ep_and_part(
                                             f"{det.get('video_file', '')} {det.get('caption', '')}"
                                         )
-                                        if ep_p:
-                                            last_ep_num, last_part_num = ep_p
-                                            break
-                            except Exception:
-                                pass
+                                    )
+                                    if len(recent_ep_parts) >= 10:
+                                        break
+                        except Exception:
+                            pass
 
-                    if last_ep_num is None:
+                    if len(recent_ep_parts) < 10:
                         posted_mp4s = sorted(
                             (p for p in posted_dir.glob("*.mp4") if p.is_file()),
                             key=lambda f: f.stat().st_mtime,
                             reverse=True,
                         )
                         for p_f in posted_mp4s:
-                            ep_p = parse_bongcuc_ep_and_part(p_f.name)
-                            if ep_p:
-                                last_ep_num, last_part_num = ep_p
+                            _append_recent_ep(parse_bongcuc_ep_and_part(p_f.name))
+                            if len(recent_ep_parts) >= 10:
                                 break
 
-                    # Nếu bài đăng gần nhất là Phần >= 2 (hoặc chưa rõ) -> Bài tiếp theo BẮT BUỘC ưu tiên Phần 1 của tập mới View Cao!
-                    # Nếu bài đăng gần nhất là Phần 1 -> Bài tiếp theo ưu tiên Phần >= 2 của tập đang chiếu!
-                    want_part1 = last_part_num is None or int(last_part_num) >= 2
+                    last_ep_num: Optional[int] = recent_ep_parts[0][0] if recent_ep_parts else None
+                    last_part_num: Optional[int] = recent_ep_parts[0][1] if recent_ep_parts else None
+                    recent_cooldown_eps: Set[int] = {ep for ep, _ in recent_ep_parts[:4]}
+
+                    # Chỉ mở thêm 1 Tập Mới (Phần 1) khi CẢ 6 BÀI ĐĂNG GẦN NHẤT đều là Phần >= 2!
+                    # Còn lại BẮT BUỘC ưu tiên đăng Phần 2, Phần 3... cho các tập đang nhiều view trên kênh!
+                    want_part1 = len(recent_ep_parts) >= 6 and all(
+                        int(pt) >= 2 for _, pt in recent_ep_parts[:6]
+                    )
                     target_bg_mode = get_target_bg_mode_for_hour()
 
-                    # KHÓA ĐỘC QUYỀN 100% NGUỒN @bongcucaudio v4 (Full HD 1080p nguyên khung hình, không cắt mất người):
-                    # Xóa ngay mọi file bản cũ (bongcuc_v2 / bongcuc_v3 360p cắt vuông) trong ready/
+                    splitter = BongCucYouTubeSplitter(project_root=self.project_root)
+                    cat_views = {
+                        int(e.get("ep_num") or 0): int(e.get("view_count") or 0)
+                        for e in splitter.get_full_catalog()
+                    }
+                    high_view_channel_prio: Dict[int, int] = {
+                        21: 1000,
+                        120: 950,
+                        119: 900,
+                        70: 850,
+                        39: 800,
+                        60: 750,
+                        35: 700,
+                        110: 650,
+                        141: 600,
+                        145: 550,
+                    }
+
+                    queue = splitter.build_interleaved_queue(posted_ids)
+                    cont_queue_specs = [
+                        p
+                        for p in queue
+                        if int(p["part_num"]) >= 2 and int(p["ep_num"]) not in recent_cooldown_eps
+                    ]
+                    min_pending_part_num = min(
+                        (int(p["part_num"]) for p in cont_queue_specs), default=2
+                    )
+                    if min_pending_part_num < 8:
+                        recent_cooldown_eps.add(10)
+
+                    # KHÓA ĐỘC QUYỀN 100% NGUỒN @bongcucaudio v4 & DỌN SLOT LỆCH CẤP ĐỘ PHẦN:
+                    # Xóa ngay mọi file bản cũ (bongcuc_v2/v3) hoặc file vượt cấp độ phần (như Số 10 Phần 8 trong khi các tập khác đang ở Phần 2-3)
                     lowest_part_by_ep: Dict[int, Tuple[int, Path, Optional[str]]] = {}
                     for c_file in valid_candidates:
                         ep_p = parse_bongcuc_ep_and_part(c_file.name)
                         if ep_p and "bongcuc_v4_s" in c_file.name.lower():
                             ep_no, pt_no = ep_p
+                            if (ep_no == 10 and min_pending_part_num < 8) or (
+                                pt_no >= 2 and pt_no > min_pending_part_num + 1
+                            ):
+                                c_file.unlink(missing_ok=True)
+                                continue
                             bg_m = parse_bongcuc_bg_mode(c_file.name)
                             if (
                                 ep_no not in lowest_part_by_ep
@@ -2915,48 +2961,44 @@ class TikTokAutoPoster:
                         else:
                             c_file.unlink(missing_ok=True)
 
-                    splitter = BongCucYouTubeSplitter(project_root=self.project_root)
-                    cat_views = {
-                        int(e.get("ep_num") or 0): int(e.get("view_count") or 0)
-                        for e in splitter.get_full_catalog()
-                    }
-
                     # Xếp hạng ứng viên trong ready/:
                     # 1. Khớp đúng chế độ Background theo khung giờ (Ban đêm: night_mukbang | Ban ngày: day_aesthetic)
-                    # 2. Khớp đúng luân phiên 1:1 (Phần 1 Tập Mới View Cao <-> Phần 2+ Tiếp Theo)
-                    # 3. Khác tập vừa đăng liền trước
-                    # 4. Ưu tiên tập có lượt view YouTube cao nhất
-                    exact_bg_and_part_cands: List[Tuple[int, Path]] = []
-                    exact_bg_only_cands: List[Tuple[int, Path]] = []
+                    # 2. Khớp đúng cấp độ Phần nhỏ nhất đang chờ (Phần 2 trước -> Phần 3 -> Phần 4...)
+                    # 3. Không nằm trong nhóm 4 tập vừa đăng gần nhất (recent_cooldown_eps)
+                    # 4. Ưu tiên tập đang nhiều view trên kênh TikTok (Số 21, 120, 119, 70, 39, 60, 35...)
+                    exact_bg_and_part_cands: List[Tuple[Tuple[int, int, int], Path]] = []
+                    exact_bg_only_cands: List[Tuple[Tuple[int, int, int], Path]] = []
                     for ep_no, (pt_no, c_file, bg_m) in lowest_part_by_ep.items():
-                        if last_ep_num is not None and ep_no == last_ep_num:
+                        if ep_no in recent_cooldown_eps:
                             continue
                         is_p1 = pt_no == 1
                         v_cnt = cat_views.get(ep_no, 0)
+                        prio_w = high_view_channel_prio.get(ep_no, 0)
+                        sort_key = (pt_no, -prio_w, -v_cnt)
                         if bg_m == target_bg_mode and is_p1 == want_part1:
-                            exact_bg_and_part_cands.append((v_cnt, c_file))
-                        elif bg_m == target_bg_mode:
-                            exact_bg_only_cands.append((v_cnt, c_file))
+                            if want_part1 or pt_no <= min_pending_part_num:
+                                exact_bg_and_part_cands.append((sort_key, c_file))
+                        elif bg_m == target_bg_mode and not is_p1 and pt_no <= min_pending_part_num:
+                            exact_bg_only_cands.append((sort_key, c_file))
 
-                    exact_bg_and_part_cands.sort(key=lambda x: x[0], reverse=True)
-                    exact_bg_only_cands.sort(key=lambda x: x[0], reverse=True)
+                    exact_bg_and_part_cands.sort(key=lambda x: x[0])
+                    exact_bg_only_cands.sort(key=lambda x: x[0])
 
                     if exact_bg_and_part_cands:
                         target_video = exact_bg_and_part_cands[0][1]
                     else:
-                        # Tự động cắt ngay 1 video đúng chuẩn (want_part1 + target_bg_mode) từ hàng đợi View Cao
-                        queue = splitter.build_interleaved_queue(posted_ids)
+                        # Tự động cắt ngay 1 video đúng chuẩn (đồng bộ cấp độ Phần + ưu tiên tập nhiều view + target_bg_mode)
                         desired_specs = [
                             p
                             for p in queue
                             if (int(p["part_num"]) == 1) == want_part1
-                            and (last_ep_num is None or int(p["ep_num"]) != last_ep_num)
+                            and int(p["ep_num"]) not in recent_cooldown_eps
                         ]
                         if not desired_specs:
                             desired_specs = [
                                 p
                                 for p in queue
-                                if last_ep_num is None or int(p["ep_num"]) != last_ep_num
+                                if int(p["ep_num"]) not in recent_cooldown_eps
                             ]
                         if desired_specs:
                             chosen_spec = dict(desired_specs[0])
@@ -3005,9 +3047,9 @@ class TikTokAutoPoster:
                     if target_video and target_video.exists():
                         sel_ep = parse_bongcuc_ep_and_part(target_video.name) or (0, 0)
                         logger.info(
-                            f"[{ch_folder}] [Interleaved High-View + Day/Night Background Guard] "
+                            f"[{ch_folder}] [Level-Synchronized High-View + Day/Night Background Guard] "
                             f"Chọn đăng: Bông Cúc Số {sel_ep[0]} Phần {sel_ep[1]} "
-                            f"(views={cat_views.get(sel_ep[0], 0):,}, bg={target_bg_mode} | bài trước: Số {last_ep_num} Phần {last_part_num})"
+                            f"(views={cat_views.get(sel_ep[0], 0):,}, min_pending_part={min_pending_part_num}, bg={target_bg_mode} | bài trước: Số {last_ep_num} Phần {last_part_num})"
                         )
                 except Exception as int_exc:
                     logger.warning(f"[{ch_folder}] Lỗi Interleaved Guard: {int_exc}")

@@ -1013,7 +1013,11 @@ class StoryAudioCrawler:
             "7700254944028364052", "7700764387950300436", "7700789370625805598",
             "7684235157036879124", "7473815778035289378", "7703396595689213204",
             "7581027567194298984", "6862280720614739204",
-            "990001002", "990001003", "990003901", "990014102", "990014202", "990014302", "990014402", "990014602",
+            "990001001", "990001002", "990001003", "990001004", "990001005", "990001006", "990001007",
+            "990014101", "990014102", "990014201", "990014202", "990014301", "990014302",
+            "990014401", "990014402", "990014601", "990014602",
+            "990011901", "990007001", "990011001", "990014501", "990013801", "990013701",
+            "990003901", "990006001", "990003501", "990002101", "990012001",
             "ChBS_r_mC5Y", "FAP6RhvxATM", "IgOE5mwunVI", "QjNcEG68q_c", "YjmXoARv1Ko", "ZWJfOStWq8M",
             "hmDRy0NjfzM", "v5Hs6tww2b0", "wHMzoqtE3Sk",
         }
@@ -3048,6 +3052,14 @@ class StoryAudioCrawler:
                     reason = "video lồng tiếng bản cũ trước khi vá lỗi cắt đỉnh âm thanh & mất thoại VAD (21:00 28/10)"
                 elif ch_folder == "audio_dem_khuyen" and "bongcuc_v4_s" not in fname.lower():
                     reason = "video audio_dem_khuyen bản cũ 360p cắt khung hình trước khi nâng cấp Background Full HD 1080p nguyên khung hình không cắt mất người (bongcuc_v4)"
+                elif ch_folder == "audio_dem_khuyen" and (
+                    "bongcuc_v4_s10_p" in fname.lower()
+                    or (
+                        re.search(r"bongcuc_v4_s\d+_p1(?:_|\.mp4)", fname.lower())
+                        and fname[:15] < "20261109_004000"
+                    )
+                ):
+                    reason = "dọn slot ready/ kênh audio_dem_khuyen (tạm dừng Bông Cúc Số 10 đã tới Phần 7 & dọn Phần 1 cũ trước 09/11 để ưu tiên cắt Phần 2-3 cho các tập nhiều view Số 21, 120, 119, 70, 39, 60, 35)"
                 elif ch_folder not in ("audio_dem_khuyen", "tu_chan_gioi") and fname[:15] < "20261105_180000":
                     reason = "video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)"
 
