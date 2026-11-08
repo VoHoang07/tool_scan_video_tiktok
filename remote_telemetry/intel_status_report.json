@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-08 07:50:58",
+    "timestamp": "2026-11-08 07:54:00",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261107_183027_youtube_shorts_story_wbaueoiNAEA.mp4",
-      "caption": "🤤 [Thiên Đường Ăn Vặt] Món ăn vặt quốc dân gây nghiện mà tín đồ ẩm thực không thể bỏ qua. Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
-      "hashtags": "#monngondelam #amthuctiktok #anvatmoingay #anchayngon #reviewdoan #nauanngon #doanvat #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 158.6,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-08 07:54:00",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 158.6,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-08 07:50:58",
       "machine_arch": "x86_64",
@@ -225,21 +239,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 168.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-08 06:10:43",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 156.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
