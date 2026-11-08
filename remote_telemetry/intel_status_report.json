@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 00:06:43",
+    "timestamp": "2026-11-09 00:09:21",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261109_000243_tiktok_story_990001007_bongcuc_v4_s10_p7_bg_mukbang.mp4",
-      "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 10 (Phần 7/13): Họ Lấy Hết Mọi Thứ Rồi Vẫn Muốn Tôi Biết Điều. Vừa xem Mukbang đêm khuya vừa nghe câu chuyện cuốn hút này nhé!",
-      "hashtags": "#bongcucso10 #bongcucaudio #nghetruyendemkhuya #gocnhinkhuya #fyp #kechuyendemkhuya #xuhuong #bongcuctrang",
+      "video_file": "20261107_093214_tiktok_story_7660423297871465761.mp4",
+      "caption": "🐉 Nếu mọi chuyện chẳng như mình mong đợi, thì ta cũng đã cháy hết mình một lần trong đời — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+      "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #xh #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 00:09:21",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261107_093214_tiktok_story_7660423297871465761.mp4",
+        "caption": "🐉 Nếu mọi chuyện chẳng như mình mong đợi, thì ta cũng đã cháy hết mình một lần trong đời — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+        "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 00:06:43",
       "machine_arch": "x86_64",
@@ -225,21 +241,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 163.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-08 20:15:30",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 159.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
