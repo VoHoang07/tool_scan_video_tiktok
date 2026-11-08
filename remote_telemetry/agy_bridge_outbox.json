@@ -1,31 +1,26 @@
 {
-  "updated_at": "2026-11-08 10:26:43",
+  "updated_at": "2026-11-08 10:56:46",
   "latest_result": {
-    "cmd_id": "heartbeat_1794108402",
+    "cmd_id": "heartbeat_1794110206",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-08 10:26:42",
+    "executed_at": "2026-11-08 10:56:46",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-08 10:26:43",
+      "timestamp": "2026-11-08 10:56:46",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 54.9,
+      "lock_file_age_seconds": 56.6,
       "processes": [
-        "12670    01:16:49 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "12671    01:16:49 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "91758    20:39:04 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "91760    20:39:03 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "12670    01:46:52 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "12671    01:46:52 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "91758    21:09:07 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "91760    21:09:06 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "KÊNH               | CHỦ ĐỀ NGÁCH (PROFILE)     |  READY (CHỜ ĐĂNG) |  POSTED (ĐÃ ĐĂNG) |  TỔNG CỘNG",
-        "----------------------------------------------------------------------------------------------------",
-        "video_AI_hay       | channel_1_ai_animation     |                 5 |                 8 |         13",
-        "baby_AI            | channel_2_life_comedy      |                 5 |                 8 |         13",
-        "audio_dem_khuyen   | channel_3_novel_drama      |                 5 |                 8 |         13",
         "tu_chan_gioi       | channel_4_ai_cultivation   |                 5 |                 8 |         13",
         "meo_vat_gia_dinh   | channel_5_home_gadgets     |                 5 |                 0 |          5",
         "suc_khoe_duong_sinh | channel_6_health_wellness  |                 5 |                 8 |         13",
@@ -38,10 +33,15 @@
         "TỔNG KẾT           | Toàn bộ 11 kênh TikTok     |                58 |                56 |        114",
         "====================================================================================================",
         "Master CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv",
-        "[10:26:26] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
-        "[10:26:26] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
+        "[10:55:34] [INFO] tiktok_pipeline: [24/7 Worker] Cả 4 kênh đều đã đầy kho chờ (5/5). Đang canh khung giờ tự động đăng bài (kiểm tra lại sau 60s)...",
+        "[10:55:34] [INFO] tiktok_pipeline: [Smart Sleep] Kho 4 kênh đã đầy, chờ đến khung giờ đăng bài: Nghỉ an toàn 60s (~1.0 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
+        "[10:56:05] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (e371663 -> 1b0f406) | Auto-Telemetry [warmup_fyp] video_AI_hay at 2026-11-08 10:55:49",
+        "[10:56:40] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[10:56:40] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[10:56:41] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[10:56:46] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh."
       ],
-      "lock_file_content": "pid=91758 ts=1794108348"
+      "lock_file_content": "idle"
     }
   }
 }
