@@ -271,12 +271,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Mẹo vặt nhà cửa, Đồ gia dụng thông minh & Tiện ích bếp siêu lượt mua (Phễu chủ lực #2)",
         "is_funnel_satellite": True,
         "seed_video_urls": [],
-        "seed_channels": [
-            "meovatcuocsong.vn",
-            "meovathaymoingay",
-            "giadungthongminh.official",
-            "meobepnhỏ",
-        ],
+        "seed_channels": [],
         "douyin_keywords": [
             "生活小妙招",
             "居家好物",
@@ -288,21 +283,18 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "居家生活小窍门",
         ],
         "tiktok_keywords": [
-            "#meovatgiadinh",
-            "#dogiadungthongminh",
             "#meovatcuocsong",
-            "#nhabepthongminh",
-            "#meohaymoingay",
-            "#giadungtienich",
+            "#meovathay",
+            "#meovatgiadinh",
             "#生活小妙招",
             "#居家好物",
         ],
         "tiktok_challenge_ids": [
-            "1636211882466305",  # #meovatcuocsong (tỷ view VN)
-            "1656561174880258",  # #meovatgiadinh (tỷ view VN)
-            "1660484344061953",  # #dogiadungthongminh (tỷ view VN)
-            "1639379597128705",  # #meohay (tỷ view VN)
-            "1654217353988097",  # #nhabepthongminh
+            "1660403041677313",  # #meovatcuocsong (5.34B views VN)
+            "1645632001250306",  # #meovathay (847M views VN)
+            "1662783472139265",  # #meovatgiadinh (673M views VN)
+            "1575869312433229",  # #生活小妙招 (1.84B views CN)
+            "1673181615750145",  # #居家好物 (790M views CN)
         ],
         "douyin_challenge_ids": [
             "1563911653590017",  # #生活小妙招
@@ -310,12 +302,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "1604684781228040",  # #厨房好物
             "1598744281885704",  # #清洁小妙招
         ],
-        "multi_platform_keywords": [
-            "生活小妙招 实用 #shorts",
-            "厨房清洁妙招 #shorts",
-            "mẹo vặt gia đình hay #shorts",
-            "mẹo vặt cuộc sống cực hay #shorts",
-        ],
+        "multi_platform_keywords": [],
     },
     "channel_6_health_wellness": {
         "channel_id": "6",
@@ -324,12 +311,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Sức khỏe chủ động, Mẹo dưỡng sinh & Thói quen sống khỏe (Phễu chủ lực #3)",
         "is_funnel_satellite": True,
         "seed_video_urls": [],
-        "seed_channels": [
-            "suckhoedoisong.vn",
-            "duongsinhmoingay",
-            "songkhoemoingay",
-            "bacsidinhduong",
-        ],
+        "seed_channels": [],
         "douyin_keywords": [
             "健康科普动画",
             "养生小知识",
@@ -340,32 +322,25 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "长寿健康习惯",
         ],
         "tiktok_keywords": [
-            "#suckhoechudong",
-            "#meosuckhoe",
+            "#suckhoe",
             "#duongsinh",
-            "#songkhoe",
             "#suckhoemoingay",
-            "#chamsocthanhtam",
+            "#养生",
             "#健康科普",
-            "#养生小知识",
         ],
         "tiktok_challenge_ids": [
-            "1636570489140225",  # #suckhoe (tỷ view VN)
-            "1662939543255041",  # #songkhoe (tỷ view VN)
-            "1658129452071937",  # #duongsinh
-            "1648739154728961",  # #meosuckhoe
+            "756000",            # #suckhoe (41.18B views VN)
+            "1652852414091265",  # #duongsinh (1.52B views VN)
+            "1646816808364033",  # #suckhoemoingay (318M views VN)
+            "1570642784531457",  # #养生 (959M views CN)
+            "1678240367291394",  # #健康科普 (234M views CN)
         ],
         "douyin_challenge_ids": [
             "1581016448807950",  # #健康科普
             "1565067847064578",  # #养生
             "1642088663177227",  # #涨知识
         ],
-        "multi_platform_keywords": [
-            "健康科普 动画 #shorts",
-            "养生小知识 #shorts",
-            "mẹo sức khỏe đời sống #shorts",
-            "dưỡng sinh sống khỏe mỗi ngày #shorts",
-        ],
+        "multi_platform_keywords": [],
     },
     "channel_7_women_eq": {
         "channel_id": "7",
@@ -374,12 +349,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Tâm lý hôn nhân, Phụ nữ khí chất & EQ giao tiếp tinh tế (Phễu chủ lực #4)",
         "is_funnel_satellite": True,
         "seed_video_urls": [],
-        "seed_channels": [
-            "phunukhichat.vn",
-            "tamlyhoccuocsong",
-            "nghethuatgiaotiep",
-            "gocphunu.official",
-        ],
+        "seed_channels": [],
         "douyin_keywords": [
             "女性成长智慧",
             "婚姻心理真相",
@@ -390,32 +360,25 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "人性心理博弈",
         ],
         "tiktok_keywords": [
+            "#tamlyhoc",
             "#phunukhichat",
-            "#tamlyhonnhan",
-            "#phunuhiendai",
-            "#kynanggiaotiep",
-            "#trietlycuocsong",
-            "#baihoccuocsong",
-            "#女性智慧",
-            "#婚姻情感",
+            "#phunuthoidai",
+            "#情感共鸣",
+            "#女性成长",
         ],
         "tiktok_challenge_ids": [
-            "1572618705886286",
-            "1638200962944004",
-            "1640129485129730",  # #phunukhichat
-            "1634928174829569",  # #baihoccuocsong
+            "1652158069384194",  # #tamlyhoc (5.12B views VN)
+            "1678713296165889",  # #情感共鸣 (5.00B views CN)
+            "1650610425570306",  # #phunukhichat (1.78B views VN)
+            "1673655572953089",  # #女性成长 (288M views CN)
+            "1661117116980225",  # #phunuthoidai (134M views VN)
         ],
         "douyin_challenge_ids": [
             "1572618705886286",  # #情感
             "1638200962944004",  # #情感文案
             "1626065775068173",  # #总有一句话戳心
         ],
-        "multi_platform_keywords": [
-            "女性成长 婚姻智慧 #shorts",
-            "高情商女人 #shorts",
-            "tâm lý phụ nữ hôn nhân #shorts",
-            "phụ nữ khí chất giao tiếp khéo léo #shorts",
-        ],
+        "multi_platform_keywords": [],
     },
     "channel_8_food_snacks": {
         "channel_id": "8",
@@ -424,12 +387,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Ẩm thực đường phố, Công thức nấu ăn nhanh & Đồ ăn vặt siêu lượt mua trên TikTok Shop",
         "is_funnel_satellite": False,
         "seed_video_urls": [],
-        "seed_channels": [
-            "anvatmoingay.vn",
-            "congthucnauannhanh",
-            "monngonmoingay",
-            "bepnhỏ.official",
-        ],
+        "seed_channels": [],
         "douyin_keywords": [
             "美食教程",
             "懒人美食做法",
@@ -441,33 +399,25 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "空气炸锅美食",
         ],
         "tiktok_keywords": [
-            "#anvatmoingay",
-            "#doanvatngon",
-            "#nauanngon",
-            "#congthucnauan",
-            "#amthuctiktok",
+            "#anvat",
             "#monngonmoingay",
-            "#mukbang",
+            "#congthucnauan",
             "#美食教程",
-            "#解馋零食",
+            "#家常菜",
         ],
         "tiktok_challenge_ids": [
-            "1636211882466305",
-            "1635812945128449",  # #monngonmoingay
-            "1642198451294209",  # #congthucnauan
-            "1629841295128577",  # #amthuctiktok
+            "73070727",          # #anvat (36.16B views VN)
+            "1599341507576834",  # #monngonmoingay (22.28B views VN)
+            "1619008055487489",  # #美食教程 (1.99B views CN)
+            "82263458",          # #家常菜 (1.73B views CN)
+            "1632604172898322",  # #congthucnauan (1.31B views VN)
         ],
         "douyin_challenge_ids": [
             "1562354443487233",  # #美食教程
             "1581349746155533",  # #家常菜
             "1598038834225159",  # #零食推荐
         ],
-        "multi_platform_keywords": [
-            "美食教程 懒人做法 #shorts",
-            "解馋零食 夜宵 #shorts",
-            "món ngon dễ làm đồ ăn vặt #shorts",
-            "công thức nấu ăn nhanh tại nhà #shorts",
-        ],
+        "multi_platform_keywords": [],
     },
     "channel_9_smart_parenting": {
         "channel_id": "9",
@@ -476,12 +426,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Nuôi dạy con thông minh, Phát triển EQ cho bé & Tâm lý mẹ và bé",
         "is_funnel_satellite": False,
         "seed_video_urls": [],
-        "seed_channels": [
-            "nuoiconthongminh.vn",
-            "dayconeq",
-            "mevabe.official",
-            "giaoducsomchobe",
-        ],
+        "seed_channels": [],
         "douyin_keywords": [
             "育儿动画科普",
             "儿童情商教育",
@@ -492,32 +437,25 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "父母说话方式决定孩子未来",
         ],
         "tiktok_keywords": [
-            "#nuoiconthongminh",
-            "#dayconeq",
             "#mevabe",
-            "#giaoducsom",
-            "#chaMeThongThai",
-            "#tamlytreem",
-            "#育儿知识",
+            "#daycon",
+            "#nuoiconthongminh",
             "#家庭教育",
+            "#育儿经验分享",
         ],
         "tiktok_challenge_ids": [
-            "1639642543618055",
-            "1576122662289438",
-            "1649128451294210",  # #nuoiconthongminh
-            "1631849251284993",  # #mevabe
+            "1618177115579394",  # #mevabe (37.85B views VN)
+            "674427",            # #daycon (3.64B views VN)
+            "1638274041241602",  # #家庭教育 (445M views CN)
+            "1662567851674626",  # #nuoiconthongminh (243M views VN)
+            "1672431522627586",  # #育儿经验分享 (65M views CN)
         ],
         "douyin_challenge_ids": [
             "1639642543618055",
             "1576122662289438",
             "1618466015647748",
         ],
-        "multi_platform_keywords": [
-            "育儿知识 家庭教育 #shorts",
-            "儿童情商 动画 #shorts",
-            "nuôi dạy con thông minh #shorts",
-            "cách dạy con ngoan phát triển EQ #shorts",
-        ],
+        "multi_platform_keywords": [],
     },
     "channel_10_tech_gadgets": {
         "channel_id": "10",
@@ -526,12 +464,7 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
         "description": "Mẹo điện thoại, Phụ kiện công nghệ giá rẻ & Đồ tiện ích thông minh siêu lượt mua",
         "is_funnel_satellite": False,
         "seed_video_urls": [],
-        "seed_channels": [
-            "meodienthoai.vn",
-            "phukiencongnghe.official",
-            "congnghehaymoingay",
-            "reviewcongnghe",
-        ],
+        "seed_channels": [],
         "douyin_keywords": [
             "数码好物推荐",
             "手机实用小技巧",
@@ -542,30 +475,24 @@ CHANNEL_PROFILES: Dict[str, Dict[str, Any]] = {
             "苹果安卓隐藏功能",
         ],
         "tiktok_keywords": [
-            "#phukientienich",
             "#phukiendienthoai",
             "#docongnghe",
             "#meodienthoai",
-            "#meohaycongnghe",
-            "#reviewcongnghe",
+            "#手机技巧",
             "#数码好物",
-            "#黑科技",
         ],
         "tiktok_challenge_ids": [
-            "1660484344061953",
-            "1638912451284994",  # #meodienthoai
-            "1641928451284995",  # #docongnghe
+            "1609766804439042",     # #phukiendienthoai (4.09B views VN)
+            "1661588972333057",     # #docongnghe (824M views VN)
+            "1664209978267650",     # #meodienthoai (152M views VN)
+            "1577137997973533",     # #手机技巧 (35.7M views CN)
+            "7067500373983887406",  # #数码好物 (3.9M views CN)
         ],
         "douyin_challenge_ids": [
             "1587096126305293",
             "1604684781228040",
         ],
-        "multi_platform_keywords": [
-            "数码好物 黑科技 #shorts",
-            "手机技巧 实用配件 #shorts",
-            "phụ kiện điện thoại thông minh #shorts",
-            "mẹo điện thoại cực hay #shorts",
-        ],
+        "multi_platform_keywords": [],
     },
     "channel_11_pet_comedy": {
         "channel_id": "11",
@@ -805,21 +732,16 @@ MUSIC_BLACKLIST_KEYWORDS = (
     "跳舞",
 )
 
-# Blacklist loại trừ video bán hàng, review sản phẩm, livestream, quảng cáo, ảnh tĩnh, mẹo vặt linh tinh
+# Blacklist loại trừ video bán hàng trực tiếp, livestream, quảng cáo, ảnh tĩnh
 CONTENT_BLACKLIST_DOUYIN = (
     "带货",
     "直播",
     "广告",
-    "好物分享",
-    "测评",
-    "种草好物",
     "购物车",
     "小黄车",
     "秒杀",
     "清仓",
     "福利",
-    "小妙招",
-    "生活小妙招",
     "短视频运营",
     "自媒体创业",
     "引流",
@@ -837,11 +759,9 @@ CONTENT_BLACKLIST_TIKTOK = (
     "#ad",
     "#haul",
     "#grwm",
-    "#tiktokshop",
     "#sponsored",
     "#commission",
     "#unboxing",
-    "#lifehack",
     "link in bio",
     "shop now",
     "paid partnership",
@@ -3062,6 +2982,18 @@ class StoryAudioCrawler:
                     reason = "dọn slot ready/ kênh audio_dem_khuyen (tạm dừng Bông Cúc Số 10 đã tới Phần 7 & dọn Phần 1 cũ trước 09/11 để ưu tiên cắt Phần 2-3 cho các tập nhiều view Số 21, 120, 119, 70, 39, 60, 35)"
                 elif ch_folder not in ("audio_dem_khuyen", "tu_chan_gioi") and fname[:15] < "20261105_180000":
                     reason = "video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)"
+                elif ch_folder in (
+                    "meo_vat_gia_dinh",
+                    "suc_khoe_duong_sinh",
+                    "phu_nu_khi_chat",
+                    "an_vat_moi_ngay",
+                    "nuoi_con_eq",
+                    "phu_kien_tien_ich",
+                ) and (
+                    plat in ("youtube_shorts", "facebook_reels", "instagram_reels")
+                    or fname[:15] < "20261109_124000"
+                ):
+                    reason = f"dọn video Shorts/Reels ít view trong {ch_folder} để thay bằng video TikTok/Douyin triệu view thực tế"
 
                 if not reason and sid:
                     for tr_dir in (
@@ -3994,6 +3926,7 @@ def _hot_patch_live_crawler() -> None:
     reloaded_classes: Dict[str, Any] = {"StoryAudioCrawler": StoryAudioCrawler}
     sub_specs = [
         ("tiktok_pipeline.bongcuc_splitter", "BongCucYouTubeSplitter"),
+        ("tiktok_pipeline.growth_24h_filter", "TikTok24hFilterEngine"),
         ("tiktok_pipeline.transcriber", "AudioTranscriber"),
         ("tiktok_pipeline.translator", "SubtitleTranslator"),
         ("tiktok_pipeline.tts_engine", "TTSEngine"),
@@ -4013,7 +3946,7 @@ def _hot_patch_live_crawler() -> None:
         except Exception:
             pass
 
-    for mod_name in ("__main__", "tiktok_pipeline.main", "tiktok_pipeline.crawler"):
+    for mod_name in ("__main__", "tiktok_pipeline.main", "tiktok_pipeline.crawler", "tiktok_pipeline.auto_poster"):
         mod = sys.modules.get(mod_name)
         if not mod:
             continue
@@ -4034,6 +3967,7 @@ def _hot_patch_live_crawler() -> None:
         try:
             setattr(mod, "resolve_channel_profile", resolve_channel_profile)
             setattr(mod, "KNOWN_VIETNAMESE_HANDLES", KNOWN_VIETNAMESE_HANDLES)
+            setattr(mod, "CHANNEL_PROFILES", CHANNEL_PROFILES)
         except Exception:
             pass
 

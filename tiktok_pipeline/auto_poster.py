@@ -3353,9 +3353,9 @@ class TikTokAutoPoster:
             return None
 
         next_item = self._get_next_ready_video_for_channel(ch_folder)
-        if not next_item and force:
+        if not next_item:
             logger.info(
-                f"[{ch_folder}] Kho ready/ đã lọc hết các bản trùng nội dung -> Đang tự động cào ngay 1 video truyện mới hoàn toàn cho [{ch_folder}]..."
+                f"[{ch_folder}] Kho ready/ đã lọc hết các bản cũ/trùng nội dung -> Đang tự động cào ngay 1 video triệu view mới cho [{ch_folder}]..."
             )
             try:
                 from .main import run_crawl_story_mode
@@ -4104,6 +4104,7 @@ class TikTokAutoPoster:
                         finally:
                             self._release_browser_process_lock(lock_fh)
 
+                    all_ch_succeeded = True
                     for single_ch in target_channels:
                         ch_trig_key = f"remote_post_{p_trig_id}_{single_ch}"
                         lock_fh = self._acquire_browser_process_lock()
@@ -4135,15 +4136,28 @@ class TikTokAutoPoster:
                                 )
                                 if res:
                                     posted_results.append(res)
+                                else:
+                                    all_ch_succeeded = False
+                                    history = self._load_post_history()
+                                    history.pop(ch_trig_key, None)
+                                    self._save_post_history(history)
                         except Exception as exc:
+                            all_ch_succeeded = False
+                            try:
+                                history = self._load_post_history()
+                                history.pop(ch_trig_key, None)
+                                self._save_post_history(history)
+                            except Exception:
+                                pass
                             logger.error(
                                 f"[Dòng 1 - Đăng Video] Lỗi khi đăng ngay ({p_trig_id}) kênh [{single_ch}]: {exc}"
                             )
                         finally:
                             self._release_browser_process_lock(lock_fh)
-                    history = self._load_post_history()
-                    history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                    self._save_post_history(history)
+                    if all_ch_succeeded:
+                        history = self._load_post_history()
+                        history[p_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        self._save_post_history(history)
                     if bool(remote_post.get("auto_pause_master_after", False)):
                         try:
                             cfg_after = self.ensure_schedule_config()

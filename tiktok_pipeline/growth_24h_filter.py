@@ -1135,9 +1135,17 @@ class TikTok24hFilterEngine:
                     return True
 
                 before_d_cnt = len(trace.get("digg_responses") or [])
+                self._human_move_mouse(page, lx, ly)
+                page.wait_for_timeout(random.randint(240, 420))
                 self._os_click_viewport(page, lx, ly)
-                # Chờ 3.5s bằng page.wait_for_timeout để bơm event loop Playwright nhận _on_response và vượt timer rollback 3000ms
-                page.wait_for_timeout(3500)
+                page.wait_for_timeout(1600)
+                if len(trace.get("digg_responses") or []) == before_d_cnt and not self._is_like_state_red_in_dom(self._check_like_state(page)):
+                    try:
+                        page.mouse.click(lx, ly, delay=random.randint(45, 85))
+                    except Exception:
+                        pass
+                # Chờ thêm 2.6s bằng page.wait_for_timeout để bơm event loop Playwright nhận _on_response và vượt timer rollback 3000ms
+                page.wait_for_timeout(2600)
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
                 st_after = self._check_like_state(page)
@@ -1160,12 +1168,11 @@ class TikTok24hFilterEngine:
                 }
 
                 if server_digg_rejected:
-                    self._circuit_breaker_tripped = True
                     self._session_digg_rate_limited = True
                     self._last_like_debug = trace
                     logger.warning(
-                        f"[{ch_folder}] [Circuit Breaker Anti-Shark] Máy chủ TikTok trả về is_digg=1 (tài khoản đang trong thời gian giới hạn thả tim) -> "
-                        "Ngắt thao tác Like ngay, KHÔNG bấm nhồi lần 2 để tránh reset bộ đếm phạt!"
+                        f"[{ch_folder}] [Anti-Digg-RateLimit] Máy chủ TikTok trả về is_digg=1 (tạm giới hạn thả tim) -> "
+                        "Bỏ qua Like tiếp theo trong phiên, nhưng VẪN TIẾP TỤC Sao chép + Lưu + Bình luận + Follow chủ kênh!"
                     )
                     return False
 
@@ -1528,6 +1535,10 @@ class TikTok24hFilterEngine:
         trace: Dict[str, Any] = getattr(self, "_last_like_debug", {}) or {}
         try:
             if "/video/" in (page.url or "").lower() or "/photo/" in (page.url or "").lower():
+                try:
+                    page.keyboard.press("Escape")
+                except Exception:
+                    pass
                 self._ensure_comment_tab_open(page, ch_folder)
                 page.wait_for_timeout(500)
 
@@ -1540,7 +1551,7 @@ class TikTok24hFilterEngine:
                             if (clean.includes('/video/') || clean.includes('/photo/')) return false;
                             return clean === `/@${handle.toLowerCase()}` || clean.endsWith(`/@${handle.toLowerCase()}`);
                         };
-                        const allProfileLinks = Array.from(document.querySelectorAll(`a[href*="/@${handle}"]`));
+                        const allProfileLinks = Array.from(document.querySelectorAll('a[href*="/@"]'));
                         for (const a of allProfileLinks) {
                             a.removeAttribute('target');
                         }
@@ -1561,9 +1572,10 @@ class TikTok24hFilterEngine:
                                     if (!isPureProfileHref(href)) continue;
                                 }
                                 const r = el.getBoundingClientRect();
-                                if (r.left > 240 && r.width > 16 && r.height > 12 && r.top > 20 && r.top < window.innerHeight - 15) {
+                                if (r.left > 160 && r.width > 16 && r.height > 12 && r.top > 15 && r.top < window.innerHeight - 15) {
+                                    const cx = r.left + Math.min(r.width / 2, 70);
                                     const cy = sel.includes('avatar') ? (r.top + r.height * 0.28) : (r.top + r.height / 2);
-                                    return { x: r.left + r.width / 2, y: cy, sel };
+                                    return { x: cx, y: cy, sel };
                                 }
                             }
                         }
@@ -1579,13 +1591,21 @@ class TikTok24hFilterEngine:
                     break
                 ax, ay = float(author_pos["x"]), float(author_pos["y"])
                 self._human_move_mouse(page, ax, ay)
-                page.wait_for_timeout(220)
+                page.wait_for_timeout(240)
                 self._os_click_viewport(page, ax, ay)
-                page.wait_for_timeout(3200)
+                page.wait_for_timeout(1800)
+
+                cur_u = (page.url or "").lower()
+                if "/video/" in cur_u or "/photo/" in cur_u or f"/@{clean_handle.lower()}" not in cur_u:
+                    try:
+                        page.mouse.click(ax, ay, delay=random.randint(45, 90))
+                    except Exception:
+                        pass
+                    page.wait_for_timeout(2200)
 
                 if len(page.context.pages) > 1:
                     extra_page = page.context.pages[-1]
-                    if extra_page != page and f"/@{clean_handle.lower()}" in (extra_page.url or "").lower():
+                    if extra_page != page:
                         try:
                             extra_page.close()
                         except Exception:
@@ -1595,42 +1615,67 @@ class TikTok24hFilterEngine:
                     navigated_spa = True
                     break
 
+            # Bảo hiểm 100%: Nếu click SPA trên trang video vẫn chưa chuyển sang URL hồ sơ /@creator,
+            # điều hướng trực tiếp kèm Referer trang video để luôn mở trang Hồ sơ và hiển thị nút [data-e2e="follow-button"]
+            cur_u_check = (page.url or "").lower()
+            if "/video/" in cur_u_check or "/photo/" in cur_u_check or f"/@{clean_handle.lower()}" not in cur_u_check:
+                try:
+                    profile_target_url = f"https://www.tiktok.com/@{clean_handle}?lang=vi-VN"
+                    logger.info(
+                        f"[{ch_folder}] [Xác thực Follow Hồ Sơ] Chuyển tiếp sang trang Hồ sơ {profile_target_url} (Referer={video_url})..."
+                    )
+                    page.goto(
+                        profile_target_url,
+                        referer=page.url or video_url,
+                        wait_until="domcontentloaded",
+                        timeout=35000,
+                    )
+                    page.wait_for_timeout(random.randint(2600, 3600))
+                except Exception as nav_prof_exc:
+                    logger.debug(f"[{ch_folder}] Lỗi mở trang hồ sơ @{clean_handle}: {nav_prof_exc}")
+
             self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
             page.wait_for_timeout(random.randint(1200, 1900))
 
             # 2. Đọc trạng thái nút [data-e2e="follow-button"] hiển thị thật trên Header trang Hồ sơ chủ kênh
-            prof_state = page.evaluate(
-                """() => {
-                    let relation = null;
-                    try {
-                        const el = document.getElementById("__UNIVERSAL_DATA_FOR_REHYDRATION__");
-                        if (el) {
-                            const data = JSON.parse(el.textContent);
-                            const uInfo = ((data.__DEFAULT_SCOPE__ || {})["webapp.user-detail"] || {}).userInfo || {};
-                            if (uInfo.user) relation = uInfo.user.relation;
+            prof_state = None
+            for _wait_btn in range(3):
+                prof_state = page.evaluate(
+                    """() => {
+                        let relation = null;
+                        try {
+                            const el = document.getElementById("__UNIVERSAL_DATA_FOR_REHYDRATION__");
+                            if (el) {
+                                const data = JSON.parse(el.textContent);
+                                const uInfo = ((data.__DEFAULT_SCOPE__ || {})["webapp.user-detail"] || {}).userInfo || {};
+                                if (uInfo.user) relation = uInfo.user.relation;
+                            }
+                        } catch (e) {}
+                        const btns = Array.from(document.querySelectorAll('[data-e2e="follow-button"]'));
+                        for (const btn of btns) {
+                            if (btn.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
+                            const r = btn.getBoundingClientRect();
+                            const style = window.getComputedStyle(btn);
+                            if (style.display === 'none' || style.visibility === 'hidden' || parseFloat(style.opacity || '1') < 0.1) continue;
+                            if (r.left > 150 && r.top > 40 && r.top < 580 && r.width > 30 && r.height > 18) {
+                                return {
+                                    relation,
+                                    btnText: (btn.innerText || btn.textContent || '').trim(),
+                                    x: r.left + r.width / 2,
+                                    y: r.top + r.height / 2,
+                                    w: r.width,
+                                    h: r.height,
+                                    url: location.href
+                                };
+                            }
                         }
-                    } catch (e) {}
-                    const btns = Array.from(document.querySelectorAll('[data-e2e="follow-button"]'));
-                    for (const btn of btns) {
-                        if (btn.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
-                        const r = btn.getBoundingClientRect();
-                        const style = window.getComputedStyle(btn);
-                        if (style.display === 'none' || style.visibility === 'hidden' || parseFloat(style.opacity || '1') < 0.1) continue;
-                        if (r.left > 220 && r.top > 60 && r.top < 520 && r.width > 40 && r.height > 20) {
-                            return {
-                                relation,
-                                btnText: (btn.innerText || btn.textContent || '').trim(),
-                                x: r.left + r.width / 2,
-                                y: r.top + r.height / 2,
-                                w: r.width,
-                                h: r.height,
-                                url: location.href
-                            };
-                        }
-                    }
-                    return { relation, btnText: null, x: null, y: null, url: location.href };
-                }"""
-            )
+                        return { relation, btnText: null, x: null, y: null, url: location.href };
+                    }"""
+                )
+                if prof_state and prof_state.get("btnText"):
+                    break
+                page.wait_for_timeout(1100)
+
             before_txt = str((prof_state or {}).get("btnText") or "").strip()
             already_labels = {"đang follow", "following", "bạn bè", "friends", "đã follow", "tin nhắn", "message"}
             is_following_now = before_txt.lower() in already_labels or (prof_state or {}).get("relation") in (1, 2)
@@ -1647,8 +1692,21 @@ class TikTok24hFilterEngine:
                 self._human_move_mouse(page, bx, by)
                 page.wait_for_timeout(random.randint(250, 480))
                 self._os_click_viewport(page, bx, by)
-                # Chờ 4.2s qua page.wait_for_timeout để bơm event loop Playwright nhận _on_response và vượt qua cửa sổ rollback 3.0s
-                page.wait_for_timeout(4200)
+                page.wait_for_timeout(1800)
+                if len(trace.get("follow_responses") or []) == before_f_cnt:
+                    mid_txt = page.evaluate(
+                        """() => {
+                            const b = document.querySelector('[data-e2e="follow-button"]');
+                            return b ? (b.innerText || b.textContent || '').trim() : '';
+                        }"""
+                    )
+                    if str(mid_txt or "").strip().lower() in ("follow", "follow lại", "theo dõi"):
+                        try:
+                            page.mouse.click(bx, by, delay=random.randint(50, 95))
+                        except Exception:
+                            pass
+                # Chờ thêm 3.0s qua page.wait_for_timeout để bơm event loop Playwright nhận _on_response và vượt qua cửa sổ rollback 3.0s
+                page.wait_for_timeout(3000)
                 self.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
 
             after_state = page.evaluate(
@@ -1657,7 +1715,7 @@ class TikTok24hFilterEngine:
                     for (const btn of btns) {
                         if (btn.closest('nav, aside, [data-e2e="nav-bar"]')) continue;
                         const r = btn.getBoundingClientRect();
-                        if (r.left > 220 && r.top > 60 && r.top < 520 && r.width > 30 && r.height > 20) {
+                        if (r.left > 150 && r.top > 40 && r.top < 580 && r.width > 25 && r.height > 18) {
                             return (btn.innerText || btn.textContent || '').trim();
                         }
                     }
@@ -2227,9 +2285,9 @@ class TikTok24hFilterEngine:
         try:
             hist = self.load_history()
             ch_cd_map = hist.get("channel_cooldown_until") or {}
-            # Tự động xóa toàn bộ các mốc cooldown giả trước ngày 07/11/2026 (do lỗi synthetic click cũ) cho TẤT CẢ 10 kênh
+            # Tự động xóa toàn bộ các mốc cooldown cũ trước ngày 10/11/2026 cho TẤT CẢ 10 kênh
             old_cd = str(ch_cd_map.get(ch_folder) or "").strip()
-            if old_cd and old_cd <= "2026-11-07 00:00:00":
+            if old_cd and old_cd <= "2026-11-10 00:00:00":
                 ch_cd_map.pop(ch_folder, None)
                 hist["channel_cooldown_until"] = ch_cd_map
                 self.save_history(hist)

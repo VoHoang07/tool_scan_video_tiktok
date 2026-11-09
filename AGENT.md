@@ -206,6 +206,22 @@
 
 ---
 
+### [BUG-016] 6 Kênh Mới (`meo_vat_gia_dinh`, `suc_khoe_duong_sinh`, `phu_nu_khi_chat`, `an_vat_moi_ngay`, `nuoi_con_eq`, `phu_kien_tien_ich`) đăng video YouTube Shorts ít view và Bộ lọc 24h không Follow / thả tim được
+- **Thời gian**: 2026-11-09 12:52:00
+- **Triệu chứng**:
+  1. 6 kênh tạo sau (`meo_vat_gia_dinh`, `suc_khoe_duong_sinh`, `phu_nu_khi_chat`, `an_vat_moi_ngay`, `nuoi_con_eq`, `phu_kien_tien_ich`) toàn đăng các video `youtube_shorts_story_*` chất lượng thấp, ít view (`0 views` khi lên TikTok).
+  2. Bộ lọc 24h (`growth_24h_filter.py`) báo `5_followed_creator: false` trên ~90% video (`before_btn: ""`, `after_btn: ""`, `profile_url` vẫn nằm ở `/video/...`) và `2_liked_video: false` (`is_digg: 1`) rồi bỏ qua luôn các bước tương tác ở video tiếp theo.
+- **Nguyên nhân gốc rễ**:
+  1. Trong `CHANNEL_PROFILES` của [`tiktok_pipeline/crawler.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py), 6 kênh mới đang cấu hình các mã `tiktok_challenge_ids` giả định không tồn tại trên TikWM (`{"code":-1,"msg":"challenge info is failed!"}`), đồng thời `CONTENT_BLACKLIST_DOUYIN` chặn nhầm các từ khóa `"生活小妙招"`, `"小妙招"`, `"好物分享"`, `"测评"` và bật `multi_platform_keywords` (`#shorts`), làm crawler rơi xuống `_discover_multi_platform_shorts()` lấy video YouTube Shorts ngẫu nhiên ít view.
+  2. Trong `_verify_and_follow_on_creator_profile()` của [`tiktok_pipeline/growth_24h_filter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/growth_24h_filter.py), khi click SPA vào tên chủ kênh trên trang `/video/...` không chuyển trang (hoặc mở tab phụ bị đóng ngay), code không có bước điều hướng dự phòng sang `https://www.tiktok.com/@{clean_handle}?lang=vi-VN` nên tìm `[data-e2e="follow-button"]` ngay trên trang `/video/...` (nơi nút này không tồn tại) và không bao giờ bấm Follow.
+  3. Trong `_step2_like_video()` của [`tiktok_pipeline/growth_24h_filter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/growth_24h_filter.py), code gọi thẳng `_os_click_viewport(page, lx, ly)` mà không di chuyển chuột tự nhiên (`_human_move_mouse`) tới nút Tim trước khi bấm, và khi gặp `is_digg: 1` lại gán `_circuit_breaker_tripped = True` làm ảnh hưởng các bước sau.
+- **Cách khắc phục & File đã sửa**:
+  - Cập nhật `CHANNEL_PROFILES` trong [`tiktok_pipeline/crawler.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py) cho cả 6 kênh mới bằng bộ `tiktok_challenge_ids` tỷ view thực tế đã xác thực trên TikWM (`1660403041677313` `#meovatcuocsong` 5.34B views, `756000` `#suckhoe` 41.18B views, `1652158069384194` `#tamlyhoc` 5.12B views, `73070727` `#anvat` 36.16B views, `1618177115579394` `#mevabe` 37.85B views, `1609766804439042` `#phukiendienthoai` 4.09B views...), tắt `multi_platform_keywords: []`, gỡ các từ khóa mẹo vặt/công nghệ khỏi `CONTENT_BLACKLIST_DOUYIN`, và dọn sạch toàn bộ file `youtube_shorts_story_*` cũ khỏi `ready/` của 6 kênh mới trong `purge_foreign_and_offtopic_ready_videos()`.
+  - Sửa `_verify_and_follow_on_creator_profile()` và `_step2_like_video()` trong [`tiktok_pipeline/growth_24h_filter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/growth_24h_filter.py): luôn di chuyển chuột tự nhiên (`_human_move_mouse`) trước khi click Tim/Follow, kết hợp `_os_click_viewport` + fallback `page.mouse.click`, bổ sung điều hướng bảo hiểm `page.goto("https://www.tiktok.com/@{clean_handle}?lang=vi-VN", referer=video_url)` khi SPA click trên trang video chưa chuyển sang trang Hồ sơ, và tách riêng `_session_digg_rate_limited` khỏi `_circuit_breaker_tripped`.
+- **Luật Miễn Dịch Vĩnh Viễn**: Mọi `tiktok_challenge_ids` trong `CHANNEL_PROFILES` phải là ID thật đã xác thực trả về danh sách video triệu view trên TikWM (`multi_platform_keywords: []` cho 6 kênh mới để cấm lấy YouTube Shorts rác); bước Follow của Bộ lọc 24h bắt buộc phải xác nhận `page.url` đã ở trang Hồ sơ `/@creator` trước khi tìm và bấm `[data-e2e="follow-button"]`.
+
+---
+
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:
