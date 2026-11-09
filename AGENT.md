@@ -169,6 +169,15 @@
 
 ---
 
+### [BUG-013] Silent KPI Anomaly (filter24h - audio_dem_khuyen) (hash: `03ded023d4b5`)
+- **Thời gian**: 2026-11-09 12:05:18
+- **Triệu chứng**: Silent KPI Bug: Phiên filter24h của kênh [audio_dem_khuyen] lúc 2026-11-09 12:03:47 đã tương tác 3 video nhưng 5_followed_creator=False trên tất cả video (không bị circuit_breaker).
+- **Nguyên nhân gốc rễ**: Phát hiện tự động qua Silent Logic Auditor trên máy Mac Intel.
+- **Cách khắc phục & File đã sửa**: Tự động kích hoạt AI Self-Heal trên Mac Intel.
+- **Luật Miễn Dịch Vĩnh Viễn**: Giám sát KPI thực tế sau mỗi phiên trình duyệt và tự động điều chỉnh selector/điều hướng.
+
+---
+
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:
