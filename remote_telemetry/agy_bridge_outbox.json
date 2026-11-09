@@ -1,46 +1,51 @@
 {
-  "updated_at": "2026-11-09 16:46:14",
+  "updated_at": "2026-11-09 17:11:48",
   "latest_result": {
-    "cmd_id": "heartbeat_1794217573",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-09 16:46:13",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_restart_1794219108",
+    "action": "auto_restart_dead_streams",
+    "executed_at": "2026-11-09 17:11:48",
+    "restart_info": {
+      "restarted_streams": [
+        "stream1_unhung_after_1218s",
+        "stream1_upload"
+      ],
+      "timestamp": "2026-11-09 17:11:48"
+    },
     "system_health": {
-      "timestamp": "2026-11-09 16:46:14",
+      "timestamp": "2026-11-09 17:11:48",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 10851.3,
+      "lock_file_age_seconds": 12385.0,
       "processes": [
-        "15938    03:00:51 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "15942    03:00:51 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "51409    18:36:22 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "51411    18:36:22 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "51409    19:01:56 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "51411    19:01:56 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "54219       00:00 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
+        "54221       00:00 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[16:40:58] [INFO] tiktok_pipeline: TTS #13 [31.62s-32.90s | gốc=1.36s]: rate=+15%, atempo=1.00x -> 1.28s",
-        "[16:41:33] [INFO] tiktok_pipeline: TTS #14 [32.98s-35.32s | gốc=2.40s]: rate=+45%, atempo=1.00x -> 2.34s",
-        "[16:41:33] [INFO] tiktok_pipeline: === [5/5] GHÉP ÂM THANH & ĐÓNG PHỤ ĐỀ LÊN VIDEO (FFMPEG) ===",
-        "[16:41:33] [INFO] tiktok_pipeline: Thông số video gốc: 1080x1440, thời lượng: 35.83s",
-        "[16:41:49] [INFO] tiktok_pipeline: Đã phát hiện vị trí sub gốc cần làm mờ: tâm Y=1330px (92.4%), chiều cao=122px (peak_score=2466.9)",
-        "[16:41:49] [INFO] tiktok_pipeline: Đã tạo trục âm thanh lồng tiếng Việt: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7537017470759046417/voiceover_track.wav",
-        "[16:41:49] [INFO] tiktok_pipeline: Đang trộn lồng tiếng Việt đè lên giọng nhân vật gốc (nền gốc=0.25, giọng Việt=1.35)...",
-        "[16:41:53] [INFO] tiktok_pipeline: Đang xóa tinh tế nét chữ sub gốc theo từng khung hình tại dải Y=[1262..1398]...",
-        "[16:42:50] [INFO] tiktok_pipeline: Đang burn phụ đề tiếng Việt `.ass` sắc nét lên nền video đã làm sạch chữ gốc...",
-        "[16:42:55] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
-        "[16:43:20] [INFO] tiktok_pipeline: Hoàn tất xuất bản video tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/phu_nu_khi_chat/ready/20261109_163444_tiktok_story_7537017470759046417.mp4",
-        "[16:43:20] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=phu_nu_khi_chat, file=phu_nu_khi_chat/ready/20261109_163444_tiktok_story_7537017470759046417.mp4, status=READY)",
-        "[16:43:20] [INFO] tiktok_pipeline: ==> Đã hoàn thành 1/1 video cho [phu_nu_khi_chat]: /Users/vohoang/Documents/tool_scan_video_tiktok/output/phu_nu_khi_chat/ready/20261109_163444_tiktok_story_7537017470759046417.mp4",
-        "[16:43:20] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh phu_nu_khi_chat (phu_nu_khi_chat)! Kho chờ ready/ hiện tại: 4/5",
-        "[16:43:23] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh phu_nu_khi_chat (phu_nu_khi_chat): Nghỉ an toàn 152s (~2.5 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)...",
-        "[16:46:08] [INFO] tiktok_pipeline: [Round-Robin] Kênh an_vat_moi_ngay (an_vat_moi_ngay) hiện có 3/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
-        "[16:46:08] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[16:46:08] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[16:46:08] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[16:46:08] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_8_food_snacks] -> Thư mục: output/an_vat_moi_ngay/ready/ | Link mẫu: 0 | Kênh mẫu: [] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)"
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
+        "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
+        "  warnings.warn('resource_tracker: There appear to be %d '"
       ],
       "lock_file_content": "idle"
     }
