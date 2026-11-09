@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 02:40:39",
+    "timestamp": "2026-11-10 02:46:37",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "ads_skipped": 3,
+      "scrolled_videos": 11,
+      "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 155.4,
+      "elapsed_seconds": 159.8,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 02:46:37",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 159.8,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-10 02:40:39",
       "machine_arch": "x86_64",
@@ -223,92 +238,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 157.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 01:01:35",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "phu_kien_tien_ich",
-            "video_id": "7705767521403636993",
-            "video_url": "https://www.tiktok.com/@cheoxaykenh6/video/7705767521403636993",
-            "creator_handle": "@cheoxaykenh6",
-            "watched_seconds": 15.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Video chỉnh chu quá, chúc bạn sớm lên xu hướng nha 💯",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611100200233488657F415A0F39A846\",\"now\":1794247223000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611100200233488657F415A0F39A846\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110020051269B9A5026DAAA3B5B98\",\"now\":1794247251000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261110020051269B9A5026DAAA3B5B98\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 804.34375,
-                "y": 411,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "143"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 804.34375,
-                  "y": 411,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "143"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@cheoxaykenh6",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@cheoxaykenh6?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-10 01:00:59",
-            "follow_back_window_until": "2026-11-11 01:00:59"
-          }
-        ]
       }
     }
   ]
