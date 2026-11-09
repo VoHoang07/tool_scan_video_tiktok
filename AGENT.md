@@ -222,6 +222,15 @@
 
 ---
 
+### [BUG-017] Silent KPI Anomaly (filter24h - baby_AI) (hash: `9cd5484045e1`)
+- **Thời gian**: 2026-11-09 13:01:52
+- **Triệu chứng**: Silent KPI Bug: Phiên filter24h của kênh [baby_AI] lúc 2026-11-09 13:00:38 đã tương tác 1 video nhưng 5_followed_creator=False trên tất cả video (không bị circuit_breaker).
+- **Nguyên nhân gốc rễ**: Phát hiện tự động qua Silent Logic Auditor trên máy Mac Intel.
+- **Cách khắc phục & File đã sửa**: Tự động kích hoạt AI Self-Heal trên Mac Intel.
+- **Luật Miễn Dịch Vĩnh Viễn**: Giám sát KPI thực tế sau mỗi phiên trình duyệt và tự động điều chỉnh selector/điều hướng.
+
+---
+
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:
