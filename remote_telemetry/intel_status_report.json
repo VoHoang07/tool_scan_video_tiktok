@@ -1,28 +1,20 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 18:33:37",
+    "timestamp": "2026-11-09 18:35:27",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "phukientienich.k10",
-        "domFollowing": "0",
-        "domFollowers": "0",
-        "domLikes": "0",
-        "sidebarFollowing": [
-          "/@phukientienich.k10"
-        ]
-      },
+      "interacted_count": 1,
+      "own_profile_stats": {},
       "records": [
         {
-          "channel": "phu_kien_tien_ich",
-          "video_id": "7705788886991195399",
-          "video_url": "https://www.tiktok.com/@followcheo499/video/7705788886991195399",
-          "creator_handle": "@followcheo499",
-          "watched_seconds": 24.8,
+          "channel": "video_AI_hay",
+          "video_id": "7706015163509411092",
+          "video_url": "https://www.tiktok.com/@trevey45/video/7706015163509411092",
+          "creator_handle": "@trevey45",
+          "watched_seconds": 15.0,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": false,
@@ -31,13 +23,13 @@
             "5_followed_creator": true,
             "6_commented_after_follow": true
           },
-          "comment_text": "Xem cuốn luôn á, mong kênh ra thêm nhiều video chất lượng như này nhé 🥰",
+          "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
           "circuit_breaker_tripped": false,
           "like_debug": {
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611091931053EF6BF92F1139D15329C\",\"now\":1794223865000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611091931053EF6BF92F1139D15329C\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110919341739A2E86F4263C3213CBF\",\"now\":1794224057000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110919341739A2E86F4263C3213CBF\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [
@@ -47,7 +39,7 @@
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110919313389AFDCFB192D4E1C118C\",\"now\":1794223893000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026110919313389AFDCFB192D4E1C118C\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109193445B1E30820C5E72D1E3825\",\"now\":1794224085000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261109193445B1E30820C5E72D1E3825\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "env_check": {
@@ -55,99 +47,131 @@
               "loggedInUniqueId": null
             },
             "before": {
-              "x": 804.34375,
-              "y": 411,
+              "x": 795.15625,
+              "y": 421,
               "ariaPressed": false,
               "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "62"
+              "likeCount": "50"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
-                "x": 804.34375,
-                "y": 411,
+                "x": 795.15625,
+                "y": 421,
                 "ariaPressed": false,
                 "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "62"
+                "likeCount": "50"
               },
               "red": false,
               "server_digg_ok": false,
               "server_digg_rejected": true
             },
             "profile_follow_verify": {
-              "creator": "@followcheo499",
+              "creator": "@trevey45",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@followcheo499?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@trevey45?lang=vi-VN",
               "before_btn": "Follow",
               "after_btn": "Đã follow",
-              "init_relation": null,
+              "init_relation": 0,
               "server_follow_ok": true,
               "ui_confirmed": true,
               "persisted": true,
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-09 18:31:41",
-          "follow_back_window_until": "2026-11-10 18:31:41"
-        },
-        {
-          "channel": "phu_kien_tien_ich",
-          "video_id": "7705422692018687240",
-          "video_url": "https://www.tiktok.com/@bapsuri68/video/7705422692018687240",
-          "creator_handle": "@bapsuri68",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-09 18:32:37",
-          "follow_back_window_until": "2026-11-10 18:32:37"
-        },
-        {
-          "channel": "phu_kien_tien_ich",
-          "video_id": "7704965939103665428",
-          "video_url": "https://www.tiktok.com/@ci.g.cng.rviu/video/7704965939103665428",
-          "creator_handle": "@ci.g.cng.rviu",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-09 18:33:32",
-          "follow_back_window_until": "2026-11-10 18:33:32"
+          "interacted_at": "2026-11-09 18:34:53",
+          "follow_back_window_until": "2026-11-10 18:34:53"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 18:35:27",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7706015163509411092",
+            "video_url": "https://www.tiktok.com/@trevey45/video/7706015163509411092",
+            "creator_handle": "@trevey45",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110919341739A2E86F4263C3213CBF\",\"now\":1794224057000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110919341739A2E86F4263C3213CBF\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109193445B1E30820C5E72D1E3825\",\"now\":1794224085000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261109193445B1E30820C5E72D1E3825\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "50"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(255, 255, 255, .9)",
+                  "likeCount": "50"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@trevey45",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@trevey45?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-09 18:34:53",
+            "follow_back_window_until": "2026-11-10 18:34:53"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-09 18:33:37",
       "machine_arch": "x86_64",
@@ -1126,22 +1150,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 5,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 13:30:40",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261109_132848_tiktok_story_7175119330445626650.mp4",
-        "caption": "✨ Câu chuyện AI cực cuốn: Có thể bạn chưa biết ???. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
-        "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
