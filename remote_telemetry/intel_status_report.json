@@ -1,45 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 13:05:40",
+    "timestamp": "2026-11-09 13:07:39",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_filter24h_phu_nu_khi_chat.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "tu_chan_gioi0",
-        "domFollowing": "25",
-        "domFollowers": "15",
-        "domLikes": "159",
-        "sidebarFollowing": [
-          "/@tu_chan_gioi0",
-          "/@empiictehotle",
-          "/@shwksoowoo",
-          "/@suusii7878",
-          "/@chillgirl7949",
-          "/@danhsi8386"
-        ]
-      },
+      "interacted_count": 1,
+      "own_profile_stats": {},
       "records": [
         {
-          "channel": "tu_chan_gioi",
-          "video_id": "7704275240087489813",
-          "video_url": "https://www.tiktok.com/@wtfbbyimlitt/video/7704275240087489813",
-          "creator_handle": "@wtfbbyimlitt",
+          "channel": "phu_nu_khi_chat",
+          "video_id": "7687443089820093716",
+          "video_url": "https://www.tiktok.com/@lusi.cery.ging/video/7687443089820093716",
+          "creator_handle": "@lusi.cery.ging",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
             "5_followed_creator": true,
-            "6_commented_after_follow": false
+            "6_commented_after_follow": true
           },
-          "comment_text": "",
+          "comment_text": "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
           "circuit_breaker_tripped": false,
           "like_debug": {
-            "digg_responses": [],
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109140627783DC5CDDBA6930A3868\",\"now\":1794204387000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261109140627783DC5CDDBA6930A3868\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
             "follow_responses": [
               {
                 "status": 200,
@@ -47,113 +39,139 @@
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110914033100389F002D889F083711\",\"now\":1794204211000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026110914033100389F002D889F083711\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611091406556242EB42750BFE1013E7\",\"now\":1794204415000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611091406556242EB42750BFE1013E7\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "env_check": {
               "webdriver": false,
               "loggedInUniqueId": null
             },
-            "before": null,
+            "before": {
+              "x": 881.28125,
+              "y": 425,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "38"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 881.28125,
+                "y": 425,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "38"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
             "profile_follow_verify": {
-              "creator": "@wtfbbyimlitt",
+              "creator": "@lusi.cery.ging",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@wtfbbyimlitt?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@lusi.cery.ging?lang=vi-VN",
               "before_btn": "Follow",
               "after_btn": "Đã follow",
-              "init_relation": null,
+              "init_relation": 0,
               "server_follow_ok": true,
               "ui_confirmed": true,
               "persisted": true,
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-09 13:03:39",
-          "follow_back_window_until": "2026-11-10 13:03:39"
-        },
-        {
-          "channel": "tu_chan_gioi",
-          "video_id": "7704027471435336968",
-          "video_url": "https://www.tiktok.com/@song_co_guuu/video/7704027471435336968",
-          "creator_handle": "@song_co_guuu",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Xem cuốn luôn á, mong kênh ra thêm nhiều video chất lượng như này nhé 🥰",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109140420FD4AEBB3AC31150B0F2E\",\"now\":1794204260000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261109140420FD4AEBB3AC31150B0F2E\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 872,
-              "y": 456,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "17"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "17"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            }
-          },
-          "interacted_at": "2026-11-09 13:04:41",
-          "follow_back_window_until": "2026-11-10 13:04:41"
-        },
-        {
-          "channel": "tu_chan_gioi",
-          "video_id": "7703726459244023060",
-          "video_url": "https://www.tiktok.com/@xinhyeunhattiktokk/video/7703726459244023060",
-          "creator_handle": "@xinhyeunhattiktokk",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Kênh đầu tư chỉn chu từ hình ảnh tới âm thanh, chúc bạn phát triển mạnh nha ✨",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-09 13:05:36",
-          "follow_back_window_until": "2026-11-10 13:05:36"
+          "interacted_at": "2026-11-09 13:07:04",
+          "follow_back_window_until": "2026-11-10 13:07:04"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 13:07:39",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_filter24h_phu_nu_khi_chat.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "phu_nu_khi_chat",
+            "video_id": "7687443089820093716",
+            "video_url": "https://www.tiktok.com/@lusi.cery.ging/video/7687443089820093716",
+            "creator_handle": "@lusi.cery.ging",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109140627783DC5CDDBA6930A3868\",\"now\":1794204387000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261109140627783DC5CDDBA6930A3868\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611091406556242EB42750BFE1013E7\",\"now\":1794204415000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611091406556242EB42750BFE1013E7\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 881.28125,
+                "y": 425,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "38"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 881.28125,
+                  "y": 425,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "38"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@lusi.cery.ging",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@lusi.cery.ging?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-09 13:07:04",
+            "follow_back_window_until": "2026-11-10 13:07:04"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-09 13:05:40",
       "machine_arch": "x86_64",
@@ -1216,170 +1234,6 @@
             },
             "interacted_at": "2026-11-09 12:26:20",
             "follow_back_window_until": "2026-11-10 12:26:20"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-09 12:22:47",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "nuoiconeq.k09",
-          "domFollowing": "1",
-          "domFollowers": "0",
-          "domLikes": "0",
-          "sidebarFollowing": [
-            "/@nuoiconeq.k09",
-            "/@kieu_tong247"
-          ]
-        },
-        "records": [
-          {
-            "channel": "nuoi_con_eq",
-            "video_id": "7704979222321827080",
-            "video_url": "https://www.tiktok.com/@chuyn.xinh5/video/7704979222321827080",
-            "creator_handle": "@chuyn.xinh5",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Xem cuốn từ giây đầu tới giây cuối luôn, tuyệt vời lắm bạn ơi 🔥",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611091320104B279CD64DA285058CC7\",\"now\":1794201611000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611091320104B279CD64DA285058CC7\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 882.21875,
-                "y": 419,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "269"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 882.21875,
-                  "y": 419,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "270"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@chuyn.xinh5",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@chuyn.xinh5/video/7704979222321827080?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 12:20:33",
-            "follow_back_window_until": "2026-11-10 12:20:33"
-          },
-          {
-            "channel": "nuoi_con_eq",
-            "video_id": "7704884994216430861",
-            "video_url": "https://www.tiktok.com/@shortvideo1012/video/7704884994216430861",
-            "creator_handle": "@shortvideo1012",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Đỉnh của chóp luôn bạn ơi, giữ vững phong độ ra nhiều clip hay nữa nha 🔥",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "profile_follow_verify": {
-                "creator": "@shortvideo1012",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@shortvideo1012/video/7704884994216430861?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 12:21:39",
-            "follow_back_window_until": "2026-11-10 12:21:39"
-          },
-          {
-            "channel": "nuoi_con_eq",
-            "video_id": "7704625368816438549",
-            "video_url": "https://www.tiktok.com/@.nt.p.min.ty/video/7704625368816438549",
-            "creator_handle": "@.nt.p.min.ty",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Cách làm video của bạn cuốn thật sự, xem một mạch tới cuối luôn 🌟",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "profile_follow_verify": {
-                "creator": "@.nt.p.min.ty",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@.nt.p.min.ty/video/7704625368816438549?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 12:22:42",
-            "follow_back_window_until": "2026-11-10 12:22:42"
           }
         ]
       }
