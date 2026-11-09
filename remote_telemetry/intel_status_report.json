@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 18:41:11",
+    "timestamp": "2026-11-09 18:48:07",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261107_233817_tiktok_story_7684069833423752455.mp4",
-      "caption": "🥰 Nhật ký gia đình siêu lầy: Pha xử lý đi vào lòng đất của em bé tinh nghịch trong gia đình. Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #embecute #tinhhuonghaihuoc #haihuocmoingay #giadinhhaihuoc #viral",
+      "video_file": "20261109_184333_tiktok_story_990002102_bongcuc_v4_s21_p2_bg_mukbang.mp4",
+      "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 21 (Phần 2/5): Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo. Vừa xem Mukbang đêm khuya vừa nghe câu chuyện cuốn hút này nhé!",
+      "hashtags": "#bongcucso21 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 18:48:07",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261109_184333_tiktok_story_990002102_bongcuc_v4_s21_p2_bg_mukbang.mp4",
+        "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 21 (Phần 2/5): Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo. Vừa xem Mukbang đêm khuya vừa nghe câu chuyện cuốn hút này nhé!",
+        "hashtags": "#bongcucso21 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 18:41:11",
       "machine_arch": "x86_64",
@@ -1065,21 +1081,6 @@
             "follow_back_window_until": "2026-11-10 18:13:00"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-09 13:40:59",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 162.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]

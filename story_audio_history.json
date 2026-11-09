@@ -2626,6 +2626,16 @@
       "source_url": "https://www.tiktok.com/@truongthu.tech/video/7152856772212968731",
       "output_filename": "phu_kien_tien_ich/ready/20261109_175603_tiktok_story_7152856772212968731.mp4",
       "crawled_at": "2026-11-09T17:56:06"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990002102",
+      "sound_id": "bongcuc_yt_KkvdYTXdeJU_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=KkvdYTXdeJU&t=430s",
+      "output_filename": "audio_dem_khuyen/ready/20261109_184333_tiktok_story_990002102_bongcuc_v4_s21_p2_bg_mukbang.mp4",
+      "crawled_at": "2026-11-09T18:46:21"
     }
   ]
 }
