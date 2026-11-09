@@ -1,35 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 00:43:22",
+    "timestamp": "2026-11-10 00:45:24",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
     "details": {
       "interacted_count": 1,
       "own_profile_stats": {},
       "records": [
         {
-          "channel": "baby_AI",
-          "video_id": "7706060540770028820",
-          "video_url": "https://www.tiktok.com/@hoi.nam.nguyn029/video/7706060540770028820",
-          "creator_handle": "@hoi.nam.nguyn029",
+          "channel": "audio_dem_khuyen",
+          "video_id": "7704480696961633554",
+          "video_url": "https://www.tiktok.com/@xy.knh.tiktok242/video/7704480696961633554",
+          "creator_handle": "@xy.knh.tiktok242",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
-            "2_liked_video": false,
+            "2_liked_video": true,
             "3_copied_link": true,
             "4_added_favorite": true,
-            "5_followed_creator": false,
+            "5_followed_creator": true,
             "6_commented_after_follow": true
           },
-          "comment_text": "Quá tuyệt vời luôn bạn ơi, thả tim ủng hộ kênh nhiệt tình nhé ❤️✨",
+          "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
           "circuit_breaker_tripped": false,
           "like_debug": {
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110014214A4223C600D398776FE30\",\"now\":1794246134000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261110014214A4223C600D398776FE30\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110014410D2FD1146703DBF7157EE\",\"now\":1794246250000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261110014410D2FD1146703DBF7157EE\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [
@@ -39,7 +39,7 @@
               },
               {
                 "status": 200,
-                "body": ""
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611100144411422F58AF884E165C8CD\",\"now\":1794246281000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611100144411422F58AF884E165C8CD\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "env_check": {
@@ -47,45 +47,131 @@
               "loggedInUniqueId": null
             },
             "before": {
-              "x": 833.40625,
-              "y": 409,
+              "x": 881.28125,
+              "y": 373,
               "ariaPressed": false,
               "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "28"
+              "likeCount": "72"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
-                "x": 833.40625,
-                "y": 409,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "28"
+                "x": 881.28125,
+                "y": 373,
+                "ariaPressed": true,
+                "svgColor": "rgba(255, 59, 92, 1)",
+                "likeCount": "73"
               },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
+              "red": true,
+              "server_digg_ok": true,
+              "server_digg_rejected": false
             },
             "profile_follow_verify": {
-              "creator": "@hoi.nam.nguyn029",
+              "creator": "@xy.knh.tiktok242",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@hoi.nam.nguyn029?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@xy.knh.tiktok242?lang=vi-VN",
               "before_btn": "Follow",
               "after_btn": "Đã follow",
               "init_relation": 0,
-              "server_follow_ok": false,
+              "server_follow_ok": true,
               "ui_confirmed": true,
-              "persisted": false,
+              "persisted": true,
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-10 00:42:47",
-          "follow_back_window_until": "2026-11-11 00:42:47"
+          "interacted_at": "2026-11-10 00:44:48",
+          "follow_back_window_until": "2026-11-11 00:44:48"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 00:45:24",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "audio_dem_khuyen",
+            "video_id": "7704480696961633554",
+            "video_url": "https://www.tiktok.com/@xy.knh.tiktok242/video/7704480696961633554",
+            "creator_handle": "@xy.knh.tiktok242",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": true,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110014410D2FD1146703DBF7157EE\",\"now\":1794246250000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261110014410D2FD1146703DBF7157EE\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611100144411422F58AF884E165C8CD\",\"now\":1794246281000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611100144411422F58AF884E165C8CD\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 881.28125,
+                "y": 373,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "72"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 881.28125,
+                  "y": 373,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(255, 59, 92, 1)",
+                  "likeCount": "73"
+                },
+                "red": true,
+                "server_digg_ok": true,
+                "server_digg_rejected": false
+              },
+              "profile_follow_verify": {
+                "creator": "@xy.knh.tiktok242",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@xy.knh.tiktok242?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-10 00:44:48",
+            "follow_back_window_until": "2026-11-11 00:44:48"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-10 00:43:22",
       "machine_arch": "x86_64",
@@ -516,21 +602,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 156.3,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 20:01:51",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 156.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
