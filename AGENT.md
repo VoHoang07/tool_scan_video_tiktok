@@ -231,6 +231,15 @@
 
 ---
 
+### [BUG-018] Runtime Error trong stream2_filter24h.log (hash: `9e95f05c8c90`)
+- **Thời gian**: 2026-11-09 13:17:56
+- **Triệu chứng**: [13:09:10] [ERROR] tiktok_pipeline: [Dòng 2 - Bộ lọc 24h] Lỗi khi chạy Remote Trigger (filter_24h_all10_fixed_20261109_1252): Page.wait_for_timeout: Target page, context or browser has been closed
+- **Nguyên nhân gốc rễ**: Ngoại lệ phát sinh trong `stream2_filter24h.log` trên máy Mac Intel.
+- **Cách khắc phục & File đã sửa**: Đã tự động phân tích và vá lỗi qua AGY Self-Heal.
+- **Luật Miễn Dịch Vĩnh Viễn**: Bọc kiểm tra ngoại lệ/timeout và tuân thủ chuẩn chống tái phát lỗi trong AGENT.md.
+
+---
+
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:

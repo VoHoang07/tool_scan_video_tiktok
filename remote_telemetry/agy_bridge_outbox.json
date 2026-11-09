@@ -1,53 +1,54 @@
 {
-  "updated_at": "2026-11-09 13:01:52",
+  "updated_at": "2026-11-09 13:17:56",
   "latest_result": {
-    "cmd_id": "auto_evolve_9cd5484045e1",
+    "cmd_id": "auto_evolve_9e95f05c8c90",
     "action": "auto_self_evolve_fix",
-    "executed_at": "2026-11-09 13:01:52",
+    "executed_at": "2026-11-09 13:17:56",
     "ai_fix_report": {
-      "error_hash": "9cd5484045e1",
-      "log_file": "remote_telemetry/intel_status_report.json",
-      "error_line": "Silent KPI Bug: Phiên filter24h của kênh [baby_AI] lúc 2026-11-09 13:00:38 đã tương tác 1 video nhưng 5_followed_creator=False trên tất cả video (không bị circuit_breaker).",
+      "error_hash": "9e95f05c8c90",
+      "log_file": "stream2_filter24h.log",
+      "error_line": "[13:09:10] [ERROR] tiktok_pipeline: [Dòng 2 - Bộ lọc 24h] Lỗi khi chạy Remote Trigger (filter_24h_all10_fixed_20261109_1252): Page.wait_for_timeout: Target page, context or browser has been closed",
       "agy_exit_code": 1,
       "agy_fix_summary": "",
-      "timestamp": "2026-11-09 13:01:52"
+      "timestamp": "2026-11-09 13:17:56"
     },
     "system_health": {
-      "timestamp": "2026-11-09 13:01:52",
+      "timestamp": "2026-11-09 13:17:56",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 308.3,
+      "lock_file_age_seconds": 5.6,
       "processes": [
-        "11197       05:00 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "11201       05:00 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "51409    14:52:00 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "51411    14:52:00 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "11197       21:04 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "11201       21:04 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "51409    15:08:04 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "51411    15:08:04 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[12:56:48] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 99.76%)",
-        "OMP: Warning #191: Forking a process while a parallel region is active is potentially unsafe.",
-        "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
-        "  warnings.warn('resource_tracker: There appear to be %d '",
-        "[12:56:54] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
-        "[12:56:54] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
-        "[12:56:54] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
-        "[12:56:54] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
-        "[12:56:54] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 2 (--stream-filter24h): MỞ 4 KÊNH CHẠY BỘ LỌC 24 GIỜ (7 LẦN/NGÀY × 10 VIDEO/KÊNH) ===",
-        "[12:56:55] [INFO] tiktok_pipeline: === KHỞI ĐỘNG CHẾ ĐỘ CONTINUOUS WORKER 24/7 (ROUND-ROBIN 11 KÊNH + AUTO POST SCHEDULER) | max_ready=5 video/kênh | sleep_between=ngẫu nhiên 120s-300s (2-5 phút) ===",
-        "==============================================================================================",
-        "[12:56:55] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
-        "[12:56:56] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (3a08e67 -> 73af06d) | fix(crawler,filter24h): upgrade 6 newer channels to multi-billion-view TikTok/Douyin challenges and fix 24h filter profile follow/like [BUG-015]",
-        "[12:56:56] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (3a08e67 -> 73af06d) | fix(crawler,filter24h): upgrade 6 newer channels to multi-billion-view TikTok/Douyin challenges and fix 24h filter profile follow/like [BUG-015]",
-        "[12:56:56] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (3a08e67 -> 73af06d)!",
-        "[12:56:56] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (3a08e67 -> 73af06d)!",
-        "[12:56:56] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
-        "[12:56:57] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
-        "[12:56:59] [INFO] tiktok_pipeline: [Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon (upgrade_6channels_highview_and_action10_20261109_1252) -> Kênh ['phu_nu_khi_chat', 'meo_vat_gia_dinh', 'nuoi_con_eq', 'phu_kien_tien_ich', 'suc_khoe_duong_sinh', 'an_vat_moi_ngay']!"
+        "  + File: 20261109_131550_tiktok_story_7680922127788379410.mp4",
+        "  + Kịch bản ngắn: 🌹 Tâm lý Hôn nhân & Gia đình: 6 Dấu hiệu bạn không phải là \"lốp dự phòng\". Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
+        "  + Hashtags Hot Search: #giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #fyp #xh",
+        "[13:16:10] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã nạp file video vào TikTok Studio. Đang chờ tải lên 100% và tự động đóng các hộp thoại hướng dẫn ('Đã hiểu')...",
+        "[13:16:50] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã nhập xong Mô tả & 8 Hashtag chuẩn vào TikTok Studio: \"🌹 Tâm lý Hôn nhân & Gia đình: 6 Dấu hiệu bạn không phải là \"lốp dự phòng\". Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé! #gia...\"",
+        "[13:16:50] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = TẮT)...",
+        "[13:16:58] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đang bấm nút đỏ ĐĂNG ('Đăng', data-e2e='post_video_button') tại (380.0, 620.9)...",
+        "[13:17:00] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất...",
+        "[13:17:01] [INFO] tiktok_pipeline: [phu_nu_khi_chat] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!",
+        "[13:17:01] [INFO] tiktok_pipeline: [Switch 4 - Clear] Đã giữ lại Top 8 video nhiều view nhất/kênh | Đã xóa 1 video cũ trong posted/ & 0 thư mục tạm | Giải phóng: 18.3 MB",
+        "[13:17:01] [INFO] tiktok_pipeline: Đã đánh dấu POSTED thành công: /Users/vohoang/Documents/tool_scan_video_tiktok/output/phu_nu_khi_chat/posted/20261109_131550_tiktok_story_7680922127788379410.mp4 | posted_at=2026-11-09 13:17:01 (đã cập nhật 1 dòng trong CSV, tự động đồng bộ thêm 0 video)",
+        "[13:17:07] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Lượt 1] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[13:17:09] [INFO] tiktok_pipeline: [phu_nu_khi_chat] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[13:17:22] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Lượt 2] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[13:17:24] [INFO] tiktok_pipeline: [phu_nu_khi_chat] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[13:17:35] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Lượt 3] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[13:17:37] [INFO] tiktok_pipeline: [phu_nu_khi_chat] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[13:17:39] [INFO] tiktok_pipeline: [phu_nu_khi_chat] Hoàn tất kiểm tra trang Bài đăng (đã chuyển 3 bài từ 'Chỉ mình tôi' -> 'Mọi người').",
+        "[13:17:39] [INFO] tiktok_pipeline: [phu_nu_khi_chat] [Remote Telemetry] Đã lưu ảnh (latest_upload_phu_nu_khi_chat.jpg) & đẩy đồng bộ GitHub chạy ngầm!",
+        "[13:17:50] [INFO] tiktok_pipeline: [phu_nu_khi_chat] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: phu_nu_khi_chat/posted/20261109_131550_tiktok_story_7680922127788379410.mp4"
       ],
-      "lock_file_content": "pid=51409 ts=1794203804"
+      "lock_file_content": "pid=11197 ts=1794205070"
     }
   }
 }
