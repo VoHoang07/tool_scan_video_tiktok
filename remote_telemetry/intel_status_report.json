@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 19:55:59",
+    "timestamp": "2026-11-09 20:01:51",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
       "scrolled_videos": 11,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 153.1,
+      "elapsed_seconds": 156.1,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 20:01:51",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 156.1,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-09 19:55:59",
       "machine_arch": "x86_64",
@@ -365,22 +380,6 @@
         "video_file": "20261109_143107_tiktok_story_7666621083600243988.mp4",
         "caption": "👶 [Nuôi Con Thông Minh] Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
         "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 18:58:21",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261109_141208_tiktok_story_7523822386689346834.mp4",
-        "caption": "💡 [Mẹo Vặt Gia Đình] Phần 22| 1 cú bấm - 1 cú đâm rễ - mẹo trồng cây nhanh ra rễ siêu dễ! 🌱🌱🌱. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
-        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #yeubep #decorphong #tienichgiadinh #xh #xuhuongtiktok",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
