@@ -1,48 +1,53 @@
 {
-  "updated_at": "2026-11-09 13:27:13",
+  "updated_at": "2026-11-09 13:46:49",
   "latest_result": {
-    "cmd_id": "heartbeat_1794205633",
-    "action": "periodic_heartbeat",
-    "executed_at": "2026-11-09 13:27:13",
-    "machine_arch": "x86_64",
-    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+    "cmd_id": "auto_evolve_87f3b7921121",
+    "action": "auto_self_evolve_fix",
+    "executed_at": "2026-11-09 13:46:49",
+    "ai_fix_report": {
+      "error_hash": "87f3b7921121",
+      "log_file": "stream2_filter24h.log",
+      "error_line": "[13:45:22] [ERROR] tiktok_pipeline: [Warmup FYP] [tu_chan_gioi] Lỗi: Page.wait_for_timeout: Target page, context or browser has been closed",
+      "agy_exit_code": 1,
+      "agy_fix_summary": "",
+      "timestamp": "2026-11-09 13:46:49"
+    },
     "system_health": {
-      "timestamp": "2026-11-09 13:27:13",
+      "timestamp": "2026-11-09 13:46:49",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 24.7,
+      "lock_file_age_seconds": 86.2,
       "processes": [
-        "11197       30:21 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "11201       30:21 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "51409    15:17:21 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "51411    15:17:21 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        "15938       01:26 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "15942       01:26 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "51409    15:36:57 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "51411    15:36:57 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[13:25:56] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:00] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:01] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:02] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:04] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:05] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:06] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:07] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:08] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:10] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:11] [INFO] tiktok_pipeline: [nuoi_con_eq] [Studio Popover] Đã tự động bấm tắt hộp thoại hướng dẫn: 'Hashtag'",
-        "[13:26:41] [INFO] tiktok_pipeline: [nuoi_con_eq] Đã nhập xong Mô tả & 8 Hashtag chuẩn vào TikTok Studio: \"👶 [Nuôi Con Thông Minh] Tất cả là tại ông zàa🥹. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp d...\"",
-        "[13:26:41] [INFO] tiktok_pipeline: [nuoi_con_eq] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = TẮT)...",
-        "[13:26:49] [INFO] tiktok_pipeline: [nuoi_con_eq] Đang bấm nút đỏ ĐĂNG ('Đăng', data-e2e='post_video_button') tại (380.0, 666.9)...",
-        "[13:26:50] [INFO] tiktok_pipeline: [nuoi_con_eq] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất...",
-        "[13:26:52] [INFO] tiktok_pipeline: [nuoi_con_eq] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!",
-        "[13:26:52] [INFO] tiktok_pipeline: Đã đánh dấu POSTED thành công: /Users/vohoang/Documents/tool_scan_video_tiktok/output/nuoi_con_eq/posted/20261109_132521_tiktok_story_7488182231534488887.mp4 | posted_at=2026-11-09 13:26:52 (đã cập nhật 1 dòng trong CSV, tự động đồng bộ thêm 0 video)",
-        "[13:26:58] [INFO] tiktok_pipeline: [nuoi_con_eq] [Lượt 1] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
-        "[13:27:00] [INFO] tiktok_pipeline: [nuoi_con_eq] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
-        "[13:27:13] [INFO] tiktok_pipeline: [nuoi_con_eq] [Lượt 2] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)..."
+        "==============================================================================================",
+        "[13:45:24] [INFO] tiktok_pipeline: === [CHU KỲ #1] BẮT ĐẦU VÒNG LẶP KIỂM TRA, CÀO & CANH GIỜ ĐĂNG (11 KÊNH ĐANG BẬT: ['video_AI_hay', 'baby_AI', 'audio_dem_khuyen', 'tu_chan_gioi', 'meo_vat_gia_dinh', 'suc_khoe_duong_sinh', 'phu_nu_khi_chat', 'an_vat_moi_ngay', 'nuoi_con_eq', 'phu_kien_tien_ich', 'thu_cung_vui_nhon']) ===",
+        "[13:45:27] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Phát hiện code mới! (4268e3f -> 77ace21) | chore(switches): turn OFF switch_2_upload and switch_3_interact",
+        "[13:45:27] [INFO] tiktok_pipeline: [Auto-Git-Sync] Đã tự động cập nhật code mới từ GitHub (4268e3f -> 77ace21)!",
+        "[13:45:27] [INFO] tiktok_pipeline: [Language & Topic Purge] Đã xóa video không đạt chuẩn khỏi baby_AI/ready/20261029_224909_tiktok_story_7656305238692973832.mp4 (video lồng tiếng bản cũ bị đọc chậm trước khi nâng cấp tốc độ chuẩn +16%..+18% và khóa atempo >= 1.0 (18:00 05/11)).",
+        "[13:45:27] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Bộ Cào Trung/Việt View Cao & 2 Dòng Hoạt Động!",
+        "[13:45:29] [INFO] tiktok_pipeline: [Round-Robin] Kênh video_AI_hay (video_AI_hay) hiện có 4/5 video trong ready/. Bắt đầu cào và xử lý 1 video mới...",
+        "[13:45:30] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[13:45:30] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[13:45:30] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[13:45:30] [INFO] tiktok_pipeline: Đã nạp cấu hình kênh [channel_1_ai_animation] -> Thư mục: output/video_AI_hay/ready/ | Link mẫu: 10 | Kênh mẫu: [] (Chế độ: Chỉ lấy Trung Quốc & Việt Nam View Cao)",
+        "[13:45:30] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/Mr4JFtYJ-lg/",
+        "[13:45:31] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7698023893977599272 (ID: 7698023893977599272)",
+        "[13:45:31] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/KhnOwGH99QQ/",
+        "[13:45:32] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7697561971461197082 (ID: 7697561971461197082)",
+        "[13:45:34] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/5PXz62pKn0s/",
+        "[13:45:35] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7696826479242519139 (ID: 7696826479242519139)",
+        "[13:45:36] [INFO] tiktok_pipeline: Đang phân giải link rút gọn: https://v.douyin.com/RrMNQy7NBa0/",
+        "[13:45:37] [INFO] tiktok_pipeline: Đã giải nén link Douyin -> https://www.douyin.com/video/7681137499921550619 (ID: 7681137499921550619)"
       ],
-      "lock_file_content": "pid=11197 ts=1794205609"
+      "lock_file_content": "idle"
     }
   }
 }

@@ -240,6 +240,15 @@
 
 ---
 
+### [BUG-019] Runtime Error trong stream2_filter24h.log (hash: `87f3b7921121`)
+- **Thời gian**: 2026-11-09 13:46:49
+- **Triệu chứng**: [13:45:22] [ERROR] tiktok_pipeline: [Warmup FYP] [tu_chan_gioi] Lỗi: Page.wait_for_timeout: Target page, context or browser has been closed
+- **Nguyên nhân gốc rễ**: Ngoại lệ phát sinh trong `stream2_filter24h.log` trên máy Mac Intel.
+- **Cách khắc phục & File đã sửa**: Đã tự động phân tích và vá lỗi qua AGY Self-Heal.
+- **Luật Miễn Dịch Vĩnh Viễn**: Bọc kiểm tra ngoại lệ/timeout và tuân thủ chuẩn chống tái phát lỗi trong AGENT.md.
+
+---
+
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:
