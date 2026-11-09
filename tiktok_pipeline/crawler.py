@@ -2970,8 +2970,8 @@ class StoryAudioCrawler:
                     reason = "video baby_AI bản cũ trước khi nâng cấp lồng tiếng khớp 1:1 (22:40 29/10)"
                 elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_210000":
                     reason = "video lồng tiếng bản cũ trước khi vá lỗi cắt đỉnh âm thanh & mất thoại VAD (21:00 28/10)"
-                elif ch_folder == "audio_dem_khuyen" and "bongcuc_v4_s" not in fname.lower():
-                    reason = "video audio_dem_khuyen bản cũ 360p cắt khung hình trước khi nâng cấp Background Full HD 1080p nguyên khung hình không cắt mất người (bongcuc_v4)"
+                elif ch_folder == "audio_dem_khuyen" and "bongcuc_v5_s" not in fname.lower():
+                    reason = "video audio_dem_khuyen bản cũ trước khi nâng cấp cấu trúc mới bongcuc_v5 (đổi nền Mukbang/Cafe mới + đổi giọng đọc + chèn dẫn chuyện + bỏ hoàn toàn chữ Bông Cúc)"
                 elif ch_folder == "audio_dem_khuyen" and (
                     "bongcuc_v4_s10_p" in fname.lower()
                     or (
@@ -3532,11 +3532,16 @@ class StoryAudioCrawler:
                     fn = new_fn
                     needs_rewrite = True
 
-            # Tự động sửa lại nếu cột caption đang bị ghi tên file/dãy số, thiếu hashtags, hoặc Bông Cúc đang bị gán caption chung chung
+            # Tự động sửa lại nếu cột caption đang bị ghi tên file/dãy số, thiếu hashtags, hoặc còn dính chữ Bông Cúc / BC Số cũ
             is_bongcuc_generic = (
                 ch == "audio_dem_khuyen"
                 and ("bongcuc_" in basename.lower() or "9900" in basename)
-                and "bông cúc" not in (cap or "").lower()
+                and (
+                    "bông cúc" in (cap or "").lower()
+                    or "bc số" in (cap or "").lower()
+                    or "bongcuc" in (tags or "").lower()
+                    or "phần " not in (cap or "").lower()
+                )
             )
             if (
                 self.is_raw_filename_caption(cap, Path(basename).stem)

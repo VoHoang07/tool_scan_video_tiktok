@@ -263,6 +263,24 @@
 
 ---
 
+### [BUG-021] Đổi mạnh cấu trúc video kênh `audio_dem_khuyen` (`bongcuc_v5`): Xóa sạch "Bông Cúc Số", thay mới hoàn toàn kho Background Mukbang Đêm, biến đổi giọng đọc & chèn đoạn dẫn ngắn giữa truyện
+- **Thời gian**: 2026-11-10 00:55:00
+- **Triệu chứng**: Video đăng trên kênh `audio_dem_khuyen` (`bongcuc_v4`) bị cảnh báo `"Nội dung đang được xét duyệt"` do vẫn còn dấu hiệu nhận diện bản gốc: tiêu đề trên khung hình/caption/hashtag còn chứa `"Bông Cúc Số..."` / `"BC Số..."` / `#bongcuc*`, đoạn mở đầu Phần 1 còn câu chào `"Bông Cúc số..."`, kho video nền cũ đã dùng lặp lại nhiều lần, và giọng đọc chỉ dịch cao độ nhẹ (`+1.6%`). Ngoài ra hàm `_click_public_option_in_open_dropdown()` trên `tiktokstudio/content` bấm lặp 3 lần liên tiếp làm dropdown quyền riêng tư đóng/mở lại.
+- **Nguyên nhân gốc rễ**:
+  1. `BongCucYouTubeSplitter` trong [`tiktok_pipeline/bongcuc_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/bongcuc_splitter.py) vẫn đóng badge `"BÔNG CÚC SỐ XXX"` lên PNG overlay, sinh hashtag `#bongcucsoXX`, cắt Phần 1 từ `0.0s` (dính câu giới thiệu tên kênh gốc), và dùng chung kho video nền cũ.
+  2. Chuỗi filter âm thanh của `bongcuc_v4` chưa biến đổi mạnh âm sắc Formant và chưa có đoạn bình luận/dẫn chuyện ngắn chèn vào giữa luồng audio để phá vỡ hoàn toàn cấu trúc thời gian (`AudioPrint`).
+  3. `_click_public_option_in_open_dropdown()` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py) gọi cả `opt.click()`, `_os_click_viewport()` và `page.mouse.click()` cùng lúc mà không thoát ngay sau cú click đầu tiên thành công.
+- **Cách khắc phục & File đã sửa**:
+  - Nâng cấp [`tiktok_pipeline/bongcuc_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/bongcuc_splitter.py) lên chuẩn **`bongcuc_v5`**:
+    1. **Xóa 100% `"Bông Cúc"` / `"Bông Cúc Số"` / `"BC Số"`**: Thêm `_clean_story_title_no_bongcuc()` và `_slugify_vietnamese_hashtag()`, cắt bỏ `16.5s` đầu của mọi tập Phần 1 (`start_offset = 16.5`), thiết kế lại `_render_part_overlay_png()` (`CHUYỆN ĐÊM KHUYA • PHẦN X/Y` + Tên truyện), và `build_part_caption_and_hashtags()` chỉ giữ tên nội dung audio + hashtag tên truyện (`#<tennoidungaudio> #phanX #audiodemkhuya ...`).
+    2. **Thay mới toàn bộ kho Background HD (giữ Mukbang vào ban đêm)**: Thay mới `BONGCUC_NIGHT_MUKBANG_POOL` (8 video Cinema Night Mukbang HD mới) và `BONGCUC_DAY_AESTHETIC_POOL` (6 video Cafe/Bánh ngọt mới), thiết kế lại bố cục `bongcuc_v5` (nền Midnight Cinema `colorbalance` + `vignette` + khung Mukbang viền đôi Hổ Phách + thanh tiến trình động dưới đáy khung).
+    3. **Đổi mạnh giọng đọc & chèn đoạn dẫn ngắn (`_ensure_interjection_audio`)**: Biến đổi mạnh cao độ & âm sắc (`pitch_factor` xoay vòng giữa giọng trầm ấm `0.888..0.902` và giọng thanh sáng `1.112..1.126` + 5-band Formant Sculpting EQ + `aecho=0.8:0.88:16:0.10` + `extrastereo=m=1.14`), đồng thời tự động chèn 1 đoạn dẫn ngắn (`~3.5s–5.2s`) vào giữa nội dung gốc (`~36s–50s`) rồi quay lại mạch chính ngay (`resume_sec = split_sec - 0.65`).
+  - Cập nhật [`tiktok_pipeline/crawler.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/crawler.py), [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py), [`tiktok_pipeline/stream1_antidetect_skill.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/stream1_antidetect_skill.py), [`tiktok_pipeline/master_switch_controller.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/master_switch_controller.py) và [`tiktok_pipeline/tts_engine.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/tts_engine.py): bắt buộc chuẩn `"bongcuc_v5_s"`, tự động thu hồi mọi bản `v1..v4` cũ và lọc sạch mọi từ khóa `"Bông Cúc"` / `"BC Số"` trong `master_videos.csv`.
+  - Sửa `_click_public_option_in_open_dropdown()` và `_ensure_posts_public_in_content_page()` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py) để chỉ click 1 lần duy nhất rồi đóng dropdown gọn gàng.
+- **Luật Miễn Dịch Vĩnh Viễn**: TUYỆT ĐỐI CẤM để xuất hiện bất kỳ chữ `"Bông Cúc"`, `"Bông Cúc Số"`, `"BC Số"`, `#bongcuc*`, `#bc*` nào trên khung hình, âm thanh mở đầu, caption hay hashtag của kênh `audio_dem_khuyen`; mọi video của kênh `audio_dem_khuyen` bắt buộc render theo chuẩn `bongcuc_v5_s` (có Mukbang ban đêm mới, biến đổi giọng đọc Formant mạnh và chèn đoạn dẫn ngắn giữa truyện).
+
+---
+
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:

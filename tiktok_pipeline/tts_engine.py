@@ -166,10 +166,10 @@ class TTSEngine:
     async def _generate_edge_tts(
         self, text: str, rate: str, output_path: Path
     ) -> None:
-        """Gọi edge-tts với cơ chế retry 5 lần tự động và dự phòng an toàn."""
+        """Gọi edge-tts với cơ chế retry tự động và dự phòng Google TTS tiếng Việt an toàn."""
         clean_text = text.strip()
         last_err = None
-        for attempt in range(5):
+        for attempt in range(2):
             try:
                 communicate = edge_tts.Communicate(
                     text=clean_text,
@@ -177,16 +177,33 @@ class TTSEngine:
                     rate=rate,
                     pitch=self.pitch,
                 )
-                await asyncio.wait_for(communicate.save(str(output_path)), timeout=25.0)
+                await asyncio.wait_for(communicate.save(str(output_path)), timeout=15.0)
                 if output_path.exists() and output_path.stat().st_size > 100:
                     return
             except Exception as exc:
                 last_err = exc
-                await asyncio.sleep(1.0 * (attempt + 1))
+                await asyncio.sleep(0.5 * (attempt + 1))
 
-        # Dự phòng: tạo 0.4s âm thanh im lặng nếu câu chỉ chứa ký tự đặc biệt khiến Edge-TTS từ chối
+        # Dự phòng 1: Google Translate Vietnamese TTS (luôn có giọng đọc tiếng Việt rõ ràng khi Edge-TTS nghẽn)
+        try:
+            import urllib.parse
+            import urllib.request
+
+            url = (
+                "https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q="
+                + urllib.parse.quote(clean_text[:200])
+            )
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            data = urllib.request.urlopen(req, timeout=12).read()
+            if len(data) > 500:
+                output_path.write_bytes(data)
+                return
+        except Exception as g_exc:
+            last_err = g_exc
+
+        # Dự phòng 2: tạo 0.4s âm thanh im lặng nếu câu chỉ chứa ký tự đặc biệt
         logger.warning(
-            f"Edge-TTS không trả về audio cho câu '{clean_text}' ({last_err}), tạo đoạn lặng thay thế."
+            f"TTS không trả về audio cho câu '{clean_text}' ({last_err}), tạo đoạn lặng thay thế."
         )
         cmd = [
             self.ffmpeg_bin,

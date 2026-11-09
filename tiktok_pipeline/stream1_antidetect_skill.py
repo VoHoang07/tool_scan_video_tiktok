@@ -245,12 +245,12 @@ class Stream1SixLayerAntiDetectSkill:
             )
             return False, video_path, caption, hashtags, report
 
-        if channel_folder == "audio_dem_khuyen" and "bongcuc_v4_s" not in video_path.name.lower():
+        if channel_folder == "audio_dem_khuyen" and "bongcuc_v5_s" not in video_path.name.lower():
             report["layers"]["L4_retention_duration"] = (
-                "FAIL (Video audio_dem_khuyen bản cũ chưa qua bộ ghép nền Full HD 1080p nguyên khung hình bongcuc_v4)"
+                "FAIL (Video audio_dem_khuyen bản cũ chưa qua cấu trúc mới bongcuc_v5: đổi nền + đổi giọng + chèn dẫn chuyện + xóa Bông Cúc)"
             )
             logger.warning(
-                f"[Dòng 1 - Skill 6 Lớp Anti-Detect] ❌ Chặn & xóa video bản cũ {video_path.name} trên kênh [audio_dem_khuyen] (yêu cầu chuẩn Full HD 1080p bongcuc_v4)."
+                f"[Dòng 1 - Skill 6 Lớp Anti-Detect] ❌ Chặn & xóa video bản cũ {video_path.name} trên kênh [audio_dem_khuyen] (yêu cầu chuẩn cấu trúc mới bongcuc_v5)."
             )
             video_path.unlink(missing_ok=True)
             return False, video_path, caption, hashtags, report
@@ -338,7 +338,18 @@ class Stream1SixLayerAntiDetectSkill:
         # --- LỚP 5: Commercial & Policy Keyword Safe-Guard trên Caption & Hashtags ---
         safe_caption = SubtitleTranslator._apply_commercial_safeguard(caption or "").strip()
         safe_hashtags = (hashtags or "").strip()
-        if safe_caption != (caption or "").strip():
+        if channel_folder == "audio_dem_khuyen":
+            safe_caption = re.sub(
+                r"(?i)\b(?:bông\s*cúc(?:\s*trắng)?(?:\s*số\s*\d+)?|bc\s*số\s*\d+)\b[:\s\-—|]*",
+                "",
+                safe_caption,
+            ).strip()
+            safe_hashtags = " ".join(
+                t
+                for t in safe_hashtags.split()
+                if not re.match(r"(?i)^#(?:bongcuc|bc\d|bcso)", t.strip())
+            )
+        if safe_caption != (caption or "").strip() or safe_hashtags != (hashtags or "").strip():
             report["auto_healed"].append("L5_caption_commercial_safeguard")
         report["layers"]["L5_commercial_safeguard"] = "PASS (Caption & Hashtags sạch 100%)"
 

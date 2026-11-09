@@ -1365,26 +1365,18 @@ class TikTokAutoPoster:
                 }
                 if (candidates.length === 0) return null;
                 candidates.sort((a, b) => (b.inPortal - a.inPortal) || (a.area - b.area));
-                const chosen = candidates[0];
-                try {
-                    const hit = document.elementFromPoint(chosen.x, chosen.y);
-                    if (hit) {
-                        const opt = hit.closest('[role="option"], li, [role="menuitem"], button, div') || hit;
-                        opt.click();
-                        hit.click();
-                    }
-                } catch (e) {}
-                return chosen;
+                return candidates[0];
             }""",
             exclude_y,
         )
         if pos and "x" in pos and "y" in pos:
             px, py = float(pos["x"]), float(pos["y"])
-            self._os_click_viewport(page, px, py)
+            self._human_move_mouse(page, px, py)
+            time.sleep(0.2)
             try:
                 page.mouse.click(px, py)
             except Exception:
-                pass
+                self._os_click_viewport(page, px, py)
             return True
         return False
 
@@ -1885,26 +1877,18 @@ class TikTokAutoPoster:
 
                 for btn in private_buttons:
                     bx, by = float(btn["x"]), float(btn["y"])
-                    self._os_click_viewport(page, bx, by)
+                    self._human_move_mouse(page, bx, by)
+                    time.sleep(0.2)
                     try:
                         page.mouse.click(bx, by)
                     except Exception:
-                        pass
+                        self._os_click_viewport(page, bx, by)
                     time.sleep(random.uniform(0.95, 1.4))
 
                     opened_pub = self._click_public_option_in_open_dropdown(page, exclude_y=by)
                     if not opened_pub:
                         try:
-                            page.evaluate(
-                                """({x, y}) => {
-                                    const el = document.elementFromPoint(x, y);
-                                    if (el) {
-                                        const b = el.closest('button, [role="button"], [role="combobox"]') || el;
-                                        b.click();
-                                    }
-                                }""",
-                                {"x": bx, "y": by},
-                            )
+                            self._os_click_viewport(page, bx, by)
                             time.sleep(0.95)
                             opened_pub = self._click_public_option_in_open_dropdown(page, exclude_y=by)
                         except Exception:
@@ -3023,12 +3007,12 @@ class TikTokAutoPoster:
                     if min_pending_part_num < 8:
                         recent_cooldown_eps.add(10)
 
-                    # KHÓA ĐỘC QUYỀN 100% NGUỒN @bongcucaudio v4 & DỌN SLOT LỆCH CẤP ĐỘ PHẦN:
-                    # Xóa ngay mọi file bản cũ (bongcuc_v2/v3) hoặc file vượt cấp độ phần (như Số 10 Phần 8 trong khi các tập khác đang ở Phần 2-3)
+                    # KHÓA ĐỘC QUYỀN 100% CẤU TRÚC MỚI v5 (bongcuc_v5_s) & DỌN SLOT LỆCH CẤP ĐỘ PHẦN:
+                    # Xóa ngay mọi file bản cũ (bongcuc_v2/v3/v4) hoặc file vượt cấp độ phần
                     lowest_part_by_ep: Dict[int, Tuple[int, Path, Optional[str]]] = {}
                     for c_file in valid_candidates:
                         ep_p = parse_bongcuc_ep_and_part(c_file.name)
-                        if ep_p and "bongcuc_v4_s" in c_file.name.lower():
+                        if ep_p and "bongcuc_v5_s" in c_file.name.lower():
                             ep_no, pt_no = ep_p
                             if (ep_no == 10 and min_pending_part_num < 8) or (
                                 pt_no >= 2 and pt_no > min_pending_part_num + 1
@@ -3189,7 +3173,12 @@ class TikTokAutoPoster:
         is_bongcuc_missing_title = (
             ch_folder == "audio_dem_khuyen"
             and ("bongcuc_" in target_video.name.lower() or "9900" in target_video.name)
-            and "bông cúc" not in (caption or "").lower()
+            and (
+                "bông cúc" in (caption or "").lower()
+                or "bc số" in (caption or "").lower()
+                or "bongcuc" in (hashtags or "").lower()
+                or "phần " not in (caption or "").lower()
+            )
         )
         if (
             self.crawler.is_raw_filename_caption(caption, target_video.stem)

@@ -30,72 +30,82 @@ BONGCUC_PART1_END_YOUTUBE_SECONDS = 388.0
 # Ngưỡng báo trước khi kho video từ @bongcucaudio sắp cạn (15 phần ~ trước 5 ngày đăng bài)
 BONGCUC_LOW_QUEUE_WARNING_THRESHOLD = 15
 
-# Kho video nền (Background Visual Pool) thay thế hình nền tô màu cũ theo khung giờ Ngày / Đêm:
-# - Ban đêm (18:00 - 04:59, khung 21:15): Ghép nền Mukbang đồ ăn đêm hấp dẫn (tắt 100% tiếng gốc của clip Mukbang).
-# - Ban ngày (05:00 - 17:59, khung 08:48 & 13:25): Ghép nền Nghệ thuật làm bánh kem / Gốm sứ / Cắt cát 3D tươi sáng.
+# Kho video nền MỚI (Background Visual Pool v5) thay thế hoàn toàn hình nền cũ của Bông Cúc theo khung giờ Ngày / Đêm:
+# - Ban đêm (17:00 - 05:59): Ghép nền Cinema Mukbang ăn đêm (mì cay, gà sốt, lẩu tokbokki đêm khuya - tắt 100% tiếng gốc).
+# - Ban ngày (06:00 - 16:59): Ghép nền Pha chế Cafe / Bánh Souffle / Ẩm thực đường phố Hàn Quốc 1080p hoàn toàn mới.
 BONGCUC_NIGHT_MUKBANG_POOL: List[Dict[str, Any]] = [
     {
-        "yt_id": "07Q8NHoZjdc",
-        "title": "Eat with Boki Crunchy Seasoned Spicy Chicken and Jajang Ramyeon Mukbang 1080p",
-        "duration": 524.0,
+        "yt_id": "Aq0fq99yzT0",
+        "title": "Secretly eating Ramen at Night Cinema Mukbang DoNam 1080p",
+        "duration": 360.0,
     },
     {
-        "yt_id": "EuySE6259wQ",
-        "title": "SULGI Spicy Chicken Tteokbokki Cheese Kimchi Gimbap Mukbang 1080p",
-        "duration": 1027.0,
+        "yt_id": "oxKWOF_iZms",
+        "title": "Late Night Spicy Tteokbokki & Hot Dog Cinema Mukbang DoNam 1080p",
+        "duration": 478.0,
     },
     {
-        "yt_id": "s85cKxJIpo0",
-        "title": "GONGSAM TABLE Fire Noodle Hot Dog Gimbap Tteokbokki Mukbang 1080p",
-        "duration": 1017.0,
+        "yt_id": "hp8HuKWOUDU",
+        "title": "Fire Noodles Tortilla & Sausages Late Night Cinema Mukbang DoNam 1080p",
+        "duration": 659.0,
     },
     {
-        "yt_id": "zFkeOaM9IXo",
-        "title": "Eat with Boki Pelicana Hot Devil Seasoned Fried Chicken Cheese Balls Mukbang 1080p",
-        "duration": 609.0,
+        "yt_id": "2j30NlKR9Cc",
+        "title": "Budaejjigae Sausage Stew Late Night Cinema Mukbang DoNam 1080p",
+        "duration": 623.0,
     },
     {
-        "yt_id": "ghUgHf8VIOM",
-        "title": "SULGI Ramen Tteokbokki Omurice Seasoned Fried Chicken Mukbang 1080p",
-        "duration": 866.0,
+        "yt_id": "BaeKvKFSlDA",
+        "title": "Crispy Honey Combo Chicken and Spicy Cheese Buldak Noodle Night Mukbang 1080p",
+        "duration": 620.0,
     },
     {
-        "yt_id": "Ky4Cbdx7jdc",
-        "title": "Eat with Boki BBQ Jamaican Chicken Thighs and Jumbo Cheese Sticks Mukbang 1080p",
-        "duration": 549.0,
+        "yt_id": "6WUvI4wTxjA",
+        "title": "Crispy Cheese Sticks Fried Chicken & Carbo Fire Noodles Night Mukbang 1080p",
+        "duration": 522.0,
+    },
+    {
+        "yt_id": "qAq1IC_LcKk",
+        "title": "Late Night Convenience Store Feast Cinema Mukbang DoNam 1080p",
+        "duration": 500.0,
+    },
+    {
+        "yt_id": "AW58yRcZE1s",
+        "title": "Midnight Crispy Fried Chicken Cinema Mukbang DoNam 1080p",
+        "duration": 533.0,
     },
 ]
 
 BONGCUC_DAY_AESTHETIC_POOL: List[Dict[str, Any]] = [
     {
-        "yt_id": "1jFbyGvyAAE",
-        "title": "The Icing Artist 10 Amazing Cakes Decorating Compilation 1080p",
-        "duration": 651.0,
+        "yt_id": "3QAK8M-KmAo",
+        "title": "Cream Cheese Whipping Cream Waffle Korean Street Dessert 1080p",
+        "duration": 458.0,
     },
     {
-        "yt_id": "1Gic5nYiAjM",
-        "title": "Florian Gadsby Artisan Pottery Wheel Bowl Turning ASMR 1080p",
-        "duration": 817.0,
+        "yt_id": "0Y-yqybzfpg",
+        "title": "Korean Street Food Bungeoppang Fish Waffles Gwangjang Market 1080p",
+        "duration": 501.0,
     },
     {
-        "yt_id": "rF6awqlStl4",
-        "title": "Satisfying & Relaxing 3D Kinetic Art Compilation 1080p60",
-        "duration": 543.0,
+        "yt_id": "mhpQaVsMBpk",
+        "title": "Fluffy Fruit Souffle Pancake Making Artisan Dessert 1080p",
+        "duration": 506.0,
     },
     {
-        "yt_id": "7cJGE6cUoao",
-        "title": "Relaxing Pottery Art Ceramic Masterpieces 1080p",
-        "duration": 646.0,
+        "yt_id": "bau7XQrO7Wc",
+        "title": "Steamed Sweet Pancakes Hotteok Making Artisan Street Food 1080p",
+        "duration": 484.0,
     },
     {
-        "yt_id": "AQmRNOLthSs",
-        "title": "So Yummy 10 Amazing Dessert & Cake Decorating Recipes 1080p",
-        "duration": 605.0,
+        "yt_id": "oWD8CaQtsIo",
+        "title": "Cozy Cafe Vlog Artisan Ice Cream & Latte Making 1080p",
+        "duration": 663.0,
     },
     {
-        "yt_id": "HHtuYQxJMUQ",
-        "title": "Colorful Cake Decorating Art Compilation 1080p",
-        "duration": 634.0,
+        "yt_id": "KDZ6CEtZ8KI",
+        "title": "Aesthetic Cafe Vlog Colorful Iced Drinks Preparation 1080p",
+        "duration": 666.0,
     },
 ]
 
@@ -103,12 +113,12 @@ BONGCUC_DAY_AESTHETIC_POOL: List[Dict[str, Any]] = [
 def get_target_bg_mode_for_hour(hour: Optional[int] = None) -> str:
     """
     Xác định chế độ hình nền (`night_mukbang` hoặc `day_aesthetic`) theo khung giờ trong ngày:
-    - Ban đêm (`18:00` -> `04:59`, bao gồm khung đăng tối `21:15`): `night_mukbang` (Mukbang đồ ăn đêm).
-    - Ban ngày (`05:00` -> `17:59`, bao gồm khung sáng `08:48` & trưa `13:25`): `day_aesthetic` (Bánh kem / Gốm / 3D Satisfying).
+    - Ban đêm (`17:00` -> `05:59`, bao gồm khung tối & đêm khuya): `night_mukbang` (Cinema Mukbang đồ ăn đêm).
+    - Ban ngày (`06:00` -> `16:59`): `day_aesthetic` (Cafe & Bánh ngọt nghệ thuật mới).
     """
     if hour is None:
         hour = datetime.now().hour
-    if hour >= 18 or hour < 5:
+    if hour >= 17 or hour < 6:
         return "night_mukbang"
     return "day_aesthetic"
 
@@ -498,8 +508,9 @@ class BongCucYouTubeSplitter:
             total_parts = 1 + num_rem_parts
             start_part_idx = 2
         else:
-            start_offset = 0.0
-            rem_dur = max(120.0, total_dur)
+            # Cắt bỏ 16.5s đầu tiên của Phần 1 trên YouTube (nơi audio gốc giới thiệu "Bông Cúc số...")
+            start_offset = 16.5
+            rem_dur = max(120.0, total_dur - start_offset)
             num_rem_parts = max(1, round(rem_dur / target_orig_chunk))
             slice_orig_dur = rem_dur / num_rem_parts
             total_parts = num_rem_parts
@@ -816,6 +827,17 @@ class BongCucYouTubeSplitter:
         bg_dir = self.project_root / "workspace_temp" / "bongcuc_bg_pool" / eff_mode
         bg_dir.mkdir(parents=True, exist_ok=True)
 
+        # Dọn sạch mọi file .part cũ bị lỗi hoặc file background cũ không nằm trong pool v5 mới
+        valid_pool_ids = {str(item["yt_id"]) for item in pool}
+        for old_f in bg_dir.glob("*"):
+            if not old_f.is_file():
+                continue
+            if ".part" in old_f.name or not any(vid in old_f.name for vid in valid_pool_ids):
+                try:
+                    old_f.unlink(missing_ok=True)
+                except Exception:
+                    pass
+
         import yt_dlp
 
         ytdlp_macos_bin = self._ensure_ytdlp_macos_bin()
@@ -833,35 +855,35 @@ class BongCucYouTubeSplitter:
                 if h_chk >= 720 and w_chk >= 1080:
                     chosen_mp4 = target_mp4
                     break
-                logger.info(
-                    f"[BongCucSplitter] Xóa bản Background độ phân giải thấp cũ ({w_chk}x{h_chk}) của {yt_id} để tải bản Full HD 1080p..."
-                )
                 target_mp4.unlink(missing_ok=True)
             tmp_out = bg_dir / f"bg_{yt_id}.part.mp4"
             tmp_out.unlink(missing_ok=True)
             url = f"https://www.youtube.com/watch?v={yt_id}"
+            fmt_selector = "22/136/137/bestvideo[height>=720][height<=1080][ext=mp4]/bestvideo[height>=720][ext=mp4]/18/best[ext=mp4]"
             try:
                 logger.info(
-                    f"[BongCucSplitter] Đang tải video Background Full HD 1080p [{eff_mode}] từ YouTube ({url} - {cand_spec.get('title')})..."
+                    f"[BongCucSplitter] Đang tải video Background HD mới v5 [{eff_mode}] từ YouTube ({url} - {cand_spec.get('title')})..."
                 )
                 if ytdlp_macos_bin is not None:
                     subprocess.run(
                         [
                             str(ytdlp_macos_bin),
+                            "--no-part",
                             "-f",
-                            "137/299/bestvideo[height>=1080][ext=mp4]/bestvideo[height>=720][ext=mp4]/18/best[ext=mp4]",
+                            fmt_selector,
                             "-o",
                             str(tmp_out),
                             url,
                         ],
                         capture_output=True,
-                        timeout=180,
+                        timeout=150,
                         check=False,
                     )
                 if not tmp_out.exists() or tmp_out.stat().st_size < 2_000_000:
                     ydl_opts = {
-                        "format": "137/299/bestvideo[height>=1080][ext=mp4]/bestvideo[height>=720][ext=mp4]/18/best[ext=mp4]",
+                        "format": fmt_selector,
                         "outtmpl": str(tmp_out),
+                        "nopart": True,
                         "quiet": True,
                         "no_warnings": True,
                         "Retries": 2,
@@ -874,7 +896,7 @@ class BongCucYouTubeSplitter:
                     chosen_mp4 = target_mp4
                     w_dl, h_dl = get_video_resolution(target_mp4)
                     logger.info(
-                        f"[BongCucSplitter] Đã tải xong Background Full HD [{eff_mode}] {yt_id} ({w_dl}x{h_dl}, {target_mp4.stat().st_size / 1e6:.1f} MB)."
+                        f"[BongCucSplitter] Đã tải xong Background HD mới v5 [{eff_mode}] {yt_id} ({w_dl}x{h_dl}, {target_mp4.stat().st_size / 1e6:.1f} MB)."
                     )
                     break
             except Exception as dl_exc:
@@ -946,6 +968,120 @@ class BongCucYouTubeSplitter:
         return target_mp4
 
     @staticmethod
+    def _clean_story_title_no_bongcuc(raw_title: str) -> str:
+        """Làm sạch tiêu đề truyện, loại bỏ tuyệt đối mọi chữ 'Bông Cúc', 'Bông Cúc Số...', 'BC Số...'."""
+        cleaned = str(raw_title or "").strip()
+        cleaned = re.sub(
+            r"(?i)\b(?:bông\s*cúc(?:\s*trắng)?(?:\s*số\s*\d+)?|bc\s*số\s*\d+|số\s*\d+)\b[:\s\-—|]*",
+            "",
+            cleaned,
+        ).strip(" -—|:.")
+        return cleaned or "Chuyện Đêm Khuya Có Thật"
+
+    @staticmethod
+    def _slugify_vietnamese_hashtag(text: str) -> str:
+        """Chuyển tên nội dung audio thành hashtag viết liền không dấu (ví dụ: 'Đại Tiểu Thư Thật' -> '#daitieuthuthat')."""
+        import unicodedata
+
+        s = str(text or "").strip().lower()
+        s = s.replace("đ", "d").replace("Đ", "d")
+        s = unicodedata.normalize("NFD", s)
+        s = "".join(ch for ch in s if unicodedata.category(ch) != "Mn")
+        s = re.sub(r"[^a-z0-9]+", "", s)
+        if not s:
+            return "#chuyendemkhuya"
+        return f"#{s[:36]}"
+
+    def _ensure_interjection_audio(self, seed_val: int, pitch_factor: float) -> Optional[Tuple[Path, float]]:
+        """
+        Tạo đoạn bình luận / dẫn chuyện ngắn gọn (3.2s - 5.2s) để chèn vào giữa nội dung audio gốc
+        rồi quay trở lại mạch truyện chính ngay lập tức (phá vỡ 100% dấu vân tay thời gian AudioPrint).
+        """
+        import urllib.parse
+        import urllib.request
+
+        interj_dir = self.cache_dir / "interjections_v5"
+        interj_dir.mkdir(parents=True, exist_ok=True)
+        interjections = [
+            "Nghe đến đoạn này mà thấy xót xa thật sự mọi người ạ. Cùng quay lại mạch truyện chính ngay nhé!",
+            "Lòng người đúng là chẳng ai đoán trước được chữ ngờ. Mình nghe tiếp diễn biến chính ngay sau đây nhé!",
+            "Tình tiết bắt đầu căng thẳng rồi đây, mọi người nghe tiếp xem nhân vật chính xử lý thế nào nhé!",
+            "Một bước ngoặt không ai ngờ tới. Cùng quay lại câu chuyện ngay lúc này nhé!",
+            "Đúng là chỉ khi biến cố ập tới mới thấu rõ lòng người. Quay lại mạch truyện chính ngay nhé!",
+            "Nghe mà vừa thương vừa giận đúng không mọi người? Cùng nghe tiếp diễn biến ngay sau đây nhé!",
+            "Càng nghe càng cuốn vào từng tình tiết. Mình quay lại mạch chính của câu chuyện ngay nhé!",
+            "Sự thật dần được hé lộ rồi. Cùng nghe tiếp xem màn đáp trả phía sau ra sao nhé!",
+            "Đặt mình vào hoàn cảnh này mới thấy nghẹt thở làm sao. Cùng quay lại câu chuyện ngay nhé!",
+            "Tưởng đâu mọi chuyện đã êm xuôi, nào ngờ sóng gió mới chỉ bắt đầu. Nghe tiếp ngay nhé!",
+            "Mỗi lời nói ra đều như cứa vào lòng. Mình quay lại mạch truyện chính để nghe tiếp nhé!",
+            "Không biết quyết định tiếp theo sẽ thay đổi tất cả thế nào. Cùng nghe tiếp ngay bây giờ nhé!",
+        ]
+        idx = seed_val % len(interjections)
+        voice_name = "vi-VN-HoaiMyNeural" if (seed_val % 2 == 0) else "vi-VN-NamMinhNeural"
+        target_mp3 = interj_dir / f"interj_v5_{idx}_{voice_name}.mp3"
+
+        if not target_mp3.exists() or target_mp3.stat().st_size < 4_000:
+            edge_tts_bin = self.project_root / "venv" / "bin" / "edge-tts"
+            cmd_tts = [
+                str(edge_tts_bin) if edge_tts_bin.exists() else "edge-tts",
+                "--voice",
+                voice_name,
+                "--rate=+18%",
+                "--text",
+                interjections[idx],
+                "--write-media",
+                str(target_mp3),
+            ]
+            try:
+                subprocess.run(cmd_tts, capture_output=True, timeout=12, check=False)
+            except Exception as exc:
+                logger.debug(f"[BongCucSplitter] Lỗi tạo interjection Edge-TTS: {exc}")
+
+        if not target_mp3.exists() or target_mp3.stat().st_size < 4_000:
+            try:
+                raw_gtts = interj_dir / f"interj_v5_{idx}_raw.mp3"
+                url = (
+                    "https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q="
+                    + urllib.parse.quote(interjections[idx])
+                )
+                req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                data = urllib.request.urlopen(req, timeout=12).read()
+                if len(data) >= 4_000:
+                    raw_gtts.write_bytes(data)
+                    # Tăng tốc độ đọc tự nhiên (atempo=1.28) + chỉnh âm sắc ấm áp chuẩn radio đêm khuya
+                    interj_pitch = 0.92 if (seed_val % 2 == 1) else 1.04
+                    cmd_polish = [
+                        self.ffmpeg_bin,
+                        "-y",
+                        "-i",
+                        str(raw_gtts),
+                        "-af",
+                        (
+                            f"aresample=44100,asetrate=44100*{interj_pitch:.3f},aresample=44100,"
+                            f"atempo={1.28 / interj_pitch:.3f},"
+                            "silenceremove=start_periods=1:start_silence=0.05:start_threshold=-42dB"
+                        ),
+                        "-c:a",
+                        "libmp3lame",
+                        "-q:a",
+                        "2",
+                        str(target_mp3),
+                    ]
+                    subprocess.run(cmd_polish, capture_output=True, timeout=15, check=False)
+                    if not target_mp3.exists() or target_mp3.stat().st_size < 4_000:
+                        raw_gtts.replace(target_mp3)
+                    else:
+                        raw_gtts.unlink(missing_ok=True)
+            except Exception as exc:
+                logger.debug(f"[BongCucSplitter] Lỗi tạo interjection Google-TTS fallback: {exc}")
+
+        if target_mp3.exists() and target_mp3.stat().st_size >= 4_000:
+            dur = get_media_duration(target_mp3) or 3.8
+            if 1.5 <= dur <= 7.5:
+                return target_mp3, round(float(dur), 2)
+        return None
+
+    @staticmethod
     def _render_part_overlay_png(
         overlay_path: Path,
         ep_num: int,
@@ -954,9 +1090,10 @@ class BongCucYouTubeSplitter:
         title: str,
     ) -> Path:
         """
-        Tạo lớp phủ PNG trong suốt `1080x1920` hiển thị:
-        - Phía trên: `"BÔNG CÚC SỐ <ep_num>"` + `"PHẦN <part_num> / <total_parts>"` (hoặc `"PHẦN CUỐI"`).
-        - Phía dưới: Tên tập truyện (tự động xuống dòng nếu dài).
+        Tạo lớp phủ PNG `1080x1920` chuẩn Cấu trúc mới `v5`:
+        - TUYỆT ĐỐI KHÔNG hiển thị "BÔNG CÚC SỐ" hay "BC SỐ".
+        - Phía trên: Thẻ bo góc bán trong suốt hiển thị nhãn kênh & TÊN NỘI DUNG AUDIO IN HOA nổi bật (1-2 dòng).
+        - Phía dưới: Huy hiệu bo tròn hiển thị `PHẦN <part_num> / <total_parts>` (hoặc `PHẦN CUỐI`).
         """
         ov = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
         draw = ImageDraw.Draw(ov)
@@ -968,71 +1105,98 @@ class BongCucYouTubeSplitter:
         ]
         font_path = next((p for p in font_candidates if Path(p).exists()), None)
         if font_path:
-            font_header = ImageFont.truetype(font_path, 56)
-            font_part = ImageFont.truetype(font_path, 50)
-            font_sub = ImageFont.truetype(font_path, 38)
+            font_tag = ImageFont.truetype(font_path, 32)
+            font_title = ImageFont.truetype(font_path, 44)
+            font_part = ImageFont.truetype(font_path, 46)
         else:
-            font_header = ImageFont.load_default()
+            font_tag = ImageFont.load_default()
+            font_title = ImageFont.load_default()
             font_part = ImageFont.load_default()
-            font_sub = ImageFont.load_default()
 
-        line1 = f"BÔNG CÚC SỐ {ep_num}"
+        clean_title = BongCucYouTubeSplitter._clean_story_title_no_bongcuc(title).upper()
+        header_badges = [
+            "ĐÊM KHUYA KỂ CHUYỆN",
+            "GÓC TÂM SỰ ĐÊM KHUYA",
+            "TRUYỆN AUDIO ĐÊM KHUYA",
+            "CHUYỆN ĐỜI CÓ THẬT",
+            "RADIO ĐÊM KHUYA",
+            "GÓC KỂ CHUYỆN ĐÊM",
+        ]
+        t_seed = ep_num * 23 + part_num * 41
+        badge_text = header_badges[t_seed % len(header_badges)]
         if part_num == total_parts:
-            line2 = f"PHẦN {part_num} / {total_parts} (CUỐI)"
+            part_text = f"PHẦN {part_num} / {total_parts} (KẾT)"
         else:
-            line2 = f"PHẦN {part_num} / {total_parts}"
+            part_text = f"PHẦN {part_num} / {total_parts}"
 
-        def _draw_centered(y_pos: int, text: str, font: Any, fill_rgba: Tuple[int, int, int, int]) -> int:
-            bbox = draw.textbbox((0, 0), text, font=font, stroke_width=5)
+        theme_palettes = [
+            ((255, 215, 70, 255), (255, 255, 255, 255)),   # Vàng Hổ Phách & Trắng
+            ((110, 240, 215, 255), (255, 248, 220, 255)),  # Xanh Ngọc Bích & Kem Ấm
+            ((255, 185, 105, 255), (240, 248, 255, 255)),  # Cam Hoàng Hôn & Trắng Băng
+            ((160, 220, 255, 255), (255, 235, 140, 255)),  # Xanh Ánh Trăng & Vàng Kim
+            ((255, 170, 205, 255), (255, 255, 255, 255)),  # Hồng Ánh Đào & Trắng
+        ]
+        accent_color, text_color = theme_palettes[t_seed % len(theme_palettes)]
+        y_jitter = ((t_seed % 9) - 4) * 3
+
+        def _draw_centered(y_pos: int, text: str, font: Any, fill_rgba: Tuple[int, int, int, int], stroke_w: int = 4) -> int:
+            bbox = draw.textbbox((0, 0), text, font=font, stroke_width=stroke_w)
             tw = bbox[2] - bbox[0]
             th = bbox[3] - bbox[1]
-            x_pos = max(40, (1080 - tw) // 2)
+            x_pos = max(45, (1080 - tw) // 2)
             draw.text(
                 (x_pos, y_pos),
                 text,
                 font=font,
                 fill=fill_rgba,
-                stroke_width=5,
+                stroke_width=stroke_w,
                 stroke_fill=(0, 0, 0, 255),
             )
             return th
 
-        # Đa dạng hóa bảng màu tiêu đề & dịch chuyển tọa độ Y nhẹ (±12px) theo từng phần
-        # để chống thuật toán TikTok quét "Template tĩnh lặp lại hàng loạt (Anti-Template Spam)"
-        theme_palettes = [
-            ((255, 230, 65, 255), (255, 255, 255, 255)),   # Vàng hoàng kim & Trắng
-            ((255, 195, 85, 255), (240, 250, 255, 255)),   # Cam hổ phách & Trắng băng
-            ((125, 245, 215, 255), (255, 245, 210, 255)),  # Xanh ngọc bích & Kem ấm
-            ((255, 175, 210, 255), (255, 255, 255, 255)),  # Hồng ánh đào & Trắng
-            ((255, 245, 130, 255), (225, 245, 255, 255)),  # Vàng ánh trăng & Xanh nhạt
-            ((165, 225, 255, 255), (255, 235, 145, 255)),  # Xanh thiên thanh & Vàng kem
-        ]
-        t_seed = ep_num * 19 + part_num * 37
-        header_color, part_color = theme_palettes[t_seed % len(theme_palettes)]
-        y_jitter = ((t_seed % 9) - 4) * 3  # -12px .. +12px
-
-        _draw_centered(365 + y_jitter, line1, font_header, header_color)
-        _draw_centered(445 + y_jitter, line2, font_part, part_color)
-
-        # Tự động ngắt dòng tiêu đề truyện ở phía dưới
-        words = title.strip().split()
-        sub_lines: List[str] = []
+        # Tự động ngắt dòng Tên Nội Dung Audio ở khung trên (tối đa 2 dòng)
+        words = clean_title.split()
+        title_lines: List[str] = []
         cur_line = ""
         for w in words:
             test_l = f"{cur_line} {w}".strip()
-            bbox = draw.textbbox((0, 0), test_l, font=font_sub, stroke_width=4)
-            if (bbox[2] - bbox[0]) <= 940 or not cur_line:
+            bbox = draw.textbbox((0, 0), test_l, font=font_title, stroke_width=4)
+            if (bbox[2] - bbox[0]) <= 910 or not cur_line:
                 cur_line = test_l
             else:
-                sub_lines.append(cur_line)
+                title_lines.append(cur_line)
                 cur_line = w
         if cur_line:
-            sub_lines.append(cur_line)
+            title_lines.append(cur_line)
+        title_lines = title_lines[:2]
 
-        y_sub = 1365 - y_jitter
-        for sl in sub_lines[:2]:
-            h_used = _draw_centered(y_sub, sl, font_sub, (255, 255, 255, 255))
-            y_sub += h_used + 14
+        # Khung Thẻ Tiêu Đề Phía Trên (Dark Glass Card)
+        card_top = 240 + y_jitter
+        card_bottom = card_top + (225 if len(title_lines) > 1 else 175)
+        draw.rounded_rectangle(
+            [48, card_top, 1032, card_bottom],
+            radius=28,
+            fill=(12, 16, 26, 210),
+            outline=accent_color,
+            width=3,
+        )
+        _draw_centered(card_top + 22, badge_text, font_tag, accent_color, stroke_w=3)
+        y_cursor = card_top + 74
+        for tl in title_lines:
+            h_used = _draw_centered(y_cursor, tl, font_title, text_color, stroke_w=4)
+            y_cursor += h_used + 12
+
+        # Khung Pill Hiển Thị Phần Phía Dưới
+        pill_top = 1410 - y_jitter
+        pill_bottom = pill_top + 96
+        draw.rounded_rectangle(
+            [185, pill_top, 895, pill_bottom],
+            radius=48,
+            fill=(15, 20, 32, 222),
+            outline=accent_color,
+            width=3,
+        )
+        _draw_centered(pill_top + 22, part_text, font_part, accent_color, stroke_w=4)
 
         overlay_path.parent.mkdir(parents=True, exist_ok=True)
         ov.save(str(overlay_path))
@@ -1040,13 +1204,18 @@ class BongCucYouTubeSplitter:
 
     @staticmethod
     def build_part_caption_and_hashtags(part_spec: Dict[str, Any]) -> Tuple[str, str]:
-        """Tạo Caption và Hashtag đa dạng (12 mẫu câu + xoay vòng tổ hợp Hashtag) cho từng phần của Bông Cúc Trắng trên kênh `audio_dem_khuyen`."""
+        """
+        Tạo Caption và Hashtag chuẩn `v5` cho kênh `audio_dem_khuyen`:
+        - TUYỆT ĐỐI KHÔNG chứa "Bông Cúc", "Bông Cúc Số", "BC Số", "#bongcuc...", "#bc...".
+        - Chỉ hiển thị Tên Nội Dung Audio + Phần và hashtag tên nội dung audio + hashtag đêm khuya.
+        """
         ep_num = int(part_spec["ep_num"])
         part_num = int(part_spec["part_num"])
         total_parts = int(part_spec["total_parts"])
-        title = str(part_spec["title"]).strip()
+        raw_title = str(part_spec["title"]).strip()
+        title = BongCucYouTubeSplitter._clean_story_title_no_bongcuc(raw_title)
         is_final = bool(part_spec.get("is_final_part"))
-        bg_mode = str(part_spec.get("bg_mode") or "day_aesthetic")
+        bg_mode = str(part_spec.get("bg_mode") or "night_mukbang")
 
         try:
             from .translator import SubtitleTranslator
@@ -1060,24 +1229,15 @@ class BongCucYouTubeSplitter:
             if is_final
             else f"Phần {part_num}/{total_parts}"
         )
-        vibe_phrase = (
-            "Vừa xem Mukbang đêm khuya vừa nghe"
-            if bg_mode == "night_mukbang"
-            else "Vừa xem clip thư giãn vừa nghe"
-        )
         hooks = [
-            f"📖 Bông Cúc Số {ep_num} [{part_label}]: {title}. Diễn biến cực kỳ kịch tính, nghe hết để xem màn đáp trả phía sau nhé!",
-            f"🎧 [Truyện Đêm Khuya] Bông Cúc Số {ep_num} ({part_label}) — {title}. Từng tình tiết đều cuốn không rời tai, bạn nghĩ sao về phần này?",
-            f"🔥 Bông Cúc Số {ep_num} [{part_label}]: {title}. Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng! Cùng nghe nhé!",
-            f"🌙 Thức đêm nghe truyện: Bông Cúc Số {ep_num} ({part_label}) - {title}. Đừng bỏ lỡ những tình tiết gay cấn nhất trong phần này nhé!",
-            f"✨ Bông Cúc Trắng Số {ep_num} [{part_label}]: {title}. Càng nghe càng thấm, câu chuyện bước sang nút thắt bất ngờ nhất!",
-            f"🎙️ [Góc Kể Truyện] Bông Cúc Số {ep_num} ({part_label}): {title}. {vibe_phrase} câu chuyện cuốn hút này nhé!",
-            f"💫 Bông Cúc Số {ep_num} — {part_label}: {title}. Một quyết định thay đổi tất cả, liệu cái kết có xứng đáng?",
-            f"🍂 Nghe truyện Bông Cúc Số {ep_num} [{part_label}]: {title}. Ai đang hóng câu chuyện này thì vào nghe ngay nhé!",
-            f"📌 Bông Cúc Số {ep_num} ({part_label}) | {title}. Sự thật dần hé lộ, nghe đến phút cuối để không bỏ sót chi tiết nào!",
-            f"🌌 [Audio Truyện Ngắn] Bông Cúc Số {ep_num} [{part_label}]: {title}. Nghe xong phần này nhớ để lại cảm nhận của bạn nhé!",
-            f"🕯️ Bông Cúc Trắng Số {ep_num} ({part_label}) — {title}. Những góc khuất dần được phơi bày qua từng lời kể!",
-            f"🎶 {vibe_phrase} Bông Cúc Số {ep_num} [{part_label}]: {title}. Tập này cuốn từ đầu đến cuối!",
+            f"🎧 {title} [{part_label}] — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
+            f"🌙 {title} ({part_label}) — Chuyện đêm khuya cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
+            f"📖 {title} [{part_label}] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
+            f"🔥 {title} ({part_label}) — Càng nghe càng thấm từng câu chữ, nút thắt bất ngờ nhất bắt đầu lộ diện!",
+            f"🎙️ {title} [{part_label}] — Góc kể chuyện đêm khuya đầy cảm xúc, đừng bỏ lỡ chi tiết nào nhé!",
+            f"✨ {title} ({part_label}) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
+            f"🕯️ {title} [{part_label}] — Những góc khuất dần được phơi bày qua từng lời kể đêm khuya!",
+            f"🌌 {title} ({part_label}) — Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
         ]
         seed_idx = ep_num * 7 + part_num * 13
         caption = hooks[seed_idx % len(hooks)]
@@ -1088,23 +1248,22 @@ class BongCucYouTubeSplitter:
         except Exception:
             pass
 
+        title_slug_tag = BongCucYouTubeSplitter._slugify_vietnamese_hashtag(title)
+        part_tag = f"#phan{part_num}"
         rotating_tags = [
             "#audiodemkhuya",
-            "#truyenaudio",
             "#kechuyendemkhuya",
+            "#truyenaudio",
             "#truyenngan",
-            "#dramatiktok",
-            "#xuhuong",
-            "#truyentamly",
             "#nghetruyendemkhuya",
-            "#bongcuctrang",
-            "#mukbang" if bg_mode == "night_mukbang" else "#satisfying",
-            "#gocnhinkhuya",
             "#chuyengiadinh",
-            "#truyenhaymoingay",
+            "#tamlyhonnhan",
+            "#gocnhinkhuya",
+            "#mukbangdemkhuya" if bg_mode == "night_mukbang" else "#chuyendemsau",
+            "#xuhuong",
             "#fyp",
         ]
-        picked_tags = [f"#bongcucso{ep_num}", "#bongcucaudio"]
+        picked_tags = [title_slug_tag, part_tag]
         for offset in range(6):
             tag_cand = rotating_tags[(seed_idx + offset * 3) % len(rotating_tags)]
             if tag_cand not in picked_tags:
@@ -1120,16 +1279,18 @@ class BongCucYouTubeSplitter:
         bg_mode: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
-        Cắt âm thanh từ `@bongcucaudio` (tua `~1.42x`), THAY THẾ HOÀN TOÀN BACKGROUND HÌNH ẢNH PHÍA SAU AUDIO:
-        - Khung giờ BAN ĐÊM (`night_mukbang`): Ghép nền video Mukbang đồ ăn đêm hấp dẫn (tắt 100% tiếng của video Mukbang).
-        - Khung giờ BAN NGÀY (`day_aesthetic`): Ghép nền video Nghệ thuật làm bánh kem / Gốm sứ / 3D Satisfying tươi sáng.
-        Áp dụng đầy đủ 6 Lớp Bộ Lọc Chống Phát Hiện TikTok và xuất trực tiếp vào `output/audio_dem_khuyen/ready/`.
+        [CẤU TRÚC VIDEO MỚI `bongcuc_v5` CHO KÊNH `audio_dem_khuyen`]:
+        1. Loại bỏ 100% thông tin "Bông Cúc Số" / "BC Số" trên hình ảnh, âm thanh mở đầu, caption và hashtag.
+        2. Thay mới toàn bộ kho Background HD (giữ Cinema Mukbang vào ban đêm `night_mukbang`).
+        3. Đổi mạnh giọng đọc audio (biến đổi cao độ & âm sắc Formant +/-2 semitones + hiệu ứng phòng thu ấm).
+        4. Tự động chèn 1 đoạn bình luận/dẫn chuyện ngắn (~3.5s) vào giữa nội dung gốc rồi quay lại mạch chính ngay.
+        5. Khung hình `bongcuc_v5` với Midnight Cinema Background + Viền đôi Hổ Phách + Thanh tiến trình chạy động.
         """
         ep_num = int(part_spec["ep_num"])
         part_num = int(part_spec["part_num"])
         total_parts = int(part_spec["total_parts"])
         yt_id = str(part_spec["yt_id"])
-        title = str(part_spec["title"])
+        title = self._clean_story_title_no_bongcuc(str(part_spec["title"]))
         story_id = str(part_spec["story_id"])
         start_sec = float(part_spec["start_sec"])
         orig_dur = float(part_spec["orig_duration"])
@@ -1156,7 +1317,7 @@ class BongCucYouTubeSplitter:
             bg_mode=eff_bg_mode, seed_val=seed_val
         )
 
-        overlay_png = self.cache_dir / f"ov_v4_s{ep_num}_p{part_num}of{total_parts}.png"
+        overlay_png = self.cache_dir / f"ov_v5_s{ep_num}_p{part_num}of{total_parts}.png"
         self._render_part_overlay_png(
             overlay_path=overlay_png,
             ep_num=ep_num,
@@ -1170,49 +1331,96 @@ class BongCucYouTubeSplitter:
             "%Y%m%d_%H%M%S"
         )
         out_name = (
-            f"{ts_val}_tiktok_story_{story_id}_bongcuc_v4_s{ep_num}_p{part_num}_bg_{bg_short}.mp4"
+            f"{ts_val}_tiktok_story_{story_id}_bongcuc_v5_s{ep_num}_p{part_num}_bg_{bg_short}.mp4"
         )
         out_path = target_ready_dir / out_name
-        tmp_render = self.cache_dir / f"rendering_{story_id}_{bg_short}.mp4"
+        tmp_render = self.cache_dir / f"rendering_v5_{story_id}_{bg_short}.mp4"
         tmp_render.unlink(missing_ok=True)
 
-        # --- BỘ LỌC 1 & 2: Biến thiên vi mô (Deterministic Per-Part Jitter) chống trùng lặp cấu trúc ---
-        speed_factor = round(1.412 + (seed_val % 25) * 0.001, 3)  # 1.412x .. 1.436x (quanh 1.42x)
-        bg_speed = round(1.12 + (seed_val % 11) * 0.01, 2)       # 1.12x .. 1.22x cho video nền sinh động
-        target_out_dur = max(30.0, round(orig_dur / speed_factor, 2))
-        crop_y_shift = round(0.005 + (seed_val % 5) * 0.003, 3)   # Giữ trọn vẹn 98% chiều cao từ đỉnh đầu (không cắt mất người)
-
-        # Dịch cao độ vi mô (+1.6% .. +2.1%) kết hợp bù tốc độ chính xác để phá vỡ 100% AudioPrint YouTube/TikTok
-        pitch_factor = round(1.016 + (seed_val % 6) * 0.001, 4)
+        # --- ĐỔI MẠNH GIỌNG ĐỌC AUDIO (Voice Timbre & Pitch Restyling) ---
+        speed_factor = round(1.385 + (seed_val % 20) * 0.002, 3)  # 1.385x .. 1.423x
+        bg_speed = round(1.14 + (seed_val % 11) * 0.01, 2)       # 1.14x .. 1.24x
+        # Xoay vòng giữa Tone Trầm Ấm Đêm Khuya (0.888..0.902) và Tone Thanh Sáng Truyền Cảm (1.112..1.126)
+        if seed_val % 2 == 0:
+            pitch_factor = round(0.888 + (seed_val % 8) * 0.002, 4)
+            formant_eq = (
+                "equalizer=f=175:t=q:w=1.1:g=3.2,"
+                "equalizer=f=420:t=q:w=1.2:g=2.0,"
+                "equalizer=f=1850:t=q:w=1.4:g=-2.6,"
+                "equalizer=f=3600:t=q:w=1.2:g=2.2,"
+                "equalizer=f=6200:t=q:w=1.4:g=1.6"
+            )
+        else:
+            pitch_factor = round(1.112 + (seed_val % 8) * 0.002, 4)
+            formant_eq = (
+                "equalizer=f=195:t=q:w=1.1:g=2.8,"
+                "equalizer=f=920:t=q:w=1.3:g=1.8,"
+                "equalizer=f=2450:t=q:w=1.5:g=-2.2,"
+                "equalizer=f=4600:t=q:w=1.3:g=1.8,"
+                "equalizer=f=6800:t=q:w=1.4:g=1.4"
+            )
         atempo_comp = round(speed_factor / pitch_factor, 5)
 
-        # --- BỘ LỌC 3: Đa dạng hóa GOP Keyframe, CRF 19-20 (Full HD sắc nét) & Bitrate âm thanh + Chữ ký VN Video Editor (iOS) ---
-        gop_val = 48 + (seed_val % 17)  # 48 .. 64
-        crf_val = 19 + (seed_val % 2)   # 19 hoặc 20 (Full HD sắc nét, không vỡ hạt)
+        # --- CHÈN ĐOẠN DẪN NGẮN (3-4s) VÀO GIỮA NỘI DUNG GỐC RỒI QUAY LẠI MẠCH CHÍNH NGAY ---
+        base_out_dur = max(35.0, round(orig_dur / speed_factor, 2))
+        interj_info = self._ensure_interjection_audio(seed_val=seed_val, pitch_factor=pitch_factor)
+        split_sec = round(min(base_out_dur * 0.35, 36.0 + (seed_val % 14)), 2)
+        resume_sec = max(0.0, round(split_sec - 0.65, 2))
+        if interj_info is not None and base_out_dur >= 45.0:
+            interj_path, interj_dur = interj_info
+            target_out_dur = round(base_out_dur + interj_dur + 0.65, 2)
+        else:
+            interj_path = None
+            interj_dur = 0.0
+            target_out_dur = base_out_dur
+
+        crop_y_shift = round(0.005 + (seed_val % 5) * 0.003, 3)
+        gop_val = 48 + (seed_val % 17)
+        crf_val = 19 + (seed_val % 2)
         audio_br = "192k" if (seed_val % 2 == 0) else "160k"
         creation_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000000Z")
 
-        # Input [0]: Video @bongcucaudio (CHỈ LẤY AUDIO [0:a], bỏ hoàn toàn hình tô màu cũ [0:v])
-        # Input [1]: Video Background Full HD 1080p Mukbang / Daytime Aesthetic (CHỈ LẤY HÌNH [1:v], tắt 100% tiếng [1:a])
-        # Input [2]: Lớp phủ tiêu đề PNG trong suốt 1080x1920 [2:v]
-        # Giữ trọn khung hình gốc 16:9 (95% rộng × 98% cao) để hiển thị đầy đủ cả người, khuôn mặt và bàn ăn/tác phẩm!
-        filter_complex = (
+        # Cấu trúc hình ảnh mới v5: Midnight Cinema Background + Khung Mukbang viền Hổ Phách + Thanh tiến trình động
+        visual_chain = (
             f"[1:v]setpts=PTS/{bg_speed},fps=25,trim=duration={target_out_dur:.2f},setpts=PTS-STARTPTS,split=2[bg][fg];"
             "[bg]scale=360:640:force_original_aspect_ratio=increase,crop=360:640,hflip,"
-            "boxblur=16:3,eq=brightness=-0.18:saturation=0.92:contrast=1.04,scale=1080:1920:flags=bilinear[bg_out];"
+            "boxblur=24:4,colorbalance=rs=0.06:gs=-0.01:bs=-0.08,"
+            "eq=brightness=-0.22:saturation=0.88:contrast=1.08,vignette=PI/5,"
+            "scale=1080:1920:flags=bilinear[bg_out];"
             f"[fg]crop=iw*0.95:ih*0.98:(iw-iw*0.95)/2:ih*{crop_y_shift},hflip,"
-            "eq=contrast=1.04:brightness=0.01:saturation=1.07:gamma=1.02,"
-            "unsharp=5:5:0.65:3:3:0.0,scale=w=1056:h=720:force_original_aspect_ratio=decrease:flags=lanczos,"
-            "pad=w=iw+8:h=ih+8:x=4:y=4:color=white@0.32[fg_out];"
-            "[bg_out][fg_out]overlay=(W-w)/2:(H-h)/2[v1];"
+            "eq=contrast=1.05:brightness=0.015:saturation=1.09:gamma=1.02,"
+            "unsharp=5:5:0.70:3:3:0.0,scale=w=1036:h=696:force_original_aspect_ratio=decrease:flags=lanczos,"
+            "pad=w=iw+12:h=ih+12:x=6:y=6:color=0xFFCA28@0.85,"
+            f"drawbox=x=6:y=ih-12:w='(iw-12)*(t/{target_out_dur:.2f})':h=6:color=0xFF6F00@0.95:t=fill[fg_out];"
+            "[bg_out][fg_out]overlay=(W-w)/2:(H-h)/2+32[v1];"
             "[v1][2:v]overlay=0:0[vout];"
-            f"[0:a]highpass=f=55,lowpass=f=13500,"
-            f"asetrate=44100*{pitch_factor},aresample=44100,atempo={atempo_comp},"
-            "equalizer=f=140:t=q:w=1.2:g=1.5,equalizer=f=3200:t=q:w=1.5:g=-1.0,equalizer=f=5800:t=q:w=1.4:g=1.3,"
-            "extrastereo=m=1.08,"
-            "acompressor=threshold=-18dB:ratio=2.2:attack=15:release=180:makeup=2dB,"
-            "volume=1.16,alimiter=limit=0.95[aout]"
         )
+
+        main_audio_transform = (
+            f"[0:a]aresample=44100,highpass=f=60,lowpass=f=13200,"
+            f"asetrate=44100*{pitch_factor},aresample=44100,atempo={atempo_comp},"
+            f"{formant_eq},"
+            "aecho=0.8:0.88:16:0.10,extrastereo=m=1.14,"
+            "acompressor=threshold=-18dB:ratio=2.4:attack=12:release=170:makeup=2.2dB,"
+            "volume=1.18,aformat=sample_rates=44100:channel_layouts=stereo"
+        )
+
+        if interj_path is not None:
+            fade_out_st = max(0.5, round(split_sec - 0.18, 2))
+            interj_fade_out = max(0.2, round(interj_dur - 0.18, 2))
+            audio_chain = (
+                f"{main_audio_transform},asplit=2[ma1][ma2];"
+                f"[ma1]atrim=0:{split_sec:.2f},asetpts=PTS-STARTPTS,afade=t=out:st={fade_out_st:.2f}:d=0.18[a_seg1];"
+                f"[3:a]aresample=44100,aformat=sample_rates=44100:channel_layouts=stereo,"
+                f"equalizer=f=180:t=q:w=1.1:g=2.2,extrastereo=m=1.10,volume=1.22,"
+                f"afade=t=in:st=0:d=0.12,afade=t=out:st={interj_fade_out:.2f}:d=0.18,asetpts=PTS-STARTPTS[a_interj];"
+                f"[ma2]atrim=start={resume_sec:.2f},asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.18[a_seg2];"
+                "[a_seg1][a_interj][a_seg2]concat=n=3:v=0:a=1,alimiter=limit=0.95[aout]"
+            )
+        else:
+            audio_chain = f"{main_audio_transform},alimiter=limit=0.95[aout]"
+
+        filter_complex = visual_chain + audio_chain
 
         cmd = [
             self.ffmpeg_bin,
@@ -1231,76 +1439,82 @@ class BongCucYouTubeSplitter:
             str(bg_mp4),
             "-i",
             str(overlay_png),
-            "-t",
-            f"{target_out_dur:.2f}",
-            "-map_metadata",
-            "-1",
-            "-map_chapters",
-            "-1",
-            "-filter_complex",
-            filter_complex,
-            "-map",
-            "[vout]",
-            "-map",
-            "[aout]",
-            "-c:v",
-            "libx264",
-            "-preset",
-            "veryfast",
-            "-crf",
-            str(crf_val),
-            "-g",
-            str(gop_val),
-            "-keyint_min",
-            str(gop_val // 2),
-            "-pix_fmt",
-            "yuv420p",
-            "-c:a",
-            "aac",
-            "-b:a",
-            audio_br,
-            "-ar",
-            "44100",
-            "-fflags",
-            "+bitexact",
-            "-flags:v",
-            "+bitexact",
-            "-flags:a",
-            "+bitexact",
-            "-metadata",
-            "encoder=VN Video Editor 2.24.1 (iOS)",
-            "-metadata",
-            "comment=VN Video Editor 2.24.1 (iOS)",
-            "-metadata",
-            f"creation_time={creation_iso}",
-            "-metadata:s:v:0",
-            "handler_name=CoreMedia Video",
-            "-metadata:s:a:0",
-            "handler_name=CoreMedia Audio",
-            "-movflags",
-            "+faststart",
-            str(tmp_render),
         ]
+        if interj_path is not None:
+            cmd.extend(["-i", str(interj_path)])
+        cmd.extend(
+            [
+                "-t",
+                f"{target_out_dur:.2f}",
+                "-map_metadata",
+                "-1",
+                "-map_chapters",
+                "-1",
+                "-filter_complex",
+                filter_complex,
+                "-map",
+                "[vout]",
+                "-map",
+                "[aout]",
+                "-c:v",
+                "libx264",
+                "-preset",
+                "veryfast",
+                "-crf",
+                str(crf_val),
+                "-g",
+                str(gop_val),
+                "-keyint_min",
+                str(gop_val // 2),
+                "-pix_fmt",
+                "yuv420p",
+                "-c:a",
+                "aac",
+                "-b:a",
+                audio_br,
+                "-ar",
+                "44100",
+                "-fflags",
+                "+bitexact",
+                "-flags:v",
+                "+bitexact",
+                "-flags:a",
+                "+bitexact",
+                "-metadata",
+                "encoder=VN Video Editor 2.24.1 (iOS)",
+                "-metadata",
+                "comment=VN Video Editor 2.24.1 (iOS)",
+                "-metadata",
+                f"creation_time={creation_iso}",
+                "-metadata:s:v:0",
+                "handler_name=CoreMedia Video",
+                "-metadata:s:a:0",
+                "handler_name=CoreMedia Audio",
+                "-movflags",
+                "+faststart",
+                str(tmp_render),
+            ]
+        )
 
         logger.info(
-            f"[BongCucSplitter] Đang cắt & ghép Background [{eff_bg_mode} -> {bg_mp4.name} @{bg_start_sec:.0f}s] "
-            f"({speed_factor}x, pitch={pitch_factor}x, GOP={gop_val}): "
-            f"Bông Cúc Số {ep_num} [Phần {part_num}/{total_parts} | views={part_spec.get('view_count', 0):,}]..."
+            f"[BongCucSplitter v5] Đang cắt & dựng cấu trúc mới [{eff_bg_mode} -> {bg_mp4.name} @{bg_start_sec:.0f}s] "
+            f"(speed={speed_factor}x, pitch={pitch_factor}x, chèn dẫn chuyện @{split_sec:.0f}s={bool(interj_path)}, GOP={gop_val}): "
+            f"{title} [Phần {part_num}/{total_parts} | views={part_spec.get('view_count', 0):,}]..."
         )
         res = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=360)
         if res.returncode != 0 or not tmp_render.exists() or tmp_render.stat().st_size < 500_000:
             raise RuntimeError(
-                f"Lỗi ffmpeg khi cắt Bông Cúc Số {ep_num} Phần {part_num}: {res.stderr[-400:]}"
+                f"Lỗi ffmpeg khi dựng v5 {title} Phần {part_num}: {res.stderr[-400:]}"
             )
 
         shutil.move(str(tmp_render), str(out_path))
-        actual_out_dur = get_media_duration(out_path) or part_spec["tiktok_duration"]
+        actual_out_dur = get_media_duration(out_path) or target_out_dur
         spec_with_bg = dict(part_spec)
         spec_with_bg["bg_mode"] = eff_bg_mode
         caption, hashtags = self.build_part_caption_and_hashtags(spec_with_bg)
 
         logger.info(
-            f"[BongCucSplitter] Hoàn tất xuất bản (v3 Background {eff_bg_mode} + 6 Bộ Lọc): {out_path.name} "
+            f"[BongCucSplitter v5] Hoàn tất xuất bản (v5 {eff_bg_mode} + Đổi giọng + Chèn dẫn chuyện + Xóa Bông Cúc): {out_path.name} "
             f"(thời lượng={actual_out_dur:.1f}s, size={out_path.stat().st_size / 1e6:.1f}MB)"
         )
         return {
