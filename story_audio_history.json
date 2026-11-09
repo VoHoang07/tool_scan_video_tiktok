@@ -245,7 +245,30 @@
     "990005601",
     "7701249524500532481",
     "Kmn-COWlNoo",
-    "990001007"
+    "990001007",
+    "7689808702488055060",
+    "7215082200436329755",
+    "990014201",
+    "990014501",
+    "990014101",
+    "990007001",
+    "990014601",
+    "990011901",
+    "990014301",
+    "990011001",
+    "990013701",
+    "990001001",
+    "990014401",
+    "990013801",
+    "990002102",
+    "990012002",
+    "990011902",
+    "990007002",
+    "990003902",
+    "7126435071032085791",
+    "CSEhsxS3OTY",
+    "2cNW1Dz3lCQ",
+    "WIXZX9NSi40"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -400,7 +423,18 @@
     "bongcuc_yt_JpbaYEV7_ek_p1",
     "7661283382135294740",
     "yt_sound_Kmn-COWlNoo",
-    "bongcuc_yt_DoVFGuEeB1k_p7"
+    "bongcuc_yt_DoVFGuEeB1k_p7",
+    "tt_seed_7689808702488055060",
+    "7215082409250556698",
+    "bongcuc_yt_KkvdYTXdeJU_p2",
+    "bongcuc_yt_9knT2sXRFi4_p2",
+    "bongcuc_yt_rVdYOsTHDrE_p2",
+    "bongcuc_yt_8Nhl2wfWKL8_p2",
+    "bongcuc_yt_bEzOsJ3U5oc_p2",
+    "7126435101025897247",
+    "yt_sound_CSEhsxS3OTY",
+    "yt_sound_2cNW1Dz3lCQ",
+    "yt_sound_WIXZX9NSi40"
   ],
   "items": [
     {
@@ -2002,6 +2036,116 @@
       "source_url": "https://www.youtube.com/watch?v=DoVFGuEeB1k&t=2359s",
       "output_filename": "audio_dem_khuyen/ready/20261109_000243_tiktok_story_990001007_bongcuc_v4_s10_p7_bg_mukbang.mp4",
       "crawled_at": "2026-11-09T00:05:02"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7689808702488055060",
+      "sound_id": "tt_seed_7689808702488055060",
+      "platform": "tiktok",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.tiktok.com/@waikityaw/video/7689808702488055060",
+      "output_filename": "baby_AI/ready/20261109_003216_tiktok_story_7689808702488055060.mp4",
+      "crawled_at": "2026-11-09T00:33:16"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7215082200436329755",
+      "sound_id": "7215082409250556698",
+      "platform": "tiktok",
+      "genre": "tiennghich",
+      "source_url": "https://www.tiktok.com/@lydaokhong/video/7215082200436329755",
+      "output_filename": "tu_chan_gioi/ready/20261109_003944_tiktok_story_7215082200436329755.mp4",
+      "crawled_at": "2026-11-09T00:39:58"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990002102",
+      "sound_id": "bongcuc_yt_KkvdYTXdeJU_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=KkvdYTXdeJU&t=430s",
+      "output_filename": "audio_dem_khuyen/ready/20261109_005114_tiktok_story_990002102_bongcuc_v4_s21_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-09T00:55:12"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990012002",
+      "sound_id": "bongcuc_yt_9knT2sXRFi4_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=9knT2sXRFi4&t=373s",
+      "output_filename": "audio_dem_khuyen/ready/20261109_011157_tiktok_story_990012002_bongcuc_v4_s120_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-09T01:15:05"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990011902",
+      "sound_id": "bongcuc_yt_rVdYOsTHDrE_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=rVdYOsTHDrE&t=388s",
+      "output_filename": "audio_dem_khuyen/ready/20261109_013057_tiktok_story_990011902_bongcuc_v4_s119_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-09T01:34:39"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990007002",
+      "sound_id": "bongcuc_yt_8Nhl2wfWKL8_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=8Nhl2wfWKL8&t=388s",
+      "output_filename": "audio_dem_khuyen/ready/20261109_015139_tiktok_story_990007002_bongcuc_v4_s70_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-09T01:54:48"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990003902",
+      "sound_id": "bongcuc_yt_bEzOsJ3U5oc_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=bEzOsJ3U5oc&t=393s",
+      "output_filename": "audio_dem_khuyen/ready/20261109_021036_tiktok_story_990003902_bongcuc_v4_s39_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-09T02:13:48"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "7126435071032085791",
+      "sound_id": "7126435101025897247",
+      "platform": "douyin",
+      "genre": "channel_1_ai_animation",
+      "source_url": "https://www.douyin.com/video/7126435071032085791",
+      "output_filename": "video_AI_hay/ready/20261109_034606_douyin_story_7126435071032085791.mp4",
+      "crawled_at": "2026-11-09T03:47:49"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "CSEhsxS3OTY",
+      "sound_id": "yt_sound_CSEhsxS3OTY",
+      "platform": "youtube_shorts",
+      "genre": "channel_6_health_wellness",
+      "source_url": "https://www.youtube.com/watch?v=CSEhsxS3OTY",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261109_042936_youtube_shorts_story_CSEhsxS3OTY.mp4",
+      "crawled_at": "2026-11-09T04:38:11"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "2cNW1Dz3lCQ",
+      "sound_id": "yt_sound_2cNW1Dz3lCQ",
+      "platform": "youtube_shorts",
+      "genre": "channel_8_food_snacks",
+      "source_url": "https://www.youtube.com/watch?v=2cNW1Dz3lCQ",
+      "output_filename": "an_vat_moi_ngay/ready/20261109_045842_youtube_shorts_story_2cNW1Dz3lCQ.mp4",
+      "crawled_at": "2026-11-09T05:03:25"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "WIXZX9NSi40",
+      "sound_id": "yt_sound_WIXZX9NSi40",
+      "platform": "youtube_shorts",
+      "genre": "channel_7_women_eq",
+      "source_url": "https://www.youtube.com/watch?v=WIXZX9NSi40",
+      "output_filename": "phu_nu_khi_chat/ready/20261109_055907_youtube_shorts_story_WIXZX9NSi40.mp4",
+      "crawled_at": "2026-11-09T05:59:22"
     }
   ]
 }
