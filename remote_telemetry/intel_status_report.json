@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 11:42:05",
+    "timestamp": "2026-11-09 11:44:50",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261109_013057_tiktok_story_990011902_bongcuc_v4_s119_p2_bg_daylight.mp4",
-      "caption": "🍂 Nghe truyện Bông Cúc Số 119 [Phần 2/6]: Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà. Ai đang hóng câu chuyện này thì vào nghe ngay nhé!",
-      "hashtags": "#bongcucso119 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
+      "video_file": "20261107_150946_tiktok_story_7181089306113494299.mp4",
+      "caption": "⚔️ [Tu Chân Giới] nhỏ gọn, dễ dùng :)) hơi tốn máu đầu. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 11:44:50",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261107_150946_tiktok_story_7181089306113494299.mp4",
+        "caption": "⚔️ [Tu Chân Giới] nhỏ gọn, dễ dùng :)) hơi tốn máu đầu. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 11:42:05",
       "machine_arch": "x86_64",
@@ -233,21 +249,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 151.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-08 21:22:17",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 157.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
