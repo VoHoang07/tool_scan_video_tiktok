@@ -1,223 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 12:29:42",
+    "timestamp": "2026-11-09 12:32:33",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "audio_ba_con_oi",
-        "domFollowing": "29",
-        "domFollowers": "37",
-        "domLikes": "1049",
-        "sidebarFollowing": [
-          "/@audio_ba_con_oi",
-          "/@giahan_14102015",
-          "/@emmeo527",
-          "/@user234327174",
-          "/@_thylee_",
-          "/@vinitaharvey"
-        ]
-      },
-      "records": [
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7705788592441937159",
-          "video_url": "https://www.tiktok.com/@tttn9377/video/7705788592441937159",
-          "creator_handle": "@tttn9377",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109132715F8848FEBFDD4F03DFDB0\",\"now\":1794202035000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261109132715F8848FEBFDD4F03DFDB0\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 945.875,
-              "y": 425,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "18"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 945.875,
-                "y": 425,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "19"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@tttn9377",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@tttn9377/video/7705788592441937159?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-09 12:27:37",
-          "follow_back_window_until": "2026-11-10 12:27:37"
-        },
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7705645150059400469",
-          "video_url": "https://www.tiktok.com/@huyn.di43/video/7705645150059400469",
-          "creator_handle": "@huyn.di43",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Xem cuốn luôn á, mong kênh ra thêm nhiều video chất lượng như này nhé 🥰",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110913280518D7056C05DDC43FC118\",\"now\":1794202086000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"2026110913280518D7056C05DDC43FC118\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 963.09375,
-              "y": 424.9921875,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "99"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 963.09375,
-                "y": 424.9921875,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "100"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@huyn.di43",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@huyn.di43/video/7705645150059400469?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-09 12:28:28",
-          "follow_back_window_until": "2026-11-10 12:28:28"
-        },
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7705264585015676181",
-          "video_url": "https://www.tiktok.com/@phantagvv82/video/7705264585015676181",
-          "creator_handle": "@phantagvv82",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109132911B0E99D4B2D27FF42DE7E\",\"now\":1794202151000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261109132911B0E99D4B2D27FF42DE7E\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 881.28125,
-              "y": 425,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "62"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 881.28125,
-                "y": 425,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "63"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@phantagvv82",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@phantagvv82/video/7705264585015676181?lang=vi-VN",
-              "before_btn": "",
-              "after_btn": "",
-              "init_relation": null,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-09 12:29:36",
-          "follow_back_window_until": "2026-11-10 12:29:36"
-        }
-      ]
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 159.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 12:32:33",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 159.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-09 12:29:42",
       "machine_arch": "x86_64",
@@ -1868,22 +1680,6 @@
         "video_file": "20261109_013057_tiktok_story_990011902_bongcuc_v4_s119_p2_bg_daylight.mp4",
         "caption": "🍂 Nghe truyện Bông Cúc Số 119 [Phần 2/6]: Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà. Ai đang hóng câu chuyện này thì vào nghe ngay nhé!",
         "hashtags": "#bongcucso119 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 11:38:30",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261107_122941_tiktok_story_7458245965032475926.mp4",
-        "caption": "🔥 Đừng rời mắt khỏi màn hình: Sinh nhật bất hạnh của Mon. Chi tiết cuối video thực sự quá đỉnh, mọi người nghĩ sao về cái kết này?",
-        "hashtags": "#aianimation #videoaihay #hoathinhai #meocute #chualanh #phimhoathinh #hoathinhhai #xuhuong",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
