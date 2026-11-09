@@ -1,48 +1,48 @@
 {
-  "updated_at": "2026-11-09 17:46:46",
+  "updated_at": "2026-11-09 18:41:40",
   "latest_result": {
-    "cmd_id": "heartbeat_1794221206",
+    "cmd_id": "heartbeat_1794224500",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-09 17:46:46",
+    "executed_at": "2026-11-09 18:41:40",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-09 17:46:46",
+      "timestamp": "2026-11-09 18:41:40",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": 14483.4,
+      "lock_file_age_seconds": 18.7,
       "processes": [
-        "51409    19:36:54 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "51411    19:36:54 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "54219       34:58 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5",
-        "54221       34:58 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python main.py --stream-upload --max-ready 5"
+        "85408       30:08 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "85409       30:08 ./venv/bin/python main.py --stream-filter24h",
+        "85411       30:08 caffeinate -dimsu ./venv/bin/python main.py --stream-filter24h",
+        "85412       30:08 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[17:45:42] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
-        "[17:45:46] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 91.98%)",
-        "[17:45:56] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 5 câu thoại hoàn chỉnh (mean_logprob=-0.69, ocr_coverage=0%).",
-        "[17:45:56] [INFO] tiktok_pipeline: [Voice Filter] Kết quả đo 7655291653381448315: lang=zh, số câu=5, độ dài TB=6.6 ký tự/câu, thời gian thoại=16.2s/22.8s (71.1%), logprob=-0.69, ocr=0%",
-        "[17:45:56] [INFO] tiktok_pipeline: [Voice Filter] -> LOẠI BỎ 7655291653381448315 (phương ngữ địa phương nặng / không có sub cứng chuẩn: logprob=-0.69, ocr=0%).",
-        "[17:45:56] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #2/30: [TIKTOK] ID=7337705956060433682 (tim=9758, thời lượng=39.0s) ---",
-        "[17:45:56] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên TIKTOK ID=7337705956060433682 (thời lượng=39.0s, sound='original sound - nuoidaybe.com_', view=881861, tim=9758, share=1370)...",
-        "[17:45:56] [INFO] tiktok_pipeline: Đang tải video TikTok không watermark qua TikWM API...",
-        "[17:46:03] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7337705956060433682/raw_video.mp4 (5.48 MB)",
-        "[17:46:03] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7337705956060433682/audio.mp3",
-        "[17:46:04] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 39.03s)",
-        "[17:46:04] [INFO] tiktok_pipeline: [Voice Filter] Video 7337705956060433682 là Tiếng Việt ('vi') có sẵn -> Giữ nguyên video & âm thanh gốc 100%.",
-        "[17:46:04] [INFO] tiktok_pipeline: === [3-5/5] VIDEO GỐC ĐÃ LÀ TIẾNG VIỆT ('vi') -> GIỮ NGUYÊN BẢN GỐC & LÁCH MÃ BĂM TRÙNG LẶP TIKTOK (MD5/vHash/AudioPrint) ===",
-        "[17:46:08] [INFO] tiktok_pipeline: Đã giữ nguyên video tiếng Việt tại: /Users/vohoang/Documents/tool_scan_video_tiktok/output/nuoi_con_eq/ready/20261109_174604_tiktok_story_7337705956060433682.mp4",
-        "[17:46:08] [INFO] tiktok_pipeline: Caption gốc: 🤱 Đồng hành cùng con: Bé nhà các bạn có những biểu hiện nào, hãy chia sẻ dưới comment nhé 💘💖. Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-        "[17:46:08] [INFO] tiktok_pipeline: Hashtags: #giaoducsom #nuoiconthongminh #dayconeq #nuoidaycon #kynanglamchame #giadinhnho #viral #foryou",
-        "[17:46:08] [INFO] tiktok_pipeline: Đã cập nhật Master List CSV: /Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv (channel=nuoi_con_eq, file=nuoi_con_eq/ready/20261109_174604_tiktok_story_7337705956060433682.mp4, status=READY)",
-        "[17:46:08] [INFO] tiktok_pipeline: ==> Đã hoàn thành 1/1 video cho [nuoi_con_eq]: /Users/vohoang/Documents/tool_scan_video_tiktok/output/nuoi_con_eq/ready/20261109_174604_tiktok_story_7337705956060433682.mp4",
-        "[17:46:08] [INFO] tiktok_pipeline: [Round-Robin] Hoàn tất 1 video mới cho Kênh nuoi_con_eq (nuoi_con_eq)! Kho chờ ready/ hiện tại: 4/5",
-        "[17:46:10] [INFO] tiktok_pipeline: [Smart Sleep] Nghỉ an toàn sau khi hoàn thành video Kênh nuoi_con_eq (nuoi_con_eq): Nghỉ an toàn 184s (~3.1 phút) để tránh bị Douyin/TikTok chặn IP & canh giờ tự động đăng bài (Nhấn Ctrl+C để dừng)..."
+        "[18:39:43] [INFO] tiktok_pipeline: [baby_AI] Đã nạp file video vào TikTok Studio. Đang chờ tải lên 100% và tự động đóng các hộp thoại hướng dẫn ('Đã hiểu')...",
+        "[18:39:54] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[18:39:55] [INFO] tiktok_pipeline: [Hot-Reload In-Place] Đã nạp nóng code mới cho Dòng 2 (Bộ lọc 24h & Lướt FYP Nuôi Kênh)!",
+        "[18:40:22] [INFO] tiktok_pipeline: [baby_AI] Đã nhập xong Mô tả & 8 Hashtag chuẩn vào TikTok Studio: \"🥰 Nhật ký gia đình siêu lầy: Pha xử lý đi vào lòng đất của em bé tinh nghịch trong gia đình. Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém...\"",
+        "[18:40:22] [INFO] tiktok_pipeline: [baby_AI] Đang tự động cấu hình mục Cài đặt (Công khai = 'Mọi người', Nhãn AIGC = BẬT)...",
+        "[18:40:29] [INFO] tiktok_pipeline: [baby_AI] Đang bấm nút đỏ ĐĂNG ('Đăng', data-e2e='post_video_button') tại (380.0, 656.9)...",
+        "[18:40:30] [INFO] tiktok_pipeline: [baby_AI] Đã bấm nút ĐĂNG! Đang chờ TikTok Studio xác nhận đăng bài hoàn tất...",
+        "[18:40:32] [INFO] tiktok_pipeline: [baby_AI] TikTok Studio đã xác nhận ĐĂNG VIDEO THÀNH CÔNG!",
+        "[18:40:32] [INFO] tiktok_pipeline: [Switch 4 - Clear] Đã giữ lại Top 8 video nhiều view nhất/kênh | Đã xóa 1 video cũ trong posted/ & 0 thư mục tạm | Giải phóng: 24.35 MB",
+        "[18:40:32] [INFO] tiktok_pipeline: Đã đánh dấu POSTED thành công: /Users/vohoang/Documents/tool_scan_video_tiktok/output/baby_AI/posted/20261107_233817_tiktok_story_7684069833423752455.mp4 | posted_at=2026-11-09 18:40:32 (đã cập nhật 1 dòng trong CSV, tự động đồng bộ thêm 0 video)",
+        "[18:40:37] [INFO] tiktok_pipeline: [baby_AI] [Lượt 1] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[18:40:40] [INFO] tiktok_pipeline: [baby_AI] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[18:40:52] [INFO] tiktok_pipeline: [baby_AI] [Lượt 2] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[18:40:55] [INFO] tiktok_pipeline: [baby_AI] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[18:41:06] [INFO] tiktok_pipeline: [baby_AI] [Lượt 3] Phát hiện 1 bài đăng đang ở trạng thái riêng tư (['Chỉ mình tôi']). Đang chuyển sang 'Mọi người' (Công khai)...",
+        "[18:41:09] [INFO] tiktok_pipeline: [baby_AI] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: 'Chỉ mình tôi').",
+        "[18:41:11] [INFO] tiktok_pipeline: [baby_AI] Hoàn tất kiểm tra trang Bài đăng (đã chuyển 3 bài từ 'Chỉ mình tôi' -> 'Mọi người').",
+        "[18:41:11] [INFO] tiktok_pipeline: [baby_AI] [Remote Telemetry] Đã lưu ảnh (latest_upload_baby_AI.jpg) & đẩy đồng bộ GitHub chạy ngầm!",
+        "[18:41:22] [INFO] tiktok_pipeline: [baby_AI] HOÀN TẤT ĐĂNG TỰ ĐỘNG CÔNG KHAI & ĐỒNG BỘ POSTED: baby_AI/posted/20261107_233817_tiktok_story_7684069833423752455.mp4",
+        "[18:41:29] [INFO] tiktok_pipeline: [Auto-Git-Sync] 🔄 Đã đồng bộ code mới từ GitHub (95ca1b6 -> ebfa8bc) | Auto-Telemetry [upload] baby_AI at 2026-11-09 18:41:11"
       ],
-      "lock_file_content": "idle"
+      "lock_file_content": "pid=85408 ts=1794224482"
     }
   }
 }
