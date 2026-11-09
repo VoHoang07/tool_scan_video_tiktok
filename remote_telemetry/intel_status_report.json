@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 18:54:20",
+    "timestamp": "2026-11-09 18:58:21",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261109_142159_tiktok_story_7572191376251555073.mp4",
-      "caption": "✨ [Phụ Nữ Khí Chất] trong tâm lý học...!. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
-      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #foryou #fyp",
+      "video_file": "20261109_141208_tiktok_story_7523822386689346834.mp4",
+      "caption": "💡 [Mẹo Vặt Gia Đình] Phần 22| 1 cú bấm - 1 cú đâm rễ - mẹo trồng cây nhanh ra rễ siêu dễ! 🌱🌱🌱. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #yeubep #decorphong #tienichgiadinh #xh #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 18:58:21",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261109_141208_tiktok_story_7523822386689346834.mp4",
+        "caption": "💡 [Mẹo Vặt Gia Đình] Phần 22| 1 cú bấm - 1 cú đâm rễ - mẹo trồng cây nhanh ra rễ siêu dễ! 🌱🌱🌱. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #yeubep #decorphong #tienichgiadinh #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 18:54:20",
       "machine_arch": "x86_64",
@@ -853,92 +869,6 @@
             },
             "interacted_at": "2026-11-09 18:19:14",
             "follow_back_window_until": "2026-11-10 18:19:14"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-09 18:17:44",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "audio_dem_khuyen",
-            "video_id": "7704728869781294357",
-            "video_url": "https://www.tiktok.com/@nguyen.duyen.ha.c/video/7704728869781294357",
-            "creator_handle": "@nguyen.duyen.ha.c",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611091916344BAEE148FFD2B4134EA4\",\"now\":1794222994000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"202611091916344BAEE148FFD2B4134EA4\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110919170499FF4A38C9FEB20E546A\",\"now\":1794223024000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026110919170499FF4A38C9FEB20E546A\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 881.28125,
-                "y": 425,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "10"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 881.28125,
-                  "y": 425,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "11"
-                },
-                "red": true,
-                "server_digg_ok": true,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@nguyen.duyen.ha.c",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@nguyen.duyen.ha.c?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 18:17:12",
-            "follow_back_window_until": "2026-11-10 18:17:12"
           }
         ]
       }
