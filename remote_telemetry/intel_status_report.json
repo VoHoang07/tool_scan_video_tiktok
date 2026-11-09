@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 11:50:24",
+    "timestamp": "2026-11-09 11:53:44",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261107_204546_youtube_shorts_story_3q9bTD7Apr0.mp4",
-      "caption": "🤤 [Thiên Đường Ăn Vặt] Công thức món ngon siêu dễ làm tại nhà nhìn thôi đã thấy thèm. Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
-      "hashtags": "#monngondelam #amthuctiktok #anvatmoingay #anvatngon #congthucnauan #doanvatnoidia #doanvat #viral",
+      "video_file": "20261107_142328_youtube_shorts_story_8ziBfOjnk84.mp4",
+      "caption": "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ mỗi ngày giúp cơ thể khỏe mạnh và ngủ ngon giấc hơn. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+      "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 6,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 11:53:44",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261107_142328_youtube_shorts_story_8ziBfOjnk84.mp4",
+        "caption": "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ mỗi ngày giúp cơ thể khỏe mạnh và ngủ ngon giấc hơn. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+        "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 6,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 11:50:24",
       "machine_arch": "x86_64",
@@ -236,21 +252,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 154.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-08 21:40:33",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 152.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
