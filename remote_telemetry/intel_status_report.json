@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 01:58:31",
+    "timestamp": "2026-11-10 02:04:26",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
       "scrolled_videos": 12,
-      "ads_skipped": 0,
+      "ads_skipped": 2,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 165.4,
+      "elapsed_seconds": 158.0,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 02:04:26",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "ads_skipped": 2,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 158.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-10 01:58:31",
       "machine_arch": "x86_64",
@@ -734,138 +749,6 @@
             },
             "interacted_at": "2026-11-10 00:50:47",
             "follow_back_window_until": "2026-11-11 00:50:47"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-10 00:48:13",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "tu_chan_gioi0",
-          "domFollowing": "112",
-          "domFollowers": "158",
-          "domLikes": "58",
-          "sidebarFollowing": [
-            "/@tu_chan_gioi0",
-            "/@empiictehotle",
-            "/@shwksoowoo",
-            "/@suusii7878",
-            "/@chillgirl7949",
-            "/@danhsi8386"
-          ]
-        },
-        "records": [
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7705996933172677906",
-            "video_url": "https://www.tiktok.com/@minh.hiu5293/video/7705996933172677906",
-            "creator_handle": "@minh.hiu5293",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026111001461453284555C134063CB05D\",\"now\":1794246374000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026111001461453284555C134063CB05D\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 404,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "40"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 404,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "40"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              }
-            },
-            "interacted_at": "2026-11-10 00:46:31",
-            "follow_back_window_until": "2026-11-11 00:46:31"
-          },
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7705756180865453333",
-            "video_url": "https://www.tiktok.com/@dididaudo_dd/video/7705756180865453333",
-            "creator_handle": "@dididaudo_dd",
-            "watched_seconds": 26.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "tu_chan_gioi0"
-              }
-            },
-            "interacted_at": "2026-11-10 00:47:25",
-            "follow_back_window_until": "2026-11-11 00:47:25"
-          },
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7705583581510257926",
-            "video_url": "https://www.tiktok.com/@thi.trang.ngc.diu/video/7705583581510257926",
-            "creator_handle": "@thi.trang.ngc.diu",
-            "watched_seconds": 23.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": "tu_chan_gioi0"
-              }
-            },
-            "interacted_at": "2026-11-10 00:48:08",
-            "follow_back_window_until": "2026-11-11 00:48:08"
           }
         ]
       }
