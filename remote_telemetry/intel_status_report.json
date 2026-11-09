@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 00:35:10",
+    "timestamp": "2026-11-10 00:38:18",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261109_151126_tiktok_story_7601195841239502100.mp4",
-      "caption": "🌿 [Sức Khỏe Chủ Động] Tín hiệu cảnh báo sớm của cơ thể mà dân văn phòng tuyệt đối đừng chủ quan. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #fyp #xh",
+      "video_file": "20261109_152725_tiktok_story_7694983192331308289.mp4",
+      "caption": "🤤 [Thiên Đường Ăn Vặt] 🔥 Ai mê đồ ăn vặt thì không thể bỏ qua món này nha! 😍 Que cay siêu dài, lát cay siêu lớn, ăn cay tê tê, dai dai, càng ăn càng cuốn 🌶️🤤 cùng trải nghiệm với chị Linh nha. Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
+      "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 00:38:18",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261109_152725_tiktok_story_7694983192331308289.mp4",
+        "caption": "🤤 [Thiên Đường Ăn Vặt] 🔥 Ai mê đồ ăn vặt thì không thể bỏ qua món này nha! 😍 Que cay siêu dài, lát cay siêu lớn, ăn cay tê tê, dai dai, càng ăn càng cuốn 🌶️🤤 cùng trải nghiệm với chị Linh nha. Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
+        "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-10 00:35:10",
       "machine_arch": "x86_64",
@@ -375,21 +391,6 @@
             "follow_back_window_until": "2026-11-10 19:52:38"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-09 19:49:36",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 150.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
