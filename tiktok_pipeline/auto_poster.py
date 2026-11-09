@@ -173,7 +173,15 @@ class TikTokAutoPoster:
         except Exception:
             pass
         try:
+            self._ensure_intel_bridge_daemon_running()
+        except Exception:
+            pass
+        try:
             self._auto_revive_stream1_upload_if_dead()
+        except Exception:
+            pass
+        try:
+            self._auto_revive_stream2_filter24h_if_dead()
         except Exception:
             pass
 
@@ -4049,6 +4057,15 @@ class TikTokAutoPoster:
         """
         from .master_switch_controller import MasterSwitchController
 
+        try:
+            self._ensure_intel_bridge_daemon_running()
+        except Exception:
+            pass
+        try:
+            self._auto_revive_stream2_filter24h_if_dead()
+        except Exception:
+            pass
+
         ms_ctrl = MasterSwitchController(project_root=self.project_root)
         if not ms_ctrl.is_upload_enabled("tiktok"):
             return []
@@ -4315,15 +4332,55 @@ class TikTokAutoPoster:
 
         return posted_results
 
-    def _is_stream1_upload_process_running(self) -> bool:
-        """Kiểm tra xem tiến trình Dòng 1 (`--stream-upload` hoặc `--continuous`) có đang sống trên máy hay không."""
-        import os as _os
+    def _ensure_intel_bridge_daemon_running(self) -> None:
+        """Đảm bảo tiến trình `tiktok_pipeline.agy_intel_bridge --daemon` luôn sống trên Mac Intel (`x86_64`)."""
+        import fcntl
+        import platform as _plat
         import subprocess
+        import sys as _sys
 
+        if _plat.machine() != "x86_64":
+            return
         try:
-            my_pid = _os.getpid()
+            lock_path = self.project_root / "workspace_temp" / ".agy_intel_bridge_daemon.lock"
+            lock_path.parent.mkdir(parents=True, exist_ok=True)
+            probe_fh = open(lock_path, "a+", encoding="utf-8")
+            try:
+                fcntl.flock(probe_fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                fcntl.flock(probe_fh.fileno(), fcntl.LOCK_UN)
+            except BlockingIOError:
+                probe_fh.close()
+                return
+            probe_fh.close()
+
+            py_bin = self.project_root / "venv" / "bin" / "python"
+            exe_str = str(py_bin) if py_bin.exists() else _sys.executable
+            log_dir = self.project_root / "logs"
+            log_dir.mkdir(parents=True, exist_ok=True)
+            log_fh = open(log_dir / "agy_intel_bridge.log", "a", encoding="utf-8")
+            subprocess.Popen(
+                [exe_str, "-m", "tiktok_pipeline.agy_intel_bridge", "--daemon", "--poll", "20"],
+                cwd=str(self.project_root),
+                stdin=subprocess.DEVNULL,
+                stdout=log_fh,
+                stderr=subprocess.STDOUT,
+                start_new_session=True,
+                close_fds=True,
+            )
+            logger.info("[AGY Intel Bridge] Đã tự động kích hoạt lại Trạm Giao Tiếp AGY CLI Độc Lập (-m tiktok_pipeline.agy_intel_bridge)!")
+        except Exception:
+            pass
+
+    def _is_stream1_upload_process_running(self, require_tty: bool = False) -> bool:
+        """Kiểm tra xem tiến trình Dòng 1 (`--stream-upload` hoặc `--continuous`) có đang sống trên máy hay không."""
+        import subprocess
+        import sys as _sys
+
+        if not require_tty and ("--stream-upload" in _sys.argv or "--continuous" in _sys.argv):
+            return True
+        try:
             out = subprocess.run(
-                ["ps", "-axo", "pid,command"],
+                ["ps", "-Ao", "pid,tty,command"],
                 capture_output=True,
                 text=True,
                 timeout=5,
@@ -4331,11 +4388,48 @@ class TikTokAutoPoster:
             ).stdout
             for line in out.splitlines():
                 s = line.strip()
-                if not s or "main.py" not in s:
+                if not s or ("main.py" not in s and "tiktok_pipeline.main" not in s):
+                    continue
+                if "grep" in s or "pkill" in s or "osascript" in s or "sh -c" in s or "caffeinate" in s:
                     continue
                 if "--stream-upload" in s or "--continuous" in s:
-                    parts = s.split(None, 1)
-                    if parts and parts[0].isdigit() and int(parts[0]) != my_pid:
+                    parts = s.split(None, 2)
+                    if len(parts) >= 3 and parts[0].isdigit():
+                        tty_val = parts[1].strip()
+                        if require_tty and (tty_val.startswith("?") or tty_val == "-"):
+                            continue
+                        return True
+        except Exception:
+            pass
+        return False
+
+    def _is_stream2_filter24h_process_running(self, require_tty: bool = False) -> bool:
+        """Kiểm tra xem tiến trình Dòng 2 (`--stream-filter24h`) có đang sống trên máy (hoặc trong cửa sổ Terminal) hay không."""
+        import subprocess
+        import sys as _sys
+
+        if not require_tty and "--stream-filter24h" in _sys.argv:
+            return True
+        try:
+            out = subprocess.run(
+                ["ps", "-Ao", "pid,tty,command"],
+                capture_output=True,
+                text=True,
+                timeout=5,
+                check=False,
+            ).stdout
+            for line in out.splitlines():
+                s = line.strip()
+                if not s or ("main.py" not in s and "tiktok_pipeline.main" not in s):
+                    continue
+                if "grep" in s or "pkill" in s or "osascript" in s or "sh -c" in s or "caffeinate" in s:
+                    continue
+                if "--stream-filter24h" in s:
+                    parts = s.split(None, 2)
+                    if len(parts) >= 3 and parts[0].isdigit():
+                        tty_val = parts[1].strip()
+                        if require_tty and (tty_val.startswith("?") or tty_val == "-"):
+                            continue
                         return True
         except Exception:
             pass
@@ -4352,13 +4446,19 @@ class TikTokAutoPoster:
 
         if _plat.machine() != "x86_64":
             return
-        if self._is_stream1_upload_process_running():
+        if "--stream-upload" in _sys.argv or "--continuous" in _sys.argv:
             return
+        if self._is_stream1_upload_process_running(require_tty=True):
+            return
+        last_try = getattr(TikTokAutoPoster, "_last_s1_revive_ts", 0.0)
+        if self._is_stream1_upload_process_running(require_tty=False) and (time.time() - last_try < 180.0):
+            return
+        setattr(TikTokAutoPoster, "_last_s1_revive_ts", time.time())
 
         proj_str = str(self.project_root)
         logger.info(
-            "[Auto-Revive Watchdog] Phát hiện Cửa sổ 1 (--stream-upload) đang dừng trên máy Intel -> "
-            "Đang tự động khởi động lại Cửa sổ 1 từ xa..."
+            "[Auto-Revive Watchdog] Phát hiện Cửa sổ Terminal 1 (--stream-upload) đang dừng trên máy Intel -> "
+            "Đang tự động khởi động lại Cửa sổ 1 trực tiếp trên Terminal..."
         )
 
         # 1. Thử gõ lệnh trực tiếp vào cửa sổ Terminal đang rảnh trên màn hình máy Intel qua AppleScript
@@ -4366,12 +4466,15 @@ class TikTokAutoPoster:
         tell application "Terminal"
             repeat with w in windows
                 repeat with t in tabs of w
-                    if not busy of t then
+                    set procText to (processes of t as text)
+                    if (not busy of t) or (procText does not contain "python" and procText does not contain "Python" and procText does not contain "caffeinate" and procText does not contain "agy") then
                         do script "cd '{proj_str}' && ./venv/bin/python main.py --stream-upload" in t
                         return "REVIVED_IN_TAB"
                     end if
                 end repeat
             end repeat
+            do script "cd '{proj_str}' && ./venv/bin/python main.py --stream-upload"
+            return "REVIVED_IN_NEW_WINDOW"
         end tell
         '''
         try:
@@ -4379,7 +4482,7 @@ class TikTokAutoPoster:
                 ["osascript", "-e", apple_script],
                 capture_output=True,
                 text=True,
-                timeout=6,
+                timeout=8,
                 check=False,
             )
             time.sleep(2.5)
@@ -4387,7 +4490,7 @@ class TikTokAutoPoster:
             pass
 
         # 2. Nếu cửa sổ Terminal chưa nhận lệnh (hoặc chưa cấp quyền Automation cho Terminal), chạy ngầm Popen trực tiếp với file descriptor chuẩn
-        if not self._is_stream1_upload_process_running():
+        if not self._is_stream1_upload_process_running(require_tty=False):
             try:
                 py_bin = self.project_root / "venv" / "bin" / "python"
                 exe_str = str(py_bin) if py_bin.exists() else _sys.executable
@@ -4408,12 +4511,110 @@ class TikTokAutoPoster:
             except Exception as exc:
                 logger.debug(f"[Auto-Revive Watchdog] Lỗi phụ khi Popen Dòng 1: {exc}")
 
-        # 3. Nếu vì lý do gì đó vẫn chưa thấy tiến trình riêng, Cửa sổ 2 tự đảm nhận kiểm tra lịch đăng Dòng 1 luôn
-        if not self._is_stream1_upload_process_running():
+    def _auto_revive_stream2_filter24h_if_dead(self) -> None:
+        """
+        Tự động hồi sinh Cửa sổ Terminal Công tắc 3 (`main.py --stream-filter24h`) trên máy Mac Intel
+        nếu cửa sổ Terminal Dòng 2 bị tắt (nhờ Cửa sổ 1 `--stream-upload` vẫn đang sống).
+        """
+        import os as _os
+        import platform as _plat
+        import subprocess
+        import sys as _sys
+
+        if _plat.machine() != "x86_64":
+            return
+        if "--stream-filter24h" in _sys.argv:
+            return
+        if self._is_stream2_filter24h_process_running(require_tty=True):
+            return
+        last_try = getattr(TikTokAutoPoster, "_last_s2_revive_ts", 0.0)
+        if (time.time() - last_try) < 45.0:
+            return
+        if self._is_stream2_filter24h_process_running(require_tty=False) and (time.time() - last_try < 180.0):
+            return
+        setattr(TikTokAutoPoster, "_last_s2_revive_ts", time.time())
+
+        proj_str = str(self.project_root)
+        logger.info(
+            "[Auto-Revive Watchdog] Phát hiện Cửa sổ Terminal Công tắc 3 (--stream-filter24h) đang dừng trên máy Intel -> "
+            "Đang tự động khởi động lại Cửa sổ Công tắc 3 trực tiếp trên Terminal..."
+        )
+
+        # 1. Gõ lệnh trực tiếp vào tab Terminal đang rảnh (hoặc mở cửa sổ Terminal mới) trên màn hình Mac Intel qua AppleScript
+        apple_script = f'''
+        tell application "Terminal"
+            repeat with w in windows
+                repeat with t in tabs of w
+                    set procText to (processes of t as text)
+                    if (not busy of t) or (procText does not contain "python" and procText does not contain "Python" and procText does not contain "caffeinate" and procText does not contain "agy") then
+                        do script "cd '{proj_str}' && ./venv/bin/python main.py --stream-filter24h" in t
+                        return "REVIVED_IN_TAB"
+                    end if
+                end repeat
+            end repeat
+            do script "cd '{proj_str}' && ./venv/bin/python main.py --stream-filter24h"
+            return "REVIVED_IN_NEW_WINDOW"
+        end tell
+        '''
+        try:
+            osa_res = subprocess.run(
+                ["osascript", "-e", apple_script],
+                capture_output=True,
+                text=True,
+                timeout=8,
+                check=False,
+            )
+            time.sleep(2.5)
+            if self._is_stream2_filter24h_process_running(require_tty=True):
+                logger.info(
+                    f"[Auto-Revive Watchdog] ✅ Đã hồi sinh Cửa sổ Terminal Công tắc 3 (--stream-filter24h) thành công ({(osa_res.stdout or '').strip()})!"
+                )
+                # Nếu có bản chạy ngầm không gắn TTY (??) từ trước thì dọn sạch để chỉ giữ đúng cửa sổ Terminal hiển thị
+                try:
+                    out = subprocess.run(
+                        ["ps", "-Ao", "pid,tty,command"],
+                        capture_output=True,
+                        text=True,
+                        timeout=5,
+                        check=False,
+                    ).stdout
+                    for line in out.splitlines():
+                        if "--stream-filter24h" in line and ("main.py" in line or "tiktok_pipeline.main" in line):
+                            parts = line.strip().split(None, 2)
+                            if len(parts) >= 3 and parts[0].isdigit():
+                                tty_val = parts[1].strip()
+                                if tty_val.startswith("?") or tty_val == "-":
+                                    try:
+                                        _os.kill(int(parts[0]), 9)
+                                    except Exception:
+                                        pass
+                except Exception:
+                    pass
+                return
+        except Exception:
+            pass
+
+        # 2. Fallback: nếu chưa chạy được trong Terminal, khởi chạy ngầm Popen để đảm bảo Công tắc 3 không bao giờ đứt quãng
+        if not self._is_stream2_filter24h_process_running(require_tty=False):
             try:
-                self.check_and_run_stream1_upload_schedule()
-            except Exception:
-                pass
+                py_bin = self.project_root / "venv" / "bin" / "python"
+                exe_str = str(py_bin) if py_bin.exists() else _sys.executable
+                log_path = self.project_root / "logs" / "stream2_filter24h.log"
+                log_path.parent.mkdir(parents=True, exist_ok=True)
+                log_fh = open(log_path, "a", encoding="utf-8")
+                subprocess.Popen(
+                    ["caffeinate", "-dimsu", exe_str, str(self.project_root / "main.py"), "--stream-filter24h"],
+                    cwd=proj_str,
+                    stdin=subprocess.DEVNULL,
+                    stdout=log_fh,
+                    stderr=subprocess.STDOUT,
+                    start_new_session=True,
+                    close_fds=True,
+                )
+                time.sleep(1.5)
+                logger.info("[Auto-Revive Watchdog] Đã tự động bật lại tiến trình Công tắc 3 (--stream-filter24h) dự phòng thành công!")
+            except Exception as exc:
+                logger.debug(f"[Auto-Revive Watchdog] Lỗi phụ khi Popen Dòng 2: {exc}")
 
     def check_and_run_stream2_filter24h_schedule(self) -> Dict[str, Any]:
         """
@@ -4424,14 +4625,22 @@ class TikTokAutoPoster:
         """
         from .master_switch_controller import MasterSwitchController
 
-        ms_ctrl = MasterSwitchController(project_root=self.project_root)
-        if not ms_ctrl.is_interact_enabled("tiktok"):
-            return {}
-
+        try:
+            self._ensure_intel_bridge_daemon_running()
+        except Exception:
+            pass
         try:
             self._auto_revive_stream1_upload_if_dead()
         except Exception:
             pass
+        try:
+            self._auto_revive_stream2_filter24h_if_dead()
+        except Exception:
+            pass
+
+        ms_ctrl = MasterSwitchController(project_root=self.project_root)
+        if not ms_ctrl.is_interact_enabled("tiktok"):
+            return {}
 
         cfg = self.ensure_schedule_config()
         filter_enabled = bool(cfg.get("filter_24h_enabled", True))

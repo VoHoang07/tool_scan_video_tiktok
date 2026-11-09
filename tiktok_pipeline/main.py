@@ -704,11 +704,13 @@ def _ensure_agy_intel_bridge_daemon(project_root: Path) -> None:
         log_dir.mkdir(parents=True, exist_ok=True)
         log_fh = open(log_dir / "agy_intel_bridge.log", "a", encoding="utf-8")
         subprocess.Popen(
-            [sys.executable, str(bridge_script), "--daemon", "--poll", "20"],
+            [sys.executable, "-m", "tiktok_pipeline.agy_intel_bridge", "--daemon", "--poll", "20"],
             cwd=str(project_root),
+            stdin=subprocess.DEVNULL,
             stdout=log_fh,
-            stderr=log_fh,
+            stderr=subprocess.STDOUT,
             start_new_session=True,
+            close_fds=True,
         )
         logger.info("[AGY Intel Bridge] Đã tự động kích hoạt ngầm Trạm Giao Tiếp AGY CLI Độc Lập (Singleton, poll=20s)!")
     except Exception:
@@ -1704,10 +1706,17 @@ def main() -> None:
                 except Exception as exc:
                     logger.error(f"[Dòng 2 - Lướt FYP] Lỗi ngoại lệ trong chu kỳ warmup: {exc}")
                 f24_tick += 1
-                if f24_tick % 10 == 0:
-                    logger.info(
-                        "[Dòng 2 - Bộ lọc 24h & Lướt FYP] Đang hoạt động ổn định — xoay vòng lướt FYP & canh lịch Bộ lọc 24h..."
-                    )
+                if f24_tick % 6 == 0:
+                    from .master_switch_controller import MasterSwitchController
+
+                    if MasterSwitchController(project_root=project_root).is_interact_enabled("tiktok"):
+                        logger.info(
+                            "[Công tắc 3 - Bộ lọc 24h & Lướt FYP] Đang BẬT & hoạt động ổn định — xoay vòng lướt FYP & canh lịch Bộ lọc 24h (10 kênh)..."
+                        )
+                    else:
+                        logger.info(
+                            "[Công tắc 3 - Bộ lọc 24h & Lướt FYP] Công tắc 3 đang TẮT — giữ nguyên cửa sổ Terminal ở chế độ chờ (Sẵn sàng chạy ngay khi bật Công tắc 3)..."
+                        )
                 time.sleep(30)
             return
 

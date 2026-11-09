@@ -1,10 +1,8 @@
 {
-  "cmd_id": "cmd_20261109_2343_turn_on_switch_2_and_3",
-  "created_at": "2026-11-09 23:43:45",
-  "from_machine": "arm64",
-  "target_arch": "x86_64",
+  "cmd_id": "revive_terminal_switch3_20261110_0021",
+  "issued_at": "2026-11-10 00:21:00",
   "action": "shell",
+  "shell_command": "./venv/bin/python -c 'from pathlib import Path; from tiktok_pipeline.auto_poster import TikTokAutoPoster; p = TikTokAutoPoster(Path(\".\")); p._auto_revive_stream2_filter24h_if_dead(); p._auto_revive_stream1_upload_if_dead()' && ps -Ao pid,tty,etime,command | grep -E 'main.py|agy_intel_bridge' | grep -v grep",
   "agy_prompt": "",
-  "shell_command": "exec </dev/null; pkill -9 -f 'main.py --stream-upload' || true; pkill -9 -f 'main.py --stream-filter24h' || true; sleep 1; nohup caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5 </dev/null >> logs/daemon_24_7.log 2>&1 & nohup caffeinate -dimsu ./venv/bin/python main.py --stream-filter24h </dev/null >> logs/daemon_24_7.log 2>&1 & sleep 2; ps aux | grep -E 'stream-upload|stream-filter24h' | grep -v grep",
-  "timeout_seconds": 30
+  "timeout_seconds": 60
 }

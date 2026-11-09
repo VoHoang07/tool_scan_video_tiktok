@@ -37,6 +37,8 @@ from typing import Any, Dict, List, Optional
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 INBOX_PATH = PROJECT_ROOT / "remote_telemetry" / "agy_bridge_inbox.json"
 OUTBOX_PATH = PROJECT_ROOT / "remote_telemetry" / "agy_bridge_outbox.json"
 DESKTOP_SCREENSHOT_PATH = PROJECT_ROOT / "remote_telemetry" / "latest_intel_desktop.jpg"
@@ -384,37 +386,74 @@ def _ensure_both_streams_alive() -> Optional[Dict[str, Any]]:
         except Exception:
             pass
 
+    proj_str = str(PROJECT_ROOT)
     if not health.get("stream1_running"):
-        log1_fh = open(log1, "a", encoding="utf-8")
-        subprocess.Popen(
-            ["caffeinate", "-dimsu", py_bin, "main.py", "--stream-upload", "--max-ready", "5"],
-            cwd=str(PROJECT_ROOT),
-            stdin=subprocess.DEVNULL,
-            stdout=log1_fh,
-            stderr=subprocess.STDOUT,
-            start_new_session=True,
-            close_fds=True,
-        )
+        apple_s1 = f'''
+        tell application "Terminal"
+            repeat with w in windows
+                repeat with t in tabs of w
+                    set procText to (processes of t as text)
+                    if (not busy of t) or (procText does not contain "python" and procText does not contain "Python" and procText does not contain "caffeinate" and procText does not contain "agy") then
+                        do script "cd '{proj_str}' && ./venv/bin/python main.py --stream-upload" in t
+                        return "REVIVED_IN_TAB"
+                    end if
+                end repeat
+            end repeat
+            do script "cd '{proj_str}' && ./venv/bin/python main.py --stream-upload"
+            return "REVIVED_IN_NEW_WINDOW"
+        end tell
+        '''
+        try:
+            subprocess.run(["osascript", "-e", apple_s1], capture_output=True, text=True, timeout=8, check=False)
+            time.sleep(2.5)
+        except Exception:
+            pass
+        if not _collect_system_health().get("stream1_running"):
+            log1_fh = open(log1, "a", encoding="utf-8")
+            subprocess.Popen(
+                ["caffeinate", "-dimsu", py_bin, "main.py", "--stream-upload", "--max-ready", "5"],
+                cwd=str(PROJECT_ROOT),
+                stdin=subprocess.DEVNULL,
+                stdout=log1_fh,
+                stderr=subprocess.STDOUT,
+                start_new_session=True,
+                close_fds=True,
+            )
         restarted.append("stream1_upload")
 
-    from .master_switch_controller import MasterSwitchController
-
-    interact_enabled = MasterSwitchController(project_root=PROJECT_ROOT).is_interact_enabled("tiktok")
-    if not interact_enabled:
-        if health.get("stream2_running"):
-            subprocess.run(["pkill", "-9", "-f", "stream-filter24h"], check=False)
-    elif not health.get("stream2_running"):
-        log2 = log_dir / "stream2_filter24h.log"
-        log2_fh = open(log2, "a", encoding="utf-8")
-        subprocess.Popen(
-            ["caffeinate", "-dimsu", py_bin, "-m", "tiktok_pipeline.main", "--stream-filter24h"],
-            cwd=str(PROJECT_ROOT),
-            stdin=subprocess.DEVNULL,
-            stdout=log2_fh,
-            stderr=subprocess.STDOUT,
-            start_new_session=True,
-            close_fds=True,
-        )
+    if not health.get("stream2_running"):
+        apple_s2 = f'''
+        tell application "Terminal"
+            repeat with w in windows
+                repeat with t in tabs of w
+                    set procText to (processes of t as text)
+                    if (not busy of t) or (procText does not contain "python" and procText does not contain "Python" and procText does not contain "caffeinate" and procText does not contain "agy") then
+                        do script "cd '{proj_str}' && ./venv/bin/python main.py --stream-filter24h" in t
+                        return "REVIVED_IN_TAB"
+                    end if
+                end repeat
+            end repeat
+            do script "cd '{proj_str}' && ./venv/bin/python main.py --stream-filter24h"
+            return "REVIVED_IN_NEW_WINDOW"
+        end tell
+        '''
+        try:
+            subprocess.run(["osascript", "-e", apple_s2], capture_output=True, text=True, timeout=8, check=False)
+            time.sleep(2.5)
+        except Exception:
+            pass
+        if not _collect_system_health().get("stream2_running"):
+            log2 = log_dir / "stream2_filter24h.log"
+            log2_fh = open(log2, "a", encoding="utf-8")
+            subprocess.Popen(
+                ["caffeinate", "-dimsu", py_bin, "main.py", "--stream-filter24h"],
+                cwd=str(PROJECT_ROOT),
+                stdin=subprocess.DEVNULL,
+                stdout=log2_fh,
+                stderr=subprocess.STDOUT,
+                start_new_session=True,
+                close_fds=True,
+            )
         restarted.append("stream2_filter24h")
 
     if restarted:
@@ -474,7 +513,7 @@ def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str
     if platform.machine() != "x86_64" or (time.time() - last_ai_heal_ts < 900):
         return None
     try:
-        from .master_switch_controller import MasterSwitchController
+        from tiktok_pipeline.master_switch_controller import MasterSwitchController
 
         if not MasterSwitchController(project_root=PROJECT_ROOT).is_master_enabled():
             return None
@@ -654,41 +693,45 @@ def _auto_self_evolve_on_log_errors(last_ai_heal_ts: float) -> Optional[Dict[str
 
 
 def _deduplicate_stream_processes() -> List[str]:
-    """Đảm bảo trên máy Mac Intel chỉ có tối đa 1 tiến trình Dòng 1 và 1 tiến trình Dòng 2 (tránh chạy trùng lặp)."""
+    """Đảm bảo trên máy Mac Intel chỉ có tối đa 1 tiến trình Dòng 1 và 1 tiến trình Dòng 2 (ưu tiên tuyệt đối giữ cửa sổ Terminal có TTY)."""
     killed: List[str] = []
     if platform.machine() != "x86_64":
         return killed
     try:
         ps_res = subprocess.run(
-            ["ps", "-Ao", "pid,command"],
+            ["ps", "-Ao", "pid,tty,command"],
             capture_output=True,
             text=True,
             timeout=5,
             check=False,
         )
-        s1_pids: List[int] = []
-        s2_pids: List[int] = []
+        s1_entries: List[tuple[int, int]] = []
+        s2_entries: List[tuple[int, int]] = []
         for line in (ps_res.stdout or "").splitlines():
-            parts = line.strip().split(None, 1)
-            if len(parts) < 2 or not parts[0].isdigit():
+            parts = line.strip().split(None, 2)
+            if len(parts) < 3 or not parts[0].isdigit():
                 continue
             pid = int(parts[0])
-            cmd = parts[1]
-            if "grep" in cmd or "caffeinate" in cmd:
+            tty_val = parts[1].strip()
+            cmd = parts[2]
+            if "grep" in cmd or "caffeinate" in cmd or "osascript" in cmd or "pkill" in cmd:
                 continue
+            has_tty = 1 if (not tty_val.startswith("?") and tty_val != "-") else 0
             if "--stream-upload" in cmd and "python" in cmd.lower():
-                s1_pids.append(pid)
+                s1_entries.append((has_tty, pid))
             elif "--stream-filter24h" in cmd and "python" in cmd.lower():
-                s2_pids.append(pid)
+                s2_entries.append((has_tty, pid))
 
-        # Giữ lại tiến trình mới nhất (PID cuối danh sách), tắt các bản chạy trùng cũ
-        for dup_pid in s1_pids[:-1]:
+        # Sắp xếp theo (has_tty, pid) để LUÔN giữ lại tiến trình gắn với cửa sổ Terminal thật (tty != '??')
+        s1_entries.sort()
+        s2_entries.sort()
+        for _, dup_pid in s1_entries[:-1]:
             try:
                 os.kill(dup_pid, 9)
                 killed.append(f"stream1_dup_pid={dup_pid}")
             except Exception:
                 pass
-        for dup_pid in s2_pids[:-1]:
+        for _, dup_pid in s2_entries[:-1]:
             try:
                 os.kill(dup_pid, 9)
                 killed.append(f"stream2_dup_pid={dup_pid}")

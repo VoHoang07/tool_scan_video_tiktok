@@ -249,6 +249,20 @@
 
 ---
 
+### [BUG-020] Cửa sổ Terminal Công tắc 3 (`main.py --stream-filter24h`) trên Mac Intel bị tắt khi gạt Công tắc 3 và không tự hồi sinh lại trên Terminal
+- **Thời gian**: 2026-11-10 00:21:00
+- **Triệu chứng**: Khi người dùng tắt rồi bật lại Công tắc 2 & 3, cửa sổ Terminal chạy Công tắc 3 (`main.py --stream-filter24h`) trên màn hình Mac Intel bị dừng (`Killed: 9`), chỉ còn cửa sổ Công tắc 2 (`--stream-upload`) chạy.
+- **Nguyên nhân gốc rễ**:
+  1. Trong `_ensure_both_streams_alive()` của [`tiktok_pipeline/agy_intel_bridge.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py), khi `switch_3_interact.tiktok == False`, code gọi `subprocess.run(["pkill", "-9", "-f", "stream-filter24h"])` giết trực tiếp tiến trình đang chạy trong cửa sổ Terminal của người dùng thay vì để tiến trình tự tạm nghỉ theo `MasterSwitchController`.
+  2. `_deduplicate_stream_processes()` trong [`tiktok_pipeline/agy_intel_bridge.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py) chỉ giữ PID mới nhất (`s2_pids[-1]`) mà không phân biệt tiến trình gắn với cửa sổ Terminal thật (`tty != "??"`) với tiến trình chạy ngầm (`tty == "??"`), nên khi có bản chạy ngầm sinh sau thì nó `kill -9` mất cửa sổ Terminal đang mở.
+  3. Cửa sổ 1 (`check_and_run_stream1_upload_schedule()` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py)) chưa có hàm đối xứng `_auto_revive_stream2_filter24h_if_dead()` để tự gõ lệnh khởi động lại Cửa sổ 2 vào tab `Terminal.app` đang rảnh qua AppleScript (`osascript`), và `_ensure_agy_intel_bridge_daemon()` gọi `str(bridge_script)` thay vì `-m tiktok_pipeline.agy_intel_bridge` gây lỗi relative import `from .master_switch_controller`.
+- **Cách khắc phục & File đã sửa**:
+  - Bổ sung `_is_stream2_filter24h_process_running(require_tty=...)`, `_auto_revive_stream2_filter24h_if_dead()`, và `_ensure_intel_bridge_daemon_running()` vào [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py) (gọi ngay trong `TikTokAutoPoster.__init__()` và đầu mỗi chu kỳ `check_and_run_stream1_upload_schedule()`), tự động tìm tab `Terminal.app` đang rảnh (hoặc mở cửa sổ Terminal mới) qua `osascript` để chạy `cd '<project_root>' && ./venv/bin/python main.py --stream-filter24h`.
+  - Sửa `_ensure_both_streams_alive()` và `_deduplicate_stream_processes()` trong [`tiktok_pipeline/agy_intel_bridge.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py): bỏ lệnh `pkill -9 -f stream-filter24h` khi tắt Công tắc 3, luôn ưu tiên giữ tiến trình có `tty != "??"` (cửa sổ Terminal hiển thị), dùng absolute import `from tiktok_pipeline.master_switch_controller import MasterSwitchController`, và khởi chạy daemon qua `-m tiktok_pipeline.agy_intel_bridge` trong [`tiktok_pipeline/main.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py).
+- **Luật Miễn Dịch Vĩnh Viễn**: TUYỆT ĐỐI CẤM dùng `pkill -9` lên `main.py --stream-filter24h` hoặc `main.py --stream-upload` khi gạt tắt/mở các công tắc trong `schedule_config.json`; mọi cơ chế khử trùng lặp tiến trình (`_deduplicate_stream_processes`) bắt buộc ưu tiên giữ tiến trình gắn với TTY thật (`tty != "??"`) của `Terminal.app` và cả hai Cửa sổ 1 & 2 phải tự động hồi sinh chéo nhau trực tiếp trên `Terminal.app` qua `osascript`.
+
+---
+
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:
