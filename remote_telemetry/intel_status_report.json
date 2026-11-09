@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 18:51:17",
+    "timestamp": "2026-11-09 18:54:20",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261108_001025_tiktok_story_7527659162948439304.mp4",
-      "caption": "⚔️ [Tu Chân Giới] Chaien tu tiên. Ma âm lão tổ rốn lồi chaien. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-      "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #tiktokvn #xuhuong",
+      "video_file": "20261109_142159_tiktok_story_7572191376251555073.mp4",
+      "caption": "✨ [Phụ Nữ Khí Chất] trong tâm lý học...!. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
+      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 18:54:20",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261109_142159_tiktok_story_7572191376251555073.mp4",
+        "caption": "✨ [Phụ Nữ Khí Chất] trong tâm lý học...!. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
+        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 18:51:17",
       "machine_arch": "x86_64",
@@ -923,92 +939,6 @@
             },
             "interacted_at": "2026-11-09 18:17:12",
             "follow_back_window_until": "2026-11-10 18:17:12"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-09 18:15:47",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "baby_AI",
-            "video_id": "7705647745947667732",
-            "video_url": "https://www.tiktok.com/@user4192814042733/video/7705647745947667732",
-            "creator_handle": "@user4192814042733",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109191430CDD3709731F49050657A\",\"now\":1794222870000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261109191430CDD3709731F49050657A\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611091915017374B105E5AD4349DB3D\",\"now\":1794222901000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611091915017374B105E5AD4349DB3D\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 901.375,
-                "y": 409,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "109"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 901.375,
-                  "y": 409,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "109"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@user4192814042733",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@user4192814042733?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 18:15:09",
-            "follow_back_window_until": "2026-11-10 18:15:09"
           }
         ]
       }
