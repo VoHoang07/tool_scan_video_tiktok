@@ -268,7 +268,8 @@
     "7126435071032085791",
     "CSEhsxS3OTY",
     "2cNW1Dz3lCQ",
-    "WIXZX9NSi40"
+    "WIXZX9NSi40",
+    "7692448045878824213"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -434,7 +435,8 @@
     "7126435101025897247",
     "yt_sound_CSEhsxS3OTY",
     "yt_sound_2cNW1Dz3lCQ",
-    "yt_sound_WIXZX9NSi40"
+    "yt_sound_WIXZX9NSi40",
+    "7692448089367038740"
   ],
   "items": [
     {
@@ -2146,6 +2148,16 @@
       "source_url": "https://www.youtube.com/watch?v=WIXZX9NSi40",
       "output_filename": "phu_nu_khi_chat/ready/20261109_055907_youtube_shorts_story_WIXZX9NSi40.mp4",
       "crawled_at": "2026-11-09T05:59:22"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7692448045878824213",
+      "sound_id": "7692448089367038740",
+      "platform": "tiktok",
+      "genre": "ai萌娃",
+      "source_url": "https://www.tiktok.com/@waikityaw/video/7692448045878824213",
+      "output_filename": "baby_AI/ready/20261109_114425_tiktok_story_7692448045878824213.mp4",
+      "crawled_at": "2026-11-09T11:46:16"
     }
   ]
 }
