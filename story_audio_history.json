@@ -269,7 +269,8 @@
     "CSEhsxS3OTY",
     "2cNW1Dz3lCQ",
     "WIXZX9NSi40",
-    "7692448045878824213"
+    "7692448045878824213",
+    "990006002"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -436,7 +437,8 @@
     "yt_sound_CSEhsxS3OTY",
     "yt_sound_2cNW1Dz3lCQ",
     "yt_sound_WIXZX9NSi40",
-    "7692448089367038740"
+    "7692448089367038740",
+    "bongcuc_yt_DTr7WSxC37g_p2"
   ],
   "items": [
     {
@@ -2158,6 +2160,16 @@
       "source_url": "https://www.tiktok.com/@waikityaw/video/7692448045878824213",
       "output_filename": "baby_AI/ready/20261109_114425_tiktok_story_7692448045878824213.mp4",
       "crawled_at": "2026-11-09T11:46:16"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990006002",
+      "sound_id": "bongcuc_yt_DTr7WSxC37g_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=DTr7WSxC37g&t=397s",
+      "output_filename": "audio_dem_khuyen/ready/20261109_115048_tiktok_story_990006002_bongcuc_v4_s60_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-09T11:54:59"
     }
   ]
 }
