@@ -1,91 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 20:11:13",
+    "timestamp": "2026-11-10 00:04:09",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_filter24h_phu_nu_khi_chat.jpg",
+    "event_type": "upload",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "phu_nu_khi_chat",
-          "video_id": "7706018183420923188",
-          "video_url": "https://www.tiktok.com/@thy.dng9605/video/7706018183420923188",
-          "creator_handle": "@thy.dng9605",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Quá tuyệt vời luôn bạn ơi, thả tim ủng hộ kênh nhiệt tình nhé ❤️✨",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109211002313C072D42AEC221A5C3\",\"now\":1794229803000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261109211002313C072D42AEC221A5C3\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110921103279EC8BDF65C5162ABBB0\",\"now\":1794229833000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026110921103279EC8BDF65C5162ABBB0\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 881.28125,
-              "y": 425,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "70"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 881.28125,
-                "y": 425,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "70"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@thy.dng9605",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@thy.dng9605?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": 0,
-              "server_follow_ok": true,
-              "ui_confirmed": true,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-09 20:10:41",
-          "follow_back_window_until": "2026-11-10 20:10:41"
-        }
-      ]
+      "video_file": "20261108_074347_tiktok_story_7602503856299199762.mp4",
+      "caption": "✨ Câu chuyện AI cực cuốn: Khủng Long Con bị Sâu răng Nina và những người bạn. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+      "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #foryou",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 0,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 00:04:09",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261108_074347_tiktok_story_7602503856299199762.mp4",
+        "caption": "✨ Câu chuyện AI cực cuốn: Khủng Long Con bị Sâu răng Nina và những người bạn. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+        "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 20:11:13",
       "machine_arch": "x86_64",
@@ -507,22 +453,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 19:06:57",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261109_141605_tiktok_story_7585170381242109191.mp4",
-        "caption": "💪 Chăm sóc sức khỏe gia đình: Bí quyết 45 mà nhìn như 25. Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
-        "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }

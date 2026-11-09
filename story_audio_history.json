@@ -313,7 +313,12 @@
     "7595038759533769700",
     "990003502",
     "7646019476604914945",
-    "7583951481380932884"
+    "7583951481380932884",
+    "7484450317988318494",
+    "7665915623473417480",
+    "7703165866409512210",
+    "7283117050241862914",
+    "7683086661202709778"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -524,7 +529,12 @@
     "7585496643647408911",
     "bongcuc_yt_0GDXD2fwhcE_p2",
     "7646019626758114068",
-    "7583951533625199368"
+    "7583951533625199368",
+    "7484450317100780319",
+    "7665915679006149377",
+    "7703165907417877266",
+    "6938033658741770248",
+    "6777237779509151746"
   ],
   "items": [
     {
@@ -2696,6 +2706,56 @@
       "source_url": "https://www.tiktok.com/@24h.st0re/video/7583951481380932884",
       "output_filename": "meo_vat_gia_dinh/ready/20261109_200240_tiktok_story_7583951481380932884.mp4",
       "crawled_at": "2026-11-09T20:02:45"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "7484450317988318494",
+      "sound_id": "7484450317100780319",
+      "platform": "tiktok",
+      "genre": "suckhoe",
+      "source_url": "https://www.tiktok.com/@qwe12865c8e/video/7484450317988318494",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261109_201414_tiktok_story_7484450317988318494.mp4",
+      "crawled_at": "2026-11-09T20:26:58"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "7665915623473417480",
+      "sound_id": "7665915679006149377",
+      "platform": "tiktok",
+      "genre": "tamlyhoc",
+      "source_url": "https://www.tiktok.com/@bloved2024/video/7665915623473417480",
+      "output_filename": "phu_nu_khi_chat/ready/20261109_203154_tiktok_story_7665915623473417480.mp4",
+      "crawled_at": "2026-11-09T20:38:57"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "7703165866409512210",
+      "sound_id": "7703165907417877266",
+      "platform": "tiktok",
+      "genre": "anvat",
+      "source_url": "https://www.tiktok.com/@huong_vi_ma_ut/video/7703165866409512210",
+      "output_filename": "an_vat_moi_ngay/ready/20261109_204233_tiktok_story_7703165866409512210.mp4",
+      "crawled_at": "2026-11-09T20:43:01"
+    },
+    {
+      "channel": "nuoi_con_eq",
+      "video_id": "7283117050241862914",
+      "sound_id": "6938033658741770248",
+      "platform": "tiktok",
+      "genre": "mevabe",
+      "source_url": "https://www.tiktok.com/@lamchameaz/video/7283117050241862914",
+      "output_filename": "nuoi_con_eq/ready/20261109_204745_tiktok_story_7283117050241862914.mp4",
+      "crawled_at": "2026-11-09T20:47:49"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "7683086661202709778",
+      "sound_id": "6777237779509151746",
+      "platform": "tiktok",
+      "genre": "phukiendienthoai",
+      "source_url": "https://www.tiktok.com/@thuanphatmobilehcm/video/7683086661202709778",
+      "output_filename": "phu_kien_tien_ich/ready/20261109_205150_tiktok_story_7683086661202709778.mp4",
+      "crawled_at": "2026-11-09T20:51:56"
     }
   ]
 }
