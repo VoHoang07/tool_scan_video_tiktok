@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 18:48:07",
+    "timestamp": "2026-11-09 18:51:17",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261109_184333_tiktok_story_990002102_bongcuc_v4_s21_p2_bg_mukbang.mp4",
-      "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 21 (Phần 2/5): Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo. Vừa xem Mukbang đêm khuya vừa nghe câu chuyện cuốn hút này nhé!",
-      "hashtags": "#bongcucso21 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
+      "video_file": "20261108_001025_tiktok_story_7527659162948439304.mp4",
+      "caption": "⚔️ [Tu Chân Giới] Chaien tu tiên. Ma âm lão tổ rốn lồi chaien. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+      "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 18:51:17",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261108_001025_tiktok_story_7527659162948439304.mp4",
+        "caption": "⚔️ [Tu Chân Giới] Chaien tu tiên. Ma âm lão tổ rốn lồi chaien. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 18:48:07",
       "machine_arch": "x86_64",
@@ -993,92 +1009,6 @@
             },
             "interacted_at": "2026-11-09 18:15:09",
             "follow_back_window_until": "2026-11-10 18:15:09"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-09 18:13:39",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "video_AI_hay",
-            "video_id": "7706022369969687829",
-            "video_url": "https://www.tiktok.com/@kimthoa_24/video/7706022369969687829",
-            "creator_handle": "@kimthoa_24",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109191223FAC68B7882B9075B32E7\",\"now\":1794222743000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261109191223FAC68B7882B9075B32E7\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109191253E5FD276AF29C8F62911B\",\"now\":1794222773000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261109191253E5FD276AF29C8F62911B\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 795.15625,
-                "y": 369,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "4"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 795.15625,
-                  "y": 369,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "4"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@kimthoa_24",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@kimthoa_24?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 18:13:00",
-            "follow_back_window_until": "2026-11-10 18:13:00"
           }
         ]
       }
