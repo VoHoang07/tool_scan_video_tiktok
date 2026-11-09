@@ -1,48 +1,43 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 12:03:47",
+    "timestamp": "2026-11-09 12:09:50",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_filter24h_phu_nu_khi_chat.jpg",
     "details": {
       "interacted_count": 3,
       "own_profile_stats": {
-        "uniqueId": "audio_ba_con_oi",
-        "domFollowing": "29",
-        "domFollowers": "37",
-        "domLikes": "1048",
+        "uniqueId": "phunukhichat.k07",
+        "domFollowing": "0",
+        "domFollowers": "0",
+        "domLikes": "0",
         "sidebarFollowing": [
-          "/@audio_ba_con_oi",
-          "/@giahan_14102015",
-          "/@emmeo527",
-          "/@user234327174",
-          "/@_thylee_",
-          "/@vinitaharvey"
+          "/@phunukhichat.k07"
         ]
       },
       "records": [
         {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7705473091769552149",
-          "video_url": "https://www.tiktok.com/@ngocnguyen84986/video/7705473091769552149",
-          "creator_handle": "@ngocnguyen84986",
-          "watched_seconds": 20.3,
+          "channel": "phu_nu_khi_chat",
+          "video_id": "7705804728239918357",
+          "video_url": "https://www.tiktok.com/@doxinh.ne9/video/7705804728239918357",
+          "creator_handle": "@doxinh.ne9",
+          "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
-            "2_liked_video": true,
+            "2_liked_video": false,
             "3_copied_link": true,
-            "4_added_favorite": true,
+            "4_added_favorite": false,
             "5_followed_creator": false,
             "6_commented_after_follow": true
           },
-          "comment_text": "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
-          "circuit_breaker_tripped": false,
+          "comment_text": "Nhạc với hình hợp nhau thực sự, xem đi xem lại vẫn thấy cuốn 🥰",
+          "circuit_breaker_tripped": true,
           "like_debug": {
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109130117C101D886B5CFA60FEAE0\",\"now\":1794200477000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261109130117C101D886B5CFA60FEAE0\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110913073239A9677DA3BAF00C202A\",\"now\":1794200852000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110913073239A9677DA3BAF00C202A\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [],
@@ -55,25 +50,25 @@
               "y": 425,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "145"
+              "likeCount": "35"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
                 "x": 881.28125,
                 "y": 425,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "146"
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "35"
               },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
             },
             "profile_follow_verify": {
-              "creator": "@ngocnguyen84986",
+              "creator": "@doxinh.ne9",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@ngocnguyen84986/video/7705473091769552149?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@doxinh.ne9/video/7705804728239918357?lang=vi-VN",
               "before_btn": "",
               "after_btn": "",
               "init_relation": null,
@@ -83,61 +78,32 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-09 12:01:39",
-          "follow_back_window_until": "2026-11-10 12:01:39"
+          "interacted_at": "2026-11-09 12:07:51",
+          "follow_back_window_until": "2026-11-10 12:07:51"
         },
         {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7704995249994599688",
-          "video_url": "https://www.tiktok.com/@review.cotam688/video/7704995249994599688",
-          "creator_handle": "@review.cotam688",
-          "watched_seconds": 24.8,
+          "channel": "phu_nu_khi_chat",
+          "video_id": "7705638009827265793",
+          "video_url": "https://www.tiktok.com/@nhathuochn962/video/7705638009827265793",
+          "creator_handle": "@nhathuochn962",
+          "watched_seconds": 21.2,
           "steps_completed": {
             "1_watched_full": true,
-            "2_liked_video": true,
+            "2_liked_video": false,
             "3_copied_link": true,
             "4_added_favorite": true,
             "5_followed_creator": false,
             "6_commented_after_follow": true
           },
-          "comment_text": "Hình ảnh với âm thanh đỉnh thật sự, ủng hộ kênh bạn lâu dài nha 🔥",
+          "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
           "circuit_breaker_tripped": false,
           "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109130221ACD8CFDFD00B3A03CE8E\",\"now\":1794200541000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261109130221ACD8CFDFD00B3A03CE8E\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
+            "digg_responses": [],
             "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 881.28125,
-              "y": 373,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "62"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 881.28125,
-                "y": 373,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "63"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            },
             "profile_follow_verify": {
-              "creator": "@review.cotam688",
+              "creator": "@nhathuochn962",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@review.cotam688/video/7704995249994599688?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@nhathuochn962/video/7705638009827265793?lang=vi-VN",
               "before_btn": "",
               "after_btn": "",
               "init_relation": null,
@@ -147,61 +113,36 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-09 12:02:42",
-          "follow_back_window_until": "2026-11-10 12:02:42"
+          "interacted_at": "2026-11-09 12:08:45",
+          "follow_back_window_until": "2026-11-10 12:08:45"
         },
         {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7704904980326518068",
-          "video_url": "https://www.tiktok.com/@nh.hoa0048/video/7704904980326518068",
-          "creator_handle": "@nh.hoa0048",
+          "channel": "phu_nu_khi_chat",
+          "video_id": "7705236227343076609",
+          "video_url": "https://www.tiktok.com/@ng.nguyt.anh799/video/7705236227343076609",
+          "creator_handle": "@ng.nguyt.anh799",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
-            "2_liked_video": true,
+            "2_liked_video": false,
             "3_copied_link": true,
             "4_added_favorite": true,
             "5_followed_creator": false,
             "6_commented_after_follow": true
           },
-          "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
+          "comment_text": "Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️",
           "circuit_breaker_tripped": false,
           "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109130321CF1C8E51672867FF10D3\",\"now\":1794200601000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261109130321CF1C8E51672867FF10D3\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
+            "digg_responses": [],
             "follow_responses": [],
             "env_check": {
               "webdriver": false,
               "loggedInUniqueId": null
             },
-            "before": {
-              "x": 947.90625,
-              "y": 424.9921875,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "479"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 947.90625,
-                "y": 424.9921875,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "480"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            },
             "profile_follow_verify": {
-              "creator": "@nh.hoa0048",
+              "creator": "@ng.nguyt.anh799",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@nh.hoa0048/video/7704904980326518068?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@ng.nguyt.anh799/video/7705236227343076609?lang=vi-VN",
               "before_btn": "",
               "after_btn": "",
               "init_relation": null,
@@ -211,13 +152,172 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-09 12:03:43",
-          "follow_back_window_until": "2026-11-10 12:03:43"
+          "interacted_at": "2026-11-09 12:09:45",
+          "follow_back_window_until": "2026-11-10 12:09:45"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 12:09:50",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_filter24h_phu_nu_khi_chat.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "phunukhichat.k07",
+          "domFollowing": "0",
+          "domFollowers": "0",
+          "domLikes": "0",
+          "sidebarFollowing": [
+            "/@phunukhichat.k07"
+          ]
+        },
+        "records": [
+          {
+            "channel": "phu_nu_khi_chat",
+            "video_id": "7705804728239918357",
+            "video_url": "https://www.tiktok.com/@doxinh.ne9/video/7705804728239918357",
+            "creator_handle": "@doxinh.ne9",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Nhạc với hình hợp nhau thực sự, xem đi xem lại vẫn thấy cuốn 🥰",
+            "circuit_breaker_tripped": true,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110913073239A9677DA3BAF00C202A\",\"now\":1794200852000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110913073239A9677DA3BAF00C202A\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 881.28125,
+                "y": 425,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "35"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 881.28125,
+                  "y": 425,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "35"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@doxinh.ne9",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@doxinh.ne9/video/7705804728239918357?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-09 12:07:51",
+            "follow_back_window_until": "2026-11-10 12:07:51"
+          },
+          {
+            "channel": "phu_nu_khi_chat",
+            "video_id": "7705638009827265793",
+            "video_url": "https://www.tiktok.com/@nhathuochn962/video/7705638009827265793",
+            "creator_handle": "@nhathuochn962",
+            "watched_seconds": 21.2,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "profile_follow_verify": {
+                "creator": "@nhathuochn962",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@nhathuochn962/video/7705638009827265793?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-09 12:08:45",
+            "follow_back_window_until": "2026-11-10 12:08:45"
+          },
+          {
+            "channel": "phu_nu_khi_chat",
+            "video_id": "7705236227343076609",
+            "video_url": "https://www.tiktok.com/@ng.nguyt.anh799/video/7705236227343076609",
+            "creator_handle": "@ng.nguyt.anh799",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "profile_follow_verify": {
+                "creator": "@ng.nguyt.anh799",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@ng.nguyt.anh799/video/7705236227343076609?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "",
+                "init_relation": null,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-09 12:09:45",
+            "follow_back_window_until": "2026-11-10 12:09:45"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-09 12:03:47",
       "machine_arch": "x86_64",
@@ -790,22 +890,6 @@
         "video_file": "20261107_093214_tiktok_story_7660423297871465761.mp4",
         "caption": "🐉 Nếu mọi chuyện chẳng như mình mong đợi, thì ta cũng đã cháy hết mình một lần trong đời — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
         "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 00:06:43",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261109_000243_tiktok_story_990001007_bongcuc_v4_s10_p7_bg_mukbang.mp4",
-        "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 10 (Phần 7/13): Họ Lấy Hết Mọi Thứ Rồi Vẫn Muốn Tôi Biết Điều. Vừa xem Mukbang đêm khuya vừa nghe câu chuyện cuốn hút này nhé!",
-        "hashtags": "#bongcucso10 #bongcucaudio #nghetruyendemkhuya #gocnhinkhuya #fyp #kechuyendemkhuya #xuhuong #bongcuctrang",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
