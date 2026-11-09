@@ -1,52 +1,105 @@
 {
-  "updated_at": "2026-11-09 12:19:03",
+  "updated_at": "2026-11-09 12:28:32",
   "latest_result": {
-    "cmd_id": "auto_heal_1794201543",
-    "action": "auto_heal_stuck_browser_lock",
-    "executed_at": "2026-11-09 12:19:03",
-    "unstick_report": {
-      "killed_chrome_for_testing": false,
-      "removed_locks": [
-        "workspace_temp/.tiktok_browser_session.lock"
-      ],
-      "timestamp": "2026-11-09 12:19:03"
-    },
+    "cmd_id": "cmd_20261109_1227_fix_private_and_post_remaining",
+    "action": "shell",
+    "executed_at": "2026-11-09 12:28:28",
+    "machine_arch": "x86_64",
+    "hostname": "Hoangs-MBP.fpt",
+    "status": "SUCCESS",
+    "exit_code": 0,
+    "stdout": "vohoang           6630  10.6  0.5 34610080  79252   ??  S    12:28PM   0:01.34 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang          51409   0.0  1.0 34728004 174088   ??  Ss   10:09PM   1:20.73 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          51411   0.0  0.0 34169688   1224   ??  S    10:09PM   0:00.01 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           6632   0.0  0.0 34163044   1964   ??  S    12:28PM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
+    "stderr": "",
+    "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-09 12:19:03",
+      "timestamp": "2026-11-09 12:28:32",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
       "stream2_running": true,
       "chrome_testing_count": 0,
-      "lock_file_age_seconds": null,
+      "lock_file_age_seconds": 126.4,
       "processes": [
-        "51409    14:09:12 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "51411    14:09:12 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "85549    11:35:55 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "85551    11:35:55 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "6630       00:03 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "6632       00:03 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "51409    14:18:40 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "51411    14:18:40 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
       ],
       "recent_daemon_log_tail": [
-        "[12:15:45] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên DOUYIN ID=7678287962634767657 (thời lượng=45.5s, sound='@Yuer创作的原声一Yuer', view=54775180, tim=1633164, share=338450)...",
-        "[12:15:45] [INFO] tiktok_pipeline: Đang tải video Douyin không watermark qua iesdouyin mobile router API...",
-        "[12:15:48] [INFO] tiktok_pipeline: Đang tải stream không watermark từ Douyin CDN...",
-        "[12:15:50] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7678287962634767657/raw_video.mp4 (7.09 MB)",
-        "[12:15:50] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7678287962634767657/audio.mp3",
-        "[12:15:51] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 45.51s)",
-        "[12:15:52] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/douyin_7678287962634767657/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[12:15:52] [INFO] tiktok_pipeline: Đang khởi tạo faster-whisper model='small' (device=cpu, compute_type=int8)...",
-        "[12:15:58] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'zh' (độ tin cậy: 86.15%)",
-        "[12:16:19] [INFO] tiktok_pipeline: Đã bóc tách & chuẩn hóa thành công 5 câu thoại hoàn chỉnh (mean_logprob=-0.98, ocr_coverage=0%).",
-        "[12:16:19] [INFO] tiktok_pipeline: [Voice Filter] Kết quả đo 7678287962634767657: lang=zh, số câu=5, độ dài TB=1.8 ký tự/câu, thời gian thoại=4.4s/45.5s (9.8%), logprob=-0.98, ocr=0%",
-        "[12:16:19] [INFO] tiktok_pipeline: [Voice Filter] -> LOẠI BỎ 7678287962634767657 (không đạt chuẩn mật độ câu thoại).",
-        "[12:16:19] [INFO] tiktok_pipeline: --- Kiểm tra ứng viên #2/18: [TIKTOK] ID=7686392200816528661 (tim=32058, thời lượng=41.0s) ---",
-        "[12:16:19] [INFO] tiktok_pipeline: [Voice Filter] Đang kiểm tra ứng viên TIKTOK ID=7686392200816528661 (thời lượng=41.0s, sound='original sound - c_tdodo', view=388602, tim=32058, share=1806)...",
-        "[12:16:19] [INFO] tiktok_pipeline: Đang tải video TikTok không watermark qua TikWM API...",
-        "[12:16:32] [INFO] tiktok_pipeline: Đã lưu video gốc: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7686392200816528661/raw_video.mp4 (15.71 MB)",
-        "[12:16:32] [INFO] tiktok_pipeline: Đang trích xuất âm thanh chuẩn hóa không cắt đỉnh ra: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7686392200816528661/audio.mp3",
-        "[12:16:33] [INFO] tiktok_pipeline: Trích xuất audio.mp3 hoàn tất (Thời lượng: 41.22s)",
-        "[12:16:35] [INFO] tiktok_pipeline: Đang nhận diện giọng nói từ: /Users/vohoang/Documents/tool_scan_video_tiktok/workspace_temp/crawler_candidates/tiktok_7686392200816528661/audio.mp3 (auto-detect language, word_timestamps=True)...",
-        "[12:16:37] [INFO] tiktok_pipeline: Ngôn ngữ phát hiện: 'th' (độ tin cậy: 23.28%)"
-      ]
+        "[12:27:40] [INFO] tiktok_pipeline: [29.78s - 30.88s] 此後氣力大增  ==>  Sau đó, sức mạnh của anh tăng lên rất nhiều",
+        "[12:27:40] [INFO] tiktok_pipeline: [30.88s - 32.22s] 這稱之為火燒丹田  ==>  Điều này được gọi là đốt Đan Điền",
+        "[12:27:40] [INFO] tiktok_pipeline: [32.34s - 33.94s] 這是初劇內功的重要標誌  ==>  Đây là dấu hiệu quan trọng thể hiện sức mạnh nội tâm của kịch thời kỳ đầu",
+        "[12:27:40] [INFO] tiktok_pipeline: [33.94s - 35.62s] 在繼續練習腹部內的氣團  ==>  Tiếp tục tập khối khí ở bụng",
+        "[12:27:40] [INFO] tiktok_pipeline: [35.74s - 36.98s] 就可打通任督二脈  ==>  Điều này sẽ mở ra hai kênh Nhâm và Du",
+        "[12:27:40] [INFO] tiktok_pipeline: Đang dịch trực tiếp tiếng Trung/ngoại ngữ sang tiếng Việt theo ngữ cảnh (Contextual NMT)...",
+        "[12:27:41] [INFO] tiktok_pipeline: [36.98s - 37.96s] 也就是小周天  ==>  Đó chính là Tiêu Chu Thiên",
+        "[12:27:44] [INFO] tiktok_pipeline: Caption đã dịch: ⚔️ [Tu Chân Giới] Lời dạy tu tiên bị vạch trần! Trung Quốc thực sự có thể tu luyện được sự trường sinh bất tử? Tôi không thể giấu nó được nữa!. \"Gần đây, một đạo sĩ đã đăng một bài hướng dẫn ngẫu nhiên lên mạng...\" Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "[12:27:44] [INFO] tiktok_pipeline: Hashtags: #tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #foryou #fyp",
+        "[12:27:44] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
+        "[12:27:44] [INFO] tiktok_pipeline: Cấu hình giọng kênh [tu_chan_gioi]: Giọng nam trầm, hào hùng, nhịp nhanh dứt khoát (Kênh Tu Tiên / Huyền Huyễn) (voice=vi-VN-NamMinhNeural, rate=+16%, pitch=-4Hz)",
+        "[12:27:44] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-NamMinhNeural, Tốc độ gốc: +16%, Độ trầm/cao: -4Hz) cho 26 câu thoại...",
+        "[12:28:08] [INFO] tiktok_pipeline: TTS #00 [00.38s-02.08s | gốc=1.76s]: rate=+45%, atempo=1.29x -> 1.70s",
+        "[12:28:21] [INFO] tiktok_pipeline: TTS #01 [02.14s-04.85s | gốc=2.84s]: rate=+29%, atempo=1.00x -> 2.71s",
+        "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
+        "  warnings.warn('resource_tracker: There appear to be %d '",
+        "[12:28:30] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
+        "[12:28:30] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[12:28:30] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[12:28:30] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))"
+      ],
+      "lock_file_content": "pid=51409 ts=1794201986"
     }
-  }
+  },
+  "history": [
+    {
+      "cmd_id": "cmd_20261109_1227_fix_private_and_post_remaining",
+      "action": "shell",
+      "executed_at": "2026-11-09 12:28:28",
+      "machine_arch": "x86_64",
+      "hostname": "Hoangs-MBP.fpt",
+      "status": "SUCCESS",
+      "exit_code": 0,
+      "stdout": "vohoang           6630  10.6  0.5 34610080  79252   ??  S    12:28PM   0:01.34 ./venv/bin/python main.py --stream-upload --max-ready 5\nvohoang          51409   0.0  1.0 34728004 174088   ??  Ss   10:09PM   1:20.73 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang          51411   0.0  0.0 34169688   1224   ??  S    10:09PM   0:00.01 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h\nvohoang           6632   0.0  0.0 34163044   1964   ??  S    12:28PM   0:00.01 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5\n",
+      "stderr": "",
+      "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
+      "system_health": {
+        "timestamp": "2026-11-09 12:28:32",
+        "machine_arch": "x86_64",
+        "hostname": "Hoangs-MBP.fpt",
+        "stream1_running": true,
+        "stream2_running": true,
+        "chrome_testing_count": 0,
+        "lock_file_age_seconds": 126.4,
+        "processes": [
+          "6630       00:03 ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "6632       00:03 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5",
+          "51409    14:18:40 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+          "51411    14:18:40 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h"
+        ],
+        "recent_daemon_log_tail": [
+          "[12:27:40] [INFO] tiktok_pipeline: [29.78s - 30.88s] 此後氣力大增  ==>  Sau đó, sức mạnh của anh tăng lên rất nhiều",
+          "[12:27:40] [INFO] tiktok_pipeline: [30.88s - 32.22s] 這稱之為火燒丹田  ==>  Điều này được gọi là đốt Đan Điền",
+          "[12:27:40] [INFO] tiktok_pipeline: [32.34s - 33.94s] 這是初劇內功的重要標誌  ==>  Đây là dấu hiệu quan trọng thể hiện sức mạnh nội tâm của kịch thời kỳ đầu",
+          "[12:27:40] [INFO] tiktok_pipeline: [33.94s - 35.62s] 在繼續練習腹部內的氣團  ==>  Tiếp tục tập khối khí ở bụng",
+          "[12:27:40] [INFO] tiktok_pipeline: [35.74s - 36.98s] 就可打通任督二脈  ==>  Điều này sẽ mở ra hai kênh Nhâm và Du",
+          "[12:27:40] [INFO] tiktok_pipeline: Đang dịch trực tiếp tiếng Trung/ngoại ngữ sang tiếng Việt theo ngữ cảnh (Contextual NMT)...",
+          "[12:27:41] [INFO] tiktok_pipeline: [36.98s - 37.96s] 也就是小周天  ==>  Đó chính là Tiêu Chu Thiên",
+          "[12:27:44] [INFO] tiktok_pipeline: Caption đã dịch: ⚔️ [Tu Chân Giới] Lời dạy tu tiên bị vạch trần! Trung Quốc thực sự có thể tu luyện được sự trường sinh bất tử? Tôi không thể giấu nó được nữa!. \"Gần đây, một đạo sĩ đã đăng một bài hướng dẫn ngẫu nhiên lên mạng...\" Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+          "[12:27:44] [INFO] tiktok_pipeline: Hashtags: #tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #foryou #fyp",
+          "[12:27:44] [INFO] tiktok_pipeline: === [4/5] LỒNG TIẾNG VIỆT THEO KÊNH & CĂN CHỈNH TỐC ĐỘ (EDGE-TTS) ===",
+          "[12:27:44] [INFO] tiktok_pipeline: Cấu hình giọng kênh [tu_chan_gioi]: Giọng nam trầm, hào hùng, nhịp nhanh dứt khoát (Kênh Tu Tiên / Huyền Huyễn) (voice=vi-VN-NamMinhNeural, rate=+16%, pitch=-4Hz)",
+          "[12:27:44] [INFO] tiktok_pipeline: Đang tổng hợp giọng đọc tiếng Việt bằng edge-tts (Giọng: vi-VN-NamMinhNeural, Tốc độ gốc: +16%, Độ trầm/cao: -4Hz) cho 26 câu thoại...",
+          "[12:28:08] [INFO] tiktok_pipeline: TTS #00 [00.38s-02.08s | gốc=1.76s]: rate=+45%, atempo=1.29x -> 1.70s",
+          "[12:28:21] [INFO] tiktok_pipeline: TTS #01 [02.14s-04.85s | gốc=2.84s]: rate=+29%, atempo=1.00x -> 2.71s",
+          "/Users/vohoang/Documents/tool_scan_video_tiktok/.uv_python/cpython-3.11.18-macos-x86_64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown",
+          "  warnings.warn('resource_tracker: There appear to be %d '",
+          "[12:28:30] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
+          "[12:28:30] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+          "[12:28:30] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+          "[12:28:30] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))"
+        ],
+        "lock_file_content": "pid=51409 ts=1794201986"
+      }
+    }
+  ]
 }
