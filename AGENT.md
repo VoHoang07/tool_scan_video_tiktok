@@ -176,6 +176,25 @@
 - **Cách khắc phục & File đã sửa**: Tự động kích hoạt AI Self-Heal trên Mac Intel.
 - **Luật Miễn Dịch Vĩnh Viễn**: Giám sát KPI thực tế sau mỗi phiên trình duyệt và tự động điều chỉnh selector/điều hướng.
 
+### [BUG-014] Kênh `suc_khoe_duong_sinh` bị để `Chỉ mình tôi` (Riêng tư), kênh `phu_nu_khi_chat` bị tự động xóa bài vừa đăng, các bài mới bị kẹt `Nội dung đang được xét duyệt` và thiếu 3 kênh trong `active_channels`
+- **Thời gian**: 2026-11-09 12:27:00
+- **Triệu chứng**:
+  1. Sau khi bật Công tắc 2 lúc `11:32`, kiểm tra trên điện thoại chỉ thấy một vài kênh hiện bài mới, còn các kênh khác chưa thấy bài.
+  2. Ảnh chụp telemetry tại `tiktokstudio/content` cho thấy:
+     - `suc_khoe_duong_sinh`: Bài vừa đăng (`01:33`) đang ở trạng thái **`🔒 Chỉ mình ...` (`Chỉ mình tôi` / Riêng tư)** dù hệ thống báo `switched_public_count = 6`.
+     - `phu_nu_khi_chat`: Bài vừa đăng lúc `11:47` (`qjr42DMIHbs.mp4`) bị `_deduplicate_existing_posts_in_content_page()` xóa mất ngay sau khi đăng và hiện hộp thoại `Xóa bài đăng?` trên màn hình (`baby_AI` và `video_AI_hay` cũng bị mở hộp thoại `Xóa bài đăng?`).
+     - `baby_AI`, `video_AI_hay`, `audio_dem_khuyen`, `tu_chan_gioi`, `an_vat_moi_ngay`: Cả 5 kênh đều hiện thông báo đen `✓ Đã cập nhật cài đặt quyền riêng tư` và bài vừa đăng bị đưa vào trạng thái `⚠️ Nội dung đang được xét duyệt >` (chưa hiển thị ra trang hồ sơ công khai khi xem từ điện thoại).
+     - 3 kênh `meo_vat_gia_dinh`, `nuoi_con_eq`, `phu_kien_tien_ich` chưa có trong `active_channels` và `remote_trigger_post_now.channel`.
+- **Nguyên nhân gốc rễ**:
+  1. Trong `_configure_upload_settings_public()` của [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py), ngay cả khi mục `Người có thể nhìn thấy bài đăng này` đã ở sẵn `'Mọi người'` (Công khai), code vẫn click mở dropdown rồi gọi `_click_public_option_in_open_dropdown()` (chỉ dùng `_os_click_viewport` và khớp nhầm nút trigger). Khi menu dropdown vẫn đang xổ xuống đè lên phần cài đặt bên dưới, bước tiếp theo (`_set_switch_near_label("Nội dung tải lên chất lượng cao")`) click trúng vào tùy chọn **`Chỉ mình tôi`** đang lơ lửng trong menu! Kết quả là video bị gửi đi ở chế độ `Chỉ mình tôi`, sau đó sang trang `tiktokstudio/content` mới đổi lại sang `Mọi người` làm TikTok đưa video vào diện `⚠️ Nội dung đang được xét duyệt >`.
+  2. Trên `tiktokstudio/content`, `_ensure_posts_public_in_content_page()` khử trùng lặp theo `Math.abs(d.x - item.x) < 35`, làm 1 hàng `Chỉ mình ...` sinh ra 2 phần tử cùng `y` (bấm lần 1 mở, bấm lần 2 đóng lại), khiến `suc_khoe_duong_sinh` vẫn bị kẹt ở `🔒 Chỉ mình ...`.
+  3. Cuối `_ensure_posts_public_in_content_page()` tự động gọi `_deduplicate_existing_posts_in_content_page()`, hàm này so sánh 34 ký tự đầu của caption mẫu và xóa nhầm bài vừa đăng trên `phu_nu_khi_chat` cũng như mở popup `Xóa bài đăng?` trên `baby_AI`, `video_AI_hay`.
+- **Cách khắc phục & File đã sửa**:
+  - Sửa `_configure_upload_settings_public()` và thêm `_verify_upload_privacy_is_everyone()` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py): nếu trạng thái đã là `'Mọi người'` / `'Everyone'` thì **tuyệt đối không bấm mở dropdown**; kiểm tra lại trạng thái `'Mọi người'` trước khi cuộn xuống bấm `Đăng`.
+  - Sửa `_click_public_option_in_open_dropdown()`, `_ensure_posts_public_in_content_page()`, và `_dismiss_all_studio_popovers()` trong [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py): khử trùng lặp `private_buttons` theo dòng `Math.abs(d.y - item.y) < 30`, loại trừ tọa độ `exclude_y` của nút trigger, click đa tầng (`_os_click_viewport` + `page.mouse.click` + DOM `opt.click()`), không quét `[data-floating-ui-portal]` hoặc bấm `'Hủy'` trong `_dismiss_all_studio_popovers()`, và bỏ gọi tự động `_deduplicate_existing_posts_in_content_page()` sau mỗi lần đăng.
+  - Bổ sung đủ 10 kênh vào `active_channels` trong [`schedule_config.json`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/schedule_config.json) và kích hoạt `ensure_public_channels: "suc_khoe_duong_sinh"` + đăng bù ngay cho `phu_nu_khi_chat,meo_vat_gia_dinh,nuoi_con_eq,phu_kien_tien_ich`.
+- **Luật Miễn Dịch Vĩnh Viễn**: Trên trang `tiktokstudio/upload`, khi `Người có thể nhìn thấy bài đăng này` đã là `'Mọi người'` thì TUYỆT ĐỐI CẤM click mở dropdown; trên trang `tiktokstudio/content`, không bao giờ tự động chạy hàm xóa bài sau khi vừa đăng video mới.
+
 ---
 
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)

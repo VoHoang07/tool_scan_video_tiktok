@@ -843,12 +843,26 @@ class TikTokAutoPoster:
                 btn_pos = page.evaluate(
                     """() => {
                         // 0. Ưu tiên xử lý hộp thoại TUXModal-overlay ('Bật kiểm tra nội dung tự động?' trên kênh mới)
-                        const modals = Array.from(document.querySelectorAll('.TUXModal-overlay, [data-floating-ui-portal], [role="dialog"]'));
+                        // TUYỆT ĐỐI KHÔNG quét [data-floating-ui-portal] (vì đó là menu dropdown Quyền riêng tư) và KHÔNG bấm 'Hủy' trong hộp thoại xác nhận đăng!
+                        const modals = Array.from(document.querySelectorAll('.TUXModal-overlay, [role="dialog"]'));
                         for (const m of modals) {
                             const mTxt = (m.innerText || '').trim();
-                            if (!mTxt || mTxt.includes('Xóa video này') || mTxt.includes('Delete this video')) continue;
+                            if (
+                                !mTxt ||
+                                mTxt.includes('Xóa video này') ||
+                                mTxt.includes('Xóa bài đăng') ||
+                                mTxt.includes('Delete this video') ||
+                                mTxt.includes('Đăng ngay') ||
+                                mTxt.includes('Tiếp tục đăng') ||
+                                mTxt.includes('Post now') ||
+                                mTxt.includes('Continue to post') ||
+                                mTxt.includes('Quản lý bài đăng') ||
+                                mTxt.includes('Tiếp tục chỉnh sửa')
+                            ) {
+                                continue;
+                            }
                             const mBtns = Array.from(m.querySelectorAll('button, [role="button"]'));
-                            const prefOrder = ['Bật', 'Turn on', 'Đã hiểu', 'Got it', 'OK', 'Hủy', 'Cancel', 'Đóng', 'Close'];
+                            const prefOrder = ['Bật', 'Turn on', 'Đã hiểu', 'Got it', 'OK', 'Đóng', 'Close'];
                             for (const pLabel of prefOrder) {
                                 for (const b of mBtns) {
                                     const bTxt = (b.innerText || b.textContent || '').trim();
@@ -863,17 +877,6 @@ class TikTokAutoPoster:
                                             };
                                         }
                                     }
-                                }
-                            }
-                            for (const b of mBtns) {
-                                const r = b.getBoundingClientRect();
-                                if (r.width >= 16 && r.height >= 16 && r.top > 40) {
-                                    try { b.click(); } catch (e) {}
-                                    return {
-                                        label: 'ModalClose',
-                                        x: r.left + r.width / 2,
-                                        y: r.top + r.height / 2
-                                    };
                                 }
                             }
                         }
@@ -1296,50 +1299,84 @@ class TikTokAutoPoster:
         except Exception as exc:
             logger.debug(f"[{ch_folder}] Kiểm tra lại văn bản ô Mô tả: {exc}")
 
-    def _click_public_option_in_open_dropdown(self, page: Any) -> bool:
+    def _click_public_option_in_open_dropdown(
+        self, page: Any, exclude_y: Optional[float] = None
+    ) -> bool:
         """
         Tìm và click chính xác tùy chọn `Mọi người` (`Everyone` / `Công khai`) nằm bên trong
         menu dropdown Quyền riêng tư đang mở (có chứa đồng thời `Bạn bè` / `Chỉ mình tôi`).
-        Đảm bảo không bao giờ click nhầm vào nút của hàng khác.
+        Đảm bảo không bao giờ click nhầm vào nút trigger hoặc nút của hàng khác, đồng thời
+        click đa tầng (OS + Playwright mouse + DOM click) để chắc chắn menu nhận chọn 100%.
         """
         pos = page.evaluate(
-            """() => {
+            """(exclY) => {
                 const targetLabels = ['Mọi người', 'Công khai', 'Everyone', 'Public'];
-                const siblingLabels = ['Bạn bè', 'Chỉ mình tôi', 'Friends', 'Only me', 'Private'];
-                const allElements = Array.from(document.querySelectorAll('*'));
+                const siblingLabels = ['Bạn bè', 'Chỉ mình tôi', 'Chỉ mình', 'Friends', 'Only me', 'Private'];
+                const allElements = Array.from(document.querySelectorAll('[role="option"], li, div, span, button, p'));
                 const candidates = [];
                 for (const el of allElements) {
                     if (el.children.length > 3) continue;
-                    const txt = (el.innerText || el.textContent || '').trim();
+                    const txt = (el.innerText || '').trim();
                     if (!targetLabels.includes(txt)) continue;
                     const rect = el.getBoundingClientRect();
-                    if (rect.width <= 5 || rect.height <= 5) continue;
+                    if (rect.width <= 10 || rect.height <= 8) continue;
+                    const cy = rect.top + rect.height / 2;
+                    if (exclY !== null && exclY !== undefined && Math.abs(cy - exclY) < 14) {
+                        continue;
+                    }
 
                     let parent = el.parentElement;
                     let isMenuOption = false;
+                    let inPortal = Boolean(el.closest('[data-floating-ui-portal], [role="listbox"], [role="menu"], ul'));
                     for (let depth = 0; depth < 6 && parent; depth++) {
                         const pTxt = (parent.innerText || '').trim();
-                        if (siblingLabels.some(s => pTxt.includes(s)) && pTxt.length < 260) {
+                        const pRect = parent.getBoundingClientRect();
+                        if (
+                            siblingLabels.some(s => pTxt.includes(s)) &&
+                            pTxt.length < 220 &&
+                            pRect.width >= 60 &&
+                            pRect.width <= 420 &&
+                            pRect.height >= 55 &&
+                            pRect.height <= 340
+                        ) {
                             isMenuOption = true;
                             break;
                         }
                         parent = parent.parentElement;
                     }
                     if (isMenuOption) {
+                        const clickTarget = el.closest('[role="option"], li, [role="menuitem"], button') || el;
+                        const cRect = clickTarget.getBoundingClientRect();
                         candidates.push({
-                            x: rect.left + rect.width / 2,
-                            y: rect.top + rect.height / 2,
+                            x: cRect.left + cRect.width / 2,
+                            y: cRect.top + cRect.height / 2,
+                            inPortal: inPortal ? 1 : 0,
                             area: rect.width * rect.height
                         });
                     }
                 }
                 if (candidates.length === 0) return null;
-                candidates.sort((a, b) => a.area - b.area);
-                return candidates[0];
-            }"""
+                candidates.sort((a, b) => (b.inPortal - a.inPortal) || (a.area - b.area));
+                const chosen = candidates[0];
+                try {
+                    const hit = document.elementFromPoint(chosen.x, chosen.y);
+                    if (hit) {
+                        const opt = hit.closest('[role="option"], li, [role="menuitem"], button, div') || hit;
+                        opt.click();
+                        hit.click();
+                    }
+                } catch (e) {}
+                return chosen;
+            }""",
+            exclude_y,
         )
         if pos and "x" in pos and "y" in pos:
-            self._os_click_viewport(page, float(pos["x"]), float(pos["y"]))
+            px, py = float(pos["x"]), float(pos["y"])
+            self._os_click_viewport(page, px, py)
+            try:
+                page.mouse.click(px, py)
+            except Exception:
+                pass
             return True
         return False
 
@@ -1481,64 +1518,7 @@ class TikTokAutoPoster:
                 pass
 
             # 2. Người có thể nhìn thấy bài đăng này -> Mọi người (Công khai)
-            privacy_trigger = page.evaluate(
-                """() => {
-                    const labels = ['Người có thể nhìn thấy bài đăng này', 'Ai có thể xem video này', 'Who can view this post'];
-                    const allEls = Array.from(document.querySelectorAll('span, div, p, label, h3, h4'));
-                    let labelRect = null;
-                    for (const el of allEls) {
-                        if (el.children.length > 3) continue;
-                        const txt = (el.innerText || el.textContent || '').trim();
-                        if (labels.some(l => txt.includes(l))) {
-                            const r = el.getBoundingClientRect();
-                            if (r.width > 20 && r.height > 8) {
-                                labelRect = r;
-                                break;
-                            }
-                        }
-                    }
-                    if (!labelRect) return null;
-
-                    // Tìm combobox/dropdown nằm ngay bên dưới nhãn "Người có thể nhìn thấy bài đăng này"
-                    const candidates = Array.from(document.querySelectorAll('button, [role="combobox"], [role="button"], div'));
-                    let best = null;
-                    let bestDist = 9999;
-                    for (const c of candidates) {
-                        const txt = (c.innerText || c.textContent || '').trim();
-                        if (!['Mọi người', 'Bạn bè', 'Chỉ mình tôi', 'Everyone', 'Friends', 'Only me', 'Private'].includes(txt)) {
-                            continue;
-                        }
-                        const r = c.getBoundingClientRect();
-                        if (r.width < 80 || r.width > 520 || r.height < 22 || r.height > 70) continue;
-                        const dy = r.top - labelRect.bottom;
-                        const dx = Math.abs(r.left - labelRect.left);
-                        if (dy >= -10 && dy <= 95 && dx <= 120) {
-                            if (dy < bestDist) {
-                                bestDist = dy;
-                                best = {
-                                    text: txt,
-                                    x: r.left + r.width / 2,
-                                    y: r.top + r.height / 2
-                                };
-                            }
-                        }
-                    }
-                    return best;
-                }"""
-            )
-            if privacy_trigger:
-                cur_priv = privacy_trigger.get("text", "")
-                logger.info(
-                    f"[{ch_folder}] Trạng thái 'Người có thể nhìn thấy bài đăng này' hiện tại: '{cur_priv}' -> Đảm bảo chọn 'Mọi người'..."
-                )
-                self._human_move_mouse(page, float(privacy_trigger["x"]), float(privacy_trigger["y"]))
-                time.sleep(random.uniform(0.25, 0.5))
-                page.mouse.click(float(privacy_trigger["x"]), float(privacy_trigger["y"]))
-                time.sleep(random.uniform(0.7, 1.2))
-                clicked_pub = self._click_public_option_in_open_dropdown(page)
-                if not clicked_pub:
-                    page.keyboard.press("Escape")
-                time.sleep(random.uniform(0.5, 0.9))
+            self._verify_upload_privacy_is_everyone(page, ch_folder)
 
             # 3. Nội dung tải lên chất lượng cao -> BẬT (ON)
             self._set_switch_near_label(
@@ -1577,6 +1557,9 @@ class TikTokAutoPoster:
                 page, ["Nội dung do AI tạo", "AI-generated content"], desired_on=bool(aigc_on)
             )
 
+            # Kiểm tra lại lần nữa trước khi cuộn xuống để chắc chắn 100% vẫn là 'Mọi người'
+            self._verify_upload_privacy_is_everyone(page, ch_folder)
+
             # Cuộn xuống phần Kiểm tra & nút Đăng
             self._scroll_upload_form(page, 520)
             time.sleep(random.uniform(0.8, 1.3))
@@ -1591,6 +1574,89 @@ class TikTokAutoPoster:
 
         except Exception as exc:
             logger.warning(f"[{ch_folder}] Lưu ý nhỏ khi chỉnh Cài đặt trang Upload: {exc}")
+
+    def _verify_upload_privacy_is_everyone(self, page: Any, ch_folder: str) -> None:
+        """
+        Kiểm tra mục `Người có thể nhìn thấy bài đăng này` trên trang Upload:
+        - Nếu ĐÃ ở trạng thái `Mọi người` / `Everyone` (Công khai) -> TUYỆT ĐỐI KHÔNG bấm mở menu dropdown
+          (tránh để menu xổ xuống đè lên các nút switch phía dưới làm bấm nhầm sang `Chỉ mình tôi`!).
+        - Chỉ khi trạng thái hiện tại là `Chỉ mình tôi` / `Bạn bè` thì mới bấm mở dropdown và chọn `Mọi người`.
+        """
+        try:
+            for _attempt in range(2):
+                privacy_trigger = page.evaluate(
+                    """() => {
+                        const labels = ['Người có thể nhìn thấy bài đăng này', 'Ai có thể xem video này', 'Who can view this post'];
+                        const allEls = Array.from(document.querySelectorAll('span, div, p, label, h3, h4'));
+                        let labelRect = null;
+                        for (const el of allEls) {
+                            if (el.children.length > 3) continue;
+                            const txt = (el.innerText || '').trim();
+                            if (labels.some(l => txt.includes(l))) {
+                                const r = el.getBoundingClientRect();
+                                if (r.width > 20 && r.height > 8) {
+                                    labelRect = r;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!labelRect) return null;
+
+                        const validTexts = [
+                            'Mọi người', 'Công khai', 'Bạn bè', 'Chỉ mình tôi', 'Chỉ mình',
+                            'Everyone', 'Public', 'Friends', 'Only me', 'Private'
+                        ];
+                        const candidates = Array.from(document.querySelectorAll('button, [role="combobox"], [role="button"], div'));
+                        let best = null;
+                        let bestDist = 9999;
+                        for (const c of candidates) {
+                            if (c.children.length > 5) continue;
+                            const txt = (c.innerText || '').trim();
+                            if (!validTexts.some(v => txt === v || txt.startsWith(v))) {
+                                continue;
+                            }
+                            const r = c.getBoundingClientRect();
+                            if (r.width < 70 || r.width > 520 || r.height < 22 || r.height > 70) continue;
+                            const dy = r.top - labelRect.bottom;
+                            const dx = Math.abs(r.left - labelRect.left);
+                            if (dy >= -10 && dy <= 95 && dx <= 120) {
+                                if (dy < bestDist) {
+                                    bestDist = dy;
+                                    best = {
+                                        text: txt,
+                                        x: r.left + r.width / 2,
+                                        y: r.top + r.height / 2
+                                    };
+                                }
+                            }
+                        }
+                        return best;
+                    }"""
+                )
+                if not privacy_trigger:
+                    return
+                cur_priv = str(privacy_trigger.get("text") or "").strip()
+                if any(cur_priv.startswith(p) for p in ("Mọi người", "Công khai", "Everyone", "Public")):
+                    if _attempt == 0:
+                        logger.info(
+                            f"[{ch_folder}] 'Người có thể nhìn thấy bài đăng này' đã ở sẵn '{cur_priv}' (Công khai) -> Giữ nguyên an toàn."
+                        )
+                    return
+
+                logger.info(
+                    f"[{ch_folder}] Phát hiện 'Người có thể nhìn thấy bài đăng này' đang là '{cur_priv}' -> Đang chuyển sang 'Mọi người'..."
+                )
+                tx, ty = float(privacy_trigger["x"]), float(privacy_trigger["y"])
+                self._human_move_mouse(page, tx, ty)
+                time.sleep(0.25)
+                page.mouse.click(tx, ty)
+                time.sleep(0.85)
+                clicked_pub = self._click_public_option_in_open_dropdown(page, exclude_y=ty)
+                if not clicked_pub:
+                    page.keyboard.press("Escape")
+                time.sleep(0.75)
+        except Exception as exc:
+            logger.debug(f"[{ch_folder}] Kiểm tra quyền riêng tư trang Upload: {exc}")
 
     @staticmethod
     def _is_video_upload_100_percent_done(page: Any) -> bool:
@@ -1761,6 +1827,7 @@ class TikTokAutoPoster:
                 time.sleep(random.uniform(4.5, 6.5))
 
                 # Tìm tất cả nút Quyền riêng tư đang là "Chỉ mình...", "Chỉ mình tôi", "Bạn bè", "Only me", "Private"
+                # Khử trùng lặp theo từng dòng (Math.abs(d.y - item.y) < 30) để mỗi hàng chỉ bấm đúng 1 lần!
                 private_buttons = page.evaluate(
                     """() => {
                         const privatePrefixes = ['Chỉ mình', 'Bạn bè', 'Only me', 'Private', 'Friends'];
@@ -1770,10 +1837,11 @@ class TikTokAutoPoster:
                         const raw = [];
                         for (const el of allEls) {
                             if (el.children.length > 4) continue;
-                            const txt = (el.innerText || el.textContent || '').trim();
+                            const txt = (el.innerText || '').trim();
                             if (!txt || txt.length > 26) continue;
                             if (!privatePrefixes.some(p => txt.startsWith(p) || txt === p)) continue;
-                            const rect = el.getBoundingClientRect();
+                            const targetEl = el.closest('button, [role="button"], [role="combobox"]') || el;
+                            const rect = targetEl.getBoundingClientRect();
                             // Các hàng bài đăng trong bảng nằm bên dưới thanh công cụ lọc (rect.top > 205)
                             if (rect.width < 45 || rect.width > 210 || rect.height < 18 || rect.height > 60 || rect.top < 205) {
                                 continue;
@@ -1788,7 +1856,7 @@ class TikTokAutoPoster:
                         raw.sort((a, b) => a.top - b.top);
                         const deduped = [];
                         for (const item of raw) {
-                            if (!deduped.some(d => Math.abs(d.x - item.x) < 35 && Math.abs(d.y - item.y) < 22)) {
+                            if (!deduped.some(d => Math.abs(d.y - item.y) < 30)) {
                                 deduped.push(item);
                             }
                         }
@@ -1810,14 +1878,27 @@ class TikTokAutoPoster:
                 for btn in private_buttons:
                     bx, by = float(btn["x"]), float(btn["y"])
                     self._os_click_viewport(page, bx, by)
-                    time.sleep(random.uniform(0.85, 1.35))
+                    try:
+                        page.mouse.click(bx, by)
+                    except Exception:
+                        pass
+                    time.sleep(random.uniform(0.95, 1.4))
 
-                    opened_pub = self._click_public_option_in_open_dropdown(page)
+                    opened_pub = self._click_public_option_in_open_dropdown(page, exclude_y=by)
                     if not opened_pub:
                         try:
-                            page.mouse.click(bx, by)
-                            time.sleep(0.9)
-                            opened_pub = self._click_public_option_in_open_dropdown(page)
+                            page.evaluate(
+                                """({x, y}) => {
+                                    const el = document.elementFromPoint(x, y);
+                                    if (el) {
+                                        const b = el.closest('button, [role="button"], [role="combobox"]') || el;
+                                        b.click();
+                                    }
+                                }""",
+                                {"x": bx, "y": by},
+                            )
+                            time.sleep(0.95)
+                            opened_pub = self._click_public_option_in_open_dropdown(page, exclude_y=by)
                         except Exception:
                             pass
 
@@ -1826,15 +1907,15 @@ class TikTokAutoPoster:
                         logger.info(
                             f"[{ch_folder}] -> Đã chọn 'Mọi người' (Công khai) cho bài đăng (trước đó: '{btn['text']}')."
                         )
-                        time.sleep(random.uniform(1.0, 1.8))
+                        time.sleep(random.uniform(1.2, 2.0))
                         self._click_confirm_modal_if_present(page)
                     else:
                         page.keyboard.press("Escape")
                         time.sleep(0.5)
 
-                # Nếu vẫn còn bài vừa đăng đang xét duyệt, đợi vài giây rồi tải lại bảng Bài đăng để kiểm tra lần nữa
+                # Đợi vài giây rồi tải lại bảng Bài đăng để kiểm tra xác nhận đã chuyển sang 'Mọi người'
                 if pass_idx < 2:
-                    time.sleep(random.uniform(4.0, 6.0))
+                    time.sleep(random.uniform(3.5, 5.0))
                     try:
                         page.reload(wait_until="domcontentloaded", timeout=35000)
                     except Exception:
@@ -1842,11 +1923,6 @@ class TikTokAutoPoster:
 
         except Exception as exc:
             logger.warning(f"[{ch_folder}] Lưu ý khi chuyển quyền riêng tư tại tiktokstudio/content: {exc}")
-
-        try:
-            self._deduplicate_existing_posts_in_content_page(page, ch_folder)
-        except Exception as dedup_exc:
-            logger.debug(f"[{ch_folder}] Bỏ qua lỗi phụ khi quét dọn bài trùng trên tiktokstudio/content: {dedup_exc}")
 
         return switched_count
 
@@ -1938,13 +2014,24 @@ class TikTokAutoPoster:
                 "thói quen nhỏ mỗi ngày giúp cơ thể khỏe",
                 "tín hiệu cảnh báo sớm của cơ thể",
                 "bí quyết dưỡng sinh đơn giản tại nhà",
+                "sức khỏe chủ động",
+                "chăm sóc sức khỏe gia đình",
                 "bài học tâm lý hôn nhân sâu sắc giúp giữ lửa",
                 "phụ nữ thông minh luôn nắm vững nguyên tắc",
                 "bản lĩnh và khí chất của người phụ nữ hiện đại",
+                "phụ nữ khí chất",
+                "tâm lý hôn nhân",
                 "công thức món ngon siêu dễ làm tại nhà",
                 "món ăn vặt quốc dân gây nghiện",
                 "bí quyết nấu ăn nhanh gọn đậm đà",
+                "thiên đường ăn vặt",
+                "món ngon dễ làm mỗi ngày",
                 "phim ngắn hoạt hình ai siêu cuốn",
+                "thế giới ai kỳ ảo với màn biến hình",
+                "đừng rời mắt khỏi màn hình",
+                "nhật ký gia đình siêu lầy",
+                "tình huống dở khóc dở cười",
+                "siêu phẩm huyền huyễn tu tiên",
                 "thú cưng thành tinh và màn phiêu lưu",
                 "lòng người khó đoán chỉ đến khi biến cố",
                 "cú quay xe nghẹt thở ở phút cuối",
@@ -1964,37 +2051,19 @@ class TikTokAutoPoster:
                 for j in range(i + 1, len(rows)):
                     ri, rj = rows[i], rows[j]
                     di, dj = (ri.get("duration") or "").strip(), (rj.get("duration") or "").strip()
+                    if not di or di != dj:
+                        continue
                     ci = (ri.get("caption") or "").strip().lower()
                     cj = (rj.get("caption") or "").strip().lower()
                     ci_is_gen = any(gm in ci for gm in generic_markers)
                     cj_is_gen = any(gm in cj for gm in generic_markers)
-                    same_cap = bool(ci and cj and len(ci) >= 20 and ci[:34] == cj[:34])
-                    # Hai bài trùng caption cụ thể (không phải caption fallback chung chung khác thời lượng)
-                    same_specific_cap = bool(same_cap and (not ci_is_gen or di == dj))
-                    # Cùng thời lượng MM:SS trên cùng kênh (trừ audio_dem_khuyen có nhiều tập Bông Cúc khác nhau cùng dài 04:35/04:39)
-                    if ch_folder == "audio_dem_khuyen":
-                        same_dur_dup = bool(di and di == dj and same_cap)
-                    else:
-                        same_dur_dup = bool(
-                            di
-                            and di == dj
-                            and (
-                                same_cap
-                                or ci_is_gen
-                                or cj_is_gen
-                                or ri.get("views", 0) <= 15
-                                or rj.get("views", 0) <= 15
-                            )
-                        )
-                    if same_specific_cap or same_dur_dup:
-                        # Ưu tiên xóa bản có caption fallback chung chung và giữ lại bản có caption chi tiết gốc
-                        if ci_is_gen and not cj_is_gen:
-                            dup_row = ri
-                        elif cj_is_gen and not ci_is_gen:
-                            dup_row = rj
-                        else:
-                            dup_row = ri if ri.get("views", 0) <= rj.get("views", 0) else rj
-                        break
+                    same_cap = bool(ci and cj and len(ci) >= 24 and ci[:42] == cj[:42])
+                    # BẮT BUỘC phải cùng thời lượng MM:SS VÀ cùng caption cụ thể (không xóa các video khác nhau chỉ vì chung mẫu caption đầu câu)
+                    if same_cap and not ci_is_gen and not cj_is_gen:
+                        cand = ri if ri.get("views", 0) <= rj.get("views", 0) else rj
+                        if int(cand.get("views", 0)) <= 2:
+                            dup_row = cand
+                            break
                 if dup_row:
                     break
 
@@ -2059,7 +2128,7 @@ class TikTokAutoPoster:
                         const t = norm(b.innerText || b.textContent || '');
                         if (!labels.includes(t)) continue;
                         const r = b.getBoundingClientRect();
-                        if (r.left >= 180 && r.left <= 1050 && r.top >= 150 && r.width >= 36 && r.width <= 280 && r.height >= 22 && r.height <= 75) {
+                        if (r.left >= 180 && r.left <= 1050 && r.top >= 150 && r.width >= 36 && r.width <= 420 && r.height >= 22 && r.height <= 75) {
                             return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
                         }
                     }
@@ -2465,6 +2534,16 @@ class TikTokAutoPoster:
             try:
                 page = context.pages[0] if context.pages else context.new_page()
                 switched = self._ensure_posts_public_in_content_page(page, ch_folder)
+                self._save_and_push_telemetry(
+                    page=page,
+                    event_type="upload",
+                    ch_folder=ch_folder,
+                    details={
+                        "action": "ensure_posts_public",
+                        "switched_public_count": switched,
+                        "final_url": page.url,
+                    },
+                )
                 time.sleep(random.uniform(2.0, 3.5))
                 return {"channel": ch_folder, "switched_to_public": switched, "status": "ok"}
             finally:
@@ -4005,6 +4084,26 @@ class TikTokAutoPoster:
                         f"[Dòng 1 - Đăng Video] Nhận lệnh ĐĂNG NGAY LẬP TỨC từ máy Silicon ({p_trig_id}) -> "
                         f"Kênh {target_channels}!"
                     )
+                    ensure_pub_raw = str(remote_post.get("ensure_public_channels") or "").strip()
+                    ensure_pub_list = [c.strip() for c in ensure_pub_raw.split(",") if c.strip()]
+                    for pub_ch in ensure_pub_list:
+                        pub_trig_key = f"remote_pub_{p_trig_id}_{pub_ch}"
+                        lock_fh = self._acquire_browser_process_lock()
+                        try:
+                            history = self._load_post_history()
+                            if pub_trig_key in history:
+                                continue
+                            history[pub_trig_key] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                            self._save_post_history(history)
+                            logger.info(
+                                f"[Dòng 1 - Đăng Video] Đang mở trang Quản lý Bài đăng kênh [{pub_ch}] để chuyển toàn bộ bài Chỉ mình tôi -> Mọi người (Công khai)..."
+                            )
+                            self.ensure_channel_posts_public(pub_ch, headless=headless)
+                        except Exception as pub_exc:
+                            logger.error(f"Lỗi khi chuyển Công khai kênh [{pub_ch}]: {pub_exc}")
+                        finally:
+                            self._release_browser_process_lock(lock_fh)
+
                     for single_ch in target_channels:
                         ch_trig_key = f"remote_post_{p_trig_id}_{single_ch}"
                         lock_fh = self._acquire_browser_process_lock()
