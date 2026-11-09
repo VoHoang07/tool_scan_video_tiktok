@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 00:29:16",
+    "timestamp": "2026-11-10 00:32:02",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261109_153304_tiktok_story_7509054340754050311.mp4",
-      "caption": "🤱 Đồng hành cùng con: Bí quyết đồng hành cùng con trưởng thành mỗi ngày cho bố mẹ hiện đại. Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-      "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #xuhuong",
+      "video_file": "20261109_153626_tiktok_story_7372394856540294417.mp4",
+      "caption": "⚡ Tiện Ích Điện Thoại Thông Minh: Đèn phá sóng loa kẹo kéo. Nhỏ mà có võ, ai hay dùng điện thoại nhất định phải biết mẹo này. Lưu lại ngay nhé!",
+      "hashtags": "#phukiendienthoai #docongnghe #meodienthoai #meohaycongnghe #unboxcongnghe #capsacnhanh #xh #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 00:32:02",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261109_153626_tiktok_story_7372394856540294417.mp4",
+        "caption": "⚡ Tiện Ích Điện Thoại Thông Minh: Đèn phá sóng loa kẹo kéo. Nhỏ mà có võ, ai hay dùng điện thoại nhất định phải biết mẹo này. Lưu lại ngay nhé!",
+        "hashtags": "#phukiendienthoai #docongnghe #meodienthoai #meohaycongnghe #unboxcongnghe #capsacnhanh #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-10 00:29:16",
       "machine_arch": "x86_64",
@@ -372,21 +388,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 157.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 19:37:45",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 159.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
