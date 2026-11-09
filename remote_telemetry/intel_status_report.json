@@ -1,21 +1,177 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 00:38:18",
+    "timestamp": "2026-11-10 00:41:27",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "event_type": "filter24h",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261109_152725_tiktok_story_7694983192331308289.mp4",
-      "caption": "🤤 [Thiên Đường Ăn Vặt] 🔥 Ai mê đồ ăn vặt thì không thể bỏ qua món này nha! 😍 Que cay siêu dài, lát cay siêu lớn, ăn cay tê tê, dai dai, càng ăn càng cuốn 🌶️🤤 cùng trải nghiệm với chị Linh nha. Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
-      "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #xuhuong #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7705391514822233364",
+          "video_url": "https://www.tiktok.com/@nhachongthiphi/video/7705391514822233364",
+          "creator_handle": "@nhachongthiphi",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110014023F063BBFE6818A944A087\",\"now\":1794246023000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261110014023F063BBFE6818A944A087\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611100140475828B90E259E2A3EEF02\",\"now\":1794246047000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611100140475828B90E259E2A3EEF02\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 421,
+              "ariaPressed": false,
+              "svgColor": "rgba(255, 255, 255, .9)",
+              "likeCount": "24"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": true,
+                "svgColor": "rgba(255, 59, 92, 1)",
+                "likeCount": "25"
+              },
+              "red": true,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@nhachongthiphi",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@nhachongthiphi?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-10 00:40:54",
+          "follow_back_window_until": "2026-11-11 00:40:54"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 00:41:27",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7705391514822233364",
+            "video_url": "https://www.tiktok.com/@nhachongthiphi/video/7705391514822233364",
+            "creator_handle": "@nhachongthiphi",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110014023F063BBFE6818A944A087\",\"now\":1794246023000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261110014023F063BBFE6818A944A087\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611100140475828B90E259E2A3EEF02\",\"now\":1794246047000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611100140475828B90E259E2A3EEF02\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 421,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "24"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 421,
+                  "ariaPressed": true,
+                  "svgColor": "rgba(255, 59, 92, 1)",
+                  "likeCount": "25"
+                },
+                "red": true,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@nhachongthiphi",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@nhachongthiphi?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-10 00:40:54",
+            "follow_back_window_until": "2026-11-11 00:40:54"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-10 00:38:18",
       "machine_arch": "x86_64",
@@ -305,92 +461,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 153.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 19:53:15",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7705967182819167508",
-            "video_url": "https://www.tiktok.com/@loveeecheeseeee/video/7705967182819167508",
-            "creator_handle": "@loveeecheeseeee",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110920520025123536D203FB57073E\",\"now\":1794228721000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110920520025123536D203FB57073E\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110920523035B5032638D0D869C1FC\",\"now\":1794228751000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026110920523035B5032638D0D869C1FC\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "12"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 456,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "12"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@loveeecheeseeee",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@loveeecheeseeee?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 19:52:38",
-            "follow_back_window_until": "2026-11-10 19:52:38"
-          }
-        ]
       }
     }
   ]
