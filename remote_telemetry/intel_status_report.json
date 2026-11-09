@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 13:30:40",
+    "timestamp": "2026-11-09 13:34:11",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261109_132848_tiktok_story_7175119330445626650.mp4",
-      "caption": "✨ Câu chuyện AI cực cuốn: Có thể bạn chưa biết ???. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
-      "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #xuhuongtiktok",
+      "video_file": "20261109_133207_tiktok_story_7592468350848994581.mp4",
+      "caption": "🌿 [Sức Khỏe Chủ Động] À thì ra là như vậy🤒. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #xh",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 5,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 13:34:11",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261109_133207_tiktok_story_7592468350848994581.mp4",
+        "caption": "🌿 [Sức Khỏe Chủ Động] À thì ra là như vậy🤒. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 5,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 13:30:40",
       "machine_arch": "x86_64",
@@ -906,22 +922,6 @@
         "video_file": "20261105_200912_youtube_shorts_story_6bmpZbcnasA.mp4",
         "caption": "📱 [Mẹo Công Nghệ Hay] Mẹo hay trên điện thoại và món phụ kiện thông minh cực kỳ hữu ích. Món phụ kiện nhỏ gọn mà giải quyết được bao nhiêu phiền toái hàng ngày! Bạn đã thử tính năng cực tiện này chưa?",
         "hashtags": "#docongnghe #meodienthoai #phukientienich #tainghebluetooth #tienich #congnghehay #phukiendienthoai #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 12:38:46",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261106_140901_youtube_shorts_story_mIKW1krZy4E.mp4",
-        "caption": "🏠 Bảo bối dọn nhà thông minh: Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
-        "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #viral #foryou",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
