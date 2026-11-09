@@ -1,13 +1,13 @@
 {
-  "updated_at": "2026-11-09 07:58:14",
+  "updated_at": "2026-11-09 08:58:49",
   "latest_result": {
-    "cmd_id": "heartbeat_1794185893",
+    "cmd_id": "heartbeat_1794189529",
     "action": "periodic_heartbeat",
-    "executed_at": "2026-11-09 07:58:13",
+    "executed_at": "2026-11-09 08:58:49",
     "machine_arch": "x86_64",
     "desktop_screenshot": "remote_telemetry/latest_intel_desktop.jpg",
     "system_health": {
-      "timestamp": "2026-11-09 07:58:14",
+      "timestamp": "2026-11-09 08:58:49",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
       "stream1_running": true,
@@ -15,32 +15,32 @@
       "chrome_testing_count": 0,
       "lock_file_age_seconds": null,
       "processes": [
-        "51409    09:48:22 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "51411    09:48:22 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
-        "85549    07:15:05 ./venv/bin/python main.py --stream-upload --max-ready 5",
-        "85551    07:15:05 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
+        "51409    10:48:57 /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "51411    10:48:57 caffeinate -dimsu /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/python -m tiktok_pipeline.main --stream-filter24h",
+        "85549    08:15:40 ./venv/bin/python main.py --stream-upload --max-ready 5",
+        "85551    08:15:40 caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5"
       ],
       "recent_daemon_log_tail": [
-        "[Buffer Guard] Kênh video_AI_hay (video_AI_hay - channel_1_ai_animation) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:57:45] [INFO] tiktok_pipeline: Kênh video_AI_hay (video_AI_hay - channel_1_ai_animation) đã đủ kho video chờ đăng (5/5), bỏ qua",
         "[Buffer Guard] Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:57:48] [INFO] tiktok_pipeline: Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[08:58:22] [INFO] tiktok_pipeline: Kênh baby_AI (baby_AI - channel_2_life_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
         "[Buffer Guard] Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:57:51] [INFO] tiktok_pipeline: Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[08:58:26] [INFO] tiktok_pipeline: Kênh audio_dem_khuyen (audio_dem_khuyen - channel_3_novel_drama) đã đủ kho video chờ đăng (5/5), bỏ qua",
         "[Buffer Guard] Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:57:54] [INFO] tiktok_pipeline: Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[08:58:29] [INFO] tiktok_pipeline: Kênh tu_chan_gioi (tu_chan_gioi - channel_4_ai_cultivation) đã đủ kho video chờ đăng (5/5), bỏ qua",
         "[Buffer Guard] Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:57:57] [INFO] tiktok_pipeline: Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[08:58:31] [INFO] tiktok_pipeline: Kênh meo_vat_gia_dinh (meo_vat_gia_dinh - channel_5_home_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
         "[Buffer Guard] Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh - channel_6_health_wellness) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:58:00] [INFO] tiktok_pipeline: Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh - channel_6_health_wellness) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[08:58:35] [INFO] tiktok_pipeline: Kênh suc_khoe_duong_sinh (suc_khoe_duong_sinh - channel_6_health_wellness) đã đủ kho video chờ đăng (5/5), bỏ qua",
         "[Buffer Guard] Kênh phu_nu_khi_chat (phu_nu_khi_chat - channel_7_women_eq) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:58:03] [INFO] tiktok_pipeline: Kênh phu_nu_khi_chat (phu_nu_khi_chat - channel_7_women_eq) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[08:58:37] [INFO] tiktok_pipeline: Kênh phu_nu_khi_chat (phu_nu_khi_chat - channel_7_women_eq) đã đủ kho video chờ đăng (5/5), bỏ qua",
         "[Buffer Guard] Kênh an_vat_moi_ngay (an_vat_moi_ngay - channel_8_food_snacks) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:58:06] [INFO] tiktok_pipeline: Kênh an_vat_moi_ngay (an_vat_moi_ngay - channel_8_food_snacks) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[08:58:40] [INFO] tiktok_pipeline: Kênh an_vat_moi_ngay (an_vat_moi_ngay - channel_8_food_snacks) đã đủ kho video chờ đăng (5/5), bỏ qua",
         "[Buffer Guard] Kênh nuoi_con_eq (nuoi_con_eq - channel_9_smart_parenting) đã đủ kho video chờ đăng (8/5), bỏ qua",
-        "[07:58:09] [INFO] tiktok_pipeline: Kênh nuoi_con_eq (nuoi_con_eq - channel_9_smart_parenting) đã đủ kho video chờ đăng (8/5), bỏ qua",
+        "[08:58:44] [INFO] tiktok_pipeline: Kênh nuoi_con_eq (nuoi_con_eq - channel_9_smart_parenting) đã đủ kho video chờ đăng (8/5), bỏ qua",
         "[Buffer Guard] Kênh phu_kien_tien_ich (phu_kien_tien_ich - channel_10_tech_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
-        "[07:58:13] [INFO] tiktok_pipeline: Kênh phu_kien_tien_ich (phu_kien_tien_ich - channel_10_tech_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua"
+        "[08:58:46] [INFO] tiktok_pipeline: Kênh phu_kien_tien_ich (phu_kien_tien_ich - channel_10_tech_gadgets) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[Buffer Guard] Kênh thu_cung_vui_nhon (thu_cung_vui_nhon - channel_11_pet_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua",
+        "[08:58:49] [INFO] tiktok_pipeline: Kênh thu_cung_vui_nhon (thu_cung_vui_nhon - channel_11_pet_comedy) đã đủ kho video chờ đăng (5/5), bỏ qua"
       ]
     }
   }
