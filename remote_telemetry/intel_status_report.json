@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 18:58:21",
+    "timestamp": "2026-11-09 19:01:26",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261109_141208_tiktok_story_7523822386689346834.mp4",
-      "caption": "💡 [Mẹo Vặt Gia Đình] Phần 22| 1 cú bấm - 1 cú đâm rễ - mẹo trồng cây nhanh ra rễ siêu dễ! 🌱🌱🌱. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
-      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #yeubep #decorphong #tienichgiadinh #xh #xuhuongtiktok",
+      "video_file": "20261109_143107_tiktok_story_7666621083600243988.mp4",
+      "caption": "👶 [Nuôi Con Thông Minh] Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
+      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 19:01:26",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261109_143107_tiktok_story_7666621083600243988.mp4",
+        "caption": "👶 [Nuôi Con Thông Minh] Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
+        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 18:58:21",
       "machine_arch": "x86_64",
@@ -783,92 +799,6 @@
             },
             "interacted_at": "2026-11-09 18:21:23",
             "follow_back_window_until": "2026-11-10 18:21:23"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-09 18:19:52",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7705799679421730069",
-            "video_url": "https://www.tiktok.com/@cobalangxangday/video/7705799679421730069",
-            "creator_handle": "@cobalangxangday",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109191836067A8C44E2DCE14D83A0\",\"now\":1794223116000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261109191836067A8C44E2DCE14D83A0\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611091919074D4F1491BA15704E9D2B\",\"now\":1794223147000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611091919074D4F1491BA15704E9D2B\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 404,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "98"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 404,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "98"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@cobalangxangday",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@cobalangxangday?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 18:19:14",
-            "follow_back_window_until": "2026-11-10 18:19:14"
           }
         ]
       }
