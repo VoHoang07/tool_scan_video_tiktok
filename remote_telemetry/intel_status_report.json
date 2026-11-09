@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 02:16:34",
+    "timestamp": "2026-11-10 02:22:32",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
+      "scrolled_videos": 12,
+      "ads_skipped": 3,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 158.6,
+      "elapsed_seconds": 159.8,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 02:22:32",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "ads_skipped": 3,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 159.8,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-10 02:16:34",
       "machine_arch": "x86_64",
@@ -461,92 +476,6 @@
             },
             "interacted_at": "2026-11-10 00:57:20",
             "follow_back_window_until": "2026-11-11 00:57:20"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-10 00:55:05",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7705348339151211777",
-            "video_url": "https://www.tiktok.com/@qunh.chi0240/video/7705348339151211777",
-            "creator_handle": "@qunh.chi0240",
-            "watched_seconds": 16.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110015357AB81E1F24D03FF2BD84E\",\"now\":1794246837000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261110015357AB81E1F24D03FF2BD84E\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110015424453D5386BCCC9B3F3DCC\",\"now\":1794246864000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261110015424453D5386BCCC9B3F3DCC\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "68"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 456,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "68"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@qunh.chi0240",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@qunh.chi0240?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-10 00:54:33",
-            "follow_back_window_until": "2026-11-11 00:54:33"
           }
         ]
       }
