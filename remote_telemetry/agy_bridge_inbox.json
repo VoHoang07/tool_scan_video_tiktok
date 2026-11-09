@@ -1,10 +1,10 @@
 {
-  "cmd_id": "cmd_20261109_1810_turn_on_switch_2_and_3",
-  "created_at": "2026-11-09 18:10:40",
+  "cmd_id": "cmd_20261109_2011_turn_off_switch_2_and_3",
+  "created_at": "2026-11-09 20:11:15",
   "from_machine": "arm64",
   "target_arch": "x86_64",
   "action": "shell",
   "agy_prompt": "",
-  "shell_command": "exec </dev/null; pkill -9 -f 'main.py --stream-upload' || true; pkill -9 -f 'main.py --stream-filter24h' || true; sleep 1; nohup caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5 </dev/null >> logs/daemon_24_7.log 2>&1 & nohup caffeinate -dimsu ./venv/bin/python main.py --stream-filter24h </dev/null >> logs/daemon_24_7.log 2>&1 & sleep 2; ps aux | grep -E 'stream-upload|stream-filter24h' | grep -v grep",
+  "shell_command": "exec </dev/null; pkill -9 -f 'main.py --stream-filter24h' || true; pkill -9 -f 'main.py --stream-upload' || true; pkill -9 -f 'browser_profiles/' || true; sleep 1; nohup caffeinate -dimsu ./venv/bin/python main.py --stream-upload --max-ready 5 </dev/null >> logs/daemon_24_7.log 2>&1 & nohup caffeinate -dimsu ./venv/bin/python main.py --stream-filter24h </dev/null >> logs/daemon_24_7.log 2>&1 & sleep 2; ps aux | grep -E 'stream-upload|stream-filter24h' | grep -v grep",
   "timeout_seconds": 30
 }
