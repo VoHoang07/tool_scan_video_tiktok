@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 00:25:49",
+    "timestamp": "2026-11-10 00:29:16",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261109_150508_tiktok_story_7668199760733457671.mp4",
-      "caption": "🏠 Bảo bối dọn nhà thông minh: Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
-      "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #viral #foryou",
+      "video_file": "20261109_153304_tiktok_story_7509054340754050311.mp4",
+      "caption": "🤱 Đồng hành cùng con: Bí quyết đồng hành cùng con trưởng thành mỗi ngày cho bố mẹ hiện đại. Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
+      "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 00:29:16",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261109_153304_tiktok_story_7509054340754050311.mp4",
+        "caption": "🤱 Đồng hành cùng con: Bí quyết đồng hành cùng con trưởng thành mỗi ngày cho bố mẹ hiện đại. Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
+        "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-10 00:25:49",
       "machine_arch": "x86_64",
@@ -371,21 +387,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 159.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 19:30:54",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 8,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 164.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
