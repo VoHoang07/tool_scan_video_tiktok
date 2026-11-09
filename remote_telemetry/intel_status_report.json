@@ -1,91 +1,159 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 12:58:48",
+    "timestamp": "2026-11-09 13:00:38",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
     "details": {
       "interacted_count": 1,
       "own_profile_stats": {},
       "records": [
         {
-          "channel": "video_AI_hay",
-          "video_id": "7705067909076372756",
-          "video_url": "https://www.tiktok.com/@2401m24.70/video/7705067909076372756",
-          "creator_handle": "@2401m24.70",
+          "channel": "baby_AI",
+          "video_id": "7704710140280261896",
+          "video_url": "https://www.tiktok.com/@yx.12ee/video/7704710140280261896",
+          "creator_handle": "@yx.12ee",
           "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": false,
             "3_copied_link": true,
             "4_added_favorite": true,
-            "5_followed_creator": true,
+            "5_followed_creator": false,
             "6_commented_after_follow": true
           },
-          "comment_text": "Kênh đầu tư chỉn chu từ hình ảnh tới âm thanh, chúc bạn phát triển mạnh nha ✨",
+          "comment_text": "Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️",
           "circuit_breaker_tripped": false,
           "like_debug": {
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110913573318EA7BA9EE7AC2104B73\",\"now\":1794203853000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110913573318EA7BA9EE7AC2104B73\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110913593539AC289ADFE10A07A58D\",\"now\":1794203975000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110913593539AC289ADFE10A07A58D\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109135804E8984ADE9C4B79FF8F20\",\"now\":1794203884000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261109135804E8984ADE9C4B79FF8F20\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
+            "follow_responses": [],
             "env_check": {
               "webdriver": false,
               "loggedInUniqueId": null
             },
             "before": {
-              "x": 885,
-              "y": 268.5,
+              "x": 833.40625,
+              "y": 409,
               "ariaPressed": false,
               "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "21"
+              "likeCount": "45"
             },
             "init_red": false,
             "after_os_click_05s": {
               "state": {
-                "x": 885,
-                "y": 268.5,
+                "x": 833.40625,
+                "y": 409,
                 "ariaPressed": false,
                 "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "21"
+                "likeCount": "45"
               },
               "red": false,
               "server_digg_ok": false,
               "server_digg_rejected": true
             },
             "profile_follow_verify": {
-              "creator": "@2401m24.70",
+              "creator": "@yx.12ee",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@2401m24.70?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
+              "profile_url": "https://www.tiktok.com/@yx.12ee?lang=vi-VN",
+              "before_btn": "",
+              "after_btn": "Follow",
               "init_relation": 0,
-              "server_follow_ok": true,
-              "ui_confirmed": true,
-              "persisted": true,
+              "server_follow_ok": false,
+              "ui_confirmed": false,
+              "persisted": false,
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-09 12:58:13",
-          "follow_back_window_until": "2026-11-10 12:58:13"
+          "interacted_at": "2026-11-09 13:00:05",
+          "follow_back_window_until": "2026-11-10 13:00:05"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 13:00:38",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "baby_AI",
+            "video_id": "7704710140280261896",
+            "video_url": "https://www.tiktok.com/@yx.12ee/video/7704710140280261896",
+            "creator_handle": "@yx.12ee",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110913593539AC289ADFE10A07A58D\",\"now\":1794203975000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110913593539AC289ADFE10A07A58D\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 833.40625,
+                "y": 409,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "45"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 833.40625,
+                  "y": 409,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "45"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@yx.12ee",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@yx.12ee?lang=vi-VN",
+                "before_btn": "",
+                "after_btn": "Follow",
+                "init_relation": 0,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-09 13:00:05",
+            "follow_back_window_until": "2026-11-10 13:00:05"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-09 12:58:48",
       "machine_arch": "x86_64",
@@ -1321,166 +1389,6 @@
             },
             "interacted_at": "2026-11-09 12:15:40",
             "follow_back_window_until": "2026-11-10 12:15:40"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-09 12:12:39",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "suckhoeduongsinh.k06",
-          "domFollowing": "1390",
-          "domFollowers": "1122",
-          "domLikes": "27",
-          "sidebarFollowing": [
-            "/@suckhoeduongsinh.k06"
-          ]
-        },
-        "records": [
-          {
-            "channel": "suc_khoe_duong_sinh",
-            "video_id": "7705600843734584596",
-            "video_url": "https://www.tiktok.com/@tuyet3377/video/7705600843734584596",
-            "creator_handle": "@tuyet3377",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Xem cuốn luôn á, mong kênh ra thêm nhiều video chất lượng như này nhé 🥰",
-            "circuit_breaker_tripped": true,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261109131037BA25AEF12D55190EE01C\",\"now\":1794201037000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261109131037BA25AEF12D55190EE01C\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 837.78125,
-                "y": 441,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "17"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 837.78125,
-                  "y": 441,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(254, 44, 85, 1)",
-                  "likeCount": "18"
-                },
-                "red": true,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@tuyet3377",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@tuyet3377/video/7705600843734584596?lang=vi-VN",
-                "before_btn": "",
-                "after_btn": "",
-                "init_relation": null,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 12:10:55",
-            "follow_back_window_until": "2026-11-10 12:10:55"
-          },
-          {
-            "channel": "suc_khoe_duong_sinh",
-            "video_id": "7705405552548957458",
-            "video_url": "https://www.tiktok.com/@linh.an.xy.knh/video/7705405552548957458",
-            "creator_handle": "@linh.an.xy.knh",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": true,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110913114498904FC487C98E39EE5F\",\"now\":1794201104000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026110913114498904FC487C98E39EE5F\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "profile_follow_verify": {
-                "creator": "@linh.an.xy.knh",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@linh.an.xy.knh?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": null,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 12:11:53",
-            "follow_back_window_until": "2026-11-10 12:11:53"
-          },
-          {
-            "channel": "suc_khoe_duong_sinh",
-            "video_id": "7704892930435173639",
-            "video_url": "https://www.tiktok.com/@dhadubai6/video/7704892930435173639",
-            "creator_handle": "@dhadubai6",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              }
-            },
-            "interacted_at": "2026-11-09 12:12:34",
-            "follow_back_window_until": "2026-11-10 12:12:34"
           }
         ]
       }
