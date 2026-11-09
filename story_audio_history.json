@@ -2904,6 +2904,16 @@
       "source_url": "https://www.youtube.com/watch?v=DTr7WSxC37g&t=410s",
       "output_filename": "audio_dem_khuyen/ready/20261110_023731_tiktok_story_990006002_bongcuc_v5_s60_p2_bg_daylight.mp4",
       "crawled_at": "2026-11-10T02:41:44"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990003502",
+      "sound_id": "bongcuc_yt_0GDXD2fwhcE_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=0GDXD2fwhcE&t=414s",
+      "output_filename": "audio_dem_khuyen/ready/20261110_024454_tiktok_story_990003502_bongcuc_v5_s35_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-10T02:50:38"
     }
   ]
 }
