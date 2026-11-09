@@ -1,20 +1,20 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 00:55:05",
+    "timestamp": "2026-11-10 00:57:42",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
     "details": {
-      "interacted_count": 1,
+      "interacted_count": 2,
       "own_profile_stats": {},
       "records": [
         {
-          "channel": "an_vat_moi_ngay",
-          "video_id": "7705348339151211777",
-          "video_url": "https://www.tiktok.com/@qunh.chi0240/video/7705348339151211777",
-          "creator_handle": "@qunh.chi0240",
-          "watched_seconds": 16.0,
+          "channel": "meo_vat_gia_dinh",
+          "video_id": "7704845523194219784",
+          "video_url": "https://www.tiktok.com/@mn.mnfl/video/7704845523194219784",
+          "creator_handle": "@mn.mnfl",
+          "watched_seconds": 24.8,
           "steps_completed": {
             "1_watched_full": true,
             "2_liked_video": false,
@@ -23,13 +23,13 @@
             "5_followed_creator": true,
             "6_commented_after_follow": true
           },
-          "comment_text": "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
+          "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
           "circuit_breaker_tripped": false,
           "like_debug": {
             "digg_responses": [
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110015357AB81E1F24D03FF2BD84E\",\"now\":1794246837000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261110015357AB81E1F24D03FF2BD84E\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110015551313BBE8809B138363066\",\"now\":1794246952000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261110015551313BBE8809B138363066\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "follow_responses": [
@@ -39,7 +39,7 @@
               },
               {
                 "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110015424453D5386BCCC9B3F3DCC\",\"now\":1794246864000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261110015424453D5386BCCC9B3F3DCC\"},\"status_code\":0,\"status_msg\":\"\"}"
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110015619FC9ED791CC8F3242D2EF\",\"now\":1794246979000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261110015619FC9ED791CC8F3242D2EF\"},\"status_code\":0,\"status_msg\":\"\"}"
               }
             ],
             "env_check": {
@@ -47,8 +47,8 @@
               "loggedInUniqueId": null
             },
             "before": {
-              "x": 872,
-              "y": 456,
+              "x": 814.96875,
+              "y": 379,
               "ariaPressed": false,
               "svgColor": "rgba(255, 255, 255, .9)",
               "likeCount": "68"
@@ -56,8 +56,8 @@
             "init_red": false,
             "after_os_click_05s": {
               "state": {
-                "x": 872,
-                "y": 456,
+                "x": 814.96875,
+                "y": 379,
                 "ariaPressed": false,
                 "svgColor": "rgba(255, 255, 255, .9)",
                 "likeCount": "68"
@@ -67,9 +67,9 @@
               "server_digg_rejected": true
             },
             "profile_follow_verify": {
-              "creator": "@qunh.chi0240",
+              "creator": "@mn.mnfl",
               "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@qunh.chi0240?lang=vi-VN",
+              "profile_url": "https://www.tiktok.com/@mn.mnfl?lang=vi-VN",
               "before_btn": "Follow",
               "after_btn": "Đã follow",
               "init_relation": 0,
@@ -79,13 +79,153 @@
               "follow_api_blocked": false
             }
           },
-          "interacted_at": "2026-11-10 00:54:33",
-          "follow_back_window_until": "2026-11-11 00:54:33"
+          "interacted_at": "2026-11-10 00:56:27",
+          "follow_back_window_until": "2026-11-11 00:56:27"
+        },
+        {
+          "channel": "meo_vat_gia_dinh",
+          "video_id": "7703928512230542610",
+          "video_url": "https://www.tiktok.com/@tgan4546/video/7703928512230542610",
+          "creator_handle": "@tgan4546",
+          "watched_seconds": 26.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": false,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": "meovatgiadinh.k05"
+            }
+          },
+          "interacted_at": "2026-11-10 00:57:20",
+          "follow_back_window_until": "2026-11-11 00:57:20"
         }
       ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 00:57:42",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+      "details": {
+        "interacted_count": 2,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "meo_vat_gia_dinh",
+            "video_id": "7704845523194219784",
+            "video_url": "https://www.tiktok.com/@mn.mnfl/video/7704845523194219784",
+            "creator_handle": "@mn.mnfl",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110015551313BBE8809B138363066\",\"now\":1794246952000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261110015551313BBE8809B138363066\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110015619FC9ED791CC8F3242D2EF\",\"now\":1794246979000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261110015619FC9ED791CC8F3242D2EF\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 814.96875,
+                "y": 379,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "68"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 814.96875,
+                  "y": 379,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(255, 255, 255, .9)",
+                  "likeCount": "68"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@mn.mnfl",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@mn.mnfl?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-10 00:56:27",
+            "follow_back_window_until": "2026-11-11 00:56:27"
+          },
+          {
+            "channel": "meo_vat_gia_dinh",
+            "video_id": "7703928512230542610",
+            "video_url": "https://www.tiktok.com/@tgan4546/video/7703928512230542610",
+            "creator_handle": "@tgan4546",
+            "watched_seconds": 26.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": "meovatgiadinh.k05"
+              }
+            },
+            "interacted_at": "2026-11-10 00:57:20",
+            "follow_back_window_until": "2026-11-11 00:57:20"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-10 00:55:05",
       "machine_arch": "x86_64",
@@ -900,22 +1040,6 @@
         "video_file": "20261108_094812_tiktok_story_7690225058379336991.mp4",
         "caption": "🐉 Tưởng là phế vật dưới đáy tông môn ai ngờ ẩn giấu thực lực chấn động thiên địa — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
         "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 00:15:14",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261110_001028_tiktok_story_990007002_bongcuc_v4_s70_p2_bg_mukbang.mp4",
-        "caption": "📖 Bông Cúc Số 70 [Phần 2/17]: 1800 Tệ Mua Một Màn Vả Mặt Đắt Giá. Diễn biến cực kỳ kịch tính, nghe hết để xem màn đáp trả phía sau nhé!",
-        "hashtags": "#bongcucso70 #bongcucaudio #truyenhaymoingay #truyenaudio #dramatiktok #nghetruyendemkhuya #gocnhinkhuya #fyp",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
