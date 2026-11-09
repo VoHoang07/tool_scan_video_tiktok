@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 19:03:41",
+    "timestamp": "2026-11-09 19:06:57",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261109_143730_tiktok_story_7692417378600144149.mp4",
-      "caption": "⚡ Tiện Ích Điện Thoại Thông Minh: Trên thực tế, bạn càng sử dụng điện thoại thì điện thoại càng bị đơ và nóng hơn. \"Ba cài đặt này của theo dõi kênh đang bí mật chiếm giữ bộ nhớ của bạn...\" Nhỏ mà có võ, ai hay dùng điện thoại nhất định phải biết mẹo này. Lưu lại ngay nhé!",
-      "hashtags": "#phukiendienthoai #docongnghe #meodienthoai #meohaycongnghe #unboxcongnghe #capsacnhanh #fyp #xh",
+      "video_file": "20261109_141605_tiktok_story_7585170381242109191.mp4",
+      "caption": "💪 Chăm sóc sức khỏe gia đình: Bí quyết 45 mà nhìn như 25. Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
+      "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 6,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 19:06:57",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261109_141605_tiktok_story_7585170381242109191.mp4",
+        "caption": "💪 Chăm sóc sức khỏe gia đình: Bí quyết 45 mà nhìn như 25. Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
+        "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 6,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-09 19:03:41",
       "machine_arch": "x86_64",
@@ -647,92 +663,6 @@
             },
             "interacted_at": "2026-11-09 18:25:37",
             "follow_back_window_until": "2026-11-10 18:25:37"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-11-09 18:24:05",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "suc_khoe_duong_sinh",
-            "video_id": "7706110302961618228",
-            "video_url": "https://www.tiktok.com/@qynhthu.w0/video/7706110302961618228",
-            "creator_handle": "@qynhthu.w0",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026110919224934114E59A45D4559A46C\",\"now\":1794223369000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026110919224934114E59A45D4559A46C\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611091923234A3DD8CD3F538C1ED058\",\"now\":1794223403000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611091923234A3DD8CD3F538C1ED058\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 837.78125,
-                "y": 389,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "5"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 837.78125,
-                  "y": 389,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "5"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@qynhthu.w0",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@qynhthu.w0?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-09 18:23:29",
-            "follow_back_window_until": "2026-11-10 18:23:29"
           }
         ]
       }
