@@ -1,91 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 01:01:35",
+    "timestamp": "2026-11-10 01:04:22",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "phu_kien_tien_ich",
-          "video_id": "7705767521403636993",
-          "video_url": "https://www.tiktok.com/@cheoxaykenh6/video/7705767521403636993",
-          "creator_handle": "@cheoxaykenh6",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Video chỉnh chu quá, chúc bạn sớm lên xu hướng nha 💯",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611100200233488657F415A0F39A846\",\"now\":1794247223000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611100200233488657F415A0F39A846\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261110020051269B9A5026DAAA3B5B98\",\"now\":1794247251000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261110020051269B9A5026DAAA3B5B98\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 804.34375,
-              "y": 411,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "143"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 804.34375,
-                "y": 411,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "143"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@cheoxaykenh6",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@cheoxaykenh6?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": 0,
-              "server_follow_ok": true,
-              "ui_confirmed": true,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-10 01:00:59",
-          "follow_back_window_until": "2026-11-11 01:00:59"
-        }
-      ]
+      "scrolled_videos": 12,
+      "ads_skipped": 1,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 157.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 01:04:22",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 157.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-10 01:01:35",
       "machine_arch": "x86_64",
@@ -1137,22 +1081,6 @@
         "video_file": "20261109_153304_tiktok_story_7509054340754050311.mp4",
         "caption": "🤱 Đồng hành cùng con: Bí quyết đồng hành cùng con trưởng thành mỗi ngày cho bố mẹ hiện đại. Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
         "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 00:25:49",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261109_150508_tiktok_story_7668199760733457671.mp4",
-        "caption": "🏠 Bảo bối dọn nhà thông minh: Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
-        "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #viral #foryou",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
