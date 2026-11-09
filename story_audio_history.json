@@ -310,7 +310,8 @@
     "7579891760004910356",
     "7152856772212968731",
     "7695063760595078420",
-    "7595038759533769700"
+    "7595038759533769700",
+    "990003502"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -518,7 +519,8 @@
     "7579891812205071112",
     "7152856805880711962",
     "7642271899889126151",
-    "7585496643647408911"
+    "7585496643647408911",
+    "bongcuc_yt_0GDXD2fwhcE_p2"
   ],
   "items": [
     {
@@ -2660,6 +2662,16 @@
       "source_url": "https://www.douyin.com/video/7595038759533769700",
       "output_filename": "baby_AI/ready/20261109_193500_douyin_story_7595038759533769700.mp4",
       "crawled_at": "2026-11-09T19:36:54"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990003502",
+      "sound_id": "bongcuc_yt_0GDXD2fwhcE_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=0GDXD2fwhcE&t=399s",
+      "output_filename": "audio_dem_khuyen/ready/20261109_194127_tiktok_story_990003502_bongcuc_v4_s35_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-09T19:45:57"
     }
   ]
 }

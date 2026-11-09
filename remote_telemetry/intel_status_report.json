@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-09 19:43:38",
+    "timestamp": "2026-11-09 19:49:36",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
+      "scrolled_videos": 11,
+      "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 157.2,
+      "elapsed_seconds": 150.2,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-09 19:49:36",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 150.2,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-09 19:43:38",
       "machine_arch": "x86_64",
@@ -297,22 +312,6 @@
         "video_file": "20261108_001025_tiktok_story_7527659162948439304.mp4",
         "caption": "⚔️ [Tu Chân Giới] Chaien tu tiên. Ma âm lão tổ rốn lồi chaien. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
         "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-09 18:48:07",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261109_184333_tiktok_story_990002102_bongcuc_v4_s21_p2_bg_mukbang.mp4",
-        "caption": "🎙️ [Góc Kể Truyện] Bông Cúc Số 21 (Phần 2/5): Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo. Vừa xem Mukbang đêm khuya vừa nghe câu chuyện cuốn hút này nhé!",
-        "hashtags": "#bongcucso21 #bongcucaudio #xuhuong #bongcuctrang #chuyengiadinh #audiodemkhuya #truyenngan #truyentamly",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
