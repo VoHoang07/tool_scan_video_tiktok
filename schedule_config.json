@@ -11,7 +11,7 @@
       ]
     },
     "switch_2_upload": {
-      "tiktok": false,
+      "tiktok": true,
       "fb_reels": false,
       "yt_shorts": false,
       "batch_single_chrome_session": true
