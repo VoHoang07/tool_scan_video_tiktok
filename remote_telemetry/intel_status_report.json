@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 01:07:40",
+    "timestamp": "2026-11-11 01:11:10",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261109_172052_tiktok_story_7643408716896800018.mp4",
-      "caption": "💪 Chăm sóc sức khỏe gia đình: Càng dưỡng tử cung, dưỡng khí huyết càng đẹp. Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
-      "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
+      "video_file": "20261109_174117_tiktok_story_7627083229522169095.mp4",
+      "caption": "🍜 Món Ngon Dễ Làm Mỗi Ngày: Chia sẻ công thức ướp sườn bán cơm tấm do tổ tiên mách bảo cho các bạn tham khảo nha. Công thức siêu đơn giản mà hương vị đỉnh của chóp. Lưu lại vào bếp thử ngay nhé!",
+      "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 6,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 01:11:10",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261109_174117_tiktok_story_7627083229522169095.mp4",
+        "caption": "🍜 Món Ngon Dễ Làm Mỗi Ngày: Chia sẻ công thức ướp sườn bán cơm tấm do tổ tiên mách bảo cho các bạn tham khảo nha. Công thức siêu đơn giản mà hương vị đỉnh của chóp. Lưu lại vào bếp thử ngay nhé!",
+        "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 01:07:40",
       "machine_arch": "x86_64",
@@ -229,21 +245,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 158.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 20:40:06",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 159.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
