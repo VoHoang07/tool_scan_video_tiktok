@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 08:09:24",
+    "timestamp": "2026-11-10 08:15:09",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
+      "scrolled_videos": 12,
+      "ads_skipped": 2,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 152.0,
+      "elapsed_seconds": 154.9,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 08:15:09",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "ads_skipped": 2,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 154.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-10 08:09:24",
       "machine_arch": "x86_64",
@@ -227,22 +242,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 151.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 06:56:16",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261109_154242_tiktok_story_7195017358891699482.mp4",
-        "caption": "🌿 [Sức Khỏe Chủ Động] Bí quyết dưỡng sinh đơn giản tại nhà giúp tràn đầy năng lượng. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-        "hashtags": "#duongsinh #songkhoe #suckhoechudong #healthyvietnam #songlanhmanh #chamSocSucKhoe #suckhoe #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
