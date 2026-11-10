@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 02:50:57",
+    "timestamp": "2026-11-11 02:57:23",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261111_024736_tiktok_story_990003901_bongcuc_v6_s39_p1_bg_mukbang.mp4",
-      "caption": "🕯️ Họ Chê Tôi Là Bà Nội Trợ, Không Biết Tôi Là Phu Nhân Chủ Tịch [Phần 1/10] — Những góc khuất dần được phơi bày qua từng lời kể đêm khuya!",
-      "hashtags": "#hochetoilabanoitrokhongbiettoilaphun #phan1 #audiodemkhuya #truyenngan #tamlyhonnhan #xuhuong #kechuyendemkhuya #nghetruyendemkhuya",
+      "video_file": "20261111_025407_tiktok_story_880033601_gautrucden_v1_s336_p1.mp4",
+      "caption": "👀 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không (Phần 1/10) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
+      "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan1 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 02:57:23",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261111_025407_tiktok_story_880033601_gautrucden_v1_s336_p1.mp4",
+        "caption": "👀 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không (Phần 1/10) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
+        "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan1 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 02:50:57",
       "machine_arch": "x86_64",
@@ -231,21 +247,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 151.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 20:52:22",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 160.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
