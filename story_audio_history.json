@@ -335,7 +335,8 @@
     "6882581650732092674",
     "7686281857947766036",
     "7668249428318293265",
-    "7698329630331178258"
+    "7698329630331178258",
+    "990014502"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -568,7 +569,8 @@
     "6861135141654268674",
     "7686281918454745872",
     "7668249493061634833",
-    "7698329657476664065"
+    "7698329657476664065",
+    "bongcuc_yt_e9oSX2s0ARs_p2"
   ],
   "items": [
     {
@@ -3010,6 +3012,16 @@
       "source_url": "https://www.tiktok.com/@saullednerzcppzdsi/video/7698329630331178258",
       "output_filename": "phu_nu_khi_chat/ready/20261110_083703_tiktok_story_7698329630331178258.mp4",
       "crawled_at": "2026-11-10T08:43:44"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990014502",
+      "sound_id": "bongcuc_yt_e9oSX2s0ARs_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=e9oSX2s0ARs&t=388s",
+      "output_filename": "audio_dem_khuyen/ready/20261110_090539_tiktok_story_990014502_bongcuc_v5_s145_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-10T09:10:33"
     }
   ]
 }
