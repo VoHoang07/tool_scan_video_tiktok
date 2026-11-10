@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 01:03:58",
+    "timestamp": "2026-11-11 01:07:40",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261109_174958_tiktok_story_7235104903012584710.mp4",
-      "caption": "📱 [Mẹo Công Nghệ Hay] Mẹo hay trên điện thoại và món phụ kiện thông minh cực kỳ hữu ích. Món phụ kiện nhỏ gọn mà giải quyết được bao nhiêu phiền toái hàng ngày! Bạn đã thử tính năng cực tiện này chưa?",
-      "hashtags": "#docongnghe #meodienthoai #phukientienich #tainghebluetooth #tienich #congnghehay #phukiendienthoai #xuhuongtiktok",
+      "video_file": "20261109_172052_tiktok_story_7643408716896800018.mp4",
+      "caption": "💪 Chăm sóc sức khỏe gia đình: Càng dưỡng tử cung, dưỡng khí huyết càng đẹp. Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
+      "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 6,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 01:07:40",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261109_172052_tiktok_story_7643408716896800018.mp4",
+        "caption": "💪 Chăm sóc sức khỏe gia đình: Càng dưỡng tử cung, dưỡng khí huyết càng đẹp. Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
+        "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 6,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 01:03:58",
       "machine_arch": "x86_64",
@@ -228,21 +244,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 159.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 20:34:13",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 164.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
