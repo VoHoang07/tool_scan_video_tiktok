@@ -1,132 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 11:15:26",
+    "timestamp": "2026-11-10 11:18:26",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_filter24h_phu_nu_khi_chat.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "phunukhichat.k07",
-        "domFollowing": "-",
-        "domFollowers": "-",
-        "domLikes": "-",
-        "sidebarFollowing": [
-          "/@phunukhichat.k07"
-        ]
-      },
-      "records": [
-        {
-          "channel": "phu_nu_khi_chat",
-          "video_id": "7706134909722709255",
-          "video_url": "https://www.tiktok.com/@dng.diu.tho/video/7706134909722709255",
-          "creator_handle": "@dng.diu.tho",
-          "watched_seconds": 15.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611101212183E0AFEF77AEC24963288\",\"now\":1794283938000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611101212183E0AFEF77AEC24963288\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 880.8984375,
-              "y": 424.9921875,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "7"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 880.8984375,
-                "y": 424.9921875,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "7"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            }
-          },
-          "interacted_at": "2026-11-10 11:12:38",
-          "follow_back_window_until": "2026-11-11 11:12:38"
-        },
-        {
-          "channel": "phu_nu_khi_chat",
-          "video_id": "7706146987145448722",
-          "video_url": "https://www.tiktok.com/@followcheo515/video/7706146987145448722",
-          "creator_handle": "@followcheo515",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Mê cái vibe của kênh bạn ghê, sẽ theo dõi ủng hộ dài lâu ạ 🫶",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-10 11:13:38",
-          "follow_back_window_until": "2026-11-11 11:13:38"
-        },
-        {
-          "channel": "phu_nu_khi_chat",
-          "video_id": "7705799158078147846",
-          "video_url": "https://www.tiktok.com/@followcheo969/video/7705799158078147846",
-          "creator_handle": "@followcheo969",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Ý tưởng video sáng tạo và cuốn hút thật sự, chúc kênh mau lên xu hướng nha 💯",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-10 11:15:04",
-          "follow_back_window_until": "2026-11-11 11:15:04"
-        }
-      ]
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 153.9,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 11:18:26",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 153.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-10 11:15:26",
       "machine_arch": "x86_64",
@@ -820,21 +723,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 151.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 10:02:45",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 13,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 166.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
