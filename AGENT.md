@@ -298,6 +298,21 @@
 
 ---
 
+### [BUG-023] Kẹt khóa trình duyệt & nghẽn hàng đợi đăng bài khi `audio_dem_khuyen` tải Background YouTube 150s lặp lại và `agy_intel_bridge.py` tự kill Dòng 1 sau 1200s
+- **Thời gian**: 2026-11-11 00:47:00
+- **Triệu chứng**: Sau khi `nuoi_con_eq` đăng lúc `12:56:56`, đến lượt `audio_dem_khuyen` (`13:26`) và các khung giờ khuya (`22:35` – `23:56`) nhưng chưa có bài mới nào được đăng dù Công tắc 2 đã bật.
+- **Nguyên nhân gốc rễ**:
+  1. Trong `ensure_background_video()` của [`tiktok_pipeline/bongcuc_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/bongcuc_splitter.py), khi tải bằng `player_client=["android", "web"]` trả về format `18` (`640x360`), điều kiện kiểm tra `if h_chk >= 720 and w_chk >= 1080:` xóa mất file vừa tải ở lượt sau và gọi lại `yt-dlp_macos` (timeout 150s mỗi video $\times$ 6 video) và `yt_dlp` không có `socket_timeout`. Khi `audio_dem_khuyen` (nằm ở vị trí thứ 3 trong `CHANNEL_PROFILES`) render on-demand trong lúc giữ `.tiktok_browser_session.lock`, toàn bộ các kênh phía sau đã có sẵn video trong `ready/` phải đứng chờ.
+  2. Trong `_acquire_browser_process_lock()` của [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py), khi khóa bị treo quá hạn, code chỉ `pkill` Chrome mà không `unlink` file `.tiktok_browser_session.lock` để tạo inode mới, nên `fcntl.flock` vẫn bị chặn bởi file descriptor của tiến trình cũ; đồng thời dòng 3415 gọi nhầm biến `channel_arg` thay vì `ch_folder`.
+  3. Trong [`tiktok_pipeline/utils.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/utils.py), `setup_logging()` chỉ ghi ra `StreamHandler` mà không ghi vào `logs/daemon_24_7.log`, dẫn tới `_ensure_both_streams_alive()` trong [`tiktok_pipeline/agy_intel_bridge.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py) thấy `daemon_24_7.log` không đổi `mtime` sau 1200s và gọi `pkill -9 -f "main.py --stream-upload"`.
+- **Cách khắc phục & File đã sửa**:
+  - Sửa [`tiktok_pipeline/bongcuc_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/bongcuc_splitter.py): dùng trực tiếp `yt_dlp.YoutubeDL` với `format="22/18/best[ext=mp4]/best"`, `socket_timeout=25`, chấp nhận mọi file `>= 360p` (vì FFmpeg đã upscale `lanczos` + `unsharp` lên `1080x1920`), và giới hạn tối đa 2 lần thử trong [`tiktok_pipeline/main.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/main.py).
+  - Sửa [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py): ưu tiên duyệt các kênh đã có sẵn `.mp4` trong `ready/` lên đăng trước; sửa `channel_arg -> ch_folder`; tái tạo inode mới cho `.tiktok_browser_session.lock` khi vượt quá 360s–420s; và cho phép vòng lặp Dòng 2 hỗ trợ gọi `check_and_run_stream1_upload_schedule()` khi Công tắc 2 đang bật.
+  - Sửa [`tiktok_pipeline/utils.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/utils.py) và [`tiktok_pipeline/agy_intel_bridge.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/agy_intel_bridge.py): ghi log đồng thời vào `logs/daemon_24_7.log`, bỏ hoàn toàn lệnh `pkill -9 -f "main.py --stream-upload"`, và thêm `git pull --rebase --autostash` trước khi push outbox.
+- **Luật Miễn Dịch Vĩnh Viễn**: Trong `check_and_run_stream1_upload_schedule()`, luôn ưu tiên đăng trước các kênh đã có sẵn file `.mp4` trong `ready/`; mọi lời gọi `yt_dlp.YoutubeDL` bắt buộc có `socket_timeout=25`; và khi giải phóng `.tiktok_browser_session.lock` bị treo quá hạn, bắt buộc `unlink` file khóa cũ để tạo inode mới trước khi `flock`.
+
+---
+
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:

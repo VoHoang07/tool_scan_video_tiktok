@@ -9,15 +9,24 @@ logger = logging.getLogger("tiktok_pipeline")
 
 
 def setup_logging(level: int = logging.INFO) -> logging.Logger:
-    """Configure structured console logging for the pipeline."""
+    """Configure structured console and file logging for the pipeline."""
     if not logger.handlers:
-        handler = logging.StreamHandler()
         formatter = logging.Formatter(
             "[%(asctime)s] [%(levelname)s] %(name)s: %(message)s",
             datefmt="%H:%M:%S",
         )
+        handler = logging.StreamHandler()
         handler.setFormatter(formatter)
         logger.addHandler(handler)
+        try:
+            project_root = Path(__file__).resolve().parent.parent
+            log_dir = project_root / "logs"
+            log_dir.mkdir(parents=True, exist_ok=True)
+            fh = logging.FileHandler(log_dir / "daemon_24_7.log", encoding="utf-8")
+            fh.setFormatter(formatter)
+            logger.addHandler(fh)
+        except Exception:
+            pass
     logger.setLevel(level)
     return logger
 

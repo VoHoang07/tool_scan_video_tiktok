@@ -180,12 +180,12 @@
     "phu_kien_tien_ich": ""
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_all10_20261109_2343",
+    "trigger_id": "post_now_all10_20261111_0047",
     "target_arch": "x86_64",
     "action": "upload",
     "ensure_public_channels": "",
-    "channel": "video_AI_hay,baby_AI,audio_dem_khuyen,tu_chan_gioi,phu_nu_khi_chat,meo_vat_gia_dinh,nuoi_con_eq,phu_kien_tien_ich,suc_khoe_duong_sinh,an_vat_moi_ngay",
-    "force": true,
+    "channel": "video_AI_hay,baby_AI,tu_chan_gioi,phu_nu_khi_chat,meo_vat_gia_dinh,nuoi_con_eq,phu_kien_tien_ich,suc_khoe_duong_sinh,an_vat_moi_ngay,audio_dem_khuyen",
+    "force": false,
     "skip_warmup": true,
     "auto_pause_master_after": false
   },

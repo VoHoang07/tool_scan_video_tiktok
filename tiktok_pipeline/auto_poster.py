@@ -325,10 +325,16 @@ class TikTokAutoPoster:
                         lock_ts_age = time.time() - ts_val
                 except Exception:
                     pass
-                if elapsed >= max_wait_seconds and lock_ts_age >= 480:
+                if max_wait_seconds <= 15 and elapsed >= max_wait_seconds and lock_ts_age < 360:
+                    try:
+                        fh.close()
+                    except Exception:
+                        pass
+                    return None
+                if (elapsed >= max_wait_seconds and lock_ts_age >= 360) or lock_ts_age >= 420:
                     logger.warning(
                         f"[Browser Lock Watchdog] Khóa trình duyệt bị giữ quá {int(elapsed)}s (lock_ts_age={int(lock_ts_age)}s) — "
-                        "tự động giải phóng tiến trình Chrome for Testing bị treo!"
+                        "tự động giải phóng tiến trình Chrome for Testing bị treo & tái tạo inode khóa mới!"
                     )
                     try:
                         subprocess.run(
@@ -337,8 +343,18 @@ class TikTokAutoPoster:
                             timeout=5,
                             check=False,
                         )
-                        time.sleep(1.5)
+                        try:
+                            fh.close()
+                        except Exception:
+                            pass
+                        lock_path.unlink(missing_ok=True)
+                        time.sleep(1.0)
+                        fh = open(lock_path, "a+", encoding="utf-8")
                         fcntl.flock(fh.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                        fh.seek(0)
+                        fh.truncate()
+                        fh.write(f"pid={os.getpid()} ts={int(time.time())}\n")
+                        fh.flush()
                         return fh
                     except Exception:
                         try:
@@ -3412,7 +3428,7 @@ class TikTokAutoPoster:
                 )
                 if target_video.exists():
                     target_video.unlink(missing_ok=True)
-                return self._get_next_ready_video_for_channel(channel_arg)
+                return self._get_next_ready_video_for_channel(ch_folder)
         except Exception as sk_exc:
             logger.debug(f"[{ch_folder}] Bỏ qua lỗi phụ trong Skill 6 Lớp: {sk_exc}")
 
@@ -4404,7 +4420,16 @@ class TikTokAutoPoster:
                         return posted_results
 
         active_ch_set = set(cfg.get("active_channels") or ["video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"])
-        for profile in CHANNEL_PROFILES.values():
+        # Ưu tiên các kênh ĐÃ CÓ SẴN video .mp4 trong ready/ lên đăng trước để không bao giờ bị chờ kênh đang render
+        ordered_profiles = sorted(
+            CHANNEL_PROFILES.values(),
+            key=lambda p: (
+                0
+                if any((self.project_root / "output" / p["folder_name"] / "ready").glob("*.mp4"))
+                else 1
+            ),
+        )
+        for profile in ordered_profiles:
             ch_folder = profile["folder_name"]
             if ch_folder not in active_ch_set:
                 continue
@@ -4817,6 +4842,24 @@ class TikTokAutoPoster:
             pass
 
         ms_ctrl = MasterSwitchController(project_root=self.project_root)
+        if ms_ctrl.is_upload_enabled("tiktok"):
+            try:
+                import importlib
+                from . import bongcuc_splitter as _bc_mod
+                from . import crawler as _cr_mod
+                from . import stream1_antidetect_skill as _s1_mod
+
+                importlib.reload(_bc_mod)
+                importlib.reload(_cr_mod)
+                importlib.reload(_s1_mod)
+                self.crawler = _cr_mod.StoryAudioCrawler(project_root=self.project_root)
+            except Exception:
+                pass
+            try:
+                self.check_and_run_stream1_upload_schedule()
+            except Exception as up_exc:
+                logger.error(f"[Dòng 1 via Watchdog] Lỗi kiểm tra lịch đăng video: {up_exc}")
+
         if not ms_ctrl.is_interact_enabled("tiktok"):
             return {}
 

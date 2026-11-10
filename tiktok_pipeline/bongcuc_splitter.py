@@ -978,12 +978,9 @@ class BongCucYouTubeSplitter:
         bg_dir = self.project_root / "workspace_temp" / "bongcuc_bg_pool" / eff_mode
         bg_dir.mkdir(parents=True, exist_ok=True)
 
-        # Dọn sạch mọi file .part cũ bị lỗi hoặc file background cũ không nằm trong pool v5 mới
-        valid_pool_ids = {str(item["yt_id"]) for item in pool}
-        for old_f in bg_dir.glob("*"):
-            if not old_f.is_file():
-                continue
-            if ".part" in old_f.name or not any(vid in old_f.name for vid in valid_pool_ids):
+        # Dọn sạch mọi file .part cũ bị dở dang
+        for old_f in bg_dir.glob("*.part*"):
+            if old_f.is_file():
                 try:
                     old_f.unlink(missing_ok=True)
                 except Exception:
@@ -991,63 +988,47 @@ class BongCucYouTubeSplitter:
 
         import yt_dlp
 
-        ytdlp_macos_bin = self._ensure_ytdlp_macos_bin()
         ordered_indices = [(seed_val + i) % len(pool) for i in range(len(pool))]
         chosen_mp4: Optional[Path] = None
         for idx in ordered_indices:
             cand_spec = pool[idx]
             yt_id = str(cand_spec["yt_id"])
             target_mp4 = bg_dir / f"bg_{yt_id}.mp4"
-            if target_mp4.exists() and target_mp4.stat().st_size > 2_000_000:
+            if target_mp4.exists() and target_mp4.stat().st_size > 1_500_000:
                 try:
                     w_chk, h_chk = get_video_resolution(target_mp4)
                 except Exception:
-                    w_chk, h_chk = 0, 0
-                if h_chk >= 720 and w_chk >= 1080:
+                    w_chk, h_chk = 640, 360
+                if h_chk >= 360 and w_chk >= 360:
                     chosen_mp4 = target_mp4
                     break
                 target_mp4.unlink(missing_ok=True)
             tmp_out = bg_dir / f"bg_{yt_id}.part.mp4"
             tmp_out.unlink(missing_ok=True)
             url = f"https://www.youtube.com/watch?v={yt_id}"
-            fmt_selector = "22/136/137/bestvideo[height>=720][height<=1080][ext=mp4]/bestvideo[height>=720][ext=mp4]/18/best[ext=mp4]"
+            fmt_selector = "22/18/best[ext=mp4]/best"
             try:
                 logger.info(
-                    f"[BongCucSplitter] Đang tải video Background HD mới v5 [{eff_mode}] từ YouTube ({url} - {cand_spec.get('title')})..."
+                    f"[BongCucSplitter] Đang tải video Background [{eff_mode}] từ YouTube ({url} - {cand_spec.get('title')})..."
                 )
-                if ytdlp_macos_bin is not None:
-                    subprocess.run(
-                        [
-                            str(ytdlp_macos_bin),
-                            "--no-part",
-                            "-f",
-                            fmt_selector,
-                            "-o",
-                            str(tmp_out),
-                            url,
-                        ],
-                        capture_output=True,
-                        timeout=150,
-                        check=False,
-                    )
-                if not tmp_out.exists() or tmp_out.stat().st_size < 2_000_000:
-                    ydl_opts = {
-                        "format": fmt_selector,
-                        "outtmpl": str(tmp_out),
-                        "nopart": True,
-                        "quiet": True,
-                        "no_warnings": True,
-                        "Retries": 2,
-                        "extractor_args": {"youtube": {"player_client": ["android", "web"]}},
-                    }
-                    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-                        ydl.download([url])
-                if tmp_out.exists() and tmp_out.stat().st_size > 2_000_000:
+                ydl_opts = {
+                    "format": fmt_selector,
+                    "outtmpl": str(tmp_out),
+                    "nopart": True,
+                    "quiet": True,
+                    "no_warnings": True,
+                    "retries": 2,
+                    "socket_timeout": 25,
+                    "extractor_args": {"youtube": {"player_client": ["android", "web"]}},
+                }
+                with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+                    ydl.download([url])
+                if tmp_out.exists() and tmp_out.stat().st_size > 1_500_000:
                     shutil.move(str(tmp_out), str(target_mp4))
                     chosen_mp4 = target_mp4
                     w_dl, h_dl = get_video_resolution(target_mp4)
                     logger.info(
-                        f"[BongCucSplitter] Đã tải xong Background HD mới v5 [{eff_mode}] {yt_id} ({w_dl}x{h_dl}, {target_mp4.stat().st_size / 1e6:.1f} MB)."
+                        f"[BongCucSplitter] Đã tải xong Background [{eff_mode}] {yt_id} ({w_dl}x{h_dl}, {target_mp4.stat().st_size / 1e6:.1f} MB)."
                     )
                     break
             except Exception as dl_exc:
@@ -1058,8 +1039,13 @@ class BongCucYouTubeSplitter:
 
         if chosen_mp4 is None:
             existing = sorted(
-                p for p in bg_dir.glob("bg_*.mp4") if p.is_file() and p.stat().st_size > 2_000_000
+                p for p in bg_dir.glob("bg_*.mp4") if p.is_file() and p.stat().st_size > 1_500_000
             )
+            if not existing:
+                other_root = self.project_root / "workspace_temp" / "bongcuc_bg_pool"
+                existing = sorted(
+                    p for p in other_root.rglob("bg_*.mp4") if p.is_file() and p.stat().st_size > 1_500_000
+                )
             if existing:
                 chosen_mp4 = existing[seed_val % len(existing)]
             else:
@@ -1097,7 +1083,8 @@ class BongCucYouTubeSplitter:
             "outtmpl": str(tmp_out),
             "quiet": True,
             "no_warnings": True,
-            "Retries": 3,
+            "retries": 3,
+            "socket_timeout": 25,
             "extractor_args": {"youtube": {"player_client": ["android", "web"]}},
         }
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:

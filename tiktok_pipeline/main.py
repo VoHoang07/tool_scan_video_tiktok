@@ -500,14 +500,17 @@ def run_crawl_story_mode(
 
             completed_bongcuc: List[Dict[str, Any]] = []
             used_eps_in_batch = set(ready_ep_nums)
+            attempted_bongcuc = 0
+            max_bongcuc_attempts = max(limit + 1, 2)
             for part_spec in ordered_specs:
-                if len(completed_bongcuc) >= limit:
+                if len(completed_bongcuc) >= limit or attempted_bongcuc >= max_bongcuc_attempts:
                     break
                 ep_no = int(part_spec["ep_num"])
                 if ep_no in used_eps_in_batch and any(
                     int(x["ep_num"]) not in used_eps_in_batch for x in ordered_specs
                 ):
                     continue
+                attempted_bongcuc += 1
                 try:
                     start_t = time.time()
                     summary = splitter.render_single_part(
