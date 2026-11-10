@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 01:00:54",
+    "timestamp": "2026-11-11 01:03:58",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261109_175128_tiktok_story_7579891760004910356.mp4",
-      "caption": "👶 [Nuôi Con Thông Minh] Con hỗn láo với bố mẹ là lỗi của ai? Xem ngay cách uốn nắn, dạy con tôn trọng người lớn!. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
-      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #fyp #xh",
+      "video_file": "20261109_174958_tiktok_story_7235104903012584710.mp4",
+      "caption": "📱 [Mẹo Công Nghệ Hay] Mẹo hay trên điện thoại và món phụ kiện thông minh cực kỳ hữu ích. Món phụ kiện nhỏ gọn mà giải quyết được bao nhiêu phiền toái hàng ngày! Bạn đã thử tính năng cực tiện này chưa?",
+      "hashtags": "#docongnghe #meodienthoai #phukientienich #tainghebluetooth #tienich #congnghehay #phukiendienthoai #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 01:03:58",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261109_174958_tiktok_story_7235104903012584710.mp4",
+        "caption": "📱 [Mẹo Công Nghệ Hay] Mẹo hay trên điện thoại và món phụ kiện thông minh cực kỳ hữu ích. Món phụ kiện nhỏ gọn mà giải quyết được bao nhiêu phiền toái hàng ngày! Bạn đã thử tính năng cực tiện này chưa?",
+        "hashtags": "#docongnghe #meodienthoai #phukientienich #tainghebluetooth #tienich #congnghehay #phukiendienthoai #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 01:00:54",
       "machine_arch": "x86_64",
@@ -227,21 +243,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 164.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 20:28:16",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 151.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
