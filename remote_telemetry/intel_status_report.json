@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 00:53:08",
+    "timestamp": "2026-11-11 00:57:32",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261109_163444_tiktok_story_7537017470759046417.mp4",
-      "caption": "✨ [Phụ Nữ Khí Chất] Bài học tâm lý hôn nhân sâu sắc giúp giữ lửa hạnh phúc gia đình. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
-      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #foryou #fyp",
+      "video_file": "20261109_171449_tiktok_story_7702735092220742932.mp4",
+      "caption": "💡 [Mẹo Vặt Gia Đình] cách làm sạch dầu ăn cũ. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 00:57:32",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261109_171449_tiktok_story_7702735092220742932.mp4",
+        "caption": "💡 [Mẹo Vặt Gia Đình] cách làm sạch dầu ăn cũ. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 00:53:08",
       "machine_arch": "x86_64",
@@ -297,21 +313,6 @@
             "follow_back_window_until": "2026-11-11 20:24:58"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-10 20:21:35",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 156.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
