@@ -1386,74 +1386,134 @@ class TikTokAutoPoster:
         """
         Tìm nút gạt (switch/toggle) nằm cùng dòng với nhãn `label_keywords` (ví dụ:
         `Nội dung tải lên chất lượng cao`, `Khai báo nội dung bài đăng`, `Nội dung do AI tạo`,
-        `Kiểm tra bản quyền nhạc`, `Kiểm tra nội dung nhanh`) và bật/tắt theo `desired_on`.
+        `Kiểm tra bản quyền nhạc`, `Kiểm tra nội dung nhanh`) và bật/tắt chính xác theo `desired_on`.
         """
         try:
-            action = page.evaluate(
-                """({ keywords, wantOn }) => {
-                    const els = Array.from(document.querySelectorAll('span, div, label, p, h3, h4'));
-                    let targetLabelRect = null;
-                    for (const el of els) {
-                        if (el.children.length > 4) continue;
-                        const txt = (el.innerText || el.textContent || '').trim();
-                        if (!txt || txt.length > 90) continue;
-                        if (keywords.some(k => txt.includes(k))) {
-                            const r = el.getBoundingClientRect();
-                            if (r.width > 10 && r.height > 8) {
-                                targetLabelRect = r;
-                                break;
+            for attempt in range(2):
+                action = page.evaluate(
+                    """({ keywords, wantOn }) => {
+                        const els = Array.from(document.querySelectorAll('span, div, label, p, h3, h4'));
+                        let targetLabelRect = null;
+                        let bestArea = 999999999;
+                        for (const el of els) {
+                            if (el.children.length > 3) continue;
+                            const txt = (el.innerText || el.textContent || '').trim();
+                            if (!txt || txt.length > 90) continue;
+                            if (keywords.some(k => txt.includes(k))) {
+                                const r = el.getBoundingClientRect();
+                                const area = r.width * r.height;
+                                if (r.width > 10 && r.height > 8 && r.height < 65 && area < bestArea) {
+                                    bestArea = area;
+                                    targetLabelRect = r;
+                                }
                             }
                         }
-                    }
-                    if (!targetLabelRect) return { found: false };
+                        if (!targetLabelRect) return { found: false };
 
-                    const switches = Array.from(
-                        document.querySelectorAll('[role="switch"], input[type="checkbox"], [class*="Switch"], [class*="switch"]')
-                    );
-                    let bestSw = null;
-                    let bestDist = 9999;
-                    for (const sw of switches) {
-                        const r = sw.getBoundingClientRect();
-                        if (r.width < 12 || r.height < 10) continue;
-                        const dy = Math.abs((r.top + r.height / 2) - (targetLabelRect.top + targetLabelRect.height / 2));
-                        const dx = r.left - targetLabelRect.left;
-                        if (dy <= 38 && dx > -20 && dx < 650) {
-                            if (dy < bestDist) {
-                                bestDist = dy;
-                                bestSw = { el: sw, rect: r };
+                        const switches = Array.from(
+                            document.querySelectorAll('[role="switch"], input[type="checkbox"], button[role="switch"], [class*="Switch"], [class*="switch"], [class*="TuxSwitch"]')
+                        );
+                        let bestSw = null;
+                        let bestDist = 9999;
+                        const labelMidY = targetLabelRect.top + targetLabelRect.height / 2;
+                        for (const sw of switches) {
+                            const r = sw.getBoundingClientRect();
+                            if (r.width < 16 || r.width > 95 || r.height < 10 || r.height > 52) continue;
+                            const dy = Math.abs((r.top + r.height / 2) - labelMidY);
+                            const dx = r.left - targetLabelRect.left;
+                            if (dy <= 42 && dx > -10 && dx < 720) {
+                                const roleBonus = sw.getAttribute('role') === 'switch' ? -6 : 0;
+                                if (dy + roleBonus < bestDist) {
+                                    bestDist = dy + roleBonus;
+                                    bestSw = { el: sw, rect: r };
+                                }
                             }
                         }
-                    }
-                    if (!bestSw) return { found: false };
+                        if (!bestSw) return { found: false };
 
-                    const swEl = bestSw.el;
-                    const ariaChecked = swEl.getAttribute('aria-checked');
-                    const cls = (swEl.className || '') + ' ' + ((swEl.parentElement && swEl.parentElement.className) || '');
-                    let isOn = false;
-                    if (ariaChecked === 'true' || swEl.checked === true) {
-                        isOn = true;
-                    } else if (ariaChecked === 'false') {
-                        isOn = false;
-                    } else if (/checked|active|is-checked|on/i.test(cls)) {
-                        isOn = true;
-                    }
+                        const swEl = bestSw.el;
+                        const swContainer = swEl.closest('[role="switch"]') || swEl.querySelector('[role="switch"]') || swEl;
+                        const cbInput = swContainer.querySelector('input[type="checkbox"]') || (swEl.tagName === 'INPUT' ? swEl : null);
+                        const ariaChecked = swContainer.getAttribute('aria-checked') || swEl.getAttribute('aria-checked');
+                        const dataState = swContainer.getAttribute('data-state') || swEl.getAttribute('data-state') || '';
 
-                    return {
-                        found: true,
-                        isOn: isOn,
-                        needClick: isOn !== wantOn,
-                        x: bestSw.rect.left + bestSw.rect.width / 2,
-                        y: bestSw.rect.top + bestSw.rect.height / 2
-                    };
-                }""",
-                {"keywords": label_keywords, "wantOn": desired_on},
-            )
-            if action and action.get("found") and action.get("needClick"):
-                self._human_move_mouse(page, float(action["x"]), float(action["y"]))
-                time.sleep(random.uniform(0.2, 0.4))
-                page.mouse.click(float(action["x"]), float(action["y"]))
-                time.sleep(random.uniform(0.4, 0.7))
-                return True
+                        let isOn = null;
+                        if (ariaChecked === 'true' || (cbInput && cbInput.checked === true) || dataState === 'checked') {
+                            isOn = true;
+                        } else if (ariaChecked === 'false' || (cbInput && cbInput.checked === false) || dataState === 'unchecked') {
+                            isOn = false;
+                        }
+
+                        // Kiểm tra vị trí nút tròn (thumb) bên trong switch (bên phải = ON, bên trái = OFF)
+                        if (isOn === null) {
+                            const children = Array.from(swContainer.querySelectorAll('span, div'));
+                            for (const ch of children) {
+                                const cr = ch.getBoundingClientRect();
+                                if (cr.width >= 8 && cr.width < bestSw.rect.width - 4 && cr.height >= 8 && cr.height <= bestSw.rect.height + 2) {
+                                    const thumbCenterX = cr.left + cr.width / 2;
+                                    const swCenterX = bestSw.rect.left + bestSw.rect.width / 2;
+                                    if (Math.abs(thumbCenterX - swCenterX) > 1.5) {
+                                        isOn = thumbCenterX > swCenterX;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Kiểm tra màu nền của switch (Màu xanh/đỏ có độ bão hòa cao = ON; màu xám = OFF)
+                        if (isOn === null) {
+                            const checkEls = [swContainer, swEl, swEl.parentElement].filter(Boolean);
+                            for (const ce of checkEls) {
+                                const bg = (window.getComputedStyle(ce).backgroundColor || '');
+                                const m = bg.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+                                if (m) {
+                                    const r = parseInt(m[1], 10), g = parseInt(m[2], 10), b = parseInt(m[3], 10);
+                                    const sat = Math.max(r, g, b) - Math.min(r, g, b);
+                                    if (sat > 25) {
+                                        isOn = true;
+                                        break;
+                                    } else if (sat <= 15 && r > 120 && r < 248) {
+                                        isOn = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        if (isOn === null) {
+                            const cls = ((swContainer.className || '') + ' ' + (swEl.className || '')).toLowerCase();
+                            if (cls.includes('unchecked') || cls.includes('disabled')) {
+                                isOn = false;
+                            } else if (/\b(is-checked|switch-checked|checked)\b/.test(cls)) {
+                                isOn = true;
+                            } else {
+                                isOn = false;
+                            }
+                        }
+
+                        return {
+                            found: true,
+                            isOn: Boolean(isOn),
+                            needClick: Boolean(isOn) !== Boolean(wantOn),
+                            x: bestSw.rect.left + bestSw.rect.width / 2,
+                            y: bestSw.rect.top + bestSw.rect.height / 2
+                        };
+                    }""",
+                    {"keywords": label_keywords, "wantOn": desired_on},
+                )
+                if not action or not action.get("found"):
+                    return False
+                if not action.get("needClick"):
+                    return True
+
+                cx, cy = float(action["x"]), float(action["y"])
+                self._human_move_mouse(page, cx, cy)
+                time.sleep(random.uniform(0.18, 0.35))
+                if attempt == 0:
+                    page.mouse.click(cx, cy)
+                else:
+                    self._os_click_viewport(page, cx, cy)
+                time.sleep(random.uniform(0.55, 0.85))
+            return True
         except Exception as exc:
             logger.debug(f"Bỏ qua chỉnh switch {label_keywords}: {exc}")
         return False
@@ -1520,6 +1580,22 @@ class TikTokAutoPoster:
             # 2. Người có thể nhìn thấy bài đăng này -> Mọi người (Công khai)
             self._verify_upload_privacy_is_everyone(page, ch_folder)
 
+            # 2.5. Mở rộng "Hiển thị thêm" / "Show more" nếu đang bị thu gọn để hiện đầy đủ cài đặt
+            try:
+                show_more_loc = page.locator(
+                    'div:has-text("Hiển thị thêm"), span:has-text("Hiển thị thêm"), button:has-text("Hiển thị thêm"), span:has-text("Show more")'
+                )
+                for idx in range(min(show_more_loc.count(), 5)):
+                    el = show_more_loc.nth(idx)
+                    if el.is_visible():
+                        txt = (el.inner_text() or "").strip()
+                        if txt in ("Hiển thị thêm", "Show more"):
+                            el.click()
+                            time.sleep(0.5)
+                            break
+            except Exception:
+                pass
+
             # 3. Nội dung tải lên chất lượng cao -> BẬT (ON)
             self._set_switch_near_label(
                 page, ["Nội dung tải lên chất lượng cao", "High-quality uploads"], desired_on=True
@@ -1564,13 +1640,36 @@ class TikTokAutoPoster:
             self._scroll_upload_form(page, 520)
             time.sleep(random.uniform(0.8, 1.3))
 
-            # 6. Kiểm tra bản quyền nhạc & Kiểm tra nội dung nhanh -> BẬT (ON)
-            self._set_switch_near_label(
+            # 6. Kiểm tra bản quyền nhạc & Kiểm tra nội dung nhanh -> BẬT (ON) trước khi đăng
+            music_chk = self._set_switch_near_label(
                 page, ["Kiểm tra bản quyền nhạc", "Music copyright check"], desired_on=True
             )
-            self._set_switch_near_label(
-                page, ["Kiểm tra nội dung nhanh", "Content check lite"], desired_on=True
+            lite_chk = self._set_switch_near_label(
+                page,
+                [
+                    "Kiểm tra nội dung nhanh",
+                    "Kiểm tra nội dung và tính tinh gọn",
+                    "Content check lite",
+                ],
+                desired_on=True,
             )
+            logger.info(
+                f"[{ch_folder}] Đã bật Kiểm tra trước khi đăng: Kiểm tra bản quyền nhạc={music_chk}, Kiểm tra nội dung nhanh={lite_chk}. Đang chờ TikTok hoàn tất kiểm tra nhanh..."
+            )
+            # Chờ Kiểm tra nội dung nhanh & bản quyền nhạc chạy xong trước khi bấm Đăng (~6-12 giây)
+            for _ in range(6):
+                time.sleep(1.8)
+                try:
+                    still_checking = page.evaluate(
+                        """() => {
+                            const bodyTxt = (document.body && document.body.innerText) || '';
+                            return /Đang kiểm tra|Checking in progress|Checking\.\.\./i.test(bodyTxt);
+                        }"""
+                    )
+                    if not still_checking:
+                        break
+                except Exception:
+                    break
 
         except Exception as exc:
             logger.warning(f"[{ch_folder}] Lưu ý nhỏ khi chỉnh Cài đặt trang Upload: {exc}")
@@ -1912,6 +2011,47 @@ class TikTokAutoPoster:
                         page.reload(wait_until="domcontentloaded", timeout=35000)
                     except Exception:
                         pass
+
+            # Nếu là kênh audio_dem_khuyen: tự động quét danh sách bài đang còn sống trên trang tiktokstudio/content
+            # để phát hiện thêm video nào bị xóa/mất trên kênh và đưa vào danh sách khôi phục từ từ
+            if ch_folder == "audio_dem_khuyen":
+                try:
+                    from .bongcuc_splitter import make_bongcuc_story_id, parse_bongcuc_ep_and_part
+
+                    row_texts = page.evaluate(
+                        """() => {
+                            const els = Array.from(document.querySelectorAll('div, span, a, p'));
+                            const out = [];
+                            for (const el of els) {
+                                if (el.children.length > 4) continue;
+                                const t = (el.innerText || '').trim();
+                                if (t.length >= 8 && t.length <= 260 && (t.includes('Phần') || t.includes('#phan') || t.includes('Số'))) {
+                                    out.push(t);
+                                }
+                            }
+                            return out.slice(0, 200);
+                        }"""
+                    )
+                    live_sids: Set[str] = set()
+                    for rt in row_texts or []:
+                        ep_pt = parse_bongcuc_ep_and_part(str(rt))
+                        if ep_pt:
+                            live_sids.add(make_bongcuc_story_id(ep_pt[0], ep_pt[1]))
+                    if len(live_sids) >= 3:
+                        inv_path = self.project_root / "data" / "audio_dem_khuyen_live_posts.json"
+                        inv_path.parent.mkdir(parents=True, exist_ok=True)
+                        inv_data: Dict[str, Any] = {}
+                        if inv_path.exists():
+                            try:
+                                inv_data = json.loads(inv_path.read_text(encoding="utf-8"))
+                            except Exception:
+                                inv_data = {}
+                        merged_live = sorted(set(inv_data.get("live_story_ids") or []) | live_sids)
+                        inv_data["live_story_ids"] = merged_live
+                        inv_data["updated_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        inv_path.write_text(json.dumps(inv_data, ensure_ascii=False, indent=2), encoding="utf-8")
+                except Exception:
+                    pass
 
         except Exception as exc:
             logger.warning(f"[{ch_folder}] Lưu ý khi chuyển quyền riêng tư tại tiktokstudio/content: {exc}")
@@ -2796,6 +2936,20 @@ class TikTokAutoPoster:
         except Exception:
             pass
 
+        if ch_folder == "audio_dem_khuyen" and vid_id and "bongcuc_v6_s" in video_path.name.lower():
+            try:
+                inv_path = self.project_root / "data" / "audio_dem_khuyen_live_posts.json"
+                inv_path.parent.mkdir(parents=True, exist_ok=True)
+                inv_data: Dict[str, Any] = {}
+                if inv_path.exists():
+                    inv_data = json.loads(inv_path.read_text(encoding="utf-8"))
+                rep_sids = set(str(x) for x in (inv_data.get("reposted_v6_story_ids") or []) if x)
+                rep_sids.add(vid_id)
+                inv_data["reposted_v6_story_ids"] = sorted(rep_sids)
+                inv_path.write_text(json.dumps(inv_data, ensure_ascii=False, indent=2), encoding="utf-8")
+            except Exception:
+                pass
+
     def _get_next_ready_video_for_channel(
         self, ch_folder: str
     ) -> Optional[Tuple[Path, str, str]]:
@@ -2817,11 +2971,27 @@ class TikTokAutoPoster:
             return None
 
         posted_ids, posted_filenames = self.crawler._collect_all_known_posted_story_ids_and_files()
+        lost_repost_sids: Set[str] = set()
+        if ch_folder == "audio_dem_khuyen":
+            try:
+                from .bongcuc_splitter import BongCucYouTubeSplitter
+
+                lost_repost_sids = BongCucYouTubeSplitter.get_lost_story_ids_needing_repost(
+                    self.project_root
+                )
+                posted_ids -= lost_repost_sids
+            except Exception:
+                pass
+
         posted_fingerprints: set[str] = set()
         posted_audio_bits: List[str] = []
 
         for p_mp4 in posted_dir.glob("*.mp4"):
             if p_mp4.is_file():
+                if ch_folder == "audio_dem_khuyen" and any(
+                    lsid in p_mp4.name for lsid in lost_repost_sids
+                ) and "bongcuc_v6_s" not in p_mp4.name.lower():
+                    continue
                 fp = self._quick_video_fingerprint(p_mp4)
                 if fp:
                     posted_fingerprints.add(fp)
@@ -2860,7 +3030,15 @@ class TikTokAutoPoster:
             cand_dur, cand_bits = self._audio_story_fingerprint(cand)
 
             is_dup_audio = False
-            if cand_bits and posted_audio_bits:
+            if (
+                cand_bits
+                and posted_audio_bits
+                and not (
+                    ch_folder == "audio_dem_khuyen"
+                    and cand_id in lost_repost_sids
+                    and "bongcuc_v6_s" in cand.name.lower()
+                )
+            ):
                 for p_b in posted_audio_bits:
                     if len(cand_bits) == len(p_b):
                         same_cnt = sum(1 for a, b in zip(cand_bits, p_b) if a == b)
@@ -2906,12 +3084,13 @@ class TikTokAutoPoster:
                     from .bongcuc_splitter import (
                         BongCucYouTubeSplitter,
                         get_target_bg_mode_for_hour,
+                        make_bongcuc_story_id,
                         parse_bongcuc_bg_mode,
                         parse_bongcuc_ep_and_part,
                     )
 
                     # Thu thập chuỗi các bài vừa đăng gần nhất trên kênh audio_dem_khuyen
-                    # để kiểm soát chặt chẽ tỷ lệ [6 Phần Tiếp Theo (Phần 2+ đồng bộ cấp độ) : 1 Tập Mới (Phần 1)]
+                    # để kiểm soát chặt chẽ tỷ lệ [1 Video Đã Mất Cần Đăng Lại : 1 Phần Tiếp Theo]
                     # và khóa Cooldown 4 bài liên tiếp không lặp lại cùng 1 tập!
                     recent_ep_parts: List[Tuple[int, int]] = []
 
@@ -2970,10 +3149,13 @@ class TikTokAutoPoster:
                     last_part_num: Optional[int] = recent_ep_parts[0][1] if recent_ep_parts else None
                     recent_cooldown_eps: Set[int] = {ep for ep, _ in recent_ep_parts[:4]}
 
-                    # Chỉ mở thêm 1 Tập Mới (Phần 1) khi CẢ 6 BÀI ĐĂNG GẦN NHẤT đều là Phần >= 2!
-                    # Còn lại BẮT BUỘC ưu tiên đăng Phần 2, Phần 3... cho các tập đang nhiều view trên kênh!
+                    # Đan xen TỪ TỪ khôi phục các video đã mất (1 Video Đã Mất : 1 Phần Tiếp Theo):
+                    # Nếu bài đăng gần nhất KHÔNG phải là Phần 1, cho phép lượt này đăng lại 1 video đã mất (kể cả Phần 1 đã mất)
                     want_part1 = len(recent_ep_parts) >= 6 and all(
                         int(pt) >= 2 for _, pt in recent_ep_parts[:6]
+                    )
+                    allow_lost_recovery_turn = bool(lost_repost_sids) and (
+                        last_part_num is None or last_part_num >= 2
                     )
                     target_bg_mode = get_target_bg_mode_for_hour()
 
@@ -3007,15 +3189,16 @@ class TikTokAutoPoster:
                     if min_pending_part_num < 8:
                         recent_cooldown_eps.add(10)
 
-                    # KHÓA ĐỘC QUYỀN 100% CẤU TRÚC MỚI v5 (bongcuc_v5_s) & DỌN SLOT LỆCH CẤP ĐỘ PHẦN:
-                    # Xóa ngay mọi file bản cũ (bongcuc_v2/v3/v4) hoặc file vượt cấp độ phần
+                    # KHÓA ĐỘC QUYỀN 100% CẤU TRÚC MỚI v6 (bongcuc_v6_s: có giữ "BC SỐ" trong khung kể chuyện) & DỌN SLOT CŨ:
                     lowest_part_by_ep: Dict[int, Tuple[int, Path, Optional[str]]] = {}
                     for c_file in valid_candidates:
                         ep_p = parse_bongcuc_ep_and_part(c_file.name)
-                        if ep_p and "bongcuc_v5_s" in c_file.name.lower():
+                        if ep_p and "bongcuc_v6_s" in c_file.name.lower():
                             ep_no, pt_no = ep_p
-                            if (ep_no == 10 and min_pending_part_num < 8) or (
-                                pt_no >= 2 and pt_no > min_pending_part_num + 1
+                            sid_check = make_bongcuc_story_id(ep_no, pt_no)
+                            if sid_check not in lost_repost_sids and (
+                                (ep_no == 10 and min_pending_part_num < 8)
+                                or (pt_no >= 2 and pt_no > min_pending_part_num + 1)
                             ):
                                 c_file.unlink(missing_ok=True)
                                 continue
@@ -3033,23 +3216,26 @@ class TikTokAutoPoster:
                             c_file.unlink(missing_ok=True)
 
                     # Xếp hạng ứng viên trong ready/:
-                    # 1. Khớp đúng chế độ Background theo khung giờ (Ban đêm: night_mukbang | Ban ngày: day_aesthetic)
-                    # 2. Khớp đúng cấp độ Phần nhỏ nhất đang chờ (Phần 2 trước -> Phần 3 -> Phần 4...)
-                    # 3. Không nằm trong nhóm 4 tập vừa đăng gần nhất (recent_cooldown_eps)
-                    # 4. Ưu tiên tập đang nhiều view trên kênh TikTok (Số 21, 120, 119, 70, 39, 60, 35...)
-                    exact_bg_and_part_cands: List[Tuple[Tuple[int, int, int], Path]] = []
-                    exact_bg_only_cands: List[Tuple[Tuple[int, int, int], Path]] = []
+                    exact_bg_and_part_cands: List[Tuple[Tuple[int, int, int, int], Path]] = []
+                    exact_bg_only_cands: List[Tuple[Tuple[int, int, int, int], Path]] = []
                     for ep_no, (pt_no, c_file, bg_m) in lowest_part_by_ep.items():
                         if ep_no in recent_cooldown_eps:
                             continue
+                        sid_cand = make_bongcuc_story_id(ep_no, pt_no)
+                        is_lost_rec = sid_cand in lost_repost_sids
                         is_p1 = pt_no == 1
                         v_cnt = cat_views.get(ep_no, 0)
                         prio_w = high_view_channel_prio.get(ep_no, 0)
-                        sort_key = (pt_no, -prio_w, -v_cnt)
-                        if bg_m == target_bg_mode and is_p1 == want_part1:
-                            if want_part1 or pt_no <= min_pending_part_num:
-                                exact_bg_and_part_cands.append((sort_key, c_file))
-                        elif bg_m == target_bg_mode and not is_p1 and pt_no <= min_pending_part_num:
+                        lost_rank = 0 if (is_lost_rec and allow_lost_recovery_turn) else 1
+                        sort_key = (lost_rank, pt_no, -prio_w, -v_cnt)
+                        if bg_m == target_bg_mode and (
+                            (is_lost_rec and allow_lost_recovery_turn)
+                            or (is_p1 == want_part1 and (want_part1 or pt_no <= min_pending_part_num))
+                        ):
+                            exact_bg_and_part_cands.append((sort_key, c_file))
+                        elif bg_m == target_bg_mode and (
+                            is_lost_rec or (not is_p1 and pt_no <= min_pending_part_num)
+                        ):
                             exact_bg_only_cands.append((sort_key, c_file))
 
                     exact_bg_and_part_cands.sort(key=lambda x: x[0])
@@ -3058,12 +3244,15 @@ class TikTokAutoPoster:
                     if exact_bg_and_part_cands:
                         target_video = exact_bg_and_part_cands[0][1]
                     else:
-                        # Tự động cắt ngay 1 video đúng chuẩn (đồng bộ cấp độ Phần + ưu tiên tập nhiều view + target_bg_mode)
+                        # Tự động cắt ngay 1 video đúng chuẩn v6 (khôi phục từ từ video đã mất + đồng bộ cấp độ Phần)
                         desired_specs = [
                             p
                             for p in queue
-                            if (int(p["part_num"]) == 1) == want_part1
-                            and int(p["ep_num"]) not in recent_cooldown_eps
+                            if int(p["ep_num"]) not in recent_cooldown_eps
+                            and (
+                                (bool(p.get("is_lost_recovery")) and allow_lost_recovery_turn)
+                                or ((int(p["part_num"]) == 1) == want_part1)
+                            )
                         ]
                         if not desired_specs:
                             desired_specs = [
@@ -3075,9 +3264,9 @@ class TikTokAutoPoster:
                             chosen_spec = dict(desired_specs[0])
                             chosen_spec["bg_mode"] = target_bg_mode
                             logger.info(
-                                f"[{ch_folder}] [On-Demand Render] Đang xuất ngay Bông Cúc Số {chosen_spec['ep_num']} "
+                                f"[{ch_folder}] [On-Demand Render v6] Đang xuất ngay BC Số {chosen_spec['ep_num']} "
                                 f"Phần {chosen_spec['part_num']}/{chosen_spec['total_parts']} "
-                                f"(views={chosen_spec.get('view_count', 0):,}, background={target_bg_mode}) cho khung giờ hiện tại..."
+                                f"(lost_recovery={bool(chosen_spec.get('is_lost_recovery'))}, views={chosen_spec.get('view_count', 0):,}, background={target_bg_mode})..."
                             )
                             rendered = splitter.render_single_part(
                                 part_spec=chosen_spec,
@@ -3118,8 +3307,8 @@ class TikTokAutoPoster:
                     if target_video and target_video.exists():
                         sel_ep = parse_bongcuc_ep_and_part(target_video.name) or (0, 0)
                         logger.info(
-                            f"[{ch_folder}] [Level-Synchronized High-View + Day/Night Background Guard] "
-                            f"Chọn đăng: Bông Cúc Số {sel_ep[0]} Phần {sel_ep[1]} "
+                            f"[{ch_folder}] [Gradual Lost-Video Recovery + Level-Synchronized v6 Guard] "
+                            f"Chọn đăng: BC Số {sel_ep[0]} Phần {sel_ep[1]} "
                             f"(views={cat_views.get(sel_ep[0], 0):,}, min_pending_part={min_pending_part_num}, bg={target_bg_mode} | bài trước: Số {last_ep_num} Phần {last_part_num})"
                         )
                 except Exception as int_exc:
