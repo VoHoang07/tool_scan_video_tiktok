@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-10 09:30:11",
+    "timestamp": "2026-11-10 09:33:13",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261108_142236_tiktok_story_7701249524500532481.mp4",
-      "caption": "🐉 Nếu chúng ta. Có thể sóng sót mà ra khỏi đây — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuongtiktok #tiktokvn",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 159.4,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-10 09:33:13",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 159.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-10 09:30:11",
       "machine_arch": "x86_64",
@@ -339,22 +353,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 162.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 08:20:47",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261109_161148_tiktok_story_7592928670042426632.mp4",
-        "caption": "👶 [Nuôi Con Thông Minh] Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
-        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
