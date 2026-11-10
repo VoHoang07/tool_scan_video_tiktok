@@ -338,7 +338,8 @@
     "7698329630331178258",
     "990014502",
     "7691688086253636884",
-    "7691555785263893768"
+    "7691555785263893768",
+    "7209821802019769627"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -574,7 +575,8 @@
     "7698329657476664065",
     "bongcuc_yt_e9oSX2s0ARs_p2",
     "7691688171054254854",
-    "7646819409187686416"
+    "7646819409187686416",
+    "7209821892532898587"
   ],
   "items": [
     {
@@ -3046,6 +3048,16 @@
       "source_url": "https://www.tiktok.com/@thuanphatmobilehcm/video/7691555785263893768",
       "output_filename": "phu_kien_tien_ich/ready/20261110_093920_tiktok_story_7691555785263893768.mp4",
       "crawled_at": "2026-11-10T09:39:26"
+    },
+    {
+      "channel": "meo_vat_gia_dinh",
+      "video_id": "7209821802019769627",
+      "sound_id": "7209821892532898587",
+      "platform": "tiktok",
+      "genre": "meovatcuocsong",
+      "source_url": "https://www.tiktok.com/@zhangvand1m/video/7209821802019769627",
+      "output_filename": "meo_vat_gia_dinh/ready/20261110_115532_tiktok_story_7209821802019769627.mp4",
+      "crawled_at": "2026-11-10T11:58:48"
     }
   ]
 }
