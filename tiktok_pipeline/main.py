@@ -553,6 +553,99 @@ def run_crawl_story_mode(
                     continue
             return completed_bongcuc
 
+        # Kênh 1 (video_AI_hay): Cắt tự động thể loại Hoạt hình Gấu Trúc Đen từ YouTube @GauSoHaiTV
+        # (Xóa sạch 100% khung viền/logo/tên nguồn + Cắt nhiều phần và đăng xen kẽ đa tập, KHÔNG so le 1:1)
+        if channel_folder == "video_AI_hay":
+            from .gausohai_splitter import (
+                GauTrucDenYouTubeSplitter,
+                parse_gausohai_ep_and_part,
+            )
+
+            crawler.auto_sync_posted_videos()
+            gsh_splitter = GauTrucDenYouTubeSplitter(project_root=project_root)
+            posted_ids, _ = crawler._collect_all_known_posted_story_ids_and_files()
+            known_ids = set(posted_ids)
+            ready_ep_nums = set()
+            for sub in ("ready", "posted"):
+                sub_dir = base_output_dir / channel_folder / sub
+                if sub_dir.exists():
+                    for mp4 in sub_dir.glob("*.mp4"):
+                        m_sid = re.search(
+                            r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+                            mp4.stem,
+                            re.IGNORECASE,
+                        )
+                        if m_sid:
+                            known_ids.add(re.split(r"_(?:bongcuc|gautrucden)_", m_sid.group(1))[0])
+                        ep_p = parse_gausohai_ep_and_part(mp4.name)
+                        if ep_p and sub == "ready":
+                            ready_ep_nums.add(ep_p[0])
+
+            queue = gsh_splitter.build_interleaved_queue(known_ids)
+            logger.info(
+                f"=== [Gấu Trúc Đen Splitter -> output/{channel_folder}/ready/] "
+                f"Hàng đợi xen kẽ đa tập còn {len(queue)} phần | Cần xuất: {limit} phần (Tập đang có trong ready/: {sorted(ready_ep_nums)}) ==="
+            )
+
+            preferred_specs = [p for p in queue if int(p["ep_num"]) not in ready_ep_nums]
+            fallback_specs = [p for p in queue if int(p["ep_num"]) in ready_ep_nums]
+            ordered_specs = preferred_specs + fallback_specs
+
+            completed_gausohai: List[Dict[str, Any]] = []
+            used_eps_in_batch = set(ready_ep_nums)
+            attempted_gsh = 0
+            max_gsh_attempts = max(limit + 1, 2)
+            for part_spec in ordered_specs:
+                if len(completed_gausohai) >= limit or attempted_gsh >= max_gsh_attempts:
+                    break
+                ep_no = int(part_spec["ep_num"])
+                if ep_no in used_eps_in_batch and any(
+                    int(x["ep_num"]) not in used_eps_in_batch for x in ordered_specs
+                ):
+                    continue
+                attempted_gsh += 1
+                try:
+                    start_t = time.time()
+                    summary = gsh_splitter.render_single_part(
+                        part_spec=part_spec,
+                        target_ready_dir=target_output_dir,
+                        seq_offset_seconds=len(completed_gausohai) * 2,
+                    )
+                    summary["elapsed_seconds"] = round(time.time() - start_t, 2)
+                    StoryAudioCrawler.clear_macl_xattr(Path(summary["final_video"]))
+                    crawler.save_to_history(
+                        video_id=summary["video_id"],
+                        sound_id=summary["sound_id"],
+                        platform="tiktok",
+                        genre=effective_genre,
+                        source_url=summary["source_url"],
+                        output_filename=summary["filename"],
+                        channel=channel_folder,
+                    )
+                    crawler.append_to_master_csv(
+                        filename=summary["filename"],
+                        source_url=summary["source_url"],
+                        caption=summary["caption"],
+                        hashtags=summary["hashtags"],
+                        status="READY",
+                        channel=channel_folder,
+                        posted_at="",
+                    )
+                    completed_gausohai.append(summary)
+                    used_eps_in_batch.add(ep_no)
+                    known_ids.add(str(summary["video_id"]))
+                    logger.info(
+                        f"==> [Gấu Trúc Đen Đa Tập] Đã hoàn thành {len(completed_gausohai)}/{limit} phần cho [{channel_folder}]: "
+                        f"Tập {part_spec['ep_num']} - Phần {part_spec['part_num']}/{part_spec['total_parts']} ({summary['final_video']})"
+                    )
+                except Exception as gsh_exc:
+                    logger.error(
+                        f"[GauTrucDenSplitter] Lỗi khi cắt Tập {part_spec.get('ep_num')} Phần {part_spec.get('part_num')}: {gsh_exc}",
+                        exc_info=True,
+                    )
+                    continue
+            return completed_gausohai
+
         profile, candidates = crawler.discover_for_channel(
             channel_arg=channel,
             platform_override=platform,
@@ -987,6 +1080,7 @@ def run_continuous_mode(
             try:
                 import importlib
                 from . import bongcuc_splitter as _bc_mod
+                from . import gausohai_splitter as _gsh_mod
                 from . import stream1_antidetect_skill as _s1_skill_mod
                 from . import master_switch_controller as _ms_mod
                 from . import crawler as _cr_mod
@@ -995,6 +1089,7 @@ def run_continuous_mode(
                 from . import auto_poster as _ap_mod
 
                 importlib.reload(_bc_mod)
+                importlib.reload(_gsh_mod)
                 importlib.reload(_s1_skill_mod)
                 importlib.reload(_ms_mod)
                 importlib.reload(_cr_mod)

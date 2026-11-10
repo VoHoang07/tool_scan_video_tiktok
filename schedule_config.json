@@ -180,12 +180,12 @@
     "phu_kien_tien_ich": ""
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_all10_20261111_0047",
+    "trigger_id": "post_now_audio_gautrucden_20261111_0246",
     "target_arch": "x86_64",
     "action": "upload",
     "ensure_public_channels": "",
-    "channel": "video_AI_hay,baby_AI,tu_chan_gioi,phu_nu_khi_chat,meo_vat_gia_dinh,nuoi_con_eq,phu_kien_tien_ich,suc_khoe_duong_sinh,an_vat_moi_ngay,audio_dem_khuyen",
-    "force": false,
+    "channel": "audio_dem_khuyen,video_AI_hay",
+    "force": true,
     "skip_warmup": true,
     "auto_pause_master_after": false
   },

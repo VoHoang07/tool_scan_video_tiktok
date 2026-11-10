@@ -463,6 +463,7 @@ class BongCucYouTubeSplitter:
                 "quiet": True,
                 "no_warnings": True,
                 "skip_download": True,
+                "ignore_no_formats_error": True,
                 "extractor_args": {"youtube": {"player_client": ["android", "web"]}},
             }
             with yt_dlp.YoutubeDL(ydl_opts) as ydl:
@@ -808,7 +809,7 @@ class BongCucYouTubeSplitter:
         fetched_online_count = 0
 
         for ep_info in active_cont_eps:
-            allow_net = fetched_online_count < 8 and not ep_info.get("duration")
+            allow_net = False
             plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
             if allow_net:
                 fetched_online_count += 1
@@ -851,7 +852,7 @@ class BongCucYouTubeSplitter:
         )
 
         for ep_info in brand_new_eps:
-            allow_net = fetched_online_count < 14 and not ep_info.get("duration")
+            allow_net = False
             plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
             if allow_net:
                 fetched_online_count += 1
@@ -1518,16 +1519,16 @@ class BongCucYouTubeSplitter:
         audio_br = "192k" if (seed_val % 2 == 0) else "160k"
         creation_iso = datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S.000000Z")
 
-        # Cấu trúc hình ảnh mới v5: Midnight Cinema Background + Khung Mukbang viền Hổ Phách + Thanh tiến trình động
+        # Cấu trúc hình ảnh mới v6: Midnight Cinema Background + Khung Mukbang viền Hổ Phách + Thanh tiến trình động
         visual_chain = (
             f"[1:v]setpts=PTS/{bg_speed},fps=25,trim=duration={target_out_dur:.2f},setpts=PTS-STARTPTS,split=2[bg][fg];"
-            "[bg]scale=360:640:force_original_aspect_ratio=increase,crop=360:640,hflip,"
-            "boxblur=24:4,colorbalance=rs=0.06:gs=-0.01:bs=-0.08,"
+            "[bg]scale=240:426:force_original_aspect_ratio=increase,crop=240:426,hflip,"
+            "boxblur=12:2,colorbalance=rs=0.06:gs=-0.01:bs=-0.08,"
             "eq=brightness=-0.22:saturation=0.88:contrast=1.08,vignette=PI/5,"
-            "scale=1080:1920:flags=bilinear[bg_out];"
+            "scale=1080:1920:flags=fast_bilinear[bg_out];"
             f"[fg]crop=iw*0.95:ih*0.98:(iw-iw*0.95)/2:ih*{crop_y_shift},hflip,"
+            "scale=w=1036:h=696:force_original_aspect_ratio=decrease:flags=bicubic,"
             "eq=contrast=1.05:brightness=0.015:saturation=1.09:gamma=1.02,"
-            "unsharp=5:5:0.70:3:3:0.0,scale=w=1036:h=696:force_original_aspect_ratio=decrease:flags=lanczos,"
             "pad=w=iw+12:h=ih+12:x=6:y=6:color=0xFFCA28@0.85,"
             f"drawbox=x=6:y=ih-12:w='(iw-12)*(t/{target_out_dur:.2f})':h=6:color=0xFF6F00@0.95:t=fill[fg_out];"
             "[bg_out][fg_out]overlay=(W-w)/2:(H-h)/2+32[v1];"
@@ -1597,7 +1598,7 @@ class BongCucYouTubeSplitter:
                 "-c:v",
                 "libx264",
                 "-preset",
-                "veryfast",
+                "superfast",
                 "-crf",
                 str(crf_val),
                 "-g",
@@ -1635,11 +1636,11 @@ class BongCucYouTubeSplitter:
         )
 
         logger.info(
-            f"[BongCucSplitter v5] Đang cắt & dựng cấu trúc mới [{eff_bg_mode} -> {bg_mp4.name} @{bg_start_sec:.0f}s] "
+            f"[BongCucSplitter v6] Đang cắt & dựng cấu trúc mới [{eff_bg_mode} -> {bg_mp4.name} @{bg_start_sec:.0f}s] "
             f"(speed={speed_factor}x, pitch={pitch_factor}x, chèn dẫn chuyện @{split_sec:.0f}s={bool(interj_path)}, GOP={gop_val}): "
             f"{title} [Phần {part_num}/{total_parts} | views={part_spec.get('view_count', 0):,}]..."
         )
-        res = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=360)
+        res = subprocess.run(cmd, capture_output=True, text=True, check=False, timeout=600)
         if res.returncode != 0 or not tmp_render.exists() or tmp_render.stat().st_size < 500_000:
             raise RuntimeError(
                 f"Lỗi ffmpeg khi dựng v5 {title} Phần {part_num}: {res.stderr[-400:]}"

@@ -960,7 +960,7 @@ class StoryAudioCrawler:
                 re.IGNORECASE,
             )
             if m:
-                return m.group(1).split("_bongcuc_")[0]
+                return re.split(r"_(?:bongcuc|gautrucden)_", m.group(1))[0]
             m2 = re.search(r"/(?:video|reel|shorts)/([A-Za-z0-9_-]+)", str(text or ""))
             return m2.group(1) if m2 else ""
 
@@ -1083,13 +1083,15 @@ class StoryAudioCrawler:
                         for mp4 in sub_dir.glob("*.mp4"):
                             if ch_folder == "audio_dem_khuyen" and "bongcuc_v6_s" not in mp4.name.lower():
                                 continue
+                            if ch_folder == "video_AI_hay" and "gautrucden_v1_s" not in mp4.name.lower():
+                                continue
                             m = re.search(
                                 r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
                                 mp4.stem,
                                 re.IGNORECASE,
                             )
                             if m:
-                                sid_val = m.group(1).split("_bongcuc_")[0]
+                                sid_val = re.split(r"_(?:bongcuc|gautrucden)_", m.group(1))[0]
                                 if sid_val and sid_val not in existing_vids:
                                     data["video_ids"].append(sid_val)
                                     existing_vids.add(sid_val)
@@ -2963,7 +2965,7 @@ class StoryAudioCrawler:
                     re.IGNORECASE,
                 )
                 plat = m_sid.group(1).lower() if m_sid else ""
-                sid = m_sid.group(2).split("_bongcuc_")[0] if m_sid else ""
+                sid = re.split(r"_(?:bongcuc|gautrucden)_", m_sid.group(2))[0] if m_sid else ""
                 s_url, cap = csv_meta_by_name.get(fname, ("", ""))
 
                 reason = ""
@@ -2979,6 +2981,8 @@ class StoryAudioCrawler:
                     or sid in ("7581027567194298984", "ChBS_r_mC5Y")
                 ):
                     reason = "video baby_AI lệch chủ đề (Shorts/Reels ngoài hoặc video iPhone Live Photo)"
+                elif ch_folder == "video_AI_hay" and "gautrucden_v1_s" not in fname.lower():
+                    reason = "video video_AI_hay bản cũ trước khi chuyển sang cấu trúc cắt phần Gấu Trúc Đen (gautrucden_v1_s)"
                 elif ch_folder in ("baby_AI", "video_AI_hay") and plat == "tiktok" and re.match(r"^2026102[0-7]_", fname):
                     reason = f"video TikTok tiếng Anh cũ trước 28/10 trong {ch_folder}"
                 elif ch_folder == "baby_AI" and plat == "douyin" and re.match(r"^2026102[0-7]_", fname) and sid not in valid_baby_ai_douyin_seeds:
@@ -3082,7 +3086,7 @@ class StoryAudioCrawler:
                     mp4.stem,
                     re.IGNORECASE,
                 )
-                sid = m_sid.group(1).split("_bongcuc_")[0] if m_sid else ""
+                sid = re.split(r"_(?:bongcuc|gautrucden)_", m_sid.group(1))[0] if m_sid else ""
 
                 # 1. Chặn đứng đăng trùng: nếu video_id hoặc filename đã nằm trong danh sách ĐÃ ĐĂNG
                 if mp4.name in posted_filenames or (sid and sid in posted_ids):
@@ -3228,13 +3232,50 @@ class StoryAudioCrawler:
         except Exception:
             pass
 
+        try:
+            from .gausohai_splitter import (
+                GAUSOHAI_DEFAULT_CATALOG,
+                GauTrucDenYouTubeSplitter,
+                parse_gausohai_ep_and_part,
+            )
+
+            gsh_ep_part = parse_gausohai_ep_and_part(stem)
+            if gsh_ep_part and ("gautrucden_" in stem.lower() or "8800" in stem):
+                ep_num, part_num = gsh_ep_part
+                gsh_splitter = GauTrucDenYouTubeSplitter(project_root=self.project_root)
+                full_cat = gsh_splitter.get_full_catalog() or GAUSOHAI_DEFAULT_CATALOG
+                ep_info = next(
+                    (e for e in full_cat if int(e["ep_num"]) == ep_num),
+                    None,
+                )
+                if ep_info:
+                    plan = gsh_splitter.compute_episode_parts_plan(ep_info)
+                    part_spec = next(
+                        (p for p in plan if int(p["part_num"]) == part_num),
+                        None,
+                    )
+                    if not part_spec:
+                        part_spec = {
+                            "ep_num": ep_num,
+                            "part_num": part_num,
+                            "total_parts": max(part_num, 6),
+                            "is_final_part": False,
+                            "yt_id": ep_info["yt_id"],
+                            "source_url": f"https://www.youtube.com/watch?v={ep_info['yt_id']}",
+                            "title": ep_info["title"],
+                        }
+                    cap, tags = gsh_splitter.build_part_caption_and_hashtags(part_spec)
+                    return cap, tags, str(part_spec["source_url"])
+        except Exception:
+            pass
+
         m = re.search(
             r"(tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
             stem,
             re.IGNORECASE,
         )
         platform = (m.group(1).lower() if m else "tiktok")
-        video_id = (m.group(2).split("_bongcuc_")[0] if m else "")
+        video_id = (re.split(r"_(?:bongcuc|gautrucden)_", m.group(2))[0] if m else "")
         if not video_id and source_url:
             m_url = re.search(r"/(?:video|reel|shorts)/([A-Za-z0-9_-]+)", source_url)
             if m_url:
@@ -3557,6 +3598,14 @@ class StoryAudioCrawler:
                     "bông cúc" in (cap or "").lower()
                     or "bc số" in (cap or "").lower()
                     or "bongcuc" in (tags or "").lower()
+                    or "phần " not in (cap or "").lower()
+                )
+            ) or (
+                ch == "video_AI_hay"
+                and ("gautrucden_" in basename.lower() or "8800" in basename)
+                and (
+                    "gấu sợ hãi" in (cap or "").lower()
+                    or "gausohai" in (tags or "").lower()
                     or "phần " not in (cap or "").lower()
                 )
             )
@@ -3948,6 +3997,7 @@ def _hot_patch_live_crawler() -> None:
     reloaded_classes: Dict[str, Any] = {"StoryAudioCrawler": StoryAudioCrawler}
     sub_specs = [
         ("tiktok_pipeline.bongcuc_splitter", "BongCucYouTubeSplitter"),
+        ("tiktok_pipeline.gausohai_splitter", "GauTrucDenYouTubeSplitter"),
         ("tiktok_pipeline.growth_24h_filter", "TikTok24hFilterEngine"),
         ("tiktok_pipeline.transcriber", "AudioTranscriber"),
         ("tiktok_pipeline.translator", "SubtitleTranslator"),
@@ -4091,6 +4141,81 @@ def _hot_patch_live_crawler() -> None:
                                     hashtags=summ["hashtags"],
                                     status="READY",
                                     channel="audio_dem_khuyen",
+                                    posted_at="",
+                                )
+                                done_list.append(summ)
+                                used_eps.add(ep_n)
+                                k_ids.add(str(summ["video_id"]))
+                            return done_list
+                        if prof.get("folder_name") == "video_AI_hay":
+                            from .gausohai_splitter import (
+                                GauTrucDenYouTubeSplitter,
+                                parse_gausohai_ep_and_part,
+                            )
+
+                            lim = int(kwargs.get("limit") or (args[2] if len(args) >= 3 else 1))
+                            proj_root = Path(__file__).resolve().parent.parent
+                            out_root = Path(kwargs.get("output_dir") or (proj_root / "output"))
+                            ready_dir = out_root / "video_AI_hay" / "ready"
+                            ready_dir.mkdir(parents=True, exist_ok=True)
+                            cr = StoryAudioCrawler(project_root=proj_root)
+                            cr.auto_sync_posted_videos()
+                            gsh_splitter = GauTrucDenYouTubeSplitter(project_root=proj_root)
+                            p_ids, _ = cr._collect_all_known_posted_story_ids_and_files()
+                            k_ids = set(p_ids)
+                            r_eps = set()
+                            for sub in ("ready", "posted"):
+                                s_dir = out_root / "video_AI_hay" / sub
+                                if s_dir.exists():
+                                    for mp4 in s_dir.glob("*.mp4"):
+                                        m_s = re.search(
+                                            r"(?:tiktok|douyin|youtube_shorts|facebook_reels|instagram_reels|bilibili|xiaohongshu)_story_([A-Za-z0-9_-]+)",
+                                            mp4.stem,
+                                            re.IGNORECASE,
+                                        )
+                                        if m_s:
+                                            k_ids.add(re.split(r"_(?:bongcuc|gautrucden)_", m_s.group(1))[0])
+                                        ep_p = parse_gausohai_ep_and_part(mp4.name)
+                                        if ep_p and sub == "ready":
+                                            r_eps.add(ep_p[0])
+                            q = gsh_splitter.build_interleaved_queue(k_ids)
+                            pref = [p for p in q if int(p["ep_num"]) not in r_eps]
+                            fall = [p for p in q if int(p["ep_num"]) in r_eps]
+                            ord_specs = pref + fall
+                            done_list = []
+                            used_eps = set(r_eps)
+                            for p_spec in ord_specs:
+                                if len(done_list) >= lim:
+                                    break
+                                ep_n = int(p_spec["ep_num"])
+                                if ep_n in used_eps and any(
+                                    int(x["ep_num"]) not in used_eps for x in ord_specs
+                                ):
+                                    continue
+                                st_t = time.time()
+                                summ = gsh_splitter.render_single_part(
+                                    part_spec=p_spec,
+                                    target_ready_dir=ready_dir,
+                                    seq_offset_seconds=len(done_list) * 2,
+                                )
+                                summ["elapsed_seconds"] = round(time.time() - st_t, 2)
+                                StoryAudioCrawler.clear_macl_xattr(Path(summ["final_video"]))
+                                cr.save_to_history(
+                                    video_id=summ["video_id"],
+                                    sound_id=summ["sound_id"],
+                                    platform="tiktok",
+                                    genre="channel_1_ai_trending",
+                                    source_url=summ["source_url"],
+                                    output_filename=summ["filename"],
+                                    channel="video_AI_hay",
+                                )
+                                cr.append_to_master_csv(
+                                    filename=summ["filename"],
+                                    source_url=summ["source_url"],
+                                    caption=summ["caption"],
+                                    hashtags=summ["hashtags"],
+                                    status="READY",
+                                    channel="video_AI_hay",
                                     posted_at="",
                                 )
                                 done_list.append(summ)

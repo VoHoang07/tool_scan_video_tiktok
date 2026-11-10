@@ -2906,7 +2906,7 @@ class TikTokAutoPoster:
             video_path.stem,
             re.IGNORECASE,
         )
-        vid_id = m_id.group(1).split("_bongcuc_")[0] if m_id else ""
+        vid_id = re.split(r"_(?:bongcuc|gautrucden)_", m_id.group(1))[0] if m_id else ""
         fp = self._quick_video_fingerprint(video_path) if video_path.exists() else ""
 
         sids = set(str(x) for x in (data.get("posted_story_ids") or []) if x)
@@ -2982,9 +2982,8 @@ class TikTokAutoPoster:
 
         ready_dir = self.project_root / "output" / ch_folder / "ready"
         posted_dir = self.project_root / "output" / ch_folder / "posted"
+        ready_dir.mkdir(parents=True, exist_ok=True)
         posted_dir.mkdir(parents=True, exist_ok=True)
-        if not ready_dir.exists():
-            return None
 
         posted_ids, posted_filenames = self.crawler._collect_all_known_posted_story_ids_and_files()
         lost_repost_sids: Set[str] = set()
@@ -3041,7 +3040,7 @@ class TikTokAutoPoster:
                 cand.stem,
                 re.IGNORECASE,
             )
-            cand_id = m_cand.group(1).split("_bongcuc_")[0] if m_cand else ""
+            cand_id = re.split(r"_(?:bongcuc|gautrucden)_", m_cand.group(1))[0] if m_cand else ""
             cand_fp = self._quick_video_fingerprint(cand)
             cand_dur, cand_bits = self._audio_story_fingerprint(cand)
 
@@ -3091,10 +3090,10 @@ class TikTokAutoPoster:
                 continue
 
             valid_candidates.append(cand)
-            if ch_folder != "audio_dem_khuyen":
+            if ch_folder not in ("audio_dem_khuyen", "video_AI_hay"):
                 break
 
-        if valid_candidates or ch_folder == "audio_dem_khuyen":
+        if valid_candidates or ch_folder in ("audio_dem_khuyen", "video_AI_hay"):
             if ch_folder == "audio_dem_khuyen":
                 try:
                     from .bongcuc_splitter import (
@@ -3284,11 +3283,13 @@ class TikTokAutoPoster:
                                 f"Phần {chosen_spec['part_num']}/{chosen_spec['total_parts']} "
                                 f"(lost_recovery={bool(chosen_spec.get('is_lost_recovery'))}, views={chosen_spec.get('view_count', 0):,}, background={target_bg_mode})..."
                             )
+                            self._refresh_browser_process_lock()
                             rendered = splitter.render_single_part(
                                 part_spec=chosen_spec,
                                 target_ready_dir=ready_dir,
                                 bg_mode=target_bg_mode,
                             )
+                            self._refresh_browser_process_lock()
                             try:
                                 from .crawler import StoryAudioCrawler
 
@@ -3330,6 +3331,199 @@ class TikTokAutoPoster:
                 except Exception as int_exc:
                     logger.warning(f"[{ch_folder}] Lỗi Interleaved Guard: {int_exc}")
                     target_video = None
+            elif ch_folder == "video_AI_hay":
+                try:
+                    from .gausohai_splitter import (
+                        GauTrucDenYouTubeSplitter,
+                        make_gausohai_story_id,
+                        parse_gausohai_ep_and_part,
+                    )
+
+                    # Thu thập chuỗi các bài vừa đăng gần nhất trên kênh video_AI_hay
+                    # để khóa Cooldown 3 bài liên tiếp không lặp lại cùng 1 tập (chặn đứng so le 1:1 A-B-A-B)
+                    # và duy trì sóng 4 Phần Tiếp Theo : 1 Tập Mới Phần 1
+                    recent_gsh_parts: List[Tuple[int, int]] = []
+
+                    def _append_recent_gsh(ep_p_val: Optional[Tuple[int, int]]) -> None:
+                        if ep_p_val and (not recent_gsh_parts or recent_gsh_parts[-1] != ep_p_val):
+                            recent_gsh_parts.append(ep_p_val)
+
+                    if reg_path.exists():
+                        try:
+                            reg_d = json.loads(reg_path.read_text(encoding="utf-8"))
+                            for h_item in reg_d.get("history") or []:
+                                if isinstance(h_item, dict) and h_item.get("channel") == "video_AI_hay":
+                                    _append_recent_gsh(
+                                        parse_gausohai_ep_and_part(
+                                            f"{h_item.get('filename', '')} {h_item.get('story_id', '')} {h_item.get('caption', '')}"
+                                        )
+                                    )
+                                    if len(recent_gsh_parts) >= 10:
+                                        break
+                        except Exception:
+                            pass
+
+                    rep_p = self.project_root / "remote_telemetry" / "intel_status_report.json"
+                    if rep_p.exists() and len(recent_gsh_parts) < 10:
+                        try:
+                            rep_d = json.loads(rep_p.read_text(encoding="utf-8"))
+                            for ev in rep_d.get("recent_events") or []:
+                                if (
+                                    isinstance(ev, dict)
+                                    and ev.get("event_type") == "upload"
+                                    and ev.get("channel") == "video_AI_hay"
+                                ):
+                                    det = ev.get("details") or {}
+                                    _append_recent_gsh(
+                                        parse_gausohai_ep_and_part(
+                                            f"{det.get('video_file', '')} {det.get('caption', '')}"
+                                        )
+                                    )
+                                    if len(recent_gsh_parts) >= 10:
+                                        break
+                        except Exception:
+                            pass
+
+                    if len(recent_gsh_parts) < 10:
+                        posted_mp4s = sorted(
+                            (p for p in posted_dir.glob("*.mp4") if p.is_file()),
+                            key=lambda f: f.stat().st_mtime,
+                            reverse=True,
+                        )
+                        for p_f in posted_mp4s:
+                            _append_recent_gsh(parse_gausohai_ep_and_part(p_f.name))
+                            if len(recent_gsh_parts) >= 10:
+                                break
+
+                    last_ep_num = recent_gsh_parts[0][0] if recent_gsh_parts else None
+                    last_part_num = recent_gsh_parts[0][1] if recent_gsh_parts else None
+                    # Cooldown 3 bài gần nhất để KHÔNG BAO GIỜ bị so le 1:1 (A -> B -> A -> B)
+                    recent_cooldown_eps: Set[int] = {ep for ep, _ in recent_gsh_parts[:3]}
+
+                    opened_gsh_eps = {
+                        int(sid[4:7])
+                        for sid in posted_ids
+                        if len(sid) == 9 and sid.startswith("8800") and sid.isdigit()
+                    }
+                    # Mở sóng 4 tập đầu tiên, sau đó cứ 4 phần tiếp theo mới mở 1 Tập Mới Phần 1 (tỷ lệ 4:1, KHÔNG so le 1:1)
+                    want_part1 = len(opened_gsh_eps) < 4 or (
+                        len(recent_gsh_parts) >= 4
+                        and all(int(pt) >= 2 for _, pt in recent_gsh_parts[:4])
+                    )
+
+                    gsh_splitter = GauTrucDenYouTubeSplitter(project_root=self.project_root)
+                    cat_views = {
+                        int(e.get("ep_num") or 0): int(e.get("view_count") or 0)
+                        for e in gsh_splitter.get_full_catalog()
+                    }
+                    queue = gsh_splitter.build_interleaved_queue(posted_ids)
+                    cont_queue_specs = [
+                        p
+                        for p in queue
+                        if int(p["part_num"]) >= 2 and int(p["ep_num"]) not in recent_cooldown_eps
+                    ]
+                    min_pending_part_num = min(
+                        (int(p["part_num"]) for p in cont_queue_specs), default=2
+                    )
+
+                    # Chỉ giữ chuẩn gautrucden_v1_s trong ready/ và chọn phần nhỏ nhất chưa đăng của mỗi tập
+                    lowest_part_by_ep_gsh: Dict[int, Tuple[int, Path]] = {}
+                    for c_file in valid_candidates:
+                        ep_p = parse_gausohai_ep_and_part(c_file.name)
+                        if ep_p and "gautrucden_v1_s" in c_file.name.lower():
+                            ep_no, pt_no = ep_p
+                            if (
+                                ep_no not in lowest_part_by_ep_gsh
+                                or pt_no < lowest_part_by_ep_gsh[ep_no][0]
+                            ):
+                                lowest_part_by_ep_gsh[ep_no] = (pt_no, c_file)
+                        else:
+                            c_file.unlink(missing_ok=True)
+
+                    exact_wave_cands: List[Tuple[Tuple[int, int], Path]] = []
+                    fallback_wave_cands: List[Tuple[Tuple[int, int], Path]] = []
+                    for ep_no, (pt_no, c_file) in lowest_part_by_ep_gsh.items():
+                        if ep_no in recent_cooldown_eps:
+                            continue
+                        is_p1 = pt_no == 1
+                        v_cnt = cat_views.get(ep_no, 0)
+                        sort_key = (pt_no, -v_cnt)
+                        if is_p1 == want_part1 and (want_part1 or pt_no <= min_pending_part_num + 1):
+                            exact_wave_cands.append((sort_key, c_file))
+                        else:
+                            fallback_wave_cands.append((sort_key, c_file))
+
+                    exact_wave_cands.sort(key=lambda x: x[0])
+                    fallback_wave_cands.sort(key=lambda x: x[0])
+
+                    if exact_wave_cands:
+                        target_video = exact_wave_cands[0][1]
+                    elif fallback_wave_cands:
+                        target_video = fallback_wave_cands[0][1]
+                    else:
+                        desired_specs = [
+                            p
+                            for p in queue
+                            if int(p["ep_num"]) not in recent_cooldown_eps
+                            and ((int(p["part_num"]) == 1) == want_part1)
+                        ]
+                        if not desired_specs:
+                            desired_specs = [
+                                p
+                                for p in queue
+                                if int(p["ep_num"]) not in recent_cooldown_eps
+                            ]
+                        if desired_specs:
+                            chosen_spec = dict(desired_specs[0])
+                            logger.info(
+                                f"[{ch_folder}] [On-Demand Render Gấu Trúc Đen] Đang xuất ngay Tập {chosen_spec['ep_num']} "
+                                f"Phần {chosen_spec['part_num']}/{chosen_spec['total_parts']} ({chosen_spec.get('title')})..."
+                            )
+                            self._refresh_browser_process_lock()
+                            rendered = gsh_splitter.render_single_part(
+                                part_spec=chosen_spec,
+                                target_ready_dir=ready_dir,
+                            )
+                            self._refresh_browser_process_lock()
+                            try:
+                                from .crawler import StoryAudioCrawler
+
+                                cr_sync = StoryAudioCrawler(project_root=self.project_root)
+                                cr_sync.clear_macl_xattr(Path(rendered["final_video"]))
+                                cr_sync.save_to_history(
+                                    video_id=rendered["video_id"],
+                                    sound_id=rendered["sound_id"],
+                                    platform="tiktok",
+                                    genre="channel_1_ai_trending",
+                                    source_url=rendered["source_url"],
+                                    output_filename=rendered["filename"],
+                                    channel="video_AI_hay",
+                                )
+                                cr_sync.append_to_master_csv(
+                                    filename=rendered["filename"],
+                                    source_url=rendered["source_url"],
+                                    caption=rendered["caption"],
+                                    hashtags=rendered["hashtags"],
+                                    status="READY",
+                                    channel="video_AI_hay",
+                                    posted_at="",
+                                )
+                            except Exception:
+                                pass
+                            target_video = Path(rendered["final_video"])
+                        else:
+                            target_video = None
+
+                    if target_video and target_video.exists():
+                        sel_ep = parse_gausohai_ep_and_part(target_video.name) or (0, 0)
+                        logger.info(
+                            f"[{ch_folder}] [Multi-Episode Wave 4:1 Guard (No 1:1 Alternating)] "
+                            f"Chọn đăng: Gấu Trúc Đen Tập {sel_ep[0]} Phần {sel_ep[1]} "
+                            f"(cooldown={sorted(recent_cooldown_eps)} | bài trước: Tập {last_ep_num} Phần {last_part_num})"
+                        )
+                except Exception as gsh_int_exc:
+                    logger.warning(f"[{ch_folder}] Lỗi Gấu Trúc Đen Interleaved Guard: {gsh_int_exc}")
+                    target_video = None
             else:
                 target_video = valid_candidates[0]
 
@@ -3352,7 +3546,7 @@ class TikTokAutoPoster:
             target_video.stem,
             re.IGNORECASE,
         )
-        vid_id = m_id.group(1).split("_bongcuc_")[0] if m_id else ""
+        vid_id = re.split(r"_(?:bongcuc|gautrucden)_", m_id.group(1))[0] if m_id else ""
 
         csv_path = self.project_root / "output" / "danh_sach_video.csv"
         if csv_path.exists():
@@ -3382,6 +3576,14 @@ class TikTokAutoPoster:
                 "bông cúc" in (caption or "").lower()
                 or "bc số" in (caption or "").lower()
                 or "bongcuc" in (hashtags or "").lower()
+                or "phần " not in (caption or "").lower()
+            )
+        ) or (
+            ch_folder == "video_AI_hay"
+            and ("gautrucden_" in target_video.name.lower() or "8800" in target_video.name)
+            and (
+                "gấu sợ hãi" in (caption or "").lower()
+                or "gausohai" in (hashtags or "").lower()
                 or "phần " not in (caption or "").lower()
             )
         )
@@ -4318,6 +4520,13 @@ class TikTokAutoPoster:
                     all_ch_succeeded = True
                     for single_ch in target_channels:
                         ch_trig_key = f"remote_post_{p_trig_id}_{single_ch}"
+                        if ch_trig_key in self._load_post_history():
+                            continue
+                        if str(remote_post.get("action") or "").strip().lower() != "delete_only":
+                            try:
+                                self._get_next_ready_video_for_channel(single_ch)
+                            except Exception:
+                                pass
                         lock_fh = self._acquire_browser_process_lock()
                         try:
                             history = self._load_post_history()
@@ -4467,6 +4676,11 @@ class TikTokAutoPoster:
 
                 # Kích hoạt nếu thời gian hiện tại nằm trong khoảng [effective_slot_min, effective_slot_min + 180 phút]
                 if is_due:
+                    if self._was_channel_uploaded_recently(ch_folder, min_interval_minutes=180.0) is None:
+                        try:
+                            self._get_next_ready_video_for_channel(ch_folder)
+                        except Exception:
+                            pass
                     lock_fh = self._acquire_browser_process_lock()
                     try:
                         # Đọc lại lịch sử sau khi đã giữ khóa độc quyền để không bao giờ bị 2 luồng/2 cửa sổ đăng trùng
@@ -4846,10 +5060,12 @@ class TikTokAutoPoster:
             try:
                 import importlib
                 from . import bongcuc_splitter as _bc_mod
+                from . import gausohai_splitter as _gsh_mod
                 from . import crawler as _cr_mod
                 from . import stream1_antidetect_skill as _s1_mod
 
                 importlib.reload(_bc_mod)
+                importlib.reload(_gsh_mod)
                 importlib.reload(_cr_mod)
                 importlib.reload(_s1_mod)
                 self.crawler = _cr_mod.StoryAudioCrawler(project_root=self.project_root)

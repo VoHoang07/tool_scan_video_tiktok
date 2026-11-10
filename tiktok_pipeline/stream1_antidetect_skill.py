@@ -255,6 +255,16 @@ class Stream1SixLayerAntiDetectSkill:
             video_path.unlink(missing_ok=True)
             return False, video_path, caption, hashtags, report
 
+        if channel_folder == "video_AI_hay" and "gautrucden_v1_s" not in video_path.name.lower():
+            report["layers"]["L4_retention_duration"] = (
+                "FAIL (Video video_AI_hay bản cũ chưa qua cấu trúc gautrucden_v1_s: cắt phần Gấu Trúc Đen + xóa sạch nguồn)"
+            )
+            logger.warning(
+                f"[Dòng 1 - Skill 6 Lớp Anti-Detect] ❌ Chặn & xóa video bản cũ {video_path.name} trên kênh [video_AI_hay] (yêu cầu chuẩn gautrucden_v1_s)."
+            )
+            video_path.unlink(missing_ok=True)
+            return False, video_path, caption, hashtags, report
+
         report["layers"]["L4_retention_duration"] = f"PASS ({dur:.1f}s | {file_mb:.1f}MB)"
 
         # --- LỚP 1, 2 & 3: Kiểm tra Visual Stream, Audio Stream, Container Metadata & Chữ ký Thiết bị ---
@@ -348,6 +358,17 @@ class Stream1SixLayerAntiDetectSkill:
                 t
                 for t in safe_hashtags.split()
                 if not re.match(r"(?i)^#(?:bongcuc|bc\d|bcso)", t.strip())
+            )
+        elif channel_folder == "video_AI_hay":
+            safe_caption = re.sub(
+                r"(?i)\b(?:gấu\s*sợ\s*hãi(?:\s*tv)?|gausohai(?:\s*tv)?|gsh)\b[:\s\-—|]*",
+                "",
+                safe_caption,
+            ).strip()
+            safe_hashtags = " ".join(
+                t
+                for t in safe_hashtags.split()
+                if not re.match(r"(?i)^#(?:gausohai|gsh)", t.strip())
             )
         if safe_caption != (caption or "").strip() or safe_hashtags != (hashtags or "").strip():
             report["auto_healed"].append("L5_caption_commercial_safeguard")

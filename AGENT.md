@@ -313,6 +313,20 @@
 
 ---
 
+### [BUG-024] Quá thời gian chờ FFmpeg (`timeout=360`) & giữ khóa trình duyệt khi `audio_dem_khuyen` render on-demand trên Mac Intel (`x86_64`) sau chuỗi 7 kênh đăng liên tiếp
+- **Thời gian**: 2026-11-11 02:45:00
+- **Triệu chứng**: Sau khi máy Mac Intel đăng liên tiếp 7 kênh từ `00:50:28` đến `01:11:10` (`tu_chan_gioi` -> `an_vat_moi_ngay`), đến kênh thứ 8 ở cuối danh sách là `audio_dem_khuyen` thì không thấy bài đăng lên.
+- **Nguyên nhân gốc rễ**:
+  1. Trong [`data/bongcuc_full_catalog.json`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/data/bongcuc_full_catalog.json) có 48 tập chưa điền trường `duration`, khiến `build_interleaved_queue()` trong [`tiktok_pipeline/bongcuc_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/bongcuc_splitter.py) gọi mạng `yt_dlp` 14 lần liên tiếp (và gặp lỗi `Requested format is not available` trên các video như `YX-ItfMg9Xw` do thiếu `"ignore_no_formats_error": True`).
+  2. Trong `render_single_part()` của [`tiktok_pipeline/bongcuc_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/bongcuc_splitter.py), bộ lọc `boxblur=24:4` + `unsharp=5:5` + `-preset veryfast` cho video dài 280s (`1080x1920`) trên CPU Intel Dual-Core (`x86_64`) mất > 400s, vượt ngưỡng `subprocess.run(..., timeout=360)` và vượt ngưỡng `lock_ts_age >= 420` của `.tiktok_browser_session.lock` (vốn đã được giữ trước khi gọi `_get_next_ready_video_for_channel`).
+- **Cách khắc phục & File đã sửa**:
+  - Điền đầy đủ 100% `duration` cho toàn bộ 148 tập trong [`data/bongcuc_full_catalog.json`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/data/bongcuc_full_catalog.json) (0 tập thiếu), tắt gọi mạng trong `build_interleaved_queue()` (`allow_net = False`), và thêm `"ignore_no_formats_error": True` vào `get_youtube_video_duration()`.
+  - Tối ưu hóa chuỗi filter FFmpeg trong cả [`tiktok_pipeline/bongcuc_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/bongcuc_splitter.py) và [`tiktok_pipeline/gausohai_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/gausohai_splitter.py): hạ độ phân giải trung gian của lớp nền mờ `[bg]` xuống `240x426` (`boxblur=12:2` + `fast_bilinear`), scale `[fg]` trước khi `eq`, chuyển sang `-preset superfast` và nâng `timeout=600` (giúp tốc độ dựng trên Intel nhanh gấp ~3.5 lần).
+  - Sửa [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py): luôn gọi trước `_get_next_ready_video_for_channel()` ở BÊN NGOÀI `.tiktok_browser_session.lock` (và gọi `_refresh_browser_process_lock()` quanh `render_single_part`) để tiến trình tải/dựng FFmpeg không bao giờ chiếm giữ khóa trình duyệt Chrome.
+- **Luật Miễn Dịch Vĩnh Viễn**: Tuyệt đối không giữ khóa trình duyệt `.tiktok_browser_session.lock` trong lúc tải YouTube hoặc chạy FFmpeg render video; luôn chuẩn bị xong file `.mp4` trong `ready/` trước khi acquire lock mở Chrome, và dùng `-preset superfast` + `boxblur` trên độ phân giải nhỏ (`240x426`) để thời gian render trên Mac Intel luôn dưới 60 giây.
+
+---
+
 ## 🔄 3. GIAO THỨC GHI NHẬN LỖI MỚI (AUTO-EVOLUTION PROTOCOL)
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:
