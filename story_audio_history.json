@@ -329,7 +329,8 @@
     "990003901",
     "990011001",
     "880034301",
-    "880035001"
+    "880035001",
+    "990002103"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -574,7 +575,8 @@
     "gautrucden_yt_gxNNlRu3_Wg_p1",
     "bongcuc_yt_2cmcDDxu_YY_p1",
     "gautrucden_yt_t4p79z7ppYM_p1",
-    "gautrucden_yt_Qkt79a0x_BU_p1"
+    "gautrucden_yt_Qkt79a0x_BU_p1",
+    "bongcuc_yt_KkvdYTXdeJU_p3"
   ],
   "items": [
     {
@@ -3166,6 +3168,36 @@
       "source_url": "https://www.youtube.com/watch?v=Qkt79a0x_BU&t=1s",
       "output_filename": "video_AI_hay/ready/20261111_225728_tiktok_story_880035001_gautrucden_v1_s350_p1.mp4",
       "crawled_at": "2026-11-11T22:58:19"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990002103",
+      "sound_id": "bongcuc_yt_KkvdYTXdeJU_p3",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=KkvdYTXdeJU&t=873s",
+      "output_filename": "audio_dem_khuyen/ready/20261111_235110_tiktok_story_990002103_bongcuc_v6_s21_p3_bg_mukbang.mp4",
+      "crawled_at": "2026-11-11T23:53:37"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990002103",
+      "sound_id": "bongcuc_yt_KkvdYTXdeJU_p3",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=KkvdYTXdeJU&t=873s",
+      "output_filename": "audio_dem_khuyen/ready/20261111_235339_tiktok_story_990002103_bongcuc_v6_s21_p3_bg_mukbang.mp4",
+      "crawled_at": "2026-11-11T23:55:06"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990002103",
+      "sound_id": "bongcuc_yt_KkvdYTXdeJU_p3",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=KkvdYTXdeJU&t=873s",
+      "output_filename": "audio_dem_khuyen/ready/20261111_235508_tiktok_story_990002103_bongcuc_v6_s21_p3_bg_mukbang.mp4",
+      "crawled_at": "2026-11-11T23:56:43"
     }
   ]
 }

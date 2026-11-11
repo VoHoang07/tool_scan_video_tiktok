@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 23:33:04",
+    "timestamp": "2026-11-11 23:58:38",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261110_020153_tiktok_story_7656698184890060050.mp4",
-      "caption": "✨ [Phụ Nữ Khí Chất] Ly hôn quá nhiều bây giờ do tiền bạc, học thức hay trí tuệ nhận thức?. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
-      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #xh #xuhuongtiktok",
+      "video_file": "20261111_235508_tiktok_story_990002103_bongcuc_v6_s21_p3_bg_mukbang.mp4",
+      "caption": "📖 Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo [Phần 3/5] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
+      "hashtags": "#biduoikhoinhatoiloyeunhamtongtaigian #phan3 #fyp #truyenaudio #chuyengiadinh #mukbangdemkhuya #audiodemkhuya #truyenngan",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 23:58:38",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261111_235508_tiktok_story_990002103_bongcuc_v6_s21_p3_bg_mukbang.mp4",
+        "caption": "📖 Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo [Phần 3/5] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
+        "hashtags": "#biduoikhoinhatoiloyeunhamtongtaigian #phan3 #fyp #truyenaudio #chuyengiadinh #mukbangdemkhuya #audiodemkhuya #truyenngan",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 23:33:04",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261111_120543_tiktok_story_880034301_gautrucden_v1_s343_p1.mp4",
         "caption": "🌙 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ [Phần 1/10] — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
         "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan1 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 12:04:08",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261110_015511_tiktok_story_7498887585352207624.mp4",
-        "caption": "🌿 [Sức Khỏe Chủ Động] Tín hiệu cảnh báo sớm của cơ thể mà dân văn phòng tuyệt đối đừng chủ quan. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #fyp #xh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 6,
