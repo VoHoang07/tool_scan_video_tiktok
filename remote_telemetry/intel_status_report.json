@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 08:51:51",
+    "timestamp": "2026-11-11 09:05:32",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261111_084848_tiktok_story_990014502_bongcuc_v6_s145_p2_bg_daylight.mp4",
-      "caption": "🌙 Con Ma Nhà Tôi Vừa Giỏi Vừa Biết Tăng Ca (Phần 2/8) — Chuyện đêm khuya cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
-      "hashtags": "#conmanhatoivuagioivuabiettangca #phan2 #gocnhinkhuya #fyp #truyenaudio #chuyengiadinh #chuyendemsau #audiodemkhuya",
+      "video_file": "20261109_175603_tiktok_story_7152856772212968731.mp4",
+      "caption": "⚡ Tiện Ích Điện Thoại Thông Minh: Kiểm tra thời gian sử dụng app trên Samsung. Nhỏ mà có võ, ai hay dùng điện thoại nhất định phải biết mẹo này. Lưu lại ngay nhé!",
+      "hashtags": "#meodienthoai #phukientienich #phukiendienthoai #capsacnhanh #tainghebluetooth #tienich #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 09:05:32",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261109_175603_tiktok_story_7152856772212968731.mp4",
+        "caption": "⚡ Tiện Ích Điện Thoại Thông Minh: Kiểm tra thời gian sử dụng app trên Samsung. Nhỏ mà có võ, ai hay dùng điện thoại nhất định phải biết mẹo này. Lưu lại ngay nhé!",
+        "hashtags": "#meodienthoai #phukientienich #phukiendienthoai #capsacnhanh #tainghebluetooth #tienich #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 08:51:51",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 00:57:32",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261109_171449_tiktok_story_7702735092220742932.mp4",
-        "caption": "💡 [Mẹo Vặt Gia Đình] cách làm sạch dầu ăn cũ. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
-        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #foryou #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
