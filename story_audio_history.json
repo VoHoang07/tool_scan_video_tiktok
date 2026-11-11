@@ -328,7 +328,8 @@
     "880036001",
     "990003901",
     "990011001",
-    "880034301"
+    "880034301",
+    "880035001"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -572,7 +573,8 @@
     "gautrucden_yt_oewADycnZYk_p1",
     "gautrucden_yt_gxNNlRu3_Wg_p1",
     "bongcuc_yt_2cmcDDxu_YY_p1",
-    "gautrucden_yt_t4p79z7ppYM_p1"
+    "gautrucden_yt_t4p79z7ppYM_p1",
+    "gautrucden_yt_Qkt79a0x_BU_p1"
   ],
   "items": [
     {
@@ -3154,6 +3156,16 @@
       "source_url": "https://www.youtube.com/watch?v=t4p79z7ppYM&t=1s",
       "output_filename": "video_AI_hay/ready/20261111_120543_tiktok_story_880034301_gautrucden_v1_s343_p1.mp4",
       "crawled_at": "2026-11-11T12:06:35"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "880035001",
+      "sound_id": "gautrucden_yt_Qkt79a0x_BU_p1",
+      "platform": "tiktok",
+      "genre": "channel_1_ai_trending",
+      "source_url": "https://www.youtube.com/watch?v=Qkt79a0x_BU&t=1s",
+      "output_filename": "video_AI_hay/ready/20261111_225728_tiktok_story_880035001_gautrucden_v1_s350_p1.mp4",
+      "crawled_at": "2026-11-11T22:58:19"
     }
   ]
 }
