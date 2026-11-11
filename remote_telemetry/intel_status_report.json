@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 14:10:06",
+    "timestamp": "2026-11-11 22:45:56",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261109_195514_tiktok_story_7646019476604914945.mp4",
-      "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Hành trình tu tiên vượt mọi đại kiếp bước lên đỉnh cao vạn giới. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #xuhuongtiktok #tiktokvn",
+      "video_file": "20261110_071401_tiktok_story_7658893772188585232.mp4",
+      "caption": "💡 [Mẹo Vặt Gia Đình] Bí quyết sắp xếp nhà cửa gọn gàng tiết kiệm thời gian cho cả gia đình. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 22:45:56",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261110_071401_tiktok_story_7658893772188585232.mp4",
+        "caption": "💡 [Mẹo Vặt Gia Đình] Bí quyết sắp xếp nhà cửa gọn gàng tiết kiệm thời gian cho cả gia đình. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 14:10:06",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261109_172519_tiktok_story_7703483890136059156.mp4",
         "caption": "🌹 Tâm lý Hôn nhân & Gia đình: Phụ nữ thông minh luôn nắm vững nguyên tắc này để luôn được yêu thương. Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
         "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 08:17:14",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261109_204745_tiktok_story_7283117050241862914.mp4",
-        "caption": "👶 [Nuôi Con Thông Minh] Trẻ đi ngủ sớm có thông minh không?. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
-        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xuhuong #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
