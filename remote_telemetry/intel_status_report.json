@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 08:29:12",
+    "timestamp": "2026-11-11 08:51:51",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261109_172519_tiktok_story_7703483890136059156.mp4",
-      "caption": "🌹 Tâm lý Hôn nhân & Gia đình: Phụ nữ thông minh luôn nắm vững nguyên tắc này để luôn được yêu thương. Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
-      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #viral #foryou",
+      "video_file": "20261111_084848_tiktok_story_990014502_bongcuc_v6_s145_p2_bg_daylight.mp4",
+      "caption": "🌙 Con Ma Nhà Tôi Vừa Giỏi Vừa Biết Tăng Ca (Phần 2/8) — Chuyện đêm khuya cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
+      "hashtags": "#conmanhatoivuagioivuabiettangca #phan2 #gocnhinkhuya #fyp #truyenaudio #chuyengiadinh #chuyendemsau #audiodemkhuya",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 08:51:51",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261111_084848_tiktok_story_990014502_bongcuc_v6_s145_p2_bg_daylight.mp4",
+        "caption": "🌙 Con Ma Nhà Tôi Vừa Giỏi Vừa Biết Tăng Ca (Phần 2/8) — Chuyện đêm khuya cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
+        "hashtags": "#conmanhatoivuagioivuabiettangca #phan2 #gocnhinkhuya #fyp #truyenaudio #chuyengiadinh #chuyendemsau #audiodemkhuya",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 08:29:12",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 00:53:08",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261109_163444_tiktok_story_7537017470759046417.mp4",
-        "caption": "✨ [Phụ Nữ Khí Chất] Bài học tâm lý hôn nhân sâu sắc giúp giữ lửa hạnh phúc gia đình. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
-        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #foryou #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }

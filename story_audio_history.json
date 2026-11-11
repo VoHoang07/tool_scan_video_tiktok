@@ -3120,6 +3120,16 @@
       "source_url": "https://www.youtube.com/watch?v=gxNNlRu3_Wg&t=1s",
       "output_filename": "video_AI_hay/ready/20261111_073332_tiktok_story_880036001_gautrucden_v1_s360_p1.mp4",
       "crawled_at": "2026-11-11T07:34:28"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990014502",
+      "sound_id": "bongcuc_yt_e9oSX2s0ARs_p2",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=e9oSX2s0ARs&t=388s",
+      "output_filename": "audio_dem_khuyen/ready/20261111_084848_tiktok_story_990014502_bongcuc_v6_s145_p2_bg_daylight.mp4",
+      "crawled_at": "2026-11-11T08:49:56"
     }
   ]
 }
