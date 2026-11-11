@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 11:24:28",
+    "timestamp": "2026-11-11 11:45:55",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261111_112052_tiktok_story_990011001_bongcuc_v6_s110_p1_bg_daylight.mp4",
-      "caption": "🌌 Ta Không Gả, Hắn Cũng Không Cưới (Phần 1/16) — Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
-      "hashtags": "#takhonggahancungkhongcuoi #phan1 #truyenaudio #chuyengiadinh #chuyendemsau #audiodemkhuya #truyenngan #tamlyhonnhan",
+      "video_file": "20261110_014757_tiktok_story_7141573249611222314.mp4",
+      "caption": "💡 [Mẹo Vặt Gia Đình] Bí quyết sắp xếp nhà cửa gọn gàng tiết kiệm thời gian cho cả gia đình. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 6,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 11:45:55",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261110_014757_tiktok_story_7141573249611222314.mp4",
+        "caption": "💡 [Mẹo Vặt Gia Đình] Bí quyết sắp xếp nhà cửa gọn gàng tiết kiệm thời gian cho cả gia đình. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 11:24:28",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 01:07:40",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261109_172052_tiktok_story_7643408716896800018.mp4",
-        "caption": "💪 Chăm sóc sức khỏe gia đình: Càng dưỡng tử cung, dưỡng khí huyết càng đẹp. Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
-        "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
