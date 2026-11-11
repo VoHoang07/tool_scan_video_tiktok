@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 12:04:08",
+    "timestamp": "2026-11-11 12:08:49",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261110_015511_tiktok_story_7498887585352207624.mp4",
-      "caption": "🌿 [Sức Khỏe Chủ Động] Tín hiệu cảnh báo sớm của cơ thể mà dân văn phòng tuyệt đối đừng chủ quan. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #fyp #xh",
+      "video_file": "20261111_120543_tiktok_story_880034301_gautrucden_v1_s343_p1.mp4",
+      "caption": "🌙 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ [Phần 1/10] — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
+      "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan1 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 6,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 12:08:49",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261111_120543_tiktok_story_880034301_gautrucden_v1_s343_p1.mp4",
+        "caption": "🌙 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ [Phần 1/10] — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
+        "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan1 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 6,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 12:04:08",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261111_025407_tiktok_story_880033601_gautrucden_v1_s336_p1.mp4",
         "caption": "👀 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không (Phần 1/10) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
         "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan1 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 02:50:57",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261111_024736_tiktok_story_990003901_bongcuc_v6_s39_p1_bg_mukbang.mp4",
-        "caption": "🕯️ Họ Chê Tôi Là Bà Nội Trợ, Không Biết Tôi Là Phu Nhân Chủ Tịch [Phần 1/10] — Những góc khuất dần được phơi bày qua từng lời kể đêm khuya!",
-        "hashtags": "#hochetoilabanoitrokhongbiettoilaphun #phan1 #audiodemkhuya #truyenngan #tamlyhonnhan #xuhuong #kechuyendemkhuya #nghetruyendemkhuya",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
