@@ -1,7 +1,7 @@
 # HANDOFF.md — Tài Liệu Bàn Giao & Trạng Thái Hệ Thống (`tool_scan_video_tiktok`)
 
-> **Cập nhật lần cuối**: `2026-11-11 13:51:00 +07:00`
-> **Commit mốc hiện tại**: Đã bổ sung bộ kiểm định & điều khiển 1 bước [`harness.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/harness.py) + tách `auto_poster.py` thành 6 module Mixin chuẩn hóa + Lá chắn Quy tắc Cộng đồng 7 lớp `[BUG-025]`
+> **Cập nhật lần cuối**: `2026-11-11 14:14:00 +07:00`
+> **Commit mốc hiện tại**: Tự động lọc bỏ hashtag ban đêm khi đăng ban ngày (`05:00–17:59`) cho kênh `audio_dem_khuyen` + Bộ kiểm định [`harness.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/harness.py) + 6 module Mixin chuẩn hóa
 
 ---
 
@@ -57,7 +57,7 @@ Quản lý bởi [`MasterSwitchController`](file:///Users/vohoang/Documents/tool
 ### 2.2. Nhóm Bộ Lọc Chống Phát Hiện, Kiểm Duyệt Cộng Đồng & Cắt Tập
 | File | Số dòng | Vai trò cụ thể |
 | :--- | :---: | :--- |
-| [`tiktok_pipeline/community_guidelines_guard.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/community_guidelines_guard.py) | 120 | [`TikTokCommunityGuidelinesGuard`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/community_guidelines_guard.py#L12-L120) — Lá chắn kiểm duyệt 7 lớp: chặn vĩnh viễn các tập có rủi ro quy tắc cộng đồng (`BLOCKED_BONGCUC_EPISODES`, `BLOCKED_GAUSOHAI_EPISODES`), làm sạch văn bản hiển thị trên video, caption và hashtag. |
+| [`tiktok_pipeline/community_guidelines_guard.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/community_guidelines_guard.py) | 159 | [`TikTokCommunityGuidelinesGuard`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/community_guidelines_guard.py#L7-L159) — Lá chắn kiểm duyệt 7 lớp: chặn vĩnh viễn các tập có rủi ro quy tắc cộng đồng, làm sạch văn bản trên video/caption/hashtag và tự động chuyển đổi hashtag ban đêm sang ban ngày (`05:00–17:59`) cho kênh `audio_dem_khuyen`. |
 | [`tiktok_pipeline/stream1_antidetect_skill.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/stream1_antidetect_skill.py) | 424 | [`Stream1AntiDetectSkill`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/stream1_antidetect_skill.py) — Thực thi 6 lớp bảo vệ kỹ thuật (Visual Hash, AudioPrint, Device Metadata, Retention Hook, Commercial Safe-Guard, AIGC & Interleaved Anti-Spam). |
 | [`tiktok_pipeline/bongcuc_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/bongcuc_splitter.py) | 1.701 | [`BongCucSplitter`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/bongcuc_splitter.py) — Cắt tập kể chuyện đêm khuya cho kênh `audio_dem_khuyen` theo tỷ lệ đan xen `1:1`, tối ưu FFmpeg `-preset superfast` và lọc từ ngữ nhạy cảm. |
 | [`tiktok_pipeline/gausohai_splitter.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/gausohai_splitter.py) | 993 | [`GauSoHaiSplitter`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/gausohai_splitter.py) — Cắt tập hoạt hình Gấu Trúc Đen cho kênh `video_AI_hay` theo tỷ lệ đan xen `1:1`, xóa sạch dấu vết kênh nguồn và lọc nội dung nhạy cảm. |

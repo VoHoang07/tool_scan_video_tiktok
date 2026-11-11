@@ -167,6 +167,23 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
         if not TikTokCommunityGuidelinesGuard.is_episode_blocked("video_AI_hay", 84):
             errors.append("[CGGuardError] Tập nhạy cảm 84 của video_AI_hay chưa bị chặn!")
 
+        _, day_tags = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
+            "Chuyện đêm khuya cuốn hút",
+            "#audiodemkhuya #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #xuhuong",
+            "audio_dem_khuyen",
+            hour=12,
+        )
+        if any(w in day_tags.lower() for w in ("demkhuya", "khuya", "chuyendem", "demsau")):
+            errors.append(f"[DaytimeHashtagError] Còn sót hashtag ban đêm khi đăng ban ngày: {day_tags}")
+        _, night_tags = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
+            "Chuyện đêm khuya cuốn hút",
+            "#audiodemkhuya #kechuyendemkhuya #xuhuong",
+            "audio_dem_khuyen",
+            hour=23,
+        )
+        if "#audiodemkhuya" not in night_tags:
+            errors.append(f"[NighttimeHashtagError] Mất hashtag đêm khuya khi đăng ban đêm: {night_tags}")
+
         bc_path = PROJECT_ROOT / "data" / "bongcuc_full_catalog.json"
         if bc_path.exists():
             bc_items = json.loads(bc_path.read_text(encoding="utf-8"))

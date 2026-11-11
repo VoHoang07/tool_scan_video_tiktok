@@ -1461,7 +1461,11 @@ class SubtitleTranslator:
             },
             "channel_3": {
                 "seed_kw": "truyenaudio",
-                "core": ["#audiodemkhuya", "#truyenaudio", "#kechuyendemkhuya", "#truyenngan"],
+                "core": (
+                    ["#truyenaudio", "#kechuyen", "#truyenngan", "#chuyengiadinh"]
+                    if 5 <= datetime.now().hour < 18
+                    else ["#audiodemkhuya", "#truyenaudio", "#kechuyendemkhuya", "#truyenngan"]
+                ),
                 "hot_search": [
                     "#ngontinh",
                     "#trongsinh",

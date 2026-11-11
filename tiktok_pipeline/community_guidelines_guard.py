@@ -1,3 +1,4 @@
+from datetime import datetime
 import re
 from pathlib import Path
 from typing import Dict, List, Optional, Set, Tuple
@@ -97,22 +98,60 @@ class TikTokCommunityGuidelinesGuard:
         out = re.sub(r"\s{2,}", " ", out).strip(" -—|:.")
         return out or "Chuyện Đêm Khuya Đặc Sắc"
 
+    _DAYTIME_HASHTAG_MAP: Dict[str, str] = {
+        "audiodemkhuya": "#truyenaudio",
+        "kechuyendemkhuya": "#kechuyen",
+        "nghetruyendemkhuya": "#nghetruyen",
+        "truyendemkhuya": "#truyenngan",
+        "chuyendemkhuya": "#chuyenke",
+        "gocnhinkhuya": "#gocnhincuocsong",
+        "mukbangdemkhuya": "#mukbang",
+        "chuyendemsau": "#chuyengiadinh",
+        "tamtridemkhuya": "#tamlyhonnhan",
+        "demkhuya": "#truyenaudio",
+    }
+
+    @classmethod
+    def is_daytime_now(cls, hour: Optional[int] = None) -> bool:
+        """Kiểm tra khung giờ ban ngày (05:00 đến 17:59)."""
+        h = datetime.now().hour if hour is None else int(hour)
+        return 5 <= h < 18
+
     @classmethod
     def sanitize_caption_and_hashtags(
-        cls, caption: str, hashtags: str, channel_folder: str = ""
+        cls,
+        caption: str,
+        hashtags: str,
+        channel_folder: str = "",
+        hour: Optional[int] = None,
     ) -> Tuple[str, str]:
         safe_cap = cls.sanitize_text(caption)
+        is_daytime = cls.is_daytime_now(hour)
+        if channel_folder == "audio_dem_khuyen" and is_daytime:
+            safe_cap = re.sub(r"(?i)\bchuyện\s+đêm\s+khuya\b", "Chuyện tâm lý", safe_cap)
+            safe_cap = re.sub(r"(?i)\bđêm\s+khuya\b", "mỗi ngày", safe_cap)
+            safe_cap = safe_cap.replace("🌙", "🎧").replace("🌌", "✨").replace("🕯️", "📖")
+
         raw_tags = [t.strip() for t in str(hashtags or "").split() if t.strip()]
         safe_tags: List[str] = []
         for tag in raw_tags:
             low_t = tag.lower().lstrip("#")
             if any(bad in low_t for bad in cls._FORBIDDEN_HASHTAG_PATTERNS):
                 continue
+            if channel_folder == "audio_dem_khuyen" and is_daytime:
+                if low_t in cls._DAYTIME_HASHTAG_MAP:
+                    tag = cls._DAYTIME_HASHTAG_MAP[low_t]
+                    low_t = tag.lower().lstrip("#")
+                elif any(nw in low_t for nw in ("demkhuya", "dem_khuya", "chuyendem", "demsau", "khuya", "bandem", "ban_dem")):
+                    continue
             if tag not in safe_tags:
                 safe_tags.append(tag)
         if not safe_tags:
             if channel_folder == "audio_dem_khuyen":
-                safe_tags = ["#audiodemkhuya", "#kechuyendemkhuya", "#truyenaudio", "#xuhuong", "#fyp"]
+                if is_daytime:
+                    safe_tags = ["#truyenaudio", "#kechuyen", "#truyenngan", "#chuyengiadinh", "#xuhuong", "#fyp"]
+                else:
+                    safe_tags = ["#audiodemkhuya", "#kechuyendemkhuya", "#truyenaudio", "#xuhuong", "#fyp"]
             elif channel_folder == "video_AI_hay":
                 safe_tags = ["#gautrucden", "#hoathinhgautrucden", "#chuyenke", "#xuhuong", "#fyp"]
             else:

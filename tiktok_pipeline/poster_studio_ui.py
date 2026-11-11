@@ -330,6 +330,15 @@ class PosterStudioUIMixin:
             if not (hashtags_str or "").strip():
                 hashtags_str = rec_tags
 
+        try:
+            from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
+
+            caption, hashtags_str = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
+                caption, hashtags_str, ch_folder
+            )
+        except Exception:
+            pass
+
         self._dismiss_all_studio_popovers(page, ch_folder)
         self._scroll_upload_form(page, -1500)
         time.sleep(0.8)

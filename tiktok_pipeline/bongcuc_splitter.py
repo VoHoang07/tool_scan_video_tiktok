@@ -1139,7 +1139,7 @@ class BongCucYouTubeSplitter:
         s = "".join(ch for ch in s if unicodedata.category(ch) != "Mn")
         s = re.sub(r"[^a-z0-9]+", "", s)
         if not s:
-            return "#chuyendemkhuya"
+            return "#truyenaudio"
         return f"#{s[:36]}"
 
     def _ensure_interjection_audio(self, seed_val: int, pitch_factor: float) -> Optional[Tuple[Path, float]]:
@@ -1400,19 +1400,34 @@ class BongCucYouTubeSplitter:
 
         title_slug_tag = BongCucYouTubeSplitter._slugify_vietnamese_hashtag(title)
         part_tag = f"#phan{part_num}"
-        rotating_tags = [
-            "#audiodemkhuya",
-            "#kechuyendemkhuya",
-            "#truyenaudio",
-            "#truyenngan",
-            "#nghetruyendemkhuya",
-            "#chuyengiadinh",
-            "#tamlyhonnhan",
-            "#gocnhinkhuya",
-            "#mukbangdemkhuya" if bg_mode == "night_mukbang" else "#chuyendemsau",
-            "#xuhuong",
-            "#fyp",
-        ]
+        is_daytime = 5 <= datetime.now().hour < 18
+        if is_daytime:
+            rotating_tags = [
+                "#truyenaudio",
+                "#kechuyen",
+                "#truyenngan",
+                "#nghetruyen",
+                "#chuyengiadinh",
+                "#tamlyhonnhan",
+                "#gocnhincuocsong",
+                "#mukbang" if bg_mode == "night_mukbang" else "#baihoccuocsong",
+                "#xuhuong",
+                "#fyp",
+            ]
+        else:
+            rotating_tags = [
+                "#audiodemkhuya",
+                "#kechuyendemkhuya",
+                "#truyenaudio",
+                "#truyenngan",
+                "#nghetruyendemkhuya",
+                "#chuyengiadinh",
+                "#tamlyhonnhan",
+                "#gocnhinkhuya",
+                "#mukbangdemkhuya" if bg_mode == "night_mukbang" else "#chuyendemsau",
+                "#xuhuong",
+                "#fyp",
+            ]
         picked_tags = [title_slug_tag, part_tag]
         for offset in range(6):
             tag_cand = rotating_tags[(seed_idx + offset * 3) % len(rotating_tags)]
