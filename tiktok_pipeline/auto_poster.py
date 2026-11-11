@@ -1672,14 +1672,14 @@ class TikTokAutoPoster:
             logger.info(
                 f"[{ch_folder}] Đã bật Kiểm tra trước khi đăng: Kiểm tra bản quyền nhạc={music_chk}, Kiểm tra nội dung nhanh={lite_chk}. Đang chờ TikTok hoàn tất kiểm tra nhanh..."
             )
-            # Chờ Kiểm tra nội dung nhanh & bản quyền nhạc chạy xong trước khi bấm Đăng (~6-12 giây)
-            for _ in range(6):
+            # Chờ Kiểm tra nội dung nhanh & bản quyền nhạc chạy xong trước khi bấm Đăng (~6-18 giây)
+            for _ in range(10):
                 time.sleep(1.8)
                 try:
                     still_checking = page.evaluate(
                         """() => {
                             const bodyTxt = (document.body && document.body.innerText) || '';
-                            return /Đang kiểm tra|Checking in progress|Checking\.\.\./i.test(bodyTxt);
+                            return /Đang kiểm tra|Checking in progress|Checking\\.\\.\\./i.test(bodyTxt);
                         }"""
                     )
                     if not still_checking:
@@ -1687,7 +1687,22 @@ class TikTokAutoPoster:
                 except Exception:
                     break
 
+            # Kiểm tra kết quả từ "Kiểm tra nội dung nhanh": nếu TikTok Studio cảnh báo vi phạm Quy tắc Cộng đồng / hạn chế đề xuất -> HỦY ĐĂNG NGAY!
+            precheck_issue = page.evaluate(
+                """() => {
+                    const bodyTxt = (document.body && document.body.innerText) || '';
+                    const m = bodyTxt.match(/Vi phạm Quy tắc Cộng đồng|Không đủ điều kiện cho bảng tin Dành cho bạn|Phát hiện vấn đề về nội dung|Community Guidelines violation|Ineligible for the For You feed/i);
+                    return m ? m[0] : '';
+                }"""
+            )
+            if precheck_issue:
+                raise RuntimeError(
+                    f"[CG-PRECHECK-BLOCKED] TikTok Studio 'Kiểm tra nội dung nhanh' cảnh báo: '{precheck_issue}' -> Hủy đăng & cách ly video!"
+                )
+
         except Exception as exc:
+            if "[CG-PRECHECK-BLOCKED]" in str(exc):
+                raise
             logger.warning(f"[{ch_folder}] Lưu ý nhỏ khi chỉnh Cài đặt trang Upload: {exc}")
 
     def _verify_upload_privacy_is_everyone(self, page: Any, ch_folder: str) -> None:
@@ -2342,16 +2357,19 @@ class TikTokAutoPoster:
                 rows_info = page.evaluate(
                     """() => {
                         const norm = (s) => (s || '').normalize('NFC').trim();
-                        const privacyPrefixes = ['Mọi người', 'Chỉ mình', 'Bạn bè', 'Everyone', 'Only me', 'Private', 'Friends'];
+                        const privacyPrefixes = [
+                            'Mọi người', 'Chỉ mình', 'Bạn bè', 'Everyone', 'Only me', 'Private', 'Friends',
+                            'Vi phạm', 'Không đủ điều kiện', 'Hạn chế', 'Đã xóa', 'Ineligible', 'Violation'
+                        ];
                         const allEls = Array.from(document.querySelectorAll('button, [role="button"], [role="combobox"], div, span, a, p'));
                         const privacyBtns = [];
                         for (const el of allEls) {
                             if (el.children.length > 4) continue;
                             const txt = norm(el.innerText || el.textContent || '');
-                            if (!txt || txt.length > 26) continue;
+                            if (!txt || txt.length > 42) continue;
                             if (!privacyPrefixes.some(p => txt.startsWith(p) || txt === p)) continue;
                             const r = el.getBoundingClientRect();
-                            if (r.width < 45 || r.width > 210 || r.height < 18 || r.height > 60 || r.top < 205) continue;
+                            if (r.width < 45 || r.width > 260 || r.height < 16 || r.height > 65 || r.top < 205) continue;
                             const cy = r.top + r.height / 2;
                             if (!privacyBtns.some(b => Math.abs(b.y - cy) < 28)) {
                                 privacyBtns.push({ y: cy, top: r.top });
@@ -3024,9 +3042,17 @@ class TikTokAutoPoster:
             except Exception:
                 pass
 
+        from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
+
         target_video: Optional[Path] = None
         valid_candidates: List[Path] = []
         for cand in sorted(f for f in ready_dir.glob("*.mp4") if f.is_file()):
+            if TikTokCommunityGuidelinesGuard.is_video_or_story_blocked(cand.name, ch_folder):
+                cand.unlink(missing_ok=True)
+                logger.info(
+                    f"[{ch_folder}] [Community Guidelines Guard] Đã xóa video thuộc danh sách khóa an toàn ({cand.name}) khỏi ready/."
+                )
+                continue
             # Kênh audio_dem_khuyen chỉ đăng chuẩn motip Truyện Audio TikTok Việt Nam (nền ASMR/chữa lành + giọng kể chuyện), loại bỏ video Douyin lệch motip
             if ch_folder == "audio_dem_khuyen" and "douyin_story_" in cand.name.lower():
                 cand.unlink(missing_ok=True)
@@ -3189,7 +3215,6 @@ class TikTokAutoPoster:
                         35: 700,
                         110: 650,
                         141: 600,
-                        145: 550,
                     }
 
                     queue = splitter.build_interleaved_queue(posted_ids)
@@ -4046,7 +4071,16 @@ class TikTokAutoPoster:
                 time.sleep(dwell_sec)
 
             except Exception as up_exc:
-                if locals().get("post_btn_clicked") and (
+                if "[CG-PRECHECK-BLOCKED]" in str(up_exc):
+                    logger.warning(
+                        f"[{ch_folder}] {up_exc} -> Đang xóa file rủi ro {video_path.name} và ghi nhận vào sổ cái chặn vĩnh viễn!"
+                    )
+                    try:
+                        self._record_uploaded_video_in_registry(ch_folder, video_path, caption)
+                        video_path.unlink(missing_ok=True)
+                    except Exception:
+                        pass
+                elif locals().get("post_btn_clicked") and (
                     locals().get("post_confirmed")
                     or "closed" in str(up_exc).lower()
                     or "targetclosed" in str(up_exc).lower()
@@ -5059,11 +5093,13 @@ class TikTokAutoPoster:
         if ms_ctrl.is_upload_enabled("tiktok"):
             try:
                 import importlib
+                from . import community_guidelines_guard as _cg_mod
                 from . import bongcuc_splitter as _bc_mod
                 from . import gausohai_splitter as _gsh_mod
                 from . import crawler as _cr_mod
                 from . import stream1_antidetect_skill as _s1_mod
 
+                importlib.reload(_cg_mod)
                 importlib.reload(_bc_mod)
                 importlib.reload(_gsh_mod)
                 importlib.reload(_cr_mod)

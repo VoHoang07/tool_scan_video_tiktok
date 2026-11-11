@@ -218,6 +218,7 @@ class Stream1SixLayerAntiDetectSkill:
         ngay trước khi Dòng 1 đăng video lên kênh `channel_folder`.
         Trả về `(passed, verified_video_path, safe_caption, safe_hashtags, report_dict)`.
         """
+        from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
         from .crawler import StoryAudioCrawler
         from .translator import SubtitleTranslator
 
@@ -231,6 +232,18 @@ class Stream1SixLayerAntiDetectSkill:
 
         if not video_path.exists() or not video_path.is_file():
             report["layers"]["L4_retention_duration"] = "FAIL (File không tồn tại)"
+            return False, video_path, caption, hashtags, report
+
+        if TikTokCommunityGuidelinesGuard.is_video_or_story_blocked(
+            video_path.name, channel_folder
+        ):
+            report["layers"]["L5_commercial_safeguard"] = (
+                "FAIL (Tập truyện nằm trong danh sách khóa an toàn Quy tắc Cộng đồng TikTok)"
+            )
+            logger.warning(
+                f"[Dòng 1 - Skill 6 Lớp Anti-Detect] ❌ Chặn & xóa video {video_path.name} do thuộc tập nhạy cảm Quy tắc Cộng đồng!"
+            )
+            video_path.unlink(missing_ok=True)
             return False, video_path, caption, hashtags, report
 
         # --- LỚP 4: Kiểm tra Thời lượng, Dung lượng & Chuẩn cắt nhiều phần ---
@@ -370,9 +383,12 @@ class Stream1SixLayerAntiDetectSkill:
                 for t in safe_hashtags.split()
                 if not re.match(r"(?i)^#(?:gausohai|gsh)", t.strip())
             )
+        safe_caption, safe_hashtags = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
+            safe_caption, safe_hashtags, channel_folder
+        )
         if safe_caption != (caption or "").strip() or safe_hashtags != (hashtags or "").strip():
             report["auto_healed"].append("L5_caption_commercial_safeguard")
-        report["layers"]["L5_commercial_safeguard"] = "PASS (Caption & Hashtags sạch 100%)"
+        report["layers"]["L5_commercial_safeguard"] = "PASS (Caption & Hashtags sạch 100% chuẩn Quy tắc Cộng đồng)"
 
         # --- LỚP 6: Kiểm soát Nhãn AIGC & Chống Spam / So Le Các Phần ---
         if channel_folder == "audio_dem_khuyen":

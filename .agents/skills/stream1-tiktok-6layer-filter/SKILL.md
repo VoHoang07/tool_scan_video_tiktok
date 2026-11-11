@@ -19,8 +19,8 @@ Skill này được tích hợp trực tiếp vào **Dòng Hoạt Động 1 (`--
    - Chặn tuyệt đối các dấu vết nguồn (`Google`, `YouTube`, `Douyin`, `TikTok`, `Lavf61.x` thô).
    - Bắt buộc gắn đúng chữ ký phần mềm dựng phim độc lập của từng kênh (`CapCut 14.4.0 (iOS 17.5.1)`, `VN Video Editor 2.24.1 (iOS)`, `Adobe Premiere Pro 2024.5 (macOS)`...) cùng `CoreMedia Video` / `CoreMedia Audio` và xóa sạch cờ `com.apple.macl` / `com.apple.quarantine`. Nếu thiếu, tự động đóng gói lại (`bitexact`) ngay trước khi đăng.
 4. **Lớp 4 — Kiểm Tra Thời Lượng & Giữ Chân Người Xem (`Retention & Duration Guard`)**:
-   - Đảm bảo thời lượng `>= 15.0s`, dung lượng `>= 500 KB`, và riêng kênh `audio_dem_khuyen` bắt buộc phải là bản cắt nhiều phần chuẩn `bongcuc_v2`.
-5. **Lớp 5 — Bộ Lọc Từ Khóa Thương Mại & Chính Sách Cộng Đồng (`Commercial & Policy Safe-Guard`)**:
-   - Tự động lọc lại `caption` và `hashtags` qua `SubtitleTranslator._apply_commercial_safeguard` ngay trước khi gõ vào ô mô tả của TikTok Studio.
+   - Đảm bảo thời lượng `>= 15.0s`, dung lượng `>= 500 KB`, riêng kênh `audio_dem_khuyen` bắt buộc phải là chuẩn `bongcuc_v6_s` và kênh `video_AI_hay` bắt buộc là chuẩn `gautrucden_v1_s`.
+5. **Lớp 5 — Bộ Lọc Quy Tắc Cộng Đồng TikTok & Từ Khóa Thương Mại (`TikTokCommunityGuidelinesGuard` + `Commercial Safe-Guard`)**:
+   - Kết hợp trực tiếp với skill [`tiktok-community-guidelines-guard`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/.agents/skills/tiktok-community-guidelines-guard/SKILL.md) tại [`tiktok_pipeline/community_guidelines_guard.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/community_guidelines_guard.py) để chặn các tập có nội dung nhạy cảm/kinh dị nặng, làm sạch 100% tiêu đề trên khung hình PNG, caption và hashtags, đồng thời kiểm tra cổng `"Kiểm tra nội dung nhanh"` trên TikTok Studio trước khi bấm `"Đăng"`.
 6. **Lớp 6 — Kiểm Soát Nhãn AIGC & Chống Spam Đăng Liên Tiếp (`AIGC Disclosure & Interleaved Guard`)**:
-   - Chặn đăng trùng `story_id` đã có trong lịch sử đã đăng, đảm bảo kênh `audio_dem_khuyen` đăng **so le / xen kẽ** giữa các tập truyện và đúng thứ tự phần nhỏ trước (`Phần 2 -> Phần 3 -> ...`), đồng thời cấu hình chính xác nút gạt AIGC.
+   - Chặn đăng trùng `story_id` đã có trong lịch sử đã đăng, đảm bảo kênh `audio_dem_khuyen` và `video_AI_hay` đăng **xen kẽ đa tập** và đúng thứ tự phần nhỏ trước, đồng thời cấu hình chính xác nút gạt AIGC.

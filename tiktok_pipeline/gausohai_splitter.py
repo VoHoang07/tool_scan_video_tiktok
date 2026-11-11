@@ -200,6 +200,12 @@ class GauTrucDenYouTubeSplitter:
             res,
         )
         res = re.sub(r"\s{2,}", " ", res).strip(" -—|:.,!")
+        try:
+            from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
+
+            res = TikTokCommunityGuidelinesGuard.sanitize_text(res)
+        except Exception:
+            pass
         return res or "Chuyện Kỳ Bí Gấu Trúc Đen"
 
     @staticmethod
@@ -216,6 +222,8 @@ class GauTrucDenYouTubeSplitter:
 
     def get_full_catalog(self) -> List[Dict[str, Any]]:
         """Đọc danh mục đầy đủ các tập từ `data/gausohai_full_catalog.json` (hoặc fallback mặc định)."""
+        from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
+
         if self.catalog_path.exists():
             try:
                 data = json.loads(self.catalog_path.read_text(encoding="utf-8"))
@@ -223,6 +231,9 @@ class GauTrucDenYouTubeSplitter:
                     cleaned_list: List[Dict[str, Any]] = []
                     for item in data:
                         if not isinstance(item, dict):
+                            continue
+                        ep_no = int(item.get("ep_num") or 0)
+                        if TikTokCommunityGuidelinesGuard.is_episode_blocked("video_AI_hay", ep_no):
                             continue
                         cp = dict(item)
                         cp["title"] = self.clean_story_title_no_source(str(cp.get("title") or ""))
@@ -762,6 +773,14 @@ class GauTrucDenYouTubeSplitter:
             if tag_cand not in picked_tags:
                 picked_tags.append(tag_cand)
         hashtags = " ".join(picked_tags)
+        try:
+            from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
+
+            caption, hashtags = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
+                caption, hashtags, "video_AI_hay"
+            )
+        except Exception:
+            pass
         return caption, hashtags
 
     def render_single_part(

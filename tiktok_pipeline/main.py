@@ -1079,6 +1079,7 @@ def run_continuous_mode(
             initial_code_snapshot = cur_snap
             try:
                 import importlib
+                from . import community_guidelines_guard as _cg_mod
                 from . import bongcuc_splitter as _bc_mod
                 from . import gausohai_splitter as _gsh_mod
                 from . import stream1_antidetect_skill as _s1_skill_mod
@@ -1088,6 +1089,7 @@ def run_continuous_mode(
                 from . import growth_24h_filter as _g24_mod
                 from . import auto_poster as _ap_mod
 
+                importlib.reload(_cg_mod)
                 importlib.reload(_bc_mod)
                 importlib.reload(_gsh_mod)
                 importlib.reload(_s1_skill_mod)

@@ -178,12 +178,6 @@ BONGCUC_EPISODES_CATALOG: List[Dict[str, Any]] = [
         "part1_posted": True,
     },
     {
-        "ep_num": 145,
-        "yt_id": "e9oSX2s0ARs",
-        "title": "Con Ma Nhà Tôi Vừa Giỏi Vừa Biết Tăng Ca",
-        "part1_posted": True,
-    },
-    {
         "ep_num": 138,
         "yt_id": "wS9sTH05PKM",
         "title": "Kiếp Này, Tôi Dứt Khoát Rời Xa Anh",
@@ -309,17 +303,31 @@ class BongCucYouTubeSplitter:
     def get_full_catalog(self) -> List[Dict[str, Any]]:
         """
         Đọc toàn bộ danh mục 148+ tập truyện từ kênh YouTube gốc `https://www.youtube.com/@bongcucaudio`
-        (`data/bongcuc_full_catalog.json`), ưu tiên 12 tập đã đăng Phần 1 lên đầu rồi đến toàn bộ các tập
-        từ mới nhất về Số 01.
+        (`data/bongcuc_full_catalog.json`), ưu tiên các tập đã đăng Phần 1 lên đầu rồi đến toàn bộ các tập
+        từ mới nhất về Số 01 (tự động loại bỏ các tập bị khóa bởi TikTokCommunityGuidelinesGuard).
         """
+        from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
+
         if self.catalog_path.exists():
             try:
                 data = json.loads(self.catalog_path.read_text(encoding="utf-8"))
                 if isinstance(data, list) and len(data) >= len(BONGCUC_EPISODES_CATALOG):
-                    return data
+                    return [
+                        e
+                        for e in data
+                        if not TikTokCommunityGuidelinesGuard.is_episode_blocked(
+                            "audio_dem_khuyen", int(e.get("ep_num") or 0)
+                        )
+                    ]
             except Exception:
                 pass
-        return list(BONGCUC_EPISODES_CATALOG)
+        return [
+            e
+            for e in BONGCUC_EPISODES_CATALOG
+            if not TikTokCommunityGuidelinesGuard.is_episode_blocked(
+                "audio_dem_khuyen", int(e.get("ep_num") or 0)
+            )
+        ]
 
     def sync_new_episodes_from_youtube(self) -> int:
         """
@@ -329,10 +337,11 @@ class BongCucYouTubeSplitter:
         """
         try:
             import yt_dlp
+            from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
 
             current_cat = self.get_full_catalog()
             known_yt_ids = {str(item.get("yt_id")) for item in current_cat}
-            part1_posted_eps = {141, 142, 143, 144, 146, 137, 119, 145, 138, 110, 70, 10}
+            part1_posted_eps = {141, 142, 143, 144, 146, 137, 119, 138, 110, 70, 10}
 
             with yt_dlp.YoutubeDL(
                 {"quiet": True, "no_warnings": True, "extract_flat": "in_playlist"}
@@ -348,7 +357,7 @@ class BongCucYouTubeSplitter:
                     continue
                 m = re.search(r"SỐ\s*(\d+)", raw_title, re.IGNORECASE)
                 ep_num = int(m.group(1)) if m else 0
-                if ep_num <= 0:
+                if ep_num <= 0 or TikTokCommunityGuidelinesGuard.is_episode_blocked("audio_dem_khuyen", ep_num):
                     continue
                 parts = [
                     p.strip()
@@ -761,7 +770,6 @@ class BongCucYouTubeSplitter:
             35: 700,    # 96,812 YT views
             110: 650,   # 55,433 YT views
             141: 600,   # 40,489 YT views
-            145: 550,   # 10,029 YT views
             10: 520,    # 485 TikTok views (12 tim)
         }
 
@@ -1108,13 +1116,16 @@ class BongCucYouTubeSplitter:
 
     @staticmethod
     def _clean_story_title_no_bongcuc(raw_title: str) -> str:
-        """Làm sạch tiêu đề truyện, loại bỏ tuyệt đối mọi chữ 'Bông Cúc', 'Bông Cúc Số...', 'BC Số...'."""
+        """Làm sạch tiêu đề truyện, loại bỏ tuyệt đối mọi chữ 'Bông Cúc', 'Bông Cúc Số...', 'BC Số...' và từ nhạy cảm Quy tắc Cộng đồng."""
+        from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
+
         cleaned = str(raw_title or "").strip()
         cleaned = re.sub(
             r"(?i)\b(?:bông\s*cúc(?:\s*trắng)?(?:\s*số\s*\d+)?|bc\s*số\s*\d+|số\s*\d+)\b[:\s\-—|]*",
             "",
             cleaned,
         ).strip(" -—|:.")
+        cleaned = TikTokCommunityGuidelinesGuard.sanitize_text(cleaned)
         return cleaned or "Chuyện Đêm Khuya Có Thật"
 
     @staticmethod
@@ -1408,6 +1419,14 @@ class BongCucYouTubeSplitter:
             if tag_cand not in picked_tags:
                 picked_tags.append(tag_cand)
         hashtags = " ".join(picked_tags)
+        try:
+            from .community_guidelines_guard import TikTokCommunityGuidelinesGuard
+
+            caption, hashtags = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
+                caption, hashtags, "audio_dem_khuyen"
+            )
+        except Exception:
+            pass
         return caption, hashtags
 
     def render_single_part(

@@ -180,11 +180,15 @@
     "phu_kien_tien_ich": ""
   },
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_audio_gautrucden_20261111_0246",
+    "trigger_id": "post_now_clean_cg_audio_20261111_1118",
     "target_arch": "x86_64",
     "action": "upload",
     "ensure_public_channels": "",
-    "channel": "audio_dem_khuyen,video_AI_hay",
+    "channel": "audio_dem_khuyen",
+    "delete_match_keywords": [
+      "biết tăng ca",
+      "vi phạm"
+    ],
     "force": true,
     "skip_warmup": true,
     "auto_pause_master_after": false
