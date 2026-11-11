@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 09:05:32",
+    "timestamp": "2026-11-11 09:23:36",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261109_175603_tiktok_story_7152856772212968731.mp4",
-      "caption": "⚡ Tiện Ích Điện Thoại Thông Minh: Kiểm tra thời gian sử dụng app trên Samsung. Nhỏ mà có võ, ai hay dùng điện thoại nhất định phải biết mẹo này. Lưu lại ngay nhé!",
-      "hashtags": "#meodienthoai #phukientienich #phukiendienthoai #capsacnhanh #tainghebluetooth #tienich #xuhuong #viral",
+      "video_file": "20261109_135225_tiktok_story_7454855738909838613.mp4",
+      "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+      "hashtags": "#tuchangioi #tutien #huyenhuyen #hoathinh3dtrungquoc #aitutien #tiennghich #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 09:23:36",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261109_135225_tiktok_story_7454855738909838613.mp4",
+        "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "hashtags": "#tuchangioi #tutien #huyenhuyen #hoathinh3dtrungquoc #aitutien #tiennghich #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 09:05:32",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 01:00:54",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261109_175128_tiktok_story_7579891760004910356.mp4",
-        "caption": "👶 [Nuôi Con Thông Minh] Con hỗn láo với bố mẹ là lỗi của ai? Xem ngay cách uốn nắn, dạy con tôn trọng người lớn!. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
-        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
