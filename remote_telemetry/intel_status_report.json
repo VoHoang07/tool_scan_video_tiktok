@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 23:58:38",
+    "timestamp": "2026-11-12 00:01:27",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261111_235508_tiktok_story_990002103_bongcuc_v6_s21_p3_bg_mukbang.mp4",
-      "caption": "📖 Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo [Phần 3/5] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
-      "hashtags": "#biduoikhoinhatoiloyeunhamtongtaigian #phan3 #fyp #truyenaudio #chuyengiadinh #mukbangdemkhuya #audiodemkhuya #truyenngan",
+      "video_file": "20261110_013926_youtube_shorts_story_oyOyn1YDJck.mp4",
+      "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+      "hashtags": "#tuchangioi #tutien #huyenhuyen #hoathinh3dtrungquoc #aitutien #tiennghich #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-12 00:01:27",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261110_013926_youtube_shorts_story_oyOyn1YDJck.mp4",
+        "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "hashtags": "#tuchangioi #tutien #huyenhuyen #hoathinh3dtrungquoc #aitutien #tiennghich #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 23:58:38",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 12:08:49",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261111_120543_tiktok_story_880034301_gautrucden_v1_s343_p1.mp4",
-        "caption": "🌙 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ [Phần 1/10] — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-        "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan1 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
