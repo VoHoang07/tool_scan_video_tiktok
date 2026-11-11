@@ -1,7 +1,7 @@
 # HANDOFF.md — Tài Liệu Bàn Giao & Trạng Thái Hệ Thống (`tool_scan_video_tiktok`)
 
-> **Cập nhật lần cuối**: `2026-11-11 13:42:00 +07:00`
-> **Commit mốc hiện tại**: `d6c5ab65` (Đã tách `auto_poster.py` thành 6 module Mixin chuẩn hóa + Tích hợp Lá chắn Quy tắc Cộng đồng 7 lớp `[BUG-025]`)
+> **Cập nhật lần cuối**: `2026-11-11 13:51:00 +07:00`
+> **Commit mốc hiện tại**: Đã bổ sung bộ kiểm định & điều khiển 1 bước [`harness.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/harness.py) + tách `auto_poster.py` thành 6 module Mixin chuẩn hóa + Lá chắn Quy tắc Cộng đồng 7 lớp `[BUG-025]`
 
 ---
 
@@ -46,6 +46,7 @@ Quản lý bởi [`MasterSwitchController`](file:///Users/vohoang/Documents/tool
 ### 2.1. Nhóm Module Điều Phối Đăng Bài (Modular `TikTokAutoPoster`)
 | File | Số dòng | Vai trò cụ thể |
 | :--- | :---: | :--- |
+| [`harness.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/harness.py) | 265 | Bộ kiểm định 4 lớp tự động (`--verify`, chạy < 1 giây), xem nhanh trạng thái (`--status`), và bật/tắt công tắc đẩy thẳng lên GitHub trong 1 bước (`--switch <1..4> <on|off> --push`). |
 | [`tiktok_pipeline/auto_poster.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py) | 1.096 | Class chính [`TikTokAutoPoster`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py#L46-L1096), quản lý lịch trình 10 kênh (`DEFAULT_SCHEDULE_CONFIG`), tự động Hot-Reload 5 Mixin, hồi sinh daemon và đẩy telemetry Git. |
 | [`tiktok_pipeline/poster_browser.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/poster_browser.py) | 795 | [`PosterBrowserMixin`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/poster_browser.py#L76-L795) — Quản lý khóa `.tiktok_browser_session.lock`, khởi chạy Chrome Anti-Detect (`STEALTH_INIT_SCRIPT`), cô lập vân tay phần cứng và đồng bộ cookie/session. |
 | [`tiktok_pipeline/poster_studio_ui.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/poster_studio_ui.py) | 1.108 | [`PosterStudioUIMixin`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/poster_studio_ui.py#L19-L1108) — Thao tác DOM trên TikTok Studio: đóng popup, nhập caption/hashtag, chọn quyền riêng tư `"Mọi người"`, bật công tắc bản quyền & kiểm tra nội dung nhanh (`_configure_upload_settings_public`), bấm nút `"Đăng"`. |
