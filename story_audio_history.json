@@ -326,7 +326,8 @@
     "7692379429904944390",
     "880033601",
     "880036001",
-    "990003901"
+    "990003901",
+    "990011001"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -568,7 +569,8 @@
     "7639317517676202774",
     "7681123479933209345",
     "gautrucden_yt_oewADycnZYk_p1",
-    "gautrucden_yt_gxNNlRu3_Wg_p1"
+    "gautrucden_yt_gxNNlRu3_Wg_p1",
+    "bongcuc_yt_2cmcDDxu_YY_p1"
   ],
   "items": [
     {
@@ -3130,6 +3132,16 @@
       "source_url": "https://www.youtube.com/watch?v=e9oSX2s0ARs&t=388s",
       "output_filename": "audio_dem_khuyen/ready/20261111_084848_tiktok_story_990014502_bongcuc_v6_s145_p2_bg_daylight.mp4",
       "crawled_at": "2026-11-11T08:49:56"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990011001",
+      "sound_id": "bongcuc_yt_2cmcDDxu_YY_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=2cmcDDxu_YY&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261111_112052_tiktok_story_990011001_bongcuc_v6_s110_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-11T11:22:03"
     }
   ]
 }
