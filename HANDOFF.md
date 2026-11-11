@@ -1,7 +1,7 @@
 # HANDOFF.md — Tài Liệu Bàn Giao & Trạng Thái Hệ Thống (`tool_scan_video_tiktok`)
 
-> **Cập nhật lần cuối**: `2026-11-11 14:14:00 +07:00`
-> **Commit mốc hiện tại**: Tự động lọc bỏ hashtag ban đêm khi đăng ban ngày (`05:00–17:59`) cho kênh `audio_dem_khuyen` + Bộ kiểm định [`harness.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/harness.py) + 6 module Mixin chuẩn hóa
+> **Cập nhật lần cuối**: `2026-11-11 14:18:00 +07:00`
+> **Commit mốc hiện tại**: Đã lưu vĩnh viễn quy tắc `/learn` vào `.agents/rules/agent_bug_evolution.md` & `.agents/skills/tiktok-community-guidelines-guard/SKILL.md` + Bộ lọc hashtag ban ngày `audio_dem_khuyen` + `harness.py` + 6 module Mixin chuẩn hóa
 
 ---
 

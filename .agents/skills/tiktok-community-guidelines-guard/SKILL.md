@@ -57,8 +57,9 @@ Skill này tổng hợp toàn bộ **6 Trụ cột Quy tắc Cộng đồng TikT
 1. **Lớp Quét & Lọc Danh mục Nguồn (`Catalog & Episode Blacklist Guard`)**:
    - Đưa Tập 145 (`9900145*`) và mọi tập có chủ đề vi phạm nặng vào danh sách chặn vĩnh viễn (`BLOCKED_BONGCUC_EPISODES` & `BLOCKED_GAUSOHAI_EPISODES`).
    - Tự động làm sạch 100% tiêu đề trong `data/bongcuc_full_catalog.json` và `data/gausohai_full_catalog.json` (chuyển hóa các từ nhạy cảm sang ngôn từ văn học/điện ảnh an toàn trước khi vẽ lên khung hình PNG và tạo Caption/Hashtag).
-2. **Lớp Quét Âm thanh ASR & Làm Mềm Tự động (`Audio Speech Safety & Auto-Softening`)**:
+2. **Lớp Quét Âm thanh ASR, Làm Mềm Tự động & Hashtag Theo Khung Giờ (`Audio Speech Safety & Time-of-Day Hashtag Sanitizer`)**:
    - Kiểm tra văn bản/phụ đề/tiêu đề và tự động thay thế toàn bộ từ ngữ nhạy cảm bằng từ trung tính an toàn.
+   - **Quy tắc Hashtag theo khung giờ cho kênh `audio_dem_khuyen`**: Nếu đăng video vào **ban ngày (`05:00–17:59`)**, tuyệt đối không gắn các hashtag liên quan tới ban đêm (`#audiodemkhuya`, `#kechuyendemkhuya`, `#nghetruyendemkhuya`, `#gocnhinkhuya`, `#mukbangdemkhuya`, `#chuyendemsau`, `#chuyendemkhuya`, `#demkhuya`); tự động chuyển đổi sang bộ hashtag ban ngày (`#truyenaudio`, `#kechuyen`, `#nghetruyen`, `#truyenngan`, `#gocnhincuocsong`, `#chuyengiadinh`, `#mukbang`). Chỉ sử dụng hashtag ban đêm khi đăng trong khung giờ `18:00–04:59`.
 3. **Lớp Kiểm tra Nội dung Nhanh trên TikTok Studio (`Pre-Post Content Check Lite Gate`)**:
    - Trong [`TikTokAutoPoster._configure_upload_settings_public`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/auto_poster.py), luôn bật `"Kiểm tra bản quyền nhạc"` + `"Kiểm tra nội dung nhanh"`, chờ kiểm tra hoàn tất và **nếu phát hiện bất kỳ cảnh báo ви phạm / hạn chế đề xuất nào thì HỦY ĐĂNG NGAY LẬP TỨC**, cách ly file đó và chuyển sang video an toàn kế tiếp.
 4. **Lớp Tự động Dọn Bài Bị Gắn Cờ trên Trang Quản lý (`Post-Upload Violation Sweeper`)**:
