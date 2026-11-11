@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 06:50:03",
+    "timestamp": "2026-11-11 07:20:44",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261109_201414_tiktok_story_7484450317988318494.mp4",
-      "caption": "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ mỗi ngày giúp cơ thể khỏe mạnh và ngủ ngon giấc hơn. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-      "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
+      "video_file": "20261109_200240_tiktok_story_7583951481380932884.mp4",
+      "caption": "🏠 Bảo bối dọn nhà thông minh: Mẹo vặt. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
+      "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #savingtips #donnhasach #meohaymoingay #meovatgiadinh #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 5,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 07:20:44",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261109_200240_tiktok_story_7583951481380932884.mp4",
+        "caption": "🏠 Bảo bối dọn nhà thông minh: Mẹo vặt. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
+        "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #savingtips #donnhasach #meohaymoingay #meovatgiadinh #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 06:50:03",
       "machine_arch": "x86_64",
@@ -233,21 +249,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 156.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-10 21:04:26",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 161.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
