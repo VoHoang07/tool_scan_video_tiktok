@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 23:26:10",
+    "timestamp": "2026-11-11 23:29:59",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261110_082716_tiktok_story_7668249428318293265.mp4",
-      "caption": "👶 [Nuôi Con Thông Minh] Lâu rồi Sam mới được mẹ Hương cho nhảy🤭. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
-      "hashtags": "#mevabe #giaoducsom #nuoiconthongminh #mebimsua #donghanhcungcon #daycontulap #fyp #xh",
+      "video_file": "20261110_010919_douyin_story_7493065850337922361.mp4",
+      "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xh #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 23:29:59",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261110_010919_douyin_story_7493065850337922361.mp4",
+        "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 23:26:10",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 11:24:28",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261111_112052_tiktok_story_990011001_bongcuc_v6_s110_p1_bg_daylight.mp4",
-        "caption": "🌌 Ta Không Gả, Hắn Cũng Không Cưới (Phần 1/16) — Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
-        "hashtags": "#takhonggahancungkhongcuoi #phan1 #truyenaudio #chuyengiadinh #chuyendemsau #audiodemkhuya #truyenngan #tamlyhonnhan",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
