@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-11 23:00:27",
+    "timestamp": "2026-11-11 23:10:09",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261111_225728_tiktok_story_880035001_gautrucden_v1_s350_p1.mp4",
-      "caption": "⚡ Điều Kiêng Kỵ Khi Cải Táng (Phần 1/8) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-      "hashtags": "#dieukiengkykhicaitang #phan1 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
+      "video_file": "20261110_075338_tiktok_story_6882581650732092674.mp4",
+      "caption": "🍜 Món Ngon Dễ Làm Mỗi Ngày: Thử món này là ghiện đó cả nhà ơi ❤️❤️. Công thức siêu đơn giản mà hương vị đỉnh của chóp. Lưu lại vào bếp thử ngay nhé!",
+      "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #xuhuongtiktok #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 5,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-11 23:10:09",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261110_075338_tiktok_story_6882581650732092674.mp4",
+        "caption": "🍜 Món Ngon Dễ Làm Mỗi Ngày: Thử món này là ghiện đó cả nhà ơi ❤️❤️. Công thức siêu đơn giản mà hương vị đỉnh của chóp. Lưu lại vào bếp thử ngay nhé!",
+        "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-11 23:00:27",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261109_135225_tiktok_story_7454855738909838613.mp4",
         "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
         "hashtags": "#tuchangioi #tutien #huyenhuyen #hoathinh3dtrungquoc #aitutien #tiennghich #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 09:05:32",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261109_175603_tiktok_story_7152856772212968731.mp4",
-        "caption": "⚡ Tiện Ích Điện Thoại Thông Minh: Kiểm tra thời gian sử dụng app trên Samsung. Nhỏ mà có võ, ai hay dùng điện thoại nhất định phải biết mẹo này. Lưu lại ngay nhé!",
-        "hashtags": "#meodienthoai #phukientienich #phukiendienthoai #capsacnhanh #tainghebluetooth #tienich #xuhuong #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
