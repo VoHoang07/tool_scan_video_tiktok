@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-12 09:29:32",
+    "timestamp": "2026-11-12 12:23:03",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261110_093335_tiktok_story_7691688086253636884.mp4",
+      "video_file": "20261112_121642_tiktok_story_880036002_gautrucden_v1_s360_p2.mp4",
       "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-12 12:23:03",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261112_121642_tiktok_story_880036002_gautrucden_v1_s360_p2.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-12 09:29:32",
       "machine_arch": "x86_64",
@@ -209,22 +220,6 @@
         "video_file": "20261110_010919_douyin_story_7493065850337922361.mp4",
         "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
         "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 23:26:10",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261110_082716_tiktok_story_7668249428318293265.mp4",
-        "caption": "👶 [Nuôi Con Thông Minh] Lâu rồi Sam mới được mẹ Hương cho nhảy🤭. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
-        "hashtags": "#mevabe #giaoducsom #nuoiconthongminh #mebimsua #donghanhcungcon #daycontulap #fyp #xh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
