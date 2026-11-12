@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-12 08:33:54",
+    "timestamp": "2026-11-12 09:08:52",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261110_083703_tiktok_story_7698329630331178258.mp4",
+      "video_file": "20261112_090021_tiktok_story_990004501_bongcuc_v6_s45_p1_bg_daylight.mp4",
       "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-12 09:08:52",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261112_090021_tiktok_story_990004501_bongcuc_v6_s45_p1_bg_daylight.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-12 08:33:54",
       "machine_arch": "x86_64",
@@ -227,22 +238,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 5,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 22:50:04",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261110_065904_tiktok_story_7639922053398678798.mp4",
-        "caption": "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ mỗi ngày giúp cơ thể khỏe mạnh và ngủ ngon giấc hơn. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-        "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
