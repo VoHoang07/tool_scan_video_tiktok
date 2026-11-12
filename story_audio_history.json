@@ -333,7 +333,24 @@
     "990002103",
     "880033602",
     "990004501",
-    "880036002"
+    "880036002",
+    "990012003",
+    "7665715251786108181",
+    "7580256263263620370",
+    "7154563817354038554",
+    "7028807659797089563",
+    "7669217849499585813",
+    "7580586643078270229",
+    "7475037730368474386",
+    "7706447088657190145",
+    "7256630023145180418",
+    "7602810747541933320",
+    "7602989516609080597",
+    "7667150315250011413",
+    "7668104744761740564",
+    "7669775875025423637",
+    "7162102951815826714",
+    "7243339707931725062"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -580,7 +597,8 @@
     "gautrucden_yt_t4p79z7ppYM_p1",
     "gautrucden_yt_Qkt79a0x_BU_p1",
     "bongcuc_yt_KkvdYTXdeJU_p3",
-    "gautrucden_yt_oewADycnZYk_p2"
+    "gautrucden_yt_oewADycnZYk_p2",
+    "bongcuc_yt_9knT2sXRFi4_p3"
   ],
   "items": [
     {
@@ -3212,6 +3230,26 @@
       "source_url": "https://www.youtube.com/watch?v=oewADycnZYk&t=255s",
       "output_filename": "video_AI_hay/ready/20261112_072206_tiktok_story_880033602_gautrucden_v1_s336_p2.mp4",
       "crawled_at": "2026-11-12T07:23:00"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990012003",
+      "sound_id": "bongcuc_yt_9knT2sXRFi4_p3",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=9knT2sXRFi4&t=758s",
+      "output_filename": "audio_dem_khuyen/ready/20261112_133026_tiktok_story_990012003_bongcuc_v6_s120_p3_bg_daylight.mp4",
+      "crawled_at": "2026-11-12T13:31:35"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990012003",
+      "sound_id": "bongcuc_yt_9knT2sXRFi4_p3",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=9knT2sXRFi4&t=758s",
+      "output_filename": "audio_dem_khuyen/ready/20261112_133137_tiktok_story_990012003_bongcuc_v6_s120_p3_bg_daylight.mp4",
+      "crawled_at": "2026-11-12T13:32:53"
     }
   ]
 }
