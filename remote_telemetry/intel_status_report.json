@@ -1,21 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-12 08:13:11",
+    "timestamp": "2026-11-12 08:33:54",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "event_type": "upload_error",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261110_082027_tiktok_story_7686281857947766036.mp4",
-      "caption": "🥰 Nhật ký gia đình siêu lầy: Khoảnh khắc đáng yêu và hài hước nhất trong ngày của bé. Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #tiktokvn #xuhuong",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "video_file": "20261110_083703_tiktok_story_7698329630331178258.mp4",
+      "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-12 08:33:54",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261110_083703_tiktok_story_7698329630331178258.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-12 08:13:11",
       "machine_arch": "x86_64",
@@ -234,22 +240,6 @@
         "video_file": "20261110_065904_tiktok_story_7639922053398678798.mp4",
         "caption": "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ mỗi ngày giúp cơ thể khỏe mạnh và ngủ ngon giấc hơn. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
         "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 22:45:56",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261110_071401_tiktok_story_7658893772188585232.mp4",
-        "caption": "💡 [Mẹo Vặt Gia Đình] Bí quyết sắp xếp nhà cửa gọn gàng tiết kiệm thời gian cho cả gia đình. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
-        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #tiktokvn #xuhuong",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
