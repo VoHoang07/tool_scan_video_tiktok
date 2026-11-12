@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-12 09:08:52",
+    "timestamp": "2026-11-12 09:20:36",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_error_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261112_090021_tiktok_story_990004501_bongcuc_v6_s45_p1_bg_daylight.mp4",
+      "video_file": "20261110_093920_tiktok_story_7691555785263893768.mp4",
       "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-12 09:20:36",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_error_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261110_093920_tiktok_story_7691555785263893768.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-12 09:08:52",
       "machine_arch": "x86_64",
@@ -222,22 +233,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 23:00:27",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261111_225728_tiktok_story_880035001_gautrucden_v1_s350_p1.mp4",
-        "caption": "⚡ Điều Kiêng Kỵ Khi Cải Táng (Phần 1/8) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-        "hashtags": "#dieukiengkykhicaitang #phan1 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 5,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
