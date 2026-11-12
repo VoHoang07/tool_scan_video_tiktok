@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-12 13:34:58",
+    "timestamp": "2026-11-12 23:22:33",
     "machine_arch": "x86_64",
     "event_type": "upload",
     "channel": "audio_dem_khuyen",
     "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261112_133137_tiktok_story_990012003_bongcuc_v6_s120_p3_bg_daylight.mp4",
-      "caption": "✨ Dắt Con Về Nhận Tiền, Ai Ngờ Thành Giang Phu Nhân (Phần 3/5) — Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
-      "hashtags": "#datconvenhantienaingothanhgiangphunh #phan3 #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen #chuyengiadinh",
+      "video_file": "20261112_231707_tiktok_story_990011903_bongcuc_v6_s119_p3_bg_mukbang.mp4",
+      "caption": "🎧 Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà [Phần 3/6] — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
+      "hashtags": "#canhacuoikhichongtoikhongduocchianha #phan3 #truyenngan #tamlyhonnhan #xuhuong #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-12 23:22:33",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261112_231707_tiktok_story_990011903_bongcuc_v6_s119_p3_bg_mukbang.mp4",
+        "caption": "🎧 Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà [Phần 3/6] — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
+        "hashtags": "#canhacuoikhichongtoikhongduocchianha #phan3 #truyenngan #tamlyhonnhan #xuhuong #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-12 13:34:58",
       "machine_arch": "x86_64",
@@ -209,22 +225,6 @@
         "video_file": "20261111_235508_tiktok_story_990002103_bongcuc_v6_s21_p3_bg_mukbang.mp4",
         "caption": "📖 Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo [Phần 3/5] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
         "hashtags": "#biduoikhoinhatoiloyeunhamtongtaigian #phan3 #fyp #truyenaudio #chuyengiadinh #mukbangdemkhuya #audiodemkhuya #truyenngan",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 23:33:04",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261110_020153_tiktok_story_7656698184890060050.mp4",
-        "caption": "✨ [Phụ Nữ Khí Chất] Ly hôn quá nhiều bây giờ do tiền bạc, học thức hay trí tuệ nhận thức?. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
-        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #xh #xuhuongtiktok",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
