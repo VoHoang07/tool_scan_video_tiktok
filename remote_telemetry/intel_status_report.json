@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-12 00:04:34",
+    "timestamp": "2026-11-12 07:00:25",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261110_022505_tiktok_story_7679427170552319253.mp4",
-      "caption": "📱 [Mẹo Công Nghệ Hay] Bảo bối công nghệ nhỏ gọn giá hạt dẻ nhưng giải quyết bao nhiêu bất tiện. Món phụ kiện nhỏ gọn mà giải quyết được bao nhiêu phiền toái hàng ngày! Bạn đã thử tính năng cực tiện này chưa?",
-      "hashtags": "#phukientienich #phukiendienthoai #docongnghe #congnghehay #decorbanlamviec #phukiengiare #fyp #xh",
+      "video_file": "20261110_121410_tiktok_story_7220619220504104193.mp4",
+      "caption": "🌿 [Sức Khỏe Chủ Động] Ăn trứng vào buổi sáng tốt gấp trăm lần uống nhân sâm. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+      "hashtags": "#duongsinh #songkhoe #suckhoechudong #healthyvietnam #songlanhmanh #chamSocSucKhoe #suckhoe #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 5,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-12 07:00:25",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261110_121410_tiktok_story_7220619220504104193.mp4",
+        "caption": "🌿 [Sức Khỏe Chủ Động] Ăn trứng vào buổi sáng tốt gấp trăm lần uống nhân sâm. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+        "hashtags": "#duongsinh #songkhoe #suckhoechudong #healthyvietnam #songlanhmanh #chamSocSucKhoe #suckhoe #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 5,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-12 00:04:34",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 12:50:23",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261109_193500_douyin_story_7595038759533769700.mp4",
-        "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-        "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
