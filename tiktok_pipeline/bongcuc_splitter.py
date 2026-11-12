@@ -35,44 +35,44 @@ BONGCUC_LOW_QUEUE_WARNING_THRESHOLD = 15
 # - Ban ngày (06:00 - 16:59): Ghép nền Pha chế Cafe / Bánh Souffle / Ẩm thực đường phố Hàn Quốc 1080p hoàn toàn mới.
 BONGCUC_NIGHT_MUKBANG_POOL: List[Dict[str, Any]] = [
     {
-        "yt_id": "Aq0fq99yzT0",
-        "title": "Secretly eating Ramen at Night Cinema Mukbang DoNam 1080p",
-        "duration": 360.0,
+        "yt_id": "yMOzH-s0IWk",
+        "title": "Eat with Boki - Cheese Tteokbokki, Crispy Honey Combo Chicken & Spicy Chicken Mukbang 1080p",
+        "duration": 839.0,
     },
     {
-        "yt_id": "oxKWOF_iZms",
-        "title": "Late Night Spicy Tteokbokki & Hot Dog Cinema Mukbang DoNam 1080p",
-        "duration": 478.0,
+        "yt_id": "brKJIq6QVIk",
+        "title": "Eat with Boki - Spicy Mala Tteokbokki & Crispy Honey Fried Chicken Mukbang 1080p",
+        "duration": 876.0,
     },
     {
-        "yt_id": "hp8HuKWOUDU",
-        "title": "Fire Noodles Tortilla & Sausages Late Night Cinema Mukbang DoNam 1080p",
-        "duration": 659.0,
+        "yt_id": "WdQasO9pSIk",
+        "title": "Hamzy - Spicy Braised Chicken Stew Dakdoritang & Crispy Bacon Potato Pancake Mukbang 1080p",
+        "duration": 535.0,
     },
     {
-        "yt_id": "2j30NlKR9Cc",
-        "title": "Budaejjigae Sausage Stew Late Night Cinema Mukbang DoNam 1080p",
-        "duration": 623.0,
+        "yt_id": "8uosCE7_8Xs",
+        "title": "Eat with Boki - Charcoal Barbecue Chicken with Jumbo Frank Sausages Mukbang 1080p",
+        "duration": 526.0,
     },
     {
-        "yt_id": "BaeKvKFSlDA",
-        "title": "Crispy Honey Combo Chicken and Spicy Cheese Buldak Noodle Night Mukbang 1080p",
-        "duration": 620.0,
+        "yt_id": "0I4QhrkXr08",
+        "title": "Hamzy - Crispy Fried Chicken, Tonkatsu Cutlet & Black Bean Noodles Jajangmyeon Mukbang 1080p",
+        "duration": 955.0,
     },
     {
-        "yt_id": "6WUvI4wTxjA",
-        "title": "Crispy Cheese Sticks Fried Chicken & Carbo Fire Noodles Night Mukbang 1080p",
-        "duration": 522.0,
-    },
-    {
-        "yt_id": "qAq1IC_LcKk",
-        "title": "Late Night Convenience Store Feast Cinema Mukbang DoNam 1080p",
+        "yt_id": "KRbllARngiA",
+        "title": "Eat with Boki - Creamy Carbo Buldak Ramen with Crispy Fried Chicken & Sausages Mukbang 1080p",
         "duration": 500.0,
     },
     {
-        "yt_id": "AW58yRcZE1s",
-        "title": "Midnight Crispy Fried Chicken Cinema Mukbang DoNam 1080p",
-        "duration": 533.0,
+        "yt_id": "Xs9D-FJ3RvY",
+        "title": "Zach Choi ASMR - Golden Crispy Fried Chicken & Melted Nacho Cheese Fondue Mukbang 1080p",
+        "duration": 658.0,
+    },
+    {
+        "yt_id": "y8fY2QkFQ3o",
+        "title": "Zach Choi ASMR - Stretchy Mozzarella Cheese & Crispy Fried Chicken Mukbang 1080p",
+        "duration": 808.0,
     },
 ]
 
@@ -987,9 +987,10 @@ class BongCucYouTubeSplitter:
         bg_dir = self.project_root / "workspace_temp" / "bongcuc_bg_pool" / eff_mode
         bg_dir.mkdir(parents=True, exist_ok=True)
 
-        # Dọn sạch mọi file .part cũ bị dở dang
-        for old_f in bg_dir.glob("*.part*"):
-            if old_f.is_file():
+        # Dọn sạch mọi file .part cũ bị dở dang và các file bg_*.mp4 cũ không còn nằm trong pool mới
+        valid_pool_names = {f"bg_{cand['yt_id']}.mp4" for cand in pool}
+        for old_f in bg_dir.glob("*"):
+            if old_f.is_file() and (".part" in old_f.name or old_f.name not in valid_pool_names):
                 try:
                     old_f.unlink(missing_ok=True)
                 except Exception:

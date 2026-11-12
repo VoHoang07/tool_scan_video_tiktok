@@ -44,16 +44,16 @@ DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
     "timezone": "Asia/Ho_Chi_Minh",
     "default_post_times": ["08:00", "12:30", "23:30"],
     "channel_post_times": {
-        "video_AI_hay": ["07:25", "12:05", "22:55"],
-        "baby_AI": ["08:05", "12:42", "23:20"],
-        "audio_dem_khuyen": ["08:48", "13:25", "23:44"],
-        "tu_chan_gioi": ["09:18", "14:10", "23:56"],
-        "meo_vat_gia_dinh": ["07:10", "11:35", "22:35"],
-        "suc_khoe_duong_sinh": ["06:50", "11:55", "22:45"],
-        "phu_nu_khi_chat": ["08:28", "13:05", "23:32"],
-        "an_vat_moi_ngay": ["07:38", "12:22", "23:08"],
-        "nuoi_con_eq": ["08:15", "12:52", "23:26"],
-        "phu_kien_tien_ich": ["09:05", "13:45", "23:50"],
+        "audio_dem_khuyen": ["08:48", "13:25", "23:00"],
+        "video_AI_hay": ["07:25", "12:05", "23:06"],
+        "meo_vat_gia_dinh": ["07:10", "11:35", "23:12"],
+        "suc_khoe_duong_sinh": ["06:50", "11:55", "23:18"],
+        "an_vat_moi_ngay": ["07:38", "12:22", "23:24"],
+        "baby_AI": ["08:05", "12:42", "23:30"],
+        "nuoi_con_eq": ["08:15", "12:52", "23:36"],
+        "phu_nu_khi_chat": ["08:28", "13:05", "23:42"],
+        "phu_kien_tien_ich": ["09:05", "13:45", "23:48"],
+        "tu_chan_gioi": ["09:18", "14:10", "23:54"],
     },
     "filter_24h_enabled": True,
     "filter_24h_runs_per_day": 2,
@@ -482,7 +482,15 @@ class TikTokAutoPoster(
         """
         Tạo độ lệch phút ngẫu nhiên mỗi ngày (từ -3 đến +max_jitter phút) cho từng khung giờ
         để tài khoản không bao giờ đăng bài trùng khớp từng phút/giây giữa các ngày liên tiếp.
+        Riêng ca khuya (từ 23:00): kênh `audio_dem_khuyen` cố định đúng 23:00 (jitter=0) để mở màn đầu tiên,
+        còn 9 kênh còn lại chỉ lệch dương nhỏ (0..+3 phút) để không bao giờ nhảy lên trước 23:00.
         """
+        if str(slot).strip() >= "22:00":
+            if ch_folder == "audio_dem_khuyen":
+                return 0
+            seed_str = f"{today_str}:{ch_folder}:{slot}"
+            h_val = int(hashlib.md5(seed_str.encode("utf-8")).hexdigest()[:8], 16)
+            return h_val % 4
         if max_jitter <= 0:
             return 0
         seed_str = f"{today_str}:{ch_folder}:{slot}"
@@ -674,13 +682,15 @@ class TikTokAutoPoster(
                         return posted_results
 
         active_ch_set = set(cfg.get("active_channels") or ["video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"])
-        # Ưu tiên các kênh ĐÃ CÓ SẴN video .mp4 trong ready/ lên đăng trước để không bao giờ bị chờ kênh đang render
+        # Ca khuya (từ 22h trở đi): luôn xếp `audio_dem_khuyen` đứng ĐẦU TIÊN để mở màn đúng 23:00 trước các kênh còn lại
+        is_night_batch = datetime.now().hour >= 22
         ordered_profiles = sorted(
             CHANNEL_PROFILES.values(),
             key=lambda p: (
+                0 if (is_night_batch and p["folder_name"] == "audio_dem_khuyen") else 1,
                 0
                 if any((self.project_root / "output" / p["folder_name"] / "ready").glob("*.mp4"))
-                else 1
+                else 1,
             ),
         )
         for profile in ordered_profiles:

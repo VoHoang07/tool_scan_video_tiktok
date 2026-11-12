@@ -1,7 +1,7 @@
 # HANDOFF.md — Tài Liệu Bàn Giao & Trạng Thái Hệ Thống (`tool_scan_video_tiktok`)
 
-> **Cập nhật lần cuối**: `2026-11-11 14:18:00 +07:00`
-> **Commit mốc hiện tại**: Đã lưu vĩnh viễn quy tắc `/learn` vào `.agents/rules/agent_bug_evolution.md` & `.agents/skills/tiktok-community-guidelines-guard/SKILL.md` + Bộ lọc hashtag ban ngày `audio_dem_khuyen` + `harness.py` + 6 module Mixin chuẩn hóa
+> **Cập nhật lần cuối**: `2026-11-12 18:17:00 +07:00`
+> **Commit mốc hiện tại**: Đổi ca đăng khuya bắt đầu đúng từ `23:00` (`audio_dem_khuyen` đăng đầu tiên lúc `23:00`, 9 kênh còn lại nối đuôi `23:06–23:54`) + Ghim `"BC Số 119 - Phần 3/6"` (`990011903`) cho ca `23:00` đêm nay + Nâng cấp kho nền Mukbang Hàn Quốc 1080p triệu view (Eat with Boki, Hamzy, Zach Choi ASMR)
 
 ---
 

@@ -130,6 +130,16 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
             missing_ch = EXPECTED_10_CHANNELS - set(ch_times.keys())
             if missing_ch:
                 errors.append(f"[ConfigError] Thiếu lịch đăng của kênh: {sorted(missing_ch)}")
+            adk_night = (ch_times.get("audio_dem_khuyen") or [""])[-1]
+            if adk_night != "23:00":
+                errors.append(f"[ScheduleError] Ca khuya của audio_dem_khuyen phải là 23:00 (hiện tại: {adk_night})")
+            for ch_k, slots_v in ch_times.items():
+                if ch_k != "audio_dem_khuyen" and slots_v:
+                    night_s = slots_v[-1]
+                    if night_s <= "23:00":
+                        errors.append(
+                            f"[ScheduleError] Kênh {ch_k} có ca khuya {night_s} <= 23:00 (phải xếp sau audio_dem_khuyen)"
+                        )
             sw = cfg.get("system_switches") or {}
             for k in ("master_switch", "switch_1_factory", "switch_2_upload", "switch_3_interact", "switch_4_clear"):
                 if k not in sw:
@@ -183,6 +193,16 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
         )
         if "#audiodemkhuya" not in night_tags:
             errors.append(f"[NighttimeHashtagError] Mất hashtag đêm khuya khi đăng ban đêm: {night_tags}")
+
+        from tiktok_pipeline.bongcuc_splitter import BONGCUC_NIGHT_MUKBANG_POOL, BongCucYouTubeSplitter
+
+        if not BONGCUC_NIGHT_MUKBANG_POOL or BONGCUC_NIGHT_MUKBANG_POOL[0].get("yt_id") != "yMOzH-s0IWk":
+            errors.append("[MukbangPoolError] BONGCUC_NIGHT_MUKBANG_POOL chưa được nâng cấp sang bộ Mukbang Hàn Quốc 1080p mới!")
+        sp_bc = BongCucYouTubeSplitter(PROJECT_ROOT)
+        ep119_items = [x for x in sp_bc.get_full_catalog() if int(x.get("ep_num") or 0) == 119]
+        p3_items = [p for p in sp_bc.compute_episode_parts_plan(ep119_items[0]) if int(p.get("part_num") or 0) == 3] if ep119_items else []
+        if not p3_items or p3_items[0].get("story_id") != "990011903":
+            errors.append("[PinnedEp119Error] Không tìm thấy thông số BC Số 119 Phần 3 (990011903)!")
 
         bc_path = PROJECT_ROOT / "data" / "bongcuc_full_catalog.json"
         if bc_path.exists():
