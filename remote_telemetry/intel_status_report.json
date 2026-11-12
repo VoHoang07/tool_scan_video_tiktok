@@ -1,21 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-12 23:22:33",
+    "timestamp": "2026-11-12 23:31:08",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "upload_error",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261112_231707_tiktok_story_990011903_bongcuc_v6_s119_p3_bg_mukbang.mp4",
-      "caption": "🎧 Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà [Phần 3/6] — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
-      "hashtags": "#canhacuoikhichongtoikhongduocchianha #phan3 #truyenngan #tamlyhonnhan #xuhuong #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "video_file": "20261112_232358_tiktok_story_880034302_gautrucden_v1_s343_p2.mp4",
+      "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-12 23:31:08",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261112_232358_tiktok_story_880034302_gautrucden_v1_s343_p2.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-12 23:22:33",
       "machine_arch": "x86_64",
@@ -212,22 +218,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 23:58:38",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261111_235508_tiktok_story_990002103_bongcuc_v6_s21_p3_bg_mukbang.mp4",
-        "caption": "📖 Bị Đuổi Khỏi Nhà, Tôi Lỡ Yêu Nhầm Tổng Tài Giả Nghèo [Phần 3/5] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
-        "hashtags": "#biduoikhoinhatoiloyeunhamtongtaigian #phan3 #fyp #truyenaudio #chuyengiadinh #mukbangdemkhuya #audiodemkhuya #truyenngan",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
