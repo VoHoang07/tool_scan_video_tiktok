@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-12 07:17:30",
+    "timestamp": "2026-11-12 07:24:50",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261110_115532_tiktok_story_7209821802019769627.mp4",
-      "caption": "🏠 Bảo bối dọn nhà thông minh: Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
-      "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #viral #foryou",
+      "video_file": "20261112_072206_tiktok_story_880033602_gautrucden_v1_s336_p2.mp4",
+      "caption": "🌙 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không [Phần 2/10] — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
+      "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan2 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 5,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-12 07:24:50",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261112_072206_tiktok_story_880033602_gautrucden_v1_s336_p2.mp4",
+        "caption": "🌙 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không [Phần 2/10] — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
+        "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan2 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 5,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-12 07:17:30",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-11 13:16:23",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261109_203154_tiktok_story_7665915623473417480.mp4",
-        "caption": "✨ [Phụ Nữ Khí Chất] Bài học tâm lý hôn nhân sâu sắc giúp giữ lửa hạnh phúc gia đình. Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
-        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #foryou #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
