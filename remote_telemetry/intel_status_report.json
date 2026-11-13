@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-13 08:29:24",
+    "timestamp": "2026-11-13 08:57:23",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261113_082700_tiktok_story_880035002_gautrucden_v1_s350_p2.mp4",
+      "video_file": "20261113_085219_tiktok_story_990005401_bongcuc_v6_s54_p1_bg_daylight.mp4",
       "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-13 08:57:23",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261113_085219_tiktok_story_990005401_bongcuc_v6_s54_p1_bg_daylight.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-13 08:29:24",
       "machine_arch": "x86_64",
@@ -197,22 +208,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 5,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 00:04:34",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261110_022505_tiktok_story_7679427170552319253.mp4",
-        "caption": "📱 [Mẹo Công Nghệ Hay] Bảo bối công nghệ nhỏ gọn giá hạt dẻ nhưng giải quyết bao nhiêu bất tiện. Món phụ kiện nhỏ gọn mà giải quyết được bao nhiêu phiền toái hàng ngày! Bạn đã thử tính năng cực tiện này chưa?",
-        "hashtags": "#phukientienich #phukiendienthoai #docongnghe #congnghehay #decorbanlamviec #phukiengiare #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
