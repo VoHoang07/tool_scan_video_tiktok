@@ -1,7 +1,7 @@
 # HANDOFF.md — Tài Liệu Bàn Giao & Trạng Thái Hệ Thống (`tool_scan_video_tiktok`)
 
-> **Cập nhật lần cuối**: `2026-11-12 18:17:00 +07:00`
-> **Commit mốc hiện tại**: Đổi ca đăng khuya bắt đầu đúng từ `23:00` (`audio_dem_khuyen` đăng đầu tiên lúc `23:00`, 9 kênh còn lại nối đuôi `23:06–23:54`) + Ghim `"BC Số 119 - Phần 3/6"` (`990011903`) cho ca `23:00` đêm nay + Nâng cấp kho nền Mukbang Hàn Quốc 1080p triệu view (Eat with Boki, Hamzy, Zach Choi ASMR)
+> **Cập nhật lần cuối**: `2026-11-13 12:01:00 +07:00`
+> **Commit mốc hiện tại**: Cập nhật [`README.md`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/README.md) chuẩn kỹ thuật cho hệ thống 10 kênh (6 file Mixin, 4 công tắc, `harness.py`, lịch ca khuya `23:00`) + Ghim `"BC Số 119 - Phần 3/6"` & Nâng cấp kho nền Mukbang Hàn Quốc 1080p
 
 ---
 
