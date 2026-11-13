@@ -1,7 +1,7 @@
 # HANDOFF.md — Tài Liệu Bàn Giao & Trạng Thái Hệ Thống (`tool_scan_video_tiktok`)
 
-> **Cập nhật lần cuối**: `2026-11-13 12:01:00 +07:00`
-> **Commit mốc hiện tại**: Cập nhật [`README.md`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/README.md) chuẩn kỹ thuật cho hệ thống 10 kênh (6 file Mixin, 4 công tắc, `harness.py`, lịch ca khuya `23:00`) + Ghim `"BC Số 119 - Phần 3/6"` & Nâng cấp kho nền Mukbang Hàn Quốc 1080p
+> **Cập nhật lần cuối**: `2026-11-13 12:40:00 +07:00`
+> **Commit mốc hiện tại**: Viết lại [`README.md`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/README.md) tập trung vào kiến trúc **Automated Media Ingestion & Processing Pipeline** bằng Python (tách biệt Control Plane / Worker Plane, `fcntl.flock`, FFmpeg filtergraph, `importlib.reload` Mixins) + Lịch ca khuya `23:00` & Mukbang 1080p mới
 
 ---
 
