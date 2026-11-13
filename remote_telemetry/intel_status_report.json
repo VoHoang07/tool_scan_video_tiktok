@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-13 13:02:32",
+    "timestamp": "2026-11-13 13:57:57",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261112_082012_tiktok_story_7256630023145180418.mp4",
-      "caption": "👶 [Nuôi Con Thông Minh] Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
-      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
+      "video_file": "20261113_135353_tiktok_story_990007003_bongcuc_v6_s70_p3_bg_daylight.mp4",
+      "caption": "🎧 1800 Tệ Mua Một Màn Vả Mặt Đắt Giá (Phần 3/17) — Chuyện tâm lý cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
+      "hashtags": "#1800temuamotmanvamatdatgia #phan3 #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen #chuyengiadinh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-13 13:57:57",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261113_135353_tiktok_story_990007003_bongcuc_v6_s70_p3_bg_daylight.mp4",
+        "caption": "🎧 1800 Tệ Mua Một Màn Vả Mặt Đắt Giá (Phần 3/17) — Chuyện tâm lý cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
+        "hashtags": "#1800temuamotmanvamatdatgia #phan3 #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen #chuyengiadinh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-13 13:02:32",
       "machine_arch": "x86_64",
@@ -194,22 +210,6 @@
         "video_file": "20261110_082027_tiktok_story_7686281857947766036.mp4",
         "caption": "🥰 Nhật ký gia đình siêu lầy: Khoảnh khắc đáng yêu và hài hước nhất trong ngày của bé. Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
         "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 07:38:56",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
-      "details": {
-        "video_file": "20261110_123459_tiktok_story_7639317528052911382.mp4",
-        "caption": "🍜 Món Ngon Dễ Làm Mỗi Ngày: Bí quyết nấu ăn nhanh gọn đậm đà đưa cơm cho cả gia đình. Công thức siêu đơn giản mà hương vị đỉnh của chóp. Lưu lại vào bếp thử ngay nhé!",
-        "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #viral #foryou",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
