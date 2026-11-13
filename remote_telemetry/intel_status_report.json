@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-13 23:10:33",
+    "timestamp": "2026-11-13 23:20:29",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261113_230739_tiktok_story_880033603_gautrucden_v1_s336_p3.mp4",
-      "caption": "⚡ Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không (Phần 3/10) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-      "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan3 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
+      "video_file": "20261113_082308_tiktok_story_7472192503295315216.mp4",
+      "caption": "🌿 [Sức Khỏe Chủ Động] Tín hiệu cảnh báo sớm của cơ thể mà dân văn phòng tuyệt đối đừng chủ quan. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #fyp #xh",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 6,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-13 23:20:29",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261113_082308_tiktok_story_7472192503295315216.mp4",
+        "caption": "🌿 [Sức Khỏe Chủ Động] Tín hiệu cảnh báo sớm của cơ thể mà dân văn phòng tuyệt đối đừng chủ quan. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
+        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #fyp #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 6,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-13 23:10:33",
       "machine_arch": "x86_64",
@@ -207,17 +223,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_phu_kien_tien_ich.jpg",
       "details": {
         "video_file": "20261110_093920_tiktok_story_7691555785263893768.mp4",
-        "error": "name 'datetime' is not defined"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 09:08:52",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261112_090021_tiktok_story_990004501_bongcuc_v6_s45_p1_bg_daylight.mp4",
         "error": "name 'datetime' is not defined"
       }
     }
