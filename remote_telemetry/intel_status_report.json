@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-13 23:03:28",
+    "timestamp": "2026-11-13 23:10:33",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261113_230023_tiktok_story_990005101_bongcuc_v6_s51_p1_bg_mukbang.mp4",
-      "caption": "📖 Nữ Phụ Giả Heo truy đuổi Học Bá [Phần 1/12] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
-      "hashtags": "#nuphugiaheotruyduoihocba #phan1 #gocnhinkhuya #fyp #truyenaudio #chuyengiadinh #mukbangdemkhuya #audiodemkhuya",
+      "video_file": "20261113_230739_tiktok_story_880033603_gautrucden_v1_s336_p3.mp4",
+      "caption": "⚡ Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không (Phần 3/10) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
+      "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan3 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-13 23:10:33",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261113_230739_tiktok_story_880033603_gautrucden_v1_s336_p3.mp4",
+        "caption": "⚡ Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không (Phần 3/10) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
+        "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan3 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-13 23:03:28",
       "machine_arch": "x86_64",
@@ -202,17 +218,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
       "details": {
         "video_file": "20261112_090021_tiktok_story_990004501_bongcuc_v6_s45_p1_bg_daylight.mp4",
-        "error": "name 'datetime' is not defined"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 08:33:54",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261110_083703_tiktok_story_7698329630331178258.mp4",
         "error": "name 'datetime' is not defined"
       }
     }
