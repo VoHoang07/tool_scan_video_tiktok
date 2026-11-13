@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-13 13:57:57",
+    "timestamp": "2026-11-13 23:03:28",
     "machine_arch": "x86_64",
     "event_type": "upload",
     "channel": "audio_dem_khuyen",
     "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261113_135353_tiktok_story_990007003_bongcuc_v6_s70_p3_bg_daylight.mp4",
-      "caption": "🎧 1800 Tệ Mua Một Màn Vả Mặt Đắt Giá (Phần 3/17) — Chuyện tâm lý cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
-      "hashtags": "#1800temuamotmanvamatdatgia #phan3 #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen #chuyengiadinh",
+      "video_file": "20261113_230023_tiktok_story_990005101_bongcuc_v6_s51_p1_bg_mukbang.mp4",
+      "caption": "📖 Nữ Phụ Giả Heo truy đuổi Học Bá [Phần 1/12] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
+      "hashtags": "#nuphugiaheotruyduoihocba #phan1 #gocnhinkhuya #fyp #truyenaudio #chuyengiadinh #mukbangdemkhuya #audiodemkhuya",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-13 23:03:28",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261113_230023_tiktok_story_990005101_bongcuc_v6_s51_p1_bg_mukbang.mp4",
+        "caption": "📖 Nữ Phụ Giả Heo truy đuổi Học Bá [Phần 1/12] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
+        "hashtags": "#nuphugiaheotruyduoihocba #phan1 #gocnhinkhuya #fyp #truyenaudio #chuyengiadinh #mukbangdemkhuya #audiodemkhuya",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-13 13:57:57",
       "machine_arch": "x86_64",
@@ -198,22 +214,6 @@
       "details": {
         "video_file": "20261110_083703_tiktok_story_7698329630331178258.mp4",
         "error": "name 'datetime' is not defined"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 08:13:11",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261110_082027_tiktok_story_7686281857947766036.mp4",
-        "caption": "🥰 Nhật ký gia đình siêu lầy: Khoảnh khắc đáng yêu và hài hước nhất trong ngày của bé. Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
