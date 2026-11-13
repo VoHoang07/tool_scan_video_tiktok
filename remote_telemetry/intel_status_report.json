@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-13 12:55:15",
+    "timestamp": "2026-11-13 13:02:32",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261113_125250_tiktok_story_880034801_gautrucden_v1_s348_p1.mp4",
-      "caption": "👀 Đôi Mắt Nhìn Thấy Quỷ (Phần 1/7) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
-      "hashtags": "#doimatnhinthayquy #phan1 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
+      "video_file": "20261112_082012_tiktok_story_7256630023145180418.mp4",
+      "caption": "👶 [Nuôi Con Thông Minh] Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
+      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-13 13:02:32",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261112_082012_tiktok_story_7256630023145180418.mp4",
+        "caption": "👶 [Nuôi Con Thông Minh] Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
+        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-13 12:55:15",
       "machine_arch": "x86_64",
@@ -197,22 +213,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 07:24:50",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261112_072206_tiktok_story_880033602_gautrucden_v1_s336_p2.mp4",
-        "caption": "🌙 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không [Phần 2/10] — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-        "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan2 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 5,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
