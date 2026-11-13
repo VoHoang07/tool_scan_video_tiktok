@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-12 23:31:08",
+    "timestamp": "2026-11-13 08:29:24",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
     "channel": "video_AI_hay",
     "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261112_232358_tiktok_story_880034302_gautrucden_v1_s343_p2.mp4",
+      "video_file": "20261113_082700_tiktok_story_880035002_gautrucden_v1_s350_p2.mp4",
       "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-13 08:29:24",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261113_082700_tiktok_story_880035002_gautrucden_v1_s350_p2.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-12 23:31:08",
       "machine_arch": "x86_64",
@@ -202,22 +213,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 00:01:27",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261110_013926_youtube_shorts_story_oyOyn1YDJck.mp4",
-        "caption": "🔥 Siêu phẩm Huyền Huyễn Tu Tiên: Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-        "hashtags": "#tuchangioi #tutien #huyenhuyen #hoathinh3dtrungquoc #aitutien #tiennghich #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
