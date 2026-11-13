@@ -1,7 +1,7 @@
 # HANDOFF.md — Tài Liệu Bàn Giao & Trạng Thái Hệ Thống (`tool_scan_video_tiktok`)
 
-> **Cập nhật lần cuối**: `2026-11-13 12:40:00 +07:00`
-> **Commit mốc hiện tại**: Viết lại [`README.md`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/README.md) tập trung vào kiến trúc **Automated Media Ingestion & Processing Pipeline** bằng Python (tách biệt Control Plane / Worker Plane, `fcntl.flock`, FFmpeg filtergraph, `importlib.reload` Mixins) + Lịch ca khuya `23:00` & Mukbang 1080p mới
+> **Cập nhật lần cuối**: `2026-11-13 13:20:00 +07:00`
+> **Commit mốc hiện tại**: Thu gọn nhịp chuyển câu AudioPrint của kênh `audio_dem_khuyen` xuống siêu ngắn (`0.45s–0.85s`, 2–3 chữ nối tự nhiên, `volume=0.52` hòa lẫn hoàn toàn vào mạch truyện) + Lịch ca khuya `23:00` & Mukbang 1080p mới
 
 ---
 

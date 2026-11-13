@@ -396,6 +396,15 @@ class PosterMediaPrepMixin:
                     )
                     target_bg_mode = get_target_bg_mode_for_hour()
 
+                    # Xóa các file ready/ cũ được render trước mốc 20261113_132000 (còn chứa câu chèn dài 5s cũ)
+                    fresh_candidates: List[Path] = []
+                    for c_old in valid_candidates:
+                        if c_old.name[:15] < "20261113_132000":
+                            c_old.unlink(missing_ok=True)
+                        else:
+                            fresh_candidates.append(c_old)
+                    valid_candidates = fresh_candidates
+
                     splitter = BongCucYouTubeSplitter(project_root=self.project_root)
                     cat_views = {
                         int(e.get("ep_num") or 0): int(e.get("view_count") or 0)

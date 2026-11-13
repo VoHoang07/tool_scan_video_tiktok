@@ -1145,72 +1145,78 @@ class BongCucYouTubeSplitter:
 
     def _ensure_interjection_audio(self, seed_val: int, pitch_factor: float) -> Optional[Tuple[Path, float]]:
         """
-        Tạo đoạn bình luận / dẫn chuyện ngắn gọn (3.2s - 5.2s) để chèn vào giữa nội dung audio gốc
-        rồi quay trở lại mạch truyện chính ngay lập tức (phá vỡ 100% dấu vân tay thời gian AudioPrint).
+        Tạo nhịp chuyển câu siêu ngắn (0.45s - 0.85s, chỉ 2-3 chữ nối tự nhiên như 'Thế rồi,', 'Lúc ấy,')
+        hòa lẫn vào giọng đọc và âm lượng nền để người nghe hoàn toàn không nhận ra có đoạn chèn,
+        nhưng vẫn dịch chuyển toàn bộ mốc thời gian âm thanh phía sau để phá vỡ 100% dấu vân tay AudioPrint.
         """
         import urllib.parse
         import urllib.request
 
-        interj_dir = self.cache_dir / "interjections_v5"
+        interj_dir = self.cache_dir / "interjections_v7_micro"
         interj_dir.mkdir(parents=True, exist_ok=True)
         interjections = [
-            "Nghe đến đoạn này mà thấy xót xa thật sự mọi người ạ. Cùng quay lại mạch truyện chính ngay nhé!",
-            "Lòng người đúng là chẳng ai đoán trước được chữ ngờ. Mình nghe tiếp diễn biến chính ngay sau đây nhé!",
-            "Tình tiết bắt đầu căng thẳng rồi đây, mọi người nghe tiếp xem nhân vật chính xử lý thế nào nhé!",
-            "Một bước ngoặt không ai ngờ tới. Cùng quay lại câu chuyện ngay lúc này nhé!",
-            "Đúng là chỉ khi biến cố ập tới mới thấu rõ lòng người. Quay lại mạch truyện chính ngay nhé!",
-            "Nghe mà vừa thương vừa giận đúng không mọi người? Cùng nghe tiếp diễn biến ngay sau đây nhé!",
-            "Càng nghe càng cuốn vào từng tình tiết. Mình quay lại mạch chính của câu chuyện ngay nhé!",
-            "Sự thật dần được hé lộ rồi. Cùng nghe tiếp xem màn đáp trả phía sau ra sao nhé!",
-            "Đặt mình vào hoàn cảnh này mới thấy nghẹt thở làm sao. Cùng quay lại câu chuyện ngay nhé!",
-            "Tưởng đâu mọi chuyện đã êm xuôi, nào ngờ sóng gió mới chỉ bắt đầu. Nghe tiếp ngay nhé!",
-            "Mỗi lời nói ra đều như cứa vào lòng. Mình quay lại mạch truyện chính để nghe tiếp nhé!",
-            "Không biết quyết định tiếp theo sẽ thay đổi tất cả thế nào. Cùng nghe tiếp ngay bây giờ nhé!",
+            "Thế rồi,",
+            "Lúc ấy,",
+            "Ngay lúc đó,",
+            "Chẳng ngờ,",
+            "Sau đó,",
+            "Nhưng rồi,",
+            "Đúng lúc này,",
+            "Không ngờ,",
+            "Rồi bỗng nhiên,",
+            "Và thế là,",
+            "Chỉ một lát sau,",
+            "Ngay sau đó,",
         ]
         idx = seed_val % len(interjections)
-        voice_name = "vi-VN-HoaiMyNeural" if (seed_val % 2 == 0) else "vi-VN-NamMinhNeural"
-        target_mp3 = interj_dir / f"interj_v5_{idx}_{voice_name}.mp3"
+        voice_name = "vi-VN-HoaiMyNeural"
+        raw_mp3 = interj_dir / f"interj_v7_{idx}_raw.mp3"
+        target_mp3 = interj_dir / f"interj_v7_{idx}_p{int(pitch_factor * 1000)}.mp3"
 
-        if not target_mp3.exists() or target_mp3.stat().st_size < 4_000:
+        if not target_mp3.exists() or target_mp3.stat().st_size < 1_000:
             edge_tts_bin = self.project_root / "venv" / "bin" / "edge-tts"
             cmd_tts = [
                 str(edge_tts_bin) if edge_tts_bin.exists() else "edge-tts",
                 "--voice",
                 voice_name,
-                "--rate=+18%",
+                "--rate=+36%",
                 "--text",
                 interjections[idx],
                 "--write-media",
-                str(target_mp3),
+                str(raw_mp3),
             ]
             try:
-                subprocess.run(cmd_tts, capture_output=True, timeout=12, check=False)
+                subprocess.run(cmd_tts, capture_output=True, timeout=10, check=False)
             except Exception as exc:
-                logger.debug(f"[BongCucSplitter] Lỗi tạo interjection Edge-TTS: {exc}")
+                logger.debug(f"[BongCucSplitter] Lỗi tạo micro-interjection Edge-TTS: {exc}")
 
-        if not target_mp3.exists() or target_mp3.stat().st_size < 4_000:
-            try:
-                raw_gtts = interj_dir / f"interj_v5_{idx}_raw.mp3"
-                url = (
-                    "https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q="
-                    + urllib.parse.quote(interjections[idx])
-                )
-                req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-                data = urllib.request.urlopen(req, timeout=12).read()
-                if len(data) >= 4_000:
-                    raw_gtts.write_bytes(data)
-                    # Tăng tốc độ đọc tự nhiên (atempo=1.28) + chỉnh âm sắc ấm áp chuẩn radio đêm khuya
-                    interj_pitch = 0.92 if (seed_val % 2 == 1) else 1.04
+            if not raw_mp3.exists() or raw_mp3.stat().st_size < 1_000:
+                try:
+                    url = (
+                        "https://translate.google.com/translate_tts?ie=UTF-8&tl=vi&client=tw-ob&q="
+                        + urllib.parse.quote(interjections[idx])
+                    )
+                    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                    data = urllib.request.urlopen(req, timeout=10).read()
+                    if len(data) >= 1_000:
+                        raw_mp3.write_bytes(data)
+                except Exception as exc:
+                    logger.debug(f"[BongCucSplitter] Lỗi tạo micro-interjection Google-TTS fallback: {exc}")
+
+            if raw_mp3.exists() and raw_mp3.stat().st_size >= 1_000:
+                try:
                     cmd_polish = [
                         self.ffmpeg_bin,
                         "-y",
                         "-i",
-                        str(raw_gtts),
+                        str(raw_mp3),
                         "-af",
                         (
-                            f"aresample=44100,asetrate=44100*{interj_pitch:.3f},aresample=44100,"
-                            f"atempo={1.28 / interj_pitch:.3f},"
-                            "silenceremove=start_periods=1:start_silence=0.05:start_threshold=-42dB"
+                            f"aresample=44100,asetrate=44100*{pitch_factor:.3f},aresample=44100,"
+                            f"atempo={1.38 / pitch_factor:.3f},"
+                            "silenceremove=start_periods=1:start_silence=0.02:start_threshold=-40dB:"
+                            "stop_periods=1:stop_silence=0.04:stop_threshold=-40dB,"
+                            "atrim=0:0.85"
                         ),
                         "-c:a",
                         "libmp3lame",
@@ -1218,17 +1224,14 @@ class BongCucYouTubeSplitter:
                         "2",
                         str(target_mp3),
                     ]
-                    subprocess.run(cmd_polish, capture_output=True, timeout=15, check=False)
-                    if not target_mp3.exists() or target_mp3.stat().st_size < 4_000:
-                        raw_gtts.replace(target_mp3)
-                    else:
-                        raw_gtts.unlink(missing_ok=True)
-            except Exception as exc:
-                logger.debug(f"[BongCucSplitter] Lỗi tạo interjection Google-TTS fallback: {exc}")
+                    subprocess.run(cmd_polish, capture_output=True, timeout=12, check=False)
+                except Exception:
+                    pass
+                raw_mp3.unlink(missing_ok=True)
 
-        if target_mp3.exists() and target_mp3.stat().st_size >= 4_000:
-            dur = get_media_duration(target_mp3) or 3.8
-            if 1.5 <= dur <= 7.5:
+        if target_mp3.exists() and target_mp3.stat().st_size >= 800:
+            dur = get_media_duration(target_mp3) or 0.6
+            if 0.25 <= dur <= 1.15:
                 return target_mp3, round(float(dur), 2)
         return None
 
@@ -1535,14 +1538,14 @@ class BongCucYouTubeSplitter:
             )
         atempo_comp = round(speed_factor / pitch_factor, 5)
 
-        # --- CHÈN ĐOẠN DẪN NGẮN (3-4s) VÀO GIỮA NỘI DUNG GỐC RỒI QUAY LẠI MẠCH CHÍNH NGAY ---
+        # --- CHÈN NHỊP CHUYỂN CÂU SIÊU NGẮN (0.45s - 0.8s, ÂM LƯỢNG MỀM) ĐỂ PHÁ AUDIOPRINT MÀ NGƯỜI NGHE KHÔNG NHẬN RA ---
         base_out_dur = max(35.0, round(orig_dur / speed_factor, 2))
         interj_info = self._ensure_interjection_audio(seed_val=seed_val, pitch_factor=pitch_factor)
         split_sec = round(min(base_out_dur * 0.35, 36.0 + (seed_val % 14)), 2)
-        resume_sec = max(0.0, round(split_sec - 0.65, 2))
+        resume_sec = max(0.0, round(split_sec - 0.15, 2))
         if interj_info is not None and base_out_dur >= 45.0:
             interj_path, interj_dur = interj_info
-            target_out_dur = round(base_out_dur + interj_dur + 0.65, 2)
+            target_out_dur = round(base_out_dur + interj_dur + 0.15, 2)
         else:
             interj_path = None
             interj_dur = 0.0
@@ -1580,15 +1583,15 @@ class BongCucYouTubeSplitter:
         )
 
         if interj_path is not None:
-            fade_out_st = max(0.5, round(split_sec - 0.18, 2))
-            interj_fade_out = max(0.2, round(interj_dur - 0.18, 2))
+            fade_out_st = max(0.3, round(split_sec - 0.08, 2))
+            interj_fade_out = max(0.1, round(interj_dur - 0.08, 2))
             audio_chain = (
                 f"{main_audio_transform},asplit=2[ma1][ma2];"
-                f"[ma1]atrim=0:{split_sec:.2f},asetpts=PTS-STARTPTS,afade=t=out:st={fade_out_st:.2f}:d=0.18[a_seg1];"
+                f"[ma1]atrim=0:{split_sec:.2f},asetpts=PTS-STARTPTS,afade=t=out:st={fade_out_st:.2f}:d=0.08[a_seg1];"
                 f"[3:a]aresample=44100,aformat=sample_rates=44100:channel_layouts=stereo,"
-                f"equalizer=f=180:t=q:w=1.1:g=2.2,extrastereo=m=1.10,volume=1.22,"
-                f"afade=t=in:st=0:d=0.12,afade=t=out:st={interj_fade_out:.2f}:d=0.18,asetpts=PTS-STARTPTS[a_interj];"
-                f"[ma2]atrim=start={resume_sec:.2f},asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.18[a_seg2];"
+                f"lowpass=f=4200,equalizer=f=180:t=q:w=1.1:g=1.4,volume=0.52,"
+                f"afade=t=in:st=0:d=0.06,afade=t=out:st={interj_fade_out:.2f}:d=0.08,asetpts=PTS-STARTPTS[a_interj];"
+                f"[ma2]atrim=start={resume_sec:.2f},asetpts=PTS-STARTPTS,afade=t=in:st=0:d=0.08[a_seg2];"
                 "[a_seg1][a_interj][a_seg2]concat=n=3:v=0:a=1,alimiter=limit=0.95[aout]"
             )
         else:
