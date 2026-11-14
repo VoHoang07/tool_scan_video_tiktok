@@ -1,16 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 12:08:28",
+    "timestamp": "2026-11-14 12:17:10",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_error_suc_khoe_duong_sinh.jpg",
+    "event_type": "upload",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261113_082322_tiktok_story_7623283471183629575.mp4",
-      "error": "name 'datetime' is not defined"
+      "video_file": "20261114_121441_tiktok_story_880034303_gautrucden_v1_s343_p3.mp4",
+      "caption": "🎬 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ [Phần 3/10] — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
+      "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan3 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 0,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 12:17:10",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261114_121441_tiktok_story_880034303_gautrucden_v1_s343_p3.mp4",
+        "caption": "🎬 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ [Phần 3/10] — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
+        "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan3 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-14 12:08:28",
       "machine_arch": "x86_64",
@@ -202,17 +223,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
       "details": {
         "video_file": "20261113_082700_tiktok_story_880035002_gautrucden_v1_s350_p2.mp4",
-        "error": "name 'datetime' is not defined"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 23:31:08",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261112_232358_tiktok_story_880034302_gautrucden_v1_s343_p2.mp4",
         "error": "name 'datetime' is not defined"
       }
     }
