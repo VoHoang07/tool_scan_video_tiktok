@@ -1,91 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 17:38:54",
+    "timestamp": "2026-11-14 17:40:22",
     "machine_arch": "x86_64",
     "event_type": "filter24h",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
     "details": {
-      "interacted_count": 1,
+      "interacted_count": 0,
       "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "meo_vat_gia_dinh",
-          "video_id": "7707954243252014354",
-          "video_url": "https://www.tiktok.com/@_klinn_z/video/7707954243252014354",
-          "creator_handle": "@_klinn_z",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611141837414FE96C7723F73D5AC551\",\"now\":1794652661000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611141837414FE96C7723F73D5AC551\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261114183809B9562FFEBA1DFAC39766\",\"now\":1794652689000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261114183809B9562FFEBA1DFAC39766\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 814.96875,
-              "y": 431,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "60"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 814.96875,
-                "y": 431,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "60"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@_klinn_z",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@_klinn_z?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": 0,
-              "server_follow_ok": true,
-              "ui_confirmed": true,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-14 17:38:18",
-          "follow_back_window_until": "2026-11-15 17:38:18"
-        }
-      ]
+      "records": []
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 17:40:22",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "interacted_count": 0,
+        "own_profile_stats": {},
+        "records": []
+      }
+    },
     {
       "timestamp": "2026-11-14 17:38:54",
       "machine_arch": "x86_64",
@@ -357,22 +295,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-13 12:55:15",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261113_125250_tiktok_story_880034801_gautrucden_v1_s348_p1.mp4",
-        "caption": "👀 Đôi Mắt Nhìn Thấy Quỷ (Phần 1/7) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
-        "hashtags": "#doimatnhinthayquy #phan1 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
