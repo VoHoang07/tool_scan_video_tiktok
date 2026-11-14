@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 08:55:10",
+    "timestamp": "2026-11-14 12:08:28",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_error_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261114_085028_tiktok_story_990004502_bongcuc_v6_s45_p2_bg_daylight.mp4",
+      "video_file": "20261113_082322_tiktok_story_7623283471183629575.mp4",
       "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 12:08:28",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_error_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261113_082322_tiktok_story_7623283471183629575.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-14 08:55:10",
       "machine_arch": "x86_64",
@@ -203,22 +214,6 @@
       "details": {
         "video_file": "20261112_232358_tiktok_story_880034302_gautrucden_v1_s343_p2.mp4",
         "error": "name 'datetime' is not defined"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 23:22:33",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261112_231707_tiktok_story_990011903_bongcuc_v6_s119_p3_bg_mukbang.mp4",
-        "caption": "🎧 Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà [Phần 3/6] — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
-        "hashtags": "#canhacuoikhichongtoikhongduocchianha #phan3 #truyenngan #tamlyhonnhan #xuhuong #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
