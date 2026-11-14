@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 23:52:23",
+    "timestamp": "2026-11-15 00:11:22",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261114_234227_douyin_story_7601449421951257875.mp4",
-      "caption": "😂 Cha mẹ mới làm quen phải học cách quấn bé để tránh gió khi ra ngoài. \"Còn cái túi thì sao? Chúng ta có nên di chuyển nó xuống sâu hơn một chút không...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #embecute #tinhhuonghaihuoc #haihuocmoingay #viral #foryou",
+      "video_file": "20261115_000515_douyin_story_7006568746135407913.mp4",
+      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Đây là cảm giác bay. \"Phía trước là dịch chuyển tức thời trong không gian máy bay...\" Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+      "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 00:11:22",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261115_000515_douyin_story_7006568746135407913.mp4",
+        "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Đây là cảm giác bay. \"Phía trước là dịch chuyển tức thời trong không gian máy bay...\" Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-14 23:52:23",
       "machine_arch": "x86_64",
@@ -283,22 +299,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-13 23:20:29",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261113_082308_tiktok_story_7472192503295315216.mp4",
-        "caption": "🌿 [Sức Khỏe Chủ Động] Tín hiệu cảnh báo sớm của cơ thể mà dân văn phòng tuyệt đối đừng chủ quan. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }

@@ -376,7 +376,8 @@
     "990008901",
     "990005402",
     "880034802",
-    "7601449421951257875"
+    "7601449421951257875",
+    "7006568746135407913"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -632,7 +633,8 @@
     "gautrucden_yt_t4p79z7ppYM_p3",
     "bongcuc_yt_uYLLb4TWfhk_p2",
     "gautrucden_yt_Vuf0aXpwCS4_p2",
-    "7601449462774483750"
+    "7601449462774483750",
+    "7006568770953399076"
   ],
   "items": [
     {
@@ -3394,6 +3396,16 @@
       "source_url": "https://www.douyin.com/video/7601449421951257875",
       "output_filename": "baby_AI/ready/20261114_234227_douyin_story_7601449421951257875.mp4",
       "crawled_at": "2026-11-14T23:47:44"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7006568746135407913",
+      "sound_id": "7006568770953399076",
+      "platform": "douyin",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.douyin.com/video/7006568746135407913",
+      "output_filename": "tu_chan_gioi/ready/20261115_000515_douyin_story_7006568746135407913.mp4",
+      "crawled_at": "2026-11-15T00:06:39"
     }
   ]
 }
