@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 12:17:10",
+    "timestamp": "2026-11-14 12:21:03",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261114_121441_tiktok_story_880034303_gautrucden_v1_s343_p3.mp4",
-      "caption": "🎬 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ [Phần 3/10] — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
-      "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan3 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+      "video_file": "20261114_071648_tiktok_story_7701260948031540501.mp4",
+      "caption": "💡 [Mẹo Vặt Gia Đình] Bí quyết sắp xếp nhà cửa gọn gàng tiết kiệm thời gian cho cả gia đình. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 12:21:03",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261114_071648_tiktok_story_7701260948031540501.mp4",
+        "caption": "💡 [Mẹo Vặt Gia Đình] Bí quyết sắp xếp nhà cửa gọn gàng tiết kiệm thời gian cho cả gia đình. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-14 12:17:10",
       "machine_arch": "x86_64",
@@ -212,17 +228,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
       "details": {
         "video_file": "20261113_085219_tiktok_story_990005401_bongcuc_v6_s54_p1_bg_daylight.mp4",
-        "error": "name 'datetime' is not defined"
-      }
-    },
-    {
-      "timestamp": "2026-11-13 08:29:24",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261113_082700_tiktok_story_880035002_gautrucden_v1_s350_p2.mp4",
         "error": "name 'datetime' is not defined"
       }
     }
