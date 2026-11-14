@@ -1,21 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-13 23:47:09",
+    "timestamp": "2026-11-14 07:37:06",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "event_type": "upload_error",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261112_082100_tiktok_story_7669217849499585813.mp4",
-      "caption": "🤱 Đồng hành cùng con: Bí quyết đồng hành cùng con trưởng thành mỗi ngày cho bố mẹ hiện đại. Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-      "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #xuhuong",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "video_file": "20261114_073437_tiktok_story_880036003_gautrucden_v1_s360_p3.mp4",
+      "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 07:37:06",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261114_073437_tiktok_story_880036003_gautrucden_v1_s360_p3.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-13 23:47:09",
       "machine_arch": "x86_64",
@@ -217,17 +223,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
       "details": {
         "video_file": "20261112_121642_tiktok_story_880036002_gautrucden_v1_s360_p2.mp4",
-        "error": "name 'datetime' is not defined"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 09:29:32",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261110_093335_tiktok_story_7691688086253636884.mp4",
         "error": "name 'datetime' is not defined"
       }
     }
