@@ -1,21 +1,177 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 13:53:25",
+    "timestamp": "2026-11-14 17:38:54",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "filter24h",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261114_134913_tiktok_story_990008901_bongcuc_v6_s89_p1_bg_daylight.mp4",
-      "caption": "🎙️ Bỏ Lại Thanh Mai Trúc Mã, Tôi Chọn Tương Lai [Phần 1/6] — Góc kể Chuyện tâm lý đầy cảm xúc, đừng bỏ lỡ chi tiết nào nhé!",
-      "hashtags": "#bolaithanhmaitrucmatoichontuonglai #phan1 #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 6,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "meo_vat_gia_dinh",
+          "video_id": "7707954243252014354",
+          "video_url": "https://www.tiktok.com/@_klinn_z/video/7707954243252014354",
+          "creator_handle": "@_klinn_z",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611141837414FE96C7723F73D5AC551\",\"now\":1794652661000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611141837414FE96C7723F73D5AC551\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261114183809B9562FFEBA1DFAC39766\",\"now\":1794652689000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261114183809B9562FFEBA1DFAC39766\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 814.96875,
+              "y": 431,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "60"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 814.96875,
+                "y": 431,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "60"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@_klinn_z",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@_klinn_z?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-14 17:38:18",
+          "follow_back_window_until": "2026-11-15 17:38:18"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 17:38:54",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "meo_vat_gia_dinh",
+            "video_id": "7707954243252014354",
+            "video_url": "https://www.tiktok.com/@_klinn_z/video/7707954243252014354",
+            "creator_handle": "@_klinn_z",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611141837414FE96C7723F73D5AC551\",\"now\":1794652661000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611141837414FE96C7723F73D5AC551\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261114183809B9562FFEBA1DFAC39766\",\"now\":1794652689000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261114183809B9562FFEBA1DFAC39766\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 814.96875,
+                "y": 431,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "60"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 814.96875,
+                  "y": 431,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "60"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@_klinn_z",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@_klinn_z?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-14 17:38:18",
+            "follow_back_window_until": "2026-11-15 17:38:18"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-14 13:53:25",
       "machine_arch": "x86_64",
@@ -217,22 +373,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-13 12:51:53",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261113_082135_tiktok_story_7290118413840583943.mp4",
-        "caption": "🌿 [Sức Khỏe Chủ Động] Tín hiệu cảnh báo sớm của cơ thể mà dân văn phòng tuyệt đối đừng chủ quan. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
