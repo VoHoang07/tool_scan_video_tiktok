@@ -1,6 +1,7 @@
 import json
 import os
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -1338,8 +1339,14 @@ class SubtitleTranslator:
             fallback_by_ch = {
                 "channel_1": "Thế giới hoạt hình AI kỳ ảo với tình tiết bất ngờ ở giây cuối cùng",
                 "channel_2": "Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh",
-                "channel_3": "Biến cố bất ngờ lúc nửa đêm và sự thật chấn động phía sau cuộc hôn nhân",
+                "channel_3": "Biến cố bất ngờ và sự thật phía sau cuộc hôn nhân khiến ai cũng suy ngẫm",
                 "channel_4": "Phàm nhân nghịch thiên cải mệnh thức tỉnh huyết mạch thượng cổ tại Tu Chân Giới",
+                "channel_5": "Cách xử lý việc nhà gọn gàng và tiết kiệm thời gian cho căn bếp gia đình",
+                "channel_6": "Thói quen nhỏ mỗi ngày giúp cơ thể khỏe khoắn và ngủ ngon giấc hơn",
+                "channel_7": "Góc nhìn tinh tế về cuộc sống, tình cảm và cách phụ nữ yêu thương bản thân",
+                "channel_8": "Món ăn vặt thơm ngon dễ làm tại nhà nhìn thôi đã thấy hấp dẫn",
+                "channel_9": "Cách lắng nghe và đồng hành cùng con giúp trẻ tự giác và hiểu chuyện hơn",
+                "channel_10": "Món đồ tiện ích nhỏ gọn giúp giải quyết nhanh những bất tiện hàng ngày",
             }
             core_topic = fallback_by_ch.get(ch_key, "Câu chuyện kịch tính không thể rời mắt")
 
@@ -1382,39 +1389,51 @@ class SubtitleTranslator:
                 f"🤣 {core_topic} — Pha xử lý đi vào lòng đất của hai mẹ con!{extra_summary} Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
             ],
             "channel_3": [
-                f"🎧 [Truyện Đêm Khuya] {core_topic}.{extra_summary} Một câu chuyện đầy kịch tính với cú quay xe cực gắt ở phút cuối. Nếu ở trong hoàn cảnh của nhân vật chính, bạn sẽ chọn tha thứ hay trả đũa?",
-                f"📖 Góc Kể Chuyện: {core_topic}.{extra_summary} Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
-                f"🔥 Cốt truyện cuốn từ giây đầu tiên: {core_topic}.{extra_summary} Nghe hết để thấy màn vả mặt cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
-                f"🌙 Thức đêm nghe truyện: {core_topic}.{extra_summary} Từng tình tiết đều khiến người nghe nổi da gà, đừng bỏ lỡ đoạn kết!",
+                f"🎧 {core_topic}.{extra_summary} Một câu chuyện đầy kịch tính với cú quay xe cực gắt ở phút cuối. Nếu ở trong hoàn cảnh của nhân vật chính, bạn sẽ chọn tha thứ hay trả đũa?",
+                f"📖 Góc kể chuyện đời thường: {core_topic}.{extra_summary} Lòng người khó đoán, chỉ đến khi biến cố ập tới mới biết ai thật lòng. Bạn nghĩ sao về cái kết của câu chuyện này?",
+                f"🔥 Cốt truyện cuốn từ giây đầu tiên: {core_topic}.{extra_summary} Nghe hết để thấy màn đáp trả cực kỳ hả dạ phía sau nhé! Theo bạn ai mới là người sai?",
+                f"🌙 Tâm sự muộn: {core_topic}.{extra_summary} Từng tình tiết đều khiến người nghe phải suy ngẫm, đừng bỏ lỡ đoạn kết!",
             ],
             "channel_4": [
-                f"⚔️ [Tu Chân Giới] {core_topic}.{extra_summary} Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-                f"🔥 Siêu phẩm Huyền Huyễn Tu Tiên: {core_topic}.{extra_summary} Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+                f"⚔️ {core_topic}.{extra_summary} Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+                f"🔥 Huyền huyễn tu tiên cực cuốn: {core_topic}.{extra_summary} Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
                 f"🐉 {core_topic} — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ!{extra_summary} Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
             ],
             "channel_5": [
-                f"💡 [Mẹo Vặt Gia Đình] {core_topic}.{extra_summary} Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
-                f"🏠 Bảo bối dọn nhà thông minh: {core_topic}.{extra_summary} Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
+                f"💡 {core_topic}.{extra_summary} Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
+                f"🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: {core_topic}.{extra_summary} Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
+                f"✨ Hóa ra việc nhà không hề cực như mình nghĩ: {core_topic}.{extra_summary} Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
+                f"🧼 Góc chia sẻ kinh nghiệm dọn nhà: {core_topic}.{extra_summary} Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
             ],
             "channel_6": [
-                f"🌿 [Sức Khỏe Chủ Động] {core_topic}.{extra_summary} Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Hãy lưu lại và chia sẻ cho người thân yêu của bạn nhé!",
-                f"💪 Chăm sóc sức khỏe gia đình: {core_topic}.{extra_summary} Đừng đợi đến khi cơ thể mệt mỏi mới chú ý, thay đổi ngay từ hôm nay nhé! Bạn đang gặp tình trạng nào trong video?",
+                f"🌿 {core_topic}.{extra_summary} Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+                f"💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: {core_topic}.{extra_summary} Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
+                f"🍵 Lắng nghe cơ thể mỗi ngày: {core_topic}.{extra_summary} Những thay đổi giản dị từ sinh hoạt hàng ngày lại mang đến hiệu quả lâu dài nhất. Chúc mọi người luôn nhiều năng lượng!",
+                f"🧘‍♀️ Góc sống khỏe tự nhiên: {core_topic}.{extra_summary} Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
             ],
             "channel_7": [
-                f"✨ [Phụ Nữ Khí Chất] {core_topic}.{extra_summary} Phụ nữ thông minh không hơn nhau ở lời nói mà ở sự tinh tế và biết yêu thương bản thân. Chị em có đồng tình với quan điểm này không?",
-                f"🌹 Tâm lý Hôn nhân & Gia đình: {core_topic}.{extra_summary} Ngẫm từng câu mà thấm thía vô cùng. Lưu lại để nhắc nhở chính mình mỗi ngày nhé!",
+                f"✨ {core_topic}.{extra_summary} Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
+                f"🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: {core_topic}.{extra_summary} Ngẫm từng lời mà thấy thấm thía vô cùng!",
+                f"☕ Góc suy ngẫm về tình cảm và hôn nhân: {core_topic}.{extra_summary} Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
+                f"🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: {core_topic}.{extra_summary} Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
             ],
             "channel_8": [
-                f"🤤 [Thiên Đường Ăn Vặt] {core_topic}.{extra_summary} Nhìn thôi đã chảy nước miếng, làm tại nhà vừa nhanh vừa ngon xoắn lưỡi! Tối nay bạn muốn thử món này cùng ai?",
-                f"🍜 Món Ngon Dễ Làm Mỗi Ngày: {core_topic}.{extra_summary} Công thức siêu đơn giản mà hương vị đỉnh của chóp. Lưu lại vào bếp thử ngay nhé!",
+                f"🤤 {core_topic}.{extra_summary} Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
+                f"🍜 Hôm nay ăn gì cho đỡ ngán: {core_topic}.{extra_summary} Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
+                f"🥘 Bữa xế chiều siêu cuốn: {core_topic}.{extra_summary} Giòn rụm thơm phức, vừa xem phim vừa nhâm nhi thì hết sảy. Có ai cũng mê món này giống mình không?",
+                f"🍳 Vào bếp nhanh gọn chỉ với vài bước: {core_topic}.{extra_summary} Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
             ],
             "channel_9": [
-                f"👶 [Nuôi Con Thông Minh] {core_topic}.{extra_summary} Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
-                f"🤱 Đồng hành cùng con: {core_topic}.{extra_summary} Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
+                f"👶 {core_topic}.{extra_summary} Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
+                f"🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: {core_topic}.{extra_summary} Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
+                f"🌱 Đằng sau mỗi hành vi của con đều là một cảm xúc cần được gọi tên: {core_topic}.{extra_summary} Chỉ cần bố mẹ chậm lại một chút là con sẽ mở lòng ngay!",
+                f"💛 Cùng con lớn khôn mỗi ngày: {core_topic}.{extra_summary} Những khoảnh khắc nhỏ này chính là nền tảng xây dựng sự tự tin cho bé sau này. Bố mẹ lưu lại tham khảo nhé!",
             ],
             "channel_10": [
-                f"📱 [Mẹo Công Nghệ Hay] {core_topic}.{extra_summary} Món phụ kiện nhỏ gọn mà giải quyết được bao nhiêu phiền toái hàng ngày! Bạn đã thử tính năng cực tiện này chưa?",
-                f"⚡ Tiện Ích Điện Thoại Thông Minh: {core_topic}.{extra_summary} Nhỏ mà có võ, ai hay dùng điện thoại nhất định phải biết mẹo này. Lưu lại ngay nhé!",
+                f"📱 {core_topic}.{extra_summary} Món đồ nhỏ gọn mà giải quyết được bao nhiêu bất tiện khi dùng điện thoại hàng ngày! Mọi người đã thử qua món này chưa?",
+                f"⚡ Tưởng không cần mà lúc dùng lại tiện không tưởng: {core_topic}.{extra_summary} Gọn gàng góc làm việc hơn hẳn. Theo bạn món này có đáng trải nghiệm không?",
+                f"🔌 Góc trải nghiệm đồ tiện ích hàng ngày: {core_topic}.{extra_summary} Thiết kế thông minh giúp tiết kiệm thời gian và bảo vệ thiết bị tốt hơn. Bạn thấy điểm nào hay nhất?",
+                f"🛠️ Một mẹo nhỏ cực hữu ích cho những ai hay di chuyển: {core_topic}.{extra_summary} Nhỏ mà có võ, bỏ túi mang đi đâu cũng tiện lợi!",
             ],
             "general": [
                 f"🎬 {core_topic}.{extra_summary} Xem hết video để không bỏ lỡ cái kết bất ngờ ở giây cuối cùng nhé!",

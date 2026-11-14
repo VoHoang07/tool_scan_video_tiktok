@@ -135,26 +135,44 @@ class PosterStudioUIMixin:
 
     def _simulate_human_warmup(self, page: Any, ch_folder: str) -> None:
         """
-        Mô phỏng người dùng thật mở trang chủ TikTok, di chuột và lướt xem 2-3 video (12-22 giây)
-        kết hợp thực thi 1 lượt "Bộ lọc 24 giờ" (Xem hết video + Thả tim + Sao chép liên kết +
-        Thêm yêu thích + Follow + Bình luận) trước khi bấm vào trang Upload để vừa tăng follow chéo,
-        vừa tạo điểm tin cậy hành vi (Behavioral Trust Score) cao nhất cho `mssdk`.
+        Mô phỏng người dùng thật mở trang chủ FYP TikTok, di chuột và lướt xem 2-3 video (15-24 giây)
+        kèm thả tim tự nhiên và thực thi 1 lượt "Bộ lọc 24 giờ" (Xem hết video + Thả tim + Sao chép liên kết +
+        Thêm yêu thích + Follow tại trang Hồ sơ + Bình luận) trước khi bấm vào trang Upload để tránh bị đánh dấu
+        acc bot chỉ mở thẳng trang Studio Upload, đồng thời kéo follow chéo đều đặn cho các kênh mới.
         """
         try:
-            logger.info(f"[{ch_folder}] [Anti-Detect Warmup] Đang lướt dạo trang chủ TikTok 15s như người dùng thật...")
-            page.goto("https://www.tiktok.com/?lang=vi-VN", wait_until="domcontentloaded", timeout=45000)
-            time.sleep(random.uniform(3.0, 5.0))
+            logger.info(f"[{ch_folder}] [Anti-Detect Warmup] Đang lướt dạo FYP TikTok 18s như người dùng thật trước khi đăng...")
+            page.goto("https://www.tiktok.com/foryou?lang=vi-VN", wait_until="domcontentloaded", timeout=45000)
+            time.sleep(random.uniform(3.2, 5.0))
+            try:
+                self.filter_24h.solve_tiktok_rotation_captcha_if_present(page, ch_folder)
+            except Exception:
+                pass
             self._human_move_mouse(page, random.uniform(420, 780), random.uniform(320, 560))
 
-            for _ in range(random.randint(2, 3)):
-                page.mouse.wheel(0, random.randint(450, 750))
-                time.sleep(random.uniform(3.2, 6.0))
+            liked_on_fyp = False
+            for idx in range(random.randint(2, 3)):
+                if idx > 0:
+                    page.mouse.wheel(0, random.randint(520, 780))
+                time.sleep(random.uniform(4.0, 6.8))
                 self._human_move_mouse(page, random.uniform(380, 820), random.uniform(280, 600))
+                if not liked_on_fyp and idx >= 1 and random.random() < 0.65:
+                    try:
+                        if self.filter_24h._step2_like_video(page, ch_folder):
+                            liked_on_fyp = True
+                    except Exception:
+                        pass
 
             cfg = self.ensure_schedule_config()
-            if cfg.get("filter_24h_enabled", True):
+            recent_follows = 0
+            try:
+                recent_follows = self.filter_24h._count_recent_channel_follows(ch_folder, hours=24.0)
+            except Exception:
+                recent_follows = 0
+
+            if cfg.get("filter_24h_enabled", True) or recent_follows < 3:
                 logger.info(
-                    f"[{ch_folder}] [Bộ lọc 24h Warmup] Kết hợp chạy 1 video tương tác chéo 'Bộ lọc 24 giờ' trước khi đăng bài..."
+                    f"[{ch_folder}] [Bộ lọc 24h Warmup] Kết hợp chạy 1 video tương tác chéo & Follow hồ sơ (recent_follows_24h={recent_follows}) trước khi đăng bài..."
                 )
                 self.filter_24h.run_session_on_page(page, ch_folder, video_count=1)
         except Exception as exc:

@@ -91,12 +91,14 @@ class TikTokCommunityGuidelinesGuard:
         if not text:
             return ""
         out = str(text).strip()
+        # Loại bỏ các nhãn đóng khung [Mẹo Vặt Gia Đình], [Sức Khỏe Chủ Động], [Phụ Nữ Khí Chất]... mang tính chất template tự động
+        out = re.sub(r"\[[^\]]{2,40}\]\s*", "", out)
         for pat, rep in cls._SENSITIVE_REPLACEMENTS:
             out = re.sub(pat, rep, out)
         out = re.sub(r"\s+\-\s*$", "", out)
         out = re.sub(r"^\s*\-\s+", "", out)
         out = re.sub(r"\s{2,}", " ", out).strip(" -—|:.")
-        return out or "Chuyện Đêm Khuya Đặc Sắc"
+        return out or "Chia sẻ hữu ích mỗi ngày"
 
     _DAYTIME_HASHTAG_MAP: Dict[str, str] = {
         "audiodemkhuya": "#truyenaudio",

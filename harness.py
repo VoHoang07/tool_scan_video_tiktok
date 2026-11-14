@@ -109,15 +109,28 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
     errors: List[str] = []
     passed_checks: List[str] = []
 
-    # 1. Kiểm tra cú pháp toàn bộ file .py
+    # 1. Kiểm tra cú pháp & import AST toàn bộ file .py
+    import ast
+
     py_files = sorted(PROJECT_ROOT.glob("*.py")) + sorted((PROJECT_ROOT / "tiktok_pipeline").glob("*.py"))
     for py_file in py_files:
         try:
             py_compile.compile(str(py_file), doraise=True)
+            src = py_file.read_text(encoding="utf-8")
+            tree = ast.parse(src, filename=str(py_file))
+            used_dt = any(isinstance(n, ast.Name) and n.id == "datetime" for n in ast.walk(tree))
+            if used_dt:
+                imported_dt = any(
+                    (isinstance(n, ast.ImportFrom) and any((a.asname or a.name) == "datetime" for a in n.names))
+                    or (isinstance(n, ast.Import) and any((a.asname or a.name) == "datetime" for a in n.names))
+                    for n in ast.walk(tree)
+                )
+                if not imported_dt:
+                    errors.append(f"[ImportError] {py_file.relative_to(PROJECT_ROOT)} dùng `datetime` nhưng thiếu `from datetime import datetime`")
         except Exception as exc:
             errors.append(f"[SyntaxError] {py_file.relative_to(PROJECT_ROOT)}: {exc}")
     if not errors:
-        passed_checks.append(f"Syntax & Bytecode: {len(py_files)} file .py hợp lệ 100%")
+        passed_checks.append(f"Syntax, AST Imports & Bytecode: {len(py_files)} file .py hợp lệ 100%")
 
     # 2. Kiểm tra cấu hình schedule_config.json & 4 công tắc
     cfg_path = PROJECT_ROOT / "schedule_config.json"
@@ -193,6 +206,14 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
         )
         if "#audiodemkhuya" not in night_tags:
             errors.append(f"[NighttimeHashtagError] Mất hashtag đêm khuya khi đăng ban đêm: {night_tags}")
+
+        clean_cap_6, _ = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
+            "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ giúp ngủ ngon mỗi tối",
+            "#suckhoe #duongsinh",
+            "suc_khoe_duong_sinh",
+        )
+        if "[" in clean_cap_6 or "]" in clean_cap_6:
+            errors.append(f"[TemplateBracketError] Caption còn chứa nhãn đóng khung kiểu bot: {clean_cap_6}")
 
         from tiktok_pipeline.bongcuc_splitter import BONGCUC_NIGHT_MUKBANG_POOL, BongCucYouTubeSplitter
 

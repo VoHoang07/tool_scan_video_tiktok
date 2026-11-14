@@ -17,7 +17,7 @@
       "batch_single_chrome_session": true
     },
     "switch_3_interact": {
-      "tiktok": false,
+      "tiktok": true,
       "fb_reels": false,
       "yt_shorts": false
     },
@@ -53,16 +53,16 @@
     "thu_cung_vui_nhon"
   ],
   "active_filter_24h_channels": [
-    "video_AI_hay",
-    "baby_AI",
-    "audio_dem_khuyen",
-    "tu_chan_gioi",
+    "meo_vat_gia_dinh",
     "suc_khoe_duong_sinh",
     "phu_nu_khi_chat",
     "an_vat_moi_ngay",
     "nuoi_con_eq",
     "phu_kien_tien_ich",
-    "meo_vat_gia_dinh"
+    "video_AI_hay",
+    "baby_AI",
+    "audio_dem_khuyen",
+    "tu_chan_gioi"
   ],
   "default_post_times": [
     "08:00",
@@ -121,7 +121,7 @@
       "23:54"
     ]
   },
-  "filter_24h_enabled": false,
+  "filter_24h_enabled": true,
   "filter_24h_cooldown_until": "",
   "filter_24h_runs_per_day": 2,
   "filter_24h_videos_per_session": 3,
@@ -194,9 +194,9 @@
     "auto_pause_master_after": false
   },
   "remote_trigger_filter_24h": {
-    "trigger_id": "filter_24h_all10_20261109_2343",
+    "trigger_id": "filter_24h_recover_6channels_20261114_1733",
     "target_arch": "x86_64",
-    "channel": "video_AI_hay,baby_AI,audio_dem_khuyen,tu_chan_gioi,phu_nu_khi_chat,suc_khoe_duong_sinh,an_vat_moi_ngay,meo_vat_gia_dinh,nuoi_con_eq,phu_kien_tien_ich",
+    "channel": "meo_vat_gia_dinh,suc_khoe_duong_sinh,phu_nu_khi_chat,an_vat_moi_ngay,nuoi_con_eq,phu_kien_tien_ich",
     "video_count": 3
   },
   "headless": false,
@@ -207,5 +207,5 @@
   "warmup_gap_seconds": 180,
   "warmup_channel_cooldown_seconds": 1800,
   "warmup_max_per_day": 24,
-  "warmup_reset_id": "rotate_all_10_channels_20261109_1132"
+  "warmup_reset_id": "warmup_recover_6channels_20261114_1733"
 }

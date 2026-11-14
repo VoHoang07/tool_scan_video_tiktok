@@ -599,7 +599,7 @@ class PosterStream2WarmupMixin:
                             fyp_followed_count == 0
                             and recent_follows_24h < 3
                             and scroll_count >= 2
-                            and random.random() < 0.50
+                            and random.random() < 0.65
                         ):
                             try:
                                 f_info = self.filter_24h._check_follow_state(page)
@@ -617,6 +617,21 @@ class PosterStream2WarmupMixin:
                                         logger.info(f"[Warmup FYP] [{ch_folder}] ➕ Đã bấm Follow tự nhiên 1 kênh trên FYP (đã xác nhận dấu tích).")
                             except Exception:
                                 pass
+
+                    # Nếu kênh đang thiếu tương tác chéo / chưa có Follow thực tế trong 24h qua,
+                    # kết hợp chạy ngay 1 video 'Bộ lọc 24h' (Xem hết + Tim + Lưu + Bình luận + Follow trên trang Hồ sơ /@creator)
+                    if recent_follows_24h < 2:
+                        try:
+                            logger.info(
+                                f"[Warmup FYP -> Bộ lọc 24h] [{ch_folder}] Kênh mới có {recent_follows_24h} follow/24h -> "
+                                "Chạy bổ sung 1 video tương tác chéo #tuongtaccheo để tăng Follow thật & kéo tương tác trả lễ!"
+                            )
+                            f24_records = self.filter_24h.run_session_on_page(page, ch_folder, video_count=1)
+                            if any(r.get("followed") for r in (f24_records or [])):
+                                fyp_followed_count += 1
+                                recent_follows_24h += 1
+                        except Exception as f24_exc:
+                            logger.debug(f"[Warmup FYP] [{ch_folder}] Bỏ qua bước bổ sung 24h: {f24_exc}")
 
                     logger.info(
                         f"[Warmup FYP] [{ch_folder}] ✅ Hoàn tất lướt {scroll_count} video FYP (bỏ qua {ads_skipped} QC, Tim={fyp_liked_count}, Follow={fyp_followed_count}) trong {time.time() - start:.0f}s!"
@@ -727,9 +742,9 @@ class PosterStream2WarmupMixin:
                 except Exception:
                     pass
 
-        # Tìm kênh phù hợp: ưu tiên kênh chưa lướt hoặc lướt cách đây lâu nhất
+        # Tìm kênh phù hợp: ưu tiên kênh đang có 0 follow trong 24h qua (6 kênh mới) hoặc kênh chưa lướt lâu nhất
         best_ch = None
-        best_last_ts = datetime.max
+        best_priority: Tuple[int, datetime] = (999, datetime.max)
         for ch in all_filter_channels:
             ch_data = history.get(ch, {})
             if not isinstance(ch_data, dict):
@@ -737,23 +752,33 @@ class PosterStream2WarmupMixin:
             today_count = int(ch_data.get(f"count_{today_str}", 0))
             if not force_immediate and today_count >= max_per_day:
                 continue
+            try:
+                recent_f = self.filter_24h._count_recent_channel_follows(ch, hours=24.0)
+            except Exception:
+                recent_f = 0
+            follow_tier = 0 if recent_f == 0 else (1 if recent_f < 2 else 2)
             last_ts_str = str(ch_data.get("last_ts") or "").strip()
             if last_ts_str:
                 try:
                     last_ts = datetime.strptime(last_ts_str, "%Y-%m-%d %H:%M:%S")
                     if not force_immediate and (now - last_ts).total_seconds() < per_channel_cooldown:
                         continue
-                    if last_ts < best_last_ts:
+                    cand_prio = (follow_tier, last_ts)
+                    if cand_prio < best_priority:
                         best_ch = ch
-                        best_last_ts = last_ts
+                        best_priority = cand_prio
                 except Exception:
-                    if best_ch is None:
+                    cand_prio = (follow_tier, datetime.min)
+                    if cand_prio < best_priority:
                         best_ch = ch
-                        best_last_ts = datetime.min
+                        best_priority = cand_prio
             else:
-                best_ch = ch
-                best_last_ts = datetime.min
-                break
+                cand_prio = (follow_tier, datetime.min)
+                if cand_prio < best_priority:
+                    best_ch = ch
+                    best_priority = cand_prio
+                    if follow_tier == 0:
+                        break
 
         if not best_ch:
             return

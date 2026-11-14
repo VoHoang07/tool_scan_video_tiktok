@@ -1,7 +1,7 @@
 # HANDOFF.md — Tài Liệu Bàn Giao & Trạng Thái Hệ Thống (`tool_scan_video_tiktok`)
 
-> **Cập nhật lần cuối**: `2026-11-13 13:20:00 +07:00`
-> **Commit mốc hiện tại**: Thu gọn nhịp chuyển câu AudioPrint của kênh `audio_dem_khuyen` xuống siêu ngắn (`0.45s–0.85s`, 2–3 chữ nối tự nhiên, `volume=0.52` hòa lẫn hoàn toàn vào mạch truyện) + Lịch ca khuya `23:00` & Mukbang 1080p mới
+> **Cập nhật lần cuối**: `2026-11-14 17:35:00 +07:00`
+> **Commit mốc hiện tại**: Khắc phục tình trạng 6 kênh mới (`meo_vat_gia_dinh`, `suc_khoe_duong_sinh`, `phu_nu_khi_chat`, `an_vat_moi_ngay`, `nuoi_con_eq`, `phu_kien_tien_ich`) bị đánh dấu như acc bot (`0 view, 0 follow, 0 following`) — Bật lại Dòng 2 (`switch_3_interact.tiktok = true`, `filter_24h_enabled = true`), luôn chạy Warmup + Follow hồ sơ trước mỗi ca đăng, loại bỏ nhãn đóng khung `[...]` kiểu template và vá lỗi thiếu `datetime` trong `translator.py` (`[BUG-026]`)
 
 ---
 
@@ -22,7 +22,7 @@ Quản lý bởi [`MasterSwitchController`](file:///Users/vohoang/Documents/tool
 - **`master_switch`**: Khóa tổng bật/tắt toàn bộ hệ thống trên máy Intel.
 - **Công tắc 1 (`switch_1_factory`)**: Cào đa nền tảng & lấp đầy kho `output/<channel>/ready/` (tối đa 5 video/ngách).
 - **Công tắc 2 (`switch_2_upload`)**: Điều khiển đăng bài tự động (`tiktok`, `fb_reels`, `yt_shorts`) — **Hiện đang BẬT (`tiktok: true`)**.
-- **Công tắc 3 (`switch_3_interact`)**: Điều khiển luồng tương tác 24h & lướt FYP nuôi kênh — **Hiện đang TẮT (`tiktok: false`)**.
+- **Công tắc 3 (`switch_3_interact`)**: Điều khiển luồng tương tác 24h & lướt FYP nuôi kênh — **Hiện đang BẬT (`tiktok: true`, `filter_24h_enabled: true`)** ưu tiên kéo tương tác chéo & Follow hồ sơ cho 6 kênh mới.
 - **Công tắc 4 (`switch_4_clear`)**: Giữ lại đúng Top 8 video nhiều view nhất trong `posted/` mỗi kênh, tự động dọn dẹp các file `.mp4` cũ và `workspace_temp` quá 2 giờ để bảo vệ ổ cứng.
 
 ### 1.3. Luồng dữ liệu Dòng 1 (Stream 1 Auto-Upload Pipeline)

@@ -347,6 +347,22 @@
 
 Mỗi khi sửa xong một bug mới (bằng tay hoặc tự động qua `agy_intel_bridge.py`), thêm một mục mới theo đúng chuẩn sau ở cuối Mục 2:
 
+### [BUG-026] 6 kênh mới bị đánh dấu acc bot (0 view, 0 follow, 0 following) & thiếu `datetime` trong `translator.py`
+- **Thời gian**: 2026-11-14 17:35:00
+- **Triệu chứng**: 6 kênh mới (`meo_vat_gia_dinh`, `suc_khoe_duong_sinh`, `phu_nu_khi_chat`, `an_vat_moi_ngay`, `nuoi_con_eq`, `phu_kien_tien_ich`) chỉ mở thẳng trang `tiktokstudio/upload` để đăng bài rồi đóng trình duyệt, có `0 Đang Follow`, `0 Follower`, `0 View`, caption chứa nhãn đóng khung `[Sức Khỏe Chủ Động]`, `[Phụ Nữ Khí Chất]`... kiểu template tự động, và log báo `NameError: name 'datetime' is not defined` tại `translator.py`.
+- **Nguyên nhân gốc rễ**:
+  1. `switch_3_interact.tiktok` và `filter_24h_enabled` trong `schedule_config.json` đang để `false`, đồng thời `do_warmup` trong `poster_media_prep.py` phụ thuộc vào `interact_on` nên cả bước lướt FYP trước khi đăng cũng bị tắt hoàn toàn.
+  2. `translator.py` dùng `datetime.now().hour` nhưng thiếu `from datetime import datetime`, và bộ mẫu `script_templates` gắn nhãn đóng khung `[...]` ở đầu mỗi caption.
+- **Cách khắc phục & File đã sửa**:
+  - Thêm `from datetime import datetime` và viết lại bộ hook tự nhiên không dùng nhãn `[...]` trong [`tiktok_pipeline/translator.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/translator.py) & [`tiktok_pipeline/community_guidelines_guard.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/community_guidelines_guard.py).
+  - Tách `do_warmup` độc lập với `switch_3_interact` trong [`tiktok_pipeline/poster_media_prep.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/poster_media_prep.py), nâng cấp `_simulate_human_warmup()` trong [`tiktok_pipeline/poster_studio_ui.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/poster_studio_ui.py) và `warmup_browse_channel()` / `check_and_run_warmup_browse()` trong [`tiktok_pipeline/poster_stream2_warmup.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/tiktok_pipeline/poster_stream2_warmup.py) để ưu tiên các kênh có `< 3 follow/24h` và luôn kết hợp chạy 1 video tương tác chéo + Follow trực tiếp tại trang Hồ sơ `/@creator`.
+  - Bật `switch_3_interact.tiktok = true`, `filter_24h_enabled = true` và kích hoạt `remote_trigger_filter_24h` + `warmup_reset_id` cho 6 kênh trong [`schedule_config.json`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/schedule_config.json).
+  - Bổ sung kiểm tra AST import `datetime` và kiểm tra chống nhãn `[...]` vào [`harness.py`](file:///Users/vohoang/Documents/tool_scan_video_tiktok/harness.py).
+- **Luật Miễn Dịch Vĩnh Viễn**:
+  - Không bao giờ mở thẳng `tiktokstudio/upload` mà không chạy `_simulate_human_warmup` trước.
+  - Không dùng nhãn đóng khung `[Chủ Đề]` ở đầu caption TikTok.
+  - Luôn chạy `./venv/bin/python harness.py --verify` (có kiểm tra AST import) trước khi commit.
+
 ```markdown
 ### [BUG-XXX] <Tên ngắn gọn của lỗi>
 - **Thời gian**: YYYY-MM-DD HH:MM:SS
