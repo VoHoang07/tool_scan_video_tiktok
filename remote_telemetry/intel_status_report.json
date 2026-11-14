@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 08:03:59",
+    "timestamp": "2026-11-14 08:55:10",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_error_meo_vat_gia_dinh.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261114_071638_tiktok_story_7474450787351973128.mp4",
+      "video_file": "20261114_085028_tiktok_story_990004502_bongcuc_v6_s45_p2_bg_daylight.mp4",
       "error": "name 'datetime' is not defined"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 08:55:10",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261114_085028_tiktok_story_990004502_bongcuc_v6_s45_p2_bg_daylight.mp4",
+        "error": "name 'datetime' is not defined"
+      }
+    },
     {
       "timestamp": "2026-11-14 08:03:59",
       "machine_arch": "x86_64",
@@ -204,22 +215,6 @@
         "video_file": "20261112_231707_tiktok_story_990011903_bongcuc_v6_s119_p3_bg_mukbang.mp4",
         "caption": "🎧 Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà [Phần 3/6] — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
         "hashtags": "#canhacuoikhichongtoikhongduocchianha #phan3 #truyenngan #tamlyhonnhan #xuhuong #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-12 13:34:58",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261112_133137_tiktok_story_990012003_bongcuc_v6_s120_p3_bg_daylight.mp4",
-        "caption": "✨ Dắt Con Về Nhận Tiền, Ai Ngờ Thành Giang Phu Nhân (Phần 3/5) — Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
-        "hashtags": "#datconvenhantienaingothanhgiangphunh #phan3 #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen #chuyengiadinh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
