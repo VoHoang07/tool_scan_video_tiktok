@@ -372,7 +372,8 @@
     "7701260948031540501",
     "7688670117181295893",
     "7565345801061420308",
-    "7705039187426233620"
+    "7705039187426233620",
+    "990008901"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -3347,6 +3348,16 @@
       "source_url": "https://www.youtube.com/watch?v=t4p79z7ppYM&t=495s",
       "output_filename": "video_AI_hay/ready/20261114_121441_tiktok_story_880034303_gautrucden_v1_s343_p3.mp4",
       "crawled_at": "2026-11-14T12:15:36"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990008901",
+      "sound_id": "bongcuc_yt_Zppw2lUNK-0_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=Zppw2lUNK-0&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261114_134913_tiktok_story_990008901_bongcuc_v6_s89_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-14T13:51:10"
     }
   ]
 }

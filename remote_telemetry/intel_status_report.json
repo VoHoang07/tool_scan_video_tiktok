@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 12:21:03",
+    "timestamp": "2026-11-14 13:53:25",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261114_071648_tiktok_story_7701260948031540501.mp4",
-      "caption": "💡 [Mẹo Vặt Gia Đình] Bí quyết sắp xếp nhà cửa gọn gàng tiết kiệm thời gian cho cả gia đình. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
-      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #tiktokvn #xuhuong",
+      "video_file": "20261114_134913_tiktok_story_990008901_bongcuc_v6_s89_p1_bg_daylight.mp4",
+      "caption": "🎙️ Bỏ Lại Thanh Mai Trúc Mã, Tôi Chọn Tương Lai [Phần 1/6] — Góc kể Chuyện tâm lý đầy cảm xúc, đừng bỏ lỡ chi tiết nào nhé!",
+      "hashtags": "#bolaithanhmaitrucmatoichontuonglai #phan1 #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 6,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 13:53:25",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261114_134913_tiktok_story_990008901_bongcuc_v6_s89_p1_bg_daylight.mp4",
+        "caption": "🎙️ Bỏ Lại Thanh Mai Trúc Mã, Tôi Chọn Tương Lai [Phần 1/6] — Góc kể Chuyện tâm lý đầy cảm xúc, đừng bỏ lỡ chi tiết nào nhé!",
+        "hashtags": "#bolaithanhmaitrucmatoichontuonglai #phan1 #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 6,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-14 12:21:03",
       "machine_arch": "x86_64",
@@ -218,17 +234,6 @@
         "post_confirmed": true,
         "switched_public_count": 6,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-13 08:57:23",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261113_085219_tiktok_story_990005401_bongcuc_v6_s54_p1_bg_daylight.mp4",
-        "error": "name 'datetime' is not defined"
       }
     }
   ]
