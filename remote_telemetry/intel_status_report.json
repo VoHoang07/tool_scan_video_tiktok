@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 23:22:02",
+    "timestamp": "2026-11-14 23:52:23",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261114_071706_tiktok_story_7565345801061420308.mp4",
-      "caption": "🏠 Bảo bối dọn nhà thông minh: Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
-      "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #viral #foryou",
+      "video_file": "20261114_234227_douyin_story_7601449421951257875.mp4",
+      "caption": "😂 Cha mẹ mới làm quen phải học cách quấn bé để tránh gió khi ra ngoài. \"Còn cái túi thì sao? Chúng ta có nên di chuyển nó xuống sâu hơn một chút không...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#embehaihuoc #chamcon #babyai #embecute #tinhhuonghaihuoc #haihuocmoingay #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 23:52:23",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261114_234227_douyin_story_7601449421951257875.mp4",
+        "caption": "😂 Cha mẹ mới làm quen phải học cách quấn bé để tránh gió khi ra ngoài. \"Còn cái túi thì sao? Chúng ta có nên di chuyển nó xuống sâu hơn một chút không...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#embehaihuoc #chamcon #babyai #embecute #tinhhuonghaihuoc #haihuocmoingay #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-14 23:22:02",
       "machine_arch": "x86_64",
@@ -283,22 +299,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 6,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-13 23:10:33",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261113_230739_tiktok_story_880033603_gautrucden_v1_s336_p3.mp4",
-        "caption": "⚡ Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không (Phần 3/10) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-        "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan3 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }

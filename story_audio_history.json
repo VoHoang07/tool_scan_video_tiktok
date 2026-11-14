@@ -375,7 +375,8 @@
     "7705039187426233620",
     "990008901",
     "990005402",
-    "880034802"
+    "880034802",
+    "7601449421951257875"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -630,7 +631,8 @@
     "gautrucden_yt_oewADycnZYk_p3",
     "gautrucden_yt_t4p79z7ppYM_p3",
     "bongcuc_yt_uYLLb4TWfhk_p2",
-    "gautrucden_yt_Vuf0aXpwCS4_p2"
+    "gautrucden_yt_Vuf0aXpwCS4_p2",
+    "7601449462774483750"
   ],
   "items": [
     {
@@ -3382,6 +3384,16 @@
       "source_url": "https://www.youtube.com/watch?v=Vuf0aXpwCS4&t=262s",
       "output_filename": "video_AI_hay/ready/20261114_230828_tiktok_story_880034802_gautrucden_v1_s348_p2.mp4",
       "crawled_at": "2026-11-14T23:09:28"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7601449421951257875",
+      "sound_id": "7601449462774483750",
+      "platform": "douyin",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.douyin.com/video/7601449421951257875",
+      "output_filename": "baby_AI/ready/20261114_234227_douyin_story_7601449421951257875.mp4",
+      "crawled_at": "2026-11-14T23:47:44"
     }
   ]
 }
