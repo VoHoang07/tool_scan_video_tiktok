@@ -297,32 +297,34 @@ def print_quick_status() -> None:
 
 def toggle_switches(pairs: List[List[str]], auto_push: bool = False) -> int:
     """Bật/tắt nhanh công tắc trong schedule_config.json và tùy chọn đẩy Git 1 bước."""
-    from tiktok_pipeline.master_switch_controller import MasterSwitchController
-
-    ctrl = MasterSwitchController(project_root=PROJECT_ROOT)
+    cfg_path = PROJECT_ROOT / "schedule_config.json"
+    cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
+    sw = cfg.setdefault("system_switches", {})
     changed_desc: List[str] = []
     for target, state_str in pairs:
         t_clean = str(target).strip().lower()
         val = str(state_str).strip().lower() in ("on", "true", "1", "bat", "bật")
         if t_clean in ("master", "0"):
-            ctrl.set_switches(master_switch=val)
+            sw["master_switch"] = val
             changed_desc.append(f"master={'ON' if val else 'OFF'}")
         elif t_clean in ("1", "factory", "switch1"):
-            ctrl.set_switches(switch_1_enabled=val)
+            sw.setdefault("switch_1_factory", {})["enabled"] = val
             changed_desc.append(f"switch_1={'ON' if val else 'OFF'}")
         elif t_clean in ("2", "upload", "switch2"):
-            ctrl.set_switches(switch_2_tiktok=val)
+            sw.setdefault("switch_2_upload", {})["tiktok"] = val
             changed_desc.append(f"switch_2={'ON' if val else 'OFF'}")
         elif t_clean in ("3", "interact", "switch3"):
-            ctrl.set_switches(switch_3_tiktok=val)
+            sw.setdefault("switch_3_interact", {})["tiktok"] = val
+            cfg["filter_24h_enabled"] = val
             changed_desc.append(f"switch_3={'ON' if val else 'OFF'}")
         elif t_clean in ("4", "clear", "switch4"):
-            ctrl.set_switches(switch_4_enabled=val)
+            sw.setdefault("switch_4_clear", {})["enabled"] = val
             changed_desc.append(f"switch_4={'ON' if val else 'OFF'}")
         else:
             print(f"[Lỗi] Công tắc không hợp lệ: {target} (chọn 1, 2, 3, 4 hoặc master)")
             return 1
 
+    cfg_path.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print_quick_status()
     if auto_push and changed_desc:
         msg = f"chore(switch): toggle {', '.join(changed_desc)}"

@@ -22,7 +22,7 @@ Quản lý bởi [`MasterSwitchController`](file:///Users/vohoang/Documents/tool
 - **`master_switch`**: Khóa tổng bật/tắt toàn bộ hệ thống trên máy Intel.
 - **Công tắc 1 (`switch_1_factory`)**: Cào đa nền tảng & lấp đầy kho `output/<channel>/ready/` (tối đa 5 video/ngách).
 - **Công tắc 2 (`switch_2_upload`)**: Điều khiển đăng bài tự động (`tiktok`, `fb_reels`, `yt_shorts`) — **Hiện đang BẬT (`tiktok: true`)**.
-- **Công tắc 3 (`switch_3_interact`)**: Điều khiển luồng tương tác 24h & lướt FYP nuôi kênh — **Hiện đang BẬT (`tiktok: true`, `filter_24h_enabled: true`)** ưu tiên kéo tương tác chéo & Follow hồ sơ cho 6 kênh mới.
+- **Công tắc 3 (`switch_3_interact`)**: Điều khiển luồng tương tác 24h & lướt FYP nuôi kênh — **Hiện đang TẮT (`tiktok: false`, `filter_24h_enabled: false`)** (các kênh vẫn tự động lướt FYP & Follow 1 kênh ngay trước mỗi ca đăng bài của Dòng 1).
 - **Công tắc 4 (`switch_4_clear`)**: Giữ lại đúng Top 8 video nhiều view nhất trong `posted/` mỗi kênh, tự động dọn dẹp các file `.mp4` cũ và `workspace_temp` quá 2 giờ để bảo vệ ổ cứng.
 
 ### 1.3. Luồng dữ liệu Dòng 1 (Stream 1 Auto-Upload Pipeline)

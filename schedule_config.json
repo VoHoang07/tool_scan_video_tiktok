@@ -17,7 +17,7 @@
       "batch_single_chrome_session": true
     },
     "switch_3_interact": {
-      "tiktok": true,
+      "tiktok": false,
       "fb_reels": false,
       "yt_shorts": false
     },
@@ -121,7 +121,7 @@
       "23:54"
     ]
   },
-  "filter_24h_enabled": true,
+  "filter_24h_enabled": false,
   "filter_24h_cooldown_until": "",
   "filter_24h_runs_per_day": 2,
   "filter_24h_videos_per_session": 3,
