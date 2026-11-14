@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-14 23:14:29",
+    "timestamp": "2026-11-14 23:22:02",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261114_230828_tiktok_story_880034802_gautrucden_v1_s348_p2.mp4",
-      "caption": "🌙 Đôi Mắt Nhìn Thấy Quỷ — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-      "hashtags": "#doimatnhinthayquy #phan2 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
+      "video_file": "20261114_071706_tiktok_story_7565345801061420308.mp4",
+      "caption": "🏠 Bảo bối dọn nhà thông minh: Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
+      "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-14 23:22:02",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261114_071706_tiktok_story_7565345801061420308.mp4",
+        "caption": "🏠 Bảo bối dọn nhà thông minh: Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
+        "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-14 23:14:29",
       "machine_arch": "x86_64",
@@ -280,22 +296,6 @@
         "video_file": "20261113_230739_tiktok_story_880033603_gautrucden_v1_s336_p3.mp4",
         "caption": "⚡ Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không (Phần 3/10) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
         "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan3 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-13 23:03:28",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261113_230023_tiktok_story_990005101_bongcuc_v6_s51_p1_bg_mukbang.mp4",
-        "caption": "📖 Nữ Phụ Giả Heo truy đuổi Học Bá [Phần 1/12] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
-        "hashtags": "#nuphugiaheotruyduoihocba #phan1 #gocnhinkhuya #fyp #truyenaudio #chuyengiadinh #mukbangdemkhuya #audiodemkhuya",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
