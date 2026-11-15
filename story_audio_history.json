@@ -377,7 +377,8 @@
     "990005402",
     "880034802",
     "7601449421951257875",
-    "7006568746135407913"
+    "7006568746135407913",
+    "7471128220767653126"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -634,7 +635,8 @@
     "bongcuc_yt_uYLLb4TWfhk_p2",
     "gautrucden_yt_Vuf0aXpwCS4_p2",
     "7601449462774483750",
-    "7006568770953399076"
+    "7006568770953399076",
+    "7471128302763821830"
   ],
   "items": [
     {
@@ -3406,6 +3408,16 @@
       "source_url": "https://www.douyin.com/video/7006568746135407913",
       "output_filename": "tu_chan_gioi/ready/20261115_000515_douyin_story_7006568746135407913.mp4",
       "crawled_at": "2026-11-15T00:06:39"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "7471128220767653126",
+      "sound_id": "7471128302763821830",
+      "platform": "tiktok",
+      "genre": "suckhoe",
+      "source_url": "https://www.tiktok.com/@sinshe.renai72/video/7471128220767653126",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261115_070110_tiktok_story_7471128220767653126.mp4",
+      "crawled_at": "2026-11-15T07:02:02"
     }
   ]
 }
