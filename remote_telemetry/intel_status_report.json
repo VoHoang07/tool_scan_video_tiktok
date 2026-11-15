@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 01:09:04",
+    "timestamp": "2026-11-16 01:15:15",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
+      "scrolled_videos": 12,
+      "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 152.2,
+      "elapsed_seconds": 154.3,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 01:15:15",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 154.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 01:09:04",
       "machine_arch": "x86_64",
@@ -224,22 +239,6 @@
         "video_file": "20261115_234649_tiktok_story_7691101988263644437.mp4",
         "caption": "🥰 Nhật ký gia đình siêu lầy: Mặt sau. \"Hãy nhìn xem con đang giả vờ ngu ngốc như thế nào...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
         "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 23:31:37",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
-      "details": {
-        "video_file": "20261115_232806_tiktok_story_7395038839057681671.mp4",
-        "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: Cách làm đậu phộng rang giòn ngon. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
-        "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #viral #foryou",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
