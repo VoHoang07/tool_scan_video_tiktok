@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 09:20:45",
+    "timestamp": "2026-11-15 11:49:07",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261115_091741_tiktok_story_7471534410211314962.mp4",
-      "caption": "🐉 Đạo hữu, xin dừng bước — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #tiennghich #xuyenkhong #hethongtutien #tutien #tiktokvn",
+      "video_file": "20261114_072413_tiktok_story_7705039187426233620.mp4",
+      "caption": "💡 Mẹo vặt nhà cửa cực hay giúp dọn bếp sạch bong chỉ trong tích tắc. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 11:49:07",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261114_072413_tiktok_story_7705039187426233620.mp4",
+        "caption": "💡 Mẹo vặt nhà cửa cực hay giúp dọn bếp sạch bong chỉ trong tích tắc. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 09:20:45",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-14 23:06:44",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261114_230014_tiktok_story_990005402_bongcuc_v6_s54_p2_bg_mukbang.mp4",
-        "caption": "🎙️ Con Gái Giúp Việc Và Thiếu Gia Hào Môn — Góc kể chuyện đêm khuya đầy cảm xúc, đừng bỏ lỡ chi tiết nào nhé!",
-        "hashtags": "#congaigiupviecvathieugiahaomon #phan2 #mukbangdemkhuya #audiodemkhuya #truyenngan #tamlyhonnhan #xuhuong #kechuyendemkhuya",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
