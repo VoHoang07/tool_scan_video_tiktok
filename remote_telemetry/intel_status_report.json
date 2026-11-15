@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 23:12:48",
+    "timestamp": "2026-11-15 23:19:23",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261115_230838_tiktok_story_880033604_gautrucden_v1_s336_p4.mp4",
-      "caption": "🎬 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
-      "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan4 #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden #chuyenke",
+      "video_file": "20261114_072503_tiktok_story_7703022678256553236.mp4",
+      "caption": "💡 Mẹo vặt nhà cửa cực hay giúp dọn bếp sạch bong chỉ trong tích tắc. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 23:19:23",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261114_072503_tiktok_story_7703022678256553236.mp4",
+        "caption": "💡 Mẹo vặt nhà cửa cực hay giúp dọn bếp sạch bong chỉ trong tích tắc. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 23:12:48",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 08:43:34",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261115_083417_tiktok_story_7629667281320021279.mp4",
-        "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Nếu một người phụ nữ đi rất nhanh. \"Nhưng thực sự không có ai xung quanh cô ấy có thể làm được điều đó...\" Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
-        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
