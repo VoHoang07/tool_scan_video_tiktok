@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 07:05:49",
+    "timestamp": "2026-11-15 07:13:10",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261115_070110_tiktok_story_7471128220767653126.mp4",
-      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Apa yang merupakan Cara Terbaik cho Sehat. \"Hít thở sâu là liều thuốc giảm căng thẳng tốt nhất...\" Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-      "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #xh",
+      "video_file": "20261114_071731_tiktok_story_7643652278301347079.mp4",
+      "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: Anh em thử ngay đi nhé. Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
+      "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #giadungtienich #noitrothongminh #yeubep #xuhuongtiktok #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 07:13:10",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261114_071731_tiktok_story_7643652278301347079.mp4",
+        "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: Anh em thử ngay đi nhé. Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
+        "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #giadungtienich #noitrothongminh #yeubep #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 07:05:49",
       "machine_arch": "x86_64",
@@ -288,17 +304,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_meo_vat_gia_dinh.jpg",
       "details": {
         "video_file": "20261114_071638_tiktok_story_7474450787351973128.mp4",
-        "error": "name 'datetime' is not defined"
-      }
-    },
-    {
-      "timestamp": "2026-11-14 07:37:06",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261114_073437_tiktok_story_880036003_gautrucden_v1_s360_p3.mp4",
         "error": "name 'datetime' is not defined"
       }
     }
