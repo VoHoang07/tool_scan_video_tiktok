@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 14:19:11",
+    "timestamp": "2026-11-15 23:05:08",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261115_141610_tiktok_story_7206217511245794587.mp4",
-      "caption": "🐉 Tên hay trong truyện tiên hiệp — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #tiktokvn #xuhuong",
+      "video_file": "20261115_230024_tiktok_story_990005601_bongcuc_v6_s56_p1_bg_mukbang.mp4",
+      "caption": "✨ Quẻ Bói Mười Nghìn Gây Chấn Động Toàn Mạng (Phần 1/8) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
+      "hashtags": "#phan1 #xuhuong #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #fyp #truyenaudio",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 23:05:08",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261115_230024_tiktok_story_990005601_bongcuc_v6_s56_p1_bg_mukbang.mp4",
+        "caption": "✨ Quẻ Bói Mười Nghìn Gây Chấn Động Toàn Mạng (Phần 1/8) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
+        "hashtags": "#phan1 #xuhuong #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #fyp #truyenaudio",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 14:19:11",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 08:25:44",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261115_082208_douyin_story_6899446917223156992.mp4",
-        "caption": "🤣 Sinh con gái? Kiểu người chăm sóc chồng thay bạn😂 — Pha xử lý đi vào lòng đất của hai mẹ con! \"Vẫn chưa về nhà muộn thế này...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-        "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
