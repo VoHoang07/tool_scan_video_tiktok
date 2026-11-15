@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 23:05:08",
+    "timestamp": "2026-11-15 23:12:48",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261115_230024_tiktok_story_990005601_bongcuc_v6_s56_p1_bg_mukbang.mp4",
-      "caption": "✨ Quẻ Bói Mười Nghìn Gây Chấn Động Toàn Mạng (Phần 1/8) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
-      "hashtags": "#phan1 #xuhuong #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #fyp #truyenaudio",
+      "video_file": "20261115_230838_tiktok_story_880033604_gautrucden_v1_s336_p4.mp4",
+      "caption": "🎬 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
+      "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan4 #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden #chuyenke",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 23:12:48",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261115_230838_tiktok_story_880033604_gautrucden_v1_s336_p4.mp4",
+        "caption": "🎬 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
+        "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan4 #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden #chuyenke",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 23:05:08",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 08:31:26",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261112_082133_tiktok_story_7602989516609080597.mp4",
-        "caption": "🤱 Đồng hành cùng con: Bí quyết đồng hành cùng con trưởng thành mỗi ngày cho bố mẹ hiện đại. Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-        "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
