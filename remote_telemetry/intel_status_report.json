@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 23:19:23",
+    "timestamp": "2026-11-15 23:25:17",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261114_072503_tiktok_story_7703022678256553236.mp4",
-      "caption": "💡 Mẹo vặt nhà cửa cực hay giúp dọn bếp sạch bong chỉ trong tích tắc. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
-      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #xuhuong #viral",
+      "video_file": "20261115_232149_tiktok_story_6979802743229697282.mp4",
+      "caption": "🍵 Lắng nghe cơ thể mỗi ngày: ĐỪNG TIÊN VACXIN KHI CHƯA BIẾT 3 ĐIỀU NÀY!!. Những thay đổi giản dị từ sinh hoạt hàng ngày lại mang đến hiệu quả lâu dài nhất. Chúc mọi người luôn nhiều năng lượng!",
+      "hashtags": "#duongsinh #songkhoe #suckhoechudong #healthyvietnam #songlanhmanh #chamSocSucKhoe #suckhoe #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 23:25:17",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261115_232149_tiktok_story_6979802743229697282.mp4",
+        "caption": "🍵 Lắng nghe cơ thể mỗi ngày: ĐỪNG TIÊN VACXIN KHI CHƯA BIẾT 3 ĐIỀU NÀY!!. Những thay đổi giản dị từ sinh hoạt hàng ngày lại mang đến hiệu quả lâu dài nhất. Chúc mọi người luôn nhiều năng lượng!",
+        "hashtags": "#duongsinh #songkhoe #suckhoechudong #healthyvietnam #songlanhmanh #chamSocSucKhoe #suckhoe #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 23:19:23",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261115_090243_tiktok_story_7487250611193269559.mp4",
         "caption": "🎬 Cáp cấp nguồn cho Wi-Fi này quá hay luôn á. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
         "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #hoathinhhai #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 08:51:46",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261115_084714_tiktok_story_990010101_bongcuc_v6_s101_p1_bg_daylight.mp4",
-        "caption": "🎧 Suất Trợ Cấp Của Tôi — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
-        "hashtags": "#suattrocapcuatoi #phan1 #truyenaudio #nghetruyen #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
