@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 11:49:07",
+    "timestamp": "2026-11-15 12:11:46",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261114_072413_tiktok_story_7705039187426233620.mp4",
-      "caption": "💡 Mẹo vặt nhà cửa cực hay giúp dọn bếp sạch bong chỉ trong tích tắc. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
-      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #xuhuong #viral",
+      "video_file": "20261115_120401_tiktok_story_7665202982719376648.mp4",
+      "caption": "🌿 Hôm nay tôi sẽ nói điều đó lần cuối cùng. \"Bạn không cần phải chi hàng ngàn đô la để bù đắp cho nó...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #suckhoe #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 12:11:46",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261115_120401_tiktok_story_7665202982719376648.mp4",
+        "caption": "🌿 Hôm nay tôi sẽ nói điều đó lần cuối cùng. \"Bạn không cần phải chi hàng ngàn đô la để bù đắp cho nó...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #suckhoe #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 11:49:07",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261114_071706_tiktok_story_7565345801061420308.mp4",
         "caption": "🏠 Bảo bối dọn nhà thông minh: Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
         "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-14 23:14:29",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261114_230828_tiktok_story_880034802_gautrucden_v1_s348_p2.mp4",
-        "caption": "🌙 Đôi Mắt Nhìn Thấy Quỷ — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-        "hashtags": "#doimatnhinthayquy #phan2 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
