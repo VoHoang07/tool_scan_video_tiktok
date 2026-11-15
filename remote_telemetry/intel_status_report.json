@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 13:48:10",
+    "timestamp": "2026-11-15 13:54:43",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261115_134239_douyin_story_7616294168406975653.mp4",
-      "caption": "🥰 Nhật ký gia đình siêu lầy: Anh đã chân thành thuyết phục Lele đi học mẫu giáo nhưng không ngờ anh lại thay đổi mâu thuẫn và xin ông nội béo đi học mẫu giáo. \"Ngày mai chúng ta đi nhà trẻ thì thế nào...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xh",
+      "video_file": "20261115_134927_tiktok_story_990005102_bongcuc_v6_s51_p2_bg_daylight.mp4",
+      "caption": "✨ Nữ Phụ Giả Heo truy đuổi Học Bá (Phần 2/12) — Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
+      "hashtags": "#nuphugiaheotruyduoihocba #phan2 #nghetruyen #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 13:54:43",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261115_134927_tiktok_story_990005102_bongcuc_v6_s51_p2_bg_daylight.mp4",
+        "caption": "✨ Nữ Phụ Giả Heo truy đuổi Học Bá (Phần 2/12) — Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
+        "hashtags": "#nuphugiaheotruyduoihocba #phan2 #nghetruyen #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 13:48:10",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 07:13:10",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261114_071731_tiktok_story_7643652278301347079.mp4",
-        "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: Anh em thử ngay đi nhé. Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
-        "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #giadungtienich #noitrothongminh #yeubep #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
