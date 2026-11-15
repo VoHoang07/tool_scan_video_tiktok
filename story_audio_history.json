@@ -378,7 +378,8 @@
     "880034802",
     "7601449421951257875",
     "7006568746135407913",
-    "7471128220767653126"
+    "7471128220767653126",
+    "880035601"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -636,7 +637,8 @@
     "gautrucden_yt_Vuf0aXpwCS4_p2",
     "7601449462774483750",
     "7006568770953399076",
-    "7471128302763821830"
+    "7471128302763821830",
+    "gautrucden_yt_8zSR7mEwDcc_p1"
   ],
   "items": [
     {
@@ -3418,6 +3420,16 @@
       "source_url": "https://www.tiktok.com/@sinshe.renai72/video/7471128220767653126",
       "output_filename": "suc_khoe_duong_sinh/ready/20261115_070110_tiktok_story_7471128220767653126.mp4",
       "crawled_at": "2026-11-15T07:02:02"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "880035601",
+      "sound_id": "gautrucden_yt_8zSR7mEwDcc_p1",
+      "platform": "tiktok",
+      "genre": "channel_1_ai_trending",
+      "source_url": "https://www.youtube.com/watch?v=8zSR7mEwDcc&t=1s",
+      "output_filename": "video_AI_hay/ready/20261115_073236_tiktok_story_880035601_gautrucden_v1_s356_p1.mp4",
+      "crawled_at": "2026-11-15T07:33:28"
     }
   ]
 }

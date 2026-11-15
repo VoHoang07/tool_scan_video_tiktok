@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 07:13:10",
+    "timestamp": "2026-11-15 07:37:02",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261114_071731_tiktok_story_7643652278301347079.mp4",
-      "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: Anh em thử ngay đi nhé. Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
-      "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #giadungtienich #noitrothongminh #yeubep #xuhuongtiktok #tiktokvn",
+      "video_file": "20261115_073236_tiktok_story_880035601_gautrucden_v1_s356_p1.mp4",
+      "caption": "⚡ Hồn Ma Nuôi Con (Phần 1/9) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
+      "hashtags": "#honmanuoicon #phan1 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 07:37:02",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261115_073236_tiktok_story_880035601_gautrucden_v1_s356_p1.mp4",
+        "caption": "⚡ Hồn Ma Nuôi Con (Phần 1/9) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
+        "hashtags": "#honmanuoicon #phan1 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 07:13:10",
       "machine_arch": "x86_64",
@@ -293,17 +309,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
       "details": {
         "video_file": "20261114_085028_tiktok_story_990004502_bongcuc_v6_s45_p2_bg_daylight.mp4",
-        "error": "name 'datetime' is not defined"
-      }
-    },
-    {
-      "timestamp": "2026-11-14 08:03:59",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_error_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261114_071638_tiktok_story_7474450787351973128.mp4",
         "error": "name 'datetime' is not defined"
       }
     }
