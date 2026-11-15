@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 00:18:45",
+    "timestamp": "2026-11-16 00:23:44",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "event_type": "upload",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 163.6,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261112_082531_tiktok_story_7154563817354038554.mp4",
+      "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Cách giúp con thông minh theo tháng tuổi, bố mẹ đã biết chưa ạ. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
+      "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #tiktokvn",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 00:23:44",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261112_082531_tiktok_story_7154563817354038554.mp4",
+        "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Cách giúp con thông minh theo tháng tuổi, bố mẹ đã biết chưa ạ. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
+        "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 00:18:45",
       "machine_arch": "x86_64",
@@ -232,22 +249,6 @@
         "video_file": "20261115_134239_douyin_story_7616294168406975653.mp4",
         "caption": "🥰 Nhật ký gia đình siêu lầy: Anh đã chân thành thuyết phục Lele đi học mẫu giáo nhưng không ngờ anh lại thay đổi mâu thuẫn và xin ông nội béo đi học mẫu giáo. \"Ngày mai chúng ta đi nhà trẻ thì thế nào...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
         "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 13:29:21",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261115_132550_tiktok_story_7599948168599538962.mp4",
-        "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Người dễ rơi nước mắt không phải vì họ thích khóc. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
-        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #foryou #fyp",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
