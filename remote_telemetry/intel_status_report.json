@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 13:29:21",
+    "timestamp": "2026-11-15 13:48:10",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261115_132550_tiktok_story_7599948168599538962.mp4",
-      "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Người dễ rơi nước mắt không phải vì họ thích khóc. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
-      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #foryou #fyp",
+      "video_file": "20261115_134239_douyin_story_7616294168406975653.mp4",
+      "caption": "🥰 Nhật ký gia đình siêu lầy: Anh đã chân thành thuyết phục Lele đi học mẫu giáo nhưng không ngờ anh lại thay đổi mâu thuẫn và xin ông nội béo đi học mẫu giáo. \"Ngày mai chúng ta đi nhà trẻ thì thế nào...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 13:48:10",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261115_134239_douyin_story_7616294168406975653.mp4",
+        "caption": "🥰 Nhật ký gia đình siêu lầy: Anh đã chân thành thuyết phục Lele đi học mẫu giáo nhưng không ngờ anh lại thay đổi mâu thuẫn và xin ông nội béo đi học mẫu giáo. \"Ngày mai chúng ta đi nhà trẻ thì thế nào...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
+        "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 13:29:21",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 07:05:49",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261115_070110_tiktok_story_7471128220767653126.mp4",
-        "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Apa yang merupakan Cara Terbaik cho Sehat. \"Hít thở sâu là liều thuốc giảm căng thẳng tốt nhất...\" Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-        "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
