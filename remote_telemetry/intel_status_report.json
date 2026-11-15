@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 00:15:43",
+    "timestamp": "2026-11-16 00:18:45",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261116_001127_tiktok_story_7684200357630725394.mp4",
-      "caption": "🐾 Mẹo chụp màn hình nhanh nè anh em — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-      "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 163.6,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 00:18:45",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 163.6,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 00:15:43",
       "machine_arch": "x86_64",
@@ -234,22 +248,6 @@
         "video_file": "20261115_132550_tiktok_story_7599948168599538962.mp4",
         "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Người dễ rơi nước mắt không phải vì họ thích khóc. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
         "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #foryou #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 13:04:19",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261112_082338_tiktok_story_7243339707931725062.mp4",
-        "caption": "🌱 Đằng sau mỗi hành vi của con đều là một cảm xúc cần được gọi tên: Nếu có con gái, hãy dạy con 5 điều này ❤️. Chỉ cần bố mẹ chậm lại một chút là con sẽ mở lòng ngay!",
-        "hashtags": "#mevabe #giaoducsom #nuoiconthongminh #mebimsua #donghanhcungcon #daycontulap #fyp #xh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
