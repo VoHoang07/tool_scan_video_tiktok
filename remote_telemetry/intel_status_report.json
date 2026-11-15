@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 00:50:48",
+    "timestamp": "2026-11-16 00:57:04",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 13,
-      "ads_skipped": 3,
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 155.2,
+      "elapsed_seconds": 158.5,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 00:57:04",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 158.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 00:50:48",
       "machine_arch": "x86_64",
@@ -230,22 +245,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 23:12:48",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261115_230838_tiktok_story_880033604_gautrucden_v1_s336_p4.mp4",
-        "caption": "🎬 Tuyệt Đối Không Được Nhắc Đến Số 5! Nếu Không — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
-        "hashtags": "#tuyetdoikhongduocnhacdenso5neukhon #phan4 #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden #chuyenke",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
