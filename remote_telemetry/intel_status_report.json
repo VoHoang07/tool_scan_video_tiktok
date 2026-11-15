@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 12:17:41",
+    "timestamp": "2026-11-15 13:04:19",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261115_121340_tiktok_story_880035003_gautrucden_v1_s350_p3.mp4",
-      "caption": "🔥 Điều Kiêng Kỵ Khi Cải Táng (Phần 3/8) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
-      "hashtags": "#dieukiengkykhicaitang #phan3 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
+      "video_file": "20261112_082338_tiktok_story_7243339707931725062.mp4",
+      "caption": "🌱 Đằng sau mỗi hành vi của con đều là một cảm xúc cần được gọi tên: Nếu có con gái, hãy dạy con 5 điều này ❤️. Chỉ cần bố mẹ chậm lại một chút là con sẽ mở lòng ngay!",
+      "hashtags": "#mevabe #giaoducsom #nuoiconthongminh #mebimsua #donghanhcungcon #daycontulap #fyp #xh",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 13:04:19",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261112_082338_tiktok_story_7243339707931725062.mp4",
+        "caption": "🌱 Đằng sau mỗi hành vi của con đều là một cảm xúc cần được gọi tên: Nếu có con gái, hãy dạy con 5 điều này ❤️. Chỉ cần bố mẹ chậm lại một chút là con sẽ mở lòng ngay!",
+        "hashtags": "#mevabe #giaoducsom #nuoiconthongminh #mebimsua #donghanhcungcon #daycontulap #fyp #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 12:17:41",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261115_000515_douyin_story_7006568746135407913.mp4",
         "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Đây là cảm giác bay. \"Phía trước là dịch chuyển tức thời trong không gian máy bay...\" Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
         "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #foryou #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-14 23:52:23",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261114_234227_douyin_story_7601449421951257875.mp4",
-        "caption": "😂 Cha mẹ mới làm quen phải học cách quấn bé để tránh gió khi ra ngoài. \"Còn cái túi thì sao? Chúng ta có nên di chuyển nó xuống sâu hơn một chút không...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-        "hashtags": "#embehaihuoc #chamcon #babyai #embecute #tinhhuonghaihuoc #haihuocmoingay #viral #foryou",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
