@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 13:04:19",
+    "timestamp": "2026-11-15 13:29:21",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261112_082338_tiktok_story_7243339707931725062.mp4",
-      "caption": "🌱 Đằng sau mỗi hành vi của con đều là một cảm xúc cần được gọi tên: Nếu có con gái, hãy dạy con 5 điều này ❤️. Chỉ cần bố mẹ chậm lại một chút là con sẽ mở lòng ngay!",
-      "hashtags": "#mevabe #giaoducsom #nuoiconthongminh #mebimsua #donghanhcungcon #daycontulap #fyp #xh",
+      "video_file": "20261115_132550_tiktok_story_7599948168599538962.mp4",
+      "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Người dễ rơi nước mắt không phải vì họ thích khóc. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 13:29:21",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261115_132550_tiktok_story_7599948168599538962.mp4",
+        "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Người dễ rơi nước mắt không phải vì họ thích khóc. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 13:04:19",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261115_070110_tiktok_story_7471128220767653126.mp4",
         "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Apa yang merupakan Cara Terbaik cho Sehat. \"Hít thở sâu là liều thuốc giảm căng thẳng tốt nhất...\" Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
         "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 00:11:22",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261115_000515_douyin_story_7006568746135407913.mp4",
-        "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Đây là cảm giác bay. \"Phía trước là dịch chuyển tức thời trong không gian máy bay...\" Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-        "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #foryou #fyp",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
