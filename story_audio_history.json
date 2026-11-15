@@ -382,7 +382,8 @@
     "880035601",
     "6969943767017098497",
     "6899446917223156992",
-    "7629667281320021279"
+    "7629667281320021279",
+    "990010101"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -3466,6 +3467,16 @@
       "source_url": "https://www.tiktok.com/@leo380691/video/7629667281320021279",
       "output_filename": "phu_nu_khi_chat/ready/20261115_083417_tiktok_story_7629667281320021279.mp4",
       "crawled_at": "2026-11-15T08:39:57"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990010101",
+      "sound_id": "bongcuc_yt_ZPpMXuogRoA_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=ZPpMXuogRoA&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261115_084714_tiktok_story_990010101_bongcuc_v6_s101_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-15T08:48:23"
     }
   ]
 }

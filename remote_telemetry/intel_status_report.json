@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 08:43:34",
+    "timestamp": "2026-11-15 08:51:46",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261115_083417_tiktok_story_7629667281320021279.mp4",
-      "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Nếu một người phụ nữ đi rất nhanh. \"Nhưng thực sự không có ai xung quanh cô ấy có thể làm được điều đó...\" Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
-      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #tiktokvn #xuhuong",
+      "video_file": "20261115_084714_tiktok_story_990010101_bongcuc_v6_s101_p1_bg_daylight.mp4",
+      "caption": "🎧 Suất Trợ Cấp Của Tôi — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
+      "hashtags": "#suattrocapcuatoi #phan1 #truyenaudio #nghetruyen #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 08:51:46",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261115_084714_tiktok_story_990010101_bongcuc_v6_s101_p1_bg_daylight.mp4",
+        "caption": "🎧 Suất Trợ Cấp Của Tôi — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
+        "hashtags": "#suattrocapcuatoi #phan1 #truyenaudio #nghetruyen #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 08:43:34",
       "machine_arch": "x86_64",
@@ -304,22 +320,6 @@
             "follow_back_window_until": "2026-11-15 17:38:18"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-14 13:53:25",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261114_134913_tiktok_story_990008901_bongcuc_v6_s89_p1_bg_daylight.mp4",
-        "caption": "🎙️ Bỏ Lại Thanh Mai Trúc Mã, Tôi Chọn Tương Lai [Phần 1/6] — Góc kể Chuyện tâm lý đầy cảm xúc, đừng bỏ lỡ chi tiết nào nhé!",
-        "hashtags": "#bolaithanhmaitrucmatoichontuonglai #phan1 #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
