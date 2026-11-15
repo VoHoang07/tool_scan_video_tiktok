@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-15 13:54:43",
+    "timestamp": "2026-11-15 14:03:33",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261115_134927_tiktok_story_990005102_bongcuc_v6_s51_p2_bg_daylight.mp4",
-      "caption": "✨ Nữ Phụ Giả Heo truy đuổi Học Bá (Phần 2/12) — Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
-      "hashtags": "#nuphugiaheotruyduoihocba #phan2 #nghetruyen #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong",
+      "video_file": "20261115_135658_tiktok_story_7691194280622394644.mp4",
+      "caption": "✨ Câu chuyện AI cực cuốn: Hóa ra điện thoại di động cần phải được bỏ chặn để có tốc độ Internet bình thường. Đây là một thủ thuật giúp tăng tốc độ Internet của bạn ngay lập tức. \"Trên thực tế, nhà điều hành đã giới hạn tốc độ Internet của bạn ở chế độ nền...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+      "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-15 14:03:33",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261115_135658_tiktok_story_7691194280622394644.mp4",
+        "caption": "✨ Câu chuyện AI cực cuốn: Hóa ra điện thoại di động cần phải được bỏ chặn để có tốc độ Internet bình thường. Đây là một thủ thuật giúp tăng tốc độ Internet của bạn ngay lập tức. \"Trên thực tế, nhà điều hành đã giới hạn tốc độ Internet của bạn ở chế độ nền...\" Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+        "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-15 13:54:43",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261115_074238_tiktok_story_6969943767017098497.mp4",
         "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: CÔNG THỨC SỐT CHẤM bánh tráng cuốn. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
         "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 07:37:02",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261115_073236_tiktok_story_880035601_gautrucden_v1_s356_p1.mp4",
-        "caption": "⚡ Hồn Ma Nuôi Con (Phần 1/9) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-        "hashtags": "#honmanuoicon #phan1 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
