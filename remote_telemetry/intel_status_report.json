@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 01:15:15",
+    "timestamp": "2026-11-16 01:21:22",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "ads_skipped": 1,
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 154.3,
+      "elapsed_seconds": 157.1,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 01:21:22",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 157.1,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 01:15:15",
       "machine_arch": "x86_64",
@@ -223,22 +238,6 @@
         "video_file": "20261115_235841_tiktok_story_7690408097424215316.mp4",
         "caption": "🐉 Bị muỗi đốt, ta tức giận luyện ra Hệ Thống Phòng Không Diệt Muỗi — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
         "hashtags": "#huyenhuyen #tienhiep #tuchangioi #animehay #phimhoathinh3d #hoathinh3dtrungquoc #tutien #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-15 23:55:22",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261115_234649_tiktok_story_7691101988263644437.mp4",
-        "caption": "🥰 Nhật ký gia đình siêu lầy: Mặt sau. \"Hãy nhìn xem con đang giả vờ ngu ngốc như thế nào...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #fyp #xh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
