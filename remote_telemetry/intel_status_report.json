@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 12:28:49",
+    "timestamp": "2026-11-16 12:34:37",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+    "event_type": "upload",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 1,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 166.6,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261116_123108_tiktok_story_7706379921983048981.mp4",
+      "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Dăm bông gà, healthy mà lại nhiều collagen, mí chị ăn nhiều chút nhen ☺️ 700gr Thịt cắt miếng vuông, có thể làm thịt bò, heo, gà tuỳ sở thích, ướp 2 muỗng canh gia vị dăm bông, để tủ lạnh 1 tiếng cho thịt lên màu đẹp. Da heo luộc vừa chín, lạng bỏ hết mỡ, cắt hạt lựu, b nhớ lọc hết mỡ thì dăm bông mới kết dính tốt nhé. Trộn thịt đã ướp và da heo, thêm 100ml nước rồi cho vào khuôn, ép chặt rồi hấp 1 tiếng 30 phút, dăm bông nguội cho vào tủ lạnh trên 8 tiếng là mình ăn được rồi nè. Lưu ý lúc luộc và bỏ tủ lạnh mn nhớ để khuôn đứng thì mới có lớp gel bao quanh đều và đẹp nha. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+      "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #xuhuong #viral",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 12:34:37",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261116_123108_tiktok_story_7706379921983048981.mp4",
+        "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Dăm bông gà, healthy mà lại nhiều collagen, mí chị ăn nhiều chút nhen ☺️ 700gr Thịt cắt miếng vuông, có thể làm thịt bò, heo, gà tuỳ sở thích, ướp 2 muỗng canh gia vị dăm bông, để tủ lạnh 1 tiếng cho thịt lên màu đẹp. Da heo luộc vừa chín, lạng bỏ hết mỡ, cắt hạt lựu, b nhớ lọc hết mỡ thì dăm bông mới kết dính tốt nhé. Trộn thịt đã ướp và da heo, thêm 100ml nước rồi cho vào khuôn, ép chặt rồi hấp 1 tiếng 30 phút, dăm bông nguội cho vào tủ lạnh trên 8 tiếng là mình ăn được rồi nè. Lưu ý lúc luộc và bỏ tủ lạnh mn nhớ để khuôn đứng thì mới có lớp gel bao quanh đều và đẹp nha. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+        "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 12:28:49",
       "machine_arch": "x86_64",
@@ -475,21 +492,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 150.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 11:15:24",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 163.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
