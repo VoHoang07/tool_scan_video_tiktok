@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 13:03:36",
+    "timestamp": "2026-11-16 13:07:45",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261116_125523_tiktok_story_7706401417300364545.mp4",
-      "caption": "😂 +Trợ lý nhỏ_7692619156667118939 +Trợ lý nhỏ_769261915666711893. \"Nhìn vào tay mình, một mảnh sứ phát nổ...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #xh #xuhuongtiktok",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 10,
+      "ads_skipped": 2,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 231.1,
+      "final_url": "https://www.tiktok.com/@thi.trang.n528?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 13:07:45",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 2,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.1,
+        "final_url": "https://www.tiktok.com/@thi.trang.n528?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 13:03:36",
       "machine_arch": "x86_64",
@@ -407,21 +421,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 165.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 11:28:16",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 14,
-        "ads_skipped": 3,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 158.8,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
