@@ -410,37 +410,37 @@ class PosterMediaPrepMixin:
                         int(e.get("ep_num") or 0): int(e.get("view_count") or 0)
                         for e in splitter.get_full_catalog()
                     }
-                    # ƯU TIÊN SỐ 1 THEO YÊU CẦU: Ca đăng khuya đêm nay đăng "BC Số 119 - Phần 3" (story_id = 990011903) với nền Mukbang mới
-                    pinned_night_sid = "990011903"
+                    # ƯU TIÊN SỐ 1 THEO YÊU CẦU: Ca đăng tối/khuya đêm nay đăng "BC Số 119 - Phần 4" (story_id = 990011904) với nền Mukbang mới
+                    pinned_night_sid = "990011904"
                     if target_bg_mode == "night_mukbang" and pinned_night_sid not in posted_ids:
                         ep119_list = [
                             e for e in splitter.get_full_catalog() if int(e.get("ep_num") or 0) == 119
                         ]
                         if ep119_list:
-                            p3_list = [
+                            p4_list = [
                                 p
                                 for p in splitter.compute_episode_parts_plan(ep119_list[0])
-                                if int(p.get("part_num") or 0) == 3
+                                if int(p.get("part_num") or 0) == 4
                             ]
-                            if p3_list:
-                                chosen_p3 = dict(p3_list[0])
-                                chosen_p3["bg_mode"] = "night_mukbang"
-                                existing_p3 = [
+                            if p4_list:
+                                chosen_p4 = dict(p4_list[0])
+                                chosen_p4["bg_mode"] = "night_mukbang"
+                                existing_p4 = [
                                     c_f
                                     for c_f in valid_candidates
-                                    if "990011903" in c_f.name
+                                    if "990011904" in c_f.name
                                     and "bongcuc_v6_s" in c_f.name.lower()
                                     and "_bg_mukbang" in c_f.name.lower()
                                 ]
-                                if existing_p3:
-                                    target_video = existing_p3[0]
+                                if existing_p4:
+                                    target_video = existing_p4[0]
                                 else:
                                     logger.info(
-                                        f"[{ch_folder}] [Pinned Night Slot 23:00] Đang xuất ngay BC Số 119 Phần 3/{chosen_p3['total_parts']} với nền Mukbang Hàn Quốc 1080p mới..."
+                                        f"[{ch_folder}] [Pinned Night Slot 23:00] Đang xuất ngay BC Số 119 Phần 4/{chosen_p4['total_parts']} với nền Mukbang Hàn Quốc 1080p mới..."
                                     )
                                     self._refresh_browser_process_lock()
-                                    rendered_p3 = splitter.render_single_part(
-                                        part_spec=chosen_p3,
+                                    rendered_p4 = splitter.render_single_part(
+                                        part_spec=chosen_p4,
                                         target_ready_dir=ready_dir,
                                         bg_mode="night_mukbang",
                                     )
@@ -449,28 +449,28 @@ class PosterMediaPrepMixin:
                                         from .crawler import StoryAudioCrawler
 
                                         cr_sync = StoryAudioCrawler(project_root=self.project_root)
-                                        cr_sync.clear_macl_xattr(Path(rendered_p3["final_video"]))
+                                        cr_sync.clear_macl_xattr(Path(rendered_p4["final_video"]))
                                         cr_sync.save_to_history(
-                                            video_id=rendered_p3["video_id"],
-                                            sound_id=rendered_p3["sound_id"],
+                                            video_id=rendered_p4["video_id"],
+                                            sound_id=rendered_p4["sound_id"],
                                             platform="tiktok",
                                             genre="channel_3_novel_drama",
-                                            source_url=rendered_p3["source_url"],
-                                            output_filename=rendered_p3["filename"],
+                                            source_url=rendered_p4["source_url"],
+                                            output_filename=rendered_p4["filename"],
                                             channel="audio_dem_khuyen",
                                         )
                                         cr_sync.append_to_master_csv(
-                                            filename=rendered_p3["filename"],
-                                            source_url=rendered_p3["source_url"],
-                                            caption=rendered_p3["caption"],
-                                            hashtags=rendered_p3["hashtags"],
+                                            filename=rendered_p4["filename"],
+                                            source_url=rendered_p4["source_url"],
+                                            caption=rendered_p4["caption"],
+                                            hashtags=rendered_p4["hashtags"],
                                             status="READY",
                                             channel="audio_dem_khuyen",
                                             posted_at="",
                                         )
                                     except Exception:
                                         pass
-                                    target_video = Path(rendered_p3["final_video"])
+                                    target_video = Path(rendered_p4["final_video"])
 
                     high_view_channel_prio: Dict[int, int] = {
                         21: 1000,
