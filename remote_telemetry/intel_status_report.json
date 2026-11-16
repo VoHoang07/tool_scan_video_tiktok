@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 12:37:46",
+    "timestamp": "2026-11-16 13:03:36",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "event_type": "upload",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "ads_skipped": 1,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 163.0,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261116_125523_tiktok_story_7706401417300364545.mp4",
+      "caption": "😂 +Trợ lý nhỏ_7692619156667118939 +Trợ lý nhỏ_769261915666711893. \"Nhìn vào tay mình, một mảnh sứ phát nổ...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #xh #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 13:03:36",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261116_125523_tiktok_story_7706401417300364545.mp4",
+        "caption": "😂 +Trợ lý nhỏ_7692619156667118939 +Trợ lý nhỏ_769261915666711893. \"Nhìn vào tay mình, một mảnh sứ phát nổ...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 12:37:46",
       "machine_arch": "x86_64",
@@ -406,92 +423,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 158.8,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 11:25:27",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7708231484498267398",
-            "video_url": "https://www.tiktok.com/@minionxinhdep/video/7708231484498267398",
-            "creator_handle": "@minionxinhdep",
-            "watched_seconds": 15.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261116122413BFFE3F8111627EEC0437\",\"now\":1794803053000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261116122413BFFE3F8111627EEC0437\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261116122442E3C611C22E34B9F0C04B\",\"now\":1794803082000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261116122442E3C611C22E34B9F0C04B\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "19"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 872,
-                  "y": 456,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "19"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@minionxinhdep",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@minionxinhdep?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-16 11:24:51",
-            "follow_back_window_until": "2026-11-17 11:24:51"
-          }
-        ]
       }
     }
   ]
