@@ -1,21 +1,169 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 11:46:45",
+    "timestamp": "2026-11-16 11:48:50",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "event_type": "filter24h",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261114_072627_tiktok_story_7688670117181295893.mp4",
-      "caption": "🏠 Bảo bối dọn nhà thông minh: Bảo bối gia dụng thông minh mà bà nội trợ nào nhìn thấy cũng mê. Trước giờ cứ làm cách cũ tốn bao nhiêu công sức, biết mẹo này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử cách này chưa?",
-      "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #viral #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "tu_chan_gioi",
+          "video_id": "7707662816693456149",
+          "video_url": "https://www.tiktok.com/@vanbaohoang44/video/7707662816693456149",
+          "creator_handle": "@vanbaohoang44",
+          "watched_seconds": 15.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261116124736E9DD69013C95B96D4B94\",\"now\":1794804456000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261116124736E9DD69013C95B96D4B94\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026111612480453A4D4517C37996AA690\",\"now\":1794804484000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026111612480453A4D4517C37996AA690\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "before": {
+              "x": 872,
+              "y": 456,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "82"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 872,
+                "y": 456,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "82"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@vanbaohoang44",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@vanbaohoang44?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-16 11:48:12",
+          "follow_back_window_until": "2026-11-17 11:48:12"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 11:48:50",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7707662816693456149",
+            "video_url": "https://www.tiktok.com/@vanbaohoang44/video/7707662816693456149",
+            "creator_handle": "@vanbaohoang44",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261116124736E9DD69013C95B96D4B94\",\"now\":1794804456000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261116124736E9DD69013C95B96D4B94\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026111612480453A4D4517C37996AA690\",\"now\":1794804484000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"2026111612480453A4D4517C37996AA690\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "before": {
+                "x": 872,
+                "y": 456,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "82"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 872,
+                  "y": 456,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "82"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@vanbaohoang44",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@vanbaohoang44?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-16 11:48:12",
+            "follow_back_window_until": "2026-11-17 11:48:12"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-16 11:46:45",
       "machine_arch": "x86_64",
@@ -478,21 +626,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 162.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 10:37:23",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 157.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
