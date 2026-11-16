@@ -1,91 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 11:06:16",
+    "timestamp": "2026-11-16 11:09:04",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7707985159458508052",
-          "video_url": "https://www.tiktok.com/@maihoa669/video/7707985159458508052",
-          "creator_handle": "@maihoa669",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": true,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Kênh đầu tư chỉn chu từ hình ảnh tới âm thanh, chúc bạn phát triển mạnh nha ✨",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026111612050214073578C611F6D1840C\",\"now\":1794801902000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"2026111612050214073578C611F6D1840C\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611161205348FAAB7C947BD650B0300\",\"now\":1794801934000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611161205348FAAB7C947BD650B0300\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 881.28125,
-              "y": 425,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "36"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 881.28125,
-                "y": 425,
-                "ariaPressed": true,
-                "svgColor": "rgba(254, 44, 85, 1)",
-                "likeCount": "37"
-              },
-              "red": true,
-              "server_digg_ok": true,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@maihoa669",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@maihoa669?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": 0,
-              "server_follow_ok": true,
-              "ui_confirmed": true,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-16 11:05:43",
-          "follow_back_window_until": "2026-11-17 11:05:43"
-        }
-      ]
+      "scrolled_videos": 13,
+      "ads_skipped": 3,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 158.5,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 11:09:04",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "ads_skipped": 3,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 158.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 11:06:16",
       "machine_arch": "x86_64",
@@ -687,21 +631,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 157.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 09:53:45",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 159.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
