@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 13:07:45",
+    "timestamp": "2026-11-16 13:12:47",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
+    "event_type": "upload",
     "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 2,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.1,
-      "final_url": "https://www.tiktok.com/@thi.trang.n528?lang=vi-VN"
+      "video_file": "20261112_082545_tiktok_story_7475037730368474386.mp4",
+      "caption": "👶 Sai lầm lớn nhất khi nuôi dạy con: Đó là cố gắng làm bạn với con thay vì làm cha mẹ!. Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
+      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #chamconkhoahoc #tamlytreem #mebimsua #viral #foryou",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 13:12:47",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261112_082545_tiktok_story_7475037730368474386.mp4",
+        "caption": "👶 Sai lầm lớn nhất khi nuôi dạy con: Đó là cố gắng làm bạn với con thay vì làm cha mẹ!. Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
+        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #chamconkhoahoc #tamlytreem #mebimsua #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 13:07:45",
       "machine_arch": "x86_64",
@@ -406,21 +423,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 156.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 11:34:13",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 165.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
