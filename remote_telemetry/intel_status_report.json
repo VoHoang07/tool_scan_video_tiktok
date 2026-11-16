@@ -1,20 +1,177 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 19:29:48",
+    "timestamp": "2026-11-16 19:37:12",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "event_type": "filter24h",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 2,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 169.1,
-      "final_url": "https://www.tiktok.com/@huong_huong.su/live?enter_from_merge=homepage_hot&enter_method=live_fyp_like&entrance_detail=homepage_hot_live_fyp_like&is_highlight=1&is_landscape=0&request_id=2026111620284212A03510C46B401B7E3D&video_id=live_7708739628089625365"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "tu_chan_gioi",
+          "video_id": "7708234639709621512",
+          "video_url": "https://www.tiktok.com/@diu.anh7788/video/7708234639709621512",
+          "creator_handle": "@diu.anh7788",
+          "watched_seconds": 15.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611162036011F2AEB68E96D41A89E5B\",\"now\":1794832562000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611162036011F2AEB68E96D41A89E5B\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261116203629312DB5621AD45B91EC29\",\"now\":1794832590000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261116203629312DB5621AD45B91EC29\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 872,
+              "y": 456,
+              "ariaPressed": false,
+              "svgColor": "rgba(255, 255, 255, .9)",
+              "likeCount": "279"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 872,
+                "y": 456,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "279"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@diu.anh7788",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@diu.anh7788?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-16 19:36:38",
+          "follow_back_window_until": "2026-11-17 19:36:38"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 19:37:12",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7708234639709621512",
+            "video_url": "https://www.tiktok.com/@diu.anh7788/video/7708234639709621512",
+            "creator_handle": "@diu.anh7788",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Xem xong thấy vui vẻ hẳn lên, cảm ơn chủ kênh nhiều nhé 🥰🌷",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611162036011F2AEB68E96D41A89E5B\",\"now\":1794832562000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611162036011F2AEB68E96D41A89E5B\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261116203629312DB5621AD45B91EC29\",\"now\":1794832590000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261116203629312DB5621AD45B91EC29\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 872,
+                "y": 456,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "279"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 872,
+                  "y": 456,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(255, 255, 255, .9)",
+                  "likeCount": "279"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@diu.anh7788",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@diu.anh7788?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-16 19:36:38",
+            "follow_back_window_until": "2026-11-17 19:36:38"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-16 19:29:48",
       "machine_arch": "x86_64",
@@ -594,21 +751,6 @@
             "follow_back_window_until": "2026-11-17 18:15:03"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-16 18:08:51",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 2,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 173.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
