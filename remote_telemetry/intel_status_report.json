@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 10:37:23",
+    "timestamp": "2026-11-16 10:43:47",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
     "details": {
-      "scrolled_videos": 11,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 157.0,
+      "elapsed_seconds": 162.7,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 10:43:47",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 162.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 10:37:23",
       "machine_arch": "x86_64",
@@ -617,22 +632,6 @@
             "follow_back_window_until": "2026-11-17 09:32:31"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-16 09:29:52",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261116_092603_tiktok_story_7507686487027158290.mp4",
-        "caption": "🐉 Trả lời Hoá Học tu tiên — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-        "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
