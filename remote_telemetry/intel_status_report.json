@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 08:10:55",
+    "timestamp": "2026-11-16 08:35:22",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "event_type": "upload",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 153.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261116_082715_tiktok_story_7705802861904448775.mp4",
+      "caption": "🤣 Em bé lấy hết can đảm để thách thức quyền lực của mẹ nhưng lại bỏ cuộc trong giây lát 😂 — Pha xử lý đi vào lòng đất của hai mẹ con! \"Mẹ có thể nhìn vào điện thoại của mẹ bất cứ khi nào mẹ muốn...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 08:35:22",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261116_082715_tiktok_story_7705802861904448775.mp4",
+        "caption": "🤣 Em bé lấy hết can đảm để thách thức quyền lực của mẹ nhưng lại bỏ cuộc trong giây lát 😂 — Pha xử lý đi vào lòng đất của hai mẹ con! \"Mẹ có thể nhìn vào điện thoại của mẹ bất cứ khi nào mẹ muốn...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+        "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 08:10:55",
       "machine_arch": "x86_64",
@@ -227,21 +244,6 @@
         "post_confirmed": true,
         "switched_public_count": 5,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 06:57:52",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 161.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
