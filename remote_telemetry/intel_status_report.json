@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 11:57:29",
+    "timestamp": "2026-11-16 12:14:11",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "event_type": "upload",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 1,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 154.3,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261116_120038_tiktok_story_7704474405316922631.mp4",
+      "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Cái nào tốt hơn cho người tắm nước lạnh hay tắm nước nóng?. \"Chỉ có một ngày thực sự được tận hưởng, đó là ngày thứ bảy...\" Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
+      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #foryou",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 6,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 12:14:11",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261116_120038_tiktok_story_7704474405316922631.mp4",
+        "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Cái nào tốt hơn cho người tắm nước lạnh hay tắm nước nóng?. \"Chỉ có một ngày thực sự được tận hưởng, đó là ngày thứ bảy...\" Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
+        "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 6,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 11:57:29",
       "machine_arch": "x86_64",
@@ -432,21 +449,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 156.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 10:50:27",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 3,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 152.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
