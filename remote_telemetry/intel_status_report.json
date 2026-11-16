@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 23:14:41",
+    "timestamp": "2026-11-16 23:43:16",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261116_231020_tiktok_story_880035901_gautrucden_v1_s359_p1.mp4",
-      "caption": "🐼 Đừng Để Dê Hát Chèo — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
-      "hashtags": "#dungdedehatcheo #phan1 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
+      "video_file": "20261112_082631_tiktok_story_7602810747541933320.mp4",
+      "caption": "👶 Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
+      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 23:43:16",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261112_082631_tiktok_story_7602810747541933320.mp4",
+        "caption": "👶 Cách ứng xử tinh tế của mẹ giúp con rèn luyện trí tuệ cảm xúc từ nhỏ. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
+        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 23:14:41",
       "machine_arch": "x86_64",
@@ -297,21 +313,6 @@
             "follow_back_window_until": "2026-11-17 20:20:06"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-16 20:14:14",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 152.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
