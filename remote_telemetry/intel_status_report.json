@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 19:20:38",
+    "timestamp": "2026-11-16 19:29:48",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
+      "scrolled_videos": 10,
+      "ads_skipped": 2,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 157.2,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 169.1,
+      "final_url": "https://www.tiktok.com/@huong_huong.su/live?enter_from_merge=homepage_hot&enter_method=live_fyp_like&entrance_detail=homepage_hot_live_fyp_like&is_highlight=1&is_landscape=0&request_id=2026111620284212A03510C46B401B7E3D&video_id=live_7708739628089625365"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 19:29:48",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 2,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 169.1,
+        "final_url": "https://www.tiktok.com/@huong_huong.su/live?enter_from_merge=homepage_hot&enter_method=live_fyp_like&entrance_detail=homepage_hot_live_fyp_like&is_highlight=1&is_landscape=0&request_id=2026111620284212A03510C46B401B7E3D&video_id=live_7708739628089625365"
+      }
+    },
     {
       "timestamp": "2026-11-16 19:20:38",
       "machine_arch": "x86_64",
@@ -593,21 +608,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 173.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 18:01:36",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 158.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
