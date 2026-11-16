@@ -1,91 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 20:20:42",
+    "timestamp": "2026-11-16 20:23:38",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "phu_kien_tien_ich",
-          "video_id": "7708660185656577298",
-          "video_url": "https://www.tiktok.com/@fina8037jyo/video/7708660185656577298",
-          "creator_handle": "@fina8037jyo",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611162119294AC6B30A11626F78B679\",\"now\":1794835169000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611162119294AC6B30A11626F78B679\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261116211957E605F6612CE2F0950DEB\",\"now\":1794835197000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261116211957E605F6612CE2F0950DEB\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 804.34375,
-              "y": 359,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "47"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 804.34375,
-                "y": 359,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "47"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@fina8037jyo",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@fina8037jyo?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": 0,
-              "server_follow_ok": true,
-              "ui_confirmed": true,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-16 20:20:06",
-          "follow_back_window_until": "2026-11-17 20:20:06"
-        }
-      ]
+      "scrolled_videos": 12,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 166.3,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 20:23:38",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 166.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 20:20:42",
       "machine_arch": "x86_64",
@@ -619,92 +563,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 165.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 18:56:37",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "audio_dem_khuyen",
-            "video_id": "7708551151020494100",
-            "video_url": "https://www.tiktok.com/@chilam178/video/7708551151020494100",
-            "creator_handle": "@chilam178",
-            "watched_seconds": 15.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": true,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261116195523EB999BDCD0F5D2087B19\",\"now\":1794830123000},\"is_digg\":0,\"log_pb\":{\"impr_id\":\"20261116195523EB999BDCD0F5D2087B19\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611161955519E95DAD01040A6F8F395\",\"now\":1794830151000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611161955519E95DAD01040A6F8F395\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 881.28125,
-                "y": 425,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "700"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 881.28125,
-                  "y": 425,
-                  "ariaPressed": true,
-                  "svgColor": "rgba(255, 59, 92, 1)",
-                  "likeCount": "701"
-                },
-                "red": true,
-                "server_digg_ok": true,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@chilam178",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@chilam178?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-16 18:56:00",
-            "follow_back_window_until": "2026-11-17 18:56:00"
-          }
-        ]
       }
     }
   ]
