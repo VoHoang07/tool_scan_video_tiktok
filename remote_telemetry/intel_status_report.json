@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 08:35:22",
+    "timestamp": "2026-11-16 08:39:31",
     "machine_arch": "x86_64",
-    "event_type": "upload",
+    "event_type": "warmup_fyp",
     "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "video_file": "20261116_082715_tiktok_story_7705802861904448775.mp4",
-      "caption": "🤣 Em bé lấy hết can đảm để thách thức quyền lực của mẹ nhưng lại bỏ cuộc trong giây lát 😂 — Pha xử lý đi vào lòng đất của hai mẹ con! \"Mẹ có thể nhìn vào điện thoại của mẹ bất cứ khi nào mẹ muốn...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #fyp",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 2,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 232.1,
+      "final_url": "https://www.tiktok.com/@anhthu8185?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 08:39:31",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 232.1,
+        "final_url": "https://www.tiktok.com/@anhthu8185?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 08:35:22",
       "machine_arch": "x86_64",
@@ -228,22 +242,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 168.8,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 07:03:51",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261116_070006_tiktok_story_7599527153096543509.mp4",
-        "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Muốn răng miệng sạch sẽ thơm tho hãy xem bí quyết này!. Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
-        "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 5,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
