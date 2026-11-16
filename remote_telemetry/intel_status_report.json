@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 11:34:13",
+    "timestamp": "2026-11-16 11:40:09",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 12,
+      "scrolled_videos": 11,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 165.1,
+      "elapsed_seconds": 156.4,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 11:40:09",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 156.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 11:34:13",
       "machine_arch": "x86_64",
@@ -477,161 +492,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 150.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 10:28:49",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "babyai025",
-          "domFollowing": "8",
-          "domFollowers": "55",
-          "domLikes": "320",
-          "sidebarFollowing": [
-            "/@babyai025",
-            "/@nguyen_21078",
-            "/@_n.khanhly.07_",
-            "/@video_hay4",
-            "/@audio_ba_con_oi",
-            "/@tu_chan_gioi0"
-          ]
-        },
-        "records": [
-          {
-            "channel": "baby_AI",
-            "video_id": "7708419013910596871",
-            "video_url": "https://www.tiktok.com/@chinbo.review3025/video/7708419013910596871",
-            "creator_handle": "@chinbo.review3025",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": true,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261116112653F3D3331E050589FF3119\",\"now\":1794799613000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261116112653F3D3331E050589FF3119\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": null,
-              "profile_follow_verify": {
-                "creator": "@chinbo.review3025",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@chinbo.review3025?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": null,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-16 10:27:01",
-            "follow_back_window_until": "2026-11-17 10:27:01"
-          },
-          {
-            "channel": "baby_AI",
-            "video_id": "7708398313908866356",
-            "video_url": "https://www.tiktok.com/@boiu.303/video/7708398313908866356",
-            "creator_handle": "@boiu.303",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": null
-            },
-            "interacted_at": "2026-11-16 10:27:47",
-            "follow_back_window_until": "2026-11-17 10:27:47"
-          },
-          {
-            "channel": "baby_AI",
-            "video_id": "7708362795951328532",
-            "video_url": "https://www.tiktok.com/@tr.follow.uy.tn96/video/7708362795951328532",
-            "creator_handle": "@tr.follow.uy.tn96",
-            "watched_seconds": 26.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611161128316EE2C6CC36999008F6D6\",\"now\":1794799711000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611161128316EE2C6CC36999008F6D6\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 833.40625,
-                "y": 461,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "13"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 833.40625,
-                  "y": 461,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "13"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              }
-            },
-            "interacted_at": "2026-11-16 10:28:39",
-            "follow_back_window_until": "2026-11-17 10:28:39"
-          }
-        ]
       }
     }
   ]
