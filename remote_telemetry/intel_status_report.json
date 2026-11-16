@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 02:21:05",
+    "timestamp": "2026-11-17 02:33:42",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261117_021254_tiktok_story_7576580032932433172.mp4",
-      "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: ghế đẩu phím đàn piano, sáng tạo. \"Ngoài vai trò là một chiếc ghế, nó còn có thể được dùng làm người biên tập...\" Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
-      "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #savingtips #donnhasach #meohaymoingay #tiktokvn #xuhuong",
+      "video_file": "20261117_023009_tiktok_story_6941047536090156290.mp4",
+      "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: 5 Cách nhận biết HẠCH LÀNH TÍNH VÀ ÁC TÍNH. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #fyp #xh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 02:33:42",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261117_023009_tiktok_story_6941047536090156290.mp4",
+        "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: 5 Cách nhận biết HẠCH LÀNH TÍNH VÀ ÁC TÍNH. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #fyp #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-17 02:21:05",
       "machine_arch": "x86_64",
@@ -229,21 +245,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 150.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 20:37:58",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 153.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
