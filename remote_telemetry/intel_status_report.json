@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 07:50:04",
+    "timestamp": "2026-11-16 07:53:05",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261116_074618_tiktok_story_7705265843227168021.mp4",
-      "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: Trứng gà nướng trong vỏ mềm mịn, thơm mùi tiêu, chấm thêm muối tiêu tắc là ngon hết ý luôn á!. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
-      "hashtags": "#doanvat #monngondelam #amthuctiktok #congthucnauan #doanvatnoidia #yeubep #xuhuong #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 2,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 13,
+      "ads_skipped": 3,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 160.6,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 07:53:05",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "ads_skipped": 3,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 160.6,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 07:50:04",
       "machine_arch": "x86_64",
@@ -227,21 +241,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 154.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 06:33:49",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 153.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
