@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 21:38:40",
+    "timestamp": "2026-11-16 23:04:22",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "event_type": "upload",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 158.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261116_230028_tiktok_story_990011904_bongcuc_v6_s119_p4_bg_mukbang.mp4",
+      "caption": "✨ Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà (Phần 4/6) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
+      "hashtags": "#canhacuoikhichongtoikhongduocchianha #phan4 #chuyengiadinh #mukbangdemkhuya #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #audiodemkhuya",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 23:04:22",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261116_230028_tiktok_story_990011904_bongcuc_v6_s119_p4_bg_mukbang.mp4",
+        "caption": "✨ Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà (Phần 4/6) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
+        "hashtags": "#canhacuoikhichongtoikhongduocchianha #phan4 #chuyengiadinh #mukbangdemkhuya #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #audiodemkhuya",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 21:38:40",
       "machine_arch": "x86_64",
@@ -293,21 +310,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 154.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 20:00:04",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 151.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
