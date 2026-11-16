@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 15:05:31",
+    "timestamp": "2026-11-16 15:12:55",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
+      "scrolled_videos": 13,
+      "ads_skipped": 3,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 156.2,
+      "elapsed_seconds": 151.1,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 15:12:55",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "ads_skipped": 3,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 151.1,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 15:05:31",
       "machine_arch": "x86_64",
@@ -225,22 +240,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 155.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 13:32:18",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261116_132729_tiktok_story_990014401_bongcuc_v6_s144_p1_bg_daylight.mp4",
-        "caption": "✨ Tôi Ghét Nhất Những Lời Xin Lỗi Muộn Màng (Phần 1/7) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
-        "hashtags": "#toighetnhatnhungloixinloimuonmang #phan1 #kechuyen #chuyengiadinh #baihoccuocsong #truyenaudio #nghetruyen #gocnhincuocsong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 6,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
