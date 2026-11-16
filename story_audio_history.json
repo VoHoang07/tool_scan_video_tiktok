@@ -414,7 +414,8 @@
     "7706379921983048981",
     "7706401417300364545",
     "7665621008845524245",
-    "990014401"
+    "990014401",
+    "7652746234217942293"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -706,7 +707,8 @@
     "7639964795101285138",
     "7706401495821896454",
     "7665621079339141896",
-    "bongcuc_yt_3zVIg5dAhAo_p1"
+    "bongcuc_yt_3zVIg5dAhAo_p1",
+    "7652746435226372882"
   ],
   "items": [
     {
@@ -3848,6 +3850,16 @@
       "source_url": "https://www.youtube.com/watch?v=3zVIg5dAhAo&t=16s",
       "output_filename": "audio_dem_khuyen/ready/20261116_132729_tiktok_story_990014401_bongcuc_v6_s144_p1_bg_daylight.mp4",
       "crawled_at": "2026-11-16T13:28:37"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "7652746234217942293",
+      "sound_id": "7652746435226372882",
+      "platform": "tiktok",
+      "genre": "phukiendienthoai",
+      "source_url": "https://www.tiktok.com/@trickhay.com/video/7652746234217942293",
+      "output_filename": "phu_kien_tien_ich/ready/20261116_135430_tiktok_story_7652746234217942293.mp4",
+      "crawled_at": "2026-11-16T13:54:37"
     }
   ]
 }
