@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 09:02:23",
+    "timestamp": "2026-11-16 09:05:19",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261116_085701_tiktok_story_990008902_bongcuc_v6_s89_p2_bg_daylight.mp4",
-      "caption": "🎧 Bỏ Lại Thanh Mai Trúc Mã, Tôi Chọn Tương Lai (Phần 2/6) — Chuyện tâm lý cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
-      "hashtags": "#bolaithanhmaitrucmatoichontuonglai #phan2 #fyp #truyenngan #tamlyhonnhan #xuhuong #kechuyen #chuyengiadinh",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 6,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 151.7,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 09:05:19",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 151.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 09:02:23",
       "machine_arch": "x86_64",
@@ -229,22 +243,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 150.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 07:25:44",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261114_072514_tiktok_story_7705776790782184724.mp4",
-        "caption": "💡 Khăn mặt khăn tắm dùng lâu bị nhớt, ố vàng bốc mùi dùng cách này trắng tinh như mới mua! 🧼✨ Vừa sạch khuẩn lại mềm mịn sợi vải!. Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
-        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #yeubep #decorphong #tienichgiadinh #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
