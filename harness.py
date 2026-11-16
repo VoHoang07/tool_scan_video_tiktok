@@ -192,22 +192,24 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
 
         _, day_tags = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
             "Chuyện đêm khuya cuốn hút",
-            "#audiodemkhuya #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #xuhuong",
+            "#audiodemkhuya #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #xuhuong #fyp",
             "audio_dem_khuyen",
             hour=12,
         )
         if any(w in day_tags.lower() for w in ("demkhuya", "khuya", "chuyendem", "demsau")):
             errors.append(f"[DaytimeHashtagError] Còn sót hashtag ban đêm khi đăng ban ngày: {day_tags}")
+        if "#fyp" not in day_tags.lower():
+            errors.append(f"[DaytimeFypError] Mất hashtag #fyp khi đăng ban ngày trên audio_dem_khuyen: {day_tags}")
         _, night_tags = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
             "Chuyện đêm khuya cuốn hút",
-            "#audiodemkhuya #kechuyendemkhuya #xuhuong",
+            "#audiodemkhuya #kechuyendemkhuya #xuhuong #fyp",
             "audio_dem_khuyen",
             hour=23,
         )
         if "#audiodemkhuya" not in night_tags:
             errors.append(f"[NighttimeHashtagError] Mất hashtag đêm khuya khi đăng ban đêm: {night_tags}")
-        if "#fyp" in day_tags.lower() or "#fyp" in night_tags.lower():
-            errors.append(f"[NoFypError] Kênh audio_dem_khuyen vẫn còn chứa #fyp: day={day_tags}, night={night_tags}")
+        if "#fyp" in night_tags.lower():
+            errors.append(f"[NightNoFypError] Kênh audio_dem_khuyen vẫn còn chứa #fyp vào ban đêm: {night_tags}")
 
         clean_cap_6, _ = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
             "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ giúp ngủ ngon mỗi tối",

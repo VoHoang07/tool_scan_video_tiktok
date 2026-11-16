@@ -141,7 +141,7 @@ class TikTokCommunityGuidelinesGuard:
             if any(bad in low_t for bad in cls._FORBIDDEN_HASHTAG_PATTERNS):
                 continue
             if channel_folder == "audio_dem_khuyen":
-                if low_t in ("fyp", "foryou", "foryoupage", "fypシ"):
+                if not is_daytime and low_t in ("fyp", "foryou", "foryoupage", "fypシ"):
                     continue
                 if is_daytime:
                     if low_t in cls._DAYTIME_HASHTAG_MAP:
@@ -154,7 +154,7 @@ class TikTokCommunityGuidelinesGuard:
         if not safe_tags:
             if channel_folder == "audio_dem_khuyen":
                 if is_daytime:
-                    safe_tags = ["#truyenaudio", "#kechuyen", "#truyenngan", "#chuyengiadinh", "#xuhuong"]
+                    safe_tags = ["#truyenaudio", "#kechuyen", "#truyenngan", "#chuyengiadinh", "#xuhuong", "#fyp"]
                 else:
                     safe_tags = ["#audiodemkhuya", "#kechuyendemkhuya", "#truyenaudio", "#xuhuong"]
             elif channel_folder == "video_AI_hay":

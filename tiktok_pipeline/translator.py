@@ -1598,7 +1598,7 @@ class SubtitleTranslator:
         }
         fyp_pool = (
             ["#xuhuong", "#xuhuongtiktok", "#tiktokvn", "#xh"]
-            if ch_key == "channel_3"
+            if (ch_key == "channel_3" and not (5 <= datetime.now().hour < 18))
             else [
                 "#xuhuong",
                 "#xuhuongtiktok",

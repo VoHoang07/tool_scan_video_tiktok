@@ -444,18 +444,23 @@ class PosterStudioUIMixin:
         time.sleep(random.uniform(0.35, 0.6))
 
         # Chuẩn hóa danh sách #hashtag
+        is_daytime_now = 5 <= datetime.now().hour < 18
         raw_tokens = [t.strip() for t in hashtags_str.split() if t.strip()]
         tags: List[str] = []
         for t in raw_tokens:
             norm_t = t if t.startswith("#") else f"#{t}"
-            if ch_folder == "audio_dem_khuyen" and norm_t.lower().lstrip("#") in ("fyp", "foryou", "foryoupage", "fypシ"):
+            if (
+                ch_folder == "audio_dem_khuyen"
+                and not is_daytime_now
+                and norm_t.lower().lstrip("#") in ("fyp", "foryou", "foryoupage", "fypシ")
+            ):
                 continue
             if len(norm_t) > 1 and norm_t.lower() not in [x.lower() for x in tags]:
                 tags.append(norm_t)
         if not tags:
             tags = (
-                ["#truyenaudio", "#kechuyen", "#xuhuong", "#tiktokvn"]
-                if ch_folder == "audio_dem_khuyen"
+                ["#audiodemkhuya", "#kechuyendemkhuya", "#truyenaudio", "#xuhuong"]
+                if (ch_folder == "audio_dem_khuyen" and not is_daytime_now)
                 else ["#xuhuong", "#xuhuongtiktok", "#fyp", "#tiktokvn"]
             )
 

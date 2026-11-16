@@ -1,7 +1,7 @@
 # HANDOFF.md — Tài Liệu Bàn Giao & Trạng Thái Hệ Thống (`tool_scan_video_tiktok`)
 
-> **Cập nhật lần cuối**: `2026-11-16 11:02:00 +07:00`
-> **Commit mốc hiện tại**: Loại bỏ hoàn toàn hashtag `#fyp` khỏi kênh `audio_dem_khuyen` trên toàn bộ pipeline (`community_guidelines_guard.py`, `bongcuc_splitter.py`, `translator.py`, `poster_studio_ui.py`) + Bật lại Công tắc 3 (`switch_3_interact.tiktok = true`)
+> **Cập nhật lần cuối**: `2026-11-16 11:05:00 +07:00`
+> **Commit mốc hiện tại**: Chỉ loại bỏ hashtag `#fyp` vào khung giờ ban đêm (`18:00–04:59`) và giữ nguyên `#fyp` vào ban ngày (`05:00–17:59`) cho kênh `audio_dem_khuyen`
 
 ---
 

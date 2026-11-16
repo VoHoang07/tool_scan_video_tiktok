@@ -1416,6 +1416,7 @@ class BongCucYouTubeSplitter:
                 "#gocnhincuocsong",
                 "#mukbang" if bg_mode == "night_mukbang" else "#baihoccuocsong",
                 "#xuhuong",
+                "#fyp",
             ]
         else:
             rotating_tags = [
