@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 13:12:47",
+    "timestamp": "2026-11-16 13:22:34",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261112_082545_tiktok_story_7475037730368474386.mp4",
-      "caption": "👶 Sai lầm lớn nhất khi nuôi dạy con: Đó là cố gắng làm bạn với con thay vì làm cha mẹ!. Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
-      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #chamconkhoahoc #tamlytreem #mebimsua #viral #foryou",
+      "video_file": "20261116_131539_tiktok_story_7665621008845524245.mp4",
+      "caption": "✨ Có quá nhiều thứ trong cuộc sống mà bạn không thể kiểm soát được. Đừng lo lắng và tiêu hao bản thân vì những điều đó. \"Tôi hy vọng bạn có thể gạt bỏ những lo lắng của mình và tận hưởng khoảnh khắc này...\" Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
+      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 13:22:34",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261116_131539_tiktok_story_7665621008845524245.mp4",
+        "caption": "✨ Có quá nhiều thứ trong cuộc sống mà bạn không thể kiểm soát được. Đừng lo lắng và tiêu hao bản thân vì những điều đó. \"Tôi hy vọng bạn có thể gạt bỏ những lo lắng của mình và tận hưởng khoảnh khắc này...\" Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
+        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 13:12:47",
       "machine_arch": "x86_64",
@@ -409,21 +425,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 11:40:09",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 156.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
