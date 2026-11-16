@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 08:39:31",
+    "timestamp": "2026-11-16 08:51:41",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "event_type": "upload",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 232.1,
-      "final_url": "https://www.tiktok.com/@anhthu8185?lang=vi-VN"
+      "video_file": "20261116_084253_tiktok_story_7539776225028476167.mp4",
+      "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Điều gì sẽ xảy ra nếu bạn không yêu trong một thời gian dài?. \"Khi bạn đã quen với cuộc sống tự lập của chính mình...\" Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #xuhuongtiktok #tiktokvn",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 0,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 08:51:41",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261116_084253_tiktok_story_7539776225028476167.mp4",
+        "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Điều gì sẽ xảy ra nếu bạn không yêu trong một thời gian dài?. \"Khi bạn đã quen với cuộc sống tự lập của chính mình...\" Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 08:39:31",
       "machine_arch": "x86_64",
@@ -226,21 +243,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 155.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 07:06:59",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 168.8,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
