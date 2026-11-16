@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 02:00:29",
+    "timestamp": "2026-11-17 02:21:05",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261117_015052_tiktok_story_7689450733212667157.mp4",
-      "caption": "🎬 Thủ đoạn kinh tởm bị vạch trần trong một ngày: vô hiệu hóa tính năng giám sát điện thoại di động. \"Nhưng tôi không thể tìm ra thông tin bị rò rỉ từ đâu, Câu trả lời thực ra rất đơn giản...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-      "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #xuhuongtiktok #tiktokvn",
+      "video_file": "20261117_021254_tiktok_story_7576580032932433172.mp4",
+      "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: ghế đẩu phím đàn piano, sáng tạo. \"Ngoài vai trò là một chiếc ghế, nó còn có thể được dùng làm người biên tập...\" Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
+      "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #savingtips #donnhasach #meohaymoingay #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 02:21:05",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261117_021254_tiktok_story_7576580032932433172.mp4",
+        "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: ghế đẩu phím đàn piano, sáng tạo. \"Ngoài vai trò là một chiếc ghế, nó còn có thể được dùng làm người biên tập...\" Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
+        "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #savingtips #donnhasach #meohaymoingay #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-17 02:00:29",
       "machine_arch": "x86_64",
@@ -222,21 +238,6 @@
       "event_type": "warmup_fyp",
       "channel": "baby_AI",
       "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 153.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 20:31:46",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
       "details": {
         "scrolled_videos": 10,
         "ads_skipped": 0,
