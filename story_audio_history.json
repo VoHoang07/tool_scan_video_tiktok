@@ -409,7 +409,8 @@
     "990008902",
     "7521970321134521608",
     "7507686487027158290",
-    "7704474405316922631"
+    "7704474405316922631",
+    "880035602"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -696,7 +697,8 @@
     "bongcuc_yt_Zppw2lUNK-0_p2",
     "7521970356647676688",
     "7479046081012124432",
-    "7704474460636236551"
+    "7704474460636236551",
+    "gautrucden_yt_8zSR7mEwDcc_p2"
   ],
   "items": [
     {
@@ -3788,6 +3790,16 @@
       "source_url": "https://www.tiktok.com/@lifewell_sg/video/7704474405316922631",
       "output_filename": "suc_khoe_duong_sinh/ready/20261116_120038_tiktok_story_7704474405316922631.mp4",
       "crawled_at": "2026-11-16T12:10:24"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "880035602",
+      "sound_id": "gautrucden_yt_8zSR7mEwDcc_p2",
+      "platform": "tiktok",
+      "genre": "channel_1_ai_trending",
+      "source_url": "https://www.youtube.com/watch?v=8zSR7mEwDcc&t=248s",
+      "output_filename": "video_AI_hay/ready/20261116_122201_tiktok_story_880035602_gautrucden_v1_s356_p2.mp4",
+      "crawled_at": "2026-11-16T12:22:54"
     }
   ]
 }
