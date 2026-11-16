@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 23:04:22",
+    "timestamp": "2026-11-16 23:14:41",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261116_230028_tiktok_story_990011904_bongcuc_v6_s119_p4_bg_mukbang.mp4",
-      "caption": "✨ Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà (Phần 4/6) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
-      "hashtags": "#canhacuoikhichongtoikhongduocchianha #phan4 #chuyengiadinh #mukbangdemkhuya #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #audiodemkhuya",
+      "video_file": "20261116_231020_tiktok_story_880035901_gautrucden_v1_s359_p1.mp4",
+      "caption": "🐼 Đừng Để Dê Hát Chèo — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
+      "hashtags": "#dungdedehatcheo #phan1 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 23:14:41",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261116_231020_tiktok_story_880035901_gautrucden_v1_s359_p1.mp4",
+        "caption": "🐼 Đừng Để Dê Hát Chèo — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
+        "hashtags": "#dungdedehatcheo #phan1 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 23:04:22",
       "machine_arch": "x86_64",
@@ -295,21 +311,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 152.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 20:06:38",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 14,
-        "ads_skipped": 3,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 154.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
