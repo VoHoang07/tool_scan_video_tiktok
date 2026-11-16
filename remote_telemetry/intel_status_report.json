@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 14:00:40",
+    "timestamp": "2026-11-16 14:07:18",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 11,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 163.7,
+      "elapsed_seconds": 154.4,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 14:07:18",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 154.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-16 14:00:40",
       "machine_arch": "x86_64",
@@ -229,22 +244,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 166.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 12:25:44",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261116_122201_tiktok_story_880035602_gautrucden_v1_s356_p2.mp4",
-        "caption": "🎬 Hồn Ma Nuôi Con — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
-        "hashtags": "#honmanuoicon #phan2 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
