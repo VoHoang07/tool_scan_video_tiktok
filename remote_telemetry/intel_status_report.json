@@ -1,21 +1,259 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 12:14:11",
+    "timestamp": "2026-11-16 12:17:25",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "event_type": "filter24h",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261116_120038_tiktok_story_7704474405316922631.mp4",
-      "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Cái nào tốt hơn cho người tắm nước lạnh hay tắm nước nóng?. \"Chỉ có một ngày thực sự được tận hưởng, đó là ngày thứ bảy...\" Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
-      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 6,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 3,
+      "own_profile_stats": {
+        "uniqueId": "phukientienich.k10",
+        "domFollowing": "0",
+        "domFollowers": "0",
+        "domLikes": "0",
+        "sidebarFollowing": [
+          "/@phukientienich.k10"
+        ]
+      },
+      "records": [
+        {
+          "channel": "phu_kien_tien_ich",
+          "video_id": "7707328496053308690",
+          "video_url": "https://www.tiktok.com/@follow.cheo820/video/7707328496053308690",
+          "creator_handle": "@follow.cheo820",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Kênh đầu tư chỉn chu từ hình ảnh tới âm thanh, chúc bạn phát triển mạnh nha ✨",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611161315146838AFC12D57FE07A2BA\",\"now\":1794806114000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611161315146838AFC12D57FE07A2BA\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 804.34375,
+              "y": 411,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "88"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 804.34375,
+                "y": 411,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "88"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            }
+          },
+          "interacted_at": "2026-11-16 12:15:35",
+          "follow_back_window_until": "2026-11-17 12:15:35"
+        },
+        {
+          "channel": "phu_kien_tien_ich",
+          "video_id": "7707291407920516372",
+          "video_url": "https://www.tiktok.com/@pumpum18.07/video/7707291407920516372",
+          "creator_handle": "@pumpum18.07",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Mê cái vibe của kênh bạn ghê, sẽ theo dõi ủng hộ dài lâu ạ 🫶",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            }
+          },
+          "interacted_at": "2026-11-16 12:16:28",
+          "follow_back_window_until": "2026-11-17 12:16:28"
+        },
+        {
+          "channel": "phu_kien_tien_ich",
+          "video_id": "7707320657125723399",
+          "video_url": "https://www.tiktok.com/@khduy634/video/7707320657125723399",
+          "creator_handle": "@khduy634",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": false,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            }
+          },
+          "interacted_at": "2026-11-16 12:17:21",
+          "follow_back_window_until": "2026-11-17 12:17:21"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 12:17:25",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "phukientienich.k10",
+          "domFollowing": "0",
+          "domFollowers": "0",
+          "domLikes": "0",
+          "sidebarFollowing": [
+            "/@phukientienich.k10"
+          ]
+        },
+        "records": [
+          {
+            "channel": "phu_kien_tien_ich",
+            "video_id": "7707328496053308690",
+            "video_url": "https://www.tiktok.com/@follow.cheo820/video/7707328496053308690",
+            "creator_handle": "@follow.cheo820",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Kênh đầu tư chỉn chu từ hình ảnh tới âm thanh, chúc bạn phát triển mạnh nha ✨",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611161315146838AFC12D57FE07A2BA\",\"now\":1794806114000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611161315146838AFC12D57FE07A2BA\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 804.34375,
+                "y": 411,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "88"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 804.34375,
+                  "y": 411,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "88"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              }
+            },
+            "interacted_at": "2026-11-16 12:15:35",
+            "follow_back_window_until": "2026-11-17 12:15:35"
+          },
+          {
+            "channel": "phu_kien_tien_ich",
+            "video_id": "7707291407920516372",
+            "video_url": "https://www.tiktok.com/@pumpum18.07/video/7707291407920516372",
+            "creator_handle": "@pumpum18.07",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Mê cái vibe của kênh bạn ghê, sẽ theo dõi ủng hộ dài lâu ạ 🫶",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              }
+            },
+            "interacted_at": "2026-11-16 12:16:28",
+            "follow_back_window_until": "2026-11-17 12:16:28"
+          },
+          {
+            "channel": "phu_kien_tien_ich",
+            "video_id": "7707320657125723399",
+            "video_url": "https://www.tiktok.com/@khduy634/video/7707320657125723399",
+            "creator_handle": "@khduy634",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              }
+            },
+            "interacted_at": "2026-11-16 12:17:21",
+            "follow_back_window_until": "2026-11-17 12:17:21"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-16 12:14:11",
       "machine_arch": "x86_64",
@@ -434,21 +672,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 156.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 10:56:16",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 156.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
