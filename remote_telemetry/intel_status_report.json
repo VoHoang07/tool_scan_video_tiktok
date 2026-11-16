@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-16 09:11:26",
+    "timestamp": "2026-11-16 09:17:01",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "event_type": "upload",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 1,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 164.0,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261116_091351_tiktok_story_7521970321134521608.mp4",
+      "caption": "✨ Câu chuyện AI cực cuốn: Mua đồ công nghệ 1 vốn 4 lời từ đây. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+      "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #xuhuong",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 0,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-16 09:17:01",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261116_091351_tiktok_story_7521970321134521608.mp4",
+        "caption": "✨ Câu chuyện AI cực cuốn: Mua đồ công nghệ 1 vốn 4 lời từ đây. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+        "hashtags": "#hoathinhai #phimnganai #aianimation #hoathinh3d #khamphaai #meocute #hoathinhhai #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-16 09:11:26",
       "machine_arch": "x86_64",
@@ -227,22 +244,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 164.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 07:34:41",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261116_073031_tiktok_story_880034803_gautrucden_v1_s348_p3.mp4",
-        "caption": "⚡ Đôi Mắt Nhìn Thấy Quỷ (Phần 3/7) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-        "hashtags": "#doimatnhinthayquy #phan3 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
