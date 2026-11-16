@@ -1596,15 +1596,19 @@ class SubtitleTranslator:
                 ],
             },
         }
-        fyp_pool = [
-            "#xuhuong",
-            "#xuhuongtiktok",
-            "#fyp",
-            "#viral",
-            "#tiktokvn",
-            "#xh",
-            "#foryou",
-        ]
+        fyp_pool = (
+            ["#xuhuong", "#xuhuongtiktok", "#tiktokvn", "#xh"]
+            if ch_key == "channel_3"
+            else [
+                "#xuhuong",
+                "#xuhuongtiktok",
+                "#fyp",
+                "#viral",
+                "#tiktokvn",
+                "#xh",
+                "#foryou",
+            ]
+        )
 
         pool_cfg = hot_search_pools.get(ch_key, hot_search_pools["channel_1"])
         core_tags = list(pool_cfg["core"])

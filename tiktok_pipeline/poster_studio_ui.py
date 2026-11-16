@@ -448,10 +448,16 @@ class PosterStudioUIMixin:
         tags: List[str] = []
         for t in raw_tokens:
             norm_t = t if t.startswith("#") else f"#{t}"
+            if ch_folder == "audio_dem_khuyen" and norm_t.lower().lstrip("#") in ("fyp", "foryou", "foryoupage", "fypシ"):
+                continue
             if len(norm_t) > 1 and norm_t.lower() not in [x.lower() for x in tags]:
                 tags.append(norm_t)
         if not tags:
-            tags = ["#xuhuong", "#xuhuongtiktok", "#fyp", "#tiktokvn"]
+            tags = (
+                ["#truyenaudio", "#kechuyen", "#xuhuong", "#tiktokvn"]
+                if ch_folder == "audio_dem_khuyen"
+                else ["#xuhuong", "#xuhuongtiktok", "#fyp", "#tiktokvn"]
+            )
 
         # Gõ từng #hashtag ở ĐÚNG CUỐI VĂN BẢN (có dấu cách phía trước '#'):
         # 1. Đưa con trỏ về cuối câu bằng JS Selection + Meta+ArrowDown (TUYỆT ĐỐI không click vào tâm ô làm nhảy trỏ vào giữa chữ!)

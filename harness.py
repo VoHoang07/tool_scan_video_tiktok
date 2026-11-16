@@ -206,6 +206,8 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
         )
         if "#audiodemkhuya" not in night_tags:
             errors.append(f"[NighttimeHashtagError] Mất hashtag đêm khuya khi đăng ban đêm: {night_tags}")
+        if "#fyp" in day_tags.lower() or "#fyp" in night_tags.lower():
+            errors.append(f"[NoFypError] Kênh audio_dem_khuyen vẫn còn chứa #fyp: day={day_tags}, night={night_tags}")
 
         clean_cap_6, _ = TikTokCommunityGuidelinesGuard.sanitize_caption_and_hashtags(
             "🌿 [Sức Khỏe Chủ Động] Thói quen nhỏ giúp ngủ ngon mỗi tối",

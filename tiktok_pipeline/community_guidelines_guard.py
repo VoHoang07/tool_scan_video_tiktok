@@ -140,20 +140,23 @@ class TikTokCommunityGuidelinesGuard:
             low_t = tag.lower().lstrip("#")
             if any(bad in low_t for bad in cls._FORBIDDEN_HASHTAG_PATTERNS):
                 continue
-            if channel_folder == "audio_dem_khuyen" and is_daytime:
-                if low_t in cls._DAYTIME_HASHTAG_MAP:
-                    tag = cls._DAYTIME_HASHTAG_MAP[low_t]
-                    low_t = tag.lower().lstrip("#")
-                elif any(nw in low_t for nw in ("demkhuya", "dem_khuya", "chuyendem", "demsau", "khuya", "bandem", "ban_dem")):
+            if channel_folder == "audio_dem_khuyen":
+                if low_t in ("fyp", "foryou", "foryoupage", "fypシ"):
                     continue
+                if is_daytime:
+                    if low_t in cls._DAYTIME_HASHTAG_MAP:
+                        tag = cls._DAYTIME_HASHTAG_MAP[low_t]
+                        low_t = tag.lower().lstrip("#")
+                    elif any(nw in low_t for nw in ("demkhuya", "dem_khuya", "chuyendem", "demsau", "khuya", "bandem", "ban_dem")):
+                        continue
             if tag not in safe_tags:
                 safe_tags.append(tag)
         if not safe_tags:
             if channel_folder == "audio_dem_khuyen":
                 if is_daytime:
-                    safe_tags = ["#truyenaudio", "#kechuyen", "#truyenngan", "#chuyengiadinh", "#xuhuong", "#fyp"]
+                    safe_tags = ["#truyenaudio", "#kechuyen", "#truyenngan", "#chuyengiadinh", "#xuhuong"]
                 else:
-                    safe_tags = ["#audiodemkhuya", "#kechuyendemkhuya", "#truyenaudio", "#xuhuong", "#fyp"]
+                    safe_tags = ["#audiodemkhuya", "#kechuyendemkhuya", "#truyenaudio", "#xuhuong"]
             elif channel_folder == "video_AI_hay":
                 safe_tags = ["#gautrucden", "#hoathinhgautrucden", "#chuyenke", "#xuhuong", "#fyp"]
             else:

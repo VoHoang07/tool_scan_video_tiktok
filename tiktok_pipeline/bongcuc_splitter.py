@@ -1416,7 +1416,6 @@ class BongCucYouTubeSplitter:
                 "#gocnhincuocsong",
                 "#mukbang" if bg_mode == "night_mukbang" else "#baihoccuocsong",
                 "#xuhuong",
-                "#fyp",
             ]
         else:
             rotating_tags = [
@@ -1430,7 +1429,6 @@ class BongCucYouTubeSplitter:
                 "#gocnhinkhuya",
                 "#mukbangdemkhuya" if bg_mode == "night_mukbang" else "#chuyendemsau",
                 "#xuhuong",
-                "#fyp",
             ]
         picked_tags = [title_slug_tag, part_tag]
         for offset in range(6):
