@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 12:16:10",
+    "timestamp": "2026-11-17 12:29:04",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261117_115637_tiktok_story_7700247647629741342.mp4",
-      "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: Lời khuyên để tiết kiệm tiền. Hóa ra tôi có thể tự mình sửa chữa những thứ như thế này. \"Cạy miếng khóa trên khung cửa ra một chút để điều chỉnh vị trí của nó...\" Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
-      "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #noitrothongminh #yeubep #decorphong #foryou #fyp",
+      "video_file": "20261117_122403_tiktok_story_880034304_gautrucden_v1_s343_p4.mp4",
+      "caption": "🔥 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ (Phần 4/10) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
+      "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan4 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 12:29:04",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261117_122403_tiktok_story_880034304_gautrucden_v1_s343_p4.mp4",
+        "caption": "🔥 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ (Phần 4/10) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
+        "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan4 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-17 12:16:10",
       "machine_arch": "x86_64",
@@ -178,22 +194,6 @@
       "details": {
         "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-17 09:28:37",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261117_092458_tiktok_story_7680114631553207573.mp4",
-        "caption": "🎬 Hành trình xoá mù công nghệ phần 9. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-        "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
