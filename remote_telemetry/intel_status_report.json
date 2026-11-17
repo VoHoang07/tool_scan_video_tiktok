@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 09:06:14",
+    "timestamp": "2026-11-17 09:16:13",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
@@ -11,6 +11,17 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 09:16:13",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-17 09:06:14",
       "machine_arch": "x86_64",
@@ -222,22 +233,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 23:04:22",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261116_230028_tiktok_story_990011904_bongcuc_v6_s119_p4_bg_mukbang.mp4",
-        "caption": "✨ Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà (Phần 4/6) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
-        "hashtags": "#canhacuoikhichongtoikhongduocchianha #phan4 #chuyengiadinh #mukbangdemkhuya #kechuyendemkhuya #nghetruyendemkhuya #gocnhinkhuya #audiodemkhuya",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
