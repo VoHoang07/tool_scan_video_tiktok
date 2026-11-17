@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 10:25:40",
+    "timestamp": "2026-11-17 10:35:25",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
@@ -11,6 +11,17 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 10:35:25",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-17 10:25:40",
       "machine_arch": "x86_64",
@@ -192,22 +203,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-17 07:20:35",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261117_071702_tiktok_story_7532504472338124039.mp4",
-        "caption": "💡 Phần 49| \"Chỉ 1 động tác nhỏ mà thay đổi hoàn toàn!\". Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
-        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
