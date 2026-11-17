@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 07:20:35",
+    "timestamp": "2026-11-17 07:30:10",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261117_071702_tiktok_story_7532504472338124039.mp4",
-      "caption": "💡 Phần 49| \"Chỉ 1 động tác nhỏ mà thay đổi hoàn toàn!\". Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
-      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #viral #foryou",
+      "video_file": "20261117_072740_tiktok_story_880036004_gautrucden_v1_s360_p4.mp4",
+      "caption": "🎬 Phật Ra Tay Diệt Trừ Kẻ Ác — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
+      "hashtags": "#phatrataydiettrukeac #phan4 #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden #chuyenke",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 07:30:10",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261117_072740_tiktok_story_880036004_gautrucden_v1_s360_p4.mp4",
+        "caption": "🎬 Phật Ra Tay Diệt Trừ Kẻ Ác — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
+        "hashtags": "#phatrataydiettrukeac #phan4 #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden #chuyenke",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-17 07:20:35",
       "machine_arch": "x86_64",
@@ -232,21 +248,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 152.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 21:00:14",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 161.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
