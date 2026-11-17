@@ -1,16 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 09:38:41",
+    "timestamp": "2026-11-17 09:51:20",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "video_file": "20261117_094722_tiktok_story_7674564508668448021.mp4",
+      "caption": "🐉 phim hoạt hình Trung Quốc - Ngưu Lai dang hot gần đây vì đồ hoạ 3D vô tri — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+      "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xh #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 09:51:20",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261117_094722_tiktok_story_7674564508668448021.mp4",
+        "caption": "🐉 phim hoạt hình Trung Quốc - Ngưu Lai dang hot gần đây vì đồ hoạ 3D vô tri — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+        "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-17 09:38:41",
       "machine_arch": "x86_64",
@@ -209,22 +230,6 @@
         "video_file": "20261117_015052_tiktok_story_7689450733212667157.mp4",
         "caption": "🎬 Thủ đoạn kinh tởm bị vạch trần trong một ngày: vô hiệu hóa tính năng giám sát điện thoại di động. \"Nhưng tôi không thể tìm ra thông tin bị rò rỉ từ đâu, Câu trả lời thực ra rất đơn giản...\" Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
         "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-17 00:48:40",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261117_004431_douyin_story_7395375741153643815.mp4",
-        "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Mọi người đến từ thời gian. \"Hay bị giẫm đạp bởi những bước chân bên đường...\" Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-        "hashtags": "#tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #xuhuongtiktok #tiktokvn",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
