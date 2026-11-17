@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 23:53:27",
+    "timestamp": "2026-11-18 00:07:09",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261117_234618_tiktok_story_7681214287230029074.mp4",
-      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Mọi người nhất định phải nhớ nơi này. \"Nếu cổ họng bị hất sang trái và phải, hãy dùng ngón trỏ này mỗi ngày 30 lần...\" Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-      "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #xuhuongtiktok #tiktokvn",
+      "video_file": "20261118_000253_tiktok_story_7707434674452270343.mp4",
+      "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Máy vẽ tròn hoàn hảo, chép được một triệu lần. Vòng tròn của bạn thì méo, và không ai chép được. ✍️ Méo vì tay run. Lệch vì đang mải nghĩ chuyện khác. Hở vì vội. Mỗi nét méo là bằng chứng có một con người thật đã ở đó. AI chép được thứ bạn làm ra. Không bao giờ chép được lý do bạn làm. Nét chữ của ai trong nhà mà bạn nhận ra chỉ trong một giây?. Ngẫm từng lời mà thấy thấm thía vô cùng!",
+      "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 5,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 00:07:09",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261118_000253_tiktok_story_7707434674452270343.mp4",
+        "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Máy vẽ tròn hoàn hảo, chép được một triệu lần. Vòng tròn của bạn thì méo, và không ai chép được. ✍️ Méo vì tay run. Lệch vì đang mải nghĩ chuyện khác. Hở vì vội. Mỗi nét méo là bằng chứng có một con người thật đã ở đó. AI chép được thứ bạn làm ra. Không bao giờ chép được lý do bạn làm. Nét chữ của ai trong nhà mà bạn nhận ra chỉ trong một giây?. Ngẫm từng lời mà thấy thấm thía vô cùng!",
+        "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-17 23:53:27",
       "machine_arch": "x86_64",
@@ -201,17 +217,6 @@
     },
     {
       "timestamp": "2026-11-17 11:25:19",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-17 11:15:27",
       "machine_arch": "x86_64",
       "event_type": "upload_error",
       "channel": "audio_dem_khuyen",
