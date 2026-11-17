@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 08:33:28",
+    "timestamp": "2026-11-17 08:45:57",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261117_082546_tiktok_story_7674213953743932679.mp4",
-      "caption": "😂 Tiền đã hết hạn. \"Hóa ra đều hết hạn rồi, nhóc mập, đừng khóc...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #fyp #xh",
+      "video_file": "20261117_084336_tiktok_story_7374271569339698439.mp4",
+      "caption": "☕ Góc suy ngẫm về tình cảm và hôn nhân: Cần làm gì khi không được tôn trọng trong một mối quan hệ?. Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
+      "hashtags": "#phunuhienđai #giadinhhanhphuc #phunukhichat #phunulamdep #chualanhtamhon #phunuthongminh #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 08:45:57",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261117_084336_tiktok_story_7374271569339698439.mp4",
+        "caption": "☕ Góc suy ngẫm về tình cảm và hôn nhân: Cần làm gì khi không được tôn trọng trong một mối quan hệ?. Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
+        "hashtags": "#phunuhienđai #giadinhhanhphuc #phunukhichat #phunulamdep #chualanhtamhon #phunuthongminh #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-17 08:33:28",
       "machine_arch": "x86_64",
@@ -235,21 +251,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 156.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 21:22:09",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 163.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
