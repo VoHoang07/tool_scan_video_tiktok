@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 07:04:44",
+    "timestamp": "2026-11-17 07:20:35",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261117_065657_tiktok_story_7640743946754346260.mp4",
-      "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Hướng dẫn sức khỏe độc ​​quyền 1-1, chăm sóc triệu chứng theo thể chất của bạn, tăng cường và tăng cường nhẹ nhàng. \"Nếu bạn không làm bất cứ điều gì vào những lúc bình thường...\" Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
-      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #thaydoithoiquen #healthyvietnam #songlanhmanh #suckhoe #xh",
+      "video_file": "20261117_071702_tiktok_story_7532504472338124039.mp4",
+      "caption": "💡 Phần 49| \"Chỉ 1 động tác nhỏ mà thay đổi hoàn toàn!\". Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 6,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 07:20:35",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261117_071702_tiktok_story_7532504472338124039.mp4",
+        "caption": "💡 Phần 49| \"Chỉ 1 động tác nhỏ mà thay đổi hoàn toàn!\". Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-17 07:04:44",
       "machine_arch": "x86_64",
@@ -231,21 +247,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 161.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 20:52:12",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 151.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
