@@ -1,16 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 00:43:24",
+    "timestamp": "2026-11-18 00:52:02",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261118_003946_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "video_file": "20261112_082814_tiktok_story_7162102951815826714.mp4",
+      "caption": "👶 Thay vì quát mắng hãy áp dụng phương pháp dạy con tự lập cực hiệu quả này. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
+      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xuhuongtiktok #tiktokvn",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 0,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 00:52:02",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261112_082814_tiktok_story_7162102951815826714.mp4",
+        "caption": "👶 Thay vì quát mắng hãy áp dụng phương pháp dạy con tự lập cực hiệu quả này. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
+        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-18 00:43:24",
       "machine_arch": "x86_64",
@@ -209,22 +230,6 @@
         "video_file": "20261117_122403_tiktok_story_880034304_gautrucden_v1_s343_p4.mp4",
         "caption": "🔥 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ (Phần 4/10) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
         "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan4 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-17 12:16:10",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261117_115637_tiktok_story_7700247647629741342.mp4",
-        "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: Lời khuyên để tiết kiệm tiền. Hóa ra tôi có thể tự mình sửa chữa những thứ như thế này. \"Cạy miếng khóa trên khung cửa ra một chút để điều chỉnh vị trí của nó...\" Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
-        "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #noitrothongminh #yeubep #decorphong #foryou #fyp",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
