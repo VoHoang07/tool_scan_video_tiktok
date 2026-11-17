@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 01:53:52",
+    "timestamp": "2026-11-18 02:03:56",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
     "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261118_014953_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+      "video_file": "20261118_020006_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
       "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 02:03:56",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261118_020006_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-18 01:53:52",
       "machine_arch": "x86_64",
@@ -208,22 +219,6 @@
       "details": {
         "video_file": "20261117_230135_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-17 16:07:35",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261117_160307_douyin_story_7104929308757462305.mp4",
-        "caption": "😂 Anh ấy khóc to đến mức làm tôi sợ. Bố tôi nhìn lại thì cười ngặt nghẽo. Hóa ra thực sự có một em bé dễ thương đang gãi tóc và khóc trong đau đớn. \"Ờ ừ...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-        "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
