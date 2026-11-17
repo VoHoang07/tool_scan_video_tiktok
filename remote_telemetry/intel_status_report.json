@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 00:52:02",
+    "timestamp": "2026-11-18 01:17:31",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261112_082814_tiktok_story_7162102951815826714.mp4",
-      "caption": "👶 Thay vì quát mắng hãy áp dụng phương pháp dạy con tự lập cực hiệu quả này. Thay vì la mắng, cách ứng xử tinh tế này của mẹ giúp con ngoan ngoãn và tự giác hơn hẳn. Các mẹ bỉm lưu lại áp dụng ngay nhé!",
-      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xuhuongtiktok #tiktokvn",
+      "video_file": "20261118_010923_tiktok_story_7708004564921830676.mp4",
+      "caption": "🤣 Song Tử: Chúng tôi không tham lam chút nào, chúng tôi chỉ đồng hành cùng bạn mà thôi! — Pha xử lý đi vào lòng đất của hai mẹ con! \"Làm thế nào con có thể làm cho anh ấy không tức giận...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #xuhuongtiktok #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 01:17:31",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261118_010923_tiktok_story_7708004564921830676.mp4",
+        "caption": "🤣 Song Tử: Chúng tôi không tham lam chút nào, chúng tôi chỉ đồng hành cùng bạn mà thôi! — Pha xử lý đi vào lòng đất của hai mẹ con! \"Làm thế nào con có thể làm cho anh ấy không tức giận...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+        "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #haihuocmoingay #doisonggiadinh #mevabe #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-18 00:52:02",
       "machine_arch": "x86_64",
@@ -217,22 +233,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-17 12:29:04",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261117_122403_tiktok_story_880034304_gautrucden_v1_s343_p4.mp4",
-        "caption": "🔥 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ (Phần 4/10) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
-        "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan4 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
