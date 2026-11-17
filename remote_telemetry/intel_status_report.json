@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-17 02:33:42",
+    "timestamp": "2026-11-17 07:04:44",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261117_023009_tiktok_story_6941047536090156290.mp4",
-      "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: 5 Cách nhận biết HẠCH LÀNH TÍNH VÀ ÁC TÍNH. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
-      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #fyp #xh",
+      "video_file": "20261117_065657_tiktok_story_7640743946754346260.mp4",
+      "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Hướng dẫn sức khỏe độc ​​quyền 1-1, chăm sóc triệu chứng theo thể chất của bạn, tăng cường và tăng cường nhẹ nhàng. \"Nếu bạn không làm bất cứ điều gì vào những lúc bình thường...\" Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
+      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #thaydoithoiquen #healthyvietnam #songlanhmanh #suckhoe #xh",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 6,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-17 07:04:44",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261117_065657_tiktok_story_7640743946754346260.mp4",
+        "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Hướng dẫn sức khỏe độc ​​quyền 1-1, chăm sóc triệu chứng theo thể chất của bạn, tăng cường và tăng cường nhẹ nhàng. \"Nếu bạn không làm bất cứ điều gì vào những lúc bình thường...\" Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
+        "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #thaydoithoiquen #healthyvietnam #songlanhmanh #suckhoe #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 6,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-17 02:33:42",
       "machine_arch": "x86_64",
@@ -230,21 +246,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 151.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-16 20:45:10",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 150.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
