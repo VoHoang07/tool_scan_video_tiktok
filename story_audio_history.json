@@ -459,7 +459,8 @@
     "7694571979973643541",
     "7695278107304971528",
     "7691183426442906911",
-    "880035004"
+    "880035004",
+    "7588013576212860180"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -796,7 +797,8 @@
     "7694572035914107656",
     "7606033283160262673",
     "7691183453622127391",
-    "gautrucden_yt_Qkt79a0x_BU_p4"
+    "gautrucden_yt_Qkt79a0x_BU_p4",
+    "7588013624586390273"
   ],
   "items": [
     {
@@ -4568,6 +4570,16 @@
       "source_url": "https://www.youtube.com/watch?v=Qkt79a0x_BU&t=732s",
       "output_filename": "video_AI_hay/ready/20261118_231613_tiktok_story_880035004_gautrucden_v1_s350_p4.mp4",
       "crawled_at": "2026-11-18T23:17:12"
+    },
+    {
+      "channel": "meo_vat_gia_dinh",
+      "video_id": "7588013576212860180",
+      "sound_id": "7588013624586390273",
+      "platform": "tiktok",
+      "genre": "meovatcuocsong",
+      "source_url": "https://www.tiktok.com/@meohaymoingay2026/video/7588013576212860180",
+      "output_filename": "meo_vat_gia_dinh/ready/20261118_232914_tiktok_story_7588013576212860180.mp4",
+      "crawled_at": "2026-11-18T23:29:26"
     }
   ]
 }
