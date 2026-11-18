@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 23:52:21",
+    "timestamp": "2026-11-19 00:02:43",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261118_234025_tiktok_story_7705713790834248981.mp4",
-      "caption": "🌿 Hóa ra có rất nhiều điều cần chú ý khi tắm. \"Năm nay, chúng tôi đã thấy trong vòng bạn bè của mình rằng đã xảy ra sự cố khi tắm ba mặt...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
-      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #xuhuong",
+      "video_file": "20261119_000013_tiktok_story_7704308194725596424.mp4",
+      "caption": "☕ Góc suy ngẫm về tình cảm và hôn nhân: Còn bạn thì sao☺️. Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
+      "hashtags": "#phunuhienđai #giadinhhanhphuc #phunukhichat #phunulamdep #chualanhtamhon #phunuthongminh #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 00:02:43",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261119_000013_tiktok_story_7704308194725596424.mp4",
+        "caption": "☕ Góc suy ngẫm về tình cảm và hôn nhân: Còn bạn thì sao☺️. Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
+        "hashtags": "#phunuhienđai #giadinhhanhphuc #phunukhichat #phunulamdep #chualanhtamhon #phunuthongminh #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-18 23:52:21",
       "machine_arch": "x86_64",
@@ -204,22 +220,6 @@
         "video_file": "20261118_123413_tiktok_story_7704702545289137416.mp4",
         "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Ngày thứ 45: Thịt viên bọc trứng cút sốt cà chua Seri 100 món cơm nhà làm dễ, ăn ngon, và không được phép trùng lặp🤣. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
         "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-18 12:12:12",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261118_120755_tiktok_story_880034701_gautrucden_v1_s347_p1.mp4",
-        "caption": "🐼 Âm Hôn - Trăm Rắn Khiêng Quan — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
-        "hashtags": "#amhontramrankhiengquan #phan1 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
