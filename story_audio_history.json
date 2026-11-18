@@ -4672,6 +4672,26 @@
       "source_url": "https://www.tiktok.com/@tapvietthotinh/video/7392543436257234194",
       "output_filename": "tu_chan_gioi/ready/20261119_010909_tiktok_story_7392543436257234194.mp4",
       "crawled_at": "2026-11-19T01:09:30"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990014301",
+      "sound_id": "bongcuc_yt_2lzzVdKb4sQ_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=2lzzVdKb4sQ&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261119_012053_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+      "crawled_at": "2026-11-19T01:22:00"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990014301",
+      "sound_id": "bongcuc_yt_2lzzVdKb4sQ_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=2lzzVdKb4sQ&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261119_012205_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+      "crawled_at": "2026-11-19T01:23:20"
     }
   ]
 }
