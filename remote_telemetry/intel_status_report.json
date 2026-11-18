@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 08:53:44",
+    "timestamp": "2026-11-18 09:02:14",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
@@ -11,6 +11,17 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 09:02:14",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-18 08:53:44",
       "machine_arch": "x86_64",
@@ -208,22 +219,6 @@
       "details": {
         "video_file": "20261118_003946_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-18 00:31:15",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261118_002711_tiktok_story_7681606945656065300.mp4",
-        "caption": "🐾 Hành trình xoá mù công nghệ phần 11 — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
