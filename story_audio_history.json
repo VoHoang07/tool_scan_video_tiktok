@@ -463,7 +463,8 @@
     "7588013576212860180",
     "7705713790834248981",
     "7704308194725596424",
-    "7647912079881489682"
+    "7647912079881489682",
+    "7603410475656695061"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -804,7 +805,8 @@
     "7588013624586390273",
     "7705713820752317191",
     "7704308236548311809",
-    "6917528488178911233"
+    "6917528488178911233",
+    "7329165624176134914"
   ],
   "items": [
     {
@@ -4616,6 +4618,16 @@
       "source_url": "https://www.tiktok.com/@romecafe.daily/video/7647912079881489682",
       "output_filename": "an_vat_moi_ngay/ready/20261119_001017_tiktok_story_7647912079881489682.mp4",
       "crawled_at": "2026-11-19T00:10:23"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "7603410475656695061",
+      "sound_id": "7329165624176134914",
+      "platform": "tiktok",
+      "genre": "phukiendienthoai",
+      "source_url": "https://www.tiktok.com/@emtung.mobilecity/video/7603410475656695061",
+      "output_filename": "phu_kien_tien_ich/ready/20261119_002148_tiktok_story_7603410475656695061.mp4",
+      "crawled_at": "2026-11-19T00:22:07"
     }
   ]
 }
