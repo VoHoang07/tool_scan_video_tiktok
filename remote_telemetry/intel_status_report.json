@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 02:34:08",
+    "timestamp": "2026-11-19 02:42:42",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 9,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 165.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 231.0,
+      "final_url": "https://www.tiktok.com/@hewhewver3?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 02:42:42",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.0,
+        "final_url": "https://www.tiktok.com/@hewhewver3?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 02:34:08",
       "machine_arch": "x86_64",
@@ -207,22 +222,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 01:03:02",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261119_005409_tiktok_story_7665856603517635861.mp4",
-        "caption": "🤣 Đứng yên, Cậu có biết có chuyện gì không? — Pha xử lý đi vào lòng đất của hai mẹ con! \"Cậu nói anh ấy đã bỏ ra 3.000 nhân dân tệ làm giá cô dâu để có được cậu...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-        "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
