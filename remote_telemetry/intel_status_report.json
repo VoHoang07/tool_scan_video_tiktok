@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 12:12:12",
+    "timestamp": "2026-11-18 12:38:09",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261118_120755_tiktok_story_880034701_gautrucden_v1_s347_p1.mp4",
-      "caption": "🐼 Âm Hôn - Trăm Rắn Khiêng Quan — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
-      "hashtags": "#amhontramrankhiengquan #phan1 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
+      "video_file": "20261118_123413_tiktok_story_7704702545289137416.mp4",
+      "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Ngày thứ 45: Thịt viên bọc trứng cút sốt cà chua Seri 100 món cơm nhà làm dễ, ăn ngon, và không được phép trùng lặp🤣. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+      "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #xuhuongtiktok #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 12:38:09",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261118_123413_tiktok_story_7704702545289137416.mp4",
+        "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Ngày thứ 45: Thịt viên bọc trứng cút sốt cà chua Seri 100 món cơm nhà làm dễ, ăn ngon, và không được phép trùng lặp🤣. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+        "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-18 12:12:12",
       "machine_arch": "x86_64",
@@ -179,22 +195,6 @@
         "video_file": "20261118_095407_tiktok_story_7039661276393458946.mp4",
         "caption": "🐾 Chơi Game mượt hơn với OPPO — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
         "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-18 09:44:47",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261118_094303_tiktok_story_7395949961013103890.mp4",
-        "caption": "⚔️ Tới chuyên mục tìm truyện tiên hiệp rồi đây. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #animehay #phimhoathinh3d #hoathinh3dtrungquoc #tutien #xuhuong",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,

@@ -453,7 +453,8 @@
     "7395949961013103890",
     "7039661276393458946",
     "7689869822775217415",
-    "880034701"
+    "880034701",
+    "7704702545289137416"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -784,7 +785,8 @@
     "7395949981209479952",
     "7039661274501860098",
     "7663405949858908196",
-    "gautrucden_yt_jVVaOjuRx8c_p1"
+    "gautrucden_yt_jVVaOjuRx8c_p1",
+    "6839746950938494977"
   ],
   "items": [
     {
@@ -4456,6 +4458,16 @@
       "source_url": "https://www.youtube.com/watch?v=jVVaOjuRx8c&t=1s",
       "output_filename": "video_AI_hay/ready/20261118_120755_tiktok_story_880034701_gautrucden_v1_s347_p1.mp4",
       "crawled_at": "2026-11-18T12:09:48"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "7704702545289137416",
+      "sound_id": "6839746950938494977",
+      "platform": "tiktok",
+      "genre": "anvat",
+      "source_url": "https://www.tiktok.com/@vanthuylinh191/video/7704702545289137416",
+      "output_filename": "an_vat_moi_ngay/ready/20261118_123413_tiktok_story_7704702545289137416.mp4",
+      "crawled_at": "2026-11-18T12:34:27"
     }
   ]
 }
