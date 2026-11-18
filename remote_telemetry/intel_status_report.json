@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 12:38:09",
+    "timestamp": "2026-11-18 13:14:50",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261118_123413_tiktok_story_7704702545289137416.mp4",
-      "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Ngày thứ 45: Thịt viên bọc trứng cút sốt cà chua Seri 100 món cơm nhà làm dễ, ăn ngon, và không được phép trùng lặp🤣. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
-      "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #xuhuongtiktok #tiktokvn",
+      "video_file": "20261118_130708_tiktok_story_7698524461338938645.mp4",
+      "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! \"Cậu vẫn còn đủ can đảm để nói chuyện với mình...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 13:14:50",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261118_130708_tiktok_story_7698524461338938645.mp4",
+        "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! \"Cậu vẫn còn đủ can đảm để nói chuyện với mình...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-18 12:38:09",
       "machine_arch": "x86_64",
@@ -183,22 +199,6 @@
       "details": {
         "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-18 09:57:06",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261118_095407_tiktok_story_7039661276393458946.mp4",
-        "caption": "🐾 Chơi Game mượt hơn với OPPO — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
