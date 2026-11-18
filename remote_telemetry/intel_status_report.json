@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 01:52:15",
+    "timestamp": "2026-11-19 02:02:36",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "event_type": "upload_error",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 2,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.6,
-      "final_url": "https://www.tiktok.com/@iii.flo.i?lang=vi-VN"
+      "video_file": "20261119_020011_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 02:02:36",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261119_020011_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-19 01:52:15",
       "machine_arch": "x86_64",
@@ -211,22 +218,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-18 23:52:21",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261118_234025_tiktok_story_7705713790834248981.mp4",
-        "caption": "🌿 Hóa ra có rất nhiều điều cần chú ý khi tắm. \"Năm nay, chúng tôi đã thấy trong vòng bạn bè của mình rằng đã xảy ra sự cố khi tắm ba mặt...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
-        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
