@@ -452,7 +452,8 @@
     "7697123175758433543",
     "7395949961013103890",
     "7039661276393458946",
-    "7689869822775217415"
+    "7689869822775217415",
+    "880034701"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -782,7 +783,8 @@
     "7697123239772556052",
     "7395949981209479952",
     "7039661274501860098",
-    "7663405949858908196"
+    "7663405949858908196",
+    "gautrucden_yt_jVVaOjuRx8c_p1"
   ],
   "items": [
     {
@@ -4434,6 +4436,26 @@
       "source_url": "https://www.tiktok.com/@thao.thuthai/video/7689869822775217415",
       "output_filename": "meo_vat_gia_dinh/ready/20261118_114858_tiktok_story_7689869822775217415.mp4",
       "crawled_at": "2026-11-18T11:49:12"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "880034701",
+      "sound_id": "gautrucden_yt_jVVaOjuRx8c_p1",
+      "platform": "tiktok",
+      "genre": "channel_1_ai_trending",
+      "source_url": "https://www.youtube.com/watch?v=jVVaOjuRx8c&t=1s",
+      "output_filename": "video_AI_hay/ready/20261118_120653_tiktok_story_880034701_gautrucden_v1_s347_p1.mp4",
+      "crawled_at": "2026-11-18T12:07:52"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "880034701",
+      "sound_id": "gautrucden_yt_jVVaOjuRx8c_p1",
+      "platform": "tiktok",
+      "genre": "channel_1_ai_trending",
+      "source_url": "https://www.youtube.com/watch?v=jVVaOjuRx8c&t=1s",
+      "output_filename": "video_AI_hay/ready/20261118_120755_tiktok_story_880034701_gautrucden_v1_s347_p1.mp4",
+      "crawled_at": "2026-11-18T12:09:48"
     }
   ]
 }
