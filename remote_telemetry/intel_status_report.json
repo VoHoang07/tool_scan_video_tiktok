@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 11:23:42",
+    "timestamp": "2026-11-18 11:31:30",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
@@ -11,6 +11,17 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 11:31:30",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-18 11:23:42",
       "machine_arch": "x86_64",
@@ -166,17 +177,6 @@
     },
     {
       "timestamp": "2026-11-18 09:12:00",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-18 09:02:14",
       "machine_arch": "x86_64",
       "event_type": "upload_error",
       "channel": "audio_dem_khuyen",
