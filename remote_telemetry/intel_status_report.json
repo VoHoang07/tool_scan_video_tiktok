@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 04:24:58",
+    "timestamp": "2026-11-19 04:32:28",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
       "scrolled_videos": 10,
-      "ads_skipped": 2,
+      "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 150.8,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 231.2,
+      "final_url": "https://www.tiktok.com/@501m5.22/video/7709498787860860212?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 04:32:28",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.2,
+        "final_url": "https://www.tiktok.com/@501m5.22/video/7709498787860860212?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 04:24:58",
       "machine_arch": "x86_64",
@@ -222,21 +237,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 168.3,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 02:48:32",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 158.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
