@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 08:30:34",
+    "timestamp": "2026-11-18 08:39:46",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261118_082013_tiktok_story_7678899253527235860.mp4",
-      "caption": "🤣 Con gái, mẹ nghe nói hôm nay con lại bị đuổi khỏi lớp — Pha xử lý đi vào lòng đất của hai mẹ con! \"Vậy câu trả lời của con là gì? Mẹ nói rằng nếu con có tiền, con có thể đi du lịch khắp thế giới...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #xuhuongtiktok #tiktokvn",
+      "video_file": "20261118_083628_tiktok_story_7697123175758433543.mp4",
+      "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Vì sao con gái thường cảm thấy “rất đau”?. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 08:39:46",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261118_083628_tiktok_story_7697123175758433543.mp4",
+        "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Vì sao con gái thường cảm thấy “rất đau”?. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-18 08:30:34",
       "machine_arch": "x86_64",
@@ -217,22 +233,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-18 00:07:09",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261118_000253_tiktok_story_7707434674452270343.mp4",
-        "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Máy vẽ tròn hoàn hảo, chép được một triệu lần. Vòng tròn của bạn thì méo, và không ai chép được. ✍️ Méo vì tay run. Lệch vì đang mải nghĩ chuyện khác. Hở vì vội. Mỗi nét méo là bằng chứng có một con người thật đã ở đó. AI chép được thứ bạn làm ra. Không bao giờ chép được lý do bạn làm. Nét chữ của ai trong nhà mà bạn nhận ra chỉ trong một giây?. Ngẫm từng lời mà thấy thấm thía vô cùng!",
-        "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
