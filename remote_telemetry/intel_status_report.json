@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 04:44:44",
+    "timestamp": "2026-11-19 04:50:35",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 2,
+      "scrolled_videos": 9,
+      "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 161.0,
+      "elapsed_seconds": 157.2,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 04:50:35",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 157.2,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 04:44:44",
       "machine_arch": "x86_64",
@@ -223,21 +238,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 230.8,
         "final_url": "https://www.tiktok.com/@hong.khnh.chi383?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 03:10:17",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 150.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
