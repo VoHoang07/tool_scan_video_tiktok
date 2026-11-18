@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 01:40:08",
+    "timestamp": "2026-11-19 01:48:13",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "event_type": "upload_error",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 2,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 160.1,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261119_014430_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 01:48:13",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261119_014430_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-19 01:40:08",
       "machine_arch": "x86_64",
@@ -214,22 +221,6 @@
         "video_file": "20261118_232914_tiktok_story_7588013576212860180.mp4",
         "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: mẹo hay mỗi ngày. Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
         "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #decorphong #tienichgiadinh #savingtips #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-18 23:21:43",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261118_231613_tiktok_story_880035004_gautrucden_v1_s350_p4.mp4",
-        "caption": "🐼 Điều Kiêng Kỵ Khi Cải Táng — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
-        "hashtags": "#dieukiengkykhicaitang #phan4 #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
