@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 10:25:45",
+    "timestamp": "2026-11-18 10:35:21",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
@@ -11,6 +11,17 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 10:35:21",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-18 10:25:45",
       "machine_arch": "x86_64",
@@ -192,22 +203,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-18 07:25:25",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261118_072024_tiktok_story_7562493223470468370.mp4",
-        "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: Mẹo hay mỗi ngày: 👟 Giày trắng ố vàng, bẩn viền – đừng vội bỏ! Thử ngay mẹo làm sạch “thần tốc” này, giày sáng bóng như mới mua ✨. Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
-        "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #noitrothongminh #yeubep #decorphong #meovatgiadinh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
