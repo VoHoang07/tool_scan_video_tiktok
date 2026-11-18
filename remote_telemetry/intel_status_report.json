@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-18 07:25:25",
+    "timestamp": "2026-11-18 07:33:48",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261118_072024_tiktok_story_7562493223470468370.mp4",
-      "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: Mẹo hay mỗi ngày: 👟 Giày trắng ố vàng, bẩn viền – đừng vội bỏ! Thử ngay mẹo làm sạch “thần tốc” này, giày sáng bóng như mới mua ✨. Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
-      "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #noitrothongminh #yeubep #decorphong #meovatgiadinh #xuhuongtiktok",
+      "video_file": "20261118_072936_tiktok_story_880035902_gautrucden_v1_s359_p2.mp4",
+      "caption": "👀 Đừng Để Dê Hát Chèo (Phần 2/7) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
+      "hashtags": "#dungdedehatcheo #phan2 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-18 07:33:48",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261118_072936_tiktok_story_880035902_gautrucden_v1_s359_p2.mp4",
+        "caption": "👀 Đừng Để Dê Hát Chèo (Phần 2/7) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
+        "hashtags": "#dungdedehatcheo #phan2 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-18 07:25:25",
       "machine_arch": "x86_64",
@@ -217,22 +233,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-17 23:24:59",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261117_232039_tiktok_story_880035603_gautrucden_v1_s356_p3.mp4",
-        "caption": "🔥 Hồn Ma Nuôi Con (Phần 3/9) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
-        "hashtags": "#honmanuoicon #phan3 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
