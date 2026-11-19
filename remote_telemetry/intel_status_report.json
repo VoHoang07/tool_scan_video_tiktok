@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 01:02:07",
+    "timestamp": "2026-11-20 01:06:18",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261120_005847_tiktok_story_7352560207857339668.mp4",
-      "caption": "🐾 độc lạ bảng tê điện thoại — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-      "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #fyp",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 230.5,
+      "final_url": "https://www.tiktok.com/@v.minh.chu36?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 01:06:18",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 230.5,
+        "final_url": "https://www.tiktok.com/@v.minh.chu36?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 01:02:07",
       "machine_arch": "x86_64",
@@ -224,21 +238,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 154.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 22:49:49",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 14,
-        "ads_skipped": 3,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 164.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
