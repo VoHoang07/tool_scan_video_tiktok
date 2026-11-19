@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 13:47:16",
+    "timestamp": "2026-11-19 13:59:39",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261119_133232_tiktok_story_7691666764278566165.mp4",
-      "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Bạn đã tạo ra bao nhiêu kẻ thù bằng lòng tốt của mình trong những năm qua?. \"Nhưng nếu người khác đối xử với bạn như vậy...\" Ngẫm từng lời mà thấy thấm thía vô cùng!",
-      "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #viral",
+      "video_file": "20261119_135614_tiktok_story_7705355576858922261.mp4",
+      "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Muốn ăn vặt tùm lum tà la món thì nhào dô đây nha mấy mommm 🤓. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+      "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #fyp #xh",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 13:59:39",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261119_135614_tiktok_story_7705355576858922261.mp4",
+        "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Muốn ăn vặt tùm lum tà la món thì nhào dô đây nha mấy mommm 🤓. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+        "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #fyp #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-19 13:47:16",
       "machine_arch": "x86_64",
@@ -434,17 +450,6 @@
             "follow_back_window_until": "2026-11-20 11:22:59"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-19 11:21:26",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
