@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 08:56:30",
+    "timestamp": "2026-11-19 09:00:40",
     "machine_arch": "x86_64",
-    "event_type": "upload",
+    "event_type": "warmup_fyp",
     "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261119_084758_tiktok_story_7700947602430266645.mp4",
-      "caption": "✨ Nếu bất kỳ người phụ nữ nào phớt lờ bạn, hãy phớt lờ cô ấy. \"Bạn thậm chí không thể để tâm đến cô ấy...\" Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
-      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #tiktokvn #xuhuong",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 2,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 228.9,
+      "final_url": "https://www.tiktok.com/@phunukhichat.k07?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 09:00:40",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 228.9,
+        "final_url": "https://www.tiktok.com/@phunukhichat.k07?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 08:56:30",
       "machine_arch": "x86_64",
@@ -230,22 +244,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 232.5,
         "final_url": "https://www.tiktok.com/@minhanh2116/video/7709538304995134726?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 07:04:24",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261119_070020_tiktok_story_7630270308485729557.mp4",
-        "caption": "🌿 Cách trị ngủ ngáy vô cùng đơn giản. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
-        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
