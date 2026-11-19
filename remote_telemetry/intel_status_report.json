@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 12:06:01",
+    "timestamp": "2026-11-19 12:17:53",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.3,
-      "final_url": "https://www.tiktok.com/@cutiii1tiktok?lang=vi-VN"
+      "video_file": "20261119_121258_tiktok_story_880035903_gautrucden_v1_s359_p3.mp4",
+      "caption": "🌙 Đừng Để Dê Hát Chèo — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
+      "hashtags": "#dungdedehatcheo #phan3 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 12:17:53",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261119_121258_tiktok_story_880035903_gautrucden_v1_s359_p3.mp4",
+        "caption": "🌙 Đừng Để Dê Hát Chèo — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
+        "hashtags": "#dungdedehatcheo #phan3 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-19 12:06:01",
       "machine_arch": "x86_64",
@@ -343,21 +360,6 @@
       "details": {
         "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 10:48:16",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 160.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
