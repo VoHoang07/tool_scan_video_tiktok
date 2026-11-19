@@ -1,21 +1,177 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 09:40:55",
+    "timestamp": "2026-11-19 09:43:02",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "filter24h",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261119_093741_tiktok_story_7497839017984101640.mp4",
-      "caption": "⚔️ Sự thật thú vị về Mục Thần Ký mà không phải ai cũng biết 🤓. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-      "hashtags": "#tuchangioi #tutien #huyenhuyen #hoathinh3dtrungquoc #aitutien #tiennghich #xuhuong #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "meo_vat_gia_dinh",
+          "video_id": "7709483159322201396",
+          "video_url": "https://www.tiktok.com/@amos.duggan.mxs06/video/7709483159322201396",
+          "creator_handle": "@amos.duggan.mxs06",
+          "watched_seconds": 15.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611191041472540669AC3F58448AD90\",\"now\":1795056107000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611191041472540669AC3F58448AD90\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261119104215F7505C527536C947662A\",\"now\":1795056136000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261119104215F7505C527536C947662A\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 919,
+              "y": 247.5,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "43"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 919,
+                "y": 247.5,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "43"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@amos.duggan.mxs06",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@amos.duggan.mxs06?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-19 09:42:25",
+          "follow_back_window_until": "2026-11-20 09:42:25"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 09:43:02",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "meo_vat_gia_dinh",
+            "video_id": "7709483159322201396",
+            "video_url": "https://www.tiktok.com/@amos.duggan.mxs06/video/7709483159322201396",
+            "creator_handle": "@amos.duggan.mxs06",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611191041472540669AC3F58448AD90\",\"now\":1795056107000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611191041472540669AC3F58448AD90\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261119104215F7505C527536C947662A\",\"now\":1795056136000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261119104215F7505C527536C947662A\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 919,
+                "y": 247.5,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "43"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 919,
+                  "y": 247.5,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "43"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@amos.duggan.mxs06",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@amos.duggan.mxs06?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-19 09:42:25",
+            "follow_back_window_until": "2026-11-20 09:42:25"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-19 09:40:55",
       "machine_arch": "x86_64",
@@ -222,22 +378,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 231.7,
         "final_url": "https://www.tiktok.com/@haydoii03/video/7709514138665454868?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 07:39:02",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261119_073456_tiktok_story_880034804_gautrucden_v1_s348_p4.mp4",
-        "caption": "🎬 Đôi Mắt Nhìn Thấy Quỷ — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
-        "hashtags": "#doimatnhinthayquy #phan4 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
