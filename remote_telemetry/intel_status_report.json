@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 13:59:39",
+    "timestamp": "2026-11-19 14:10:59",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261119_135614_tiktok_story_7705355576858922261.mp4",
-      "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Muốn ăn vặt tùm lum tà la món thì nhào dô đây nha mấy mommm 🤓. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
-      "hashtags": "#amthuctiktok #anvatmoingay #doanvat #mukbangvietnam #anvatngon #congthucnauan #fyp #xh",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 232.0,
+      "final_url": "https://www.tiktok.com/@loan.nguyn9637?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 14:10:59",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 232.0,
+        "final_url": "https://www.tiktok.com/@loan.nguyn9637?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 13:59:39",
       "machine_arch": "x86_64",
@@ -364,92 +378,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 158.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 11:23:34",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "suc_khoe_duong_sinh",
-            "video_id": "7708301207357508885",
-            "video_url": "https://www.tiktok.com/@nguyenmanh207191/video/7708301207357508885",
-            "creator_handle": "@nguyenmanh207191",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Cảm ơn bạn đã chia sẻ video rất hay và bổ ích nhé 🌷",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261119122224A02D499FFC2A2B4C3C87\",\"now\":1795062144000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261119122224A02D499FFC2A2B4C3C87\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611191222516CCE8F020BE3BD4FCE67\",\"now\":1795062171000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611191222516CCE8F020BE3BD4FCE67\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 837.78125,
-                "y": 441,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "61"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 837.78125,
-                  "y": 441,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "61"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@nguyenmanh207191",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@nguyenmanh207191?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-19 11:22:59",
-            "follow_back_window_until": "2026-11-20 11:22:59"
-          }
-        ]
       }
     }
   ]
