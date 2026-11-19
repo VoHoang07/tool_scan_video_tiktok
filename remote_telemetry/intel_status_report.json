@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 07:23:54",
+    "timestamp": "2026-11-19 07:26:48",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "video_file": "20261119_071936_tiktok_story_7551414833162243346.mp4",
-      "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: 🔧✨ Mẹo Sửa Nhanh Cực Hữu Ích. Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
-      "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #tienichgiadinh #savingtips #donnhasach #foryou #fyp",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 2,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 154.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 07:26:48",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 154.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 07:23:54",
       "machine_arch": "x86_64",
@@ -225,21 +239,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 158.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 05:55:38",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 151.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
