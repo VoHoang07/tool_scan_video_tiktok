@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 00:11:39",
+    "timestamp": "2026-11-20 00:25:18",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "scrolled_videos": 7,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.5,
-      "final_url": "https://www.tiktok.com/@gia.nh7010?lang=vi-VN"
+      "video_file": "20261112_082852_tiktok_story_7028807659797089563.mp4",
+      "caption": "👶 Cách trị con lười học (phần3)👌. Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
+      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #foryou #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 00:25:18",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261112_082852_tiktok_story_7028807659797089563.mp4",
+        "caption": "👶 Cách trị con lười học (phần3)👌. Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
+        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-20 00:11:39",
       "machine_arch": "x86_64",
@@ -219,21 +236,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 156.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 22:25:14",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 151.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
