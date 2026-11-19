@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 15:24:00",
+    "timestamp": "2026-11-19 15:31:57",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
       "scrolled_videos": 9,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 228.7,
-      "final_url": "https://www.tiktok.com/@quangtung2406?lang=vi-VN"
+      "elapsed_seconds": 232.0,
+      "final_url": "https://www.tiktok.com/@phukientienich.k10?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 15:31:57",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 232.0,
+        "final_url": "https://www.tiktok.com/@phukientienich.k10?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 15:24:00",
       "machine_arch": "x86_64",
@@ -368,22 +383,6 @@
             "follow_back_window_until": "2026-11-20 12:01:23"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-19 11:59:55",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261119_115538_tiktok_story_7709095529371798805.mp4",
-        "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: Con gái chỉ bố cách phơi gối kiểu mới. Đơn giản mà tiện. Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
-        "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #giadungtienich #noitrothongminh #yeubep #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
