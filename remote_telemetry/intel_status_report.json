@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 02:18:18",
+    "timestamp": "2026-11-20 02:25:29",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "ads_skipped": 1,
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 161.7,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 230.9,
+      "final_url": "https://www.tiktok.com/@bi.th.tho046?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 02:25:29",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 230.9,
+        "final_url": "https://www.tiktok.com/@bi.th.tho046?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 02:18:18",
       "machine_arch": "x86_64",
@@ -203,22 +218,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 230.5,
         "final_url": "https://www.tiktok.com/@v.minh.chu36?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 01:02:07",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261120_005847_tiktok_story_7352560207857339668.mp4",
-        "caption": "🐾 độc lạ bảng tê điện thoại — Tập phim ngắn khiến hàng triệu người xem đi xem lại. Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
