@@ -1,91 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 12:02:00",
+    "timestamp": "2026-11-19 12:06:01",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "tu_chan_gioi",
-          "video_id": "7709441114188631297",
-          "video_url": "https://www.tiktok.com/@nata001155/video/7709441114188631297",
-          "creator_handle": "@nata001155",
-          "watched_seconds": 15.9,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611191300468903DD53A74F31504596\",\"now\":1795064446000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611191300468903DD53A74F31504596\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261119130115A6C942C932423756F68B\",\"now\":1795064477000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261119130115A6C942C932423756F68B\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 872,
-              "y": 456,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "35"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 872,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "35"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@nata001155",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@nata001155?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": 0,
-              "server_follow_ok": true,
-              "ui_confirmed": true,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-19 12:01:23",
-          "follow_back_window_until": "2026-11-20 12:01:23"
-        }
-      ]
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 231.3,
+      "final_url": "https://www.tiktok.com/@cutiii1tiktok?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 12:06:01",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.3,
+        "final_url": "https://www.tiktok.com/@cutiii1tiktok?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 12:02:00",
       "machine_arch": "x86_64",
@@ -414,17 +358,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 160.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 10:45:26",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
