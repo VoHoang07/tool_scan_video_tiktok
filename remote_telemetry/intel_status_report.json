@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 13:02:23",
+    "timestamp": "2026-11-19 13:47:16",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261112_082837_tiktok_story_7665715251786108181.mp4",
-      "caption": "🤱 Đồng hành cùng con: Bí quyết đồng hành cùng con trưởng thành mỗi ngày cho bố mẹ hiện đại. Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-      "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #xuhuong",
+      "video_file": "20261119_133232_tiktok_story_7691666764278566165.mp4",
+      "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Bạn đã tạo ra bao nhiêu kẻ thù bằng lòng tốt của mình trong những năm qua?. \"Nhưng nếu người khác đối xử với bạn như vậy...\" Ngẫm từng lời mà thấy thấm thía vô cùng!",
+      "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 13:47:16",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261119_133232_tiktok_story_7691666764278566165.mp4",
+        "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Bạn đã tạo ra bao nhiêu kẻ thù bằng lòng tốt của mình trong những năm qua?. \"Nhưng nếu người khác đối xử với bạn như vậy...\" Ngẫm từng lời mà thấy thấm thía vô cùng!",
+        "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-19 13:02:23",
       "machine_arch": "x86_64",
@@ -429,21 +445,6 @@
       "details": {
         "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 11:13:25",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 8,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 184.0,
-        "final_url": "chrome-error://chromewebdata/"
       }
     }
   ]
