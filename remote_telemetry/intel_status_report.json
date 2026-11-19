@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 12:17:53",
+    "timestamp": "2026-11-19 12:38:08",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261119_121258_tiktok_story_880035903_gautrucden_v1_s359_p3.mp4",
-      "caption": "🌙 Đừng Để Dê Hát Chèo — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-      "hashtags": "#dungdedehatcheo #phan3 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+      "video_file": "20261119_122644_tiktok_story_7693803675046874388.mp4",
+      "caption": "🌿 Cột sống cổ của bạn có điều gì đó để nói. \"Bảy đốt sống xếp chồng lên nhau tạo thành một lò xo mỏng manh...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 12:38:08",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261119_122644_tiktok_story_7693803675046874388.mp4",
+        "caption": "🌿 Cột sống cổ của bạn có điều gì đó để nói. \"Bảy đốt sống xếp chồng lên nhau tạo thành một lò xo mỏng manh...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-19 12:17:53",
       "machine_arch": "x86_64",
@@ -349,17 +365,6 @@
         "interacted_count": 0,
         "own_profile_stats": {},
         "records": []
-      }
-    },
-    {
-      "timestamp": "2026-11-19 10:56:47",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
