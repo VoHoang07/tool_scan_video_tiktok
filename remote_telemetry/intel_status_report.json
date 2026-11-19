@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 07:14:58",
+    "timestamp": "2026-11-19 07:23:54",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "event_type": "upload",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 1,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 166.1,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261119_071936_tiktok_story_7551414833162243346.mp4",
+      "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: 🔧✨ Mẹo Sửa Nhanh Cực Hữu Ích. Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
+      "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #tienichgiadinh #savingtips #donnhasach #foryou #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 07:23:54",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261119_071936_tiktok_story_7551414833162243346.mp4",
+        "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: 🔧✨ Mẹo Sửa Nhanh Cực Hữu Ích. Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
+        "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #tienichgiadinh #savingtips #donnhasach #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-19 07:14:58",
       "machine_arch": "x86_64",
@@ -224,21 +241,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 151.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 05:49:26",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 232.0,
-        "final_url": "https://www.tiktok.com/@lonathanh315?lang=vi-VN"
       }
     }
   ]
