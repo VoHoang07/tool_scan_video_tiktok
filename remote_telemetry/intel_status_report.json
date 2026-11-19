@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 08:26:37",
+    "timestamp": "2026-11-19 08:30:52",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261119_082146_tiktok_story_7630390406030560520.mp4",
-      "caption": "🤣 Anh trai này ác quá 😂😂 — Pha xử lý đi vào lòng đất của hai mẹ con! \"Nếu có món gì không ngon, hãy đến với mình để giúp cậu ăn...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xuhuongtiktok #tiktokvn",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 232.6,
+      "final_url": "https://www.tiktok.com/@tuyt.nhung1836?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 08:30:52",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 232.6,
+        "final_url": "https://www.tiktok.com/@tuyt.nhung1836?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 08:26:37",
       "machine_arch": "x86_64",
@@ -228,21 +242,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 151.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 06:45:57",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 2,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 169.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
