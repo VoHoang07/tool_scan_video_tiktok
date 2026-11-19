@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 15:53:31",
+    "timestamp": "2026-11-19 16:03:37",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "ads_skipped": 3,
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 151.1,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 231.4,
+      "final_url": "https://www.tiktok.com/@em49340?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 16:03:37",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.4,
+        "final_url": "https://www.tiktok.com/@em49340?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 15:53:31",
       "machine_arch": "x86_64",
@@ -295,22 +310,6 @@
             "follow_back_window_until": "2026-11-20 12:47:36"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-19 12:38:08",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261119_122644_tiktok_story_7693803675046874388.mp4",
-        "caption": "🌿 Cột sống cổ của bạn có điều gì đó để nói. \"Bảy đốt sống xếp chồng lên nhau tạo thành một lò xo mỏng manh...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
-        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #foryou #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
