@@ -480,7 +480,8 @@
     "7693803675046874388",
     "7691666764278566165",
     "7705355576858922261",
-    "7693111368676805940"
+    "7693111368676805940",
+    "0V1_38pqJJ8"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -838,7 +839,8 @@
     "7693803705120623380",
     "7691666805735688981",
     "7705355640424991495",
-    "7693111402609658644"
+    "7693111402609658644",
+    "yt_sound_0V1_38pqJJ8"
   ],
   "items": [
     {
@@ -4930,6 +4932,16 @@
       "source_url": "https://www.tiktok.com/@waikityaw/video/7693111368676805940",
       "output_filename": "baby_AI/ready/20261119_143954_tiktok_story_7693111368676805940.mp4",
       "crawled_at": "2026-11-19T14:40:27"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "0V1_38pqJJ8",
+      "sound_id": "yt_sound_0V1_38pqJJ8",
+      "platform": "youtube_shorts",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.youtube.com/watch?v=0V1_38pqJJ8",
+      "output_filename": "tu_chan_gioi/ready/20261119_145545_youtube_shorts_story_0V1_38pqJJ8.mp4",
+      "crawled_at": "2026-11-19T15:15:22"
     }
   ]
 }

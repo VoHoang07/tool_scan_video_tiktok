@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 14:44:14",
+    "timestamp": "2026-11-19 15:19:46",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261119_143954_tiktok_story_7693111368676805940.mp4",
-      "caption": "🤣 Đào trong khu vườn nhỏ — Pha xử lý đi vào lòng đất của hai mẹ con! \"Chúc cho những hạt giống nhỏ bé nở thành những bông hoa nhỏ bé...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
+      "video_file": "20261119_145545_youtube_shorts_story_0V1_38pqJJ8.mp4",
+      "caption": "🐉 Tập 1: Đường Tăng Thành Tiên — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! \"Đinh, Hệ thống được tải và quá trình ràng buộc bắt đầu, Giới tính của người dẫn chương trình, T...\" Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #animehay #phimhoathinh3d #hoathinh3dtrungquoc #tutien #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 15:19:46",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261119_145545_youtube_shorts_story_0V1_38pqJJ8.mp4",
+        "caption": "🐉 Tập 1: Đường Tăng Thành Tiên — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! \"Đinh, Hệ thống được tải và quá trình ràng buộc bắt đầu, Giới tính của người dẫn chương trình, T...\" Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
+        "hashtags": "#huyenhuyen #tienhiep #tuchangioi #animehay #phimhoathinh3d #hoathinh3dtrungquoc #tutien #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-19 14:44:14",
       "machine_arch": "x86_64",
@@ -365,21 +381,6 @@
       "details": {
         "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 11:38:28",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 163.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
