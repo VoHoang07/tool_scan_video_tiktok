@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 16:19:21",
+    "timestamp": "2026-11-19 16:27:44",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
       "scrolled_videos": 11,
-      "ads_skipped": 0,
+      "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 154.5,
+      "elapsed_seconds": 152.3,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 16:27:44",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 152.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 16:19:21",
       "machine_arch": "x86_64",
@@ -222,22 +237,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 13:02:23",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261112_082837_tiktok_story_7665715251786108181.mp4",
-        "caption": "🤱 Đồng hành cùng con: Bí quyết đồng hành cùng con trưởng thành mỗi ngày cho bố mẹ hiện đại. Mỗi đứa trẻ đều cần được thấu hiểu đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-        "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
