@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 16:27:44",
+    "timestamp": "2026-11-19 16:38:29",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 1,
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 152.3,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 231.6,
+      "final_url": "https://www.tiktok.com/@suzyvy/video/7709755965544910081?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 16:38:29",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.6,
+        "final_url": "https://www.tiktok.com/@suzyvy/video/7709755965544910081?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 16:27:44",
       "machine_arch": "x86_64",
@@ -221,22 +236,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 13:47:16",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261119_133232_tiktok_story_7691666764278566165.mp4",
-        "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Bạn đã tạo ra bao nhiêu kẻ thù bằng lòng tốt của mình trong những năm qua?. \"Nhưng nếu người khác đối xử với bạn như vậy...\" Ngẫm từng lời mà thấy thấm thía vô cùng!",
-        "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
