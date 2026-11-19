@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-19 15:46:31",
+    "timestamp": "2026-11-19 15:53:31",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
+      "scrolled_videos": 12,
+      "ads_skipped": 3,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 156.7,
+      "elapsed_seconds": 151.1,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-19 15:53:31",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "ads_skipped": 3,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 151.1,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-19 15:46:31",
       "machine_arch": "x86_64",
@@ -292,22 +307,6 @@
         "video_file": "20261119_122644_tiktok_story_7693803675046874388.mp4",
         "caption": "🌿 Cột sống cổ của bạn có điều gì đó để nói. \"Bảy đốt sống xếp chồng lên nhau tạo thành một lò xo mỏng manh...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
         "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #foryou #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-19 12:17:53",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261119_121258_tiktok_story_880035903_gautrucden_v1_s359_p3.mp4",
-        "caption": "🌙 Đừng Để Dê Hát Chèo — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-        "hashtags": "#dungdedehatcheo #phan3 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
