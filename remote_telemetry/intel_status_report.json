@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 03:29:29",
+    "timestamp": "2026-11-21 03:35:29",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
       "scrolled_videos": 10,
       "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 152.5,
+      "elapsed_seconds": 167.5,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 03:35:29",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 167.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 03:29:29",
       "machine_arch": "x86_64",
@@ -223,21 +238,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 230.5,
         "final_url": "https://www.tiktok.com/@huongmy52?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 02:00:50",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 155.4,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
