@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 07:15:36",
+    "timestamp": "2026-11-20 07:18:45",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261120_070328_tiktok_story_7624455121316924692.mp4",
-      "caption": "🍵 Lắng nghe cơ thể mỗi ngày: Mọi người ơi, mình làm một thí nghiệm ngu ngốc thật đấy 😭 Mình muốn thử xem điều gì sẽ xảy ra nếu chỉ ăn mì gói trong 30 ngày, nhưng bây giờ lại hối hận... Kỷ lục có thật 👇 • Ngày thứ 3: Mặt tôi sưng tấy đến mức mẹ tôi gần như không nhận ra • Ngày 7: Huyết áp đột ngột bùng nổ • Ngày 14: Bụng tôi bắt đầu biểu tình, mụn cứ nổi lên • Ngày 21: Tôi không thể thở khi leo cầu thang • Ngày 30: Báo cáo khám sức khoẻ ra, bác sĩ sợ Ba phút tiện lợi có thể phải mất cả đời mới trả được 💔 ⚠️ Không phải là không ăn được mà là thực sự không nên ăn hàng ngày! 💡 Theo dõi Skeleton giúp bạn tránh được nhiều bom mìn sức khỏe hơn 🏷 Bạn có thường xuyên ăn mì ăn liền không? Để lại cho tôi một tin nhắn!. \"Điều gì sẽ xảy ra nếu bạn chỉ ăn mì gói trong mỗi bữa ăn...\" Những thay đổi giản dị từ sinh hoạt hàng ngày lại mang đến hiệu quả lâu dài nhất. Chúc mọi người luôn nhiều năng lượng!",
-      "hashtags": "#duongsinh #songkhoe #suckhoechudong #ngungon #biquyetsongkhoe #kienthucsuckhoe #suckhoe #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 13,
+      "ads_skipped": 2,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 166.8,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 07:18:45",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "ads_skipped": 2,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 166.8,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 07:15:36",
       "machine_arch": "x86_64",
@@ -225,21 +239,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 171.8,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 05:36:50",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 232.1,
-        "final_url": "https://www.tiktok.com/@ha.vy.xay.kenh?lang=vi-VN"
       }
     }
   ]
