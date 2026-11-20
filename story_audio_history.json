@@ -496,7 +496,8 @@
     "7708422783633607937",
     "7157637222215306536",
     "7691570220917361951",
-    "7680117351819250952"
+    "7680117351819250952",
+    "7709474145536363794"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -870,7 +871,8 @@
     "7708422838618065672",
     "7157637267614370597",
     "7691570354921999135",
-    "7659229912604280848"
+    "7659229912604280848",
+    "7709474322078829319"
   ],
   "items": [
     {
@@ -5302,6 +5304,16 @@
       "source_url": "https://www.tiktok.com/@thuanphatmobilehcm/video/7680117351819250952",
       "output_filename": "phu_kien_tien_ich/ready/20261120_094405_tiktok_story_7680117351819250952.mp4",
       "crawled_at": "2026-11-20T09:44:13"
+    },
+    {
+      "channel": "meo_vat_gia_dinh",
+      "video_id": "7709474145536363794",
+      "sound_id": "7709474322078829319",
+      "platform": "tiktok",
+      "genre": "meovatcuocsong",
+      "source_url": "https://www.tiktok.com/@weldinghacks0/video/7709474145536363794",
+      "output_filename": "meo_vat_gia_dinh/ready/20261120_114516_tiktok_story_7709474145536363794.mp4",
+      "crawled_at": "2026-11-20T11:45:43"
     }
   ]
 }
