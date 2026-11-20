@@ -1,77 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 18:50:24",
+    "timestamp": "2026-11-20 18:53:26",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7710112034213432596",
-          "video_url": "https://www.tiktok.com/@happiee278/video/7710112034213432596",
-          "creator_handle": "@happiee278",
-          "watched_seconds": 16.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 877.28125,
-              "y": 373,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "38"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 877.28125,
-                "y": 373,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "38"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@happiee278",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@happiee278?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Follow",
-              "init_relation": 0,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-20 18:49:49",
-          "follow_back_window_until": "2026-11-21 18:49:49"
-        }
-      ]
+      "scrolled_videos": 10,
+      "ads_skipped": 1,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 171.8,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 18:53:26",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 171.8,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 18:50:24",
       "machine_arch": "x86_64",
@@ -591,21 +549,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 153.4,
         "final_url": "https://www.tiktok.com/@toofattowalk/live"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 17:39:08",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 2,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 151.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
