@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 02:32:25",
+    "timestamp": "2026-11-21 02:38:28",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 9,
+      "scrolled_videos": 10,
       "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 156.1,
+      "elapsed_seconds": 151.4,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 02:38:28",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 151.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 02:32:25",
       "machine_arch": "x86_64",
@@ -209,22 +224,6 @@
         "video_file": "20261121_005939_douyin_story_7700850182103076136.mp4",
         "caption": "🤣 Người Mỹ đã dành ba năm để làm một bộ phim hoạt hình khai sáng tiếng Anh, thậm chí còn được sử dụng làm tài liệu giảng dạy ở nhiều trường tiểu học và mẫu giáo quốc tế! — Pha xử lý đi vào lòng đất của hai mẹ con! \"Đó là một bộ phim hoạt hình được trẻ em Mỹ sử dụng để dạy tiếng Anh khi các em mới học nói...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
         "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #cuoixiu #phimnganhai #giaitritiktok #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 00:46:47",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261112_083013_tiktok_story_7580586643078270229.mp4",
-        "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Con phải nghe lời mẹ. Cố gắng đừng kết hôn với người mà mẹ cấm. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-        "hashtags": "#dayconeq #mevabe #giaoducsom #donghanhcungcon #daycontulap #nuoidaycon #nuoiconthongminh #foryou",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
