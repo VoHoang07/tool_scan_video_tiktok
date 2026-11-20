@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 13:56:08",
+    "timestamp": "2026-11-20 13:59:02",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261120_135300_tiktok_story_7691621144482434312.mp4",
-      "caption": "🎬 Tính năng ẩn trên điện thoại mà có thể bạn chưa biết. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-      "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #hoathinhhai #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 13,
+      "ads_skipped": 2,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 152.7,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 13:59:02",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 13,
+        "ads_skipped": 2,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 152.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 13:56:08",
       "machine_arch": "x86_64",
@@ -322,22 +336,6 @@
         "video_file": "20261120_122713_tiktok_story_7617810693978475794.mp4",
         "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Lại một món nữa từ khoai tây các bác nhé. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
         "hashtags": "#amthuctiktok #anvatmoingay #doanvat #yeubep #anchayngon #reviewdoan #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 12:24:59",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261120_122043_tiktok_story_880035604_gautrucden_v1_s356_p4.mp4",
-        "caption": "🐼 Hồn Ma Nuôi Con — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
-        "hashtags": "#honmanuoicon #phan4 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
