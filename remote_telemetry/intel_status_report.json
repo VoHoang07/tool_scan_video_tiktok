@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 12:24:59",
+    "timestamp": "2026-11-20 12:30:27",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261120_122043_tiktok_story_880035604_gautrucden_v1_s356_p4.mp4",
-      "caption": "🐼 Hồn Ma Nuôi Con — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
-      "hashtags": "#honmanuoicon #phan4 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+      "video_file": "20261120_122713_tiktok_story_7617810693978475794.mp4",
+      "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Lại một món nữa từ khoai tây các bác nhé. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+      "hashtags": "#amthuctiktok #anvatmoingay #doanvat #yeubep #anchayngon #reviewdoan #xuhuongtiktok #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 12:30:27",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261120_122713_tiktok_story_7617810693978475794.mp4",
+        "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Lại một món nữa từ khoai tây các bác nhé. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+        "hashtags": "#amthuctiktok #anvatmoingay #doanvat #yeubep #anchayngon #reviewdoan #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-20 12:24:59",
       "machine_arch": "x86_64",
@@ -498,21 +514,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 229.9,
         "final_url": "https://www.tiktok.com/@bekangxaykenh?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 10:59:08",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 2,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 172.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
