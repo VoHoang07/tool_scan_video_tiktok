@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 13:34:12",
+    "timestamp": "2026-11-20 13:38:29",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261120_132832_tiktok_story_7260861479094635783.mp4",
-      "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Ababa, cậu ở đó thế nào rồi?. \"Tỏa sáng với ánh sáng của tình yêu của bạn dành cho tôi...\" Ngẫm từng lời mà thấy thấm thía vô cùng!",
-      "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 2,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 231.9,
+      "final_url": "https://www.tiktok.com/@cc.trn303?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 13:38:29",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.9,
+        "final_url": "https://www.tiktok.com/@cc.trn303?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 13:34:12",
       "machine_arch": "x86_64",
@@ -406,21 +420,6 @@
             "follow_back_window_until": "2026-11-21 11:58:43"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-20 11:54:30",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 227.3,
-        "final_url": "https://www.tiktok.com/@nhadat.danang.1990/video/7709897815798959366?lang=vi-VN"
       }
     }
   ]
