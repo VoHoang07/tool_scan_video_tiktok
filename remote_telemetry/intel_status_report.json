@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 14:20:18",
+    "timestamp": "2026-11-20 14:24:32",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261120_141654_tiktok_story_7690502180263988510.mp4",
-      "caption": "🐉 Tu tiên luôn khiến những người phàm bình thường say mê hướng vọng — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #xuhuong #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 231.6,
+      "final_url": "https://www.tiktok.com/@bi.phng.hng87?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 14:24:32",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.6,
+        "final_url": "https://www.tiktok.com/@bi.phng.hng87?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 14:20:18",
       "machine_arch": "x86_64",
@@ -213,129 +227,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 231.3,
         "final_url": "https://www.tiktok.com/@son.hueing/video/7710114041556962581?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 12:50:27",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "phukientienich.k10",
-          "domFollowing": "283",
-          "domFollowers": "557",
-          "domLikes": "577",
-          "sidebarFollowing": [
-            "/@phukientienich.k10"
-          ]
-        },
-        "records": [
-          {
-            "channel": "phu_kien_tien_ich",
-            "video_id": "7710099275069558036",
-            "video_url": "https://www.tiktok.com/@hnh.trnh.xy.knh260/video/7710099275069558036",
-            "creator_handle": "@hnh.trnh.xy.knh260",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Ý tưởng video sáng tạo và cuốn hút thật sự, chúc kênh mau lên xu hướng nha 💯",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261120134837D64C754A63ED4FAE7AD1\",\"now\":1795153717000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261120134837D64C754A63ED4FAE7AD1\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 804.34375,
-                "y": 411,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "6"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 804.34375,
-                  "y": 411,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "6"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              }
-            },
-            "interacted_at": "2026-11-20 12:48:59",
-            "follow_back_window_until": "2026-11-21 12:48:59"
-          },
-          {
-            "channel": "phu_kien_tien_ich",
-            "video_id": "7710076960814271762",
-            "video_url": "https://www.tiktok.com/@nhthlinh4/video/7710076960814271762",
-            "creator_handle": "@nhthlinh4",
-            "watched_seconds": 16.9,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Xem cuốn từ giây đầu tới giây cuối luôn, tuyệt vời lắm bạn ơi 🔥",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": []
-            },
-            "interacted_at": "2026-11-20 12:49:44",
-            "follow_back_window_until": "2026-11-21 12:49:44"
-          },
-          {
-            "channel": "phu_kien_tien_ich",
-            "video_id": "7710087459043888436",
-            "video_url": "https://www.tiktok.com/@mgujb_149/video/7710087459043888436",
-            "creator_handle": "@mgujb_149",
-            "watched_seconds": 15.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              }
-            },
-            "interacted_at": "2026-11-20 12:50:22",
-            "follow_back_window_until": "2026-11-21 12:50:22"
-          }
-        ]
       }
     }
   ]
