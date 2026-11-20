@@ -1,17 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 12:31:36",
+    "timestamp": "2026-11-20 12:35:37",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "interacted_count": 0,
-      "own_profile_stats": {},
-      "records": []
+      "scrolled_videos": 8,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 231.6,
+      "final_url": "https://www.tiktok.com/@shopxinh.gia.re?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 12:35:37",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 8,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.6,
+        "final_url": "https://www.tiktok.com/@shopxinh.gia.re?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 12:31:36",
       "machine_arch": "x86_64",
@@ -363,150 +381,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 152.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 11:14:22",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "suckhoeduongsinh.k06",
-          "domFollowing": "0",
-          "domFollowers": "0",
-          "domLikes": "0",
-          "sidebarFollowing": [
-            "/@suckhoeduongsinh.k06"
-          ]
-        },
-        "records": [
-          {
-            "channel": "suc_khoe_duong_sinh",
-            "video_id": "7709460677928160520",
-            "video_url": "https://www.tiktok.com/@huyenthitranmai/video/7709460677928160520",
-            "creator_handle": "@huyenthitranmai",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Nội dung chất lượng quá, xứng đáng lên xu hướng triệu view nha bạn ơi 💯",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611201212002A8C06910E8AC7CCDB19\",\"now\":1795147920000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611201212002A8C06910E8AC7CCDB19\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611201212288204BA671A3306B089BE\",\"now\":1795147948000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611201212288204BA671A3306B089BE\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 837.78125,
-                "y": 389,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "36"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 837.78125,
-                  "y": 389,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "36"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@huyenthitranmai",
-                "nav_method": "spa_os_click",
-                "profile_url": "https://www.tiktok.com/@huyenthitranmai?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": null,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-20 11:12:37",
-            "follow_back_window_until": "2026-11-21 11:12:37"
-          },
-          {
-            "channel": "suc_khoe_duong_sinh",
-            "video_id": "7709410353460923655",
-            "video_url": "https://www.tiktok.com/@kemne/video/7709410353460923655",
-            "creator_handle": "@kemne",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Nhạc với hình hợp nhau thực sự, xem đi xem lại vẫn thấy cuốn 🥰",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              }
-            },
-            "interacted_at": "2026-11-20 11:13:32",
-            "follow_back_window_until": "2026-11-21 11:13:32"
-          },
-          {
-            "channel": "suc_khoe_duong_sinh",
-            "video_id": "7708217898082372884",
-            "video_url": "https://www.tiktok.com/@tiktok.comtykhanh57/video/7708217898082372884",
-            "creator_handle": "@tiktok.comtykhanh57",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              }
-            },
-            "interacted_at": "2026-11-20 11:14:17",
-            "follow_back_window_until": "2026-11-21 11:14:17"
-          }
-        ]
       }
     }
   ]
