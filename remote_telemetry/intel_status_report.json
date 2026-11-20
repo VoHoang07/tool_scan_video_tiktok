@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 02:14:15",
+    "timestamp": "2026-11-21 02:20:15",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "ads_skipped": 2,
+      "scrolled_videos": 10,
+      "ads_skipped": 1,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 152.8,
+      "elapsed_seconds": 161.4,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 02:20:15",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 161.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 02:14:15",
       "machine_arch": "x86_64",
@@ -210,22 +225,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 231.4,
         "final_url": "https://www.tiktok.com/@ken8tui?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 00:26:24",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261121_002044_tiktok_story_7235056890487606536.mp4",
-        "caption": "🐾 Chiếc máy tính mới tôi mua với giá hơn 8.000 nhân dân tệ sẽ bị kẹt ngay cả khi tôi cố gắng khóa liên minh — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Kéo xuống để tìm chế độ quản lý nguồn, chọn Ưu tiên hiệu suất cao nhất, nhấp vào Áp dụng và cuố...\" Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #chualanh #phimhoathinh #phimhaymoingay #hoathinhhai #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
