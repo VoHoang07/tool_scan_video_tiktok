@@ -510,7 +510,8 @@
     "7677520743483198740",
     "7705454418434542869",
     "7687486860146396437",
-    "7235056890487606536"
+    "7235056890487606536",
+    "7700850182103076136"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -898,7 +899,8 @@
     "7677520776601504532",
     "7705454448193981185",
     "7687486906611223314",
-    "7235056903863880450"
+    "7235056903863880450",
+    "7700850147068218139"
   ],
   "items": [
     {
@@ -5510,6 +5512,16 @@
       "source_url": "https://www.youtube.com/watch?v=2lzzVdKb4sQ&t=16s",
       "output_filename": "audio_dem_khuyen/ready/20261121_003606_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
       "crawled_at": "2026-11-21T00:37:36"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7700850182103076136",
+      "sound_id": "7700850147068218139",
+      "platform": "douyin",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.douyin.com/video/7700850182103076136",
+      "output_filename": "baby_AI/ready/20261121_005939_douyin_story_7700850182103076136.mp4",
+      "crawled_at": "2026-11-21T01:05:39"
     }
   ]
 }
