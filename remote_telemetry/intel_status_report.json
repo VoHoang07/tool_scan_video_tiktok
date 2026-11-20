@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 12:02:11",
+    "timestamp": "2026-11-20 12:13:39",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "event_type": "upload",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 12,
-      "ads_skipped": 1,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 161.5,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261120_120655_tiktok_story_7143964955446889771.mp4",
+      "caption": "🍵 Lắng nghe cơ thể mỗi ngày: Việc giữ lại chất lỏng sau khi thức dậy có phải là vấn đề không?. \"Một số chất lỏng trong suốt sẽ chảy ra khỏi lỗ niệu đạo...\" Những thay đổi giản dị từ sinh hoạt hàng ngày lại mang đến hiệu quả lâu dài nhất. Chúc mọi người luôn nhiều năng lượng!",
+      "hashtags": "#duongsinh #songkhoe #suckhoechudong #healthyvietnam #songlanhmanh #chamSocSucKhoe #suckhoe #viral",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 12:13:39",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261120_120655_tiktok_story_7143964955446889771.mp4",
+        "caption": "🍵 Lắng nghe cơ thể mỗi ngày: Việc giữ lại chất lỏng sau khi thức dậy có phải là vấn đề không?. \"Một số chất lỏng trong suốt sẽ chảy ra khỏi lỗ niệu đạo...\" Những thay đổi giản dị từ sinh hoạt hàng ngày lại mang đến hiệu quả lâu dài nhất. Chúc mọi người luôn nhiều năng lượng!",
+        "hashtags": "#duongsinh #songkhoe #suckhoechudong #healthyvietnam #songlanhmanh #chamSocSucKhoe #suckhoe #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-20 12:02:11",
       "machine_arch": "x86_64",
@@ -551,21 +568,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 152.3,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 10:44:08",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 2,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 154.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
