@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 09:41:29",
+    "timestamp": "2026-11-20 09:47:21",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261120_093744_tiktok_story_7691570220917361951.mp4",
-      "caption": "⚔️ Một gối thanh phong nhập mộng, Khúc trung càn khôn nhập huyền.，。. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-      "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xuhuongtiktok #tiktokvn",
+      "video_file": "20261120_094405_tiktok_story_7680117351819250952.mp4",
+      "caption": "✨ Câu chuyện AI cực cuốn: Cách đặt tên trên màn hình khoá để tránh bị nhầm lẫn nhe. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+      "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 09:47:21",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261120_094405_tiktok_story_7680117351819250952.mp4",
+        "caption": "✨ Câu chuyện AI cực cuốn: Cách đặt tên trên màn hình khoá để tránh bị nhầm lẫn nhe. Cứ tưởng bình thường mà diễn biến phía sau làm ai cũng bật cười. Bạn thích phân cảnh nào nhất?",
+        "hashtags": "#hoathinhai #phimnganai #aianimation #phimhoathinh #phimhaymoingay #tomtatphim #hoathinhhai #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-20 09:41:29",
       "machine_arch": "x86_64",
@@ -226,21 +242,6 @@
         "post_confirmed": true,
         "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 07:18:45",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 13,
-        "ads_skipped": 2,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 166.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
