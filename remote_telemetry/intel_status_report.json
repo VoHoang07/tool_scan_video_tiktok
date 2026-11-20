@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 15:01:01",
+    "timestamp": "2026-11-20 15:07:16",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
+    "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 8,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 196.5,
-      "final_url": "chrome-error://chromewebdata/"
+      "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 15:07:16",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-20 15:01:01",
       "machine_arch": "x86_64",
@@ -200,22 +207,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 152.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 13:56:08",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261120_135300_tiktok_story_7691621144482434312.mp4",
-        "caption": "🎬 Tính năng ẩn trên điện thoại mà có thể bạn chưa biết. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-        "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #hoathinhhai #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
