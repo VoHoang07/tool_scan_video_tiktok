@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 23:51:15",
+    "timestamp": "2026-11-21 00:05:48",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261120_234408_tiktok_story_7677520743483198740.mp4",
-      "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Tôi phải làm gì nếu tóc ngày càng bạc nhiều?. \"Bạn có muốn nói cho anh ấy biết không...\" Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
-      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #thaydoithoiquen #healthyvietnam #songlanhmanh #suckhoe #foryou",
+      "video_file": "20261120_235703_tiktok_story_7705454418434542869.mp4",
+      "caption": "✨ Ai sẽ cảm thấy tiếc cho tôi, người tha thứ cho bạn?. \"Nhưng tại sao lần nào người khóc lại là tôi...\" Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
+      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 00:05:48",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261120_235703_tiktok_story_7705454418434542869.mp4",
+        "caption": "✨ Ai sẽ cảm thấy tiếc cho tôi, người tha thứ cho bạn?. \"Nhưng tại sao lần nào người khóc lại là tôi...\" Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
+        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-20 23:51:15",
       "machine_arch": "x86_64",
@@ -222,21 +238,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 162.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 21:52:52",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 155.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
