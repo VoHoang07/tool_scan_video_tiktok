@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 19:53:23",
+    "timestamp": "2026-11-20 19:59:48",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 1,
+      "scrolled_videos": 12,
+      "ads_skipped": 3,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 167.0,
+      "elapsed_seconds": 164.1,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 19:59:48",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "ads_skipped": 3,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 164.1,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 19:53:23",
       "machine_arch": "x86_64",
@@ -493,21 +508,6 @@
             "follow_back_window_until": "2026-11-21 18:49:49"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-20 18:46:57",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 167.4,
-        "final_url": "https://www.tiktok.com/@bunchasuamen1/live?enter_from_merge=homepage_hot&enter_method=live_fyp_like&entrance_detail=homepage_hot_live_fyp_like&is_highlight=1&is_landscape=0&request_id=2026112019452357FC80538C3477AE9FEB&video_id=live_7710208634927516423"
       }
     }
   ]
