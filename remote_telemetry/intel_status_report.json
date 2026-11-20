@@ -1,21 +1,29 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 12:30:27",
+    "timestamp": "2026-11-20 12:31:36",
     "machine_arch": "x86_64",
-    "event_type": "upload",
+    "event_type": "filter24h",
     "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261120_122713_tiktok_story_7617810693978475794.mp4",
-      "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Lại một món nữa từ khoai tây các bác nhé. Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
-      "hashtags": "#amthuctiktok #anvatmoingay #doanvat #yeubep #anchayngon #reviewdoan #xuhuongtiktok #tiktokvn",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 0,
+      "own_profile_stats": {},
+      "records": []
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 12:31:36",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
+      "details": {
+        "interacted_count": 0,
+        "own_profile_stats": {},
+        "records": []
+      }
+    },
     {
       "timestamp": "2026-11-20 12:30:27",
       "machine_arch": "x86_64",
@@ -499,21 +507,6 @@
             "follow_back_window_until": "2026-11-21 11:14:17"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-20 11:08:07",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 8,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 229.9,
-        "final_url": "https://www.tiktok.com/@bekangxaykenh?lang=vi-VN"
       }
     }
   ]
