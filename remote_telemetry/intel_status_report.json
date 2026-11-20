@@ -1,77 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 10:56:05",
+    "timestamp": "2026-11-20 10:59:08",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "interacted_count": 1,
-      "own_profile_stats": {},
-      "records": [
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7709724304321154305",
-          "video_url": "https://www.tiktok.com/@follow.cheo070/video/7709724304321154305",
-          "creator_handle": "@follow.cheo070",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 877.28125,
-              "y": 425,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "13"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 877.28125,
-                "y": 425,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "13"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@follow.cheo070",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@follow.cheo070?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Follow",
-              "init_relation": 0,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-20 10:55:30",
-          "follow_back_window_until": "2026-11-21 10:55:30"
-        }
-      ]
+      "scrolled_videos": 11,
+      "ads_skipped": 2,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 172.6,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 10:59:08",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 2,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 172.6,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 10:56:05",
       "machine_arch": "x86_64",
@@ -683,22 +641,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 09:41:29",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261120_093744_tiktok_story_7691570220917361951.mp4",
-        "caption": "⚔️ Một gối thanh phong nhập mộng, Khúc trung càn khôn nhập huyền.，。. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-        "hashtags": "#tienhiep #tuchangioi #tutien #tomtathoathinh3d #animehay #phimhoathinh3d #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
