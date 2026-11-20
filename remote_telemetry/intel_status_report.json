@@ -1,16 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 01:58:02",
+    "timestamp": "2026-11-21 02:00:50",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261121_015354_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "scrolled_videos": 10,
+      "ads_skipped": 1,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 155.4,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 02:00:50",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 155.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 01:58:02",
       "machine_arch": "x86_64",
@@ -205,22 +224,6 @@
         "video_file": "20261120_235703_tiktok_story_7705454418434542869.mp4",
         "caption": "✨ Ai sẽ cảm thấy tiếc cho tôi, người tha thứ cho bạn?. \"Nhưng tại sao lần nào người khóc lại là tôi...\" Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
         "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 23:51:15",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261120_234408_tiktok_story_7677520743483198740.mp4",
-        "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Tôi phải làm gì nếu tóc ngày càng bạc nhiều?. \"Bạn có muốn nói cho anh ấy biết không...\" Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
-        "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #thaydoithoiquen #healthyvietnam #songlanhmanh #suckhoe #foryou",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
