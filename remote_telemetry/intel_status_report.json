@@ -1,132 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 17:51:48",
+    "timestamp": "2026-11-20 17:54:35",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "suckhoeduongsinh.k06",
-        "domFollowing": "0",
-        "domFollowers": "0",
-        "domLikes": "0",
-        "sidebarFollowing": [
-          "/@suckhoeduongsinh.k06"
-        ]
-      },
-      "records": [
-        {
-          "channel": "suc_khoe_duong_sinh",
-          "video_id": "7710098385809722676",
-          "video_url": "https://www.tiktok.com/@thicanga.166/video/7710098385809722676",
-          "creator_handle": "@thicanga.166",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Lướt trúng video hợp gu quá chừng, ủng hộ chủ kênh hết mình nhé ❤️",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611201849595608AE9B856F8ABA32A0\",\"now\":1795171799000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611201849595608AE9B856F8ABA32A0\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 959,
-              "y": 252.5,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "6"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 959,
-                "y": 252.5,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "6"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            }
-          },
-          "interacted_at": "2026-11-20 17:50:18",
-          "follow_back_window_until": "2026-11-21 17:50:18"
-        },
-        {
-          "channel": "suc_khoe_duong_sinh",
-          "video_id": "7710084305799646482",
-          "video_url": "https://www.tiktok.com/@t.an585/video/7710084305799646482",
-          "creator_handle": "@t.an585",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-20 17:50:52",
-          "follow_back_window_until": "2026-11-21 17:50:52"
-        },
-        {
-          "channel": "suc_khoe_duong_sinh",
-          "video_id": "7710079974149033234",
-          "video_url": "https://www.tiktok.com/@.tuyt.hng978/video/7710079974149033234",
-          "creator_handle": "@.tuyt.hng978",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-20 17:51:43",
-          "follow_back_window_until": "2026-11-21 17:51:43"
-        }
-      ]
+      "scrolled_videos": 10,
+      "ads_skipped": 1,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 158.3,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 17:54:35",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 158.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 17:51:48",
       "machine_arch": "x86_64",
@@ -629,21 +532,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 174.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 16:29:08",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 166.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
