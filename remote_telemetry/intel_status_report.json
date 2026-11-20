@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 07:52:06",
+    "timestamp": "2026-11-20 07:55:13",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261120_074809_tiktok_story_7708422783633607937.mp4",
-      "caption": "🤤 Nhà còn trứng mà chưa biết nấu món gì thì thử ngay món trứng rim mắm hành này nha!. Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
-      "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #xh #xuhuongtiktok",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 2,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 159.1,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 07:55:13",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 159.1,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 07:52:06",
       "machine_arch": "x86_64",
@@ -227,21 +241,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 161.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 06:21:27",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 162.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
