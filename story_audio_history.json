@@ -502,7 +502,8 @@
     "880035604",
     "7617810693978475794",
     "7634228146128227605",
-    "7260861479094635783"
+    "7260861479094635783",
+    "7691621144482434312"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -882,7 +883,8 @@
     "gautrucden_yt_8zSR7mEwDcc_p4",
     "7617810754731313927",
     "7634228181114145554",
-    "7260861499701660418"
+    "7260861499701660418",
+    "7324950216690829314"
   ],
   "items": [
     {
@@ -5374,6 +5376,16 @@
       "source_url": "https://www.tiktok.com/@jiedian888/video/7260861479094635783",
       "output_filename": "phu_nu_khi_chat/ready/20261120_132832_tiktok_story_7260861479094635783.mp4",
       "crawled_at": "2026-11-20T13:31:25"
+    },
+    {
+      "channel": "phu_kien_tien_ich",
+      "video_id": "7691621144482434312",
+      "sound_id": "7324950216690829314",
+      "platform": "tiktok",
+      "genre": "phukiendienthoai",
+      "source_url": "https://www.tiktok.com/@thuanphatmobilehcm/video/7691621144482434312",
+      "output_filename": "phu_kien_tien_ich/ready/20261120_135300_tiktok_story_7691621144482434312.mp4",
+      "crawled_at": "2026-11-20T13:53:07"
     }
   ]
 }
