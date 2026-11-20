@@ -1,16 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 14:38:23",
+    "timestamp": "2026-11-20 14:41:11",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "scrolled_videos": 11,
+      "ads_skipped": 2,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 156.8,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 14:41:11",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 2,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 156.8,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 14:38:23",
       "machine_arch": "x86_64",
@@ -197,22 +216,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 231.9,
         "final_url": "https://www.tiktok.com/@cc.trn303?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 13:34:12",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261120_132832_tiktok_story_7260861479094635783.mp4",
-        "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Ababa, cậu ở đó thế nào rồi?. \"Tỏa sáng với ánh sáng của tình yêu của bạn dành cho tôi...\" Ngẫm từng lời mà thấy thấm thía vô cùng!",
-        "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
