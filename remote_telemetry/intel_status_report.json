@@ -1,16 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-20 15:24:18",
+    "timestamp": "2026-11-20 15:27:18",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "scrolled_videos": 11,
+      "ads_skipped": 1,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 168.9,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-20 15:27:18",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 1,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 168.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-20 15:24:18",
       "machine_arch": "x86_64",
@@ -191,22 +210,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 231.6,
         "final_url": "https://www.tiktok.com/@bi.phng.hng87?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-20 14:20:18",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261120_141654_tiktok_story_7690502180263988510.mp4",
-        "caption": "🐉 Tu tiên luôn khiến những người phàm bình thường say mê hướng vọng — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-        "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
