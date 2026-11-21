@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 17:57:15",
+    "timestamp": "2026-11-21 18:03:24",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
       "scrolled_videos": 11,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 150.4,
+      "elapsed_seconds": 156.7,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 18:03:24",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 156.7,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 17:57:15",
       "machine_arch": "x86_64",
@@ -476,21 +491,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 156.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 16:44:55",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 154.8,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
