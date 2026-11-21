@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 11:45:49",
+    "timestamp": "2026-11-21 11:50:06",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261121_114055_tiktok_story_7591852845209537799.mp4",
-      "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: Mẹo vặt cuộc sống không thể bỉ qua nhé bạn. Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
-      "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #tienichgiadinh #savingtips #donnhasach #fyp #xh",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 232.2,
+      "final_url": "https://www.tiktok.com/@thu.hng3278?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 11:50:06",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 232.2,
+        "final_url": "https://www.tiktok.com/@thu.hng3278?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 11:45:49",
       "machine_arch": "x86_64",
@@ -626,21 +640,6 @@
         "post_confirmed": true,
         "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 08:09:50",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 232.3,
-        "final_url": "https://www.tiktok.com/@tiem_nha_phao?lang=vi-VN"
       }
     }
   ]
