@@ -1,154 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 19:58:47",
+    "timestamp": "2026-11-21 20:01:41",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "anvatmoingay.k08",
-        "domFollowing": "0",
-        "domFollowers": "0",
-        "domLikes": "0",
-        "sidebarFollowing": [
-          "/@anvatmoingay.k08"
-        ]
-      },
-      "records": [
-        {
-          "channel": "an_vat_moi_ngay",
-          "video_id": "7707922663246695701",
-          "video_url": "https://www.tiktok.com/@followcheo814/video/7707922663246695701",
-          "creator_handle": "@followcheo814",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": true,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": ""
-              },
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611212056472DC275C008FCAB1F8A45\",\"now\":1795265807000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611212056472DC275C008FCAB1F8A45\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": null,
-            "profile_follow_verify": {
-              "creator": "@followcheo814",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@followcheo814?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": null,
-              "server_follow_ok": true,
-              "ui_confirmed": true,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-21 19:56:56",
-          "follow_back_window_until": "2026-11-22 19:56:56"
-        },
-        {
-          "channel": "an_vat_moi_ngay",
-          "video_id": "7703938335688903943",
-          "video_url": "https://www.tiktok.com/@uni_5346/video/7703938335688903943",
-          "creator_handle": "@uni_5346",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611212057403D7A1A6AFC1D931D1856\",\"now\":1795265860000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611212057403D7A1A6AFC1D931D1856\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 1019,
-              "y": 260,
-              "ariaPressed": false,
-              "svgColor": "rgba(255, 255, 255, .9)",
-              "likeCount": "147"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 1019,
-                "y": 260,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "147"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            }
-          },
-          "interacted_at": "2026-11-21 19:57:52",
-          "follow_back_window_until": "2026-11-22 19:57:52"
-        },
-        {
-          "channel": "an_vat_moi_ngay",
-          "video_id": "7702308848052276500",
-          "video_url": "https://www.tiktok.com/@follow.cheo376/video/7702308848052276500",
-          "creator_handle": "@follow.cheo376",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-21 19:58:42",
-          "follow_back_window_until": "2026-11-22 19:58:42"
-        }
-      ]
+      "scrolled_videos": 11,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 162.4,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 20:01:41",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 162.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 19:58:47",
       "machine_arch": "x86_64",
@@ -735,21 +616,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 150.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 18:44:49",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 151.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
