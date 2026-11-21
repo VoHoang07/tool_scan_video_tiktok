@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 07:51:07",
+    "timestamp": "2026-11-21 07:59:32",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261121_074124_tiktok_story_7629214894973357332.mp4",
-      "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: Tặng kèm lò xông hơi ấm tại nhà! Đây là góc riêng tư chữa lành tâm hồn nhất dành cho người lớn. \"Nó dành cho hai người và còn có ngăn đựng cốc uống nước...\" Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
-      "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #savingtips #donnhasach #meohaymoingay #meovatgiadinh #fyp",
+      "video_file": "20261121_075351_tiktok_story_7702761028018343176.mp4",
+      "caption": "🌿 Về việc ngâm chân. \"Tôi có nên nói với anh ấy rằng như người xưa vẫn nói, người giàu uống thuốc và người nghèo làm ...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #suckhoe #xh",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 07:59:32",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261121_075351_tiktok_story_7702761028018343176.mp4",
+        "caption": "🌿 Về việc ngâm chân. \"Tôi có nên nói với anh ấy rằng như người xưa vẫn nói, người giàu uống thuốc và người nghèo làm ...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #kienthucsuckhoe #thaydoithoiquen #healthyvietnam #suckhoe #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-21 07:51:07",
       "machine_arch": "x86_64",
@@ -225,21 +241,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 239.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 05:47:40",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 156.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
