@@ -1,16 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 01:39:30",
+    "timestamp": "2026-11-22 01:50:36",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
+    "event_type": "warmup_fyp",
     "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261122_013530_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "scrolled_videos": 8,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 232.7,
+      "final_url": "https://www.tiktok.com/@vit.toe.toet/video/7710669382573198613?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 01:50:36",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 8,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 232.7,
+        "final_url": "https://www.tiktok.com/@vit.toe.toet/video/7710669382573198613?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-22 01:39:30",
       "machine_arch": "x86_64",
@@ -215,17 +234,6 @@
         "post_confirmed": true,
         "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 23:12:31",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261121_230851_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
