@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 08:09:50",
+    "timestamp": "2026-11-21 08:37:40",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 232.3,
-      "final_url": "https://www.tiktok.com/@tiem_nha_phao?lang=vi-VN"
+      "video_file": "20261121_083426_tiktok_story_7539911552833490183.mp4",
+      "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Khi bạn biết mình là ai, cần gì và xứng đáng với điều gì - bạn không còn dễ bị lay động bởi những điều rẻ mạt. Biết giá trị của mình - Bạn đã chiến thắng nửa cuộc đời. Ngẫm từng lời mà thấy thấm thía vô cùng!",
+      "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 08:37:40",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261121_083426_tiktok_story_7539911552833490183.mp4",
+        "caption": "🌹 Đôi khi đi qua những ngày giông bão mới hiểu giá trị của sự bình yên: Khi bạn biết mình là ai, cần gì và xứng đáng với điều gì - bạn không còn dễ bị lay động bởi những điều rẻ mạt. Biết giá trị của mình - Bạn đã chiến thắng nửa cuộc đời. Ngẫm từng lời mà thấy thấm thía vô cùng!",
+        "hashtags": "#tamlyhonnhan #phunuhienđai #giadinhhanhphuc #chuyenvochong #tamlyhoc #trietlytinhyeu #phunukhichat #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-21 08:09:50",
       "machine_arch": "x86_64",
@@ -226,21 +243,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 157.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 06:07:13",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 2,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 160.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
