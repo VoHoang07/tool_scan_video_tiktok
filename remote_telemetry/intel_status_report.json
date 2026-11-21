@@ -1,20 +1,177 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 20:14:28",
+    "timestamp": "2026-11-21 20:19:47",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "event_type": "filter24h",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 164.3,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "phu_kien_tien_ich",
+          "video_id": "7710472969474133268",
+          "video_url": "https://www.tiktok.com/@lamhoa_xkld_tructiep/video/7710472969474133268",
+          "creator_handle": "@lamhoa_xkld_tructiep",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Nhạc với hình hợp nhau thực sự, xem đi xem lại vẫn thấy cuốn 🥰",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261121211834DDEC14EC74772C46769C\",\"now\":1795267114000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261121211834DDEC14EC74772C46769C\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261121211902C2582FB5C71135072AC7\",\"now\":1795267142000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261121211902C2582FB5C71135072AC7\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 804.34375,
+              "y": 359,
+              "ariaPressed": false,
+              "svgColor": "rgba(255, 255, 255, .9)",
+              "likeCount": "0"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 804.34375,
+                "y": 359,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "0"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@lamhoa_xkld_tructiep",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@lamhoa_xkld_tructiep?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-21 20:19:11",
+          "follow_back_window_until": "2026-11-22 20:19:11"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 20:19:47",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "phu_kien_tien_ich",
+            "video_id": "7710472969474133268",
+            "video_url": "https://www.tiktok.com/@lamhoa_xkld_tructiep/video/7710472969474133268",
+            "creator_handle": "@lamhoa_xkld_tructiep",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Nhạc với hình hợp nhau thực sự, xem đi xem lại vẫn thấy cuốn 🥰",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261121211834DDEC14EC74772C46769C\",\"now\":1795267114000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261121211834DDEC14EC74772C46769C\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261121211902C2582FB5C71135072AC7\",\"now\":1795267142000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261121211902C2582FB5C71135072AC7\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 804.34375,
+                "y": 359,
+                "ariaPressed": false,
+                "svgColor": "rgba(255, 255, 255, .9)",
+                "likeCount": "0"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 804.34375,
+                  "y": 359,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(255, 255, 255, .9)",
+                  "likeCount": "0"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@lamhoa_xkld_tructiep",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@lamhoa_xkld_tructiep?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-21 20:19:11",
+            "follow_back_window_until": "2026-11-22 20:19:11"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-21 20:14:28",
       "machine_arch": "x86_64",
@@ -544,21 +701,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 168.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 18:58:13",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 155.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
