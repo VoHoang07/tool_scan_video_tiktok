@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 17:42:22",
+    "timestamp": "2026-11-21 17:49:30",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
+      "scrolled_videos": 9,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 156.3,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 228.4,
+      "final_url": "https://www.tiktok.com/@trangtit.23?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 17:49:30",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 228.4,
+        "final_url": "https://www.tiktok.com/@trangtit.23?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 17:42:22",
       "machine_arch": "x86_64",
@@ -406,21 +421,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 231.8,
         "final_url": "https://www.tiktok.com/@hoahongm16.3?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 16:25:42",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 166.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
