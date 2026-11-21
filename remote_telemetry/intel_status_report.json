@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 11:57:26",
+    "timestamp": "2026-11-21 12:03:33",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+    "event_type": "upload",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 163.3,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261121_120007_tiktok_story_7706023959367666957.mp4",
+      "caption": "🌿 BẢO VỆ CẶP THẬN KHỎE MẠNH MỖI NGÀY ĐỂ CƠ THỂ LUÔN TRÀN ĐẦY NĂNG LƯỢNG. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 12:03:33",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261121_120007_tiktok_story_7706023959367666957.mp4",
+        "caption": "🌿 BẢO VỆ CẶP THẬN KHỎE MẠNH MỖI NGÀY ĐỂ CƠ THỂ LUÔN TRÀN ĐẦY NĂNG LƯỢNG. Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-21 11:57:26",
       "machine_arch": "x86_64",
@@ -721,22 +738,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 230.5,
         "final_url": "https://www.tiktok.com/@nguyt.em201?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 09:13:21",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261121_090643_tiktok_story_7653464116094389524.mp4",
-        "caption": "🐾 Tắt cài đặt trên iPhone để cải thiện thời lượng pin trong một giây — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Vui lòng thu thập dữ liệu ít thường xuyên hơn...\" Theo bạn tập tiếp theo sẽ ra sao?",
-        "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
