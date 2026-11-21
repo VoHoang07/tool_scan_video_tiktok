@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 15:47:29",
+    "timestamp": "2026-11-21 15:54:59",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 157.3,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 230.3,
+      "final_url": "https://www.tiktok.com/@gia.huy8853?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 15:54:59",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 230.3,
+        "final_url": "https://www.tiktok.com/@gia.huy8853?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 15:47:29",
       "machine_arch": "x86_64",
@@ -293,22 +308,6 @@
             "follow_back_window_until": "2026-11-22 13:20:10"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-21 13:18:43",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261121_131003_tiktok_story_7705687486030253313.mp4",
-        "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Một số mối quan hệ kết thúc trong biển người và trở nên yên bình. Nhân danh một người qua đường, tôi chúc mỗi người chúng ta những điều tốt lành. Tạm biệt nhé, người lạ quen thuộc nhất. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
-        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #fyp #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
