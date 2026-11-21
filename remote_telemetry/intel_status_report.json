@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 02:32:49",
+    "timestamp": "2026-11-22 02:42:33",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 232.4,
-      "final_url": "https://www.tiktok.com/@_haianhbui_/video/7710592054098922773?lang=vi-VN"
+      "video_file": "20261122_023858_tiktok_story_6950463456352931073.mp4",
+      "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Sau sảy thai bao lâu thì có kinh nguyệt trở lại?. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #xh #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 02:42:33",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261122_023858_tiktok_story_6950463456352931073.mp4",
+        "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Sau sảy thai bao lâu thì có kinh nguyệt trở lại?. Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #kynanggiaotiep #yeubanthanhon #chuyenvochong #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-22 02:32:49",
       "machine_arch": "x86_64",
@@ -209,22 +226,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 23:58:37",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261121_235451_tiktok_story_7668914693595008263.mp4",
-        "caption": "👶 Con tôi sẽ là người tiếp nối Tâm Thẩm Mỹ Hàn Anh ⁠ ⁠ ⁠ ⁠ ⁠. Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
-        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #daycontulap #nuoidaycon #kynanglamchame #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }

@@ -534,7 +534,8 @@
     "7668914693595008263",
     "7250701764029140229",
     "7678351120032369941",
-    "7573925072457858675"
+    "7573925072457858675",
+    "6950463456352931073"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -946,7 +947,8 @@
     "7668914717839362837",
     "7104602229139229466",
     "7678351158876556039",
-    "7573924893576170276"
+    "7573924893576170276",
+    "6950496147253283586"
   ],
   "items": [
     {
@@ -5958,6 +5960,16 @@
       "source_url": "https://www.youtube.com/watch?v=2lzzVdKb4sQ&t=16s",
       "output_filename": "audio_dem_khuyen/ready/20261122_015631_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
       "crawled_at": "2026-11-22T01:57:44"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "6950463456352931073",
+      "sound_id": "6950496147253283586",
+      "platform": "tiktok",
+      "genre": "tamlyhoc",
+      "source_url": "https://www.tiktok.com/@bacsithuylinh/video/6950463456352931073",
+      "output_filename": "phu_nu_khi_chat/ready/20261122_023858_tiktok_story_6950463456352931073.mp4",
+      "crawled_at": "2026-11-22T02:39:05"
     }
   ]
 }
