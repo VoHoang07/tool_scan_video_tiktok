@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 06:32:43",
+    "timestamp": "2026-11-22 06:38:37",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 11,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 156.5,
+      "elapsed_seconds": 151.4,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 06:38:37",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 151.4,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-22 06:32:43",
       "machine_arch": "x86_64",
@@ -223,21 +238,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 152.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 05:05:07",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 231.4,
-        "final_url": "https://www.tiktok.com/@lys_has_hannas/video/7707883814298586369?lang=vi-VN"
       }
     }
   ]
