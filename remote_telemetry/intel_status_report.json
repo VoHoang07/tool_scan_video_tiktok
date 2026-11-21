@@ -1,20 +1,177 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 11:04:01",
+    "timestamp": "2026-11-21 11:32:12",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "filter24h",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 182.5,
-      "final_url": "chrome-error://chromewebdata/"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "suc_khoe_duong_sinh",
+          "video_id": "7710411864617831701",
+          "video_url": "https://www.tiktok.com/@kv290502/video/7710411864617831701",
+          "creator_handle": "@kv290502",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Cách làm video của bạn cuốn thật sự, xem một mạch tới cuối luôn 🌟",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261121123054AA50F11F94B4E5F9A211\",\"now\":1795235454000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261121123054AA50F11F94B4E5F9A211\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611211231329F01F2C56F4F912468D9\",\"now\":1795235492000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611211231329F01F2C56F4F912468D9\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 837.78125,
+              "y": 441,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "9"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 837.78125,
+                "y": 441,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "9"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@kv290502",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@kv290502?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-21 11:31:39",
+          "follow_back_window_until": "2026-11-22 11:31:39"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 11:32:12",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_filter24h_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "suc_khoe_duong_sinh",
+            "video_id": "7710411864617831701",
+            "video_url": "https://www.tiktok.com/@kv290502/video/7710411864617831701",
+            "creator_handle": "@kv290502",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Cách làm video của bạn cuốn thật sự, xem một mạch tới cuối luôn 🌟",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261121123054AA50F11F94B4E5F9A211\",\"now\":1795235454000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261121123054AA50F11F94B4E5F9A211\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611211231329F01F2C56F4F912468D9\",\"now\":1795235492000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"202611211231329F01F2C56F4F912468D9\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 837.78125,
+                "y": 441,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "9"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 837.78125,
+                  "y": 441,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "9"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@kv290502",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@kv290502?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-21 11:31:39",
+            "follow_back_window_until": "2026-11-22 11:31:39"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-21 11:04:01",
       "machine_arch": "x86_64",
@@ -554,22 +711,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 07:51:07",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261121_074124_tiktok_story_7629214894973357332.mp4",
-        "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: Tặng kèm lò xông hơi ấm tại nhà! Đây là góc riêng tư chữa lành tâm hồn nhất dành cho người lớn. \"Nó dành cho hai người và còn có ngăn đựng cốc uống nước...\" Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
-        "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #savingtips #donnhasach #meohaymoingay #meovatgiadinh #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
