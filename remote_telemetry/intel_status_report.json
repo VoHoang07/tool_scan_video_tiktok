@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 14:37:51",
+    "timestamp": "2026-11-21 15:06:40",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.3,
-      "final_url": "https://www.tiktok.com/@thaitrangnhung?lang=vi-VN"
+      "video_file": "20261121_145928_tiktok_story_7671864793602493716.mp4",
+      "caption": "😂 Bố ơi, làm sao con đến được đây?. \"Vậy tại sao mẹ lại đặt mẹ vào bụng mẹ mẹ...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #xh #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 15:06:40",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261121_145928_tiktok_story_7671864793602493716.mp4",
+        "caption": "😂 Bố ơi, làm sao con đến được đây?. \"Vậy tại sao mẹ lại đặt mẹ vào bụng mẹ mẹ...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-21 14:37:51",
       "machine_arch": "x86_64",
@@ -525,22 +542,6 @@
             "follow_back_window_until": "2026-11-22 12:16:05"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-21 12:13:26",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261121_120928_tiktok_story_880034602_gautrucden_v1_s346_p2.mp4",
-        "caption": "🐼 Quỷ Lộn Ngược Trong Nhà — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
-        "hashtags": "#quylonnguoctrongnha #phan2 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
