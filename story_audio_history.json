@@ -522,7 +522,8 @@
     "7395215213760433447",
     "7591852845209537799",
     "7706023959367666957",
-    "880034602"
+    "880034602",
+    "7707860309129661716"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -922,7 +923,8 @@
     "7395214792685783847",
     "7591852893680159505",
     "7706024020084329229",
-    "gautrucden_yt_pLFB1MQpAns_p2"
+    "gautrucden_yt_pLFB1MQpAns_p2",
+    "7707860397428083508"
   ],
   "items": [
     {
@@ -5714,6 +5716,16 @@
       "source_url": "https://www.youtube.com/watch?v=pLFB1MQpAns&t=236s",
       "output_filename": "video_AI_hay/ready/20261121_120928_tiktok_story_880034602_gautrucden_v1_s346_p2.mp4",
       "crawled_at": "2026-11-21T12:10:29"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "7707860309129661716",
+      "sound_id": "7707860397428083508",
+      "platform": "tiktok",
+      "genre": "anvat",
+      "source_url": "https://www.tiktok.com/@bevietnamese1/video/7707860309129661716",
+      "output_filename": "an_vat_moi_ngay/ready/20261121_122829_tiktok_story_7707860309129661716.mp4",
+      "crawled_at": "2026-11-21T12:28:39"
     }
   ]
 }

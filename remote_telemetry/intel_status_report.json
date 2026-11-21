@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 12:26:29",
+    "timestamp": "2026-11-21 12:31:56",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.2,
-      "final_url": "https://www.tiktok.com/@meo_meo0789/video/7710298309860068628?lang=vi-VN"
+      "video_file": "20261121_122829_tiktok_story_7707860309129661716.mp4",
+      "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Có thế thôi mà t mê quá trời :))). Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+      "hashtags": "#amthuctiktok #anvatmoingay #doanvat #yeubep #anchayngon #reviewdoan #xuhuong #viral",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 12:31:56",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261121_122829_tiktok_story_7707860309129661716.mp4",
+        "caption": "🍳 Vào bếp nhanh gọn chỉ với vài bước: Có thế thôi mà t mê quá trời :))). Hương vị đậm đà cực kỳ đưa cơm, lưu lại cuối tuần trổ tài cho cả nhà thưởng thức nhé!",
+        "hashtags": "#amthuctiktok #anvatmoingay #doanvat #yeubep #anchayngon #reviewdoan #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-21 12:26:29",
       "machine_arch": "x86_64",
@@ -571,21 +588,6 @@
             "follow_back_window_until": "2026-11-22 11:00:16"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-21 10:34:19",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 227.7,
-        "final_url": "https://www.tiktok.com/@yhupf4?lang=vi-VN"
       }
     }
   ]
