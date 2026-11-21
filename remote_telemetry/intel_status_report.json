@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 23:34:13",
+    "timestamp": "2026-11-21 23:43:01",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261121_233033_tiktok_story_7588387390079782164.mp4",
-      "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: mẹo hay mỗi ngày. Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
-      "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #decorphong #tienichgiadinh #savingtips #fyp #xh",
+      "video_file": "20261121_233838_tiktok_story_7247506150738906386.mp4",
+      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Chị em chân tay lạnh nhìn qua đây Aite để em ngâm nửa kia cho chị nhé🥰. \"Bà trà này phải đảo bằng tay để giữ lạnh vào mùa đông...\" Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
+      "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 23:43:01",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261121_233838_tiktok_story_7247506150738906386.mp4",
+        "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Chị em chân tay lạnh nhìn qua đây Aite để em ngâm nửa kia cho chị nhé🥰. \"Bà trà này phải đảo bằng tay để giữ lạnh vào mùa đông...\" Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
+        "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-21 23:34:13",
       "machine_arch": "x86_64",
@@ -221,21 +237,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 164.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 21:43:29",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 164.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
