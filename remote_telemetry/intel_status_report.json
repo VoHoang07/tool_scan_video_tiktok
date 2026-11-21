@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 00:59:16",
+    "timestamp": "2026-11-22 01:10:32",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261122_005253_douyin_story_7573925072457858675.mp4",
-      "caption": "⚔️ Chàng trai trẻ ơi, nếu bạn đã gieo một hạt giống tham vọng! Và vào ngày đó khi bạn dũng cảm đối mặt với thử thách này thì dù có khó khăn hay mệt mỏi đến đâu cũng hãy chạy về đích trước khi khóc nhé. \"Đúng hơn, ham muốn sống phát sinh từ sự than thở và tuyệt vọng...\" Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-      "hashtags": "#tutien #huyenhuyen #tienhiep #phimhoathinh3d #hoathinh3dtrungquoc #aitutien #viral #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 231.5,
+      "final_url": "https://www.tiktok.com/@vit.toe.toet/video/7710669382573198613?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 01:10:32",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.5,
+        "final_url": "https://www.tiktok.com/@vit.toe.toet/video/7710669382573198613?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-22 00:59:16",
       "machine_arch": "x86_64",
@@ -223,21 +237,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 161.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 22:38:24",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 154.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
