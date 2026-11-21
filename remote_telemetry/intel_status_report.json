@@ -1,154 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 09:56:22",
+    "timestamp": "2026-11-21 10:00:31",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "video_hay4",
-        "domFollowing": "371",
-        "domFollowers": "444",
-        "domLikes": "124",
-        "sidebarFollowing": [
-          "/@video_hay4",
-          "/@zilldidau",
-          "/@h.hi1554",
-          "/@l.mn.niii",
-          "/@oanhnghimth4",
-          "/@boloc24hcheoflo"
-        ]
-      },
-      "records": [
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7710263781556931858",
-          "video_url": "https://www.tiktok.com/@meriviushoppinh/video/7710263781556931858",
-          "creator_handle": "@meriviushoppinh",
-          "watched_seconds": 26.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": true,
-            "6_commented_after_follow": true
-          },
-          "comment_text": "Video chỉnh chu quá, chúc bạn sớm lên xu hướng nha 💯",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026112110541904BF4C2F585DA3EC1131\",\"now\":1795229660000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026112110541904BF4C2F585DA3EC1131\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "follow_responses": [
-              {
-                "status": 200,
-                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261121105446A7E36392D3CC251F3737\",\"now\":1795229686000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261121105446A7E36392D3CC251F3737\"},\"status_code\":0,\"status_msg\":\"\"}"
-              }
-            ],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 795.15625,
-              "y": 421,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "14"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 795.15625,
-                "y": 421,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "14"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": true
-            },
-            "profile_follow_verify": {
-              "creator": "@meriviushoppinh",
-              "nav_method": "spa_os_click",
-              "profile_url": "https://www.tiktok.com/@meriviushoppinh?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Đã follow",
-              "init_relation": null,
-              "server_follow_ok": true,
-              "ui_confirmed": true,
-              "persisted": true,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-21 09:54:55",
-          "follow_back_window_until": "2026-11-22 09:54:55"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7710134824735886612",
-          "video_url": "https://www.tiktok.com/@b.yu7178/video/7710134824735886612",
-          "creator_handle": "@b.yu7178",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-21 09:55:41",
-          "follow_back_window_until": "2026-11-22 09:55:41"
-        },
-        {
-          "channel": "video_AI_hay",
-          "video_id": "7709875249407577352",
-          "video_url": "https://www.tiktok.com/@quachtrong1136/video/7709875249407577352",
-          "creator_handle": "@quachtrong1136",
-          "watched_seconds": 15.0,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": false,
-            "4_added_favorite": false,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            }
-          },
-          "interacted_at": "2026-11-21 09:56:17",
-          "follow_back_window_until": "2026-11-22 09:56:17"
-        }
-      ]
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 238.6,
+      "final_url": "https://www.tiktok.com/@nh.vy076/video/7708759554586168597?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 10:00:31",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 238.6,
+        "final_url": "https://www.tiktok.com/@nh.vy076/video/7708759554586168597?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 09:56:22",
       "machine_arch": "x86_64",
@@ -497,21 +378,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 154.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 06:51:16",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 165.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
