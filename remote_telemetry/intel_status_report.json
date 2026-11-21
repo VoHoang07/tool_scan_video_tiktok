@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 07:33:16",
+    "timestamp": "2026-11-21 07:51:07",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261121_072845_tiktok_story_880034703_gautrucden_v1_s347_p3.mp4",
-      "caption": "🌙 Âm Hôn - Trăm Rắn Khiêng Quan — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-      "hashtags": "#amhontramrankhiengquan #phan3 #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden #chuyenke",
+      "video_file": "20261121_074124_tiktok_story_7629214894973357332.mp4",
+      "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: Tặng kèm lò xông hơi ấm tại nhà! Đây là góc riêng tư chữa lành tâm hồn nhất dành cho người lớn. \"Nó dành cho hai người và còn có ngăn đựng cốc uống nước...\" Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
+      "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #savingtips #donnhasach #meohaymoingay #meovatgiadinh #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 07:51:07",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261121_074124_tiktok_story_7629214894973357332.mp4",
+        "caption": "🏠 Trước giờ cứ làm theo cách cũ tốn bao nhiêu thời gian: Tặng kèm lò xông hơi ấm tại nhà! Đây là góc riêng tư chữa lành tâm hồn nhất dành cho người lớn. \"Nó dành cho hai người và còn có ngăn đựng cốc uống nước...\" Biết cách này sớm hơn có phải nhàn tênh không! Nhà bạn đã thử mẹo này chưa?",
+        "hashtags": "#dogiadungthongminh #meovatcuocsong #nhabepthongminh #savingtips #donnhasach #meohaymoingay #meovatgiadinh #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-21 07:33:16",
       "machine_arch": "x86_64",
@@ -224,21 +240,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 156.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 05:41:35",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 157.2,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
