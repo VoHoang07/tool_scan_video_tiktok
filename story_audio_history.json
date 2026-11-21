@@ -529,7 +529,8 @@
     "7671864793602493716",
     "880034101",
     "7588387390079782164",
-    "7247506150738906386"
+    "7247506150738906386",
+    "7474506358637808904"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -936,7 +937,8 @@
     "7671864829052848903",
     "gautrucden_yt_s4Y0s_iQC1s_p1",
     "7588387441869294357",
-    "7247506158406191874"
+    "7247506158406191874",
+    "7327024165507450882"
   ],
   "items": [
     {
@@ -5818,6 +5820,16 @@
       "source_url": "https://www.tiktok.com/@chanxon88/video/7247506150738906386",
       "output_filename": "suc_khoe_duong_sinh/ready/20261121_233838_tiktok_story_7247506150738906386.mp4",
       "crawled_at": "2026-11-21T23:39:18"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "7474506358637808904",
+      "sound_id": "7327024165507450882",
+      "platform": "tiktok",
+      "genre": "anvat",
+      "source_url": "https://www.tiktok.com/@thaydoicungmemy/video/7474506358637808904",
+      "output_filename": "an_vat_moi_ngay/ready/20261121_234713_tiktok_story_7474506358637808904.mp4",
+      "crawled_at": "2026-11-21T23:47:24"
     }
   ]
 }
