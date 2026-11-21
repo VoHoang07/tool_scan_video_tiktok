@@ -5898,6 +5898,26 @@
       "source_url": "https://www.douyin.com/video/7573925072457858675",
       "output_filename": "tu_chan_gioi/ready/20261122_005253_douyin_story_7573925072457858675.mp4",
       "crawled_at": "2026-11-22T00:55:33"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990014301",
+      "sound_id": "bongcuc_yt_2lzzVdKb4sQ_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=2lzzVdKb4sQ&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261122_011518_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+      "crawled_at": "2026-11-22T01:16:28"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990014301",
+      "sound_id": "bongcuc_yt_2lzzVdKb4sQ_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=2lzzVdKb4sQ&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261122_011633_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+      "crawled_at": "2026-11-22T01:17:47"
     }
   ]
 }
