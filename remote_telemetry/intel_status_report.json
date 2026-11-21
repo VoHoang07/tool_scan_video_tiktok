@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 19:20:55",
+    "timestamp": "2026-11-21 19:27:08",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
     "details": {
-      "scrolled_videos": 8,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 228.3,
-      "final_url": "https://www.tiktok.com/@sunychau.1999?lang=vi-VN"
+      "elapsed_seconds": 150.8,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 19:27:08",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 150.8,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-21 19:20:55",
       "machine_arch": "x86_64",
@@ -581,21 +596,6 @@
             "follow_back_window_until": "2026-11-22 18:15:29"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-21 18:09:31",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 164.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
