@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 12:06:29",
+    "timestamp": "2026-11-21 12:13:26",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "event_type": "upload",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "scrolled_videos": 8,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 150.4,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261121_120928_tiktok_story_880034602_gautrucden_v1_s346_p2.mp4",
+      "caption": "🐼 Quỷ Lộn Ngược Trong Nhà — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
+      "hashtags": "#quylonnguoctrongnha #phan2 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 0,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 12:13:26",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261121_120928_tiktok_story_880034602_gautrucden_v1_s346_p2.mp4",
+        "caption": "🐼 Quỷ Lộn Ngược Trong Nhà — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
+        "hashtags": "#quylonnguoctrongnha #phan2 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-21 12:06:29",
       "machine_arch": "x86_64",
@@ -721,22 +738,6 @@
             "follow_back_window_until": "2026-11-22 09:56:17"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-21 09:53:18",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261121_094852_douyin_story_7395215213760433447.mp4",
-        "caption": "🐉 Thế giới đầy rẫy sự nguy hiểm này — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! \"Chỉ bằng cách này, cuối cùng chúng ta mới có thể giành chiến thắng...\" Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-        "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
