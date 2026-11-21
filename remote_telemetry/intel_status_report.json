@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-21 08:41:57",
+    "timestamp": "2026-11-21 09:13:21",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
+    "event_type": "upload",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 230.9,
-      "final_url": "https://www.tiktok.com/@chuyen.chua.ke.ai/video/7710119442776067349?lang=vi-VN"
+      "video_file": "20261121_090643_tiktok_story_7653464116094389524.mp4",
+      "caption": "🐾 Tắt cài đặt trên iPhone để cải thiện thời lượng pin trong một giây — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Vui lòng thu thập dữ liệu ít thường xuyên hơn...\" Theo bạn tập tiếp theo sẽ ra sao?",
+      "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-21 09:13:21",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261121_090643_tiktok_story_7653464116094389524.mp4",
+        "caption": "🐾 Tắt cài đặt trên iPhone để cải thiện thời lượng pin trong một giây — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Vui lòng thu thập dữ liệu ít thường xuyên hơn...\" Theo bạn tập tiếp theo sẽ ra sao?",
+        "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-21 08:41:57",
       "machine_arch": "x86_64",
@@ -227,21 +244,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 150.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-21 06:19:33",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 1,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 164.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
