@@ -553,7 +553,8 @@
     "7672940861218442516",
     "880034603",
     "7638604734567320840",
-    "7397791602674076965"
+    "7397791602674076965",
+    "7710632282578537780"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -984,7 +985,8 @@
     "7672940914803591957",
     "gautrucden_yt_pLFB1MQpAns_p3",
     "7638604765429058312",
-    "7397791503277460262"
+    "7397791503277460262",
+    "7710632323204647686"
   ],
   "items": [
     {
@@ -6286,6 +6288,16 @@
       "source_url": "https://www.douyin.com/video/7397791602674076965",
       "output_filename": "tu_chan_gioi/ready/20261123_004024_douyin_story_7397791602674076965.mp4",
       "crawled_at": "2026-11-23T00:42:35"
+    },
+    {
+      "channel": "an_vat_moi_ngay",
+      "video_id": "7710632282578537780",
+      "sound_id": "7710632323204647686",
+      "platform": "tiktok",
+      "genre": "anvat",
+      "source_url": "https://www.tiktok.com/@vaobepmoingaynhe/video/7710632282578537780",
+      "output_filename": "an_vat_moi_ngay/ready/20261123_005131_tiktok_story_7710632282578537780.mp4",
+      "crawled_at": "2026-11-23T00:51:41"
     }
   ]
 }
