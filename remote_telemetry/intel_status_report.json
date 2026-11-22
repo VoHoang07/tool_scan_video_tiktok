@@ -1,16 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 01:20:43",
+    "timestamp": "2026-11-23 01:27:27",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261123_011710_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "video_file": "20261123_012247_tiktok_story_7585904882326981896.mp4",
+      "caption": "💡 Mẹo nhà Mình - P6. Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #yeubep #decorphong #tienichgiadinh #xuhuong #viral",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 01:27:27",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261123_012247_tiktok_story_7585904882326981896.mp4",
+        "caption": "💡 Mẹo nhà Mình - P6. Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #yeubep #decorphong #tienichgiadinh #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-23 01:20:43",
       "machine_arch": "x86_64",
@@ -209,17 +230,6 @@
         "post_confirmed": true,
         "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 23:10:42",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261122_230521_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
