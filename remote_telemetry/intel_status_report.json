@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 07:26:27",
+    "timestamp": "2026-11-22 07:29:29",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261122_071756_tiktok_story_7662733606166482184.mp4",
-      "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: Mẹo đánh bay cái nóng mùa hè. \"Bởi vì bạn thông minh và bạn biết đấy, hãy đổ sữa chua vào dưa hấu đông lạnh...\" Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
-      "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #giadungtienich #noitrothongminh #yeubep #viral #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 157.3,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 07:29:29",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 157.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-22 07:26:27",
       "machine_arch": "x86_64",
@@ -225,21 +239,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 160.1,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 05:54:59",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 154.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
