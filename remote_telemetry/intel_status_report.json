@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 12:17:18",
+    "timestamp": "2026-11-22 12:30:02",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261122_121229_tiktok_story_880034704_gautrucden_v1_s347_p4.mp4",
-      "caption": "⚡ Âm Hôn - Trăm Rắn Khiêng Quan (Phần 4/8) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-      "hashtags": "#amhontramrankhiengquan #phan4 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
+      "video_file": "20261122_121937_tiktok_story_7704616840743406900.mp4",
+      "caption": "🌿 Điều gì sẽ xảy ra nếu bạn kiễng chân mỗi ngày trong 30 ngày?. \"Ngồi ở phía sau và bắp chân của bạn sẽ được chiên...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 12:30:02",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261122_121937_tiktok_story_7704616840743406900.mp4",
+        "caption": "🌿 Điều gì sẽ xảy ra nếu bạn kiễng chân mỗi ngày trong 30 ngày?. \"Ngồi ở phía sau và bắp chân của bạn sẽ được chiên...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-22 12:17:18",
       "machine_arch": "x86_64",
@@ -467,17 +483,6 @@
             "follow_back_window_until": "2026-11-23 10:44:52"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-22 10:41:36",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
