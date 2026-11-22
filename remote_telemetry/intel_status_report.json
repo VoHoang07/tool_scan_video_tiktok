@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 01:33:15",
+    "timestamp": "2026-11-23 01:41:26",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261123_012921_tiktok_story_7665602421892074773.mp4",
-      "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Muốn da đẹp từ bên trong thì huyết phải tốt nha. Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
-      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #xh",
+      "video_file": "20261123_013601_tiktok_story_7694933339169377554.mp4",
+      "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Khi còn trẻ, tôi luôn nghĩ rằng tương lai còn dài và còn nhiều cơ hội. Kết quả là chúng ta lãng phí thời gian một cách bừa bãi, dễ dàng bỏ lỡ số phận và không bao giờ trân trọng những người đối xử chân thành với mình. Phải đến khi trải nghiệm thế giới và nếm trải hơi ấm ấm áp của bản chất con người, tôi mới dần hiểu được điều gì đáng trân trọng và điều gì chỉ có thể tiếc nuối. Khi nhìn lại, tôi nhận ra rằng tuổi thanh xuân mà tôi từng nghĩ sẽ không bao giờ kết thúc, giờ đã kết thúc mà tôi không hề hay biết. Điều hối tiếc lớn nhất của cuộc đời không phải là mất đi một thứ gì đó mà là không biết trân trọng khi có nó. Sau khi đánh mất nó, bạn nhận ra rằng mọi thứ không thể lấy lại được nữa. \"Nhưng sau này tôi nhận ra rằng mọi chuyện không thể lặp lại được...\" Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+      "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 01:41:26",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261123_013601_tiktok_story_7694933339169377554.mp4",
+        "caption": "🌷 Phụ nữ càng trưởng thành càng thích sự giản đơn: Khi còn trẻ, tôi luôn nghĩ rằng tương lai còn dài và còn nhiều cơ hội. Kết quả là chúng ta lãng phí thời gian một cách bừa bãi, dễ dàng bỏ lỡ số phận và không bao giờ trân trọng những người đối xử chân thành với mình. Phải đến khi trải nghiệm thế giới và nếm trải hơi ấm ấm áp của bản chất con người, tôi mới dần hiểu được điều gì đáng trân trọng và điều gì chỉ có thể tiếc nuối. Khi nhìn lại, tôi nhận ra rằng tuổi thanh xuân mà tôi từng nghĩ sẽ không bao giờ kết thúc, giờ đã kết thúc mà tôi không hề hay biết. Điều hối tiếc lớn nhất của cuộc đời không phải là mất đi một thứ gì đó mà là không biết trân trọng khi có nó. Sau khi đánh mất nó, bạn nhận ra rằng mọi thứ không thể lấy lại được nữa. \"Nhưng sau này tôi nhận ra rằng mọi chuyện không thể lặp lại được...\" Giữ cho mình một tâm thế độc lập và dịu dàng nhé các chị em!",
+        "hashtags": "#giadinhhanhphuc #phunukhichat #tamlyhonnhan #trietlytinhyeu #phunulamdep #chualanhtamhon #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-23 01:33:15",
       "machine_arch": "x86_64",
@@ -215,21 +231,6 @@
       "details": {
         "video_file": "20261122_232439_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 23:21:24",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 154.0,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
