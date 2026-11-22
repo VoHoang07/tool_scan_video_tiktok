@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 01:55:05",
+    "timestamp": "2026-11-23 02:01:58",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
+    "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.2,
-      "final_url": "https://www.tiktok.com/@macdepdienxinh/video/7710905164818894087?lang=vi-VN"
+      "video_file": "20261123_015815_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 02:01:58",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261123_015815_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-23 01:55:05",
       "machine_arch": "x86_64",
@@ -218,22 +225,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 257.7,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 00:06:45",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261122_235425_tiktok_story_7638604734567320840.mp4",
-        "caption": "🥰 Nhật ký gia đình siêu lầy: 3xat63cin9u2y52 nhờ chị gái giúp làm bài tập. \"Mẹ biết, Nó thuộc về chị mẹ, Tại sao con lại làm bài tập về nhà cho em gái con...\" Xem phản ứng của bé ở cuối video mà cười xỉu! Mọi người chấm độ lém lỉnh này mấy điểm?",
-        "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
