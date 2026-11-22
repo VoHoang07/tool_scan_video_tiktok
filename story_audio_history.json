@@ -547,7 +547,8 @@
     "880034704",
     "7704616840743406900",
     "7665390850695875848",
-    "7692079496459078930"
+    "7692079496459078930",
+    "7161818009273732379"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -972,7 +973,8 @@
     "gautrucden_yt_jVVaOjuRx8c_p4",
     "7704616872524253958",
     "7664340891250789136",
-    "7692079525546478354"
+    "7692079525546478354",
+    "7153978649136401179"
   ],
   "items": [
     {
@@ -6114,6 +6116,16 @@
       "source_url": "https://www.tiktok.com/@mombaco.baby/video/7692079496459078930",
       "output_filename": "nuoi_con_eq/ready/20261122_130938_tiktok_story_7692079496459078930.mp4",
       "crawled_at": "2026-11-22T13:09:41"
+    },
+    {
+      "channel": "phu_nu_khi_chat",
+      "video_id": "7161818009273732379",
+      "sound_id": "7153978649136401179",
+      "platform": "tiktok",
+      "genre": "tamlyhoc",
+      "source_url": "https://www.tiktok.com/@fbkimminh/video/7161818009273732379",
+      "output_filename": "phu_nu_khi_chat/ready/20261122_133734_tiktok_story_7161818009273732379.mp4",
+      "crawled_at": "2026-11-22T13:37:37"
     }
   ]
 }
