@@ -1,16 +1,177 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 10:19:01",
+    "timestamp": "2026-11-22 10:24:04",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "filter24h",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
     "details": {
-      "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "baby_AI",
+          "video_id": "7710575531544087809",
+          "video_url": "https://www.tiktok.com/@tiemnhaxinhh/video/7710575531544087809",
+          "creator_handle": "@tiemnhaxinhh",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Ý tưởng video sáng tạo và cuốn hút thật sự, chúc kênh mau lên xu hướng nha 💯",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611221122508C5415AD87070F4757A2\",\"now\":1795317771000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611221122508C5415AD87070F4757A2\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261122112320A7AB622B96EAE63D65CD\",\"now\":1795317800000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261122112320A7AB622B96EAE63D65CD\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 833.40625,
+              "y": 461,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "51"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 833.40625,
+                "y": 461,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "51"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@tiemnhaxinhh",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@tiemnhaxinhh?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-22 10:23:29",
+          "follow_back_window_until": "2026-11-23 10:23:29"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 10:24:04",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_filter24h_baby_AI.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "baby_AI",
+            "video_id": "7710575531544087809",
+            "video_url": "https://www.tiktok.com/@tiemnhaxinhh/video/7710575531544087809",
+            "creator_handle": "@tiemnhaxinhh",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Ý tưởng video sáng tạo và cuốn hút thật sự, chúc kênh mau lên xu hướng nha 💯",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611221122508C5415AD87070F4757A2\",\"now\":1795317771000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611221122508C5415AD87070F4757A2\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261122112320A7AB622B96EAE63D65CD\",\"now\":1795317800000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261122112320A7AB622B96EAE63D65CD\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 833.40625,
+                "y": 461,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "51"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 833.40625,
+                  "y": 461,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "51"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@tiemnhaxinhh",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@tiemnhaxinhh?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-22 10:23:29",
+            "follow_back_window_until": "2026-11-23 10:23:29"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-22 10:19:01",
       "machine_arch": "x86_64",
@@ -338,21 +499,6 @@
       "details": {
         "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 09:10:59",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 231.0,
-        "final_url": "https://www.tiktok.com/@giselapham305/video/7710612053232192775?lang=vi-VN"
       }
     }
   ]
