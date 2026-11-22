@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 15:16:25",
+    "timestamp": "2026-11-22 15:23:46",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
+      "scrolled_videos": 9,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 154.5,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 232.7,
+      "final_url": "https://www.tiktok.com/@301m3.23/video/7710806397381790997?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 15:23:46",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 232.7,
+        "final_url": "https://www.tiktok.com/@301m3.23/video/7710806397381790997?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-22 15:16:25",
       "machine_arch": "x86_64",
@@ -356,22 +371,6 @@
         "video_file": "20261122_123214_tiktok_story_7665390850695875848.mp4",
         "caption": "🥘 Bữa xế chiều siêu cuốn: Snack khoai tây giòn ngon. Giòn rụm thơm phức, vừa xem phim vừa nhâm nhi thì hết sảy. Có ai cũng mê món này giống mình không?",
         "hashtags": "#monngondelam #amthuctiktok #anvatmoingay #anvatngon #congthucnauan #doanvatnoidia #doanvat #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 12:30:02",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261122_121937_tiktok_story_7704616840743406900.mp4",
-        "caption": "🌿 Điều gì sẽ xảy ra nếu bạn kiễng chân mỗi ngày trong 30 ngày?. \"Ngồi ở phía sau và bắp chân của bạn sẽ được chiên...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
-        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
