@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 07:40:14",
+    "timestamp": "2026-11-22 07:47:11",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.3,
-      "final_url": "https://www.tiktok.com/@nngan2203?lang=vi-VN"
+      "video_file": "20261122_074352_tiktok_story_7707966610815913236.mp4",
+      "caption": "🤤 Vịt xào ớt xanh đậm đà, lạ miệng, chuẩn vị nhà hàng ngay tại bếp nhà. Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
+      "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #xuhuongtiktok #tiktokvn",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 07:47:11",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261122_074352_tiktok_story_7707966610815913236.mp4",
+        "caption": "🤤 Vịt xào ớt xanh đậm đà, lạ miệng, chuẩn vị nhà hàng ngay tại bếp nhà. Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
+        "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-22 07:40:14",
       "machine_arch": "x86_64",
@@ -226,21 +243,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 230.7,
         "final_url": "https://www.tiktok.com/@_doris01?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 06:13:22",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 159.3,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
