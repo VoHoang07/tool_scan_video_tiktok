@@ -1,20 +1,269 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 17:24:26",
+    "timestamp": "2026-11-22 17:30:31",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "event_type": "filter24h",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 155.8,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "interacted_count": 3,
+      "own_profile_stats": {
+        "uniqueId": "video_hay4",
+        "domFollowing": "17",
+        "domFollowers": "17",
+        "domLikes": "430",
+        "sidebarFollowing": [
+          "/@video_hay4",
+          "/@zilldidau",
+          "/@h.hi1554",
+          "/@l.mn.niii",
+          "/@oanhnghimth4",
+          "/@boloc24hcheoflo"
+        ]
+      },
+      "records": [
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7710561575056264468",
+          "video_url": "https://www.tiktok.com/@hhbb3240/video/7710561575056264468",
+          "creator_handle": "@hhbb3240",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Ý tưởng video sáng tạo và cuốn hút thật sự, chúc kênh mau lên xu hướng nha 💯",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026112218281677BF42E59D6B7D49E1CD\",\"now\":1795343297000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026112218281677BF42E59D6B7D49E1CD\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 795.15625,
+              "y": 369,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "55"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 795.15625,
+                "y": 369,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "55"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            }
+          },
+          "interacted_at": "2026-11-22 17:28:39",
+          "follow_back_window_until": "2026-11-23 17:28:39"
+        },
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7710529186422705426",
+          "video_url": "https://www.tiktok.com/@handoi22/video/7710529186422705426",
+          "creator_handle": "@handoi22",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": false,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            }
+          },
+          "interacted_at": "2026-11-22 17:29:33",
+          "follow_back_window_until": "2026-11-23 17:29:33"
+        },
+        {
+          "channel": "video_AI_hay",
+          "video_id": "7710298076006616341",
+          "video_url": "https://www.tiktok.com/@hoanghiep8386/video/7710298076006616341",
+          "creator_handle": "@hoanghiep8386",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": false,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Video hay và ý nghĩa quá bạn ơi, chúc kênh ngày càng phát triển nhé ❤️",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            }
+          },
+          "interacted_at": "2026-11-22 17:30:26",
+          "follow_back_window_until": "2026-11-23 17:30:26"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 17:30:31",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_filter24h_video_AI_hay.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "video_hay4",
+          "domFollowing": "17",
+          "domFollowers": "17",
+          "domLikes": "430",
+          "sidebarFollowing": [
+            "/@video_hay4",
+            "/@zilldidau",
+            "/@h.hi1554",
+            "/@l.mn.niii",
+            "/@oanhnghimth4",
+            "/@boloc24hcheoflo"
+          ]
+        },
+        "records": [
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7710561575056264468",
+            "video_url": "https://www.tiktok.com/@hhbb3240/video/7710561575056264468",
+            "creator_handle": "@hhbb3240",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Ý tưởng video sáng tạo và cuốn hút thật sự, chúc kênh mau lên xu hướng nha 💯",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026112218281677BF42E59D6B7D49E1CD\",\"now\":1795343297000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026112218281677BF42E59D6B7D49E1CD\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 795.15625,
+                "y": 369,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "55"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 795.15625,
+                  "y": 369,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "55"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              }
+            },
+            "interacted_at": "2026-11-22 17:28:39",
+            "follow_back_window_until": "2026-11-23 17:28:39"
+          },
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7710529186422705426",
+            "video_url": "https://www.tiktok.com/@handoi22/video/7710529186422705426",
+            "creator_handle": "@handoi22",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              }
+            },
+            "interacted_at": "2026-11-22 17:29:33",
+            "follow_back_window_until": "2026-11-23 17:29:33"
+          },
+          {
+            "channel": "video_AI_hay",
+            "video_id": "7710298076006616341",
+            "video_url": "https://www.tiktok.com/@hoanghiep8386/video/7710298076006616341",
+            "creator_handle": "@hoanghiep8386",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Video hay và ý nghĩa quá bạn ơi, chúc kênh ngày càng phát triển nhé ❤️",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              }
+            },
+            "interacted_at": "2026-11-22 17:30:26",
+            "follow_back_window_until": "2026-11-23 17:30:26"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-22 17:24:26",
       "machine_arch": "x86_64",
@@ -335,21 +584,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 167.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 16:01:19",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 229.6,
-        "final_url": "https://www.tiktok.com/@701m7.19/video/7710869269893893396?lang=vi-VN"
       }
     }
   ]
