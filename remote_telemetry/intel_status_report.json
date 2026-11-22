@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 07:14:38",
+    "timestamp": "2026-11-22 07:26:27",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+    "event_type": "upload",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 159.7,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261122_071756_tiktok_story_7662733606166482184.mp4",
+      "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: Mẹo đánh bay cái nóng mùa hè. \"Bởi vì bạn thông minh và bạn biết đấy, hãy đổ sữa chua vào dưa hấu đông lạnh...\" Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
+      "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #giadungtienich #noitrothongminh #yeubep #viral #foryou",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 07:26:27",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261122_071756_tiktok_story_7662733606166482184.mp4",
+        "caption": "✨ Hóa ra việc nhà không hề cực như mình nghĩ: Mẹo đánh bay cái nóng mùa hè. \"Bởi vì bạn thông minh và bạn biết đấy, hãy đổ sữa chua vào dưa hấu đông lạnh...\" Chỉ thay đổi một thao tác nhỏ mà gọn gàng hẳn. Mọi người hay dùng cách nào nhất?",
+        "hashtags": "#meovatcuocsong #nhabepthongminh #meovatgiadinh #giadungtienich #noitrothongminh #yeubep #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-22 07:14:38",
       "machine_arch": "x86_64",
@@ -223,21 +240,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 154.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 05:48:48",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 154.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
