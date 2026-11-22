@@ -552,7 +552,8 @@
     "7691048717188615454",
     "7672940861218442516",
     "880034603",
-    "7638604734567320840"
+    "7638604734567320840",
+    "7397791602674076965"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -982,7 +983,8 @@
     "7691048787522898718",
     "7672940914803591957",
     "gautrucden_yt_pLFB1MQpAns_p3",
-    "7638604765429058312"
+    "7638604765429058312",
+    "7397791503277460262"
   ],
   "items": [
     {
@@ -6274,6 +6276,16 @@
       "source_url": "https://www.youtube.com/watch?v=2lzzVdKb4sQ&t=16s",
       "output_filename": "audio_dem_khuyen/ready/20261123_002754_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
       "crawled_at": "2026-11-23T00:29:09"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7397791602674076965",
+      "sound_id": "7397791503277460262",
+      "platform": "douyin",
+      "genre": "channel_4_ai_cultivation",
+      "source_url": "https://www.douyin.com/video/7397791602674076965",
+      "output_filename": "tu_chan_gioi/ready/20261123_004024_douyin_story_7397791602674076965.mp4",
+      "crawled_at": "2026-11-23T00:42:35"
     }
   ]
 }
