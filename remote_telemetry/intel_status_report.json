@@ -1,21 +1,177 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 09:35:03",
+    "timestamp": "2026-11-22 09:38:42",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "filter24h",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261122_093143_tiktok_story_7156931968049941761.mp4",
-      "caption": "🐉 Đế Bá: Đạp Không Tiên Đế — Màn thức tỉnh linh căn và phản kích khiến toàn bộ cường giả phải khiếp sợ! Theo đạo hữu, main nên ẩn nhẫn hay đại khai sát giới?",
-      "hashtags": "#huyenhuyen #tienhiep #tuchangioi #animehay #phimhoathinh3d #hoathinh3dtrungquoc #tutien #xuhuongtiktok",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "meo_vat_gia_dinh",
+          "video_id": "7710503377053961479",
+          "video_url": "https://www.tiktok.com/@hunh.nghi190/video/7710503377053961479",
+          "creator_handle": "@hunh.nghi190",
+          "watched_seconds": 15.9,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261122103730D3FCABDA396DB5945494\",\"now\":1795315050000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261122103730D3FCABDA396DB5945494\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261122103757E9E3CBBF9D38B06E182F\",\"now\":1795315077000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261122103757E9E3CBBF9D38B06E182F\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": "meovatgiadinh.k05"
+            },
+            "before": {
+              "x": 814.96875,
+              "y": 431,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "17"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 814.96875,
+                "y": 431,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "17"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@hunh.nghi190",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@hunh.nghi190?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-22 09:38:05",
+          "follow_back_window_until": "2026-11-23 09:38:05"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 09:38:42",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_filter24h_meo_vat_gia_dinh.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "meo_vat_gia_dinh",
+            "video_id": "7710503377053961479",
+            "video_url": "https://www.tiktok.com/@hunh.nghi190/video/7710503377053961479",
+            "creator_handle": "@hunh.nghi190",
+            "watched_seconds": 15.9,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261122103730D3FCABDA396DB5945494\",\"now\":1795315050000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"20261122103730D3FCABDA396DB5945494\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261122103757E9E3CBBF9D38B06E182F\",\"now\":1795315077000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261122103757E9E3CBBF9D38B06E182F\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": "meovatgiadinh.k05"
+              },
+              "before": {
+                "x": 814.96875,
+                "y": 431,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "17"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 814.96875,
+                  "y": 431,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "17"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@hunh.nghi190",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@hunh.nghi190?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-22 09:38:05",
+            "follow_back_window_until": "2026-11-23 09:38:05"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-22 09:35:03",
       "machine_arch": "x86_64",
@@ -220,21 +376,6 @@
         "post_confirmed": true,
         "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 07:40:14",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 231.3,
-        "final_url": "https://www.tiktok.com/@nngan2203?lang=vi-VN"
       }
     }
   ]
