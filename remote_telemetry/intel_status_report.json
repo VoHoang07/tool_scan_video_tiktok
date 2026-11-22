@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 02:50:30",
+    "timestamp": "2026-11-23 02:56:40",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "scrolled_videos": 10,
+      "scrolled_videos": 12,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 231.6,
-      "final_url": "https://www.tiktok.com/@nhi.vy523/video/7710978701395119381?lang=vi-VN"
+      "elapsed_seconds": 156.0,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 02:56:40",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 12,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 156.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-23 02:50:30",
       "machine_arch": "x86_64",
@@ -213,22 +228,6 @@
         "video_file": "20261123_012921_tiktok_story_7665602421892074773.mp4",
         "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Muốn da đẹp từ bên trong thì huyết phải tốt nha. Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
         "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 01:27:27",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261123_012247_tiktok_story_7585904882326981896.mp4",
-        "caption": "💡 Mẹo nhà Mình - P6. Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
-        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #yeubep #decorphong #tienichgiadinh #xuhuong #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
