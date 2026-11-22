@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 08:15:58",
+    "timestamp": "2026-11-22 08:42:21",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.9,
-      "final_url": "https://www.tiktok.com/@user2607751337397?lang=vi-VN"
+      "video_file": "20261122_083846_tiktok_story_7590215278093487380.mp4",
+      "caption": "☕ Góc suy ngẫm về tình cảm và hôn nhân: Luôn giữ cái đầu lạnh, nó ít đi, ai cũng sẽ tôn trọng bạn hơn. Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
+      "hashtags": "#phunuhienđai #giadinhhanhphuc #phunukhichat #yeubanthanhon #chuyenvochong #tamlyhoc #xuhuongtiktok #tiktokvn",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 08:42:21",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261122_083846_tiktok_story_7590215278093487380.mp4",
+        "caption": "☕ Góc suy ngẫm về tình cảm và hôn nhân: Luôn giữ cái đầu lạnh, nó ít đi, ai cũng sẽ tôn trọng bạn hơn. Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
+        "hashtags": "#phunuhienđai #giadinhhanhphuc #phunukhichat #yeubanthanhon #chuyenvochong #tamlyhoc #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-22 08:15:58",
       "machine_arch": "x86_64",
@@ -226,21 +243,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 245.8,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 06:50:20",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 150.4,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
