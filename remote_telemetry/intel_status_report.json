@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 01:27:27",
+    "timestamp": "2026-11-23 01:33:15",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261123_012247_tiktok_story_7585904882326981896.mp4",
-      "caption": "💡 Mẹo nhà Mình - P6. Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
-      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #yeubep #decorphong #tienichgiadinh #xuhuong #viral",
+      "video_file": "20261123_012921_tiktok_story_7665602421892074773.mp4",
+      "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Muốn da đẹp từ bên trong thì huyết phải tốt nha. Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
+      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #xh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 01:33:15",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261123_012921_tiktok_story_7665602421892074773.mp4",
+        "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: Muốn da đẹp từ bên trong thì huyết phải tốt nha. Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
+        "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #suckhoegiadinh #ngungon #biquyetsongkhoe #suckhoe #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-23 01:27:27",
       "machine_arch": "x86_64",
@@ -214,22 +230,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 154.0,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 23:16:42",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261122_231226_tiktok_story_880034603_gautrucden_v1_s346_p3.mp4",
-        "caption": "👀 Quỷ Lộn Ngược Trong Nhà (Phần 3/8) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
-        "hashtags": "#quylonnguoctrongnha #phan3 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
