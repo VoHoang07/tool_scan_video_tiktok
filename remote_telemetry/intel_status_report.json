@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 02:23:10",
+    "timestamp": "2026-11-23 02:30:36",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "scrolled_videos": 11,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 154.9,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 229.7,
+      "final_url": "https://www.tiktok.com/@mi.yu6252?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 02:30:36",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 229.7,
+        "final_url": "https://www.tiktok.com/@mi.yu6252?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-23 02:23:10",
       "machine_arch": "x86_64",
@@ -211,22 +226,6 @@
         "video_file": "20261123_010321_tiktok_story_7699481923361508628.mp4",
         "caption": "🐾 Điện thoại của bạn có thường xuyên bị lag và quá nóng khi sử dụng nhiều không? Tất cả đều do ba thiết lập này của theo dõi kênh gây ra! — Tập phim ngắn khiến hàng triệu người xem đi xem lại. \"Tất cả là do ba cài đặt này trên theo dõi kênh...\" Theo bạn tập tiếp theo sẽ ra sao?",
         "hashtags": "#phimnganai #aianimation #videoaihay #thucungthanhtinh #hoathinh3d #khamphaai #hoathinhhai #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 01:01:11",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261123_005732_tiktok_story_6884070545906797826.mp4",
-        "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Bởi chả có cái gì hết ???. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-        "hashtags": "#dayconeq #mevabe #giaoducsom #donghanhcungcon #daycontulap #nuoidaycon #nuoiconthongminh #xuhuong",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
