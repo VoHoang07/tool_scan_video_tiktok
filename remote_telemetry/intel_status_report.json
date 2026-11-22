@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 19:20:47",
+    "timestamp": "2026-11-22 19:26:55",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 8,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 151.2,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "elapsed_seconds": 158.6,
+      "final_url": "https://www.tiktok.com/@choigamecungphanthin/live"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 19:26:55",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 158.6,
+        "final_url": "https://www.tiktok.com/@choigamecungphanthin/live"
+      }
+    },
     {
       "timestamp": "2026-11-22 19:20:47",
       "machine_arch": "x86_64",
@@ -526,92 +541,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 157.3,
         "final_url": "https://www.tiktok.com/@phuongngasongkhoe/live"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 18:10:32",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_filter24h_nuoi_con_eq.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "nuoi_con_eq",
-            "video_id": "7710858861938281749",
-            "video_url": "https://www.tiktok.com/@cai.gi121/video/7710858861938281749",
-            "creator_handle": "@cai.gi121",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Video chất lượng lắm ạ, mong chờ các tập tiếp theo từ kênh của bạn 🫶",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611221909146D74D502552A8677E59D\",\"now\":1795345755000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611221909146D74D502552A8677E59D\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261122190945455F3BE776372764489D\",\"now\":1795345785000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261122190945455F3BE776372764489D\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 951.125,
-                "y": 419,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "10"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 951.125,
-                  "y": 419,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "10"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@cai.gi121",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@cai.gi121?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-22 18:09:54",
-            "follow_back_window_until": "2026-11-23 18:09:54"
-          }
-        ]
       }
     }
   ]
