@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 07:05:21",
+    "timestamp": "2026-11-22 07:08:25",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261122_070052_tiktok_story_7489325321859173640.mp4",
-      "caption": "🧘‍♀️ Góc sống khỏe tự nhiên: 100 Gerakan sehari, Badan segar sepanjang hari!. \"Trái tim của bạn sẽ ngày càng mạnh mẽ hơn...\" Áp dụng đều đặn mỗi tối sẽ thấy giấc ngủ sâu và tinh thần thoải mái hơn rất nhiều. Bạn đã thử chưa?",
-      "hashtags": "#songkhoe #suckhoechudong #meosuckhoe #thaydoithoiquen #healthyvietnam #songlanhmanh #suckhoe #xuhuong",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 11,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 164.3,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 07:08:25",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 164.3,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-22 07:05:21",
       "machine_arch": "x86_64",
@@ -225,21 +239,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 227.2,
         "final_url": "https://www.tiktok.com/@buonm1.30?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 05:35:38",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 155.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
