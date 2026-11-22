@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-22 14:38:36",
+    "timestamp": "2026-11-22 14:44:28",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261122_143435_tiktok_story_7691048717188615454.mp4",
-      "caption": "⚔️ “Nhất niệm khởi, vạn tượng sinh.”. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-      "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #viral #foryou",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 231.1,
+      "final_url": "https://www.tiktok.com/@2k12danghochsk6?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-22 14:44:28",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.1,
+        "final_url": "https://www.tiktok.com/@2k12danghochsk6?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-22 14:38:36",
       "machine_arch": "x86_64",
@@ -362,92 +376,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 231.9,
         "final_url": "https://www.tiktok.com/@quang.gu71/video/7710112329362378005?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-22 12:02:53",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "tu_chan_gioi",
-            "video_id": "7710341626073238785",
-            "video_url": "https://www.tiktok.com/@anh.quang.store/video/7710341626073238785",
-            "creator_handle": "@anh.quang.store",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": true,
-              "6_commented_after_follow": true
-            },
-            "comment_text": "Chúc kênh bạn ngày càng có thêm nhiều người yêu mến và ủng hộ nhé 🌟",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026112213014205C6A073936A5C952AC7\",\"now\":1795323702000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026112213014205C6A073936A5C952AC7\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261122130211FF0B4BE02BA6B9881369\",\"now\":1795323731000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261122130211FF0B4BE02BA6B9881369\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 1019,
-                "y": 286,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "98"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 1019,
-                  "y": 286,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "98"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              },
-              "profile_follow_verify": {
-                "creator": "@anh.quang.store",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@anh.quang.store?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": 0,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-22 12:02:20",
-            "follow_back_window_until": "2026-11-23 12:02:20"
-          }
-        ]
       }
     }
   ]
