@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 19:42:30",
+    "timestamp": "2026-11-23 19:48:43",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 10,
+      "scrolled_videos": 11,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 153.5,
+      "elapsed_seconds": 159.2,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 19:48:43",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+      "details": {
+        "scrolled_videos": 11,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 159.2,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-23 19:42:30",
       "machine_arch": "x86_64",
@@ -503,133 +518,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 157.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 18:36:32",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_filter24h_phu_nu_khi_chat.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "phunukhichat.k07",
-          "domFollowing": "0",
-          "domFollowers": "0",
-          "domLikes": "0",
-          "sidebarFollowing": [
-            "/@phunukhichat.k07"
-          ]
-        },
-        "records": [
-          {
-            "channel": "phu_nu_khi_chat",
-            "video_id": "7711236234441526548",
-            "video_url": "https://www.tiktok.com/@thanhthanhm23.03/video/7711236234441526548",
-            "creator_handle": "@thanhthanhm23.03",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"2026112319345246409C99BD9F31B967B5\",\"now\":1795433693000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"2026112319345246409C99BD9F31B967B5\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 1055,
-                "y": 244.5,
-                "ariaPressed": false,
-                "svgColor": "rgba(255, 255, 255, .9)",
-                "likeCount": "4"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 1055,
-                  "y": 244.5,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(255, 255, 255, .9)",
-                  "likeCount": "4"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": true
-              }
-            },
-            "interacted_at": "2026-11-23 18:34:58",
-            "follow_back_window_until": "2026-11-24 18:34:58"
-          },
-          {
-            "channel": "phu_nu_khi_chat",
-            "video_id": "7711219635189763348",
-            "video_url": "https://www.tiktok.com/@m.hoa6553/video/7711219635189763348",
-            "creator_handle": "@m.hoa6553",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              }
-            },
-            "interacted_at": "2026-11-23 18:35:44",
-            "follow_back_window_until": "2026-11-24 18:35:44"
-          },
-          {
-            "channel": "phu_nu_khi_chat",
-            "video_id": "7710684930497547540",
-            "video_url": "https://www.tiktok.com/@choles.corner/video/7710684930497547540",
-            "creator_handle": "@choles.corner",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              }
-            },
-            "interacted_at": "2026-11-23 18:36:27",
-            "follow_back_window_until": "2026-11-24 18:36:27"
-          }
-        ]
       }
     }
   ]
