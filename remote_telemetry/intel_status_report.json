@@ -1,201 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 11:31:30",
+    "timestamp": "2026-11-23 11:34:30",
     "machine_arch": "x86_64",
-    "event_type": "filter24h",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "interacted_count": 3,
-      "own_profile_stats": {
-        "uniqueId": "himawari5490",
-        "domFollowing": "507",
-        "domFollowers": "1500",
-        "domLikes": "4050",
-        "sidebarFollowing": []
-      },
-      "records": [
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7710463838495329537",
-          "video_url": "https://www.tiktok.com/@chinchuuu18/video/7710463838495329537",
-          "creator_handle": "@chinchuuu18",
-          "watched_seconds": 16.9,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 877.28125,
-              "y": 425,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "221"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 877.28125,
-                "y": 425,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "221"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@chinchuuu18",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@chinchuuu18?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Follow",
-              "init_relation": 0,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-23 11:28:59",
-          "follow_back_window_until": "2026-11-24 11:28:59"
-        },
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7696480362930769170",
-          "video_url": "https://www.tiktok.com/@quangmmo002/video/7696480362930769170",
-          "creator_handle": "@quangmmo002",
-          "watched_seconds": 24.8,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 1047,
-              "y": 244.5,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "362"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 1047,
-                "y": 244.5,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "362"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@quangmmo002",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@quangmmo002?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Follow",
-              "init_relation": 0,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-23 11:30:11",
-          "follow_back_window_until": "2026-11-24 11:30:11"
-        },
-        {
-          "channel": "audio_dem_khuyen",
-          "video_id": "7694893174803778824",
-          "video_url": "https://www.tiktok.com/@himawari5490/video/7694893174803778824",
-          "creator_handle": "@himawari5490",
-          "watched_seconds": 15.4,
-          "steps_completed": {
-            "1_watched_full": true,
-            "2_liked_video": false,
-            "3_copied_link": true,
-            "4_added_favorite": true,
-            "5_followed_creator": false,
-            "6_commented_after_follow": false
-          },
-          "comment_text": "",
-          "circuit_breaker_tripped": false,
-          "like_debug": {
-            "digg_responses": [],
-            "follow_responses": [],
-            "env_check": {
-              "webdriver": false,
-              "loggedInUniqueId": null
-            },
-            "before": {
-              "x": 877.28125,
-              "y": 373,
-              "ariaPressed": false,
-              "svgColor": "rgba(22, 24, 35, 1)",
-              "likeCount": "191"
-            },
-            "init_red": false,
-            "after_os_click_05s": {
-              "state": {
-                "x": 877.28125,
-                "y": 373,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "191"
-              },
-              "red": false,
-              "server_digg_ok": false,
-              "server_digg_rejected": false
-            },
-            "profile_follow_verify": {
-              "creator": "@himawari5490",
-              "nav_method": "video_header_os_click",
-              "profile_url": "https://www.tiktok.com/@himawari5490?lang=vi-VN",
-              "before_btn": "Follow",
-              "after_btn": "Follow",
-              "init_relation": 0,
-              "server_follow_ok": false,
-              "ui_confirmed": false,
-              "persisted": false,
-              "follow_api_blocked": false
-            }
-          },
-          "interacted_at": "2026-11-23 11:31:25",
-          "follow_back_window_until": "2026-11-24 11:31:25"
-        }
-      ]
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 169.5,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 11:34:30",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 169.5,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-23 11:31:30",
       "machine_arch": "x86_64",
@@ -1075,21 +909,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 152.2,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 08:00:29",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_an_vat_moi_ngay.jpg",
-      "details": {
-        "scrolled_videos": 12,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 166.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
