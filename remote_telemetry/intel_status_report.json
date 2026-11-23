@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 16:10:04",
+    "timestamp": "2026-11-23 16:16:08",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
     "details": {
       "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 229.4,
-      "final_url": "https://www.tiktok.com/@trang.anh.xay.kenh?lang=vi-VN"
+      "elapsed_seconds": 152.9,
+      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 16:16:08",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_video_AI_hay.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 152.9,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-23 16:10:04",
       "machine_arch": "x86_64",
@@ -356,133 +371,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 225.5,
         "final_url": "https://www.tiktok.com/@meovatgiadinh.k05?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 12:41:14",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
-      "details": {
-        "interacted_count": 3,
-        "own_profile_stats": {
-          "uniqueId": "anvatmoingay.k08",
-          "domFollowing": "1",
-          "domFollowers": "0",
-          "domLikes": "0",
-          "sidebarFollowing": [
-            "/@anvatmoingay.k08",
-            "/@nhavanlap"
-          ]
-        },
-        "records": [
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7710818843546914068",
-            "video_url": "https://www.tiktok.com/@thuyho20191/video/7710818843546914068",
-            "creator_handle": "@thuyho20191",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": true,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [
-                {
-                  "status": 200,
-                  "body": ""
-                },
-                {
-                  "status": 200,
-                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261123133920692728B5C0604DAB11D6\",\"now\":1795412361000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261123133920692728B5C0604DAB11D6\"},\"status_code\":0,\"status_msg\":\"\"}"
-                }
-              ],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": null,
-              "profile_follow_verify": {
-                "creator": "@thuyho20191",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@thuyho20191?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Đã follow",
-                "init_relation": null,
-                "server_follow_ok": true,
-                "ui_confirmed": true,
-                "persisted": true,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-23 12:39:29",
-            "follow_back_window_until": "2026-11-24 12:39:29"
-          },
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7710589848897309960",
-            "video_url": "https://www.tiktok.com/@qunh.chi7253/video/7710589848897309960",
-            "creator_handle": "@qunh.chi7253",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": null
-            },
-            "interacted_at": "2026-11-23 12:40:18",
-            "follow_back_window_until": "2026-11-24 12:40:18"
-          },
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7710123932682161428",
-            "video_url": "https://www.tiktok.com/@naudaunhatoi/video/7710123932682161428",
-            "creator_handle": "@naudaunhatoi",
-            "watched_seconds": 24.8,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": false,
-              "4_added_favorite": false,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": null
-            },
-            "interacted_at": "2026-11-23 12:41:09",
-            "follow_back_window_until": "2026-11-24 12:41:09"
-          }
-        ]
       }
     }
   ]
