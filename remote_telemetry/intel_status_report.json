@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 04:11:23",
+    "timestamp": "2026-11-24 04:18:54",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
     "details": {
-      "scrolled_videos": 8,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 231.3,
-      "final_url": "https://www.tiktok.com/@dip.vy6403?lang=vi-VN"
+      "elapsed_seconds": 231.4,
+      "final_url": "https://www.tiktok.com/@vn.anh9154/video/7711391186316971282?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 04:18:54",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 231.4,
+        "final_url": "https://www.tiktok.com/@vn.anh9154/video/7711391186316971282?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-24 04:11:23",
       "machine_arch": "x86_64",
@@ -224,21 +239,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 02:14:04",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 233.1,
-        "final_url": "https://www.tiktok.com/@nguyen.vu.tuan4/video/7711315221284998452?lang=vi-VN"
       }
     }
   ]
