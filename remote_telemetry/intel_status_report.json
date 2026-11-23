@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 02:14:04",
+    "timestamp": "2026-11-24 02:45:44",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 233.1,
-      "final_url": "https://www.tiktok.com/@nguyen.vu.tuan4/video/7711315221284998452?lang=vi-VN"
+      "video_file": "20261124_024006_douyin_story_7156166533796908322.mp4",
+      "caption": "🤣 Đừng đề cập gì và để anh ấy lo, nhưng mỗi lời nói đều khiến anh ấy ly kỳ và anh ấy phải lo liệu — Pha xử lý đi vào lòng đất của hai mẹ con! \"Có một con bé trong lớp chúng mẹ thực sự rất khó chịu...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xuhuong",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 02:45:44",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261124_024006_douyin_story_7156166533796908322.mp4",
+        "caption": "🤣 Đừng đề cập gì và để anh ấy lo, nhưng mỗi lời nói đều khiến anh ấy ly kỳ và anh ấy phải lo liệu — Pha xử lý đi vào lòng đất của hai mẹ con! \"Có một con bé trong lớp chúng mẹ thực sự rất khó chịu...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+        "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-24 02:14:04",
       "machine_arch": "x86_64",
@@ -214,21 +231,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 157.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 22:22:46",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 11,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 154.1,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
