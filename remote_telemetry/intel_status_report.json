@@ -1,20 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 16:28:16",
+    "timestamp": "2026-11-23 16:34:27",
     "machine_arch": "x86_64",
     "event_type": "warmup_fyp",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
     "details": {
-      "scrolled_videos": 9,
+      "scrolled_videos": 10,
       "ads_skipped": 0,
       "fyp_liked": 0,
       "fyp_followed": 0,
-      "elapsed_seconds": 151.3,
+      "elapsed_seconds": 162.0,
       "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 16:34:27",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 162.0,
+        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-23 16:28:16",
       "machine_arch": "x86_64",
@@ -351,22 +366,6 @@
         "video_file": "20261123_132140_tiktok_story_7536545811421809928.mp4",
         "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Mẹ không cần con giỏi, mẹ cần con có lòng tự trọng. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
         "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 13:19:35",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261123_131623_tiktok_story_7444948664641916168.mp4",
-        "caption": "✨ Lưu Diệc Phi và Tôi có điểm chung。 Chỉ nên quan tâm đến 3 việc: Tiền của mình, sức khoẻ của mình, nội tâm mỏng manh của mình. Còn chấp nhận mọi chuyện trên đời đều là vô thường. Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
-        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #xh #xuhuongtiktok",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
