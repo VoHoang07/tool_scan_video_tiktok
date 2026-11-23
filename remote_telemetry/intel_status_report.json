@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 08:39:52",
+    "timestamp": "2026-11-23 08:45:31",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261123_083206_tiktok_story_7709821206349827334.mp4",
-      "caption": "☕ Góc suy ngẫm về tình cảm và hôn nhân: Anh có thể mất cả thế giới nhưng không thể mất cả thế giới vì em. \"Một thiên thần và một ác quỷ cùng yêu một cô gái...\" Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
-      "hashtags": "#phunuhienđai #giadinhhanhphuc #phunukhichat #phunulamdep #chualanhtamhon #phunuthongminh #foryou #fyp",
+      "video_file": "20261123_084227_tiktok_story_7149738071062351131.mp4",
+      "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Nếu có 1 trong 3 tư thế trên, thì con có biểu hiện thông minh đó mom ạ🥰. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
+      "hashtags": "#dayconeq #mevabe #giaoducsom #donghanhcungcon #daycontulap #nuoidaycon #nuoiconthongminh #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 2,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 08:45:31",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261123_084227_tiktok_story_7149738071062351131.mp4",
+        "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Nếu có 1 trong 3 tư thế trên, thì con có biểu hiện thông minh đó mom ạ🥰. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
+        "hashtags": "#dayconeq #mevabe #giaoducsom #donghanhcungcon #daycontulap #nuoidaycon #nuoiconthongminh #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-23 08:39:52",
       "machine_arch": "x86_64",
@@ -228,21 +244,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 242.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 06:48:51",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 167.6,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
