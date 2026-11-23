@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 12:52:37",
+    "timestamp": "2026-11-23 13:19:35",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 231.9,
-      "final_url": "https://www.tiktok.com/@k4h6850?lang=vi-VN"
+      "video_file": "20261123_131623_tiktok_story_7444948664641916168.mp4",
+      "caption": "✨ Lưu Diệc Phi và Tôi có điểm chung。 Chỉ nên quan tâm đến 3 việc: Tiền của mình, sức khoẻ của mình, nội tâm mỏng manh của mình. Còn chấp nhận mọi chuyện trên đời đều là vô thường. Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
+      "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #xh #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 13:19:35",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261123_131623_tiktok_story_7444948664641916168.mp4",
+        "caption": "✨ Lưu Diệc Phi và Tôi có điểm chung。 Chỉ nên quan tâm đến 3 việc: Tiền của mình, sức khoẻ của mình, nội tâm mỏng manh của mình. Còn chấp nhận mọi chuyện trên đời đều là vô thường. Phụ nữ thông minh không hơn nhau ở lời nói sắc sảo mà ở sự bình tĩnh và biết trân trọng bản thân. Chị em có đồng cảm với góc nhìn này không?",
+        "hashtags": "#phunukhichat #tamlyhonnhan #phunuhienđai #phunuthongminh #kynanggiaotiep #yeubanthanhon #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-23 12:52:37",
       "machine_arch": "x86_64",
@@ -631,21 +648,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 228.2,
         "final_url": "https://www.tiktok.com/@nguyenhungsmartphone?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 11:34:30",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 169.5,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
   ]
