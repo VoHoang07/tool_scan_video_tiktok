@@ -1,16 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 23:48:00",
+    "timestamp": "2026-11-24 00:44:27",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
+    "event_type": "warmup_fyp",
     "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261123_234414_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_mukbang.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "scrolled_videos": 8,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 229.4,
+      "final_url": "https://www.tiktok.com/@tienvaybunny/video/7711348137176108308?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 00:44:27",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 8,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 229.4,
+        "final_url": "https://www.tiktok.com/@tienvaybunny/video/7711348137176108308?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-23 23:48:00",
       "machine_arch": "x86_64",
@@ -212,21 +231,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 153.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 21:27:41",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_tu_chan_gioi.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 231.9,
-        "final_url": "https://www.tiktok.com/@minh.k668?lang=vi-VN"
       }
     }
   ]
