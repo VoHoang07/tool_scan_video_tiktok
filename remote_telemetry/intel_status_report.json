@@ -1,21 +1,303 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 13:25:41",
+    "timestamp": "2026-11-23 13:29:03",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "event_type": "filter24h",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261123_132140_tiktok_story_7536545811421809928.mp4",
-      "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Mẹ không cần con giỏi, mẹ cần con có lòng tự trọng. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-      "hashtags": "#dayconeq #mevabe #giaoducsom #giadinhnho #chamconkhoahoc #tamlytreem #nuoiconthongminh #fyp",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 3,
+      "own_profile_stats": {
+        "uniqueId": "phukientienich.k10",
+        "domFollowing": "172",
+        "domFollowers": "232",
+        "domLikes": "86",
+        "sidebarFollowing": [
+          "/@phukientienich.k10",
+          "/@ijdncc"
+        ]
+      },
+      "records": [
+        {
+          "channel": "phu_kien_tien_ich",
+          "video_id": "7711239176083049735",
+          "video_url": "https://www.tiktok.com/@ng.mai.anh297/video/7711239176083049735",
+          "creator_handle": "@ng.mai.anh297",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": true,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611231426442EA82761D79D399F6890\",\"now\":1795415204000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611231426442EA82761D79D399F6890\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [
+              {
+                "status": 200,
+                "body": ""
+              },
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261123142712FA615A070BBCBBACCCC8\",\"now\":1795415232000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261123142712FA615A070BBCBBACCCC8\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 804.34375,
+              "y": 411,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "5"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 804.34375,
+                "y": 411,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "5"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            },
+            "profile_follow_verify": {
+              "creator": "@ng.mai.anh297",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@ng.mai.anh297?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Đã follow",
+              "init_relation": 0,
+              "server_follow_ok": true,
+              "ui_confirmed": true,
+              "persisted": true,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-23 13:27:21",
+          "follow_back_window_until": "2026-11-24 13:27:21"
+        },
+        {
+          "channel": "phu_kien_tien_ich",
+          "video_id": "7711222882566704392",
+          "video_url": "https://www.tiktok.com/@thnh.ph.tri.cy/video/7711222882566704392",
+          "creator_handle": "@thnh.ph.tri.cy",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            }
+          },
+          "interacted_at": "2026-11-23 13:28:11",
+          "follow_back_window_until": "2026-11-24 13:28:11"
+        },
+        {
+          "channel": "phu_kien_tien_ich",
+          "video_id": "7711209370360565013",
+          "video_url": "https://www.tiktok.com/@an.an0684/video/7711209370360565013",
+          "creator_handle": "@an.an0684",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": false,
+            "4_added_favorite": false,
+            "5_followed_creator": false,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            }
+          },
+          "interacted_at": "2026-11-23 13:28:57",
+          "follow_back_window_until": "2026-11-24 13:28:57"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 13:29:03",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "phukientienich.k10",
+          "domFollowing": "172",
+          "domFollowers": "232",
+          "domLikes": "86",
+          "sidebarFollowing": [
+            "/@phukientienich.k10",
+            "/@ijdncc"
+          ]
+        },
+        "records": [
+          {
+            "channel": "phu_kien_tien_ich",
+            "video_id": "7711239176083049735",
+            "video_url": "https://www.tiktok.com/@ng.mai.anh297/video/7711239176083049735",
+            "creator_handle": "@ng.mai.anh297",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": true,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Nội dung cuốn quá, mình xem hết video luôn rồi ạ ✨",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611231426442EA82761D79D399F6890\",\"now\":1795415204000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611231426442EA82761D79D399F6890\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [
+                {
+                  "status": 200,
+                  "body": ""
+                },
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"20261123142712FA615A070BBCBBACCCC8\",\"now\":1795415232000},\"follow_status\":1,\"log_pb\":{\"impr_id\":\"20261123142712FA615A070BBCBBACCCC8\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 804.34375,
+                "y": 411,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "5"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 804.34375,
+                  "y": 411,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "5"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              },
+              "profile_follow_verify": {
+                "creator": "@ng.mai.anh297",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@ng.mai.anh297?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Đã follow",
+                "init_relation": 0,
+                "server_follow_ok": true,
+                "ui_confirmed": true,
+                "persisted": true,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-23 13:27:21",
+            "follow_back_window_until": "2026-11-24 13:27:21"
+          },
+          {
+            "channel": "phu_kien_tien_ich",
+            "video_id": "7711222882566704392",
+            "video_url": "https://www.tiktok.com/@thnh.ph.tri.cy/video/7711222882566704392",
+            "creator_handle": "@thnh.ph.tri.cy",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              }
+            },
+            "interacted_at": "2026-11-23 13:28:11",
+            "follow_back_window_until": "2026-11-24 13:28:11"
+          },
+          {
+            "channel": "phu_kien_tien_ich",
+            "video_id": "7711209370360565013",
+            "video_url": "https://www.tiktok.com/@an.an0684/video/7711209370360565013",
+            "creator_handle": "@an.an0684",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": false,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              }
+            },
+            "interacted_at": "2026-11-23 13:28:57",
+            "follow_back_window_until": "2026-11-24 13:28:57"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-23 13:25:41",
       "machine_arch": "x86_64",
@@ -632,22 +914,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 11:52:47",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261123_114619_tiktok_story_7678735368614661383.mp4",
-        "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: \"666 Nếu như ngươi không sớm nói cho ta biết!\". \"Thật tệ khi anh ấy không thể ra đi vì vị trí của anh ấy đã sai...\" Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
-        "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #decorphong #tienichgiadinh #savingtips #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
