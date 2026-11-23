@@ -1,21 +1,269 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 11:59:24",
+    "timestamp": "2026-11-23 12:02:28",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "event_type": "filter24h",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261123_115509_tiktok_story_7680098901050903816.mp4",
-      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Ngày 26: Dưỡng khí huyết mỗi ngày. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-      "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #xuhuongtiktok",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "interacted_count": 3,
+      "own_profile_stats": {
+        "uniqueId": "tu_chan_gioi0",
+        "domFollowing": "25",
+        "domFollowers": "16",
+        "domLikes": "311",
+        "sidebarFollowing": [
+          "/@tu_chan_gioi0",
+          "/@empiictehotle",
+          "/@shwksoowoo",
+          "/@suusii7878",
+          "/@chillgirl7949",
+          "/@danhsi8386"
+        ]
+      },
+      "records": [
+        {
+          "channel": "tu_chan_gioi",
+          "video_id": "7711032296651984148",
+          "video_url": "https://www.tiktok.com/@haichungminhcuusvbk/video/7711032296651984148",
+          "creator_handle": "@haichungminhcuusvbk",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": false,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [
+              {
+                "status": 200,
+                "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611231300230B5FF2691EF688AD4160\",\"now\":1795410024000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611231300230B5FF2691EF688AD4160\"},\"status_code\":0,\"status_msg\":\"\"}"
+              }
+            ],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 872,
+              "y": 456,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "7"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 872,
+                "y": 456,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "7"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": true
+            }
+          },
+          "interacted_at": "2026-11-23 12:00:41",
+          "follow_back_window_until": "2026-11-24 12:00:41"
+        },
+        {
+          "channel": "tu_chan_gioi",
+          "video_id": "7711011158764965141",
+          "video_url": "https://www.tiktok.com/@gorumawr35s/video/7711011158764965141",
+          "creator_handle": "@gorumawr35s",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            }
+          },
+          "interacted_at": "2026-11-23 12:01:29",
+          "follow_back_window_until": "2026-11-24 12:01:29"
+        },
+        {
+          "channel": "tu_chan_gioi",
+          "video_id": "7711017431631809810",
+          "video_url": "https://www.tiktok.com/@sang.zdam/video/7711017431631809810",
+          "creator_handle": "@sang.zdam",
+          "watched_seconds": 15.0,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": true
+          },
+          "comment_text": "Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            }
+          },
+          "interacted_at": "2026-11-23 12:02:21",
+          "follow_back_window_until": "2026-11-24 12:02:21"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 12:02:28",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_filter24h_tu_chan_gioi.jpg",
+      "details": {
+        "interacted_count": 3,
+        "own_profile_stats": {
+          "uniqueId": "tu_chan_gioi0",
+          "domFollowing": "25",
+          "domFollowers": "16",
+          "domLikes": "311",
+          "sidebarFollowing": [
+            "/@tu_chan_gioi0",
+            "/@empiictehotle",
+            "/@shwksoowoo",
+            "/@suusii7878",
+            "/@chillgirl7949",
+            "/@danhsi8386"
+          ]
+        },
+        "records": [
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7711032296651984148",
+            "video_url": "https://www.tiktok.com/@haichungminhcuusvbk/video/7711032296651984148",
+            "creator_handle": "@haichungminhcuusvbk",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": false,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Hữu duyên lướt thấy kênh bạn, nội dung rất cuốn và dễ thương ạ 🌷",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [
+                {
+                  "status": 200,
+                  "body": "{\"extra\":{\"fatal_item_ids\":[],\"logid\":\"202611231300230B5FF2691EF688AD4160\",\"now\":1795410024000},\"is_digg\":1,\"log_pb\":{\"impr_id\":\"202611231300230B5FF2691EF688AD4160\"},\"status_code\":0,\"status_msg\":\"\"}"
+                }
+              ],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 872,
+                "y": 456,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "7"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 872,
+                  "y": 456,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "7"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": true
+              }
+            },
+            "interacted_at": "2026-11-23 12:00:41",
+            "follow_back_window_until": "2026-11-24 12:00:41"
+          },
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7711011158764965141",
+            "video_url": "https://www.tiktok.com/@gorumawr35s/video/7711011158764965141",
+            "creator_handle": "@gorumawr35s",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              }
+            },
+            "interacted_at": "2026-11-23 12:01:29",
+            "follow_back_window_until": "2026-11-24 12:01:29"
+          },
+          {
+            "channel": "tu_chan_gioi",
+            "video_id": "7711017431631809810",
+            "video_url": "https://www.tiktok.com/@sang.zdam/video/7711017431631809810",
+            "creator_handle": "@sang.zdam",
+            "watched_seconds": 15.0,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": true
+            },
+            "comment_text": "Góc quay và màu video đẹp quá bạn ơi, thả tim liền tay luôn ❤️",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              }
+            },
+            "interacted_at": "2026-11-23 12:02:21",
+            "follow_back_window_until": "2026-11-24 12:02:21"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-23 11:59:24",
       "machine_arch": "x86_64",
@@ -896,21 +1144,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 162.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 08:49:49",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 230.7,
-        "final_url": "https://www.tiktok.com/@my.lang.thang098?lang=vi-VN"
       }
     }
   ]
