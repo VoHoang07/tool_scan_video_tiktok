@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 07:25:58",
+    "timestamp": "2026-11-23 07:32:18",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_kien_tien_ich.jpg",
+    "event_type": "upload",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 163.8,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261123_072744_tiktok_story_880034102_gautrucden_v1_s341_p2.mp4",
+      "caption": "👀 Ác Quỷ Nửa Mặt Bắt Thịt Người (Phần 2/8) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
+      "hashtags": "#acquynuamatbatthitnguoi #phan2 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 07:32:18",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261123_072744_tiktok_story_880034102_gautrucden_v1_s341_p2.mp4",
+        "caption": "👀 Ác Quỷ Nửa Mặt Bắt Thịt Người (Phần 2/8) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
+        "hashtags": "#acquynuamatbatthitnguoi #phan2 #hoathinhgautrucden #phimhoathinh #fyp #hoathinh #cotichkybi #gautrucden",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-23 07:25:58",
       "machine_arch": "x86_64",
@@ -224,21 +241,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 151.7,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 05:55:33",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 254.3,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
