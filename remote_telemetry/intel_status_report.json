@@ -1,21 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 02:45:44",
+    "timestamp": "2026-11-24 02:52:48",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261124_024006_douyin_story_7156166533796908322.mp4",
-      "caption": "🤣 Đừng đề cập gì và để anh ấy lo, nhưng mỗi lời nói đều khiến anh ấy ly kỳ và anh ấy phải lo liệu — Pha xử lý đi vào lòng đất của hai mẹ con! \"Có một con bé trong lớp chúng mẹ thực sự rất khó chịu...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xuhuong",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "scrolled_videos": 9,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 232.6,
+      "final_url": "https://www.tiktok.com/@l.vn.yn41?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 02:52:48",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 9,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 232.6,
+        "final_url": "https://www.tiktok.com/@l.vn.yn41?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-24 02:45:44",
       "machine_arch": "x86_64",
@@ -216,21 +230,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 158.9,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 22:32:09",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 157.9,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
