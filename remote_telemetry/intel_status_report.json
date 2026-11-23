@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 11:52:47",
+    "timestamp": "2026-11-23 11:59:24",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261123_114619_tiktok_story_7678735368614661383.mp4",
-      "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: \"666 Nếu như ngươi không sớm nói cho ta biết!\". \"Thật tệ khi anh ấy không thể ra đi vì vị trí của anh ấy đã sai...\" Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
-      "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #decorphong #tienichgiadinh #savingtips #xuhuongtiktok #tiktokvn",
+      "video_file": "20261123_115509_tiktok_story_7680098901050903816.mp4",
+      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Ngày 26: Dưỡng khí huyết mỗi ngày. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
+      "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 11:59:24",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261123_115509_tiktok_story_7680098901050903816.mp4",
+        "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Ngày 26: Dưỡng khí huyết mỗi ngày. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
+        "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-23 11:52:47",
       "machine_arch": "x86_64",
@@ -895,22 +911,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 230.7,
         "final_url": "https://www.tiktok.com/@my.lang.thang098?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 08:45:31",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261123_084227_tiktok_story_7149738071062351131.mp4",
-        "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Nếu có 1 trong 3 tư thế trên, thì con có biểu hiện thông minh đó mom ạ🥰. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-        "hashtags": "#dayconeq #mevabe #giaoducsom #donghanhcungcon #daycontulap #nuoidaycon #nuoiconthongminh #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
