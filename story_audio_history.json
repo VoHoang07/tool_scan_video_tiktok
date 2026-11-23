@@ -568,7 +568,8 @@
     "7149738071062351131",
     "7597380001285082398",
     "7678735368614661383",
-    "7680098901050903816"
+    "7680098901050903816",
+    "880036101"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -1014,7 +1015,8 @@
     "7149738091668867867",
     "7597380040376077087",
     "7678735404506663687",
-    "7547959753222228752"
+    "7547959753222228752",
+    "gautrucden_yt_slDFPrkXwag_p1"
   ],
   "items": [
     {
@@ -6526,6 +6528,16 @@
       "source_url": "https://www.tiktok.com/@hyn_healthy/video/7680098901050903816",
       "output_filename": "suc_khoe_duong_sinh/ready/20261123_115509_tiktok_story_7680098901050903816.mp4",
       "crawled_at": "2026-11-23T11:55:29"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "880036101",
+      "sound_id": "gautrucden_yt_slDFPrkXwag_p1",
+      "platform": "tiktok",
+      "genre": "channel_1_ai_trending",
+      "source_url": "https://www.youtube.com/watch?v=slDFPrkXwag&t=1s",
+      "output_filename": "video_AI_hay/ready/20261123_120827_tiktok_story_880036101_gautrucden_v1_s361_p1.mp4",
+      "crawled_at": "2026-11-23T12:09:26"
     }
   ]
 }
