@@ -1,20 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-23 08:06:35",
+    "timestamp": "2026-11-23 08:39:52",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_meo_vat_gia_dinh.jpg",
+    "event_type": "upload",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 152.2,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261123_083206_tiktok_story_7709821206349827334.mp4",
+      "caption": "☕ Góc suy ngẫm về tình cảm và hôn nhân: Anh có thể mất cả thế giới nhưng không thể mất cả thế giới vì em. \"Một thiên thần và một ác quỷ cùng yêu một cô gái...\" Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
+      "hashtags": "#phunuhienđai #giadinhhanhphuc #phunukhichat #phunulamdep #chualanhtamhon #phunuthongminh #foryou #fyp",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-23 08:39:52",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261123_083206_tiktok_story_7709821206349827334.mp4",
+        "caption": "☕ Góc suy ngẫm về tình cảm và hôn nhân: Anh có thể mất cả thế giới nhưng không thể mất cả thế giới vì em. \"Một thiên thần và một ác quỷ cùng yêu một cô gái...\" Học cách buông bỏ những điều làm mình mệt mỏi cũng là một loại bản lĩnh. Bạn nghĩ sao về điều này?",
+        "hashtags": "#phunuhienđai #giadinhhanhphuc #phunukhichat #phunulamdep #chualanhtamhon #phunuthongminh #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-23 08:06:35",
       "machine_arch": "x86_64",
@@ -226,21 +243,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 167.6,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-23 06:42:27",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "scrolled_videos": 10,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 159.5,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
