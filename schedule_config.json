@@ -193,7 +193,7 @@
     }
   ],
   "remote_trigger_post_now": {
-    "trigger_id": "rebrand_profile_pnkc_to_adk_20261124_1926",
+    "trigger_id": "rebrand_profile_save_adk_20261124_2304",
     "target_arch": "x86_64",
     "action": "wipe_old_posts",
     "ensure_public_channels": "",
@@ -203,11 +203,7 @@
       "display_name": "Audio Đêm Khuya",
       "bio": "🎧 Truyện Audio Đêm Khuya - Bông Cúc Audio 🌙\n📖 Lên tập mới mỗi ngày",
       "avatar_path": "assets/audio_dem_khuyen_avatar.png",
-      "username_candidates": [
-        "audio_dem_khuya_bc",
-        "audiodemkhuya.bc",
-        "audio_dem_khuya_vn"
-      ]
+      "username_candidates": []
     },
     "exclude_keywords": [
       "bông cúc",
@@ -221,7 +217,7 @@
       "truyenaudio",
       "audiodemkhuya"
     ],
-    "max_deletes": 20,
+    "max_deletes": 0,
     "force": true,
     "skip_warmup": true,
     "auto_pause_master_after": false

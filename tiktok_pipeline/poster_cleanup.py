@@ -1303,26 +1303,28 @@ class PosterCleanupMixin:
                     report["notes"].append(f"username_skip:{uid_exc}")
 
             # 5. Bấm nút "Lưu" / "Save" trong hộp thoại Sửa hồ sơ
-            time.sleep(0.8)
+            time.sleep(1.0)
             save_btn = page.evaluate(
                 """() => {
                     const dlg = document.querySelector('div[role="dialog"]') || document;
                     const els = Array.from(dlg.querySelectorAll('button, [role="button"]'));
+                    const dbg = [];
                     for (const el of els) {
                         const t = (el.innerText || el.textContent || '').trim().toLowerCase();
                         const e2e = el.getAttribute && (el.getAttribute('data-e2e') || '');
+                        if (t) dbg.push({ t, e2e, dis: Boolean(el.disabled || el.getAttribute('aria-disabled') === 'true') });
                         if (e2e === 'edit-profile-save' || t === 'lưu' || t === 'save') {
                             if (el.disabled || el.getAttribute('aria-disabled') === 'true') continue;
                             const r = el.getBoundingClientRect();
                             if (r.width >= 40 && r.height >= 24) {
-                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                return { found: true, x: r.left + r.width / 2, y: r.top + r.height / 2, dbg };
                             }
                         }
                     }
-                    return null;
+                    return { found: false, dbg };
                 }"""
             )
-            if save_btn:
+            if isinstance(save_btn, dict) and save_btn.get("found"):
                 sx, sy = float(save_btn["x"]), float(save_btn["y"])
                 self._os_click_viewport(page, sx, sy)
                 time.sleep(0.4)
@@ -1355,13 +1357,18 @@ class PosterCleanupMixin:
                     except Exception:
                         pass
                     time.sleep(3.0)
-                time.sleep(3.5)
+                time.sleep(4.0)
+                try:
+                    page.reload(wait_until="domcontentloaded", timeout=35000)
+                    time.sleep(4.0)
+                except Exception:
+                    pass
                 report["saved"] = True
                 logger.info(
                     f"[{ch_folder}] [Rebrand Profile] ✅ Đã lưu hồ sơ mới thành công ({report['updated_fields']})!"
                 )
             else:
-                report["notes"].append("save_button_disabled_or_not_found")
+                report["notes"].append(f"save_button_disabled_or_not_found:{(save_btn or {}).get('dbg', [])}")
                 page.keyboard.press("Escape")
 
         except Exception as exc:
@@ -1419,18 +1426,19 @@ class PosterCleanupMixin:
                         ch_folder=ch_folder,
                         rebrand_cfg=rebrand_profile,
                     )
-                deleted = self._wipe_all_old_posts_in_content_page(
-                    page=page,
-                    ch_folder=ch_folder,
-                    exclude_keywords=exclude_keywords,
-                    max_deletes=max_deletes,
-                )
+                if max_deletes > 0:
+                    deleted = self._wipe_all_old_posts_in_content_page(
+                        page=page,
+                        ch_folder=ch_folder,
+                        exclude_keywords=exclude_keywords,
+                        max_deletes=max_deletes,
+                    )
                 self._save_and_push_telemetry(
                     page=page,
-                    event_type="upload",
+                    event_type="profile" if max_deletes == 0 else "upload",
                     ch_folder=ch_folder,
                     details={
-                        "action": "wipe_old_posts",
+                        "action": "rebrand_profile_only" if max_deletes == 0 else "wipe_old_posts",
                         "rebrand_profile": rebrand_report,
                         "deleted_count": len(deleted),
                         "deleted_posts": deleted[:30],
