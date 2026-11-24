@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 13:38:26",
+    "timestamp": "2026-11-24 13:42:20",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_error_meo_vat_gia_dinh.jpg",
+    "channel": "phu_nu_khi_chat",
+    "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
     "details": {
-      "video_file": "20261124_071802_tiktok_story_7684680635797245192.mp4",
+      "video_file": "20261124_084832_tiktok_story_7613953988282682637.mp4",
       "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 13:42:20",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "phu_nu_khi_chat",
+      "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
+      "details": {
+        "video_file": "20261124_084832_tiktok_story_7613953988282682637.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 13:38:26",
       "machine_arch": "x86_64",
@@ -348,21 +359,6 @@
       "details": {
         "video_file": "20261124_073527_tiktok_story_880034604_gautrucden_v1_s346_p4.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 12:36:43",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 231.0,
-        "final_url": "https://www.tiktok.com/@h.lm8158?lang=vi-VN"
       }
     }
   ]
