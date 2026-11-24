@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 13:58:50",
+    "timestamp": "2026-11-24 14:03:23",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "event_type": "upload_error",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 8,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 232.0,
-      "final_url": "https://www.tiktok.com/@v.bao0612?lang=vi-VN"
+      "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 14:03:23",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
+      "details": {
+        "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 13:58:50",
       "machine_arch": "x86_64",
@@ -240,133 +247,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 232.1,
         "final_url": "https://www.tiktok.com/@thu2k081?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 12:54:45",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_filter24h_an_vat_moi_ngay.jpg",
-      "details": {
-        "interacted_count": 2,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7711403617453870357",
-            "video_url": "https://www.tiktok.com/@dao.nguyen427/video/7711403617453870357",
-            "creator_handle": "@dao.nguyen427",
-            "watched_seconds": 23.3,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "before": {
-                "x": 868,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "13"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 868,
-                  "y": 456,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "13"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@dao.nguyen427",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@dao.nguyen427?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Follow",
-                "init_relation": 0,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-24 12:53:14",
-            "follow_back_window_until": "2026-11-25 12:53:14"
-          },
-          {
-            "channel": "an_vat_moi_ngay",
-            "video_id": "7711365567139089685",
-            "video_url": "https://www.tiktok.com/@ntaaffiliate/video/7711365567139089685",
-            "creator_handle": "@ntaaffiliate",
-            "watched_seconds": 15.0,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 868,
-                "y": 456,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "62"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 868,
-                  "y": 456,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "62"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@ntaaffiliate",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@ntaaffiliate?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Follow",
-                "init_relation": 0,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-24 12:54:21",
-            "follow_back_window_until": "2026-11-25 12:54:21"
-          }
-        ]
       }
     }
   ]
