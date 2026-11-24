@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 14:31:26",
+    "timestamp": "2026-11-24 14:36:00",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload_error",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 10,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 233.4,
-      "final_url": "https://www.tiktok.com/@.diu.vy67/video/7711583727608007988?lang=vi-VN"
+      "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 14:36:00",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
+      "details": {
+        "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 14:31:26",
       "machine_arch": "x86_64",
@@ -175,21 +182,6 @@
       "details": {
         "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 13:25:55",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 232.4,
-        "final_url": "https://www.tiktok.com/@meymeyday166/video/7702060924437269780?lang=vi-VN"
       }
     }
   ]
