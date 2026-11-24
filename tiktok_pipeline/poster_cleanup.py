@@ -756,6 +756,366 @@ class PosterCleanupMixin:
         return deleted
 
 
+    def _wipe_all_old_posts_in_content_page(
+        self,
+        page: Any,
+        ch_folder: str,
+        exclude_keywords: Optional[List[str]] = None,
+        max_deletes: int = 100,
+    ) -> List[str]:
+        """
+        Xóa sạch toàn bộ các bài đăng cũ trên `https://www.tiktok.com/tiktokstudio/content`
+        (trừ những bài có caption khớp `exclude_keywords` để bảo vệ tuyệt đối bài đăng mới của kênh đích).
+        Tự động cuộn / tải lại trang nhiều lượt cho tới khi không còn bài cũ nào, đồng thời làm mới
+        khóa trình duyệt sau mỗi bài xóa để Watchdog không ngắt ngang phiên xóa hàng loạt.
+        """
+        deleted_captions: List[str] = []
+        excl_lower = [k.strip().lower() for k in (exclude_keywords or []) if k.strip()]
+
+        if "tiktokstudio/content" not in (page.url or ""):
+            logger.info(
+                f"[{ch_folder}] [Wipe Old Posts] Đang mở tiktok.com/tiktokstudio/content để xóa sạch toàn bộ video cũ..."
+            )
+            page.goto(
+                "https://www.tiktok.com/tiktokstudio/content",
+                wait_until="domcontentloaded",
+                timeout=45000,
+            )
+        time.sleep(random.uniform(5.0, 6.5))
+        self._dismiss_all_studio_popovers(page, ch_folder)
+
+        if "login" in (page.url or "").lower():
+            raise RuntimeError(
+                f"[{ch_folder}] Phiên đăng nhập TikTok chưa sẵn sàng (chuyển về trang login) — không thể xóa video cũ!"
+            )
+
+        scan_rows_js = """() => {
+            const norm = (s) => (s || '').normalize('NFC').trim();
+            const privacyPrefixes = [
+                'Mọi người', 'Chỉ mình', 'Bạn bè', 'Everyone', 'Only me', 'Private', 'Friends',
+                'Vi phạm', 'Không đủ điều kiện', 'Hạn chế', 'Đã xóa', 'Ineligible', 'Violation'
+            ];
+            const allEls = Array.from(document.querySelectorAll('button, [role="button"], [role="combobox"], div, span, a, p'));
+            const privacyBtns = [];
+            for (const el of allEls) {
+                if (el.children.length > 4) continue;
+                const txt = norm(el.innerText || el.textContent || '');
+                if (!txt || txt.length > 42) continue;
+                if (!privacyPrefixes.some(p => txt.startsWith(p) || txt === p)) continue;
+                const r = el.getBoundingClientRect();
+                if (r.width < 45 || r.width > 260 || r.height < 16 || r.height > 65 || r.top < 175 || r.top > window.innerHeight - 15) continue;
+                const cy = r.top + r.height / 2;
+                if (!privacyBtns.some(b => Math.abs(b.y - cy) < 28)) {
+                    privacyBtns.push({ y: cy, top: r.top, left: r.left, right: r.right });
+                }
+            }
+            privacyBtns.sort((a, b) => a.top - b.top);
+
+            const rows = [];
+            const svgs = Array.from(document.querySelectorAll('svg'));
+            const textNodes = Array.from(document.querySelectorAll('*'));
+            for (const pb of privacyBtns) {
+                const rowY = pb.y;
+                const capParts = [];
+                for (const el of textNodes) {
+                    if (el.children.length > 3) continue;
+                    const r = el.getBoundingClientRect();
+                    if (r.left < 60 || r.left >= pb.left - 10 || r.width < 12 || r.height < 8 || r.height > 120) continue;
+                    const cy = r.top + r.height / 2;
+                    if (Math.abs(cy - rowY) > 54) continue;
+                    const t = norm(el.innerText || el.textContent || '').replace(/\\s+/g, ' ');
+                    if (t && t.length <= 260 && !capParts.includes(t)) {
+                        capParts.push(t);
+                    }
+                }
+                const bestCaption = capParts.join(' | ').slice(0, 420);
+
+                const actionCandidates = [];
+                for (const svg of svgs) {
+                    const r = svg.getBoundingClientRect();
+                    if (r.left < pb.right + 75 || r.left > window.innerWidth - 5 || r.width < 8 || r.width > 48 || r.height < 8 || r.height > 48) continue;
+                    const cy = r.top + r.height / 2;
+                    if (Math.abs(cy - rowY) > 38) continue;
+                    const btn = svg.closest('button, [role="button"]') || svg.parentElement || svg;
+                    const br = btn.getBoundingClientRect();
+                    actionCandidates.push({
+                        x: br.left + br.width / 2,
+                        y: br.top + br.height / 2,
+                        left: br.left
+                    });
+                }
+                actionCandidates.sort((a, b) => b.x - a.x);
+                if (actionCandidates.length > 0) {
+                    rows.push({
+                        rowY: Math.round(rowY),
+                        caption: bestCaption,
+                        moreX: Math.round(actionCandidates[0].x * 10) / 10,
+                        moreY: Math.round(actionCandidates[0].y * 10) / 10
+                    });
+                }
+            }
+            return rows;
+        }"""
+
+        find_del_js = """() => {
+            const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
+            const els = Array.from(document.querySelectorAll('*'));
+            const matches = [];
+            for (const el of els) {
+                if (el.children.length > 4) continue;
+                const txt = norm(el.innerText || el.textContent || '');
+                if (!txt || txt.length > 35) continue;
+                const r = el.getBoundingClientRect();
+                if (r.width < 12 || r.height < 10 || r.top < 70) continue;
+                if (
+                    txt === 'xóa' || txt === 'xoá' ||
+                    txt === 'xóa video' || txt === 'xoá video' ||
+                    txt === 'xóa bài đăng' || txt === 'xoá bài đăng' ||
+                    txt === 'delete' || txt === 'delete video' || txt === 'delete post' ||
+                    ((txt.includes('xóa') || txt.includes('xoá') || txt.includes('delete')) && !txt.includes('tìm kiếm'))
+                ) {
+                    if (r.width <= 320 && r.height <= 80) {
+                        matches.push({
+                            text: txt,
+                            x: r.left + r.width / 2,
+                            y: r.top + r.height / 2,
+                            left: r.left,
+                            childrenCount: el.children.length
+                        });
+                    }
+                }
+            }
+            matches.sort((a, b) => (a.childrenCount - b.childrenCount) || (b.left - a.left));
+            return matches[0] || null;
+        }"""
+
+        find_confirm_js = """() => {
+            const norm = (s) => (s || '').normalize('NFC').trim().toLowerCase();
+            const labels = ['xóa', 'xoá', 'xóa video', 'xoá video', 'delete', 'xác nhận', 'confirm'];
+            const btns = Array.from(document.querySelectorAll('button, [role="button"], div, span'));
+            const minX = window.innerWidth * 0.15;
+            const maxX = window.innerWidth * 0.78;
+            const candidates = [];
+            for (const b of btns) {
+                if (b.children.length > 3) continue;
+                const txt = norm(b.innerText || b.textContent || '');
+                if (!labels.includes(txt)) continue;
+                const r = b.getBoundingClientRect();
+                if (r.width < 36 || r.width > 340 || r.height < 22 || r.height > 75 || r.top < 140) continue;
+                const isModalCenter = (r.left >= minX && r.left <= maxX) ? 1 : 0;
+                const isButtonTag = (b.tagName === 'BUTTON' || b.getAttribute('role') === 'button') ? 1 : 0;
+                candidates.push({
+                    text: txt,
+                    x: r.left + r.width / 2,
+                    y: r.top + r.height / 2,
+                    top: r.top,
+                    isModalCenter: isModalCenter,
+                    isButtonTag: isButtonTag
+                });
+            }
+            candidates.sort((a, b) => (b.isModalCenter - a.isModalCenter) || (b.isButtonTag - a.isButtonTag) || (b.top - a.top));
+            return candidates.find(c => c.isModalCenter === 1) || null;
+        }"""
+
+        reloaded_empty_once = False
+        consecutive_failures = 0
+
+        for step_idx in range(max_deletes):
+            self._refresh_browser_process_lock()
+            rows_info = page.evaluate(scan_rows_js) or []
+            target_row = None
+            for r in rows_info:
+                cap_low = (r.get("caption") or "").lower()
+                if excl_lower and any(ex in cap_low for ex in excl_lower):
+                    continue
+                target_row = r
+                break
+
+            if not target_row:
+                try:
+                    page.evaluate("() => window.scrollBy(0, 650)")
+                    time.sleep(2.2)
+                    rows_after_scroll = page.evaluate(scan_rows_js) or []
+                    for r in rows_after_scroll:
+                        cap_low = (r.get("caption") or "").lower()
+                        if excl_lower and any(ex in cap_low for ex in excl_lower):
+                            continue
+                        target_row = r
+                        break
+                except Exception:
+                    pass
+
+            if not target_row:
+                if not reloaded_empty_once:
+                    reloaded_empty_once = True
+                    logger.info(
+                        f"[{ch_folder}] [Wipe Old Posts] Đã xóa {len(deleted_captions)} bài — tải lại trang để xác nhận sạch 100%..."
+                    )
+                    try:
+                        page.reload(wait_until="domcontentloaded", timeout=40000)
+                        time.sleep(random.uniform(4.8, 6.2))
+                        self._dismiss_all_studio_popovers(page, ch_folder)
+                        continue
+                    except Exception:
+                        break
+                logger.info(
+                    f"[{ch_folder}] [Wipe Old Posts] ✅ Đã sạch hoàn toàn video cũ! Tổng cộng đã xóa: {len(deleted_captions)} video."
+                )
+                break
+
+            reloaded_empty_once = False
+            mx, my = float(target_row["moreX"]), float(target_row["moreY"])
+            cap_preview = (target_row.get("caption") or "old_post")[:80]
+            logger.info(
+                f"[{ch_folder}] [Wipe Old Posts #{len(deleted_captions) + 1}] Đang xóa video cũ: '{cap_preview}'..."
+            )
+
+            self._os_click_viewport(page, mx, my)
+            time.sleep(1.3)
+            del_opt = page.evaluate(find_del_js)
+            if not del_opt:
+                page.mouse.click(mx, my)
+                time.sleep(1.2)
+                del_opt = page.evaluate(find_del_js)
+
+            if not del_opt:
+                consecutive_failures += 1
+                logger.warning(
+                    f"[{ch_folder}] [Wipe Old Posts] Không thấy nút 'Xóa' (lần lỗi liên tiếp={consecutive_failures})."
+                )
+                page.keyboard.press("Escape")
+                time.sleep(1.0)
+                if consecutive_failures >= 3:
+                    try:
+                        page.reload(wait_until="domcontentloaded", timeout=40000)
+                        time.sleep(5.0)
+                        self._dismiss_all_studio_popovers(page, ch_folder)
+                    except Exception:
+                        break
+                    if consecutive_failures >= 5:
+                        break
+                continue
+
+            dx, dy = float(del_opt["x"]), float(del_opt["y"])
+            self._os_click_viewport(page, dx, dy)
+            time.sleep(1.6)
+            conf_btn = page.evaluate(find_confirm_js)
+            if not conf_btn:
+                page.mouse.click(dx, dy)
+                try:
+                    page.evaluate(
+                        """({x, y}) => {
+                            const el = document.elementFromPoint(x, y);
+                            if (el) el.click();
+                        }""",
+                        {"x": dx, "y": dy},
+                    )
+                except Exception:
+                    pass
+                time.sleep(1.5)
+                conf_btn = page.evaluate(find_confirm_js)
+
+            if conf_btn:
+                cx, cy = float(conf_btn["x"]), float(conf_btn["y"])
+                self._os_click_viewport(page, cx, cy)
+                page.mouse.click(cx, cy)
+                try:
+                    page.evaluate(
+                        """({x, y}) => {
+                            const el = document.elementFromPoint(x, y);
+                            if (el) {
+                                const btn = el.closest('button, [role="button"]') || el;
+                                btn.click();
+                            }
+                        }""",
+                        {"x": cx, "y": cy},
+                    )
+                except Exception:
+                    pass
+                time.sleep(random.uniform(3.6, 4.6))
+                deleted_captions.append(cap_preview)
+                consecutive_failures = 0
+                logger.info(
+                    f"[{ch_folder}] [Wipe Old Posts] ✅ Đã xóa xong video #{len(deleted_captions)}: '{cap_preview}'"
+                )
+            else:
+                consecutive_failures += 1
+                logger.warning(f"[{ch_folder}] [Wipe Old Posts] Không thấy nút xác nhận Xóa trong modal.")
+                page.keyboard.press("Escape")
+                time.sleep(1.0)
+                if consecutive_failures >= 4:
+                    break
+
+        return deleted_captions
+
+
+    def wipe_all_old_channel_posts(
+        self,
+        channel_arg: str,
+        exclude_keywords: Optional[List[str]] = None,
+        max_deletes: int = 100,
+        headless: bool = False,
+    ) -> List[str]:
+        """
+        Mở Chrome Anti-Detect của kênh `channel_arg`, xóa sạch toàn bộ các video cũ (không khớp `exclude_keywords`)
+        trên `tiktokstudio/content`, rồi chụp ảnh & đẩy báo cáo Telemetry xác nhận kênh đã trống sạch.
+        """
+        from playwright.sync_api import sync_playwright
+
+        profile = resolve_channel_profile(channel_arg)
+        ch_folder = profile["folder_name"]
+        user_data_dir = self.profiles_root / ch_folder
+        synced_sess = self.project_root / "remote_telemetry" / "sessions" / f"{ch_folder}.bin"
+        if not user_data_dir.exists() and synced_sess.exists():
+            user_data_dir.mkdir(parents=True, exist_ok=True)
+        if not user_data_dir.exists():
+            raise RuntimeError(f"Kênh [{ch_folder}] chưa có profile đăng nhập tại {user_data_dir}.")
+
+        deleted: List[str] = []
+        with sync_playwright() as p:
+            context = self._launch_stealth_chrome_context(
+                playwright_obj=p, user_data_dir=user_data_dir, headless=headless
+            )
+            try:
+                page = context.pages[0] if context.pages else context.new_page()
+                deleted = self._wipe_all_old_posts_in_content_page(
+                    page=page,
+                    ch_folder=ch_folder,
+                    exclude_keywords=exclude_keywords,
+                    max_deletes=max_deletes,
+                )
+                self._save_and_push_telemetry(
+                    page=page,
+                    event_type="upload",
+                    ch_folder=ch_folder,
+                    details={
+                        "action": "wipe_old_posts",
+                        "deleted_count": len(deleted),
+                        "deleted_posts": deleted[:30],
+                        "exclude_keywords": exclude_keywords or [],
+                        "final_url": page.url,
+                    },
+                )
+                time.sleep(random.uniform(3.0, 4.5))
+            except Exception as exc:
+                try:
+                    self._save_and_push_telemetry(
+                        page=context.pages[0] if context.pages else None,
+                        event_type="upload_error",
+                        ch_folder=ch_folder,
+                        details={"action": "wipe_old_posts", "error": str(exc)},
+                    )
+                except Exception:
+                    pass
+                raise
+            finally:
+                try:
+                    context.close()
+                except Exception:
+                    pass
+        return deleted
+
+
     def ensure_channel_posts_public(self, channel_arg: str, headless: bool = False) -> Dict[str, Any]:
         """
         Mở trang `https://www.tiktok.com/tiktokstudio/content` của một kênh (hoặc cả 4 kênh nếu `channel_arg='all'`)

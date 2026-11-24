@@ -1081,7 +1081,7 @@ class StoryAudioCrawler:
                     sub_dir = self.output_root / ch_folder / sub
                     if sub_dir.exists():
                         for mp4 in sub_dir.glob("*.mp4"):
-                            if ch_folder == "audio_dem_khuyen" and "bongcuc_v6_s" not in mp4.name.lower():
+                            if ch_folder == "audio_dem_khuyen" and "bongcuc_v7_s" not in mp4.name.lower():
                                 continue
                             if ch_folder == "video_AI_hay" and "gautrucden_v1_s" not in mp4.name.lower():
                                 continue
@@ -2991,8 +2991,8 @@ class StoryAudioCrawler:
                     reason = "video baby_AI bản cũ trước khi nâng cấp lồng tiếng khớp 1:1 (22:40 29/10)"
                 elif (plat == "douyin" or ch_folder in ("baby_AI", "video_AI_hay")) and fname[:15] < "20261028_210000":
                     reason = "video lồng tiếng bản cũ trước khi vá lỗi cắt đỉnh âm thanh & mất thoại VAD (21:00 28/10)"
-                elif ch_folder == "audio_dem_khuyen" and "bongcuc_v6_s" not in fname.lower():
-                    reason = "video audio_dem_khuyen bản cũ trước khi nâng cấp cấu trúc bongcuc_v6 (giữ chữ BC SỐ trong khung kể chuyện + không ghi Bông Cúc + khôi phục video đã mất)"
+                elif ch_folder == "audio_dem_khuyen" and "bongcuc_v7_s" not in fname.lower():
+                    reason = "video audio_dem_khuyen bản cũ trước khi nâng cấp cấu trúc bongcuc_v7 (hiển thị BÔNG CÚC SỐ trên màn hình + hashtag #bongcucso cho kênh mới)"
                 elif ch_folder == "audio_dem_khuyen" and (
                     "bongcuc_v4_s10_p" in fname.lower()
                     or (

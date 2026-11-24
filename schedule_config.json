@@ -17,7 +17,7 @@
       "batch_single_chrome_session": true
     },
     "switch_3_interact": {
-      "tiktok": true,
+      "tiktok": false,
       "fb_reels": false,
       "yt_shorts": false
     },
@@ -33,7 +33,6 @@
     "audio_dem_khuyen",
     "tu_chan_gioi",
     "suc_khoe_duong_sinh",
-    "phu_nu_khi_chat",
     "an_vat_moi_ngay",
     "meo_vat_gia_dinh",
     "nuoi_con_eq",
@@ -46,23 +45,21 @@
     "tu_chan_gioi",
     "meo_vat_gia_dinh",
     "suc_khoe_duong_sinh",
-    "phu_nu_khi_chat",
     "an_vat_moi_ngay",
     "nuoi_con_eq",
     "phu_kien_tien_ich",
     "thu_cung_vui_nhon"
   ],
   "active_filter_24h_channels": [
-    "meo_vat_gia_dinh",
-    "suc_khoe_duong_sinh",
-    "phu_nu_khi_chat",
-    "an_vat_moi_ngay",
-    "nuoi_con_eq",
-    "phu_kien_tien_ich",
     "video_AI_hay",
     "baby_AI",
     "audio_dem_khuyen",
-    "tu_chan_gioi"
+    "tu_chan_gioi",
+    "meo_vat_gia_dinh",
+    "suc_khoe_duong_sinh",
+    "an_vat_moi_ngay",
+    "nuoi_con_eq",
+    "phu_kien_tien_ich"
   ],
   "default_post_times": [
     "08:00",
@@ -121,7 +118,7 @@
       "23:54"
     ]
   },
-  "filter_24h_enabled": true,
+  "filter_24h_enabled": false,
   "filter_24h_cooldown_until": "",
   "filter_24h_runs_per_day": 2,
   "filter_24h_videos_per_session": 3,
@@ -179,16 +176,34 @@
     "nuoi_con_eq": "",
     "phu_kien_tien_ich": ""
   },
+  "channel_migrations": [
+    {
+      "migration_id": "audio_dem_khuyen_reborn_from_pnkc_20261124",
+      "action": "replace_channel_from_account",
+      "source_channel": "phu_nu_khi_chat",
+      "target_channel": "audio_dem_khuyen",
+      "reset_target_history": true
+    }
+  ],
   "remote_trigger_post_now": {
-    "trigger_id": "post_now_clean_cg_audio_20261111_1118",
+    "trigger_id": "wipe_old_pnkc_posts_for_new_adk_20261124_1615",
     "target_arch": "x86_64",
-    "action": "upload",
+    "action": "wipe_old_posts",
     "ensure_public_channels": "",
     "channel": "audio_dem_khuyen",
-    "delete_match_keywords": [
-      "biết tăng ca",
-      "vi phạm"
+    "exclude_keywords": [
+      "bông cúc",
+      "bongcucso",
+      "phần 1/",
+      "phần 2/",
+      "phần 3/",
+      "phần 4/",
+      "phần 5/",
+      "phần 6/",
+      "truyenaudio",
+      "audiodemkhuya"
     ],
+    "max_deletes": 100,
     "force": true,
     "skip_warmup": true,
     "auto_pause_master_after": false

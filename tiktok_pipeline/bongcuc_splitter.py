@@ -132,62 +132,62 @@ def parse_bongcuc_bg_mode(filename_or_stem: str) -> Optional[str]:
         return "day_aesthetic"
     return None
 
-# Danh sách các tập "Bông Cúc Trắng" đã chiếu Phần 1 trên kênh TikTok `audio_dem_khuyen`
+# Danh sách các tập "Bông Cúc Trắng" (kênh mới audio_dem_khuyen bắt đầu sạch từ Phần 1)
 # Được xếp theo thứ tự ưu tiên xen kẽ (so le) để không bao giờ đăng 2 phần của cùng 1 tập liên tiếp
 BONGCUC_EPISODES_CATALOG: List[Dict[str, Any]] = [
     {
         "ep_num": 141,
         "yt_id": "i_pJ8eZCEt0",
         "title": "Đại Tiểu Thư Thật Và Kẻ Mạo Danh",
-        "part1_posted": True,
+        "part1_posted": False,
     },
     {
         "ep_num": 142,
         "yt_id": "aD5x_Ek_VSY",
         "title": "Người Lạ Năm Xưa Cuối Cùng Đã Trở Lại",
-        "part1_posted": True,
+        "part1_posted": False,
     },
     {
         "ep_num": 143,
         "yt_id": "2lzzVdKb4sQ",
         "title": "Tôi Là Bạn Gái Hờ Của Thiếu Gia Bảy Năm",
-        "part1_posted": True,
+        "part1_posted": False,
     },
     {
         "ep_num": 144,
         "yt_id": "3zVIg5dAhAo",
         "title": "Tôi Ghét Nhất Những Lời Xin Lỗi Muộn Màng",
-        "part1_posted": True,
+        "part1_posted": False,
     },
     {
         "ep_num": 146,
         "yt_id": "l9fQrhwWLD0",
         "title": "Vừa Sinh Đôi, Tôi Đã Bị Chồng Nghi Ngoại Tình",
-        "part1_posted": True,
+        "part1_posted": False,
     },
     {
         "ep_num": 137,
         "yt_id": "p2cdDyKx-q4",
         "title": "Ly Hôn Xong, Tôi Sống Cuộc Đời Của Mình",
-        "part1_posted": True,
+        "part1_posted": False,
     },
     {
         "ep_num": 119,
         "yt_id": "rVdYOsTHDrE",
         "title": "Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà",
-        "part1_posted": True,
+        "part1_posted": False,
     },
     {
         "ep_num": 138,
         "yt_id": "wS9sTH05PKM",
         "title": "Kiếp Này, Tôi Dứt Khoát Rời Xa Anh",
-        "part1_posted": True,
+        "part1_posted": False,
     },
     {
         "ep_num": 110,
         "yt_id": "2cmcDDxu_YY",
         "title": "Ta Không Gả, Hắn Cũng Không Cưới",
-        "part1_posted": True,
+        "part1_posted": False,
     },
     # Các tập mới trên kênh YouTube @bongcucaudio (bắt đầu từ Phần 1 -> Phần Cuối, xen kẽ cùng các tập trên)
     {
@@ -341,7 +341,7 @@ class BongCucYouTubeSplitter:
 
             current_cat = self.get_full_catalog()
             known_yt_ids = {str(item.get("yt_id")) for item in current_cat}
-            part1_posted_eps = {141, 142, 143, 144, 146, 137, 119, 138, 110, 70, 10}
+            part1_posted_eps: Set[int] = set()
 
             with yt_dlp.YoutubeDL(
                 {"quiet": True, "no_warnings": True, "extract_flat": "in_playlist"}
@@ -643,137 +643,23 @@ class BongCucYouTubeSplitter:
     @staticmethod
     def get_lost_story_ids_needing_repost(project_root: Path) -> Set[str]:
         """
-        Xác định danh sách các `story_id` (`9900...`) đã bị mất / bị xóa / thiếu trên kênh `audio_dem_khuyen`
-        cần được TỪ TỪ ĐĂNG LẠI với cấu trúc `bongcuc_v6_s` (có giữ `BC SỐ <ep_num>` trong khung kể chuyện):
-        1. Bao gồm các tập/phần trước đây bị xóa, bị mất khi dọn kho, hoặc đăng thiếu số tập/phần trên kênh.
-        2. Kết hợp tự động với file `data/audio_dem_khuyen_live_posts.json` (do trình duyệt quét trực tiếp từ
-           trang `tiktokstudio/content` của kênh `audio_dem_khuyen`) để phát hiện mọi video từng đăng nhưng hiện
-           đã biến mất khỏi kênh.
-        3. Loại trừ các `story_id` đã có file `bongcuc_v6_s` trong `output/audio_dem_khuyen/ready/` hoặc `posted/`.
+        Kênh `audio_dem_khuyen` mới (chuyển đổi hoàn toàn từ tài khoản `phu_nu_khi_chat`)
+        khởi chạy sạch từ đầu (Phần 1), không còn kế thừa danh sách video mất của kênh cũ.
         """
-        proj = Path(project_root)
-        historical_channel_ids: Set[str] = {
-            "990001001", "990001002", "990001003", "990001004", "990001005", "990001006", "990001007",
-            "990002101", "990002102",
-            "990003501", "990003502",
-            "990003901", "990003902",
-            "990004501", "990005101", "990005401", "990005601",
-            "990006001", "990006002",
-            "990007001", "990007002",
-            "990008901", "990010101",
-            "990011001", "990011002",
-            "990011901", "990011902",
-            "990012001", "990012002",
-            "990013701", "990013801",
-            "990014101", "990014102",
-            "990014201", "990014202",
-            "990014301", "990014302",
-            "990014401", "990014402",
-            "990014501",
-            "990014601", "990014602",
-        }
-        # Các video đã xác nhận bị mất / xóa trên kênh hoặc bị kẹt chưa lên kênh với khung "BC Số"
-        lost_ids: Set[str] = {
-            "990004501",  # BC Số 45 Phần 1 (đã bị xóa khỏi kênh)
-            "990005101",  # BC Số 51 Phần 1 (mất khi dọn kho trước khi lên kênh)
-            "990005401",  # BC Số 54 Phần 1 (mất khi dọn kho trước khi lên kênh)
-            "990005601",  # BC Số 56 Phần 1 (mất khi dọn kho trước khi lên kênh)
-            "990008901",  # BC Số 89 Phần 1 (mất khi dọn kho trước khi lên kênh)
-            "990010101",  # BC Số 101 Phần 1 (mất khi dọn kho trước khi lên kênh)
-            "990001002",  # BC Số 10 Phần 2 (bản cũ bị mất tên tập/phần)
-            "990001003",  # BC Số 10 Phần 3 (bản cũ bị mất tên tập/phần)
-            "990003901",  # BC Số 39 Phần 1 (bản đầu bị xóa, bản sau mất tên tập/phần)
-            "990011001",  # BC Số 110 Phần 1 (bản cũ mất tên tập/phần)
-            "990013701",  # BC Số 137 Phần 1 (bản cũ mất tên tập/phần)
-            "990013801",  # BC Số 138 Phần 1 (bản cũ mất tên tập/phần)
-            "990014301",  # BC Số 143 Phần 1 (bản cũ mất tên tập/phần)
-            "990014401",  # BC Số 144 Phần 1 (bản cũ mất tên tập/phần)
-            "990012002",  # BC Số 120 Phần 2 (bản v5 thiếu chữ BC Số trong khung kể chuyện)
-            "990003902",  # BC Số 39 Phần 2 (chưa lên kênh)
-            "990006002",  # BC Số 60 Phần 2 (chưa lên kênh)
-            "990003502",  # BC Số 35 Phần 2 (chưa lên kênh)
-            "990011002",  # BC Số 110 Phần 2 (chưa lên kênh)
-        }
-
-        live_inv_path = proj / "data" / "audio_dem_khuyen_live_posts.json"
-        if live_inv_path.exists():
-            try:
-                inv_data = json.loads(live_inv_path.read_text(encoding="utf-8"))
-                live_sids = {str(x) for x in (inv_data.get("live_story_ids") or []) if x}
-                if len(live_sids) >= 3:
-                    for h_sid in historical_channel_ids:
-                        if h_sid not in live_sids:
-                            lost_ids.add(h_sid)
-                for rep_sid in inv_data.get("reposted_v6_story_ids") or []:
-                    lost_ids.discard(str(rep_sid))
-            except Exception:
-                pass
-
-        # Chỉ loại khỏi danh sách cần đăng lại khi bản bongcuc_v6_s ĐÃ ĐƯỢC ĐĂNG (nằm trong posted/ hoặc registry history v6)
-        posted_v6_dir = proj / "output" / "audio_dem_khuyen" / "posted"
-        if posted_v6_dir.exists():
-            for mp4 in posted_v6_dir.glob("*bongcuc_v6_s*.mp4"):
-                ep_pt = parse_bongcuc_ep_and_part(mp4.name)
-                if ep_pt:
-                    lost_ids.discard(make_bongcuc_story_id(ep_pt[0], ep_pt[1]))
-
-        reg_path = proj / "uploaded_videos_registry.json"
-        if reg_path.exists():
-            try:
-                reg_d = json.loads(reg_path.read_text(encoding="utf-8"))
-                for h_item in reg_d.get("history") or []:
-                    if isinstance(h_item, dict) and "bongcuc_v6_s" in str(h_item.get("filename") or "").lower():
-                        ep_pt = parse_bongcuc_ep_and_part(str(h_item.get("filename") or ""))
-                        if ep_pt:
-                            lost_ids.discard(make_bongcuc_story_id(ep_pt[0], ep_pt[1]))
-            except Exception:
-                pass
-
-        return lost_ids
+        return set()
 
     def build_interleaved_queue(
         self, known_posted_or_ready_ids: Set[str]
     ) -> List[Dict[str, Any]]:
         """
-        Xây dựng hàng đợi độc quyền 100% từ kênh YouTube `@bongcucaudio` (148+ tập truyện)
-        theo chiến lược:
-        1. **TỪ TỪ ĐĂNG LẠI CÁC VIDEO ĐÃ MẤT TRONG KÊNH (`lost_recovery_specs`)**:
-           - Phát hiện toàn bộ các tập/phần đã mất trên kênh (`get_lost_story_ids_needing_repost`) và đan xen
-             từ từ vào lịch đăng (`1 Video Đã Mất Cần Đăng Lại : 1 Phần Tiếp Theo`) để khôi phục đầy đủ kho truyện
-             trên kênh mà không gây spam.
-        2. **ĐỒNG BỘ CẤP ĐỘ PHẦN (LEVEL-SYNCHRONIZED WAVE: PHẦN 2 -> PHẦN 3 -> PHẦN 4...)
-           & ƯU TIÊN TẬP NHIỀU VIEW TRÊN KÊNH**.
+        Xây dựng hàng đợi độc quyền 100% từ kênh YouTube `@bongcucaudio` (147+ tập sạch)
+        cho kênh `audio_dem_khuyen` mới bắt đầu từ Phần 1:
+        1. Mở sóng 4 tập hot nhiều lượt xem nhất từ Phần 1 -> Phần 1 trước khi sang Phần 2.
+        2. Sau đó đan xen sóng 4:1 (4 phần tiếp theo đồng bộ cấp độ Phần 2 -> Phần 3 -> ... : 1 tập mới Phần 1).
         """
         catalog = self.get_full_catalog()
+        effective_known_ids: Set[str] = set(str(x) for x in (known_posted_or_ready_ids or set()) if x)
 
-        # Tập hợp các story_id đã từng đăng trên kênh audio_dem_khuyen
-        confirmed_posted_ids: Set[str] = {
-            "990001001", "990001002", "990001003", "990001004", "990001005", "990001006", "990001007",
-            "990014101", "990014102", "990014201", "990014202", "990014301", "990014302",
-            "990014401", "990014402", "990014601", "990014602",
-            "990011901", "990011902", "990007001", "990007002", "990011001", "990014501",
-            "990013801", "990013701", "990003901", "990006001", "990003501",
-            "990002101", "990002102", "990012001",
-        }
-        lost_story_ids = self.get_lost_story_ids_needing_repost(self.project_root)
-        # Mở khóa toàn bộ các story_id đã bị mất trên kênh (trừ những file đã có sẵn bản v6 trong ready/)
-        effective_known_ids: Set[str] = (set(known_posted_or_ready_ids) | confirmed_posted_ids) - lost_story_ids
-
-        # Trọng số ưu tiên đặc biệt cho các tập đang có view cao trên kênh TikTok audio_dem_khuyen & YouTube
-        high_view_channel_prio: Dict[int, int] = {
-            21: 1000,   # 414 TikTok views (17 tim) + 90,987 YT views
-            120: 950,   # 449 TikTok views (11 tim) + 88,376 YT views
-            119: 900,   # 738 TikTok views (9 tim) + 245,499 YT views
-            70: 850,    # 240 TikTok views (5 tim) + 135,832 YT views
-            39: 800,    # 112,208 YT views
-            60: 750,    # 102,409 YT views
-            35: 700,    # 96,812 YT views
-            110: 650,   # 55,433 YT views
-            141: 600,   # 40,489 YT views
-            10: 520,    # 485 TikTok views (12 tim)
-        }
-
-        # Phân loại các tập đã từng mở trên kênh và các tập mới chưa chiếu Phần 1
         active_cont_eps: List[Dict[str, Any]] = []
         brand_new_eps: List[Dict[str, Any]] = []
         for ep in catalog:
@@ -781,89 +667,49 @@ class BongCucYouTubeSplitter:
             p1_sid = make_bongcuc_story_id(ep_num, 1)
             has_any_part_known = any(
                 sid.startswith(f"9900{ep_num:03d}")
-                for sid in (effective_known_ids | lost_story_ids)
+                for sid in effective_known_ids
             )
-            if bool(ep.get("part1_posted")) or p1_sid in effective_known_ids or has_any_part_known:
+            if p1_sid in effective_known_ids or has_any_part_known:
                 active_cont_eps.append(ep)
             else:
                 brand_new_eps.append(ep)
 
-        # Sắp xếp tập mới ưu tiên độ dài chuẩn TikTok (4 - 13 phần, <= 5400s) + lượt view YouTube cao nhất
-        brand_new_eps.sort(
-            key=lambda x: (
+        # Sắp xếp ưu tiên độ dài chuẩn TikTok (2 - 13 phần, 600s..5400s) + lượt view YouTube cao nhất
+        def _ep_sort_key(x: Dict[str, Any]) -> Tuple[int, int, int]:
+            return (
                 1 if 600 <= float(x.get("duration") or 3200) <= 5400 else 0,
                 int(x.get("view_count") or 0),
                 int(x.get("ep_num") or 0),
-            ),
-            reverse=True,
-        )
-        # Sắp xếp tập đang chiếu dở theo trọng số view kênh TikTok + lượt view YouTube giảm dần
-        active_cont_eps.sort(
-            key=lambda x: (
-                high_view_channel_prio.get(int(x.get("ep_num") or 0), 0),
-                1 if 600 <= float(x.get("duration") or 3200) <= 5400 else 0,
-                int(x.get("view_count") or 0),
-                int(x.get("ep_num") or 0),
-            ),
-            reverse=True,
-        )
+            )
 
-        lost_recovery_specs: List[Dict[str, Any]] = []
+        brand_new_eps.sort(key=_ep_sort_key, reverse=True)
+        active_cont_eps.sort(key=_ep_sort_key, reverse=True)
+
         fresh_part1_specs: List[Dict[str, Any]] = []
         new_eps_followup_lists: List[List[Dict[str, Any]]] = []
         cont_per_ep_lists: List[List[Dict[str, Any]]] = []
 
         remaining_eps_count = 0
-        fetched_online_count = 0
 
         for ep_info in active_cont_eps:
-            allow_net = False
-            plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
-            if allow_net:
-                fetched_online_count += 1
-            ep_num_cur = int(ep_info.get("ep_num") or 0)
-            ep_lost = [
-                p
-                for p in plan
-                if str(p["story_id"]) in lost_story_ids and str(p["story_id"]) not in effective_known_ids
-            ]
-            if ep_lost:
-                lost_recovery_specs.extend(ep_lost)
-            ep_has_lost_p1 = any(int(lp["part_num"]) == 1 for lp in ep_lost)
-            ep_has_live_p2_plus = any(
-                sid.startswith(f"9900{ep_num_cur:03d}") and not sid.endswith("01")
-                for sid in effective_known_ids
-            )
-            pending = [
-                p
-                for p in plan
-                if str(p["story_id"]) not in effective_known_ids
-                and str(p["story_id"]) not in lost_story_ids
-                and int(p["part_num"]) >= 2
-            ]
-            if pending or ep_lost:
-                if pending:
-                    if ep_has_lost_p1 and not ep_has_live_p2_plus:
-                        new_eps_followup_lists.append(pending)
-                    else:
-                        cont_per_ep_lists.append(pending)
-                remaining_eps_count += 1
-
-        # Sắp xếp danh sách video đã mất cần đăng lại: ưu tiên Phần 1 -> Phần 2 -> Phần 3 và tập nhiều view
-        lost_recovery_specs.sort(
-            key=lambda p: (
-                int(p.get("part_num") or 1),
-                -high_view_channel_prio.get(int(p.get("ep_num") or 0), 0),
-                -int(p.get("view_count") or 0),
-                -int(p.get("ep_num") or 0),
-            )
-        )
+            ep_clean = dict(ep_info)
+            ep_clean["part1_posted"] = False
+            plan = self.compute_episode_parts_plan(ep_clean, allow_network=False)
+            pending = [p for p in plan if str(p["story_id"]) not in effective_known_ids]
+            if not pending:
+                continue
+            remaining_eps_count += 1
+            if int(pending[0]["part_num"]) == 1:
+                fresh_part1_specs.append(pending[0])
+                if len(pending) > 1:
+                    new_eps_followup_lists.append(pending[1:])
+            else:
+                cont_per_ep_lists.append(pending)
 
         for ep_info in brand_new_eps:
-            allow_net = False
-            plan = self.compute_episode_parts_plan(ep_info, allow_network=allow_net)
-            if allow_net:
-                fetched_online_count += 1
+            ep_clean = dict(ep_info)
+            ep_clean["part1_posted"] = False
+            plan = self.compute_episode_parts_plan(ep_clean, allow_network=False)
             pending = [p for p in plan if str(p["story_id"]) not in effective_known_ids]
             if not pending:
                 continue
@@ -887,7 +733,6 @@ class BongCucYouTubeSplitter:
             level_items = parts_by_level[pt_level]
             level_items.sort(
                 key=lambda p: (
-                    high_view_channel_prio.get(int(p.get("ep_num") or 0), 0),
                     int(p.get("view_count") or 0),
                     int(p.get("ep_num") or 0),
                 ),
@@ -905,25 +750,24 @@ class BongCucYouTubeSplitter:
             for pt_level in sorted(sub_by_level.keys()):
                 continuation_specs.extend(sub_by_level[pt_level])
 
-        # Đan xen TỪ TỪ: [1 Video Đã Mất Cần Đăng Lại] <-> [1 Phần Tiếp Theo] (và cứ 6 lượt chèn 1 Tập Mới Phần 1)
+        # Mở sóng 4 tập đầu tiên bằng Phần 1 nếu kênh mới chưa có đủ 4 tập đã mở;
+        # sau đó đan xen 4 phần tiếp theo : 1 tập mới Phần 1
         interleaved: List[Dict[str, Any]] = []
-        lost_idx = 0
         cont_idx = 0
         p1_idx = 0
         slot_counter = 0
-        while (
-            lost_idx < len(lost_recovery_specs)
-            or cont_idx < len(continuation_specs)
-            or p1_idx < len(fresh_part1_specs)
-        ):
-            for _ in range(3):
-                if lost_idx < len(lost_recovery_specs):
-                    l_item = dict(lost_recovery_specs[lost_idx])
-                    l_item["bg_mode"] = "day_aesthetic" if (slot_counter % 2 == 0) else "night_mukbang"
-                    l_item["is_lost_recovery"] = True
-                    interleaved.append(l_item)
-                    lost_idx += 1
-                    slot_counter += 1
+
+        initial_p1_needed = max(0, 4 - len(active_cont_eps))
+        for _ in range(initial_p1_needed):
+            if p1_idx < len(fresh_part1_specs):
+                p1_item = dict(fresh_part1_specs[p1_idx])
+                p1_item["bg_mode"] = "day_aesthetic" if (slot_counter % 2 == 0) else "night_mukbang"
+                interleaved.append(p1_item)
+                p1_idx += 1
+                slot_counter += 1
+
+        while cont_idx < len(continuation_specs) or p1_idx < len(fresh_part1_specs):
+            for _ in range(4):
                 if cont_idx < len(continuation_specs):
                     c_item = dict(continuation_specs[cont_idx])
                     c_item["bg_mode"] = "day_aesthetic" if (slot_counter % 2 == 0) else "night_mukbang"
@@ -1244,10 +1088,9 @@ class BongCucYouTubeSplitter:
         title: str,
     ) -> Path:
         """
-        Tạo lớp phủ PNG `1080x1920` chuẩn Cấu trúc mới `v6`:
-        - CHỈ TRONG KHUNG KỂ CHUYỆN hiển thị chữ `"BC SỐ <ep_num>"` tương ứng, TUYỆT ĐỐI KHÔNG ghi rõ chữ `"Bông Cúc"`.
-        - Phía trên: Thẻ bo góc bán trong suốt hiển thị `BC SỐ <ep_num>` + nhãn đêm khuya & TÊN NỘI DUNG AUDIO IN HOA nổi bật.
-        - Phía dưới: Huy hiệu bo tròn hiển thị `BC SỐ <ep_num> - PHẦN <part_num> / <total_parts>`.
+        Tạo lớp phủ PNG `1080x1920` chuẩn Cấu trúc mới `v7` cho kênh `audio_dem_khuyen` mới:
+        - Hiển thị rõ ràng `"BÔNG CÚC SỐ <ep_num>"` ngay trên màn hình (cả khung tiêu đề trên và khung phần dưới).
+        - Tự động co cỡ chữ nếu dòng dài để luôn căn giữa đẹp mắt trong khung bo góc.
         """
         ov = Image.new("RGBA", (1080, 1920), (0, 0, 0, 0))
         draw = ImageDraw.Draw(ov)
@@ -1258,30 +1101,42 @@ class BongCucYouTubeSplitter:
             "/Library/Fonts/Arial Bold.ttf",
         ]
         font_path = next((p for p in font_candidates if Path(p).exists()), None)
-        if font_path:
-            font_tag = ImageFont.truetype(font_path, 32)
-            font_title = ImageFont.truetype(font_path, 44)
-            font_part = ImageFont.truetype(font_path, 44)
-        else:
-            font_tag = ImageFont.load_default()
-            font_title = ImageFont.load_default()
-            font_part = ImageFont.load_default()
+
+        def _load_font(size: int) -> Any:
+            if font_path:
+                return ImageFont.truetype(font_path, size)
+            return ImageFont.load_default()
+
+        def _fit_font(text: str, start_size: int, max_width: int, stroke_w: int = 4, min_size: int = 24) -> Any:
+            sz = start_size
+            while sz > min_size:
+                f = _load_font(sz)
+                bbox = draw.textbbox((0, 0), text, font=f, stroke_width=stroke_w)
+                if (bbox[2] - bbox[0]) <= max_width:
+                    return f
+                sz -= 2
+            return _load_font(min_size)
+
+        font_title = _load_font(44)
 
         clean_title = BongCucYouTubeSplitter._clean_story_title_no_bongcuc(title).upper()
         header_badges = [
-            f"BC SỐ {ep_num} • ĐÊM KHUYA KỂ CHUYỆN",
-            f"BC SỐ {ep_num} • GÓC TÂM SỰ ĐÊM KHUYA",
-            f"BC SỐ {ep_num} • TRUYỆN AUDIO ĐÊM KHUYA",
-            f"BC SỐ {ep_num} • CHUYỆN ĐỜI CÓ THẬT",
-            f"BC SỐ {ep_num} • RADIO ĐÊM KHUYA",
-            f"BC SỐ {ep_num} • GÓC KỂ CHUYỆN ĐÊM",
+            f"BÔNG CÚC SỐ {ep_num} • ĐÊM KHUYA KỂ CHUYỆN",
+            f"BÔNG CÚC SỐ {ep_num} • GÓC TÂM SỰ ĐÊM KHUYA",
+            f"BÔNG CÚC SỐ {ep_num} • TRUYỆN AUDIO ĐÊM KHUYA",
+            f"BÔNG CÚC SỐ {ep_num} • CHUYỆN ĐỜI CÓ THẬT",
+            f"BÔNG CÚC SỐ {ep_num} • RADIO ĐÊM KHUYA",
+            f"BÔNG CÚC SỐ {ep_num} • GÓC KỂ CHUYỆN ĐÊM",
         ]
         t_seed = ep_num * 23 + part_num * 41
         badge_text = header_badges[t_seed % len(header_badges)]
         if part_num == total_parts:
-            part_text = f"BC SỐ {ep_num} - PHẦN {part_num} / {total_parts} (KẾT)"
+            part_text = f"BÔNG CÚC SỐ {ep_num} - PHẦN {part_num} / {total_parts} (KẾT)"
         else:
-            part_text = f"BC SỐ {ep_num} - PHẦN {part_num} / {total_parts}"
+            part_text = f"BÔNG CÚC SỐ {ep_num} - PHẦN {part_num} / {total_parts}"
+
+        font_tag = _fit_font(badge_text, start_size=32, max_width=920, stroke_w=3, min_size=22)
+        font_part = _fit_font(part_text, start_size=42, max_width=890, stroke_w=4, min_size=26)
 
         theme_palettes = [
             ((255, 215, 70, 255), (255, 255, 255, 255)),   # Vàng Hổ Phách & Trắng
@@ -1340,17 +1195,19 @@ class BongCucYouTubeSplitter:
             h_used = _draw_centered(y_cursor, tl, font_title, text_color, stroke_w=4)
             y_cursor += h_used + 12
 
-        # Khung Pill Hiển Thị BC Số + Phần Phía Dưới
+        # Khung Pill Hiển Thị BÔNG CÚC SỐ + Phần Phía Dưới
         pill_top = 1410 - y_jitter
         pill_bottom = pill_top + 96
         draw.rounded_rectangle(
-            [115, pill_top, 965, pill_bottom],
+            [64, pill_top, 1016, pill_bottom],
             radius=48,
             fill=(15, 20, 32, 222),
             outline=accent_color,
             width=3,
         )
-        _draw_centered(pill_top + 24, part_text, font_part, accent_color, stroke_w=4)
+        part_bbox = draw.textbbox((0, 0), part_text, font=font_part, stroke_width=4)
+        part_h = part_bbox[3] - part_bbox[1]
+        _draw_centered(pill_top + max(18, (96 - part_h) // 2 - 4), part_text, font_part, accent_color, stroke_w=4)
 
         overlay_path.parent.mkdir(parents=True, exist_ok=True)
         ov.save(str(overlay_path))
@@ -1359,9 +1216,9 @@ class BongCucYouTubeSplitter:
     @staticmethod
     def build_part_caption_and_hashtags(part_spec: Dict[str, Any]) -> Tuple[str, str]:
         """
-        Tạo Caption và Hashtag chuẩn `v6` cho kênh `audio_dem_khuyen`:
-        - TUYỆT ĐỐI KHÔNG chứa "Bông Cúc", "Bông Cúc Số", "BC Số", "#bongcuc...", "#bc..." ở ngoài caption/hashtag.
-        - Chỉ hiển thị Tên Nội Dung Audio + Phần và hashtag tên nội dung audio + hashtag đêm khuya.
+        Tạo Caption và Hashtag chuẩn `v7` cho kênh `audio_dem_khuyen` mới:
+        - Ghi rõ `"Bông Cúc Số <ep_num>"` trong caption (không dùng ngoặc vuông kiểu template bot).
+        - Bắt buộc đính kèm hashtag `#bongcucso<ep_num>` và `#bongcucso` kết hợp hashtag ngày/đêm.
         """
         ep_num = int(part_spec["ep_num"])
         part_num = int(part_spec["part_num"])
@@ -1384,14 +1241,14 @@ class BongCucYouTubeSplitter:
             else f"Phần {part_num}/{total_parts}"
         )
         hooks = [
-            f"🎧 {title} [{part_label}] — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
-            f"🌙 {title} ({part_label}) — Chuyện đêm khuya cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
-            f"📖 {title} [{part_label}] — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
-            f"🔥 {title} ({part_label}) — Càng nghe càng thấm từng câu chữ, nút thắt bất ngờ nhất bắt đầu lộ diện!",
-            f"🎙️ {title} [{part_label}] — Góc kể chuyện đêm khuya đầy cảm xúc, đừng bỏ lỡ chi tiết nào nhé!",
-            f"✨ {title} ({part_label}) — Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
-            f"🕯️ {title} [{part_label}] — Những góc khuất dần được phơi bày qua từng lời kể đêm khuya!",
-            f"🌌 {title} ({part_label}) — Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
+            f"🎧 Bông Cúc Số {ep_num} ({part_label}): {title} — Diễn biến cực kỳ kịch tính, nghe đến cuối để xem màn đáp trả phía sau nhé!",
+            f"🌙 Bông Cúc Số {ep_num} ({part_label}) — {title}. Chuyện đêm khuya cuốn không rời tai, bạn nghĩ sao về quyết định trong phần này?",
+            f"📖 Bông Cúc Số {ep_num} ({part_label}): {title} — Lòng người khó đoán, chỉ khi biến cố ập tới mới rõ chân tướng!",
+            f"🔥 Bông Cúc Số {ep_num} ({part_label}) — {title}. Càng nghe càng thấm từng câu chữ, nút thắt bất ngờ nhất bắt đầu lộ diện!",
+            f"🎙️ Bông Cúc Số {ep_num} ({part_label}): {title} — Góc kể chuyện đêm khuya đầy cảm xúc, đừng bỏ lỡ chi tiết nào nhé!",
+            f"✨ Bông Cúc Số {ep_num} ({part_label}) — {title}. Một bước ngoặt thay đổi tất cả, liệu cái kết có xứng đáng?",
+            f"🕯️ Bông Cúc Số {ep_num} ({part_label}): {title} — Những góc khuất dần được phơi bày qua từng lời kể đêm khuya!",
+            f"🌌 Bông Cúc Số {ep_num} ({part_label}) — {title}. Ai đang theo dõi câu chuyện này thì vào nghe tiếp ngay nhé!",
         ]
         seed_idx = ep_num * 7 + part_num * 13
         caption = hooks[seed_idx % len(hooks)]
@@ -1431,8 +1288,8 @@ class BongCucYouTubeSplitter:
                 "#mukbangdemkhuya" if bg_mode == "night_mukbang" else "#chuyendemsau",
                 "#xuhuong",
             ]
-        picked_tags = [title_slug_tag, part_tag]
-        for offset in range(6):
+        picked_tags = [f"#bongcucso{ep_num}", "#bongcucso", title_slug_tag, part_tag]
+        for offset in range(5):
             tag_cand = rotating_tags[(seed_idx + offset * 3) % len(rotating_tags)]
             if tag_cand not in picked_tags:
                 picked_tags.append(tag_cand)
@@ -1455,12 +1312,12 @@ class BongCucYouTubeSplitter:
         bg_mode: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
-        [CẤU TRÚC VIDEO MỚI `bongcuc_v6` CHO KÊNH `audio_dem_khuyen`]:
-        1. Chỉ trong khung kể chuyện trên video giữ chữ "BC SỐ <ep_num>", tuyệt đối không ghi rõ chữ "Bông Cúc" ở bất kỳ đâu.
+        [CẤU TRÚC VIDEO MỚI `bongcuc_v7` CHO KÊNH `audio_dem_khuyen` MỚI]:
+        1. Hiển thị rõ `"BÔNG CÚC SỐ <ep_num>"` trên màn hình (cả khung tiêu đề trên và khung phần dưới) + gắn hashtag `#bongcucso<ep_num>` & `#bongcucso`.
         2. Thay mới toàn bộ kho Background HD (giữ Cinema Mukbang vào ban đêm `night_mukbang`).
         3. Đổi mạnh giọng đọc audio (biến đổi cao độ & âm sắc Formant +/-2 semitones + hiệu ứng phòng thu ấm).
-        4. Tự động chèn 1 đoạn bình luận/dẫn chuyện ngắn (~3.5s) vào giữa nội dung gốc rồi quay lại mạch chính ngay.
-        5. Khung hình `bongcuc_v6` với Midnight Cinema Background + Viền đôi Hổ Phách + Thanh tiến trình chạy động.
+        4. Tự động chèn nhịp chuyển câu siêu ngắn (<0.8s) để phá dấu vân tay AudioPrint mà người nghe không nhận ra.
+        5. Khung hình `bongcuc_v7` với Midnight Cinema Background + Viền đôi Hổ Phách + Thanh tiến trình chạy động.
         """
         ep_num = int(part_spec["ep_num"])
         part_num = int(part_spec["part_num"])
@@ -1493,7 +1350,7 @@ class BongCucYouTubeSplitter:
             bg_mode=eff_bg_mode, seed_val=seed_val
         )
 
-        overlay_png = self.cache_dir / f"ov_v6_s{ep_num}_p{part_num}of{total_parts}.png"
+        overlay_png = self.cache_dir / f"ov_v7_s{ep_num}_p{part_num}of{total_parts}.png"
         self._render_part_overlay_png(
             overlay_path=overlay_png,
             ep_num=ep_num,
@@ -1507,10 +1364,10 @@ class BongCucYouTubeSplitter:
             "%Y%m%d_%H%M%S"
         )
         out_name = (
-            f"{ts_val}_tiktok_story_{story_id}_bongcuc_v6_s{ep_num}_p{part_num}_bg_{bg_short}.mp4"
+            f"{ts_val}_tiktok_story_{story_id}_bongcuc_v7_s{ep_num}_p{part_num}_bg_{bg_short}.mp4"
         )
         out_path = target_ready_dir / out_name
-        tmp_render = self.cache_dir / f"rendering_v6_{story_id}_{bg_short}.mp4"
+        tmp_render = self.cache_dir / f"rendering_v7_{story_id}_{bg_short}.mp4"
         tmp_render.unlink(missing_ok=True)
 
         # --- ĐỔI MẠNH GIỌNG ĐỌC AUDIO (Voice Timbre & Pitch Restyling) ---

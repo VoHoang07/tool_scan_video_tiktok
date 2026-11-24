@@ -258,12 +258,12 @@ class Stream1SixLayerAntiDetectSkill:
             )
             return False, video_path, caption, hashtags, report
 
-        if channel_folder == "audio_dem_khuyen" and "bongcuc_v6_s" not in video_path.name.lower():
+        if channel_folder == "audio_dem_khuyen" and "bongcuc_v7_s" not in video_path.name.lower():
             report["layers"]["L4_retention_duration"] = (
-                "FAIL (Video audio_dem_khuyen bản cũ chưa qua cấu trúc bongcuc_v6: giữ BC SỐ trong khung kể chuyện + xóa Bông Cúc + đổi nền & giọng đọc)"
+                "FAIL (Video audio_dem_khuyen bản cũ chưa qua cấu trúc bongcuc_v7: hiển thị BÔNG CÚC SỐ trên màn hình + hashtag #bongcucso + đổi nền & giọng đọc)"
             )
             logger.warning(
-                f"[Dòng 1 - Skill 6 Lớp Anti-Detect] ❌ Chặn & xóa video bản cũ {video_path.name} trên kênh [audio_dem_khuyen] (yêu cầu chuẩn cấu trúc mới bongcuc_v6)."
+                f"[Dòng 1 - Skill 6 Lớp Anti-Detect] ❌ Chặn & xóa video bản cũ {video_path.name} trên kênh [audio_dem_khuyen] (yêu cầu chuẩn cấu trúc mới bongcuc_v7)."
             )
             video_path.unlink(missing_ok=True)
             return False, video_path, caption, hashtags, report
@@ -361,18 +361,7 @@ class Stream1SixLayerAntiDetectSkill:
         # --- LỚP 5: Commercial & Policy Keyword Safe-Guard trên Caption & Hashtags ---
         safe_caption = SubtitleTranslator._apply_commercial_safeguard(caption or "").strip()
         safe_hashtags = (hashtags or "").strip()
-        if channel_folder == "audio_dem_khuyen":
-            safe_caption = re.sub(
-                r"(?i)\b(?:bông\s*cúc(?:\s*trắng)?(?:\s*số\s*\d+)?|bc\s*số\s*\d+)\b[:\s\-—|]*",
-                "",
-                safe_caption,
-            ).strip()
-            safe_hashtags = " ".join(
-                t
-                for t in safe_hashtags.split()
-                if not re.match(r"(?i)^#(?:bongcuc|bc\d|bcso)", t.strip())
-            )
-        elif channel_folder == "video_AI_hay":
+        if channel_folder == "video_AI_hay":
             safe_caption = re.sub(
                 r"(?i)\b(?:gấu\s*sợ\s*hãi(?:\s*tv)?|gausohai(?:\s*tv)?|gsh)\b[:\s\-—|]*",
                 "",

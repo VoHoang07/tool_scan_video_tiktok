@@ -519,6 +519,11 @@ class TikTokAutoPoster(
         if not ms_ctrl.is_upload_enabled("tiktok"):
             return []
 
+        try:
+            self.apply_pending_channel_migrations()
+        except Exception as mig_exc:
+            logger.error(f"[Channel Migration] Lỗi khi thực thi chuyển đổi tài khoản kênh: {mig_exc}")
+
         cfg = self.ensure_schedule_config()
         ch_times_map: Dict[str, List[str]] = cfg.get("channel_post_times") or {}
         default_times: List[str] = cfg.get("default_post_times") or ["08:00", "12:30", "20:00"]
@@ -575,7 +580,8 @@ class TikTokAutoPoster(
                         ch_trig_key = f"remote_post_{p_trig_id}_{single_ch}"
                         if ch_trig_key in self._load_post_history():
                             continue
-                        if str(remote_post.get("action") or "").strip().lower() != "delete_only":
+                        p_action = str(remote_post.get("action") or "").strip().lower()
+                        if p_action not in ("delete_only", "wipe_old_posts"):
                             try:
                                 self._get_next_ready_video_for_channel(single_ch)
                             except Exception:
@@ -591,7 +597,15 @@ class TikTokAutoPoster(
                                 self.crawler.auto_sync_posted_videos()
                             except Exception:
                                 pass
-                            if str(remote_post.get("action") or "").strip().lower() == "delete_only":
+                            if p_action == "wipe_old_posts":
+                                del_res = self.wipe_all_old_channel_posts(
+                                    single_ch,
+                                    exclude_keywords=remote_post.get("exclude_keywords") or [],
+                                    max_deletes=int(remote_post.get("max_deletes", 100)),
+                                    headless=headless,
+                                )
+                                posted_results.append({"channel": single_ch, "wiped_old_posts": del_res})
+                            elif p_action == "delete_only":
                                 del_res = self.delete_channel_posts_by_keywords(
                                     single_ch,
                                     match_keywords=remote_post.get("delete_match_keywords") or [],

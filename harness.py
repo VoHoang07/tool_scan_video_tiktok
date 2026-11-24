@@ -61,8 +61,11 @@ EXPECTED_POSTER_METHODS = {
     "_deduplicate_existing_posts_in_content_page",
     "_delete_post_in_content_page",
     "delete_channel_posts_by_keywords",
+    "_wipe_all_old_posts_in_content_page",
+    "wipe_all_old_channel_posts",
     "ensure_channel_posts_public",
     "login_channel_profile",
+    "apply_pending_channel_migrations",
     "_quick_video_fingerprint",
     "_audio_story_fingerprint",
     "_record_uploaded_video_in_registry",
@@ -176,7 +179,7 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
             errors.append(f"[PosterMixinError] TikTokAutoPoster thiếu hàm: {sorted(missing_m)}")
         else:
             passed_checks.append(
-                f"Modular TikTokAutoPoster: Đủ {len(EXPECTED_POSTER_METHODS)}/59 hàm trên 6 file Mixin"
+                f"Modular TikTokAutoPoster: Đủ {len(EXPECTED_POSTER_METHODS)}/{len(EXPECTED_POSTER_METHODS)} hàm trên 6 file Mixin"
             )
     except Exception as exc:
         errors.append(f"[ImportError] Không thể import TikTokAutoPoster: {exc}")
@@ -225,9 +228,20 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
             errors.append("[MukbangPoolError] BONGCUC_NIGHT_MUKBANG_POOL chưa được nâng cấp sang bộ Mukbang Hàn Quốc 1080p mới!")
         sp_bc = BongCucYouTubeSplitter(PROJECT_ROOT)
         ep119_items = [x for x in sp_bc.get_full_catalog() if int(x.get("ep_num") or 0) == 119]
-        p3_items = [p for p in sp_bc.compute_episode_parts_plan(ep119_items[0]) if int(p.get("part_num") or 0) == 3] if ep119_items else []
-        if not p3_items or p3_items[0].get("story_id") != "990011903":
-            errors.append("[PinnedEp119Error] Không tìm thấy thông số BC Số 119 Phần 3 (990011903)!")
+        p1_items = [p for p in sp_bc.compute_episode_parts_plan(ep119_items[0]) if int(p.get("part_num") or 0) == 1] if ep119_items else []
+        if not p1_items or p1_items[0].get("story_id") != "990011901":
+            errors.append("[FreshEp119Error] Không tìm thấy thông số Bông Cúc Số 119 Phần 1 (990011901)!")
+        else:
+            bc_cap, bc_tags = sp_bc.build_part_caption_and_hashtags(p1_items[0])
+            if "bông cúc số 119" not in bc_cap.lower():
+                errors.append(f"[BongCucCaptionError] Caption thiếu 'Bông Cúc Số 119': {bc_cap}")
+            if "#bongcucso119" not in bc_tags.lower() or "#bongcucso" not in bc_tags.lower().split():
+                errors.append(f"[BongCucHashtagError] Hashtags thiếu '#bongcucso119' hoặc '#bongcucso': {bc_tags}")
+            if "[" in bc_cap or "]" in bc_cap:
+                errors.append(f"[BongCucBracketError] Caption Bông Cúc không được chứa ngoặc vuông kiểu template: {bc_cap}")
+        fresh_q = sp_bc.build_interleaved_queue(set())
+        if not fresh_q or int(fresh_q[0].get("part_num") or 0) != 1:
+            errors.append(f"[FreshQueueError] Kênh audio_dem_khuyen mới phải bắt đầu từ Phần 1 (hiện tại: {fresh_q[0] if fresh_q else None})")
 
         bc_path = PROJECT_ROOT / "data" / "bongcuc_full_catalog.json"
         if bc_path.exists():

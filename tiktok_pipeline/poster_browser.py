@@ -5,6 +5,8 @@ import os
 import platform
 import random
 import re
+import shutil
+import subprocess
 import time
 from datetime import datetime
 from pathlib import Path
@@ -620,6 +622,10 @@ class PosterBrowserMixin:
                     pass
             cookies = state_dict.get("cookies") or []
             if cookies:
+                try:
+                    context.clear_cookies()
+                except Exception:
+                    pass
                 context.add_cookies(cookies)
             origins = state_dict.get("origins") or []
             if origins:
@@ -792,4 +798,307 @@ class PosterBrowserMixin:
 
         logger.info(f"Đã lưu & mã hóa đồng bộ phiên đăng nhập TikTok cho kênh [{ch_folder}] tại: {user_data_dir}")
         return user_data_dir
+
+
+    def apply_pending_channel_migrations(self) -> List[str]:
+        """
+        Thực thi các lệnh di chuyển tài khoản / thay thế kênh một lần duy nhất (`channel_migrations` trong
+        `schedule_config.json`), ví dụ: đổi hoàn toàn tài khoản `phu_nu_khi_chat` sang `audio_dem_khuyen`
+        (giữ nguyên phiên đăng nhập & vân tay thiết bị hiện có của `phu_nu_khi_chat` trên máy đang chạy)
+        và reset sạch lịch sử đăng bài cũ của kênh đích.
+        """
+        cfg_path = self.project_root / "schedule_config.json"
+        if not cfg_path.exists():
+            return []
+        try:
+            cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
+        except Exception:
+            return []
+
+        migrations = cfg.get("channel_migrations") or []
+        if not isinstance(migrations, list) or not migrations:
+            return []
+
+        state_path = self.project_root / "workspace_temp" / ".applied_channel_migrations.json"
+        applied: Dict[str, Any] = {}
+        if state_path.exists():
+            try:
+                loaded = json.loads(state_path.read_text(encoding="utf-8"))
+                if isinstance(loaded, dict):
+                    applied = loaded
+            except Exception:
+                applied = {}
+
+        pending = [
+            m
+            for m in migrations
+            if isinstance(m, dict)
+            and str(m.get("migration_id") or "").strip()
+            and str(m.get("migration_id") or "").strip() not in applied
+        ]
+        if not pending:
+            return []
+
+        executed_ids: List[str] = []
+        lock_fh = self._acquire_browser_process_lock()
+        try:
+            # Đọc lại trạng thái sau khi nắm khóa trình duyệt để đảm bảo chạy đúng 1 lần
+            if state_path.exists():
+                try:
+                    loaded = json.loads(state_path.read_text(encoding="utf-8"))
+                    if isinstance(loaded, dict):
+                        applied = loaded
+                except Exception:
+                    pass
+
+            for mig in pending:
+                mig_id = str(mig.get("migration_id") or "").strip()
+                if not mig_id or mig_id in applied:
+                    continue
+                action = str(mig.get("action") or "").strip().lower()
+                if action != "replace_channel_from_account":
+                    continue
+
+                src_ch = str(mig.get("source_channel") or "").strip()
+                dst_ch = str(mig.get("target_channel") or "").strip()
+                reset_hist = bool(mig.get("reset_target_history", True))
+                if not src_ch or not dst_ch or src_ch == dst_ch:
+                    continue
+
+                logger.info(
+                    f"[Channel Migration {mig_id}] Bắt đầu hoán đổi tài khoản [{src_ch}] -> [{dst_ch}] "
+                    f"(reset_history={reset_hist})..."
+                )
+                src_prof = self.profiles_root / src_ch
+                dst_prof = self.profiles_root / dst_ch
+                self._cleanup_stale_chrome_profile_locks(src_prof)
+                self._cleanup_stale_chrome_profile_locks(dst_prof)
+
+                # 1. Sao lưu profile cũ đã mất và sao chép nguyên phiên đăng nhập + vân tay thiết bị từ src_ch -> dst_ch
+                if dst_prof.exists():
+                    backup_prof = self.profiles_root / f"_backup_lost_{dst_ch}_{mig_id}"
+                    if not backup_prof.exists():
+                        try:
+                            shutil.move(str(dst_prof), str(backup_prof))
+                            logger.info(
+                                f"[Channel Migration {mig_id}] Đã sao lưu profile cũ [{dst_ch}] sang {backup_prof.name}."
+                            )
+                        except Exception as mv_exc:
+                            logger.warning(f"[Channel Migration {mig_id}] Không thể sao lưu profile cũ: {mv_exc}")
+                            shutil.rmtree(dst_prof, ignore_errors=True)
+                    else:
+                        shutil.rmtree(dst_prof, ignore_errors=True)
+
+                if src_prof.exists() and (src_prof / "Default").exists():
+                    try:
+                        shutil.copytree(
+                            src_prof,
+                            dst_prof,
+                            symlinks=True,
+                            ignore=shutil.ignore_patterns(
+                                "SingletonLock",
+                                "SingletonSocket",
+                                "SingletonCookie",
+                                "Cache",
+                                "Code Cache",
+                                "GPUCache",
+                                "GrShaderCache",
+                                "GraphiteDawnCache",
+                                "ShaderCache",
+                            ),
+                        )
+                        # Giữ nguyên 100% vân tay thiết bị của src_ch để TikTok không phát hiện đổi máy, chỉ cập nhật tên channel
+                        fp_path = dst_prof / "profile_fingerprint.json"
+                        if fp_path.exists():
+                            try:
+                                fp_data = json.loads(fp_path.read_text(encoding="utf-8"))
+                                if isinstance(fp_data, dict):
+                                    fp_data["channel"] = dst_ch
+                                    fp_path.write_text(
+                                        json.dumps(fp_data, ensure_ascii=False, indent=2),
+                                        encoding="utf-8",
+                                    )
+                            except Exception:
+                                pass
+                        # Đồng bộ hash của .bin mới để giữ phiên Chrome trực tiếp mới nhất trên máy Intel thay vì ghi đè bằng .bin cũ
+                        sess_bin = self.project_root / "remote_telemetry" / "sessions" / f"{dst_ch}.bin"
+                        if sess_bin.exists():
+                            sig = hashlib.sha256(sess_bin.read_bytes()).hexdigest()[:24]
+                            (dst_prof / "_synced_session_hash.txt").write_text(sig, encoding="utf-8")
+                        logger.info(
+                            f"[Channel Migration {mig_id}] Đã chuyển nguyên bản Chrome Profile [{src_ch}] -> [{dst_ch}] thành công!"
+                        )
+                    except Exception as cp_exc:
+                        logger.error(f"[Channel Migration {mig_id}] Lỗi sao chép Chrome Profile: {cp_exc}")
+                        dst_prof.mkdir(parents=True, exist_ok=True)
+                else:
+                    dst_prof.mkdir(parents=True, exist_ok=True)
+
+                # 2. Reset sạch toàn bộ lịch sử, kho ready/posted cũ của kênh đích để khởi chạy lại từ Phần 1
+                if reset_hist:
+                    for stale_dir in (
+                        self.project_root / "output" / dst_ch / "ready",
+                        self.project_root / "output" / src_ch / "ready",
+                    ):
+                        if stale_dir.exists():
+                            for f in stale_dir.glob("*.mp4"):
+                                f.unlink(missing_ok=True)
+
+                    dst_posted = self.project_root / "output" / dst_ch / "posted"
+                    if dst_posted.exists():
+                        arch_dir = self.project_root / "output" / dst_ch / "_archive_lost_channel_posted"
+                        arch_dir.mkdir(parents=True, exist_ok=True)
+                        for f in dst_posted.glob("*.mp4"):
+                            try:
+                                shutil.move(str(f), str(arch_dir / f.name))
+                            except Exception:
+                                f.unlink(missing_ok=True)
+
+                    if dst_ch == "audio_dem_khuyen":
+                        live_inv = self.project_root / "data" / "audio_dem_khuyen_live_posts.json"
+                        live_inv.unlink(missing_ok=True)
+                        ov_cache = self.project_root / "workspace_temp" / "bongcuc_yt_cache"
+                        if ov_cache.exists():
+                            for old_ov in ov_cache.glob("ov_v6_*.png"):
+                                old_ov.unlink(missing_ok=True)
+
+                    # Dọn uploaded_videos_registry.json cho riêng kênh đích
+                    reg_p = self.project_root / "uploaded_videos_registry.json"
+                    if reg_p.exists():
+                        try:
+                            reg_d = json.loads(reg_p.read_text(encoding="utf-8"))
+                            if isinstance(reg_d, dict):
+                                old_hist = reg_d.get("history") or []
+                                rm_fns: Set[str] = set()
+                                rm_sids: Set[str] = set()
+                                rm_fps: Set[str] = set()
+                                kept_hist = []
+                                for it in old_hist:
+                                    if isinstance(it, dict) and it.get("channel") == dst_ch:
+                                        if it.get("filename"):
+                                            rm_fns.add(str(it["filename"]))
+                                        if it.get("story_id"):
+                                            rm_sids.add(str(it["story_id"]))
+                                        if it.get("fingerprint"):
+                                            rm_fps.add(str(it["fingerprint"]))
+                                    else:
+                                        kept_hist.append(it)
+                                reg_d["history"] = kept_hist
+                                reg_d["posted_story_ids"] = [
+                                    s
+                                    for s in (reg_d.get("posted_story_ids") or [])
+                                    if str(s) not in rm_sids
+                                    and not (dst_ch == "audio_dem_khuyen" and str(s).startswith("9900"))
+                                ]
+                                reg_d["posted_filenames"] = [
+                                    fn
+                                    for fn in (reg_d.get("posted_filenames") or [])
+                                    if str(fn) not in rm_fns
+                                    and not (dst_ch == "audio_dem_khuyen" and "bongcuc_" in str(fn).lower())
+                                ]
+                                reg_d["posted_fingerprints"] = [
+                                    fp
+                                    for fp in (reg_d.get("posted_fingerprints") or [])
+                                    if str(fp) not in rm_fps
+                                ]
+                                reg_p.write_text(
+                                    json.dumps(reg_d, ensure_ascii=False, indent=2),
+                                    encoding="utf-8",
+                                )
+                        except Exception as reg_exc:
+                            logger.debug(f"[Channel Migration {mig_id}] Lỗi dọn registry: {reg_exc}")
+
+                    # Dọn story_audio_history.json cho riêng kênh đích
+                    hist_p = self.project_root / "story_audio_history.json"
+                    if hist_p.exists():
+                        try:
+                            h_d = json.loads(hist_p.read_text(encoding="utf-8"))
+                            if isinstance(h_d, dict):
+                                h_d["video_ids"] = [
+                                    v
+                                    for v in (h_d.get("video_ids") or [])
+                                    if not (dst_ch == "audio_dem_khuyen" and str(v).startswith("9900"))
+                                ]
+                                h_d["sound_ids"] = [
+                                    s
+                                    for s in (h_d.get("sound_ids") or [])
+                                    if not (dst_ch == "audio_dem_khuyen" and str(s).startswith("bongcuc_"))
+                                ]
+                                h_d["items"] = [
+                                    it
+                                    for it in (h_d.get("items") or [])
+                                    if not (isinstance(it, dict) and it.get("channel") == dst_ch)
+                                ]
+                                hist_p.write_text(
+                                    json.dumps(h_d, ensure_ascii=False, indent=2),
+                                    encoding="utf-8",
+                                )
+                        except Exception as h_exc:
+                            logger.debug(f"[Channel Migration {mig_id}] Lỗi dọn story_audio_history: {h_exc}")
+
+                    # Dọn posted_schedule_history.json (xóa lịch đăng cũ của kênh đích, giữ các khóa khác)
+                    sched_h_p = self.project_root / "posted_schedule_history.json"
+                    if sched_h_p.exists():
+                        try:
+                            sh_d = json.loads(sched_h_p.read_text(encoding="utf-8"))
+                            if isinstance(sh_d, dict):
+                                cleaned_sh = {
+                                    k: v
+                                    for k, v in sh_d.items()
+                                    if not (dst_ch in str(k) and not str(k).startswith("remote_post_"))
+                                }
+                                sched_h_p.write_text(
+                                    json.dumps(cleaned_sh, ensure_ascii=False, indent=2),
+                                    encoding="utf-8",
+                                )
+                        except Exception:
+                            pass
+
+                    # Dọn các dòng cũ của kênh đích trong output/danh_sach_video.csv
+                    csv_p = self.project_root / "output" / "danh_sach_video.csv"
+                    if csv_p.exists():
+                        try:
+                            with open(csv_p, mode="r", newline="", encoding="utf-8", errors="replace") as rf:
+                                reader = csv.DictReader(rf)
+                                fieldnames = list(reader.fieldnames or [])
+                                kept_rows = [
+                                    row
+                                    for row in reader
+                                    if (row.get("channel") or "").strip() != dst_ch
+                                    and not (
+                                        dst_ch == "audio_dem_khuyen"
+                                        and (
+                                            "bongcuc_" in (row.get("filename") or "").lower()
+                                            or "_9900" in (row.get("filename") or "")
+                                        )
+                                    )
+                                ]
+                            if fieldnames:
+                                with open(csv_p, mode="w", newline="", encoding="utf-8") as wf:
+                                    writer = csv.DictWriter(wf, fieldnames=fieldnames)
+                                    writer.writeheader()
+                                    writer.writerows(kept_rows)
+                        except Exception as csv_exc:
+                            logger.debug(f"[Channel Migration {mig_id}] Lỗi dọn CSV: {csv_exc}")
+
+                applied[mig_id] = {
+                    "applied_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    "machine_arch": platform.machine(),
+                    "source_channel": src_ch,
+                    "target_channel": dst_ch,
+                    "reset_target_history": reset_hist,
+                }
+                state_path.parent.mkdir(parents=True, exist_ok=True)
+                state_path.write_text(
+                    json.dumps(applied, ensure_ascii=False, indent=2),
+                    encoding="utf-8",
+                )
+                executed_ids.append(mig_id)
+                logger.info(
+                    f"[Channel Migration {mig_id}] ✅ Hoàn tất chuyển đổi [{src_ch}] -> [{dst_ch}] & làm sạch lịch sử cũ!"
+                )
+        finally:
+            self._release_browser_process_lock(lock_fh)
+
+        return executed_ids
 

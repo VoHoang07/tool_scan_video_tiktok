@@ -242,7 +242,8 @@ class MasterSwitchController:
             sid = re.split(r"_(?:bongcuc|gautrucden)_", m_sid.group(1))[0] if m_sid else ""
             viral_score = score_map.get(sid, 0)
             if (
-                "bongcuc_v6_" in mp4.name.lower()
+                "bongcuc_v7_" in mp4.name.lower()
+                or "bongcuc_v6_" in mp4.name.lower()
                 or "bongcuc_v5_" in mp4.name.lower()
                 or "bongcuc_v4_" in mp4.name.lower()
                 or "gautrucden_v1_" in mp4.name.lower()

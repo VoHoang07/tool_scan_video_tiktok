@@ -62,7 +62,6 @@ class TikTokCommunityGuidelinesGuard:
         "tutu",
         "tusat",
         "maume",
-        "bongcuc",
         "gausohai",
         "gsh",
     )

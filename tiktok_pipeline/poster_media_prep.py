@@ -5,6 +5,7 @@ import os
 import platform
 import random
 import re
+import shutil
 import time
 from datetime import datetime
 from pathlib import Path
@@ -165,16 +166,16 @@ class PosterMediaPrepMixin:
         except Exception:
             pass
 
-        if ch_folder == "audio_dem_khuyen" and vid_id and "bongcuc_v6_s" in video_path.name.lower():
+        if ch_folder == "audio_dem_khuyen" and vid_id and "bongcuc_v7_s" in video_path.name.lower():
             try:
                 inv_path = self.project_root / "data" / "audio_dem_khuyen_live_posts.json"
                 inv_path.parent.mkdir(parents=True, exist_ok=True)
                 inv_data: Dict[str, Any] = {}
                 if inv_path.exists():
                     inv_data = json.loads(inv_path.read_text(encoding="utf-8"))
-                rep_sids = set(str(x) for x in (inv_data.get("reposted_v6_story_ids") or []) if x)
+                rep_sids = set(str(x) for x in (inv_data.get("reposted_v7_story_ids") or []) if x)
                 rep_sids.add(vid_id)
-                inv_data["reposted_v6_story_ids"] = sorted(rep_sids)
+                inv_data["reposted_v7_story_ids"] = sorted(rep_sids)
                 inv_path.write_text(json.dumps(inv_data, ensure_ascii=False, indent=2), encoding="utf-8")
             except Exception:
                 pass
@@ -217,9 +218,7 @@ class PosterMediaPrepMixin:
 
         for p_mp4 in posted_dir.glob("*.mp4"):
             if p_mp4.is_file():
-                if ch_folder == "audio_dem_khuyen" and any(
-                    lsid in p_mp4.name for lsid in lost_repost_sids
-                ) and "bongcuc_v6_s" not in p_mp4.name.lower():
+                if ch_folder == "audio_dem_khuyen" and "bongcuc_v7_s" not in p_mp4.name.lower():
                     continue
                 fp = self._quick_video_fingerprint(p_mp4)
                 if fp:
@@ -273,7 +272,7 @@ class PosterMediaPrepMixin:
                 and not (
                     ch_folder == "audio_dem_khuyen"
                     and cand_id in lost_repost_sids
-                    and "bongcuc_v6_s" in cand.name.lower()
+                    and "bongcuc_v7_s" in cand.name.lower()
                 )
             ):
                 for p_b in posted_audio_bits:
@@ -326,9 +325,9 @@ class PosterMediaPrepMixin:
                         parse_bongcuc_ep_and_part,
                     )
 
-                    # Thu thập chuỗi các bài vừa đăng gần nhất trên kênh audio_dem_khuyen
-                    # để kiểm soát chặt chẽ tỷ lệ [1 Video Đã Mất Cần Đăng Lại : 1 Phần Tiếp Theo]
-                    # và khóa Cooldown 4 bài liên tiếp không lặp lại cùng 1 tập!
+                    # Thu thập chuỗi các bài vừa đăng chuẩn v7 trên kênh audio_dem_khuyen mới
+                    # để mở sóng 4 tập đầu bằng Phần 1, sau đó chạy sóng 4:1 (4 phần tiếp theo : 1 tập mới Phần 1)
+                    # và khóa Cooldown 3 bài liên tiếp không lặp lại cùng 1 tập!
                     recent_ep_parts: List[Tuple[int, int]] = []
 
                     def _append_recent_ep(ep_p_val: Optional[Tuple[int, int]]) -> None:
@@ -339,10 +338,14 @@ class PosterMediaPrepMixin:
                         try:
                             reg_d = json.loads(reg_path.read_text(encoding="utf-8"))
                             for h_item in reg_d.get("history") or []:
-                                if isinstance(h_item, dict) and h_item.get("channel") == "audio_dem_khuyen":
+                                if (
+                                    isinstance(h_item, dict)
+                                    and h_item.get("channel") == "audio_dem_khuyen"
+                                    and "bongcuc_v7_s" in str(h_item.get("filename") or "").lower()
+                                ):
                                     _append_recent_ep(
                                         parse_bongcuc_ep_and_part(
-                                            f"{h_item.get('filename', '')} {h_item.get('story_id', '')} {h_item.get('caption', '')}"
+                                            f"{h_item.get('filename', '')} {h_item.get('story_id', '')}"
                                         )
                                     )
                                     if len(recent_ep_parts) >= 10:
@@ -361,19 +364,17 @@ class PosterMediaPrepMixin:
                                     and ev.get("channel") == "audio_dem_khuyen"
                                 ):
                                     det = ev.get("details") or {}
-                                    _append_recent_ep(
-                                        parse_bongcuc_ep_and_part(
-                                            f"{det.get('video_file', '')} {det.get('caption', '')}"
-                                        )
-                                    )
-                                    if len(recent_ep_parts) >= 10:
-                                        break
+                                    vf = str(det.get("video_file") or "")
+                                    if "bongcuc_v7_s" in vf.lower():
+                                        _append_recent_ep(parse_bongcuc_ep_and_part(vf))
+                                        if len(recent_ep_parts) >= 10:
+                                            break
                         except Exception:
                             pass
 
                     if len(recent_ep_parts) < 10:
                         posted_mp4s = sorted(
-                            (p for p in posted_dir.glob("*.mp4") if p.is_file()),
+                            (p for p in posted_dir.glob("*bongcuc_v7_s*.mp4") if p.is_file()),
                             key=lambda f: f.stat().st_mtime,
                             reverse=True,
                         )
@@ -384,104 +385,24 @@ class PosterMediaPrepMixin:
 
                     last_ep_num: Optional[int] = recent_ep_parts[0][0] if recent_ep_parts else None
                     last_part_num: Optional[int] = recent_ep_parts[0][1] if recent_ep_parts else None
-                    recent_cooldown_eps: Set[int] = {ep for ep, _ in recent_ep_parts[:4]}
+                    recent_cooldown_eps: Set[int] = {ep for ep, _ in recent_ep_parts[:3]}
 
-                    # Đan xen TỪ TỪ khôi phục các video đã mất (1 Video Đã Mất : 1 Phần Tiếp Theo):
-                    # Nếu bài đăng gần nhất KHÔNG phải là Phần 1, cho phép lượt này đăng lại 1 video đã mất (kể cả Phần 1 đã mất)
-                    want_part1 = len(recent_ep_parts) >= 6 and all(
-                        int(pt) >= 2 for _, pt in recent_ep_parts[:6]
-                    )
-                    allow_lost_recovery_turn = bool(lost_repost_sids) and (
-                        last_part_num is None or last_part_num >= 2
+                    opened_bc_eps = {
+                        int(sid[4:7])
+                        for sid in posted_ids
+                        if len(sid) == 9 and sid.startswith("9900") and sid.isdigit()
+                    }
+                    # Kênh mới: mở sóng 4 tập đầu tiên bằng Phần 1, sau đó cứ 4 phần tiếp theo mới mở 1 Tập Mới Phần 1
+                    want_part1 = len(opened_bc_eps) < 4 or (
+                        len(recent_ep_parts) >= 4
+                        and all(int(pt) >= 2 for _, pt in recent_ep_parts[:4])
                     )
                     target_bg_mode = get_target_bg_mode_for_hour()
-
-                    # Xóa các file ready/ cũ được render trước mốc 20261113_132000 (còn chứa câu chèn dài 5s cũ)
-                    fresh_candidates: List[Path] = []
-                    for c_old in valid_candidates:
-                        if c_old.name[:15] < "20261113_132000":
-                            c_old.unlink(missing_ok=True)
-                        else:
-                            fresh_candidates.append(c_old)
-                    valid_candidates = fresh_candidates
 
                     splitter = BongCucYouTubeSplitter(project_root=self.project_root)
                     cat_views = {
                         int(e.get("ep_num") or 0): int(e.get("view_count") or 0)
                         for e in splitter.get_full_catalog()
-                    }
-                    # ƯU TIÊN SỐ 1 THEO YÊU CẦU: Ca đăng tối/khuya đêm nay đăng "BC Số 119 - Phần 4" (story_id = 990011904) với nền Mukbang mới
-                    pinned_night_sid = "990011904"
-                    if target_bg_mode == "night_mukbang" and pinned_night_sid not in posted_ids:
-                        ep119_list = [
-                            e for e in splitter.get_full_catalog() if int(e.get("ep_num") or 0) == 119
-                        ]
-                        if ep119_list:
-                            p4_list = [
-                                p
-                                for p in splitter.compute_episode_parts_plan(ep119_list[0])
-                                if int(p.get("part_num") or 0) == 4
-                            ]
-                            if p4_list:
-                                chosen_p4 = dict(p4_list[0])
-                                chosen_p4["bg_mode"] = "night_mukbang"
-                                existing_p4 = [
-                                    c_f
-                                    for c_f in valid_candidates
-                                    if "990011904" in c_f.name
-                                    and "bongcuc_v6_s" in c_f.name.lower()
-                                    and "_bg_mukbang" in c_f.name.lower()
-                                ]
-                                if existing_p4:
-                                    target_video = existing_p4[0]
-                                else:
-                                    logger.info(
-                                        f"[{ch_folder}] [Pinned Night Slot 23:00] Đang xuất ngay BC Số 119 Phần 4/{chosen_p4['total_parts']} với nền Mukbang Hàn Quốc 1080p mới..."
-                                    )
-                                    self._refresh_browser_process_lock()
-                                    rendered_p4 = splitter.render_single_part(
-                                        part_spec=chosen_p4,
-                                        target_ready_dir=ready_dir,
-                                        bg_mode="night_mukbang",
-                                    )
-                                    self._refresh_browser_process_lock()
-                                    try:
-                                        from .crawler import StoryAudioCrawler
-
-                                        cr_sync = StoryAudioCrawler(project_root=self.project_root)
-                                        cr_sync.clear_macl_xattr(Path(rendered_p4["final_video"]))
-                                        cr_sync.save_to_history(
-                                            video_id=rendered_p4["video_id"],
-                                            sound_id=rendered_p4["sound_id"],
-                                            platform="tiktok",
-                                            genre="channel_3_novel_drama",
-                                            source_url=rendered_p4["source_url"],
-                                            output_filename=rendered_p4["filename"],
-                                            channel="audio_dem_khuyen",
-                                        )
-                                        cr_sync.append_to_master_csv(
-                                            filename=rendered_p4["filename"],
-                                            source_url=rendered_p4["source_url"],
-                                            caption=rendered_p4["caption"],
-                                            hashtags=rendered_p4["hashtags"],
-                                            status="READY",
-                                            channel="audio_dem_khuyen",
-                                            posted_at="",
-                                        )
-                                    except Exception:
-                                        pass
-                                    target_video = Path(rendered_p4["final_video"])
-
-                    high_view_channel_prio: Dict[int, int] = {
-                        21: 1000,
-                        120: 950,
-                        119: 900,
-                        70: 850,
-                        39: 800,
-                        60: 750,
-                        35: 700,
-                        110: 650,
-                        141: 600,
                     }
 
                     queue = splitter.build_interleaved_queue(posted_ids)
@@ -493,20 +414,14 @@ class PosterMediaPrepMixin:
                     min_pending_part_num = min(
                         (int(p["part_num"]) for p in cont_queue_specs), default=2
                     )
-                    if min_pending_part_num < 8:
-                        recent_cooldown_eps.add(10)
 
-                    # KHÓA ĐỘC QUYỀN 100% CẤU TRÚC MỚI v6 (bongcuc_v6_s: có giữ "BC SỐ" trong khung kể chuyện) & DỌN SLOT CŨ:
+                    # KHÓA ĐỘC QUYỀN 100% CẤU TRÚC MỚI v7 (bongcuc_v7_s: BÔNG CÚC SỐ trên màn hình + hashtag #bongcucso) & DỌN SLOT CŨ:
                     lowest_part_by_ep: Dict[int, Tuple[int, Path, Optional[str]]] = {}
                     for c_file in valid_candidates:
                         ep_p = parse_bongcuc_ep_and_part(c_file.name)
-                        if ep_p and "bongcuc_v6_s" in c_file.name.lower():
+                        if ep_p and "bongcuc_v7_s" in c_file.name.lower():
                             ep_no, pt_no = ep_p
-                            sid_check = make_bongcuc_story_id(ep_no, pt_no)
-                            if sid_check not in lost_repost_sids and sid_check != pinned_night_sid and (
-                                (ep_no == 10 and min_pending_part_num < 8)
-                                or (pt_no >= 2 and pt_no > min_pending_part_num + 1)
-                            ):
+                            if pt_no >= 2 and ep_no not in opened_bc_eps:
                                 c_file.unlink(missing_ok=True)
                                 continue
                             bg_m = parse_bongcuc_bg_mode(c_file.name)
@@ -523,59 +438,50 @@ class PosterMediaPrepMixin:
                             c_file.unlink(missing_ok=True)
 
                     # Xếp hạng ứng viên trong ready/:
-                    exact_bg_and_part_cands: List[Tuple[Tuple[int, int, int, int], Path]] = []
-                    exact_bg_only_cands: List[Tuple[Tuple[int, int, int, int], Path]] = []
+                    exact_bg_and_part_cands: List[Tuple[Tuple[int, int, int], Path]] = []
+                    exact_bg_only_cands: List[Tuple[Tuple[int, int, int], Path]] = []
                     for ep_no, (pt_no, c_file, bg_m) in lowest_part_by_ep.items():
                         if ep_no in recent_cooldown_eps:
                             continue
-                        sid_cand = make_bongcuc_story_id(ep_no, pt_no)
-                        is_lost_rec = sid_cand in lost_repost_sids
                         is_p1 = pt_no == 1
                         v_cnt = cat_views.get(ep_no, 0)
-                        prio_w = high_view_channel_prio.get(ep_no, 0)
-                        lost_rank = 0 if (is_lost_rec and allow_lost_recovery_turn) else 1
-                        sort_key = (lost_rank, pt_no, -prio_w, -v_cnt)
+                        sort_key = (pt_no, -v_cnt, -ep_no)
                         if bg_m == target_bg_mode and (
-                            (is_lost_rec and allow_lost_recovery_turn)
-                            or (is_p1 == want_part1 and (want_part1 or pt_no <= min_pending_part_num))
+                            is_p1 == want_part1 and (want_part1 or pt_no <= min_pending_part_num + 1)
                         ):
                             exact_bg_and_part_cands.append((sort_key, c_file))
                         elif bg_m == target_bg_mode and (
-                            is_lost_rec or (not is_p1 and pt_no <= min_pending_part_num)
+                            is_p1 or pt_no <= min_pending_part_num + 1
                         ):
                             exact_bg_only_cands.append((sort_key, c_file))
 
                     exact_bg_and_part_cands.sort(key=lambda x: x[0])
                     exact_bg_only_cands.sort(key=lambda x: x[0])
 
-                    if target_video and target_video.exists():
-                        pass
-                    elif exact_bg_and_part_cands:
+                    if exact_bg_and_part_cands:
                         target_video = exact_bg_and_part_cands[0][1]
                     else:
-                        # Tự động cắt ngay 1 video đúng chuẩn v6 (khôi phục từ từ video đã mất + đồng bộ cấp độ Phần)
                         desired_specs = [
                             p
                             for p in queue
                             if int(p["ep_num"]) not in recent_cooldown_eps
-                            and (
-                                (bool(p.get("is_lost_recovery")) and allow_lost_recovery_turn)
-                                or ((int(p["part_num"]) == 1) == want_part1)
-                            )
+                            and ((int(p["part_num"]) == 1) == want_part1)
+                            and (int(p["part_num"]) == 1 or int(p["ep_num"]) in opened_bc_eps)
                         ]
                         if not desired_specs:
                             desired_specs = [
                                 p
                                 for p in queue
                                 if int(p["ep_num"]) not in recent_cooldown_eps
+                                and (int(p["part_num"]) == 1 or int(p["ep_num"]) in opened_bc_eps)
                             ]
                         if desired_specs:
                             chosen_spec = dict(desired_specs[0])
                             chosen_spec["bg_mode"] = target_bg_mode
                             logger.info(
-                                f"[{ch_folder}] [On-Demand Render v6] Đang xuất ngay BC Số {chosen_spec['ep_num']} "
+                                f"[{ch_folder}] [On-Demand Render v7] Đang xuất ngay Bông Cúc Số {chosen_spec['ep_num']} "
                                 f"Phần {chosen_spec['part_num']}/{chosen_spec['total_parts']} "
-                                f"(lost_recovery={bool(chosen_spec.get('is_lost_recovery'))}, views={chosen_spec.get('view_count', 0):,}, background={target_bg_mode})..."
+                                f"(views={chosen_spec.get('view_count', 0):,}, background={target_bg_mode})..."
                             )
                             self._refresh_browser_process_lock()
                             rendered = splitter.render_single_part(
@@ -618,9 +524,9 @@ class PosterMediaPrepMixin:
                     if target_video and target_video.exists():
                         sel_ep = parse_bongcuc_ep_and_part(target_video.name) or (0, 0)
                         logger.info(
-                            f"[{ch_folder}] [Gradual Lost-Video Recovery + Level-Synchronized v6 Guard] "
-                            f"Chọn đăng: BC Số {sel_ep[0]} Phần {sel_ep[1]} "
-                            f"(views={cat_views.get(sel_ep[0], 0):,}, min_pending_part={min_pending_part_num}, bg={target_bg_mode} | bài trước: Số {last_ep_num} Phần {last_part_num})"
+                            f"[{ch_folder}] [Fresh Channel Wave 4:1 v7 Guard] "
+                            f"Chọn đăng: Bông Cúc Số {sel_ep[0]} Phần {sel_ep[1]} "
+                            f"(views={cat_views.get(sel_ep[0], 0):,}, opened={len(opened_bc_eps)}, bg={target_bg_mode} | bài trước: Số {last_ep_num} Phần {last_part_num})"
                         )
                 except Exception as int_exc:
                     logger.warning(f"[{ch_folder}] Lỗi Interleaved Guard: {int_exc}")
@@ -867,9 +773,8 @@ class PosterMediaPrepMixin:
             ch_folder == "audio_dem_khuyen"
             and ("bongcuc_" in target_video.name.lower() or "9900" in target_video.name)
             and (
-                "bông cúc" in (caption or "").lower()
-                or "bc số" in (caption or "").lower()
-                or "bongcuc" in (hashtags or "").lower()
+                "bông cúc số" not in (caption or "").lower()
+                or "bongcucso" not in (hashtags or "").lower()
                 or "phần " not in (caption or "").lower()
             )
         ) or (
