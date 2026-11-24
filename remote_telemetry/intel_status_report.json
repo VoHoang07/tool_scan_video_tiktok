@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 15:04:49",
+    "timestamp": "2026-11-24 15:09:56",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
+    "event_type": "upload_error",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 230.5,
-      "final_url": "https://www.tiktok.com/@hong.diu.nhi89?lang=vi-VN"
+      "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 15:09:56",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
+      "details": {
+        "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 15:04:49",
       "machine_arch": "x86_64",
@@ -175,21 +182,6 @@
       "details": {
         "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 13:58:50",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_phu_nu_khi_chat.jpg",
-      "details": {
-        "scrolled_videos": 8,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 232.0,
-        "final_url": "https://www.tiktok.com/@v.bao0612?lang=vi-VN"
       }
     }
   ]
