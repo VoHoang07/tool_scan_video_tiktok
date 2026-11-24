@@ -1,16 +1,35 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 14:24:38",
+    "timestamp": "2026-11-24 14:31:26",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_error_nuoi_con_eq.jpg",
+    "event_type": "warmup_fyp",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261124_085638_tiktok_story_7030755414774009089.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "scrolled_videos": 10,
+      "ads_skipped": 0,
+      "fyp_liked": 0,
+      "fyp_followed": 0,
+      "elapsed_seconds": 233.4,
+      "final_url": "https://www.tiktok.com/@.diu.vy67/video/7711583727608007988?lang=vi-VN"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 14:31:26",
+      "machine_arch": "x86_64",
+      "event_type": "warmup_fyp",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+      "details": {
+        "scrolled_videos": 10,
+        "ads_skipped": 0,
+        "fyp_liked": 0,
+        "fyp_followed": 0,
+        "elapsed_seconds": 233.4,
+        "final_url": "https://www.tiktok.com/@.diu.vy67/video/7711583727608007988?lang=vi-VN"
+      }
+    },
     {
       "timestamp": "2026-11-24 14:24:38",
       "machine_arch": "x86_64",
@@ -171,78 +190,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 232.4,
         "final_url": "https://www.tiktok.com/@meymeyday166/video/7702060924437269780?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 13:21:53",
-      "machine_arch": "x86_64",
-      "event_type": "filter24h",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_filter24h_phu_kien_tien_ich.jpg",
-      "details": {
-        "interacted_count": 1,
-        "own_profile_stats": {},
-        "records": [
-          {
-            "channel": "phu_kien_tien_ich",
-            "video_id": "7711394477931334933",
-            "video_url": "https://www.tiktok.com/@tttthttddta/video/7711394477931334933",
-            "creator_handle": "@tttthttddta",
-            "watched_seconds": 18.9,
-            "steps_completed": {
-              "1_watched_full": true,
-              "2_liked_video": false,
-              "3_copied_link": true,
-              "4_added_favorite": true,
-              "5_followed_creator": false,
-              "6_commented_after_follow": false
-            },
-            "comment_text": "",
-            "circuit_breaker_tripped": false,
-            "like_debug": {
-              "digg_responses": [],
-              "follow_responses": [],
-              "env_check": {
-                "webdriver": false,
-                "loggedInUniqueId": null
-              },
-              "before": {
-                "x": 863.625,
-                "y": 359,
-                "ariaPressed": false,
-                "svgColor": "rgba(22, 24, 35, 1)",
-                "likeCount": "16"
-              },
-              "init_red": false,
-              "after_os_click_05s": {
-                "state": {
-                  "x": 863.625,
-                  "y": 359,
-                  "ariaPressed": false,
-                  "svgColor": "rgba(22, 24, 35, 1)",
-                  "likeCount": "16"
-                },
-                "red": false,
-                "server_digg_ok": false,
-                "server_digg_rejected": false
-              },
-              "profile_follow_verify": {
-                "creator": "@tttthttddta",
-                "nav_method": "video_header_os_click",
-                "profile_url": "https://www.tiktok.com/@tttthttddta?lang=vi-VN",
-                "before_btn": "Follow",
-                "after_btn": "Follow",
-                "init_relation": 0,
-                "server_follow_ok": false,
-                "ui_confirmed": false,
-                "persisted": false,
-                "follow_api_blocked": false
-              }
-            },
-            "interacted_at": "2026-11-24 13:21:20",
-            "follow_back_window_until": "2026-11-25 13:21:20"
-          }
-        ]
       }
     }
   ]
