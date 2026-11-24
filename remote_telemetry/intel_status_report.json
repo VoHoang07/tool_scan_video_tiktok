@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 10:01:18",
+    "timestamp": "2026-11-24 10:08:44",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
     "details": {
-      "video_file": "20261124_073527_tiktok_story_880034604_gautrucden_v1_s346_p4.mp4",
+      "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
       "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 10:08:44",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
+      "details": {
+        "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 10:01:18",
       "machine_arch": "x86_64",
@@ -231,17 +242,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
       "details": {
         "video_file": "20261124_084832_tiktok_story_7613953988282682637.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 08:44:16",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
-      "details": {
-        "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
