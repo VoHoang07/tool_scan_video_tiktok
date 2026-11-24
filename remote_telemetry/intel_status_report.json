@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 12:45:39",
+    "timestamp": "2026-11-24 12:49:36",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_error_meo_vat_gia_dinh.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_error_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261124_071802_tiktok_story_7684680635797245192.mp4",
+      "video_file": "20261124_074148_tiktok_story_7631538680426925332.mp4",
       "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 12:49:36",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_error_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261124_074148_tiktok_story_7631538680426925332.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 12:45:39",
       "machine_arch": "x86_64",
@@ -358,17 +369,6 @@
             "follow_back_window_until": "2026-11-25 11:39:46"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-24 11:32:45",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "phu_nu_khi_chat",
-      "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
-      "details": {
-        "video_file": "20261124_084832_tiktok_story_7613953988282682637.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
