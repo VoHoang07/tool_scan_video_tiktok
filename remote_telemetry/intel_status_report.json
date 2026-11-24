@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 12:41:05",
+    "timestamp": "2026-11-24 12:45:39",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_error_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261124_073527_tiktok_story_880034604_gautrucden_v1_s346_p4.mp4",
+      "video_file": "20261124_071802_tiktok_story_7684680635797245192.mp4",
       "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 12:45:39",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_error_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261124_071802_tiktok_story_7684680635797245192.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 12:41:05",
       "machine_arch": "x86_64",
@@ -357,17 +368,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
       "details": {
         "video_file": "20261124_084832_tiktok_story_7613953988282682637.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 11:26:04",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261124_094305_tiktok_story_7348708096602082568.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
