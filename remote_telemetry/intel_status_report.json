@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 17:04:27",
+    "timestamp": "2026-11-24 17:12:30",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
     "details": {
-      "action": "wipe_old_posts",
-      "error": "[audio_dem_khuyen] Phiên đăng nhập TikTok chưa sẵn sàng (chuyển về trang login) — không thể xóa video cũ!"
+      "video_file": "20261124_094305_tiktok_story_7348708096602082568.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 17:12:30",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261124_094305_tiktok_story_7348708096602082568.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 17:04:27",
       "machine_arch": "x86_64",
@@ -171,17 +182,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 231.2,
         "final_url": "https://www.tiktok.com/@v.kim.anh231?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 15:29:54",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_error_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261124_085638_tiktok_story_7030755414774009089.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
