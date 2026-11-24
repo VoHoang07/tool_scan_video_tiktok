@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 23:56:39",
+    "timestamp": "2026-11-25 00:05:43",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261124_235204_tiktok_story_7681287096060988680.mp4",
-      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Mình đã cứu vãn được chiếc lưng buốt mỏi suốt nhiều năm với chi phí 0đ nhờ phơi nắng🥹. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-      "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #xuhuong #viral",
+      "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+      "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+      "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xh #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 00:05:43",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+        "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
+        "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-24 23:56:39",
       "machine_arch": "x86_64",
@@ -335,17 +351,6 @@
       "details": {
         "action": "wipe_old_posts",
         "error": "[audio_dem_khuyen] Phiên đăng nhập TikTok chưa sẵn sàng (chuyển về trang login) — không thể xóa video cũ!"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 16:41:35",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_error_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261124_160438_tiktok_story_7337365652690324738.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
