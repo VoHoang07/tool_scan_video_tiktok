@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 13:25:55",
+    "timestamp": "2026-11-24 13:30:37",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
+    "event_type": "upload_error",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
     "details": {
-      "scrolled_videos": 9,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 232.4,
-      "final_url": "https://www.tiktok.com/@meymeyday166/video/7702060924437269780?lang=vi-VN"
+      "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 13:30:37",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
+      "details": {
+        "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 13:25:55",
       "machine_arch": "x86_64",
@@ -416,17 +423,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_meo_vat_gia_dinh.jpg",
       "details": {
         "video_file": "20261124_071802_tiktok_story_7684680635797245192.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 12:23:45",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261124_094305_tiktok_story_7348708096602082568.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
