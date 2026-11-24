@@ -183,14 +183,31 @@
       "source_channel": "phu_nu_khi_chat",
       "target_channel": "audio_dem_khuyen",
       "reset_target_history": true
+    },
+    {
+      "migration_id": "audio_dem_khuyen_v7_clean_reset_20261124_1708",
+      "action": "replace_channel_from_account",
+      "source_channel": "phu_nu_khi_chat",
+      "target_channel": "audio_dem_khuyen",
+      "reset_target_history": true
     }
   ],
   "remote_trigger_post_now": {
-    "trigger_id": "wipe_old_pnkc_posts_for_new_adk_20261124_1615",
+    "trigger_id": "wipe_and_rebrand_pnkc_to_adk_20261124_1708",
     "target_arch": "x86_64",
     "action": "wipe_old_posts",
     "ensure_public_channels": "",
     "channel": "audio_dem_khuyen",
+    "rebrand_profile": {
+      "display_name": "Audio Đêm Khuya",
+      "bio": "🎧 Truyện Audio Đêm Khuya - Bông Cúc Audio 🌙\n📖 Lên tập mới mỗi ngày",
+      "avatar_path": "assets/audio_dem_khuyen_avatar.png",
+      "username_candidates": [
+        "audio_dem_khuya_bc",
+        "audiodemkhuya.bc",
+        "audio_dem_khuya_vn"
+      ]
+    },
     "exclude_keywords": [
       "bông cúc",
       "bongcucso",

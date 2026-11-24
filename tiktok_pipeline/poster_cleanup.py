@@ -1049,16 +1049,275 @@ class PosterCleanupMixin:
         return deleted_captions
 
 
+    def _rebrand_tiktok_profile_on_web(
+        self,
+        page: Any,
+        ch_folder: str,
+        rebrand_cfg: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        """
+        Tự động đổi Hồ sơ TikTok (Ảnh đại diện, Tên hiển thị, Tiểu sử và TikTok ID nếu khả dụng)
+        ngay trên trình duyệt Web (`tiktok.com` -> `Hồ sơ` -> `Sửa hồ sơ` -> `Lưu`)
+        để chuyển đổi trọn gói tài khoản `phu_nu_khi_chat` thành kênh `Audio Đêm Khuya` mới.
+        """
+        report: Dict[str, Any] = {"attempted": True, "saved": False, "updated_fields": [], "notes": []}
+        try:
+            self._refresh_browser_process_lock()
+            page.goto("https://www.tiktok.com/", wait_until="domcontentloaded", timeout=45000)
+            time.sleep(random.uniform(4.5, 6.0))
+
+            # Bấm mục "Hồ sơ" / "Profile" ở thanh điều hướng trái để vào đúng trang kênh hiện tại
+            prof_btn = page.evaluate(
+                """() => {
+                    const els = Array.from(document.querySelectorAll('a, button, [role="button"], span, div'));
+                    for (const el of els) {
+                        if (el.children.length > 3) continue;
+                        const t = (el.innerText || el.textContent || '').trim().toLowerCase();
+                        const href = el.getAttribute && (el.getAttribute('href') || '');
+                        const e2e = el.getAttribute && (el.getAttribute('data-e2e') || '');
+                        if (e2e === 'nav-profile' || t === 'hồ sơ' || t === 'profile' || (href && href.startsWith('/@'))) {
+                            const r = el.getBoundingClientRect();
+                            if (r.left >= 0 && r.left < 280 && r.width >= 20 && r.height >= 16 && r.top > 40) {
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2, href: href || '' };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if prof_btn:
+                if prof_btn.get("href") and str(prof_btn["href"]).startswith("/@"):
+                    page.goto(f"https://www.tiktok.com{prof_btn['href']}", wait_until="domcontentloaded", timeout=45000)
+                else:
+                    self._os_click_viewport(page, float(prof_btn["x"]), float(prof_btn["y"]))
+                time.sleep(random.uniform(4.5, 6.0))
+
+            if "login" in (page.url or "").lower():
+                report["notes"].append("redirected_to_login")
+                return report
+
+            # Bấm nút "Sửa hồ sơ" / "Edit profile"
+            edit_btn = page.evaluate(
+                """() => {
+                    const els = Array.from(document.querySelectorAll('button, [role="button"], a, div, span'));
+                    for (const el of els) {
+                        if (el.children.length > 3) continue;
+                        const t = (el.innerText || el.textContent || '').trim().toLowerCase();
+                        const e2e = el.getAttribute && (el.getAttribute('data-e2e') || '');
+                        if (e2e === 'edit-profile-entrance' || t === 'sửa hồ sơ' || t === 'chỉnh sửa hồ sơ' || t === 'edit profile') {
+                            const r = el.getBoundingClientRect();
+                            if (r.width >= 50 && r.height >= 20 && r.top > 50 && r.top < 550) {
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if not edit_btn:
+                report["notes"].append("edit_profile_button_not_found")
+                return report
+
+            self._os_click_viewport(page, float(edit_btn["x"]), float(edit_btn["y"]))
+            time.sleep(random.uniform(2.5, 3.5))
+
+            # 1. Cập nhật Ảnh đại diện (Avatar) nếu có file
+            avatar_rel = str(rebrand_cfg.get("avatar_path") or "").strip()
+            if avatar_rel:
+                avatar_abs = (self.project_root / avatar_rel).resolve()
+                if avatar_abs.exists():
+                    try:
+                        av_input = page.locator('div[role="dialog"] input[type="file"], input[type="file"][accept*="image"]').first
+                        av_input.wait_for(state="attached", timeout=6000)
+                        av_input.set_input_files(str(avatar_abs))
+                        time.sleep(2.5)
+                        apply_btn = page.evaluate(
+                            """() => {
+                                const els = Array.from(document.querySelectorAll('button, [role="button"]'));
+                                for (const el of els) {
+                                    const t = (el.innerText || el.textContent || '').trim().toLowerCase();
+                                    if (t === 'áp dụng' || t === 'apply') {
+                                        const r = el.getBoundingClientRect();
+                                        if (r.width >= 40 && r.height >= 24) {
+                                            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                        }
+                                    }
+                                }
+                                return null;
+                            }"""
+                        )
+                        if apply_btn:
+                            self._os_click_viewport(page, float(apply_btn["x"]), float(apply_btn["y"]))
+                            time.sleep(2.0)
+                            report["updated_fields"].append("avatar")
+                    except Exception as av_exc:
+                        report["notes"].append(f"avatar_skip:{av_exc}")
+
+            # 2. Cập nhật Tên hiển thị (Name)
+            target_name = str(rebrand_cfg.get("display_name") or "").strip()
+            if target_name:
+                try:
+                    name_inp = page.locator(
+                        'div[role="dialog"] input[placeholder*="Tên" i], div[role="dialog"] input[placeholder*="Name" i], [data-e2e="edit-profile-name-input"]'
+                    ).first
+                    if name_inp.count() == 0:
+                        # Fallback: input thứ 2 trong modal (sau TikTok ID)
+                        all_inps = page.locator('div[role="dialog"] input[type="text"], div[role="dialog"] input:not([type])')
+                        if all_inps.count() >= 2:
+                            name_inp = all_inps.nth(1)
+                    if name_inp.count() > 0:
+                        name_inp.click()
+                        time.sleep(0.2)
+                        page.keyboard.press("Meta+A")
+                        page.keyboard.press("Backspace")
+                        time.sleep(0.15)
+                        page.keyboard.insert_text(target_name)
+                        time.sleep(0.5)
+                        report["updated_fields"].append("display_name")
+                except Exception as nm_exc:
+                    report["notes"].append(f"name_skip:{nm_exc}")
+
+            # 3. Cập nhật Tiểu sử (Bio)
+            target_bio = str(rebrand_cfg.get("bio") or "").strip()
+            if target_bio:
+                try:
+                    bio_ta = page.locator('div[role="dialog"] textarea, [data-e2e="edit-profile-bio-input"]').first
+                    if bio_ta.count() > 0:
+                        bio_ta.click()
+                        time.sleep(0.2)
+                        page.keyboard.press("Meta+A")
+                        page.keyboard.press("Backspace")
+                        time.sleep(0.15)
+                        page.keyboard.insert_text(target_bio)
+                        time.sleep(0.5)
+                        report["updated_fields"].append("bio")
+                except Exception as bio_exc:
+                    report["notes"].append(f"bio_skip:{bio_exc}")
+
+            # 4. Thử cập nhật TikTok ID (Username) nếu tài khoản cho phép đổi (không bị khóa 30 ngày)
+            id_candidates = [str(x).strip().lstrip("@") for x in (rebrand_cfg.get("username_candidates") or []) if str(x).strip()]
+            if id_candidates:
+                try:
+                    uid_inp = page.locator(
+                        '[data-e2e="edit-profile-username-input"], div[role="dialog"] input[placeholder*="TikTok ID" i], div[role="dialog"] input[placeholder*="Username" i]'
+                    ).first
+                    if uid_inp.count() == 0:
+                        all_inps = page.locator('div[role="dialog"] input[type="text"], div[role="dialog"] input:not([type])')
+                        if all_inps.count() >= 1:
+                            uid_inp = all_inps.nth(0)
+                    if uid_inp.count() > 0 and uid_inp.is_editable():
+                        orig_uid = (uid_inp.input_value() or "").strip()
+                        changed_uid = False
+                        for cand_uid in id_candidates:
+                            if cand_uid.lower() == orig_uid.lower():
+                                changed_uid = True
+                                break
+                            uid_inp.click()
+                            time.sleep(0.15)
+                            page.keyboard.press("Meta+A")
+                            page.keyboard.press("Backspace")
+                            page.keyboard.insert_text(cand_uid)
+                            time.sleep(1.8)
+                            has_err = page.evaluate(
+                                """() => {
+                                    const dlg = document.querySelector('div[role="dialog"]') || document.body;
+                                    const txt = (dlg.innerText || '').toLowerCase();
+                                    return /không khả dụng|đã được sử dụng|chỉ có thể thay đổi|30 ngày|not available|already taken|once every 30 days/i.test(txt);
+                                }"""
+                            )
+                            if not has_err:
+                                changed_uid = True
+                                report["updated_fields"].append(f"username:{cand_uid}")
+                                break
+                        if not changed_uid and orig_uid:
+                            uid_inp.click()
+                            page.keyboard.press("Meta+A")
+                            page.keyboard.press("Backspace")
+                            page.keyboard.insert_text(orig_uid)
+                            time.sleep(0.8)
+                            report["notes"].append("username_kept_original_due_to_cooldown_or_taken")
+                except Exception as uid_exc:
+                    report["notes"].append(f"username_skip:{uid_exc}")
+
+            # 5. Bấm nút "Lưu" / "Save" trong hộp thoại Sửa hồ sơ
+            time.sleep(0.8)
+            save_btn = page.evaluate(
+                """() => {
+                    const dlg = document.querySelector('div[role="dialog"]') || document;
+                    const els = Array.from(dlg.querySelectorAll('button, [role="button"]'));
+                    for (const el of els) {
+                        const t = (el.innerText || el.textContent || '').trim().toLowerCase();
+                        const e2e = el.getAttribute && (el.getAttribute('data-e2e') || '');
+                        if (e2e === 'edit-profile-save' || t === 'lưu' || t === 'save') {
+                            if (el.disabled || el.getAttribute('aria-disabled') === 'true') continue;
+                            const r = el.getBoundingClientRect();
+                            if (r.width >= 40 && r.height >= 24) {
+                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                            }
+                        }
+                    }
+                    return null;
+                }"""
+            )
+            if save_btn:
+                self._os_click_viewport(page, float(save_btn["x"]), float(save_btn["y"]))
+                time.sleep(2.0)
+                # Nếu đổi TikTok ID, TikTok hiện popup xác nhận "Đặt TikTok ID" / "Set username"
+                confirm_uid = page.evaluate(
+                    """() => {
+                        const els = Array.from(document.querySelectorAll('button, [role="button"]'));
+                        for (const el of els) {
+                            const t = (el.innerText || el.textContent || '').trim().toLowerCase();
+                            if (t === 'đặt tiktok id' || t === 'xác nhận' || t === 'set username' || t === 'confirm') {
+                                const r = el.getBoundingClientRect();
+                                if (r.width >= 40 && r.height >= 24) {
+                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                }
+                            }
+                        }
+                        return null;
+                    }"""
+                )
+                if confirm_uid:
+                    self._os_click_viewport(page, float(confirm_uid["x"]), float(confirm_uid["y"]))
+                    time.sleep(2.5)
+                time.sleep(2.5)
+                report["saved"] = True
+                logger.info(
+                    f"[{ch_folder}] [Rebrand Profile] ✅ Đã lưu hồ sơ mới thành công ({report['updated_fields']})!"
+                )
+            else:
+                report["notes"].append("save_button_disabled_or_not_found")
+                page.keyboard.press("Escape")
+
+            try:
+                telem_dir = self.project_root / "remote_telemetry"
+                telem_dir.mkdir(parents=True, exist_ok=True)
+                page.screenshot(
+                    path=str(telem_dir / f"latest_profile_{ch_folder}.jpg"),
+                    type="jpeg",
+                    quality=65,
+                )
+            except Exception:
+                pass
+        except Exception as exc:
+            report["notes"].append(f"error:{exc}")
+            logger.warning(f"[{ch_folder}] [Rebrand Profile] Lưu ý khi sửa hồ sơ TikTok: {exc}")
+        return report
+
+
     def wipe_all_old_channel_posts(
         self,
         channel_arg: str,
         exclude_keywords: Optional[List[str]] = None,
         max_deletes: int = 100,
         headless: bool = False,
+        rebrand_profile: Optional[Dict[str, Any]] = None,
     ) -> List[str]:
         """
-        Mở Chrome Anti-Detect của kênh `channel_arg`, xóa sạch toàn bộ các video cũ (không khớp `exclude_keywords`)
-        trên `tiktokstudio/content`, rồi chụp ảnh & đẩy báo cáo Telemetry xác nhận kênh đã trống sạch.
+        Mở Chrome Anti-Detect của kênh `channel_arg`, tùy chọn đổi Hồ sơ TikTok (`rebrand_profile`),
+        xóa sạch toàn bộ các video cũ (không khớp `exclude_keywords`) trên `tiktokstudio/content`,
+        rồi chụp ảnh & đẩy báo cáo Telemetry xác nhận kênh đã sạch và chuyển đổi hoàn tất.
         """
         from playwright.sync_api import sync_playwright
 
@@ -1072,12 +1331,19 @@ class PosterCleanupMixin:
             raise RuntimeError(f"Kênh [{ch_folder}] chưa có profile đăng nhập tại {user_data_dir}.")
 
         deleted: List[str] = []
+        rebrand_report: Dict[str, Any] = {}
         with sync_playwright() as p:
             context = self._launch_stealth_chrome_context(
                 playwright_obj=p, user_data_dir=user_data_dir, headless=headless
             )
             try:
                 page = context.pages[0] if context.pages else context.new_page()
+                if isinstance(rebrand_profile, dict) and rebrand_profile:
+                    rebrand_report = self._rebrand_tiktok_profile_on_web(
+                        page=page,
+                        ch_folder=ch_folder,
+                        rebrand_cfg=rebrand_profile,
+                    )
                 deleted = self._wipe_all_old_posts_in_content_page(
                     page=page,
                     ch_folder=ch_folder,
@@ -1090,6 +1356,7 @@ class PosterCleanupMixin:
                     ch_folder=ch_folder,
                     details={
                         "action": "wipe_old_posts",
+                        "rebrand_profile": rebrand_report,
                         "deleted_count": len(deleted),
                         "deleted_posts": deleted[:30],
                         "exclude_keywords": exclude_keywords or [],
@@ -1103,7 +1370,11 @@ class PosterCleanupMixin:
                         page=context.pages[0] if context.pages else None,
                         event_type="upload_error",
                         ch_folder=ch_folder,
-                        details={"action": "wipe_old_posts", "error": str(exc)},
+                        details={
+                            "action": "wipe_old_posts",
+                            "rebrand_profile": rebrand_report,
+                            "error": str(exc),
+                        },
                     )
                 except Exception:
                     pass

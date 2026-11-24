@@ -585,8 +585,9 @@ class PosterBrowserMixin:
     @staticmethod
     def _restore_synced_channel_session_if_needed(context: Any, user_data_dir: Path) -> bool:
         """
-        Tự động nạp phiên đăng nhập TikTok (Cookies + LocalStorage) đã đồng bộ từ máy Silicon sang máy Intel
-        nếu `browser_profiles/<ten_kenh>` trên máy Intel chưa có phiên hoặc có bản cập nhật mới.
+        Tự động nạp phiên đăng nhập TikTok (Cookies + LocalStorage) đã đồng bộ từ `remote_telemetry/sessions/<ten_kenh>.bin`
+        khi `browser_profiles/<ten_kenh>` chưa có phiên, có bản cập nhật mới, bị Chrome làm mất cookie `sessionid`
+        (ví dụ sau khi đổi Chrome binary / Keychain macOS), hoặc đang dính `uid_tt` của tài khoản cũ!
         """
         import hashlib
         import zlib
@@ -601,16 +602,45 @@ class PosterBrowserMixin:
                 return False
             sig = hashlib.sha256(enc).hexdigest()[:24]
             stamp_file = user_data_dir / "_synced_session_hash.txt"
+            stamp_matches = False
             if stamp_file.exists():
                 try:
-                    if stamp_file.read_text(encoding="utf-8").strip() == sig:
-                        return False
+                    stamp_matches = stamp_file.read_text(encoding="utf-8").strip() == sig
                 except Exception:
-                    pass
+                    stamp_matches = False
 
             compressed = PosterBrowserMixin._session_cipher_bytes(enc)
             raw = zlib.decompress(compressed)
             state_dict = json.loads(raw.decode("utf-8"))
+            cookies = state_dict.get("cookies") or []
+            if not cookies:
+                return False
+
+            expected_uid = next(
+                (str(c.get("value") or "").strip() for c in cookies if isinstance(c, dict) and c.get("name") == "uid_tt" and c.get("value")),
+                "",
+            )
+
+            live_has_auth = False
+            live_uid = ""
+            try:
+                cur_cookies = context.cookies(["https://www.tiktok.com", "https://tiktok.com"]) or []
+                for c in cur_cookies:
+                    if not isinstance(c, dict):
+                        continue
+                    cname = str(c.get("name") or "")
+                    cval = str(c.get("value") or "").strip()
+                    if cname in ("sessionid", "sessionid_ss", "sid_tt") and cval:
+                        live_has_auth = True
+                    if cname == "uid_tt" and cval:
+                        live_uid = cval
+            except Exception:
+                live_has_auth = False
+
+            uid_mismatch = bool(expected_uid and live_uid and live_uid != expected_uid)
+            if stamp_matches and live_has_auth and not uid_mismatch:
+                return False
+
             user_data_dir.mkdir(parents=True, exist_ok=True)
             if isinstance(state_dict.get("profile_fingerprint"), dict):
                 try:
@@ -620,13 +650,13 @@ class PosterBrowserMixin:
                     )
                 except Exception:
                     pass
-            cookies = state_dict.get("cookies") or []
-            if cookies:
-                try:
-                    context.clear_cookies()
-                except Exception:
-                    pass
-                context.add_cookies(cookies)
+
+            try:
+                context.clear_cookies()
+            except Exception:
+                pass
+            context.add_cookies(cookies)
+
             origins = state_dict.get("origins") or []
             if origins:
                 ls_map = {
@@ -653,7 +683,10 @@ class PosterBrowserMixin:
                     context.add_init_script(ls_script)
             user_data_dir.mkdir(parents=True, exist_ok=True)
             stamp_file.write_text(sig, encoding="utf-8")
-            logger.info(f"[{ch_folder}] Đã tự động đồng bộ phiên đăng nhập TikTok ({len(cookies)} cookies) sang máy hiện tại!")
+            logger.info(
+                f"[{ch_folder}] Đã tự động đồng bộ/khôi phục phiên đăng nhập TikTok ({len(cookies)} cookies | "
+                f"live_auth_missing={not live_has_auth}, uid_mismatch={uid_mismatch}, hash_changed={not stamp_matches})!"
+            )
             return True
         except Exception as exc:
             logger.debug(f"[{user_data_dir.name}] Không thể khôi phục phiên đồng bộ: {exc}")
@@ -1029,6 +1062,8 @@ class PosterBrowserMixin:
                                     for it in (h_d.get("items") or [])
                                     if not (isinstance(it, dict) and it.get("channel") == dst_ch)
                                 ]
+                                if dst_ch == "audio_dem_khuyen":
+                                    h_d["_adk_v7_reset_ts"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                                 hist_p.write_text(
                                     json.dumps(h_d, ensure_ascii=False, indent=2),
                                     encoding="utf-8",

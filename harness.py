@@ -62,6 +62,7 @@ EXPECTED_POSTER_METHODS = {
     "_delete_post_in_content_page",
     "delete_channel_posts_by_keywords",
     "_wipe_all_old_posts_in_content_page",
+    "_rebrand_tiktok_profile_on_web",
     "wipe_all_old_channel_posts",
     "ensure_channel_posts_public",
     "login_channel_profile",

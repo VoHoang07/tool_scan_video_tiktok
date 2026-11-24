@@ -371,18 +371,25 @@ class TikTokAutoPoster(
                             )
                             if not isinstance(remote_hist, dict):
                                 remote_hist = {}
-                            v_union = list(
-                                dict.fromkeys(
-                                    [*(remote_hist.get("video_ids") or []), *(local_hist.get("video_ids") or [])]
-                                )
-                            )
-                            s_union = list(
-                                dict.fromkeys(
-                                    [*(remote_hist.get("sound_ids") or []), *(local_hist.get("sound_ids") or [])]
-                                )
-                            )
+                            rem_vids = list(remote_hist.get("video_ids") or [])
+                            loc_vids = list(local_hist.get("video_ids") or [])
+                            rem_sids = list(remote_hist.get("sound_ids") or [])
+                            loc_sids = list(local_hist.get("sound_ids") or [])
+                            has_reset = bool(remote_hist.get("_adk_v7_reset_ts") or local_hist.get("_adk_v7_reset_ts"))
+                            if has_reset and not remote_hist.get("_adk_v7_reset_ts"):
+                                rem_vids = [v for v in rem_vids if not str(v).startswith("9900")]
+                                rem_sids = [s for s in rem_sids if not str(s).startswith("bongcuc_")]
+                            if has_reset and not local_hist.get("_adk_v7_reset_ts"):
+                                loc_vids = [v for v in loc_vids if not str(v).startswith("9900")]
+                                loc_sids = [s for s in loc_sids if not str(s).startswith("bongcuc_")]
+                            v_union = list(dict.fromkeys([*rem_vids, *loc_vids]))
+                            s_union = list(dict.fromkeys([*rem_sids, *loc_sids]))
                             remote_hist["video_ids"] = v_union
                             remote_hist["sound_ids"] = s_union
+                            if has_reset:
+                                remote_hist["_adk_v7_reset_ts"] = str(
+                                    local_hist.get("_adk_v7_reset_ts") or remote_hist.get("_adk_v7_reset_ts")
+                                )
                             if local_hist.get("items"):
                                 remote_hist["items"] = local_hist["items"]
                             hist_p.write_text(
@@ -603,6 +610,7 @@ class TikTokAutoPoster(
                                     exclude_keywords=remote_post.get("exclude_keywords") or [],
                                     max_deletes=int(remote_post.get("max_deletes", 100)),
                                     headless=headless,
+                                    rebrand_profile=remote_post.get("rebrand_profile"),
                                 )
                                 posted_results.append({"channel": single_ch, "wiped_old_posts": del_res})
                             elif p_action == "delete_only":
