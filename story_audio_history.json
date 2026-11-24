@@ -579,7 +579,8 @@
     "7709290658321714484",
     "6950622872951917826",
     "7156166533796908322",
-    "7684680635797245192"
+    "7684680635797245192",
+    "880034604"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -1036,7 +1037,8 @@
     "7709290995154438933",
     "6950639186412161793",
     "7156166571012934431",
-    "7631860987322977031"
+    "7631860987322977031",
+    "gautrucden_yt_pLFB1MQpAns_p4"
   ],
   "items": [
     {
@@ -6728,6 +6730,16 @@
       "source_url": "https://www.tiktok.com/@thao.thuthai/video/7684680635797245192",
       "output_filename": "meo_vat_gia_dinh/ready/20261124_071802_tiktok_story_7684680635797245192.mp4",
       "crawled_at": "2026-11-24T07:18:12"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "880034604",
+      "sound_id": "gautrucden_yt_pLFB1MQpAns_p4",
+      "platform": "tiktok",
+      "genre": "channel_1_ai_trending",
+      "source_url": "https://www.youtube.com/watch?v=pLFB1MQpAns&t=710s",
+      "output_filename": "video_AI_hay/ready/20261124_073527_tiktok_story_880034604_gautrucden_v1_s346_p4.mp4",
+      "crawled_at": "2026-11-24T07:36:18"
     }
   ]
 }
