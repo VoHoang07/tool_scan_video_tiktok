@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 17:27:04",
+    "timestamp": "2026-11-24 18:05:11",
     "machine_arch": "x86_64",
     "event_type": "upload",
     "channel": "audio_dem_khuyen",
@@ -12,42 +12,16 @@
         "saved": false,
         "updated_fields": [],
         "notes": [
-          "edit_profile_button_not_found"
-        ]
+          "name_skip:Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div[role=\\\"dialog\\\"] input[placeholder*=\\\"Tên\\\" i], div[role=\\\"dialog\\\"] input[placeholder*=\\\"Name\\\" i], [data-e2e=\\\"edit-profile-name-input\\\"]\").first\n    - locator resolved to <div data-e2e=\"edit-profile-name-input\" class=\"css-1qnj4f1-7937d88b--DivEditAreaContainer e1lwtbhx13\">…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    57 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
+          "bio_skip:Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div[role=\\\"dialog\\\"] textarea, [data-e2e=\\\"edit-profile-bio-input\\\"]\").first\n    - locator resolved to <textarea placeholder=\"Tiểu sử\" data-e2e=\"edit-profile-bio-input\" class=\"css-1bbpwh8-7937d88b--InputText-7937d88b--InputText-7937d88b--StyledInputTextArea e1lwtbhx16\">🌹 Phụ nữ hiện đại: Tinh tế trong ứng xử, rạng rỡ …</textarea>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    57 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
+          "username_skip:Locator.is_editable: Error: Element is not an <input>, <textarea>, <select> or [contenteditable] and does not have a role allowing [aria-readonly]\nCall log:\n  - waiting for locator(\"[data-e2e=\\\"edit-profile-username-input\\\"], div[role=\\\"dialog\\\"] input[placeholder*=\\\"TikTok ID\\\" i], div[role=\\\"dialog\\\"] input[placeholder*=\\\"Username\\\" i]\").first\n",
+          "save_button_disabled_or_not_found"
+        ],
+        "current_username": "phunukhichat.k07",
+        "profile_url": "https://www.tiktok.com/@phunukhichat.k07"
       },
-      "deleted_count": 48,
-      "deleted_posts": [
-        "Trang chủ | Bài đăng | Phân tích | 00:18 | 23 tháng 11, 1:18 CH",
-        "Trang chủ | Bài đăng | Phân tích | 00:45 | 23 tháng 11, 8:39 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:37 | 23 tháng 11, 1:40 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:15 | ✨ chuẩn chưa ạ. Phụ nữ thông minh khô",
-        "Trang chủ | Bài đăng | Phân tích | 00:26 | 22 tháng 11, 8:41 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:53 | 22 tháng 11, 2:41 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:43 | 21 tháng 11, 1:18 CH",
-        "Trang chủ | Bài đăng | Phân tích | 00:20 | 21 tháng 11, 8:37 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:50 | 21 tháng 11, 12:05 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:49 | 20 tháng 11, 1:33 CH",
-        "Trang chủ | Bài đăng | Phân tích | 00:25 | 19 tháng 11, 11:53 CH",
-        "Trang chủ | Bài đăng | Phân tích | 01:14 | 19 tháng 11, 1:46 CH",
-        "Trang chủ | Bài đăng | Phân tích | 00:30 | 19 tháng 11, 8:55 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:53 | ☕ Góc suy ngẫm về tình cảm và hôn nhâ",
-        "Trang chủ | Bài đăng | Phân tích | 00:47 | 18 tháng 11, 1:29 CH",
-        "Trang chủ | Bài đăng | Phân tích | 00:52 | 18 tháng 11, 8:39 SA",
-        "Trang chủ | Bài đăng | Phân tích | 01:01 | 18 tháng 11, 12:06 SA",
-        "Trang chủ | Bài đăng | Phân tích | 01:12 | 17 tháng 11, 8:45 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:59 | 🌷 Phụ nữ càng trưởng thành càng thích",
-        "Trang chủ | Bài đăng | Phân tích | 00:27 | 16 tháng 11, 1:21 CH",
-        "Trang chủ | Bài đăng | Phân tích | 00:48 | 16 tháng 11, 8:51 SA",
-        "Trang chủ | Bài đăng | Phân tích | 01:02 | 16 tháng 11, 12:08 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:40 | 15 tháng 11, 1:28 CH",
-        "Trang chủ | Bài đăng | Phân tích | 00:47 | 15 tháng 11, 8:42 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:47 | 12 tháng 11, 8:33 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:55 | 11 tháng 11, 11:32 CH",
-        "Trang chủ | Bài đăng | Phân tích | 00:44 | 11 tháng 11, 1:15 CH",
-        "Trang chủ | Bài đăng | Phân tích | 00:33 | 11 tháng 11, 8:28 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:35 | 11 tháng 11, 12:53 SA",
-        "Trang chủ | Bài đăng | Phân tích | 00:49 | 10 tháng 11, 8:33 SA"
-      ],
+      "deleted_count": 0,
+      "deleted_posts": [],
       "exclude_keywords": [
         "bông cúc",
         "bongcucso",
@@ -64,6 +38,44 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 18:05:11",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "action": "wipe_old_posts",
+        "rebrand_profile": {
+          "attempted": true,
+          "saved": false,
+          "updated_fields": [],
+          "notes": [
+            "name_skip:Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div[role=\\\"dialog\\\"] input[placeholder*=\\\"Tên\\\" i], div[role=\\\"dialog\\\"] input[placeholder*=\\\"Name\\\" i], [data-e2e=\\\"edit-profile-name-input\\\"]\").first\n    - locator resolved to <div data-e2e=\"edit-profile-name-input\" class=\"css-1qnj4f1-7937d88b--DivEditAreaContainer e1lwtbhx13\">…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    57 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
+            "bio_skip:Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div[role=\\\"dialog\\\"] textarea, [data-e2e=\\\"edit-profile-bio-input\\\"]\").first\n    - locator resolved to <textarea placeholder=\"Tiểu sử\" data-e2e=\"edit-profile-bio-input\" class=\"css-1bbpwh8-7937d88b--InputText-7937d88b--InputText-7937d88b--StyledInputTextArea e1lwtbhx16\">🌹 Phụ nữ hiện đại: Tinh tế trong ứng xử, rạng rỡ …</textarea>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    57 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
+            "username_skip:Locator.is_editable: Error: Element is not an <input>, <textarea>, <select> or [contenteditable] and does not have a role allowing [aria-readonly]\nCall log:\n  - waiting for locator(\"[data-e2e=\\\"edit-profile-username-input\\\"], div[role=\\\"dialog\\\"] input[placeholder*=\\\"TikTok ID\\\" i], div[role=\\\"dialog\\\"] input[placeholder*=\\\"Username\\\" i]\").first\n",
+            "save_button_disabled_or_not_found"
+          ],
+          "current_username": "phunukhichat.k07",
+          "profile_url": "https://www.tiktok.com/@phunukhichat.k07"
+        },
+        "deleted_count": 0,
+        "deleted_posts": [],
+        "exclude_keywords": [
+          "bông cúc",
+          "bongcucso",
+          "phần 1/",
+          "phần 2/",
+          "phần 3/",
+          "phần 4/",
+          "phần 5/",
+          "phần 6/",
+          "truyenaudio",
+          "audiodemkhuya"
+        ],
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-24 17:27:04",
       "machine_arch": "x86_64",
@@ -272,17 +284,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
       "details": {
         "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 15:41:51",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_error_baby_AI.jpg",
-      "details": {
-        "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
