@@ -1,16 +1,149 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 11:32:45",
+    "timestamp": "2026-11-24 11:40:22",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "phu_nu_khi_chat",
-    "screenshot": "remote_telemetry/latest_upload_error_phu_nu_khi_chat.jpg",
+    "event_type": "filter24h",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261124_084832_tiktok_story_7613953988282682637.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "interacted_count": 1,
+      "own_profile_stats": {},
+      "records": [
+        {
+          "channel": "audio_dem_khuyen",
+          "video_id": "7693212282565741825",
+          "video_url": "https://www.tiktok.com/@nhavui86/video/7693212282565741825",
+          "creator_handle": "@nhavui86",
+          "watched_seconds": 24.8,
+          "steps_completed": {
+            "1_watched_full": true,
+            "2_liked_video": false,
+            "3_copied_link": true,
+            "4_added_favorite": true,
+            "5_followed_creator": false,
+            "6_commented_after_follow": false
+          },
+          "comment_text": "",
+          "circuit_breaker_tripped": false,
+          "like_debug": {
+            "digg_responses": [],
+            "follow_responses": [],
+            "env_check": {
+              "webdriver": false,
+              "loggedInUniqueId": null
+            },
+            "before": {
+              "x": 877.28125,
+              "y": 425,
+              "ariaPressed": false,
+              "svgColor": "rgba(22, 24, 35, 1)",
+              "likeCount": "621"
+            },
+            "init_red": false,
+            "after_os_click_05s": {
+              "state": {
+                "x": 877.28125,
+                "y": 425,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "621"
+              },
+              "red": false,
+              "server_digg_ok": false,
+              "server_digg_rejected": false
+            },
+            "profile_follow_verify": {
+              "creator": "@nhavui86",
+              "nav_method": "video_header_os_click",
+              "profile_url": "https://www.tiktok.com/@nhavui86?lang=vi-VN",
+              "before_btn": "Follow",
+              "after_btn": "Follow",
+              "init_relation": 0,
+              "server_follow_ok": false,
+              "ui_confirmed": false,
+              "persisted": false,
+              "follow_api_blocked": false
+            }
+          },
+          "interacted_at": "2026-11-24 11:39:46",
+          "follow_back_window_until": "2026-11-25 11:39:46"
+        }
+      ]
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 11:40:22",
+      "machine_arch": "x86_64",
+      "event_type": "filter24h",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_filter24h_audio_dem_khuyen.jpg",
+      "details": {
+        "interacted_count": 1,
+        "own_profile_stats": {},
+        "records": [
+          {
+            "channel": "audio_dem_khuyen",
+            "video_id": "7693212282565741825",
+            "video_url": "https://www.tiktok.com/@nhavui86/video/7693212282565741825",
+            "creator_handle": "@nhavui86",
+            "watched_seconds": 24.8,
+            "steps_completed": {
+              "1_watched_full": true,
+              "2_liked_video": false,
+              "3_copied_link": true,
+              "4_added_favorite": true,
+              "5_followed_creator": false,
+              "6_commented_after_follow": false
+            },
+            "comment_text": "",
+            "circuit_breaker_tripped": false,
+            "like_debug": {
+              "digg_responses": [],
+              "follow_responses": [],
+              "env_check": {
+                "webdriver": false,
+                "loggedInUniqueId": null
+              },
+              "before": {
+                "x": 877.28125,
+                "y": 425,
+                "ariaPressed": false,
+                "svgColor": "rgba(22, 24, 35, 1)",
+                "likeCount": "621"
+              },
+              "init_red": false,
+              "after_os_click_05s": {
+                "state": {
+                  "x": 877.28125,
+                  "y": 425,
+                  "ariaPressed": false,
+                  "svgColor": "rgba(22, 24, 35, 1)",
+                  "likeCount": "621"
+                },
+                "red": false,
+                "server_digg_ok": false,
+                "server_digg_rejected": false
+              },
+              "profile_follow_verify": {
+                "creator": "@nhavui86",
+                "nav_method": "video_header_os_click",
+                "profile_url": "https://www.tiktok.com/@nhavui86?lang=vi-VN",
+                "before_btn": "Follow",
+                "after_btn": "Follow",
+                "init_relation": 0,
+                "server_follow_ok": false,
+                "ui_confirmed": false,
+                "persisted": false,
+                "follow_api_blocked": false
+              }
+            },
+            "interacted_at": "2026-11-24 11:39:46",
+            "follow_back_window_until": "2026-11-25 11:39:46"
+          }
+        ]
+      }
+    },
     {
       "timestamp": "2026-11-24 11:32:45",
       "machine_arch": "x86_64",
@@ -293,17 +426,6 @@
             "follow_back_window_until": "2026-11-25 09:51:20"
           }
         ]
-      }
-    },
-    {
-      "timestamp": "2026-11-24 09:45:49",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261124_094305_tiktok_story_7348708096602082568.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
