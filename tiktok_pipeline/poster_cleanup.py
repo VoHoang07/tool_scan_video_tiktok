@@ -1192,10 +1192,10 @@ class PosterCleanupMixin:
                                 const els = Array.from(document.querySelectorAll('button, [role="button"]'));
                                 for (const el of els) {
                                     const t = (el.innerText || el.textContent || '').trim().toLowerCase();
-                                    if (t === 'áp dụng' || t === 'apply') {
+                                    if (t === 'áp dụng' || t === 'đăng ký' || t === 'apply' || t === 'xong' || t === 'done') {
                                         const r = el.getBoundingClientRect();
-                                        if (r.width >= 40 && r.height >= 24) {
-                                            return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                        if (r.width >= 40 && r.height >= 24 && r.top > 300) {
+                                            return { x: r.left + r.width / 2, y: r.top + r.height / 2, text: t };
                                         }
                                     }
                                 }
@@ -1203,9 +1203,17 @@ class PosterCleanupMixin:
                             }"""
                         )
                         if apply_btn:
-                            self._os_click_viewport(page, float(apply_btn["x"]), float(apply_btn["y"]))
-                            time.sleep(2.0)
+                            ax, ay = float(apply_btn["x"]), float(apply_btn["y"])
+                            self._os_click_viewport(page, ax, ay)
+                            time.sleep(0.5)
+                            try:
+                                page.mouse.click(ax, ay)
+                            except Exception:
+                                pass
+                            time.sleep(2.2)
                             report["updated_fields"].append("avatar")
+                        else:
+                            report["notes"].append("avatar_apply_button_not_found")
                     except Exception as av_exc:
                         report["notes"].append(f"avatar_skip:{av_exc}")
 
@@ -1214,15 +1222,14 @@ class PosterCleanupMixin:
             if target_name:
                 try:
                     name_inp = page.locator(
-                        'div[role="dialog"] input[placeholder*="Tên" i], div[role="dialog"] input[placeholder*="Name" i], [data-e2e="edit-profile-name-input"]'
+                        '[data-e2e="edit-profile-name-input"] input, div[role="dialog"] input[placeholder*="Tên" i], div[role="dialog"] input[placeholder*="Name" i]'
                     ).first
                     if name_inp.count() == 0:
-                        # Fallback: input thứ 2 trong modal (sau TikTok ID)
                         all_inps = page.locator('div[role="dialog"] input[type="text"], div[role="dialog"] input:not([type])')
                         if all_inps.count() >= 2:
                             name_inp = all_inps.nth(1)
                     if name_inp.count() > 0:
-                        name_inp.click()
+                        name_inp.click(timeout=10000)
                         time.sleep(0.2)
                         page.keyboard.press("Meta+A")
                         page.keyboard.press("Backspace")
@@ -1237,9 +1244,9 @@ class PosterCleanupMixin:
             target_bio = str(rebrand_cfg.get("bio") or "").strip()
             if target_bio:
                 try:
-                    bio_ta = page.locator('div[role="dialog"] textarea, [data-e2e="edit-profile-bio-input"]').first
+                    bio_ta = page.locator('[data-e2e="edit-profile-bio-input"], div[role="dialog"] textarea').first
                     if bio_ta.count() > 0:
-                        bio_ta.click()
+                        bio_ta.click(timeout=10000)
                         time.sleep(0.2)
                         page.keyboard.press("Meta+A")
                         page.keyboard.press("Backspace")
@@ -1255,7 +1262,7 @@ class PosterCleanupMixin:
             if id_candidates:
                 try:
                     uid_inp = page.locator(
-                        '[data-e2e="edit-profile-username-input"], div[role="dialog"] input[placeholder*="TikTok ID" i], div[role="dialog"] input[placeholder*="Username" i]'
+                        '[data-e2e="edit-profile-username-input"] input, div[role="dialog"] input[placeholder*="TikTok ID" i], div[role="dialog"] input[placeholder*="Username" i]'
                     ).first
                     if uid_inp.count() == 0:
                         all_inps = page.locator('div[role="dialog"] input[type="text"], div[role="dialog"] input:not([type])')
@@ -1268,7 +1275,7 @@ class PosterCleanupMixin:
                             if cand_uid.lower() == orig_uid.lower():
                                 changed_uid = True
                                 break
-                            uid_inp.click()
+                            uid_inp.click(timeout=8000)
                             time.sleep(0.15)
                             page.keyboard.press("Meta+A")
                             page.keyboard.press("Backspace")
@@ -1286,7 +1293,7 @@ class PosterCleanupMixin:
                                 report["updated_fields"].append(f"username:{cand_uid}")
                                 break
                         if not changed_uid and orig_uid:
-                            uid_inp.click()
+                            uid_inp.click(timeout=8000)
                             page.keyboard.press("Meta+A")
                             page.keyboard.press("Backspace")
                             page.keyboard.insert_text(orig_uid)
@@ -1316,8 +1323,14 @@ class PosterCleanupMixin:
                 }"""
             )
             if save_btn:
-                self._os_click_viewport(page, float(save_btn["x"]), float(save_btn["y"]))
-                time.sleep(2.0)
+                sx, sy = float(save_btn["x"]), float(save_btn["y"])
+                self._os_click_viewport(page, sx, sy)
+                time.sleep(0.4)
+                try:
+                    page.mouse.click(sx, sy)
+                except Exception:
+                    pass
+                time.sleep(2.2)
                 # Nếu đổi TikTok ID, TikTok hiện popup xác nhận "Đặt TikTok ID" / "Set username"
                 confirm_uid = page.evaluate(
                     """() => {
@@ -1335,9 +1348,14 @@ class PosterCleanupMixin:
                     }"""
                 )
                 if confirm_uid:
-                    self._os_click_viewport(page, float(confirm_uid["x"]), float(confirm_uid["y"]))
-                    time.sleep(2.5)
-                time.sleep(2.5)
+                    cx, cy = float(confirm_uid["x"]), float(confirm_uid["y"])
+                    self._os_click_viewport(page, cx, cy)
+                    try:
+                        page.mouse.click(cx, cy)
+                    except Exception:
+                        pass
+                    time.sleep(3.0)
+                time.sleep(3.5)
                 report["saved"] = True
                 logger.info(
                     f"[{ch_folder}] [Rebrand Profile] ✅ Đã lưu hồ sơ mới thành công ({report['updated_fields']})!"

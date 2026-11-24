@@ -1085,6 +1085,21 @@ class StoryAudioCrawler:
                 data["video_ids"] = [str(v) for v in data.get("video_ids", []) if str(v) not in lost_repost_sids]
 
             posted_ids, _ = self._collect_all_known_posted_story_ids_and_files()
+            # Chỉ giữ các ID 9900* thực sự thuộc chuẩn bongcuc_v7 trên kênh audio_dem_khuyen mới
+            valid_v7_sids: Set[str] = {s for s in posted_ids if str(s).startswith("9900")}
+            adk_dir = self.output_root / "audio_dem_khuyen"
+            for sub in ("ready", "posted"):
+                sd = adk_dir / sub
+                if sd.exists():
+                    for mp4 in sd.glob("*bongcuc_v7_s*.mp4"):
+                        m_v7 = re.search(r"_story_([A-Za-z0-9_-]+)", mp4.stem, re.IGNORECASE)
+                        if m_v7:
+                            valid_v7_sids.add(m_v7.group(1).split("_bongcuc_")[0])
+            data["video_ids"] = [
+                str(v)
+                for v in data.get("video_ids", [])
+                if not str(v).startswith("9900") or str(v) in valid_v7_sids
+            ]
             existing_vids = set(str(v) for v in data.get("video_ids", []))
             for sid in posted_ids:
                 if sid not in existing_vids:

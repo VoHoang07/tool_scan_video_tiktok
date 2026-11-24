@@ -375,11 +375,13 @@ class TikTokAutoPoster(
                             loc_vids = list(local_hist.get("video_ids") or [])
                             rem_sids = list(remote_hist.get("sound_ids") or [])
                             loc_sids = list(local_hist.get("sound_ids") or [])
-                            has_reset = bool(remote_hist.get("_adk_v7_reset_ts") or local_hist.get("_adk_v7_reset_ts"))
-                            if has_reset and not remote_hist.get("_adk_v7_reset_ts"):
+                            rem_rst = str(remote_hist.get("_adk_v7_reset_ts") or "")
+                            loc_rst = str(local_hist.get("_adk_v7_reset_ts") or "")
+                            has_reset = bool(rem_rst or loc_rst)
+                            if has_reset and rem_rst < loc_rst:
                                 rem_vids = [v for v in rem_vids if not str(v).startswith("9900")]
                                 rem_sids = [s for s in rem_sids if not str(s).startswith("bongcuc_")]
-                            if has_reset and not local_hist.get("_adk_v7_reset_ts"):
+                            if has_reset and loc_rst < rem_rst:
                                 loc_vids = [v for v in loc_vids if not str(v).startswith("9900")]
                                 loc_sids = [s for s in loc_sids if not str(s).startswith("bongcuc_")]
                             v_union = list(dict.fromkeys([*rem_vids, *loc_vids]))
@@ -387,9 +389,7 @@ class TikTokAutoPoster(
                             remote_hist["video_ids"] = v_union
                             remote_hist["sound_ids"] = s_union
                             if has_reset:
-                                remote_hist["_adk_v7_reset_ts"] = str(
-                                    local_hist.get("_adk_v7_reset_ts") or remote_hist.get("_adk_v7_reset_ts")
-                                )
+                                remote_hist["_adk_v7_reset_ts"] = max(rem_rst, loc_rst)
                             if local_hist.get("items"):
                                 remote_hist["items"] = local_hist["items"]
                             hist_p.write_text(
