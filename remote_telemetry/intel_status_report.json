@@ -1,20 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 07:47:28",
+    "timestamp": "2026-11-24 07:51:51",
     "machine_arch": "x86_64",
-    "event_type": "warmup_fyp",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_warmup_fyp_baby_AI.jpg",
+    "event_type": "upload_error",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
     "details": {
-      "scrolled_videos": 11,
-      "ads_skipped": 0,
-      "fyp_liked": 0,
-      "fyp_followed": 0,
-      "elapsed_seconds": 155.7,
-      "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
+      "video_file": "20261124_073527_tiktok_story_880034604_gautrucden_v1_s346_p4.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 07:51:51",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_error_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261124_073527_tiktok_story_880034604_gautrucden_v1_s346_p4.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 07:47:28",
       "machine_arch": "x86_64",
@@ -206,21 +213,6 @@
         "fyp_liked": 0,
         "fyp_followed": 0,
         "elapsed_seconds": 150.3,
-        "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 06:21:41",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_nuoi_con_eq.jpg",
-      "details": {
-        "scrolled_videos": 8,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 163.8,
         "final_url": "https://www.tiktok.com/foryou?lang=vi-VN"
       }
     }
