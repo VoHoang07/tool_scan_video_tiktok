@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 23:20:39",
+    "timestamp": "2026-11-24 23:30:15",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261124_073527_tiktok_story_880034604_gautrucden_v1_s346_p4.mp4",
-      "caption": "🌙 Quỷ Lộn Ngược Trong Nhà — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-      "hashtags": "#quylonnguoctrongnha #phan4 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
+      "video_file": "20261124_071802_tiktok_story_7684680635797245192.mp4",
+      "caption": "💡 Mẹo vặt nhà cửa cực hay giúp dọn bếp sạch bong chỉ trong tích tắc. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 23:30:15",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261124_071802_tiktok_story_7684680635797245192.mp4",
+        "caption": "💡 Mẹo vặt nhà cửa cực hay giúp dọn bếp sạch bong chỉ trong tích tắc. Cách làm vừa nhanh vừa tiết kiệm mà nhà nào cũng cần dùng tới mỗi ngày! Lưu lại ngay để áp dụng cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-24 23:20:39",
       "machine_arch": "x86_64",
@@ -319,17 +335,6 @@
         "fyp_followed": 0,
         "elapsed_seconds": 230.3,
         "final_url": "https://www.tiktok.com/@moyutop1?lang=vi-VN"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 16:09:38",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_error_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261124_160438_tiktok_story_7337365652690324738.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
