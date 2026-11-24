@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 09:38:18",
+    "timestamp": "2026-11-24 09:45:49",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_error_nuoi_con_eq.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261124_085638_tiktok_story_7030755414774009089.mp4",
+      "video_file": "20261124_094305_tiktok_story_7348708096602082568.mp4",
       "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 09:45:49",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261124_094305_tiktok_story_7348708096602082568.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 09:38:18",
       "machine_arch": "x86_64",
@@ -167,21 +178,6 @@
       "details": {
         "video_file": "20261124_073527_tiktok_story_880034604_gautrucden_v1_s346_p4.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 08:05:28",
-      "machine_arch": "x86_64",
-      "event_type": "warmup_fyp",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_warmup_fyp_audio_dem_khuyen.jpg",
-      "details": {
-        "scrolled_videos": 9,
-        "ads_skipped": 0,
-        "fyp_liked": 0,
-        "fyp_followed": 0,
-        "elapsed_seconds": 230.7,
-        "final_url": "https://www.tiktok.com/@hong.c.li94?lang=vi-VN"
       }
     }
   ]
