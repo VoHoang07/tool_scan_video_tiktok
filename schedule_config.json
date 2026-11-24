@@ -193,12 +193,13 @@
     }
   ],
   "remote_trigger_post_now": {
-    "trigger_id": "wipe_and_rebrand_pnkc_to_adk_20261124_1708",
+    "trigger_id": "rebrand_profile_pnkc_to_adk_20261124_1805",
     "target_arch": "x86_64",
     "action": "wipe_old_posts",
     "ensure_public_channels": "",
     "channel": "audio_dem_khuyen",
     "rebrand_profile": {
+      "current_username": "phunukhichat.k07",
       "display_name": "Audio Đêm Khuya",
       "bio": "🎧 Truyện Audio Đêm Khuya - Bông Cúc Audio 🌙\n📖 Lên tập mới mỗi ngày",
       "avatar_path": "assets/audio_dem_khuyen_avatar.png",
@@ -220,7 +221,7 @@
       "truyenaudio",
       "audiodemkhuya"
     ],
-    "max_deletes": 100,
+    "max_deletes": 20,
     "force": true,
     "skip_warmup": true,
     "auto_pause_master_after": false

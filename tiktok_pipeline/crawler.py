@@ -933,11 +933,6 @@ class StoryAudioCrawler:
             "7700254944028364052", "7700764387950300436", "7700789370625805598",
             "7684235157036879124", "7473815778035289378", "7703396595689213204",
             "7581027567194298984", "6862280720614739204",
-            "990001001", "990001002", "990001003", "990001004", "990001005", "990001006", "990001007",
-            "990014101", "990014102", "990014201", "990014202", "990014301", "990014302",
-            "990014401", "990014402", "990014601", "990014602",
-            "990011901", "990007001", "990011001", "990014501", "990013801", "990013701",
-            "990003901", "990006001", "990003501", "990002101", "990012001",
             "ChBS_r_mC5Y", "FAP6RhvxATM", "IgOE5mwunVI", "QjNcEG68q_c", "YjmXoARv1Ko", "ZWJfOStWq8M",
             "hmDRy0NjfzM", "v5Hs6tww2b0", "wHMzoqtE3Sk",
         }
@@ -970,6 +965,8 @@ class StoryAudioCrawler:
             if posted_dir.exists():
                 for mp4 in posted_dir.glob("*.mp4"):
                     if mp4.is_file():
+                        if ch_folder == "audio_dem_khuyen" and "bongcuc_v7_s" not in mp4.name.lower():
+                            continue
                         posted_filenames.add(mp4.name)
                         sid = _extract_sid(mp4.name)
                         if sid:
@@ -983,9 +980,11 @@ class StoryAudioCrawler:
                         fn = (row.get("filename") or "").strip()
                         s_url = (row.get("source_url") or "").strip()
                         if st == "POSTED" or "/posted/" in fn:
+                            sid = _extract_sid(fn) or _extract_sid(s_url)
+                            if sid and str(sid).startswith("9900") and "bongcuc_v7_s" not in fn.lower():
+                                continue
                             if fn:
                                 posted_filenames.add(Path(fn).name)
-                            sid = _extract_sid(fn) or _extract_sid(s_url)
                             if sid:
                                 posted_ids.add(sid)
             except Exception:
@@ -995,12 +994,21 @@ class StoryAudioCrawler:
         if reg_path.exists():
             try:
                 reg_data = json.loads(reg_path.read_text(encoding="utf-8"))
-                for sid in reg_data.get("posted_story_ids") or []:
-                    if sid:
-                        posted_ids.add(str(sid))
+                v7_posted_sids = set()
                 for fn in reg_data.get("posted_filenames") or []:
                     if fn:
-                        posted_filenames.add(Path(str(fn)).name)
+                        fn_name = Path(str(fn)).name
+                        posted_filenames.add(fn_name)
+                        if "bongcuc_v7_s" in fn_name.lower():
+                            s_v7 = _extract_sid(fn_name)
+                            if s_v7:
+                                v7_posted_sids.add(s_v7)
+                for sid in reg_data.get("posted_story_ids") or []:
+                    if sid:
+                        s_str = str(sid)
+                        if s_str.startswith("9900") and s_str not in v7_posted_sids:
+                            continue
+                        posted_ids.add(s_str)
             except Exception:
                 pass
 
@@ -1015,27 +1023,34 @@ class StoryAudioCrawler:
                     if isinstance(ev, dict) and ev.get("event_type") == "upload":
                         vfile = str((ev.get("details") or {}).get("video_file") or "").strip()
                         if vfile:
-                            posted_filenames.add(Path(vfile).name)
                             sid = _extract_sid(vfile)
+                            if sid and str(sid).startswith("9900") and "bongcuc_v7_s" not in vfile.lower():
+                                continue
+                            posted_filenames.add(Path(vfile).name)
                             if sid:
                                 posted_ids.add(sid)
             except Exception:
                 pass
 
-        ledger_path = self.project_root / "multi_platform_post_ledger.json"
-        if ledger_path.exists():
-            try:
-                ldata = json.loads(ledger_path.read_text(encoding="utf-8"))
-                if isinstance(ldata, dict):
-                    for k, v in ldata.items():
-                        k_name = Path(str(k)).name
-                        if k_name.endswith(".mp4"):
-                            posted_filenames.add(k_name)
-                        sid = _extract_sid(k_name) or _extract_sid(str(v))
-                        if sid:
-                            posted_ids.add(sid)
-            except Exception:
-                pass
+        for ledger_path in (
+            self.project_root / "multi_platform_post_ledger.json",
+            self.project_root / "data" / "multi_platform_post_ledger.json",
+        ):
+            if ledger_path.exists():
+                try:
+                    ldata = json.loads(ledger_path.read_text(encoding="utf-8"))
+                    if isinstance(ldata, dict):
+                        for k, v in ldata.items():
+                            k_name = Path(str(k)).name
+                            sid = _extract_sid(k_name) or _extract_sid(str(v))
+                            if sid and str(sid).startswith("9900") and "bongcuc_v7_s" not in k_name.lower():
+                                continue
+                            if k_name.endswith(".mp4"):
+                                posted_filenames.add(k_name)
+                            if sid:
+                                posted_ids.add(sid)
+                except Exception:
+                    pass
 
         # Mở khóa các story_id của kênh audio_dem_khuyen đã bị mất trên kênh và chưa được khôi phục sang bongcuc_v6_s
         try:

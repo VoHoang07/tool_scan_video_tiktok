@@ -1063,63 +1063,119 @@ class PosterCleanupMixin:
         report: Dict[str, Any] = {"attempted": True, "saved": False, "updated_fields": [], "notes": []}
         try:
             self._refresh_browser_process_lock()
-            page.goto("https://www.tiktok.com/", wait_until="domcontentloaded", timeout=45000)
-            time.sleep(random.uniform(4.5, 6.0))
+            page.goto("https://www.tiktok.com/setting", wait_until="domcontentloaded", timeout=45000)
+            time.sleep(random.uniform(3.0, 4.5))
 
-            # Bấm mục "Hồ sơ" / "Profile" ở thanh điều hướng trái để vào đúng trang kênh hiện tại
-            prof_btn = page.evaluate(
-                """() => {
-                    const els = Array.from(document.querySelectorAll('a, button, [role="button"], span, div'));
-                    for (const el of els) {
-                        if (el.children.length > 3) continue;
-                        const t = (el.innerText || el.textContent || '').trim().toLowerCase();
-                        const href = el.getAttribute && (el.getAttribute('href') || '');
-                        const e2e = el.getAttribute && (el.getAttribute('data-e2e') || '');
-                        if (e2e === 'nav-profile' || t === 'hồ sơ' || t === 'profile' || (href && href.startsWith('/@'))) {
-                            const r = el.getBoundingClientRect();
-                            if (r.left >= 0 && r.left < 280 && r.width >= 20 && r.height >= 16 && r.top > 40) {
-                                return { x: r.left + r.width / 2, y: r.top + r.height / 2, href: href || '' };
+            # Lấy chính xác username đang đăng nhập trực tiếp từ API nội bộ TikTok Web
+            cur_username = ""
+            try:
+                cur_username = str(
+                    page.evaluate(
+                        """async () => {
+                            try {
+                                const r = await fetch('/passport/web/account/info/?aid=1459', { credentials: 'include' });
+                                const j = await r.json();
+                                return (j && j.data && j.data.username) ? String(j.data.username) : '';
+                            } catch (e) { return ''; }
+                        }"""
+                    )
+                    or ""
+                ).strip().lstrip("@")
+            except Exception:
+                cur_username = ""
+            if not cur_username:
+                cur_username = str(rebrand_cfg.get("current_username") or "").strip().lstrip("@")
+
+            if cur_username:
+                report["current_username"] = cur_username
+                page.goto(f"https://www.tiktok.com/@{cur_username}", wait_until="domcontentloaded", timeout=45000)
+                time.sleep(random.uniform(5.0, 6.5))
+            else:
+                page.goto("https://www.tiktok.com/", wait_until="domcontentloaded", timeout=45000)
+                time.sleep(random.uniform(4.5, 6.0))
+                prof_btn = page.evaluate(
+                    """() => {
+                        const els = Array.from(document.querySelectorAll('a, button, [role="button"], span, div'));
+                        for (const el of els) {
+                            if (el.children.length > 3) continue;
+                            const t = (el.innerText || el.textContent || '').trim().toLowerCase();
+                            const e2e = el.getAttribute && (el.getAttribute('data-e2e') || '');
+                            if (e2e === 'nav-profile' || t === 'hồ sơ' || t === 'profile') {
+                                const r = el.getBoundingClientRect();
+                                if (r.left >= 0 && r.left < 280 && r.width >= 20 && r.height >= 16 && r.top > 40) {
+                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                }
                             }
                         }
-                    }
-                    return null;
-                }"""
-            )
-            if prof_btn:
-                if prof_btn.get("href") and str(prof_btn["href"]).startswith("/@"):
-                    page.goto(f"https://www.tiktok.com{prof_btn['href']}", wait_until="domcontentloaded", timeout=45000)
-                else:
+                        return null;
+                    }"""
+                )
+                if prof_btn:
                     self._os_click_viewport(page, float(prof_btn["x"]), float(prof_btn["y"]))
-                time.sleep(random.uniform(4.5, 6.0))
+                    time.sleep(random.uniform(5.0, 6.5))
 
+            report["profile_url"] = page.url
             if "login" in (page.url or "").lower():
                 report["notes"].append("redirected_to_login")
                 return report
 
-            # Bấm nút "Sửa hồ sơ" / "Edit profile"
-            edit_btn = page.evaluate(
-                """() => {
-                    const els = Array.from(document.querySelectorAll('button, [role="button"], a, div, span'));
-                    for (const el of els) {
-                        if (el.children.length > 3) continue;
-                        const t = (el.innerText || el.textContent || '').trim().toLowerCase();
-                        const e2e = el.getAttribute && (el.getAttribute('data-e2e') || '');
-                        if (e2e === 'edit-profile-entrance' || t === 'sửa hồ sơ' || t === 'chỉnh sửa hồ sơ' || t === 'edit profile') {
-                            const r = el.getBoundingClientRect();
-                            if (r.width >= 50 && r.height >= 20 && r.top > 50 && r.top < 550) {
-                                return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+            # Đóng các hộp thoại chào mừng/cookie nếu có
+            try:
+                page.keyboard.press("Escape")
+                time.sleep(0.5)
+            except Exception:
+                pass
+
+            # Bấm nút "Sửa hồ sơ" / "Edit profile" (ưu tiên data-e2e và locator chính xác)
+            opened_modal = False
+            for sel in (
+                '[data-e2e="edit-profile-entrance"] button',
+                '[data-e2e="edit-profile-entrance"]',
+                'button:has-text("Sửa hồ sơ")',
+                'button:has-text("Chỉnh sửa hồ sơ")',
+                'button:has-text("Edit profile")',
+            ):
+                try:
+                    loc = page.locator(sel).first
+                    if loc.count() > 0 and loc.is_visible():
+                        bb = loc.bounding_box()
+                        if bb:
+                            self._os_click_viewport(page, bb["x"] + bb["width"] / 2, bb["y"] + bb["height"] / 2)
+                        else:
+                            loc.click()
+                        time.sleep(random.uniform(2.5, 3.5))
+                        if page.locator('div[role="dialog"], [data-e2e="edit-profile-save"], textarea').count() > 0:
+                            opened_modal = True
+                            break
+                except Exception:
+                    continue
+
+            if not opened_modal:
+                edit_btn = page.evaluate(
+                    """() => {
+                        const els = Array.from(document.querySelectorAll('button, [role="button"], a, div, span'));
+                        for (const el of els) {
+                            if (el.children.length > 4) continue;
+                            const t = (el.innerText || el.textContent || '').trim().toLowerCase();
+                            const e2e = el.getAttribute && (el.getAttribute('data-e2e') || '');
+                            if (e2e === 'edit-profile-entrance' || t.includes('sửa hồ sơ') || t.includes('edit profile')) {
+                                const r = el.getBoundingClientRect();
+                                if (r.width >= 40 && r.height >= 20 && r.top > 40 && r.top < 650) {
+                                    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+                                }
                             }
                         }
-                    }
-                    return null;
-                }"""
-            )
-            if not edit_btn:
+                        return null;
+                    }"""
+                )
+                if edit_btn:
+                    self._os_click_viewport(page, float(edit_btn["x"]), float(edit_btn["y"]))
+                    time.sleep(random.uniform(2.5, 3.5))
+                    opened_modal = True
+
+            if not opened_modal:
                 report["notes"].append("edit_profile_button_not_found")
                 return report
-
-            self._os_click_viewport(page, float(edit_btn["x"]), float(edit_btn["y"]))
-            time.sleep(random.uniform(2.5, 3.5))
 
             # 1. Cập nhật Ảnh đại diện (Avatar) nếu có file
             avatar_rel = str(rebrand_cfg.get("avatar_path") or "").strip()
@@ -1290,6 +1346,10 @@ class PosterCleanupMixin:
                 report["notes"].append("save_button_disabled_or_not_found")
                 page.keyboard.press("Escape")
 
+        except Exception as exc:
+            report["notes"].append(f"error:{exc}")
+            logger.warning(f"[{ch_folder}] [Rebrand Profile] Lưu ý khi sửa hồ sơ TikTok: {exc}")
+        finally:
             try:
                 telem_dir = self.project_root / "remote_telemetry"
                 telem_dir.mkdir(parents=True, exist_ok=True)
@@ -1300,9 +1360,6 @@ class PosterCleanupMixin:
                 )
             except Exception:
                 pass
-        except Exception as exc:
-            report["notes"].append(f"error:{exc}")
-            logger.warning(f"[{ch_folder}] [Rebrand Profile] Lưu ý khi sửa hồ sơ TikTok: {exc}")
         return report
 
 
