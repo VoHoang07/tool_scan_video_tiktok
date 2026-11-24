@@ -543,7 +543,9 @@
     "7613953988282682637",
     "7030755414774009089",
     "7348708096602082568",
-    "7337365652690324738"
+    "7337365652690324738",
+    "990001001",
+    "7681287096060988680"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -970,7 +972,8 @@
     "7613954096177515277",
     "7030765272646929153",
     "7348038820694477570",
-    "7337365724811381505"
+    "7337365724811381505",
+    "7633046814418929681"
   ],
   "items": [
     {
@@ -5222,6 +5225,16 @@
       "source_url": "https://www.youtube.com/watch?v=DoVFGuEeB1k&t=16s",
       "output_filename": "audio_dem_khuyen/ready/20261124_230106_tiktok_story_990001001_bongcuc_v7_s10_p1_bg_mukbang.mp4",
       "crawled_at": "2026-11-24T23:02:19"
+    },
+    {
+      "channel": "suc_khoe_duong_sinh",
+      "video_id": "7681287096060988680",
+      "sound_id": "7633046814418929681",
+      "platform": "tiktok",
+      "genre": "suckhoe",
+      "source_url": "https://www.tiktok.com/@van.o.ngoaio/video/7681287096060988680",
+      "output_filename": "suc_khoe_duong_sinh/ready/20261124_235204_tiktok_story_7681287096060988680.mp4",
+      "crawled_at": "2026-11-24T23:52:20"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"

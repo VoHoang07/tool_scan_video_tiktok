@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 23:46:56",
+    "timestamp": "2026-11-24 23:56:39",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261124_085638_tiktok_story_7030755414774009089.mp4",
-      "caption": "💛 Cùng con lớn khôn mỗi ngày: Dùng tay chân có phải cách dạy con tốt nhất?. Những khoảnh khắc nhỏ này chính là nền tảng xây dựng sự tự tin cho bé sau này. Bố mẹ lưu lại tham khảo nhé!",
-      "hashtags": "#giaoducsom #nuoiconthongminh #dayconeq #tamlytreem #mebimsua #donghanhcungcon #foryou #fyp",
+      "video_file": "20261124_235204_tiktok_story_7681287096060988680.mp4",
+      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Mình đã cứu vãn được chiếc lưng buốt mỏi suốt nhiều năm với chi phí 0đ nhờ phơi nắng🥹. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
+      "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 23:56:39",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261124_235204_tiktok_story_7681287096060988680.mp4",
+        "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Mình đã cứu vãn được chiếc lưng buốt mỏi suốt nhiều năm với chi phí 0đ nhờ phơi nắng🥹. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
+        "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-24 23:46:56",
       "machine_arch": "x86_64",
@@ -329,17 +345,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_phu_kien_tien_ich.jpg",
       "details": {
         "video_file": "20261124_160438_tiktok_story_7337365652690324738.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 16:32:29",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261124_094305_tiktok_story_7348708096602082568.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
