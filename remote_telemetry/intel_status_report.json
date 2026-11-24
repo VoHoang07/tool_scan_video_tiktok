@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 15:59:46",
+    "timestamp": "2026-11-24 16:09:38",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_error_nuoi_con_eq.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_error_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261124_085638_tiktok_story_7030755414774009089.mp4",
+      "video_file": "20261124_160438_tiktok_story_7337365652690324738.mp4",
       "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 16:09:38",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_error_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261124_160438_tiktok_story_7337365652690324738.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-24 15:59:46",
       "machine_arch": "x86_64",
@@ -170,17 +181,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_nuoi_con_eq.jpg",
       "details": {
         "video_file": "20261124_085638_tiktok_story_7030755414774009089.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 14:54:27",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_upload_error_an_vat_moi_ngay.jpg",
-      "details": {
-        "video_file": "20261124_074148_tiktok_story_7631538680426925332.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
