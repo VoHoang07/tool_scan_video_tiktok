@@ -1,6 +1,6 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-24 18:05:11",
+    "timestamp": "2026-11-24 19:27:30",
     "machine_arch": "x86_64",
     "event_type": "upload",
     "channel": "audio_dem_khuyen",
@@ -10,11 +10,13 @@
       "rebrand_profile": {
         "attempted": true,
         "saved": false,
-        "updated_fields": [],
+        "updated_fields": [
+          "avatar",
+          "display_name",
+          "bio",
+          "username:audio_dem_khuya_bc"
+        ],
         "notes": [
-          "name_skip:Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div[role=\\\"dialog\\\"] input[placeholder*=\\\"Tên\\\" i], div[role=\\\"dialog\\\"] input[placeholder*=\\\"Name\\\" i], [data-e2e=\\\"edit-profile-name-input\\\"]\").first\n    - locator resolved to <div data-e2e=\"edit-profile-name-input\" class=\"css-1qnj4f1-7937d88b--DivEditAreaContainer e1lwtbhx13\">…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    57 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-          "bio_skip:Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div[role=\\\"dialog\\\"] textarea, [data-e2e=\\\"edit-profile-bio-input\\\"]\").first\n    - locator resolved to <textarea placeholder=\"Tiểu sử\" data-e2e=\"edit-profile-bio-input\" class=\"css-1bbpwh8-7937d88b--InputText-7937d88b--InputText-7937d88b--StyledInputTextArea e1lwtbhx16\">🌹 Phụ nữ hiện đại: Tinh tế trong ứng xử, rạng rỡ …</textarea>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    57 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-          "username_skip:Locator.is_editable: Error: Element is not an <input>, <textarea>, <select> or [contenteditable] and does not have a role allowing [aria-readonly]\nCall log:\n  - waiting for locator(\"[data-e2e=\\\"edit-profile-username-input\\\"], div[role=\\\"dialog\\\"] input[placeholder*=\\\"TikTok ID\\\" i], div[role=\\\"dialog\\\"] input[placeholder*=\\\"Username\\\" i]\").first\n",
           "save_button_disabled_or_not_found"
         ],
         "current_username": "phunukhichat.k07",
@@ -38,6 +40,46 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-24 19:27:30",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+      "details": {
+        "action": "wipe_old_posts",
+        "rebrand_profile": {
+          "attempted": true,
+          "saved": false,
+          "updated_fields": [
+            "avatar",
+            "display_name",
+            "bio",
+            "username:audio_dem_khuya_bc"
+          ],
+          "notes": [
+            "save_button_disabled_or_not_found"
+          ],
+          "current_username": "phunukhichat.k07",
+          "profile_url": "https://www.tiktok.com/@phunukhichat.k07"
+        },
+        "deleted_count": 0,
+        "deleted_posts": [],
+        "exclude_keywords": [
+          "bông cúc",
+          "bongcucso",
+          "phần 1/",
+          "phần 2/",
+          "phần 3/",
+          "phần 4/",
+          "phần 5/",
+          "phần 6/",
+          "truyenaudio",
+          "audiodemkhuya"
+        ],
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-24 18:05:11",
       "machine_arch": "x86_64",
@@ -273,17 +315,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_tu_chan_gioi.jpg",
       "details": {
         "video_file": "20261124_094305_tiktok_story_7348708096602082568.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 15:45:56",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261117_085357_tiktok_story_990014301_bongcuc_v6_s143_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
