@@ -1,16 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 00:15:43",
+    "timestamp": "2026-11-26 00:34:44",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261125_230037_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_mukbang.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "video_file": "20261126_003020_tiktok_story_7631583090669800722.mp4",
+      "caption": "😂 Béo lại bị lừa. \"1, Rất tốt, Thế còn tiếng Anh của lớp 3 thì sao...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #xh #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 2,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 00:34:44",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261126_003020_tiktok_story_7631583090669800722.mp4",
+        "caption": "😂 Béo lại bị lừa. \"1, Rất tốt, Thế còn tiếng Anh của lớp 3 thì sao...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-26 00:15:43",
       "machine_arch": "x86_64",
@@ -235,22 +256,6 @@
         "video_file": "20261125_131610_tiktok_story_7675049692731804936.mp4",
         "caption": "💛 Cùng con lớn khôn mỗi ngày: Cách dạy con của người bố đáng để học hỏi. Những khoảnh khắc nhỏ này chính là nền tảng xây dựng sự tự tin cho bé sau này. Bố mẹ lưu lại tham khảo nhé!",
         "hashtags": "#giaoducsom #nuoiconthongminh #dayconeq #tamlytreem #mebimsua #donghanhcungcon #nuoichothongminh #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 13:11:50",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261125_130800_tiktok_story_7514539753820196114.mp4",
-        "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Trước và sau khi học dưỡng sinh đông y GIẢM CÂN kiểu:... Có ai như em không ạ? Khác biệt lắm ạ! Giờ mê thể dục dưỡng sinh luôn rồi ạ. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-        "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #fyp",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
