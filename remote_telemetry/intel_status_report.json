@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 07:48:22",
+    "timestamp": "2026-11-25 08:33:05",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "an_vat_moi_ngay",
-    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261125_074446_tiktok_story_7706748512599477556.mp4",
-      "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: Chân gà cay tê. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
-      "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #tiktokvn #xuhuong",
+      "video_file": "20261125_082916_tiktok_story_7542917451256696085.mp4",
+      "caption": "👶 Hên là ko dặm trúng 🥲🥲. Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
+      "hashtags": "#nuoiconthongminh #dayconeq #mevabe #chamconkhoahoc #tamlytreem #mebimsua #xuhuongtiktok #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 08:33:05",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261125_082916_tiktok_story_7542917451256696085.mp4",
+        "caption": "👶 Hên là ko dặm trúng 🥲🥲. Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
+        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #chamconkhoahoc #tamlytreem #mebimsua #xuhuongtiktok #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 07:48:22",
       "machine_arch": "x86_64",
@@ -265,44 +281,6 @@
             "username:audio_dem_khuya_bc"
           ],
           "notes": [
-            "save_button_disabled_or_not_found"
-          ],
-          "current_username": "phunukhichat.k07",
-          "profile_url": "https://www.tiktok.com/@phunukhichat.k07"
-        },
-        "deleted_count": 0,
-        "deleted_posts": [],
-        "exclude_keywords": [
-          "bông cúc",
-          "bongcucso",
-          "phần 1/",
-          "phần 2/",
-          "phần 3/",
-          "phần 4/",
-          "phần 5/",
-          "phần 6/",
-          "truyenaudio",
-          "audiodemkhuya"
-        ],
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 18:05:11",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "action": "wipe_old_posts",
-        "rebrand_profile": {
-          "attempted": true,
-          "saved": false,
-          "updated_fields": [],
-          "notes": [
-            "name_skip:Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div[role=\\\"dialog\\\"] input[placeholder*=\\\"Tên\\\" i], div[role=\\\"dialog\\\"] input[placeholder*=\\\"Name\\\" i], [data-e2e=\\\"edit-profile-name-input\\\"]\").first\n    - locator resolved to <div data-e2e=\"edit-profile-name-input\" class=\"css-1qnj4f1-7937d88b--DivEditAreaContainer e1lwtbhx13\">…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    57 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"react-transform-component transform-component-module_content__uCDPE \">…</div> from <div>…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-            "bio_skip:Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div[role=\\\"dialog\\\"] textarea, [data-e2e=\\\"edit-profile-bio-input\\\"]\").first\n    - locator resolved to <textarea placeholder=\"Tiểu sử\" data-e2e=\"edit-profile-bio-input\" class=\"css-1bbpwh8-7937d88b--InputText-7937d88b--InputText-7937d88b--StyledInputTextArea e1lwtbhx16\">🌹 Phụ nữ hiện đại: Tinh tế trong ứng xử, rạng rỡ …</textarea>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 × waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    57 × waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div class=\"css-1bbjaaf-7937d88b--DivZoomArea ef1kawg4\">…</div> from <div>…</div> subtree intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-            "username_skip:Locator.is_editable: Error: Element is not an <input>, <textarea>, <select> or [contenteditable] and does not have a role allowing [aria-readonly]\nCall log:\n  - waiting for locator(\"[data-e2e=\\\"edit-profile-username-input\\\"], div[role=\\\"dialog\\\"] input[placeholder*=\\\"TikTok ID\\\" i], div[role=\\\"dialog\\\"] input[placeholder*=\\\"Username\\\" i]\").first\n",
             "save_button_disabled_or_not_found"
           ],
           "current_username": "phunukhichat.k07",
