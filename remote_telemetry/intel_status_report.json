@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 08:59:19",
+    "timestamp": "2026-11-25 11:52:53",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261125_085443_tiktok_story_990011901_bongcuc_v7_s119_p1_bg_daylight.mp4",
-      "caption": "📖 Bông Cúc Số 119 (Phần 1/6): Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà — Những góc khuất dần được phơi bày qua từng lời kể mỗi ngày!",
-      "hashtags": "#bongcucso119 #bongcucso #canhacuoikhichongtoikhongduocchianha #phan1 #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong",
+      "video_file": "20261125_114749_tiktok_story_7704320989601090836.mp4",
+      "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: Mẹo vặt cuộc sống p66. Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
+      "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #decorphong #tienichgiadinh #savingtips #xh #xuhuongtiktok",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 11:52:53",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261125_114749_tiktok_story_7704320989601090836.mp4",
+        "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: Mẹo vặt cuộc sống p66. Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
+        "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #decorphong #tienichgiadinh #savingtips #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 08:59:19",
       "machine_arch": "x86_64",
@@ -261,22 +277,6 @@
           "audiodemkhuya"
         ],
         "final_url": "https://www.tiktok.com/@phunukhichat.k07"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 23:06:32",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261124_230106_tiktok_story_990001001_bongcuc_v7_s10_p1_bg_mukbang.mp4",
-        "caption": "🔥 Bông Cúc Số 10 (Phần 1/13) — Họ Lấy Hết Mọi Thứ Rồi Vẫn Muốn Tôi Biết Điều. Càng nghe càng thấm từng câu chữ, nút thắt bất ngờ nhất bắt đầu lộ diện!",
-        "hashtags": "#bongcucso10 #bongcucso #holayhetmoithuroivanmuontoibietdieu #phan1 #truyenngan #tamlyhonnhan #xuhuong #truyenaudio #chuyengiadinh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
