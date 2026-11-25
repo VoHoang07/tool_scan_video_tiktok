@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 23:58:31",
+    "timestamp": "2026-11-26 00:08:56",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261125_235425_tiktok_story_7577742358612102407.mp4",
-      "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Gia sư buổi đầu tiên, cứ tưởng dễ ai dè khó quá, không biết công việc này được mấy ngày. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-      "hashtags": "#dayconeq #mevabe #giaoducsom #donghanhcungcon #daycontulap #nuoidaycon #nuoiconthongminh #xh",
+      "video_file": "20261126_000545_tiktok_story_7255276534871723269.mp4",
+      "caption": "🎬 Tân sinh viên cần trang bị những món đồ công nghệ nào khi lên đại học???. Vậy để Ontech gợi ý cho bạn những món đồ công nghệ cực hữu ích mà ai cũng cần nha. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+      "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 00:08:56",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261126_000545_tiktok_story_7255276534871723269.mp4",
+        "caption": "🎬 Tân sinh viên cần trang bị những món đồ công nghệ nào khi lên đại học???. Vậy để Ontech gợi ý cho bạn những món đồ công nghệ cực hữu ích mà ai cũng cần nha. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+        "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 23:58:31",
       "machine_arch": "x86_64",
@@ -245,22 +261,6 @@
         "video_file": "20261125_122755_tiktok_story_7705825153137020181.mp4",
         "caption": "🤤 Thèm nem chua rán mà muốn tự làm tại nhà thì lưu ngay công thức này nha 😋. Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
         "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #foryou #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 12:20:17",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261125_121456_tiktok_story_880036102_gautrucden_v1_s361_p2.mp4",
-        "caption": "⚡ Tránh Xa Xe Tải Chở Hình Nhân Giấy (Phần 2/6) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-        "hashtags": "#tranhxaxetaichohinhnhangiay #phan2 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
