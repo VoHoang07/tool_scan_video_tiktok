@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 23:17:13",
+    "timestamp": "2026-11-25 23:34:32",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "meo_vat_gia_dinh",
+    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
     "details": {
-      "video_file": "20261125_231113_tiktok_story_880034901_gautrucden_v1_s349_p1.mp4",
-      "caption": "🌙 Đám Cưới Hình Nhân Giấy — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-      "hashtags": "#damcuoihinhnhangiay #phan1 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
+      "video_file": "20261125_232723_tiktok_story_7648268616781171976.mp4",
+      "caption": "💡 Đừng ném thỏi xanh xuống bồn cầu nữa! Bạn nghĩ rằng đó là việc làm sạch, nhưng thực ra nó đang làm hỏng bồn cầu của bạn 🚽Một số sản phẩm tẩy rửa mà thợ sửa nhà vệ sinh thường khuyên bạn không nên sử dụng. \"Trên thực tế, nó đang dần bị ăn mòn bên trong, như được tìm thấy trong chiếc hộp da cao su màu ...\" Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
+      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 23:34:32",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "meo_vat_gia_dinh",
+      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+      "details": {
+        "video_file": "20261125_232723_tiktok_story_7648268616781171976.mp4",
+        "caption": "💡 Đừng ném thỏi xanh xuống bồn cầu nữa! Bạn nghĩ rằng đó là việc làm sạch, nhưng thực ra nó đang làm hỏng bồn cầu của bạn 🚽Một số sản phẩm tẩy rửa mà thợ sửa nhà vệ sinh thường khuyên bạn không nên sử dụng. \"Trên thực tế, nó đang dần bị ăn mòn bên trong, như được tìm thấy trong chiếc hộp da cao su màu ...\" Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
+        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 23:17:13",
       "machine_arch": "x86_64",
@@ -248,22 +264,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 07:48:22",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
-      "details": {
-        "video_file": "20261125_074446_tiktok_story_7706748512599477556.mp4",
-        "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: Chân gà cay tê. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
-        "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
