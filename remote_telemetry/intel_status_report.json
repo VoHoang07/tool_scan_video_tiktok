@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 00:34:44",
+    "timestamp": "2026-11-26 00:51:22",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261126_003020_tiktok_story_7631583090669800722.mp4",
-      "caption": "😂 Béo lại bị lừa. \"1, Rất tốt, Thế còn tiếng Anh của lớp 3 thì sao...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #xh #xuhuongtiktok",
+      "video_file": "20261126_004736_tiktok_story_7291305997090475272.mp4",
+      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Những câu nói hay trong truyện Tiên hiệp, phần 2. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+      "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 00:51:22",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261126_004736_tiktok_story_7291305997090475272.mp4",
+        "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Những câu nói hay trong truyện Tiên hiệp, phần 2. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-26 00:34:44",
       "machine_arch": "x86_64",
@@ -240,22 +256,6 @@
         "video_file": "20261125_134405_tiktok_story_990003901_bongcuc_v7_s39_p1_bg_daylight.mp4",
         "caption": "📖 Bông Cúc Số 39 (Phần 1/10): Họ Chê Tôi Là Bà Nội Trợ, Không Biết Tôi Là Phu Nhân Chủ Tịch — Những góc khuất dần được phơi bày qua từng lời kể mỗi ngày!",
         "hashtags": "#bongcucso39 #bongcucso #hochetoilabanoitrokhongbiettoilaphun #phan1 #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 13:20:14",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261125_131610_tiktok_story_7675049692731804936.mp4",
-        "caption": "💛 Cùng con lớn khôn mỗi ngày: Cách dạy con của người bố đáng để học hỏi. Những khoảnh khắc nhỏ này chính là nền tảng xây dựng sự tự tin cho bé sau này. Bố mẹ lưu lại tham khảo nhé!",
-        "hashtags": "#giaoducsom #nuoiconthongminh #dayconeq #tamlytreem #mebimsua #donghanhcungcon #nuoichothongminh #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
