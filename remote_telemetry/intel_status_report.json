@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 07:34:19",
+    "timestamp": "2026-11-25 07:48:22",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261125_073014_tiktok_story_880034103_gautrucden_v1_s341_p3.mp4",
-      "caption": "🌙 Ác Quỷ Nửa Mặt Bắt Thịt Người — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-      "hashtags": "#acquynuamatbatthitnguoi #phan3 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
+      "video_file": "20261125_074446_tiktok_story_7706748512599477556.mp4",
+      "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: Chân gà cay tê. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
+      "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 07:48:22",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261125_074446_tiktok_story_7706748512599477556.mp4",
+        "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: Chân gà cay tê. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
+        "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 07:34:19",
       "machine_arch": "x86_64",
@@ -294,70 +310,6 @@
         },
         "deleted_count": 0,
         "deleted_posts": [],
-        "exclude_keywords": [
-          "bông cúc",
-          "bongcucso",
-          "phần 1/",
-          "phần 2/",
-          "phần 3/",
-          "phần 4/",
-          "phần 5/",
-          "phần 6/",
-          "truyenaudio",
-          "audiodemkhuya"
-        ],
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 17:27:04",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "action": "wipe_old_posts",
-        "rebrand_profile": {
-          "attempted": true,
-          "saved": false,
-          "updated_fields": [],
-          "notes": [
-            "edit_profile_button_not_found"
-          ]
-        },
-        "deleted_count": 48,
-        "deleted_posts": [
-          "Trang chủ | Bài đăng | Phân tích | 00:18 | 23 tháng 11, 1:18 CH",
-          "Trang chủ | Bài đăng | Phân tích | 00:45 | 23 tháng 11, 8:39 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:37 | 23 tháng 11, 1:40 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:15 | ✨ chuẩn chưa ạ. Phụ nữ thông minh khô",
-          "Trang chủ | Bài đăng | Phân tích | 00:26 | 22 tháng 11, 8:41 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:53 | 22 tháng 11, 2:41 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:43 | 21 tháng 11, 1:18 CH",
-          "Trang chủ | Bài đăng | Phân tích | 00:20 | 21 tháng 11, 8:37 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:50 | 21 tháng 11, 12:05 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:49 | 20 tháng 11, 1:33 CH",
-          "Trang chủ | Bài đăng | Phân tích | 00:25 | 19 tháng 11, 11:53 CH",
-          "Trang chủ | Bài đăng | Phân tích | 01:14 | 19 tháng 11, 1:46 CH",
-          "Trang chủ | Bài đăng | Phân tích | 00:30 | 19 tháng 11, 8:55 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:53 | ☕ Góc suy ngẫm về tình cảm và hôn nhâ",
-          "Trang chủ | Bài đăng | Phân tích | 00:47 | 18 tháng 11, 1:29 CH",
-          "Trang chủ | Bài đăng | Phân tích | 00:52 | 18 tháng 11, 8:39 SA",
-          "Trang chủ | Bài đăng | Phân tích | 01:01 | 18 tháng 11, 12:06 SA",
-          "Trang chủ | Bài đăng | Phân tích | 01:12 | 17 tháng 11, 8:45 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:59 | 🌷 Phụ nữ càng trưởng thành càng thích",
-          "Trang chủ | Bài đăng | Phân tích | 00:27 | 16 tháng 11, 1:21 CH",
-          "Trang chủ | Bài đăng | Phân tích | 00:48 | 16 tháng 11, 8:51 SA",
-          "Trang chủ | Bài đăng | Phân tích | 01:02 | 16 tháng 11, 12:08 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:40 | 15 tháng 11, 1:28 CH",
-          "Trang chủ | Bài đăng | Phân tích | 00:47 | 15 tháng 11, 8:42 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:47 | 12 tháng 11, 8:33 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:55 | 11 tháng 11, 11:32 CH",
-          "Trang chủ | Bài đăng | Phân tích | 00:44 | 11 tháng 11, 1:15 CH",
-          "Trang chủ | Bài đăng | Phân tích | 00:33 | 11 tháng 11, 8:28 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:35 | 11 tháng 11, 12:53 SA",
-          "Trang chủ | Bài đăng | Phân tích | 00:49 | 10 tháng 11, 8:33 SA"
-        ],
         "exclude_keywords": [
           "bông cúc",
           "bongcucso",
