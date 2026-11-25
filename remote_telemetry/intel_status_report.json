@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 13:50:09",
+    "timestamp": "2026-11-25 14:18:01",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
+    "channel": "phu_kien_tien_ich",
+    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
     "details": {
-      "video_file": "20261125_134405_tiktok_story_990003901_bongcuc_v7_s39_p1_bg_daylight.mp4",
-      "caption": "📖 Bông Cúc Số 39 (Phần 1/10): Họ Chê Tôi Là Bà Nội Trợ, Không Biết Tôi Là Phu Nhân Chủ Tịch — Những góc khuất dần được phơi bày qua từng lời kể mỗi ngày!",
-      "hashtags": "#bongcucso39 #bongcucso #hochetoilabanoitrokhongbiettoilaphun #phan1 #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong",
+      "video_file": "20261125_141501_tiktok_story_7245942910322101509.mp4",
+      "caption": "🎬 Chợ sỉ phụ kiện. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+      "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 14:18:01",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "phu_kien_tien_ich",
+      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+      "details": {
+        "video_file": "20261125_141501_tiktok_story_7245942910322101509.mp4",
+        "caption": "🎬 Chợ sỉ phụ kiện. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
+        "hashtags": "#videoaihay #hoathinhai #phimnganai #phimhaymoingay #tomtatphim #thucungthanhtinh #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 13:50:09",
       "machine_arch": "x86_64",
@@ -234,22 +250,6 @@
         "video_file": "20261124_083945_tiktok_story_7700012830405299476.mp4",
         "caption": "🤣 Nhật ký gia đình siêu lầy và màn đối đáp cười xỉu của em bé lém lỉnh — Pha xử lý đi vào lòng đất của hai mẹ con! Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
         "hashtags": "#chamcon #babyai #giadinhhaihuoc #doisonggiadinh #mevabe #cuoixiu #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 23:56:39",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261124_235204_tiktok_story_7681287096060988680.mp4",
-        "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Mình đã cứu vãn được chiếc lưng buốt mỏi suốt nhiều năm với chi phí 0đ nhờ phơi nắng🥹. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-        "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #xuhuong #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
