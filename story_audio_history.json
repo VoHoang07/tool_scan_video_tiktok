@@ -557,7 +557,8 @@
     "7514539753820196114",
     "7675049692731804936",
     "990003901",
-    "7245942910322101509"
+    "7245942910322101509",
+    "7657028541713048180"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -997,7 +998,8 @@
     "7159891954674042911",
     "7675049741869353736",
     "bongcuc_yt_bEzOsJ3U5oc_p1",
-    "7245943004937489158"
+    "7245943004937489158",
+    "7629634916883434286"
   ],
   "items": [
     {
@@ -5379,6 +5381,16 @@
       "source_url": "https://www.tiktok.com/@giaddinhmeohoi/video/7245942910322101509",
       "output_filename": "phu_kien_tien_ich/ready/20261125_141501_tiktok_story_7245942910322101509.mp4",
       "crawled_at": "2026-11-25T14:15:06"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7657028541713048180",
+      "sound_id": "7629634916883434286",
+      "platform": "douyin",
+      "genre": "channel_2_life_comedy",
+      "source_url": "https://www.douyin.com/video/7657028541713048180",
+      "output_filename": "baby_AI/ready/20261125_154826_douyin_story_7657028541713048180.mp4",
+      "crawled_at": "2026-11-25T15:54:03"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
