@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 11:52:53",
+    "timestamp": "2026-11-25 12:20:17",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261125_114749_tiktok_story_7704320989601090836.mp4",
-      "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: Mẹo vặt cuộc sống p66. Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
-      "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #decorphong #tienichgiadinh #savingtips #xh #xuhuongtiktok",
+      "video_file": "20261125_121456_tiktok_story_880036102_gautrucden_v1_s361_p2.mp4",
+      "caption": "⚡ Tránh Xa Xe Tải Chở Hình Nhân Giấy (Phần 2/6) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
+      "hashtags": "#tranhxaxetaichohinhnhangiay #phan2 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 12:20:17",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261125_121456_tiktok_story_880036102_gautrucden_v1_s361_p2.mp4",
+        "caption": "⚡ Tránh Xa Xe Tải Chở Hình Nhân Giấy (Phần 2/6) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
+        "hashtags": "#tranhxaxetaichohinhnhangiay #phan2 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 11:52:53",
       "machine_arch": "x86_64",
@@ -238,45 +254,6 @@
         "post_confirmed": true,
         "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 23:12:41",
-      "machine_arch": "x86_64",
-      "event_type": "profile",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_profile_audio_dem_khuyen.jpg",
-      "details": {
-        "action": "rebrand_profile_only",
-        "rebrand_profile": {
-          "attempted": true,
-          "saved": false,
-          "updated_fields": [
-            "avatar",
-            "display_name",
-            "bio"
-          ],
-          "notes": [
-            "save_button_disabled_or_not_found:[{'t': 'tất cả hoạt động', 'e2e': 'all', 'dis': False}, {'t': 'thích', 'e2e': 'likes', 'dis': False}, {'t': 'bình luận', 'e2e': 'comments', 'dis': False}, {'t': 'lượt nhắc đến và lượt gắn thẻ', 'e2e': 'mentions', 'dis': False}, {'t': 'follower', 'e2e': 'followers', 'dis': False}]"
-          ],
-          "current_username": "phunukhichat.k07",
-          "profile_url": "https://www.tiktok.com/@phunukhichat.k07"
-        },
-        "deleted_count": 0,
-        "deleted_posts": [],
-        "exclude_keywords": [
-          "bông cúc",
-          "bongcucso",
-          "phần 1/",
-          "phần 2/",
-          "phần 3/",
-          "phần 4/",
-          "phần 5/",
-          "phần 6/",
-          "truyenaudio",
-          "audiodemkhuya"
-        ],
-        "final_url": "https://www.tiktok.com/@phunukhichat.k07"
       }
     }
   ]
