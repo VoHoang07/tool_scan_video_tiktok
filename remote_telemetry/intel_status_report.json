@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 23:34:32",
+    "timestamp": "2026-11-25 23:42:38",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "meo_vat_gia_dinh",
-    "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261125_232723_tiktok_story_7648268616781171976.mp4",
-      "caption": "💡 Đừng ném thỏi xanh xuống bồn cầu nữa! Bạn nghĩ rằng đó là việc làm sạch, nhưng thực ra nó đang làm hỏng bồn cầu của bạn 🚽Một số sản phẩm tẩy rửa mà thợ sửa nhà vệ sinh thường khuyên bạn không nên sử dụng. \"Trên thực tế, nó đang dần bị ăn mòn bên trong, như được tìm thấy trong chiếc hộp da cao su màu ...\" Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
-      "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #viral #foryou",
+      "video_file": "20261125_233856_tiktok_story_7637115681229507848.mp4",
+      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Nghiện trà sữa thì lựa chỗ mà uống nha các bé. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
+      "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #xh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 23:42:38",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261125_233856_tiktok_story_7637115681229507848.mp4",
+        "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Nghiện trà sữa thì lựa chỗ mà uống nha các bé. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
+        "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #xh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 23:34:32",
       "machine_arch": "x86_64",
@@ -248,22 +264,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 08:33:05",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261125_082916_tiktok_story_7542917451256696085.mp4",
-        "caption": "👶 Hên là ko dặm trúng 🥲🥲. Thay vì nóng giận quát mắng, cách trò chuyện kiên nhẫn này giúp con hợp tác và tự giác hơn rất nhiều. Các bố mẹ nghĩ sao về cách xử lý này?",
-        "hashtags": "#nuoiconthongminh #dayconeq #mevabe #chamconkhoahoc #tamlytreem #mebimsua #xuhuongtiktok #tiktokvn",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
