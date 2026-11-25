@@ -193,7 +193,7 @@
     }
   ],
   "remote_trigger_post_now": {
-    "trigger_id": "rebrand_profile_save_adk_20261124_2304",
+    "trigger_id": "rebrand_profile_exact_e2e_20261125_1912",
     "target_arch": "x86_64",
     "action": "wipe_old_posts",
     "ensure_public_channels": "",

@@ -1183,7 +1183,7 @@ class PosterCleanupMixin:
                 avatar_abs = (self.project_root / avatar_rel).resolve()
                 if avatar_abs.exists():
                     try:
-                        av_input = page.locator('div[role="dialog"] input[type="file"], input[type="file"][accept*="image"]').first
+                        av_input = page.locator('input[type="file"][accept*="image"], input[type="file"]').first
                         av_input.wait_for(state="attached", timeout=6000)
                         av_input.set_input_files(str(avatar_abs))
                         time.sleep(2.5)
@@ -1217,57 +1217,43 @@ class PosterCleanupMixin:
                     except Exception as av_exc:
                         report["notes"].append(f"avatar_skip:{av_exc}")
 
-            # 2. Cập nhật Tên hiển thị (Name)
+            # 2. Cập nhật Tên hiển thị (Name) bằng Playwright .fill() để React cập nhật state chuẩn
             target_name = str(rebrand_cfg.get("display_name") or "").strip()
             if target_name:
                 try:
                     name_inp = page.locator(
-                        '[data-e2e="edit-profile-name-input"] input, div[role="dialog"] input[placeholder*="Tên" i], div[role="dialog"] input[placeholder*="Name" i]'
+                        '[data-e2e="edit-profile-name-input"] input, input[placeholder*="Tên" i], input[placeholder*="Name" i]'
                     ).first
-                    if name_inp.count() == 0:
-                        all_inps = page.locator('div[role="dialog"] input[type="text"], div[role="dialog"] input:not([type])')
-                        if all_inps.count() >= 2:
-                            name_inp = all_inps.nth(1)
                     if name_inp.count() > 0:
+                        name_inp.scroll_into_view_if_needed()
                         name_inp.click(timeout=10000)
-                        time.sleep(0.2)
-                        page.keyboard.press("Meta+A")
-                        page.keyboard.press("Backspace")
-                        time.sleep(0.15)
-                        page.keyboard.insert_text(target_name)
+                        name_inp.fill(target_name, timeout=10000)
                         time.sleep(0.5)
-                        report["updated_fields"].append("display_name")
+                        report["updated_fields"].append(f"display_name:{name_inp.input_value()}")
                 except Exception as nm_exc:
                     report["notes"].append(f"name_skip:{nm_exc}")
 
-            # 3. Cập nhật Tiểu sử (Bio)
+            # 3. Cập nhật Tiểu sử (Bio) bằng Playwright .fill() (xóa sạch bio cũ 104/80 -> <= 80 ký tự)
             target_bio = str(rebrand_cfg.get("bio") or "").strip()
             if target_bio:
                 try:
-                    bio_ta = page.locator('[data-e2e="edit-profile-bio-input"], div[role="dialog"] textarea').first
+                    bio_ta = page.locator('[data-e2e="edit-profile-bio-input"], textarea[placeholder*="Tiểu sử" i], textarea[placeholder*="Bio" i]').first
                     if bio_ta.count() > 0:
+                        bio_ta.scroll_into_view_if_needed()
                         bio_ta.click(timeout=10000)
-                        time.sleep(0.2)
-                        page.keyboard.press("Meta+A")
-                        page.keyboard.press("Backspace")
-                        time.sleep(0.15)
-                        page.keyboard.insert_text(target_bio)
+                        bio_ta.fill(target_bio, timeout=10000)
                         time.sleep(0.5)
-                        report["updated_fields"].append("bio")
+                        report["updated_fields"].append(f"bio_len:{len(bio_ta.input_value())}")
                 except Exception as bio_exc:
                     report["notes"].append(f"bio_skip:{bio_exc}")
 
-            # 4. Thử cập nhật TikTok ID (Username) nếu tài khoản cho phép đổi (không bị khóa 30 ngày)
+            # 4. Thử cập nhật TikTok ID (Username) nếu có chỉ định
             id_candidates = [str(x).strip().lstrip("@") for x in (rebrand_cfg.get("username_candidates") or []) if str(x).strip()]
             if id_candidates:
                 try:
                     uid_inp = page.locator(
-                        '[data-e2e="edit-profile-username-input"] input, div[role="dialog"] input[placeholder*="TikTok ID" i], div[role="dialog"] input[placeholder*="Username" i]'
+                        '[data-e2e="edit-profile-username-input"] input, input[placeholder*="TikTok ID" i], input[placeholder*="Username" i]'
                     ).first
-                    if uid_inp.count() == 0:
-                        all_inps = page.locator('div[role="dialog"] input[type="text"], div[role="dialog"] input:not([type])')
-                        if all_inps.count() >= 1:
-                            uid_inp = all_inps.nth(0)
                     if uid_inp.count() > 0 and uid_inp.is_editable():
                         orig_uid = (uid_inp.input_value() or "").strip()
                         changed_uid = False
@@ -1275,16 +1261,11 @@ class PosterCleanupMixin:
                             if cand_uid.lower() == orig_uid.lower():
                                 changed_uid = True
                                 break
-                            uid_inp.click(timeout=8000)
-                            time.sleep(0.15)
-                            page.keyboard.press("Meta+A")
-                            page.keyboard.press("Backspace")
-                            page.keyboard.insert_text(cand_uid)
+                            uid_inp.fill(cand_uid, timeout=8000)
                             time.sleep(1.8)
                             has_err = page.evaluate(
                                 """() => {
-                                    const dlg = document.querySelector('div[role="dialog"]') || document.body;
-                                    const txt = (dlg.innerText || '').toLowerCase();
+                                    const txt = (document.body.innerText || '').toLowerCase();
                                     return /không khả dụng|đã được sử dụng|chỉ có thể thay đổi|30 ngày|not available|already taken|once every 30 days/i.test(txt);
                                 }"""
                             )
@@ -1293,30 +1274,27 @@ class PosterCleanupMixin:
                                 report["updated_fields"].append(f"username:{cand_uid}")
                                 break
                         if not changed_uid and orig_uid:
-                            uid_inp.click(timeout=8000)
-                            page.keyboard.press("Meta+A")
-                            page.keyboard.press("Backspace")
-                            page.keyboard.insert_text(orig_uid)
+                            uid_inp.fill(orig_uid, timeout=8000)
                             time.sleep(0.8)
                             report["notes"].append("username_kept_original_due_to_cooldown_or_taken")
                 except Exception as uid_exc:
                     report["notes"].append(f"username_skip:{uid_exc}")
 
-            # 5. Bấm nút "Lưu" / "Save" trong hộp thoại Sửa hồ sơ
+            # 5. Bấm nút "Lưu" / "Save" trực tiếp trên toàn trang (KHÔNG lọc nhầm div[role="dialog"] của hộp Thông báo!)
             time.sleep(1.0)
             save_btn = page.evaluate(
                 """() => {
-                    const dlg = document.querySelector('div[role="dialog"]') || document;
-                    const els = Array.from(dlg.querySelectorAll('button, [role="button"]'));
+                    const els = Array.from(document.querySelectorAll('[data-e2e="edit-profile-save"], button, [role="button"]'));
                     const dbg = [];
                     for (const el of els) {
+                        const r = el.getBoundingClientRect();
+                        if (r.width < 36 || r.height < 22) continue;
                         const t = (el.innerText || el.textContent || '').trim().toLowerCase();
                         const e2e = el.getAttribute && (el.getAttribute('data-e2e') || '');
-                        if (t) dbg.push({ t, e2e, dis: Boolean(el.disabled || el.getAttribute('aria-disabled') === 'true') });
-                        if (e2e === 'edit-profile-save' || t === 'lưu' || t === 'save') {
-                            if (el.disabled || el.getAttribute('aria-disabled') === 'true') continue;
-                            const r = el.getBoundingClientRect();
-                            if (r.width >= 40 && r.height >= 24) {
+                        if (e2e === 'edit-profile-save' || t === 'lưu' || t === 'save' || t === 'hủy' || t === 'cancel') {
+                            const dis = Boolean(el.disabled || el.getAttribute('aria-disabled') === 'true');
+                            dbg.push({ t, e2e, dis, x: Math.round(r.left), y: Math.round(r.top) });
+                            if ((e2e === 'edit-profile-save' || t === 'lưu' || t === 'save') && !dis) {
                                 return { found: true, x: r.left + r.width / 2, y: r.top + r.height / 2, dbg };
                             }
                         }
