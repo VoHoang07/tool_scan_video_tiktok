@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 23:42:38",
+    "timestamp": "2026-11-25 23:50:15",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261125_233856_tiktok_story_7637115681229507848.mp4",
-      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Nghiện trà sữa thì lựa chỗ mà uống nha các bé. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-      "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #xh",
+      "video_file": "20261125_234618_tiktok_story_7710087547195542804.mp4",
+      "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: Thời tiết lạnh như này quá hợp để ăn món bò nấu khế chua nhá@. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
+      "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 23:50:15",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261125_234618_tiktok_story_7710087547195542804.mp4",
+        "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: Thời tiết lạnh như này quá hợp để ăn món bò nấu khế chua nhá@. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
+        "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 23:42:38",
       "machine_arch": "x86_64",
@@ -245,22 +261,6 @@
         "video_file": "20261125_114749_tiktok_story_7704320989601090836.mp4",
         "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: Mẹo vặt cuộc sống p66. Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
         "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #decorphong #tienichgiadinh #savingtips #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 08:59:19",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261125_085443_tiktok_story_990011901_bongcuc_v7_s119_p1_bg_daylight.mp4",
-        "caption": "📖 Bông Cúc Số 119 (Phần 1/6): Cả Nhà Cười Khi Chồng Tôi Không Được Chia Nhà — Những góc khuất dần được phơi bày qua từng lời kể mỗi ngày!",
-        "hashtags": "#bongcucso119 #bongcucso #canhacuoikhichongtoikhongduocchianha #phan1 #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
