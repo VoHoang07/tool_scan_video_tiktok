@@ -545,7 +545,8 @@
     "7348708096602082568",
     "7337365652690324738",
     "990001001",
-    "7681287096060988680"
+    "7681287096060988680",
+    "7570299510740487431"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -973,7 +974,8 @@
     "7030765272646929153",
     "7348038820694477570",
     "7337365724811381505",
-    "7633046814418929681"
+    "7633046814418929681",
+    "7570299526152391432"
   ],
   "items": [
     {
@@ -5235,6 +5237,16 @@
       "source_url": "https://www.tiktok.com/@van.o.ngoaio/video/7681287096060988680",
       "output_filename": "suc_khoe_duong_sinh/ready/20261124_235204_tiktok_story_7681287096060988680.mp4",
       "crawled_at": "2026-11-24T23:52:20"
+    },
+    {
+      "channel": "meo_vat_gia_dinh",
+      "video_id": "7570299510740487431",
+      "sound_id": "7570299526152391432",
+      "platform": "tiktok",
+      "genre": "meovatcuocsong",
+      "source_url": "https://www.tiktok.com/@dungfirerose/video/7570299510740487431",
+      "output_filename": "meo_vat_gia_dinh/ready/20261125_072006_tiktok_story_7570299510740487431.mp4",
+      "crawled_at": "2026-11-25T07:20:10"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
