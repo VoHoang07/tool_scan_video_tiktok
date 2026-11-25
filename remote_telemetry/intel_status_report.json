@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-25 12:20:17",
+    "timestamp": "2026-11-25 12:31:36",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261125_121456_tiktok_story_880036102_gautrucden_v1_s361_p2.mp4",
-      "caption": "⚡ Tránh Xa Xe Tải Chở Hình Nhân Giấy (Phần 2/6) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-      "hashtags": "#tranhxaxetaichohinhnhangiay #phan2 #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh",
+      "video_file": "20261125_122755_tiktok_story_7705825153137020181.mp4",
+      "caption": "🤤 Thèm nem chua rán mà muốn tự làm tại nhà thì lưu ngay công thức này nha 😋. Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
+      "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-25 12:31:36",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261125_122755_tiktok_story_7705825153137020181.mp4",
+        "caption": "🤤 Thèm nem chua rán mà muốn tự làm tại nhà thì lưu ngay công thức này nha 😋. Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
+        "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-25 12:20:17",
       "machine_arch": "x86_64",
@@ -237,22 +253,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-24 23:20:39",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261124_073527_tiktok_story_880034604_gautrucden_v1_s346_p4.mp4",
-        "caption": "🌙 Quỷ Lộn Ngược Trong Nhà — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-        "hashtags": "#quylonnguoctrongnha #phan4 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
