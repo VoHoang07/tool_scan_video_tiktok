@@ -1,21 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 00:08:56",
+    "timestamp": "2026-11-26 00:15:43",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "event_type": "upload_error",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261126_000545_tiktok_story_7255276534871723269.mp4",
-      "caption": "🎬 Tân sinh viên cần trang bị những món đồ công nghệ nào khi lên đại học???. Vậy để Ontech gợi ý cho bạn những món đồ công nghệ cực hữu ích mà ai cũng cần nha. Xem đến cuối để thấy cái kết vừa bất ngờ vừa đáng yêu nhé! Bạn chấm mấy điểm cho màn biến hình này?",
-      "hashtags": "#videoaihay #hoathinhai #phimnganai #khamphaai #meocute #chualanh #tiktokvn #xuhuong",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "video_file": "20261125_230037_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_mukbang.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 00:15:43",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261125_230037_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_mukbang.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-26 00:08:56",
       "machine_arch": "x86_64",
@@ -245,22 +251,6 @@
         "video_file": "20261125_130800_tiktok_story_7514539753820196114.mp4",
         "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Trước và sau khi học dưỡng sinh đông y GIẢM CÂN kiểu:... Có ai như em không ạ? Khác biệt lắm ạ! Giờ mê thể dục dưỡng sinh luôn rồi ạ. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
         "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 12:31:36",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "an_vat_moi_ngay",
-      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
-      "details": {
-        "video_file": "20261125_122755_tiktok_story_7705825153137020181.mp4",
-        "caption": "🤤 Thèm nem chua rán mà muốn tự làm tại nhà thì lưu ngay công thức này nha 😋. Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
-        "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #foryou #fyp",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
