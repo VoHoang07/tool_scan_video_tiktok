@@ -1,23 +1,44 @@
 {
-  "updated_at": "2026-11-22 00:09:47",
+  "updated_at": "2026-11-26 14:32:46",
   "latest_result": {
-    "cmd_id": "revive_terminal_switch3_20261110_0021",
-    "action": "shell",
-    "executed_at": "2026-11-22 00:08:47",
+    "cmd_id": "heartbeat_1795678339",
+    "action": "periodic_heartbeat",
+    "executed_at": "2026-11-26 14:32:19",
     "machine_arch": "x86_64",
-    "hostname": "Hoangs-MBP.fpt",
-    "status": "ERROR",
-    "error": "Command 'exec </dev/null\n./venv/bin/python -c 'from pathlib import Path; from tiktok_pipeline.auto_poster import TikTokAutoPoster; p = TikTokAutoPoster(Path(\".\")); p._auto_revive_stream2_filter24h_if_dead(); p._auto_revive_stream1_upload_if_dead()' && ps -Ao pid,tty,etime,command | grep -E 'main.py|agy_intel_bridge' | grep -v grep' timed out after 60 seconds"
-  },
-  "history": [
-    {
-      "cmd_id": "revive_terminal_switch3_20261110_0021",
-      "action": "shell",
-      "executed_at": "2026-11-22 00:08:47",
+    "desktop_screenshot": null,
+    "system_health": {
+      "timestamp": "2026-11-26 14:32:30",
       "machine_arch": "x86_64",
       "hostname": "Hoangs-MBP.fpt",
-      "status": "ERROR",
-      "error": "Command 'exec </dev/null\n./venv/bin/python -c 'from pathlib import Path; from tiktok_pipeline.auto_poster import TikTokAutoPoster; p = TikTokAutoPoster(Path(\".\")); p._auto_revive_stream2_filter24h_if_dead(); p._auto_revive_stream1_upload_if_dead()' && ps -Ao pid,tty,etime,command | grep -E 'main.py|agy_intel_bridge' | grep -v grep' timed out after 60 seconds"
+      "stream1_running": false,
+      "stream2_running": false,
+      "chrome_testing_count": 0,
+      "lock_file_age_seconds": 150.8,
+      "processes": [],
+      "recent_daemon_log_tail": [
+        "[14:07:26] [INFO] tiktok_pipeline: [BongCucSplitter v6] Đang cắt & dựng cấu trúc mới [day_aesthetic -> bg_mhpQaVsMBpk.mp4 @119s] (speed=1.409x, pitch=0.896x, chèn dẫn chuyện @48s=True, GOP=49): Mẹ Ơi, Con Thật Sự Đau Lắm [Phần 1/4 | views=102,834]...",
+        "[14:07:26] [INFO] tiktok_pipeline: [BongCucSplitter v6] Đang cắt & dựng cấu trúc mới [day_aesthetic -> bg_mhpQaVsMBpk.mp4 @119s] (speed=1.409x, pitch=0.896x, chèn dẫn chuyện @48s=True, GOP=49): Mẹ Ơi, Con Thật Sự Đau Lắm [Phần 1/4 | views=102,834]...",
+        "[14:27:50] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
+        "[14:27:50] [INFO] tiktok_pipeline: === KHỞI ĐỘNG DÒNG HOẠT ĐỘNG 1 (--stream-upload): LẤP ĐẦY KHO READY/ & GIỮ NGUYÊN KHUNG GIỜ ĐĂNG VIDEO CHO 4 KÊNH ===",
+        "[14:27:50] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[14:27:50] [INFO] tiktok_pipeline: Đã xác nhận công cụ hệ thống ffmpeg: /Users/vohoang/Documents/tool_scan_video_tiktok/venv/bin/ffmpeg",
+        "[14:27:51] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[14:27:51] [INFO] tiktok_pipeline: [Open-Source Engine #1] Đã kích hoạt macos-desktop-control (d-wwei/macos-desktop-control | CoreGraphics CGEvent OS Hardware Mouse & Keyboard)",
+        "[14:27:51] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[14:27:51] [INFO] tiktok_pipeline: [Open-Source Engine #2] Đã kích hoạt LeanCTX (yvgude/lean-ctx | SDE Target-Density=0.45 | version=lean-ctx 3.12.0 (official, https://github.com/yvgude/lean-ctx))",
+        "[14:27:51] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[14:27:51] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[14:27:51] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[14:27:51] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[14:27:51] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[14:27:51] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[14:27:52] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[14:27:52] [INFO] tiktok_pipeline: Đã đồng bộ Master CSV (/Users/vohoang/Documents/tool_scan_video_tiktok/output/danh_sach_video.csv) với thư mục ready/ và posted/ của 4 kênh.",
+        "[14:28:02] [INFO] tiktok_pipeline: [Auto-Revive Watchdog] Phát hiện Cửa sổ Terminal Công tắc 3 (--stream-filter24h) đang dừng trên máy Intel -> Đang tự động khởi động lại Cửa sổ Công tắc 3 trực tiếp trên Terminal...",
+        "[14:28:02] [INFO] tiktok_pipeline: [Auto-Revive Watchdog] Phát hiện Cửa sổ Terminal Công tắc 3 (--stream-filter24h) đang dừng trên máy Intel -> Đang tự động khởi động lại Cửa sổ Công tắc 3 trực tiếp trên Terminal..."
+      ],
+      "ps_error": "Command '['ps', '-Ao', 'pid,etime,command']' timed out after 8 seconds",
+      "lock_file_content": "pid=5057 ts=1795678215"
     }
-  ]
+  }
 }
