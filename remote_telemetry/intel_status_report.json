@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 00:51:22",
+    "timestamp": "2026-11-26 07:01:27",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "suc_khoe_duong_sinh",
+    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
     "details": {
-      "video_file": "20261126_004736_tiktok_story_7291305997090475272.mp4",
-      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Những câu nói hay trong truyện Tiên hiệp, phần 2. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-      "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #tiktokvn #xuhuong",
+      "video_file": "20261126_065728_tiktok_story_7709402214405590279.mp4",
+      "caption": "🌿 Lời khuyên về sức khỏe, chia sẻ bí quyết về sức khỏe, chi tiết có tại trang chủ của tôi. \"Chúng ta không còn nhìn thấy mọi thứ mờ nhạt nữa...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+      "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #tiktokvn",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 07:01:27",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "suc_khoe_duong_sinh",
+      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+      "details": {
+        "video_file": "20261126_065728_tiktok_story_7709402214405590279.mp4",
+        "caption": "🌿 Lời khuyên về sức khỏe, chia sẻ bí quyết về sức khỏe, chi tiết có tại trang chủ của tôi. \"Chúng ta không còn nhìn thấy mọi thứ mờ nhạt nữa...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
+        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #tiktokvn",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-26 00:51:22",
       "machine_arch": "x86_64",
@@ -243,22 +259,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 13:50:09",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261125_134405_tiktok_story_990003901_bongcuc_v7_s39_p1_bg_daylight.mp4",
-        "caption": "📖 Bông Cúc Số 39 (Phần 1/10): Họ Chê Tôi Là Bà Nội Trợ, Không Biết Tôi Là Phu Nhân Chủ Tịch — Những góc khuất dần được phơi bày qua từng lời kể mỗi ngày!",
-        "hashtags": "#bongcucso39 #bongcucso #hochetoilabanoitrokhongbiettoilaphun #phan1 #gocnhincuocsong #fyp #truyenngan #tamlyhonnhan #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
