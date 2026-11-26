@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 13:16:11",
+    "timestamp": "2026-11-26 13:32:57",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "suc_khoe_duong_sinh",
-    "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
+    "channel": "nuoi_con_eq",
+    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
     "details": {
-      "video_file": "20261126_131251_tiktok_story_7210755944266075419.mp4",
-      "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Bạn đang bị ho bấm ngay huyệt Thiên Đột, cơn ho sẽ giảm ngay sau 2-3 phút. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-      "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #xh",
+      "video_file": "20261126_132404_tiktok_story_7648176209834052872.mp4",
+      "caption": "💛 Cùng con lớn khôn mỗi ngày: Không đặt bé nằm ngửa sau khi bé vừa bú xong. Nó sẽ khiến bé khó chịu. Dùng gối nghiêng để dỗ bé dễ dàng hơn. \"Sau đó tôi sẽ hướng dẫn bạn cách làm một chiếc giường dốc đơn giản bằng túi bông...\" Những khoảnh khắc nhỏ này chính là nền tảng xây dựng sự tự tin cho bé sau này. Bố mẹ lưu lại tham khảo nhé!",
+      "hashtags": "#giaoducsom #nuoiconthongminh #dayconeq #nuoidaycon #kynanglamchame #giadinhnho #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 13:32:57",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "nuoi_con_eq",
+      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+      "details": {
+        "video_file": "20261126_132404_tiktok_story_7648176209834052872.mp4",
+        "caption": "💛 Cùng con lớn khôn mỗi ngày: Không đặt bé nằm ngửa sau khi bé vừa bú xong. Nó sẽ khiến bé khó chịu. Dùng gối nghiêng để dỗ bé dễ dàng hơn. \"Sau đó tôi sẽ hướng dẫn bạn cách làm một chiếc giường dốc đơn giản bằng túi bông...\" Những khoảnh khắc nhỏ này chính là nền tảng xây dựng sự tự tin cho bé sau này. Bố mẹ lưu lại tham khảo nhé!",
+        "hashtags": "#giaoducsom #nuoiconthongminh #dayconeq #nuoidaycon #kynanglamchame #giadinhnho #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-26 13:16:11",
       "machine_arch": "x86_64",
@@ -209,22 +225,6 @@
         "video_file": "20261126_071542_tiktok_story_7709776238532955400.mp4",
         "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: Tôi là một con tôm đông lạnh. \"Bằng cách này tôi có thể giữ được hương vị thơm ngon của mình...\" Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
         "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 07:01:27",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261126_065728_tiktok_story_7709402214405590279.mp4",
-        "caption": "🌿 Lời khuyên về sức khỏe, chia sẻ bí quyết về sức khỏe, chi tiết có tại trang chủ của tôi. \"Chúng ta không còn nhìn thấy mọi thứ mờ nhạt nữa...\" Thói quen nhỏ mỗi ngày nhưng cực kỳ quý giá cho giấc ngủ và cơ thể. Mọi người nhớ lưu lại và nhắc người thân cùng tập nhé!",
-        "hashtags": "#suckhoechudong #meosuckhoe #duongsinh #chamSocSucKhoe #suckhoegiadinh #ngungon #suckhoe #tiktokvn",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
