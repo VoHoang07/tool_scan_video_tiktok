@@ -1,21 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 13:32:57",
+    "timestamp": "2026-11-26 13:44:14",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "nuoi_con_eq",
-    "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
+    "event_type": "upload_error",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261126_132404_tiktok_story_7648176209834052872.mp4",
-      "caption": "💛 Cùng con lớn khôn mỗi ngày: Không đặt bé nằm ngửa sau khi bé vừa bú xong. Nó sẽ khiến bé khó chịu. Dùng gối nghiêng để dỗ bé dễ dàng hơn. \"Sau đó tôi sẽ hướng dẫn bạn cách làm một chiếc giường dốc đơn giản bằng túi bông...\" Những khoảnh khắc nhỏ này chính là nền tảng xây dựng sự tự tin cho bé sau này. Bố mẹ lưu lại tham khảo nhé!",
-      "hashtags": "#giaoducsom #nuoiconthongminh #dayconeq #nuoidaycon #kynanglamchame #giadinhnho #xuhuong #viral",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 0,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "video_file": "20261126_133914_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 13:44:14",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261126_133914_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-26 13:32:57",
       "machine_arch": "x86_64",
@@ -209,22 +215,6 @@
         "video_file": "20261126_072542_tiktok_story_880034305_gautrucden_v1_s343_p5.mp4",
         "caption": "🐼 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
         "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan5 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 07:22:43",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261126_071542_tiktok_story_7709776238532955400.mp4",
-        "caption": "🧼 Góc chia sẻ kinh nghiệm dọn nhà: Tôi là một con tôm đông lạnh. \"Bằng cách này tôi có thể giữ được hương vị thơm ngon của mình...\" Nhỏ mà cực kỳ hữu ích cho cuộc sống hàng ngày, nhà mình thử xem có hiệu quả không nhé!",
-        "hashtags": "#nhabepthongminh #meovatgiadinh #dogiadungthongminh #meohaymoingay #giadungtienich #noitrothongminh #xuhuong #viral",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,

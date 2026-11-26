@@ -5741,6 +5741,26 @@
       "source_url": "https://www.tiktok.com/@cutebabycare88/video/7648176209834052872",
       "output_filename": "nuoi_con_eq/ready/20261126_132404_tiktok_story_7648176209834052872.mp4",
       "crawled_at": "2026-11-26T13:29:32"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990004501",
+      "sound_id": "bongcuc_yt_kFTHnxWLomM_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261126_133740_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-26T13:39:12"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990004501",
+      "sound_id": "bongcuc_yt_kFTHnxWLomM_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261126_133914_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-26T13:41:43"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
