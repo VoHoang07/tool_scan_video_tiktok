@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 10:03:12",
+    "timestamp": "2026-11-26 10:48:20",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
     "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261126_095826_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "video_file": "20261126_104325_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
       "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 10:48:20",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261126_104325_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-26 10:03:12",
       "machine_arch": "x86_64",
@@ -214,22 +225,6 @@
         "video_file": "20261125_234618_tiktok_story_7710087547195542804.mp4",
         "caption": "🍜 Hôm nay ăn gì cho đỡ ngán: Thời tiết lạnh như này quá hợp để ăn món bò nấu khế chua nhá@. Nguyên liệu quen thuộc trong bếp mà kết hợp lại ngon bất ngờ. Mọi người chấm món này mấy điểm?",
         "hashtags": "#doanvat #monngondelam #amthuctiktok #reviewdoan #nauanngon #mukbangvietnam #viral #foryou",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 23:42:38",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261125_233856_tiktok_story_7637115681229507848.mp4",
-        "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Nghiện trà sữa thì lựa chỗ mà uống nha các bé. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-        "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #xh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
