@@ -1,16 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 09:09:42",
+    "timestamp": "2026-11-26 09:48:11",
     "machine_arch": "x86_64",
-    "event_type": "upload_error",
-    "channel": "audio_dem_khuyen",
-    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+    "event_type": "upload",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261126_090508_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
-      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      "video_file": "20261126_094323_tiktok_story_7394360042792832277.mp4",
+      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: thể tu hiện đại. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+      "hashtags": "#tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #xh #xuhuongtiktok",
+      "deleted_posts": [],
+      "post_confirmed": true,
+      "switched_public_count": 3,
+      "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 09:48:11",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261126_094323_tiktok_story_7394360042792832277.mp4",
+        "caption": "🔥 Huyền huyễn tu tiên cực cuốn: thể tu hiện đại. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "hashtags": "#tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #xh #xuhuongtiktok",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-26 09:09:42",
       "machine_arch": "x86_64",
@@ -222,22 +243,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 23:17:13",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "video_AI_hay",
-      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
-      "details": {
-        "video_file": "20261125_231113_tiktok_story_880034901_gautrucden_v1_s349_p1.mp4",
-        "caption": "🌙 Đám Cưới Hình Nhân Giấy — Câu chuyện hoạt hình cuốn không rời mắt từ giây đầu tiên!",
-        "hashtags": "#damcuoihinhnhangiay #phan1 #gautrucden #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }

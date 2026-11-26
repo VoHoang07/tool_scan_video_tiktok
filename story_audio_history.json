@@ -572,7 +572,8 @@
     "7709776238532955400",
     "880034305",
     "7647794204478852368",
-    "7694595483003571463"
+    "7694595483003571463",
+    "7394360042792832277"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -1027,7 +1028,8 @@
     "7709776276223232786",
     "gautrucden_yt_t4p79z7ppYM_p5",
     "7647794511993391888",
-    "7694595546279611143"
+    "7694595546279611143",
+    "7394360105719859985"
   ],
   "items": [
     {
@@ -5579,6 +5581,16 @@
       "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=16s",
       "output_filename": "audio_dem_khuyen/ready/20261126_090508_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
       "crawled_at": "2026-11-26T09:07:13"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7394360042792832277",
+      "sound_id": "7394360105719859985",
+      "platform": "tiktok",
+      "genre": "tiennghich",
+      "source_url": "https://www.tiktok.com/@tapvietthotinh/video/7394360042792832277",
+      "output_filename": "tu_chan_gioi/ready/20261126_094323_tiktok_story_7394360042792832277.mp4",
+      "crawled_at": "2026-11-26T09:43:47"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
