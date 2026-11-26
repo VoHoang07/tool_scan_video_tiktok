@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 07:30:11",
+    "timestamp": "2026-11-26 07:38:34",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261126_072542_tiktok_story_880034305_gautrucden_v1_s343_p5.mp4",
-      "caption": "🐼 Dê Đen Thành Tinh Tuyệt Đối Không Mở Cửa Khi Nó Gõ — Tình tiết ngày càng gay cấn, xem đến cuối để không bỏ lỡ manh mối quan trọng nhé!",
-      "hashtags": "#dedenthanhtinhtuyetdoikhongmocuakh #phan5 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
+      "video_file": "20261126_073604_tiktok_story_7647794204478852368.mp4",
+      "caption": "🥘 Bữa xế chiều siêu cuốn: Món này làm đơn giản mà hao cơm cực kỳ 👌 B lưu lại hôm nào làm thử nhaa 😀. Giòn rụm thơm phức, vừa xem phim vừa nhâm nhi thì hết sảy. Có ai cũng mê món này giống mình không?",
+      "hashtags": "#monngondelam #amthuctiktok #anvatmoingay #anchayngon #reviewdoan #nauanngon #doanvat #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 07:38:34",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261126_073604_tiktok_story_7647794204478852368.mp4",
+        "caption": "🥘 Bữa xế chiều siêu cuốn: Món này làm đơn giản mà hao cơm cực kỳ 👌 B lưu lại hôm nào làm thử nhaa 😀. Giòn rụm thơm phức, vừa xem phim vừa nhâm nhi thì hết sảy. Có ai cũng mê món này giống mình không?",
+        "hashtags": "#monngondelam #amthuctiktok #anvatmoingay #anchayngon #reviewdoan #nauanngon #doanvat #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-26 07:30:11",
       "machine_arch": "x86_64",
@@ -223,43 +239,6 @@
       "details": {
         "video_file": "20261125_230037_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_mukbang.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 19:12:57",
-      "machine_arch": "x86_64",
-      "event_type": "profile",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_profile_audio_dem_khuyen.jpg",
-      "details": {
-        "action": "rebrand_profile_only",
-        "rebrand_profile": {
-          "attempted": true,
-          "saved": true,
-          "updated_fields": [
-            "avatar",
-            "display_name:Audio Đêm Khuya",
-            "bio_len:66"
-          ],
-          "notes": [],
-          "current_username": "phunukhichat.k07",
-          "profile_url": "https://www.tiktok.com/@phunukhichat.k07"
-        },
-        "deleted_count": 0,
-        "deleted_posts": [],
-        "exclude_keywords": [
-          "bông cúc",
-          "bongcucso",
-          "phần 1/",
-          "phần 2/",
-          "phần 3/",
-          "phần 4/",
-          "phần 5/",
-          "phần 6/",
-          "truyenaudio",
-          "audiodemkhuya"
-        ],
-        "final_url": "https://www.tiktok.com/@phunukhichat.k07"
       }
     }
   ]
