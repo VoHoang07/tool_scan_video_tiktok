@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 15:28:16",
+    "timestamp": "2026-11-26 15:48:20",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261126_151353_tiktok_story_7633513611314351367.mp4",
-      "caption": "🤣 Tiểu Bàn, ngươi phải cẩn thận một chút! — Pha xử lý đi vào lòng đất của hai mẹ con! \"Có loại gia vị thơm ngon nào được bán với kích cỡ lúa mì nhỏ hơn không...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xuhuongtiktok",
+      "video_file": "20261126_154203_tiktok_story_7469336244355435783.mp4",
+      "caption": "⚔️ cổ trần sa hắn rốt cuộc là sự như thế nào. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+      "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 15:48:20",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261126_154203_tiktok_story_7469336244355435783.mp4",
+        "caption": "⚔️ cổ trần sa hắn rốt cuộc là sự như thế nào. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
+        "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-26 15:28:16",
       "machine_arch": "x86_64",
@@ -203,22 +219,6 @@
       "details": {
         "video_file": "20261126_090508_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 08:39:54",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261126_083548_tiktok_story_7694595483003571463.mp4",
-        "caption": "💛 Cùng con lớn khôn mỗi ngày: 🚌 Muốn \" nuôi hư \" đứa trẻ 2-3 tuổi, bạn chỉ cần làm những điều sau 👉👉👉. Những khoảnh khắc nhỏ này chính là nền tảng xây dựng sự tự tin cho bé sau này. Bố mẹ lưu lại tham khảo nhé!",
-        "hashtags": "#giaoducsom #nuoiconthongminh #dayconeq #tamlytreem #mebimsua #donghanhcungcon #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]
