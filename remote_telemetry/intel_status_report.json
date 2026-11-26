@@ -1,21 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 16:00:27",
+    "timestamp": "2026-11-26 16:16:08",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "phu_kien_tien_ich",
-    "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
+    "event_type": "upload_error",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261126_155621_tiktok_story_7486907076564765957.mp4",
-      "caption": "🔥 Đừng rời mắt khỏi màn hình: Ai có cách nào hay hơn chỉ tui với nha😅. Chi tiết cuối video thực sự quá đỉnh, mọi người nghĩ sao về cái kết này?",
-      "hashtags": "#aianimation #videoaihay #hoathinhai #meocute #chualanh #phimhoathinh #tiktokvn #xuhuong",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "video_file": "20261126_160827_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 16:16:08",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261126_160827_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-26 16:00:27",
       "machine_arch": "x86_64",
@@ -208,22 +214,6 @@
       "details": {
         "video_file": "20261126_095826_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 09:48:11",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261126_094323_tiktok_story_7394360042792832277.mp4",
-        "caption": "🔥 Huyền huyễn tu tiên cực cuốn: thể tu hiện đại. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-        "hashtags": "#tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]

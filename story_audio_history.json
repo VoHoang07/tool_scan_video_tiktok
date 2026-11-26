@@ -5817,6 +5817,26 @@
       "source_url": "https://www.tiktok.com/@nhatcaotech/video/7486907076564765957",
       "output_filename": "phu_kien_tien_ich/ready/20261126_155621_tiktok_story_7486907076564765957.mp4",
       "crawled_at": "2026-11-26T15:56:32"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990004501",
+      "sound_id": "bongcuc_yt_kFTHnxWLomM_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261126_160643_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-26T16:08:23"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990004501",
+      "sound_id": "bongcuc_yt_kFTHnxWLomM_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261126_160827_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-26T16:11:57"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
