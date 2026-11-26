@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-27 00:09:02",
+    "timestamp": "2026-11-27 00:56:23",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261127_000511_tiktok_story_7693182819207548190.mp4",
-      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Cửu thiên chi thượng thượng hữu thiên, hà ngôn dĩ chí tuyệt đỉnh.，。. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-      "hashtags": "#tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #xh #xuhuongtiktok",
+      "video_file": "20261127_004447_tiktok_story_7687572941218778376.mp4",
+      "caption": "😂 Không ngờ hai anh em nhiều nhất cũng chỉ được năm mươi thôi 😂. \"Chỉ cần cho mình biết có nên cứu anh ấy hay không...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-27 00:56:23",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261127_004447_tiktok_story_7687572941218778376.mp4",
+        "caption": "😂 Không ngờ hai anh em nhiều nhất cũng chỉ được năm mươi thôi 😂. \"Chỉ cần cho mình biết có nên cứu anh ấy hay không...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-27 00:09:02",
       "machine_arch": "x86_64",
@@ -218,17 +234,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 11:45:20",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261126_114032_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
