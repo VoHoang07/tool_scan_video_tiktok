@@ -1,16 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 11:28:22",
+    "timestamp": "2026-11-26 11:45:20",
     "machine_arch": "x86_64",
     "event_type": "upload_error",
     "channel": "audio_dem_khuyen",
     "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261126_112546_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "video_file": "20261126_114032_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
       "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 11:45:20",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261126_114032_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-26 11:28:22",
       "machine_arch": "x86_64",
@@ -207,22 +218,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 23:58:31",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "nuoi_con_eq",
-      "screenshot": "remote_telemetry/latest_upload_nuoi_con_eq.jpg",
-      "details": {
-        "video_file": "20261125_235425_tiktok_story_7577742358612102407.mp4",
-        "caption": "🤱 Làm cha mẹ cũng là một hành trình học hỏi mỗi ngày: Gia sư buổi đầu tiên, cứ tưởng dễ ai dè khó quá, không biết công việc này được mấy ngày. Mỗi đứa trẻ đều cần được lắng nghe đúng cách. Nhà bạn thường xử lý tình huống này thế nào?",
-        "hashtags": "#dayconeq #mevabe #giaoducsom #donghanhcungcon #daycontulap #nuoidaycon #nuoiconthongminh #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
