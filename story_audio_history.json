@@ -578,7 +578,8 @@
     "880034104",
     "7352029660236008705",
     "7210755944266075419",
-    "7648176209834052872"
+    "7648176209834052872",
+    "7633513611314351367"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -1039,7 +1040,8 @@
     "gautrucden_yt_s4Y0s_iQC1s_p4",
     "7352029708218927889",
     "6662606661191994114",
-    "7648176236900551440"
+    "7648176236900551440",
+    "7633513652842810132"
   ],
   "items": [
     {
@@ -5781,6 +5783,16 @@
       "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=16s",
       "output_filename": "audio_dem_khuyen/ready/20261126_142211_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
       "crawled_at": "2026-11-26T14:30:14"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7633513611314351367",
+      "sound_id": "7633513652842810132",
+      "platform": "tiktok",
+      "genre": "ai萌娃",
+      "source_url": "https://www.tiktok.com/@funybaby199/video/7633513611314351367",
+      "output_filename": "baby_AI/ready/20261126_151353_tiktok_story_7633513611314351367.mp4",
+      "crawled_at": "2026-11-26T15:21:22"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
