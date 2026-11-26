@@ -5837,6 +5837,26 @@
       "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=16s",
       "output_filename": "audio_dem_khuyen/ready/20261126_160827_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
       "crawled_at": "2026-11-26T16:11:57"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990004501",
+      "sound_id": "bongcuc_yt_kFTHnxWLomM_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261126_162118_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-26T16:22:54"
+    },
+    {
+      "channel": "audio_dem_khuyen",
+      "video_id": "990004501",
+      "sound_id": "bongcuc_yt_kFTHnxWLomM_p1",
+      "platform": "tiktok",
+      "genre": "channel_3_novel_drama",
+      "source_url": "https://www.youtube.com/watch?v=kFTHnxWLomM&t=16s",
+      "output_filename": "audio_dem_khuyen/ready/20261126_162257_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "crawled_at": "2026-11-26T16:27:06"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
