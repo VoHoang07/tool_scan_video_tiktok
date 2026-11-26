@@ -1,21 +1,27 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 09:48:11",
+    "timestamp": "2026-11-26 10:03:12",
     "machine_arch": "x86_64",
-    "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "event_type": "upload_error",
+    "channel": "audio_dem_khuyen",
+    "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
     "details": {
-      "video_file": "20261126_094323_tiktok_story_7394360042792832277.mp4",
-      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: thể tu hiện đại. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-      "hashtags": "#tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #xh #xuhuongtiktok",
-      "deleted_posts": [],
-      "post_confirmed": true,
-      "switched_public_count": 3,
-      "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      "video_file": "20261126_095826_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+      "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 10:03:12",
+      "machine_arch": "x86_64",
+      "event_type": "upload_error",
+      "channel": "audio_dem_khuyen",
+      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
+      "details": {
+        "video_file": "20261126_095826_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
+        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
+      }
+    },
     {
       "timestamp": "2026-11-26 09:48:11",
       "machine_arch": "x86_64",
@@ -224,22 +230,6 @@
         "video_file": "20261125_233856_tiktok_story_7637115681229507848.mp4",
         "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Nghiện trà sữa thì lựa chỗ mà uống nha các bé. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
         "hashtags": "#meosuckhoe #duongsinh #songkhoe #songlanhmanh #chamSocSucKhoe #suckhoegiadinh #suckhoe #xh",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-25 23:34:32",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "meo_vat_gia_dinh",
-      "screenshot": "remote_telemetry/latest_upload_meo_vat_gia_dinh.jpg",
-      "details": {
-        "video_file": "20261125_232723_tiktok_story_7648268616781171976.mp4",
-        "caption": "💡 Đừng ném thỏi xanh xuống bồn cầu nữa! Bạn nghĩ rằng đó là việc làm sạch, nhưng thực ra nó đang làm hỏng bồn cầu của bạn 🚽Một số sản phẩm tẩy rửa mà thợ sửa nhà vệ sinh thường khuyên bạn không nên sử dụng. \"Trên thực tế, nó đang dần bị ăn mòn bên trong, như được tìm thấy trong chiếc hộp da cao su màu ...\" Cách xử lý vừa nhanh gọn vừa tiết kiệm mà hầu như nhà nào cũng cần dùng tới! Mọi người lưu lại áp dụng thử cho căn bếp nhà mình nhé!",
-        "hashtags": "#meovatgiadinh #dogiadungthongminh #meovatcuocsong #donnhasach #meohaymoingay #giadungtienich #viral #foryou",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
