@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-26 12:20:32",
+    "timestamp": "2026-11-26 12:32:23",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "an_vat_moi_ngay",
+    "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
     "details": {
-      "video_file": "20261126_121551_tiktok_story_880034104_gautrucden_v1_s341_p4.mp4",
-      "caption": "⚡ Ác Quỷ Nửa Mặt Bắt Thịt Người (Phần 4/8) — Pha xử lý bất ngờ của nhân vật chính, xem tiếp diễn biến ngay sau đây!",
-      "hashtags": "#acquynuamatbatthitnguoi #phan4 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
+      "video_file": "20261126_122832_tiktok_story_7352029660236008705.mp4",
+      "caption": "🤤 Gà Tần Ngải Cứu thơm ngon bổ dưỡng dành cho người cao tuổi và hồi phục thể trạng sau ốm. Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
+      "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #xuhuong #viral",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 2,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-26 12:32:23",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "an_vat_moi_ngay",
+      "screenshot": "remote_telemetry/latest_upload_an_vat_moi_ngay.jpg",
+      "details": {
+        "video_file": "20261126_122832_tiktok_story_7352029660236008705.mp4",
+        "caption": "🤤 Gà Tần Ngải Cứu thơm ngon bổ dưỡng dành cho người cao tuổi và hồi phục thể trạng sau ốm. Nhìn thôi đã thấy đói bụng rồi, cách làm tại nhà vừa nhanh vừa bắt miệng! Tối nay rủ người thương làm thử món này ngay nhé!",
+        "hashtags": "#anvatmoingay #doanvat #monngondelam #doanvatnoidia #yeubep #anchayngon #xuhuong #viral",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 2,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-26 12:20:32",
       "machine_arch": "x86_64",
@@ -212,22 +228,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 00:34:44",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261126_003020_tiktok_story_7631583090669800722.mp4",
-        "caption": "😂 Béo lại bị lừa. \"1, Rất tốt, Thế còn tiếng Anh của lớp 3 thì sao...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-        "hashtags": "#giadinhhaihuoc #embehaihuoc #chamcon #tinhhuonghaihuoc #haihuocmoingay #doisonggiadinh #xh #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
