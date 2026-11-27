@@ -585,7 +585,8 @@
     "880036103",
     "7693182819207548190",
     "7687572941218778376",
-    "880034902"
+    "880034902",
+    "7621845386726083860"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -1053,7 +1054,8 @@
     "gautrucden_yt_slDFPrkXwag_p3",
     "7693183006344792862",
     "7687572997331487506",
-    "gautrucden_yt_TQTyp8SDZW4_p2"
+    "gautrucden_yt_TQTyp8SDZW4_p2",
+    "7621845442993802005"
   ],
   "items": [
     {
@@ -5905,6 +5907,16 @@
       "source_url": "https://www.youtube.com/watch?v=TQTyp8SDZW4&t=240s",
       "output_filename": "video_AI_hay/ready/20261127_072722_tiktok_story_880034902_gautrucden_v1_s349_p2.mp4",
       "crawled_at": "2026-11-27T07:28:15"
+    },
+    {
+      "channel": "baby_AI",
+      "video_id": "7621845386726083860",
+      "sound_id": "7621845442993802005",
+      "platform": "tiktok",
+      "genre": "ai萌娃",
+      "source_url": "https://www.tiktok.com/@mingyiguanyun/video/7621845386726083860",
+      "output_filename": "baby_AI/ready/20261127_081524_tiktok_story_7621845386726083860.mp4",
+      "crawled_at": "2026-11-27T08:15:48"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
