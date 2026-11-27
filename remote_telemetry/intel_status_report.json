@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-27 14:39:48",
+    "timestamp": "2026-11-27 23:10:21",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261127_142700_douyin_story_7673264406255406386.mp4",
-      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Bạn đã đạt đến cấp độ nào?. \"Ta chưa bao giờ thấy ngươi hành động nữa...\" Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-      "hashtags": "#tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #tiktokvn #xuhuong",
+      "video_file": "20261127_230542_tiktok_story_880035005_gautrucden_v1_s350_p5.mp4",
+      "caption": "👀 Điều Kiêng Kỵ Khi Cải Táng (Phần 5/8) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
+      "hashtags": "#dieukiengkykhicaitang #phan5 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 0,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-27 23:10:21",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261127_230542_tiktok_story_880035005_gautrucden_v1_s350_p5.mp4",
+        "caption": "👀 Điều Kiêng Kỵ Khi Cải Táng (Phần 5/8) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
+        "hashtags": "#dieukiengkykhicaitang #phan5 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-27 14:39:48",
       "machine_arch": "x86_64",
@@ -228,17 +244,6 @@
         "post_confirmed": true,
         "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 14:41:33",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261126_142211_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
   ]
