@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-27 13:17:21",
+    "timestamp": "2026-11-27 14:39:48",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261127_130940_tiktok_story_7661966484721241352.mp4",
-      "caption": "🤣 Rắc rối của bố — Pha xử lý đi vào lòng đất của hai mẹ con! \"Không có gì ngạc nhiên khi mẹ nhận được những gì mẹ phải trả cho, Bố của mẹ cùng lớp con đã chi...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-      "hashtags": "#chamcon #babyai #giadinhhaihuoc #giaitritiktok #embecute #tinhhuonghaihuoc #fyp #xh",
+      "video_file": "20261127_142700_douyin_story_7673264406255406386.mp4",
+      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Bạn đã đạt đến cấp độ nào?. \"Ta chưa bao giờ thấy ngươi hành động nữa...\" Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+      "hashtags": "#tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #tiktokvn #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 2,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-27 14:39:48",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261127_142700_douyin_story_7673264406255406386.mp4",
+        "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Bạn đã đạt đến cấp độ nào?. \"Ta chưa bao giờ thấy ngươi hành động nữa...\" Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "hashtags": "#tienhiep #tuchangioi #tutien #aitutien #tiennghich #xuyenkhong #tiktokvn #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-27 13:17:21",
       "machine_arch": "x86_64",
@@ -222,17 +238,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
       "details": {
         "video_file": "20261126_142211_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 13:44:14",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261126_133914_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
