@@ -42,18 +42,18 @@ from .utils import logger
 
 DEFAULT_SCHEDULE_CONFIG: Dict[str, Any] = {
     "timezone": "Asia/Ho_Chi_Minh",
-    "default_post_times": ["08:00", "12:30", "23:30"],
+    "default_post_times": ["08:00", "12:30", "23:00"],
     "channel_post_times": {
         "audio_dem_khuyen": ["08:48", "13:25", "23:00"],
-        "video_AI_hay": ["07:25", "12:05", "23:06"],
+        "video_AI_hay": ["07:25", "12:05", "23:00"],
         "meo_vat_gia_dinh": ["07:10", "11:35", "23:12"],
         "suc_khoe_duong_sinh": ["06:50", "11:55", "23:18"],
         "an_vat_moi_ngay": ["07:38", "12:22", "23:24"],
-        "baby_AI": ["08:05", "12:42", "23:30"],
+        "baby_AI": ["08:05", "12:42", "23:10"],
         "nuoi_con_eq": ["08:15", "12:52", "23:36"],
         "phu_nu_khi_chat": ["08:28", "13:05", "23:42"],
         "phu_kien_tien_ich": ["09:05", "13:45", "23:48"],
-        "tu_chan_gioi": ["09:18", "14:10", "23:54"],
+        "tu_chan_gioi": ["09:18", "14:10", "23:20"],
     },
     "filter_24h_enabled": True,
     "filter_24h_runs_per_day": 2,
@@ -704,11 +704,12 @@ class TikTokAutoPoster(
                         return posted_results
 
         active_ch_set = set(cfg.get("active_channels") or ["video_AI_hay", "baby_AI", "audio_dem_khuyen", "tu_chan_gioi"])
-        # Ca khuya (từ 22h trở đi): luôn xếp `audio_dem_khuyen` đứng ĐẦU TIÊN để mở màn đúng 23:00 trước các kênh còn lại
+        # Ca khuya (từ 22h trở đi): xếp theo thứ tự khung giờ ca khuya (bắt đầu từ 23:00)
         is_night_batch = datetime.now().hour >= 22
         ordered_profiles = sorted(
             CHANNEL_PROFILES.values(),
             key=lambda p: (
+                (ch_times_map.get(p["folder_name"]) or default_times)[-1] if is_night_batch else "",
                 0 if (is_night_batch and p["folder_name"] == "audio_dem_khuyen") else 1,
                 0
                 if any((self.project_root / "output" / p["folder_name"] / "ready").glob("*.mp4"))

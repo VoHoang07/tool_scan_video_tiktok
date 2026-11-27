@@ -147,16 +147,31 @@ def run_verification_suite() -> Tuple[bool, List[str]]:
             missing_ch = EXPECTED_10_CHANNELS - set(ch_times.keys())
             if missing_ch:
                 errors.append(f"[ConfigError] Thiếu lịch đăng của kênh: {sorted(missing_ch)}")
+            active_chs = [str(c) for c in (cfg.get("active_channels") or []) if str(c).strip()]
             adk_night = (ch_times.get("audio_dem_khuyen") or [""])[-1]
-            if adk_night != "23:00":
-                errors.append(f"[ScheduleError] Ca khuya của audio_dem_khuyen phải là 23:00 (hiện tại: {adk_night})")
-            for ch_k, slots_v in ch_times.items():
-                if ch_k != "audio_dem_khuyen" and slots_v:
-                    night_s = slots_v[-1]
-                    if night_s <= "23:00":
+            if "audio_dem_khuyen" in active_chs:
+                if adk_night != "23:00":
+                    errors.append(f"[ScheduleError] Ca khuya của audio_dem_khuyen phải là 23:00 (hiện tại: {adk_night})")
+                for ch_k in active_chs:
+                    slots_v = ch_times.get(ch_k) or []
+                    if ch_k != "audio_dem_khuyen" and slots_v:
+                        night_s = slots_v[-1]
+                        if night_s <= "23:00":
+                            errors.append(
+                                f"[ScheduleError] Kênh {ch_k} có ca khuya {night_s} <= 23:00 (phải xếp sau audio_dem_khuyen)"
+                            )
+            elif active_chs:
+                active_nights = [(ch_k, (ch_times.get(ch_k) or [""])[-1]) for ch_k in active_chs]
+                for ch_k, night_s in active_nights:
+                    if night_s < "23:00":
                         errors.append(
-                            f"[ScheduleError] Kênh {ch_k} có ca khuya {night_s} <= 23:00 (phải xếp sau audio_dem_khuyen)"
+                            f"[ScheduleError] Kênh {ch_k} có ca khuya {night_s} < 23:00 (phải bắt đầu từ 23:00)"
                         )
+                earliest_night = min((ns for _, ns in active_nights if ns), default="")
+                if earliest_night != "23:00":
+                    errors.append(
+                        f"[ScheduleError] Ca khuya các kênh đang hoạt động phải bắt đầu từ 23:00 (sớm nhất hiện tại: {earliest_night})"
+                    )
             sw = cfg.get("system_switches") or {}
             for k in ("master_switch", "switch_1_factory", "switch_2_upload", "switch_3_interact", "switch_4_clear"):
                 if k not in sw:
