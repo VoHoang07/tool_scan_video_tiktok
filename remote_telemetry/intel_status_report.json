@@ -1,14 +1,14 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-27 09:26:02",
+    "timestamp": "2026-11-27 12:15:44",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261127_092131_douyin_story_7460848068938779967.mp4",
-      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Đừng bao giờ nghe tiểu thuyết trước khi đi ngủ, nếu không bạn sẽ cười ngặt nghẽo!. \"Anh ta cắt hơn 800 con dao trong một hơi thở...\" Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-      "hashtags": "#tutien #huyenhuyen #tienhiep #xuyenkhong #hethongtutien #tomtathoathinh3d #foryou #fyp",
+      "video_file": "20261127_121151_tiktok_story_880035801_gautrucden_v1_s358_p1.mp4",
+      "caption": "🔥 Điều Lệ Chơi Kéo Búa Bao (Phần 1/6) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
+      "hashtags": "#dieulechoikeobuabao #phan1 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
       "deleted_posts": [],
       "post_confirmed": true,
       "switched_public_count": 3,
@@ -16,6 +16,22 @@
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-27 12:15:44",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261127_121151_tiktok_story_880035801_gautrucden_v1_s358_p1.mp4",
+        "caption": "🔥 Điều Lệ Chơi Kéo Búa Bao (Phần 1/6) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
+        "hashtags": "#dieulechoikeobuabao #phan1 #chuyenke #xuhuong #hoathinhgautrucden #phimhoathinh #fyp #hoathinh",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-27 09:26:02",
       "machine_arch": "x86_64",
@@ -214,22 +230,6 @@
         "video_file": "20261126_132404_tiktok_story_7648176209834052872.mp4",
         "caption": "💛 Cùng con lớn khôn mỗi ngày: Không đặt bé nằm ngửa sau khi bé vừa bú xong. Nó sẽ khiến bé khó chịu. Dùng gối nghiêng để dỗ bé dễ dàng hơn. \"Sau đó tôi sẽ hướng dẫn bạn cách làm một chiếc giường dốc đơn giản bằng túi bông...\" Những khoảnh khắc nhỏ này chính là nền tảng xây dựng sự tự tin cho bé sau này. Bố mẹ lưu lại tham khảo nhé!",
         "hashtags": "#giaoducsom #nuoiconthongminh #dayconeq #nuoidaycon #kynanglamchame #giadinhnho #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 0,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 13:16:11",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "suc_khoe_duong_sinh",
-      "screenshot": "remote_telemetry/latest_upload_suc_khoe_duong_sinh.jpg",
-      "details": {
-        "video_file": "20261126_131251_tiktok_story_7210755944266075419.mp4",
-        "caption": "💪 Đừng đợi đến khi cơ thể mệt mỏi mới bắt đầu chú ý: Bạn đang bị ho bấm ngay huyệt Thiên Đột, cơn ho sẽ giảm ngay sau 2-3 phút. Dành ra vài phút mỗi ngày để cơ thể nhẹ nhàng hơn nhé! Bạn có hay gặp tình trạng này không?",
-        "hashtags": "#meosuckhoe #duongsinh #songkhoe #biquyetsongkhoe #kienthucsuckhoe #thaydoithoiquen #suckhoe #xh",
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 0,
