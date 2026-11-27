@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-27 23:10:21",
+    "timestamp": "2026-11-28 00:04:06",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "baby_AI",
+    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
     "details": {
-      "video_file": "20261127_230542_tiktok_story_880035005_gautrucden_v1_s350_p5.mp4",
-      "caption": "👀 Điều Kiêng Kỵ Khi Cải Táng (Phần 5/8) — Cú bẻ lái không ai ngờ tới trong phần này, vào xem ngay nhé!",
-      "hashtags": "#dieukiengkykhicaitang #phan5 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
+      "video_file": "20261127_235218_douyin_story_7694737035705715419.mp4",
+      "caption": "😂 Bé khổng lồ ăn dưa hấu, mẹ tí hon gọt sạch vỏ dưa hấu. \"Nếu tôi biết rõ hơn thì tôi đã cắt dưa hấu nhỏ hơn...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #viral #foryou",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-28 00:04:06",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "baby_AI",
+      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+      "details": {
+        "video_file": "20261127_235218_douyin_story_7694737035705715419.mp4",
+        "caption": "😂 Bé khổng lồ ăn dưa hấu, mẹ tí hon gọt sạch vỏ dưa hấu. \"Nếu tôi biết rõ hơn thì tôi đã cắt dưa hấu nhỏ hơn...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
+        "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #viral #foryou",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-27 23:10:21",
       "machine_arch": "x86_64",
@@ -227,22 +243,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 2,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 15:28:16",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "baby_AI",
-      "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
-      "details": {
-        "video_file": "20261126_151353_tiktok_story_7633513611314351367.mp4",
-        "caption": "🤣 Tiểu Bàn, ngươi phải cẩn thận một chút! — Pha xử lý đi vào lòng đất của hai mẹ con! \"Có loại gia vị thơm ngon nào được bán với kích cỡ lúa mì nhỏ hơn không...\" Có ai từng rơi vào cảnh này hồi nhỏ chưa?",
-        "hashtags": "#embehaihuoc #chamcon #babyai #mevabe #cuoixiu #phimnganhai #giadinhhaihuoc #xuhuongtiktok",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
