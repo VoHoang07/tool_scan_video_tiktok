@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-28 00:04:06",
+    "timestamp": "2026-11-28 07:37:03",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "baby_AI",
-    "screenshot": "remote_telemetry/latest_upload_baby_AI.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261127_235218_douyin_story_7694737035705715419.mp4",
-      "caption": "😂 Bé khổng lồ ăn dưa hấu, mẹ tí hon gọt sạch vỏ dưa hấu. \"Nếu tôi biết rõ hơn thì tôi đã cắt dưa hấu nhỏ hơn...\" Tình huống dở khóc dở cười trong gia đình khiến ai xem cũng thấy bóng dáng mình ở trỏng! Nhà bạn có giống vậy không?",
-      "hashtags": "#babyai #giadinhhaihuoc #embehaihuoc #phimnganhai #giaitritiktok #embecute #viral #foryou",
+      "video_file": "20261128_073141_tiktok_story_880036104_gautrucden_v1_s361_p4.mp4",
+      "caption": "🔥 Tránh Xa Xe Tải Chở Hình Nhân Giấy (Phần 4/6) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
+      "hashtags": "#tranhxaxetaichohinhnhangiay #phan4 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-28 07:37:03",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261128_073141_tiktok_story_880036104_gautrucden_v1_s361_p4.mp4",
+        "caption": "🔥 Tránh Xa Xe Tải Chở Hình Nhân Giấy (Phần 4/6) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
+        "hashtags": "#tranhxaxetaichohinhnhangiay #phan4 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-28 00:04:06",
       "machine_arch": "x86_64",
@@ -227,22 +243,6 @@
         "deleted_posts": [],
         "post_confirmed": true,
         "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 15:48:20",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "tu_chan_gioi",
-      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
-      "details": {
-        "video_file": "20261126_154203_tiktok_story_7469336244355435783.mp4",
-        "caption": "⚔️ cổ trần sa hắn rốt cuộc là sự như thế nào. Giữa thế giới cá lớn nuốt cá bé, kẻ phàm nhân nghịch thiên cải mệnh bước lên đỉnh cao vạn giới! Đạo hữu đoán xem cảnh giới tiếp theo của main là gì?",
-        "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #xuhuong #viral",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 2,
         "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }

@@ -592,7 +592,8 @@
     "7661966484721241352",
     "7673264406255406386",
     "880035005",
-    "7694737035705715419"
+    "7694737035705715419",
+    "880036104"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -1067,7 +1068,8 @@
     "7661966538258074375",
     "7673264366608599850",
     "gautrucden_yt_Qkt79a0x_BU_p5",
-    "7694736962871561014"
+    "7694736962871561014",
+    "gautrucden_yt_slDFPrkXwag_p4"
   ],
   "items": [
     {
@@ -5989,6 +5991,26 @@
       "source_url": "https://www.douyin.com/video/7694737035705715419",
       "output_filename": "baby_AI/ready/20261127_235218_douyin_story_7694737035705715419.mp4",
       "crawled_at": "2026-11-27T23:56:22"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "880036104",
+      "sound_id": "gautrucden_yt_slDFPrkXwag_p4",
+      "platform": "tiktok",
+      "genre": "channel_1_ai_trending",
+      "source_url": "https://www.youtube.com/watch?v=slDFPrkXwag&t=811s",
+      "output_filename": "video_AI_hay/ready/20261128_072921_tiktok_story_880036104_gautrucden_v1_s361_p4.mp4",
+      "crawled_at": "2026-11-28T07:31:35"
+    },
+    {
+      "channel": "video_AI_hay",
+      "video_id": "880036104",
+      "sound_id": "gautrucden_yt_slDFPrkXwag_p4",
+      "platform": "tiktok",
+      "genre": "channel_1_ai_trending",
+      "source_url": "https://www.youtube.com/watch?v=slDFPrkXwag&t=811s",
+      "output_filename": "video_AI_hay/ready/20261128_073141_tiktok_story_880036104_gautrucden_v1_s361_p4.mp4",
+      "crawled_at": "2026-11-28T07:33:15"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
