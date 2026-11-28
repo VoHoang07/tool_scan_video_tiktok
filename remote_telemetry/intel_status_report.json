@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-28 09:52:24",
+    "timestamp": "2026-11-28 12:08:23",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "tu_chan_gioi",
-    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+    "channel": "video_AI_hay",
+    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
     "details": {
-      "video_file": "20261128_094810_tiktok_story_7579997170665917714.mp4",
-      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Trời không tuyệt đường người nhưng cũng không giúp người. Chỉ cần ngươi muốn đi đường luôn ở dưới chân. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
-      "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #foryou #fyp",
+      "video_file": "20261128_120404_tiktok_story_880034903_gautrucden_v1_s349_p3.mp4",
+      "caption": "🎬 Đám Cưới Hình Nhân Giấy — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
+      "hashtags": "#damcuoihinhnhangiay #phan3 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 3,
+      "switched_public_count": 0,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-28 12:08:23",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "video_AI_hay",
+      "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+      "details": {
+        "video_file": "20261128_120404_tiktok_story_880034903_gautrucden_v1_s349_p3.mp4",
+        "caption": "🎬 Đám Cưới Hình Nhân Giấy — Một quy tắc kỳ bí vừa xuất hiện, ai đang theo dõi bộ này điểm danh ngay nhé!",
+        "hashtags": "#damcuoihinhnhangiay #phan3 #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong #hoathinhgautrucden",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 0,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-28 09:52:24",
       "machine_arch": "x86_64",
@@ -232,17 +248,6 @@
       "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
       "details": {
         "video_file": "20261126_162257_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
-        "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 16:16:08",
-      "machine_arch": "x86_64",
-      "event_type": "upload_error",
-      "channel": "audio_dem_khuyen",
-      "screenshot": "remote_telemetry/latest_upload_error_audio_dem_khuyen.jpg",
-      "details": {
-        "video_file": "20261126_160827_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
       }
     }
