@@ -1,21 +1,37 @@
 {
   "latest_event": {
-    "timestamp": "2026-11-28 07:37:03",
+    "timestamp": "2026-11-28 09:52:24",
     "machine_arch": "x86_64",
     "event_type": "upload",
-    "channel": "video_AI_hay",
-    "screenshot": "remote_telemetry/latest_upload_video_AI_hay.jpg",
+    "channel": "tu_chan_gioi",
+    "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
     "details": {
-      "video_file": "20261128_073141_tiktok_story_880036104_gautrucden_v1_s361_p4.mp4",
-      "caption": "🔥 Tránh Xa Xe Tải Chở Hình Nhân Giấy (Phần 4/6) — Series hoạt hình Gấu Trúc Đen cực cuốn, bạn đoán được chuyện gì sắp xảy ra chưa?",
-      "hashtags": "#tranhxaxetaichohinhnhangiay #phan4 #fyp #hoathinh #cotichkybi #gautrucden #chuyenke #xuhuong",
+      "video_file": "20261128_094810_tiktok_story_7579997170665917714.mp4",
+      "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Trời không tuyệt đường người nhưng cũng không giúp người. Chỉ cần ngươi muốn đi đường luôn ở dưới chân. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+      "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #foryou #fyp",
       "deleted_posts": [],
       "post_confirmed": true,
-      "switched_public_count": 0,
+      "switched_public_count": 3,
       "final_url": "https://www.tiktok.com/tiktokstudio/content"
     }
   },
   "recent_events": [
+    {
+      "timestamp": "2026-11-28 09:52:24",
+      "machine_arch": "x86_64",
+      "event_type": "upload",
+      "channel": "tu_chan_gioi",
+      "screenshot": "remote_telemetry/latest_upload_tu_chan_gioi.jpg",
+      "details": {
+        "video_file": "20261128_094810_tiktok_story_7579997170665917714.mp4",
+        "caption": "🔥 Huyền huyễn tu tiên cực cuốn: Trời không tuyệt đường người nhưng cũng không giúp người. Chỉ cần ngươi muốn đi đường luôn ở dưới chân. Tưởng là phế vật dưới đáy tông môn, ai ngờ lại ẩn giấu huyết mạch chấn động thiên địa! Các đạo hữu chấm bộ này mấy điểm?",
+        "hashtags": "#tuchangioi #tutien #huyenhuyen #hethongtutien #tomtathoathinh3d #animehay #foryou #fyp",
+        "deleted_posts": [],
+        "post_confirmed": true,
+        "switched_public_count": 3,
+        "final_url": "https://www.tiktok.com/tiktokstudio/content"
+      }
+    },
     {
       "timestamp": "2026-11-28 07:37:03",
       "machine_arch": "x86_64",
@@ -228,22 +244,6 @@
       "details": {
         "video_file": "20261126_160827_tiktok_story_990004501_bongcuc_v7_s45_p1_bg_daylight.mp4",
         "error": "Locator.wait_for: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"input[type=\\\"file\\\"]\").first\n"
-      }
-    },
-    {
-      "timestamp": "2026-11-26 16:00:27",
-      "machine_arch": "x86_64",
-      "event_type": "upload",
-      "channel": "phu_kien_tien_ich",
-      "screenshot": "remote_telemetry/latest_upload_phu_kien_tien_ich.jpg",
-      "details": {
-        "video_file": "20261126_155621_tiktok_story_7486907076564765957.mp4",
-        "caption": "🔥 Đừng rời mắt khỏi màn hình: Ai có cách nào hay hơn chỉ tui với nha😅. Chi tiết cuối video thực sự quá đỉnh, mọi người nghĩ sao về cái kết này?",
-        "hashtags": "#aianimation #videoaihay #hoathinhai #meocute #chualanh #phimhoathinh #tiktokvn #xuhuong",
-        "deleted_posts": [],
-        "post_confirmed": true,
-        "switched_public_count": 3,
-        "final_url": "https://www.tiktok.com/tiktokstudio/content"
       }
     }
   ]

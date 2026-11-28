@@ -593,7 +593,8 @@
     "7673264406255406386",
     "880035005",
     "7694737035705715419",
-    "880036104"
+    "880036104",
+    "7579997170665917714"
   ],
   "sound_ids": [
     "dy_seed_7698023893977599272",
@@ -1069,7 +1070,8 @@
     "7673264366608599850",
     "gautrucden_yt_Qkt79a0x_BU_p5",
     "7694736962871561014",
-    "gautrucden_yt_slDFPrkXwag_p4"
+    "gautrucden_yt_slDFPrkXwag_p4",
+    "7042559029322795777"
   ],
   "items": [
     {
@@ -6011,6 +6013,16 @@
       "source_url": "https://www.youtube.com/watch?v=slDFPrkXwag&t=811s",
       "output_filename": "video_AI_hay/ready/20261128_073141_tiktok_story_880036104_gautrucden_v1_s361_p4.mp4",
       "crawled_at": "2026-11-28T07:33:15"
+    },
+    {
+      "channel": "tu_chan_gioi",
+      "video_id": "7579997170665917714",
+      "sound_id": "7042559029322795777",
+      "platform": "tiktok",
+      "genre": "tiennghich",
+      "source_url": "https://www.tiktok.com/@bachtiensinh_00/video/7579997170665917714",
+      "output_filename": "tu_chan_gioi/ready/20261128_094810_tiktok_story_7579997170665917714.mp4",
+      "crawled_at": "2026-11-28T09:48:20"
     }
   ],
   "_adk_v7_reset_ts": "2026-11-24 23:04:00"
